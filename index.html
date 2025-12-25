@@ -1,114 +1,110 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Plug Finder</title>
+    <title>Spark Plug Finder | Pro</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+    </style>
 </head>
-<body class="bg-gray-100 min-h-screen">
-
-    <div class="max-w-md mx-auto bg-white min-h-screen shadow-lg">
-        <!-- Header -->
-        <div class="bg-blue-600 p-6 text-white text-center">
-            <h1 class="text-2xl font-bold uppercase tracking-wider">OEM Plug Finder</h1>
-            <p class="text-blue-100 text-sm">Instant Search for Toyota, Honda, Kia & Hyundai</p>
+<body class="bg-slate-900 min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-md w-full glass-card rounded-2xl p-8 shadow-2xl">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-black text-slate-800 uppercase tracking-tight">Plug Finder</h1>
+            <p class="text-slate-500 text-sm">Find the perfect spark for your engine</p>
         </div>
 
-        <!-- Search Box -->
-        <div class="p-6">
-            <label class="block text-gray-700 font-bold mb-2">Enter Car Details:</label>
-            <div class="flex flex-col gap-3">
-                <input id="carInput" type="text" 
-                    class="w-full p-4 border-2 border-gray-200 rounded-lg focus:border-blue-500 outline-none" 
-                    placeholder="e.g. 2015 Toyota Corolla 1.8L">
-                
-                <button onclick="findPlug()" id="btn" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-black py-4 rounded-lg uppercase transition-all shadow-md">
-                    Find OEM Part Number
-                </button>
+        <div class="space-y-5">
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1">Vehicle Make</label>
+                <select id="make" onchange="updateModels()" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-700 outline-none focus:border-blue-500 transition-all">
+                    <option value="">Choose Make</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Ford">Ford</option>
+                    <option value="Nissan">Nissan</option>
+                </select>
             </div>
 
-            <!-- Result Area -->
-            <div id="loading" class="mt-8 hidden flex flex-col items-center">
-                <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600"></div>
-                <p class="mt-2 text-gray-500 text-sm">Searching catalogs...</p>
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1">Model</label>
+                <select id="model" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-700 outline-none focus:border-blue-500 transition-all">
+                    <option value="">Select Make First</option>
+                </select>
             </div>
 
-            <div id="result" class="mt-8 hidden p-5 bg-blue-50 rounded-xl border-l-4 border-blue-600">
-                <h3 class="font-bold text-blue-900 mb-2">Recommended Part:</h3>
-                <div id="resultText" class="text-gray-800 leading-relaxed"></div>
-                
-                <button onclick="copyResult()" class="mt-4 w-full bg-white border border-blue-200 text-blue-600 py-2 rounded-md text-sm font-bold">
-                    <i class="far fa-copy"></i> Copy for Client
-                </button>
+            <button onclick="searchPlug()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-xl shadow-lg shadow-blue-200 transition-all active:scale-95">
+                FIND PART NUMBER
+            </button>
+        </div>
+
+        <div id="resultBox" class="mt-8 hidden animate-in fade-in zoom-in duration-300">
+            <div class="p-6 bg-blue-50 border-2 border-blue-100 rounded-2xl text-center">
+                <span class="text-xs font-bold text-blue-400 uppercase">Recommended Plug</span>
+                <h2 id="partNumber" class="text-3xl font-mono font-black text-blue-900 mt-1">---</h2>
+                <p id="partType" class="text-sm text-blue-600 mt-2 font-medium"></p>
+                <div class="mt-4 pt-4 border-t border-blue-100">
+                    <a id="shopLink" href="#" target="_blank" class="text-blue-700 font-bold hover:underline text-sm italic">Order this part now →</a>
+                </div>
             </div>
         </div>
 
-        <!-- Catalog Shortcuts -->
-        <div class="px-6 pb-6">
-            <p class="text-xs font-bold text-gray-400 uppercase mb-3">Direct Catalogs</p>
-            <div class="grid grid-cols-2 gap-2">
-                <a href="https://www.ngk.com/" target="_blank" class="bg-gray-50 p-3 rounded border text-center text-xs font-bold hover:bg-gray-100">NGK Catalog</a>
-                <a href="https://www.denso.com/cgi-bin/plug/search.cgi" target="_blank" class="bg-gray-50 p-3 rounded border text-center text-xs font-bold hover:bg-gray-100">Denso Catalog</a>
-            </div>
-        </div>
+        <p class="text-center mt-6 text-[10px] text-slate-400">Data provided for reference. Verify with your manual.</p>
     </div>
 
     <script>
-        const apiKey = ""; 
+        const database = {
+            "Toyota": {
+                "Camry": { part: "NGK 90919-01247", type: "Iridium Long Life" },
+                "Corolla": { part: "DENSO SC20HR11", type: "Iridium" },
+                "Hilux": { part: "NGK BKR6E-11", type: "Standard Nickel" }
+            },
+            "Honda": {
+                "Civic": { part: "NGK IZFR6K11S", type: "Laser Iridium" },
+                "Accord": { part: "NGK ILZKR7B11", type: "Iridium" },
+                "CR-V": { part: "DENSO SKJ20DR-M11", type: "Iridium" }
+            },
+            "Ford": {
+                "F-150": { part: "Motorcraft SP-546", type: "Platinum" },
+                "Focus": { part: "NGK LTR6GP", type: "G-Power Platinum" },
+                "Ranger": { part: "Motorcraft SP-432", type: "Standard" }
+            },
+            "Nissan": {
+                "Altima": { part: "NGK DILKAR6A11", type: "Laser Iridium" },
+                "Sentra": { part: "NGK PLZKAR6A-11", type: "Platinum" }
+            }
+        };
 
-        async function findPlug() {
-            const car = document.getElementById('carInput').value;
-            if(!car) return;
-
-            const btn = document.getElementById('btn');
-            const loader = document.getElementById('loading');
-            const resDiv = document.getElementById('result');
-            const resText = document.getElementById('resultText');
-
-            btn.disabled = true;
-            loader.classList.remove('hidden');
-            resDiv.classList.add('hidden');
-
-            const prompt = `Provide the exact OEM Spark Plug part number (NGK or Denso) for: ${car}. 
-            Also include: 
-            1. Gap specification.
-            2. High-performance Iridium alternative part number.
-            Format it clearly for a customer.`;
-
-            try {
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({contents: [{ parts: [{ text: prompt }] }],
-                        tools: [{ "google_search": {} }]
-                    })
+        function updateModels() {
+            const make = document.getElementById('make').value;const modelSelect = document.getElementById('model');
+            modelSelect.innerHTML = '<option value="">Select Model</option>';
+            
+            if (make && database[make]) {
+                Object.keys(database[make]).forEach(model => {
+                    const opt = document.createElement('option');
+                    opt.value = model;
+                    opt.innerHTML = model;
+                    modelSelect.appendChild(opt);
                 });
-
-                const data = await response.json();
-                const output = data.candidates?.[0]?.content?.parts?.[0]?.text || "Couldn't find data. Try checking the NGK catalog link below.";
-                
-                resText.innerHTML = output.replace(/\n/g, '<br>');
-                resDiv.classList.remove('hidden');
-            } catch (err) {
-                resText.innerHTML = "Connection error. Please use the catalog links below.";
-                resDiv.classList.remove('hidden');
-            } finally {
-                loader.classList.add('hidden');
-                btn.disabled = false;
             }
         }
 
-        function copyResult() {
-            const text = document.getElementById('resultText').innerText;
-            const el = document.createElement('textarea');
-            el.value = text;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-            alert('Copied to clipboard!');
+        function searchPlug() {
+            const make = document.getElementById('make').value;
+            const model = document.getElementById('model').value;
+            const resBox = document.getElementById('resultBox');
+            
+            if (!make || !model) return;
+
+            const data = database[make][model];
+            document.getElementById('partNumber').innerText = data.part;
+            document.getElementById('partType').innerText = data.type;
+            document.getElementById('shopLink').href = https://www.google.com/search?q=buy+${data.part.replace(' ', '+')};
+            
+            resBox.classList.remove('hidden');
         }
     </script>
 </body>
