@@ -1,124 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Kash Option | All-in-One</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 2em;
-      background: #f5f5f5;
-      color: #333;
-    }
-    h1, h2 {
-      color: #002147;
-    }
-    input, button, textarea, select {
-      padding: 10px;
-      margin: 5px;
-      font-size: 16px;
-      width: 100%;
-      max-width: 400px;
-      box-sizing: border-box;
-    }
-    .section {
-      margin-bottom: 3em;
-      padding: 1em;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    }
-    .whatsapp-btn {
-      background: #25D366;
-      color: white;
-      text-decoration: none;
-      padding: 10px 20px;
-      display: inline-block;
-      margin-top: 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Plug Finder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="bg-gray-100 min-h-screen">
 
-  <h1>Welcome to Kash Option</h1>
-  <p>Shop & Ship from any website in China to your doorstep in Ghana 🇬🇭</p>
+    <div class="max-w-md mx-auto bg-white min-h-screen shadow-lg">
+        <!-- Header -->
+        <div class="bg-blue-600 p-6 text-white text-center">
+            <h1 class="text-2xl font-bold uppercase tracking-wider">OEM Plug Finder</h1>
+            <p class="text-blue-100 text-sm">Instant Search for Toyota, Honda, Kia & Hyundai</p>
+        </div>
 
-  <div class="section">
-    <h2>🛒 How It Works</h2>
-    <p>1. Visit our Instagram to find a product or send a screenshot via WhatsApp.</p>
-    <p>2. We'll give you the factory price and estimated delivery date.</p>
-    <a class="whatsapp-btn" href="https://wa.me/233240118846">Send Product via WhatsApp</a>
-    <a class="whatsapp-btn" href="https://www.instagram.com/kashoption1" style="background:#e1306c;">View Instagram</a>
-  </div>
+        <!-- Search Box -->
+        <div class="p-6">
+            <label class="block text-gray-700 font-bold mb-2">Enter Car Details:</label>
+            <div class="flex flex-col gap-3">
+                <input id="carInput" type="text" 
+                    class="w-full p-4 border-2 border-gray-200 rounded-lg focus:border-blue-500 outline-none" 
+                    placeholder="e.g. 2015 Toyota Corolla 1.8L">
+                
+                <button onclick="findPlug()" id="btn" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-black py-4 rounded-lg uppercase transition-all shadow-md">
+                    Find OEM Part Number
+                </button>
+            </div>
 
-  <div class="section">
-    <h2>📦 Track Your Order</h2>
-    <input type="text" id="trackingId" placeholder="Enter Tracking ID">
-    <button onclick="trackOrder()">Check Status</button>
-    <div id="trackResult"></div>
-  </div>
+            <!-- Result Area -->
+            <div id="loading" class="mt-8 hidden flex flex-col items-center">
+                <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600"></div>
+                <p class="mt-2 text-gray-500 text-sm">Searching catalogs...</p>
+            </div>
 
-  <div class="section">
-    <h2>📤 Upload a Product Image</h2>
-    <input type="file" id="uploadInput" />
-    <button onclick="uploadImage()">Upload</button>
-    <div id="uploadStatus"></div>
-  </div>
+            <div id="result" class="mt-8 hidden p-5 bg-blue-50 rounded-xl border-l-4 border-blue-600">
+                <h3 class="font-bold text-blue-900 mb-2">Recommended Part:</h3>
+                <div id="resultText" class="text-gray-800 leading-relaxed"></div>
+                
+                <button onclick="copyResult()" class="mt-4 w-full bg-white border border-blue-200 text-blue-600 py-2 rounded-md text-sm font-bold">
+                    <i class="far fa-copy"></i> Copy for Client
+                </button>
+            </div>
+        </div>
 
-  <div class="section">
-    <h2>✅ Order Confirmation</h2>
-    <input type="email" id="confirmEmail" placeholder="Enter your email">
-    <button onclick="sendConfirmation()">Send Confirmation</button>
-    <div id="emailStatus"></div>
-  </div>
+        <!-- Catalog Shortcuts -->
+        <div class="px-6 pb-6">
+            <p class="text-xs font-bold text-gray-400 uppercase mb-3">Direct Catalogs</p>
+            <div class="grid grid-cols-2 gap-2">
+                <a href="https://www.ngk.com/" target="_blank" class="bg-gray-50 p-3 rounded border text-center text-xs font-bold hover:bg-gray-100">NGK Catalog</a>
+                <a href="https://www.denso.com/cgi-bin/plug/search.cgi" target="_blank" class="bg-gray-50 p-3 rounded border text-center text-xs font-bold hover:bg-gray-100">Denso Catalog</a>
+            </div>
+        </div>
+    </div>
 
-  <div class="section">
-    <h2>📞 Contact Us</h2>
-    <p>📍 Location: 5th Avenue, Tema, Ghana</p>
-    <p>📲 WhatsApp: <a href="https://wa.me/233240118846">024 011 8846</a></p>
-    <p>📧 Email: support@kashoption.com</p>
-  </div>
+    <script>
+        const apiKey = ""; 
 
-  <div class="section">
-    <h2>❓ FAQs</h2>
-    <p><strong>Q:</strong> How long does delivery take?<br><strong>A:</strong> Usually 5–15 working days depending on your item.</p>
-    <p><strong>Q:</strong> Can I track my package?<br><strong>A:</strong> Yes, use the tracking section above.</p>
-    <p><strong>Q:</strong> Where do you deliver?<br><strong>A:</strong> Anywhere in Ghana 🇬🇭</p>
-  </div>
+        async function findPlug() {
+            const car = document.getElementById('carInput').value;
+            if(!car) return;
 
-<script>
-  function trackOrder() {
-    const id = document.getElementById("trackingId").value.trim();
-    const result = document.getElementById("trackResult");
-    if (!id) {
-      result.innerText = "Please enter your tracking ID.";
-    } else {
-      result.innerHTML = <strong>Status:</strong> In transit 🚚<br><strong>ETA:</strong> 3–5 days<br><strong>Carrier:</strong> Kash Express;
-    }
-  }
+            const btn = document.getElementById('btn');
+            const loader = document.getElementById('loading');
+            const resDiv = document.getElementById('result');
+            const resText = document.getElementById('resultText');
 
-  function uploadImage() {
-    const file = document.getElementById("uploadInput").files[0];
-    const status = document.getElementById("uploadStatus");
-    if (!file) {
-      status.innerText = "Please select an image to upload.";
-      return;
-    }
-    status.innerText = Image "${file.name}" uploaded successfully. ✅;
-  }
+            btn.disabled = true;
+            loader.classList.remove('hidden');
+            resDiv.classList.add('hidden');
 
-  function sendConfirmation() {
-    const email = document.getElementById("confirmEmail").value.trim();
-    const status = document.getElementById("emailStatus");
-    if (!email.includes("@")) {
-      status.innerText = "Enter a valid email address.";
-    } else {
-      status.innerText = Confirmation email sent to ${email}. 📬;
-    }
-  }
-</script>
+            const prompt = `Provide the exact OEM Spark Plug part number (NGK or Denso) for: ${car}. 
+            Also include: 
+            1. Gap specification.
+            2. High-performance Iridium alternative part number.
+            Format it clearly for a customer.`;
 
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({contents: [{ parts: [{ text: prompt }] }],
+                        tools: [{ "google_search": {} }]
+                    })
+                });
+
+                const data = await response.json();
+                const output = data.candidates?.[0]?.content?.parts?.[0]?.text || "Couldn't find data. Try checking the NGK catalog link below.";
+                
+                resText.innerHTML = output.replace(/\n/g, '<br>');
+                resDiv.classList.remove('hidden');
+            } catch (err) {
+                resText.innerHTML = "Connection error. Please use the catalog links below.";
+                resDiv.classList.remove('hidden');
+            } finally {
+                loader.classList.add('hidden');
+                btn.disabled = false;
+            }
+        }
+
+        function copyResult() {
+            const text = document.getElementById('resultText').innerText;
+            const el = document.createElement('textarea');
+            el.value = text;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            alert('Copied to clipboard!');
+        }
+    </script>
 </body>
 </html>
