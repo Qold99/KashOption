@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kash Option | All-in-One</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 2em;
+      background: #f5f5f5;
+      color: #333;
+    }
+    h1, h2 {
+      color: #002147;
+    }
+    input, button, textarea, select {
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+      width: 100%;
+      max-width: 400px;
+      box-sizing: border-box;
+    }
+    .section {
+      margin-bottom: 3em;
+      padding: 1em;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      display: inline-block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to Kash Option</h1>
+  <p>Shop & Ship from any website in China to your doorstep in Ghana 🇬🇭</p>
+
+  <div class="section">
+    <h2>🛒 How It Works</h2>
+    <p>1. Visit our Instagram to find a product or send a screenshot via WhatsApp.</p>
+    <p>2. We'll give you the factory price and estimated delivery date.</p>
+    <a class="whatsapp-btn" href="https://wa.me/233240118846">Send Product via WhatsApp</a>
+    <a class="whatsapp-btn" href="https://www.instagram.com/kashoption1" style="background:#e1306c;">View Instagram</a>
+  </div>
+
+  <div class="section">
+    <h2>📦 Track Your Order</h2>
+    <input type="text" id="trackingId" placeholder="Enter Tracking ID">
+    <button onclick="trackOrder()">Check Status</button>
+    <div id="trackResult"></div>
+  </div>
+
+  <div class="section">
+    <h2>📤 Upload a Product Image</h2>
+    <input type="file" id="uploadInput" />
+    <button onclick="uploadImage()">Upload</button>
+    <div id="uploadStatus"></div>
+  </div>
+
+  <div class="section">
+    <h2>✅ Order Confirmation</h2>
+    <input type="email" id="confirmEmail" placeholder="Enter your email">
+    <button onclick="sendConfirmation()">Send Confirmation</button>
+    <div id="emailStatus"></div>
+  </div>
+
+  <div class="section">
+    <h2>📞 Contact Us</h2>
+    <p>📍 Location: 5th Avenue, Tema, Ghana</p>
+    <p>📲 WhatsApp: <a href="https://wa.me/233240118846">024 011 8846</a></p>
+    <p>📧 Email: support@kashoption.com</p>
+  </div>
+
+  <div class="section">
+    <h2>❓ FAQs</h2>
+    <p><strong>Q:</strong> How long does delivery take?<br><strong>A:</strong> Usually 5–15 working days depending on your item.</p>
+    <p><strong>Q:</strong> Can I track my package?<br><strong>A:</strong> Yes, use the tracking section above.</p>
+    <p><strong>Q:</strong> Where do you deliver?<br><strong>A:</strong> Anywhere in Ghana 🇬🇭</p>
+  </div>
+
+<script>
+  function trackOrder() {
+    const id = document.getElementById("trackingId").value.trim();
+    const result = document.getElementById("trackResult");
+    if (!id) {
+      result.innerText = "Please enter your tracking ID.";
+    } else {
+      result.innerHTML = <strong>Status:</strong> In transit 🚚<br><strong>ETA:</strong> 3–5 days<br><strong>Carrier:</strong> Kash Express;
+    }
+  }
+
+  function uploadImage() {
+    const file = document.getElementById("uploadInput").files[0];
+    const status = document.getElementById("uploadStatus");
+    if (!file) {
+      status.innerText = "Please select an image to upload.";
+      return;
+    }
+    status.innerText = Image "${file.name}" uploaded successfully. ✅;
+  }
+
+  function sendConfirmation() {
+    const email = document.getElementById("confirmEmail").value.trim();
+    const status = document.getElementById("emailStatus");
+    if (!email.includes("@")) {
+      status.innerText = "Enter a valid email address.";
+    } else {
+      status.innerText = Confirmation email sent to ${email}. 📬;
+    }
+  }
+</script>
+
+</body>
+</html>
