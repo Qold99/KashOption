@@ -1,256 +1,159 @@
-import React, { useState, useEffect } from 'react';
-import { initializeApp } from 'firebase/app';
-import {
-getFirestore,
-doc,
-setDoc,
-getDoc,
-onSnapshot,
-collection,
-query
-} from 'firebase/firestore';
-import {
-getAuth,
-signInAnonymously,
-onAuthStateChanged
-} from 'firebase/auth';
-import { Package, Search, Lock, Plus, Truck, CheckCircle, Clock, ChevronLeft } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kash Option | Track Shipment</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+body { font-family: 'Inter', sans-serif; }
+.stepper-item.active .step-counter { background-color: #2563eb; color: white; }
+.stepper-item.completed .step-counter { background-color: #10b981; color: white; }
+</style>
+</head>
+<body class="bg-slate-50 min-h-screen">
 
-// Firebase configuration - placeholders for the environment
-const firebaseConfig = JSON.parse(__firebase_config);
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
-const appId = typeof __app_id !== 'undefined' ? __app_id : 'kash-option-tracker';
-
-export default function App() {
-const [user, setUser] = useState(null);
-const [view, setView] = useState('client'); // 'client' or 'admin'
-const [searchId, setSearchId] = useState('');
-const [trackingData, setTrackingData] = useState(null);
-const [loading, setLoading] = useState(false);
-const [error, setError] = useState('');
-
-// Admin form state
-const [adminId, setAdminId] = useState('');
-const [status, setStatus] = useState('In Transit');
-const [origin, setOrigin] = useState('China');
-const [eta, setEta] = useState('');
-const [adminPass, setAdminPass] = useState('');
-const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-useEffect(() => {
-const initAuth = async () => {
-await signInAnonymously(auth);
-};
-initAuth();
-const unsubscribe = onAuthStateChanged(auth, setUser);
-return () => unsubscribe();
-}, []);
-
-const handleTrack = async () => {
-if (!searchId) return;
-setLoading(true);
-setError('');
-setTrackingData(null);
-
-try {
-const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'trackings', searchId.toUpperCase());
-const docSnap = await getDoc(docRef);
-
-if (docSnap.exists()) {
-setTrackingData(docSnap.data());
-} else {
-setError('Tracking ID not found. Please verify with Mr. Kash.');
-}
-} catch (err) {
-setError('System error. Try again later.');
-} finally {
-setLoading(false);
-}
-};
-
-const saveTracking = async (e) => {
-e.preventDefault();
-if (!user || !adminId) return;
-setLoading(true);
-
-try {
-const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'trackings', adminId.toUpperCase());
-await setDoc(docRef, {
-id: adminId.toUpperCase(),
-status,
-origin,
-eta,
-updatedAt: new Date().toISOString()
-});
-alert(`Success! ${adminId} updated.`);
-setAdminId('');
-} catch (err) {
-alert('Failed to save data.');
-} finally {
-setLoading(false);
-}
-};
-
-const loginAdmin = () => {
-if (adminPass === '1234') { // Simple pass for demo - you can change this
-setIsLoggedIn(true);
-} else {
-alert('Wrong password');
-}
-};
-
-return (
-<div className="min-h-screen bg-slate-50 font-sans text-slate-900">
-{/* Header */}
-<nav className="bg-white border-b border-slate-200 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
-<div className="flex items-center gap-2">
-<Package className="text-blue-600" size={24} />
-<h1 className="font-black text-xl tracking-tighter text-blue-700">KASH TRACKER</h1>
+<!-- Navigation -->
+<nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+<div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+<a href="index.html" class="flex items-center gap-2">
+<i class="fas fa-arrow-left text-blue-600"></i>
+<h1 class="text-xl font-black text-blue-700 tracking-tighter uppercase">KASH OPTION</h1>
+</a>
+<button onclick="toggleAdmin()" class="text-[10px] font-black text-slate-400 uppercase tracking-widest border-2 border-slate-100 px-3 py-1 rounded-full hover:bg-slate-100 transition">Staff Portal</button>
 </div>
-<button
-onClick={() => setView(view === 'client' ? 'admin' : 'client')}
-className="text-xs font-bold uppercase text-slate-400 hover:text-blue-600 transition"
->
-{view === 'client' ? 'Staff Portal' : 'Customer View'}
-</button>
 </nav>
 
-{view === 'client' ? (
-<div className="max-w-xl mx-auto px-6 py-12">
-<div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 border border-slate-100">
-<h2 className="text-3xl font-black mb-2">Where is your package?</h2>
-<p className="text-slate-500 mb-8">Enter the tracking number provided to you.</p>
+<!-- Client Search View -->
+<div id="clientView" class="max-w-2xl mx-auto px-6 py-12">
+<div class="bg-white rounded-[2.5rem] shadow-2xl shadow-blue-100 p-8 md:p-12 border border-slate-100">
+<div class="text-center mb-10">
+<div class="w-20 h-20 bg-blue-100 text-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
+<i class="fas fa-box-open text-3xl"></i>
+</div>
+<h2 class="text-3xl font-black text-slate-800">Track Your Package</h2>
+<p class="text-slate-500 mt-2">Enter your unique tracking ID (e.g., KO-101)</p>
+</div>
 
-<div className="relative mb-6">
-<input
-type="text"
-value={searchId}
-onChange={(e) => setSearchId(e.target.value)}
-placeholder="e.g. KO-10293"
-className="w-full bg-slate-100 border-2 border-transparent focus:border-blue-500 focus:bg-white p-5 rounded-2xl outline-none font-bold text-lg uppercase transition-all"
-/>
-<button
-onClick={handleTrack}
-disabled={loading}
-className="absolute right-3 top-3 bg-blue-600 text-white p-3 rounded-xl hover:bg-blue-700 transition active:scale-95"
->
-{loading ? <Clock className="animate-spin" /> : <Search size={24} />}
+<div class="relative group">
+<input type="text" id="trackInput" placeholder="ENTER TRACKING ID"
+class="w-full bg-slate-50 border-2 border-slate-100 p-6 rounded-2xl outline-none focus:border-blue-500 focus:bg-white font-black text-xl tracking-widest uppercase transition-all">
+<button onclick="trackOrder()" class="mt-4 w-full bg-blue-600 text-white font-black py-5 rounded-2xl shadow-xl shadow-blue-200 hover:bg-blue-700 active:scale-[0.98] transition-all flex items-center justify-center gap-3">
+<i class="fas fa-search"></i> TRACK SHIPMENT
 </button>
 </div>
 
-{error && <p className="text-red-500 font-bold text-center text-sm">{error}</p>}
-
-{trackingData && (
-<div className="mt-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-<div className="p-6 bg-blue-50 rounded-2xl border-2 border-blue-100">
-<div className="flex items-center gap-3 mb-6">
-<div className="bg-blue-600 p-2 rounded-lg text-white">
-<Truck size={20} />
-</div>
-<div>
-<p className="text-[10px] font-bold text-blue-400 uppercase tracking-widest">Live Status</p>
-<h3 className="text-2xl font-black text-blue-900 leading-tight">{trackingData.status}</h3>
-</div>
+<!-- Result Card -->
+<div id="trackResult" class="mt-12 hidden">
+<div class="border-t-2 border-dashed border-slate-100 pt-8">
+<div class="bg-blue-50 rounded-3xl p-8 border border-blue-100 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<i class="fas fa-truck text-6xl text-blue-900"></i>
 </div>
 
-<div className="space-y-4 border-t border-blue-200 pt-6">
-<div className="flex justify-between items-center">
-<span className="text-slate-500 font-medium italic">Origin</span>
-<span className="font-bold text-slate-800">{trackingData.origin}</span>
+<div class="flex justify-between items-start mb-8">
+<div>
+<p class="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-1">Status</p>
+<h3 id="statusLabel" class="text-2xl font-black text-blue-900 uppercase tracking-tight leading-none">---</h3>
 </div>
-<div className="flex justify-between items-center">
-<span className="text-slate-500 font-medium italic">Estimated Arrival</span>
-<span className="font-black text-blue-600">{trackingData.eta}</span>
+<div class="text-right">
+<p class="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-1">ETA</p>
+<p id="etaLabel" class="text-xl font-black text-blue-700 italic">---</p>
 </div>
-</div>
-</div>
-</div>
-)}
-</div>
-</div>
-) : (
-<div className="max-w-xl mx-auto px-6 py-12">
-{!isLoggedIn ? (
-<div className="bg-slate-900 rounded-3xl p-8 text-white shadow-2xl">
-<Lock className="text-blue-400 mb-4" size={32} />
-<h2 className="text-2xl font-bold mb-6">Staff Access</h2>
-<input
-type="password"
-placeholder="Enter Staff PIN"
-value={adminPass}
-onChange={(e) => setAdminPass(e.target.value)}
-className="w-full bg-slate-800 p-4 rounded-xl border-none text-white mb-4"
-/>
-<button onClick={loginAdmin} className="w-full bg-blue-600 py-4 rounded-xl font-bold">LOGIN</button>
-</div>
-) : (
-<div className="bg-white rounded-3xl shadow-xl p-8 border border-slate-100">
-<div className="flex justify-between items-center mb-8">
-<h2 className="text-2xl font-black">Manage Shipments</h2>
-<button onClick={() => setIsLoggedIn(false)} className="text-red-500 text-xs font-bold uppercase">Logout</button>
 </div>
 
-<form onSubmit={saveTracking} className="space-y-4">
+<div class="space-y-4">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500 font-bold uppercase text-[10px]">Origin</span>
+<span class="font-black text-slate-800">International (China/US)</span>
+</div>
+<div class="flex justify-between text-sm border-t border-blue-200 pt-4">
+<span class="text-slate-500 font-bold uppercase text-[10px]">Destination</span>
+<span class="font-black text-slate-800">Accra, Ghana</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Admin Panel View -->
+<div id="adminView" class="max-w-xl mx-auto px-6 py-12 hidden">
+<div class="bg-slate-900 rounded-[2.5rem] shadow-2xl p-10 text-white">
+<div class="flex justify-between items-center mb-10">
+<h2 class="text-2xl font-black flex items-center gap-3">
+<i class="fas fa-user-shield text-blue-400"></i> STAFF PANEL
+</h2>
+<button onclick="toggleAdmin()" class="text-[10px] font-bold text-slate-500 uppercase">Close</button>
+</div>
+
+<div class="space-y-6">
 <div>
-<label className="text-xs font-bold text-slate-400 uppercase ml-1">Tracking ID</label>
-<input
-type="text"
-value={adminId}
-onChange={(e) => setAdminId(e.target.value)}
-placeholder="KO-8822"
-className="w-full border-2 border-slate-100 p-4 rounded-xl outline-none focus:border-blue-500 bg-slate-50 font-bold"
-/>
+<label class="text-[10px] font-bold text-slate-500 uppercase ml-1">Tracking ID</label>
+<input type="text" id="adminTrackID" placeholder="KO-101" class="w-full bg-slate-800 border-none p-5 rounded-2xl text-white font-bold uppercase mt-1">
 </div>
 <div>
-<label className="text-xs font-bold text-slate-400 uppercase ml-1">Package Origin</label>
-<select
-value={origin}
-onChange={(e) => setOrigin(e.target.value)}
-className="w-full border-2 border-slate-100 p-4 rounded-xl outline-none focus:border-blue-500 bg-slate-50 font-bold"
->
-<option>China</option>
-<option>USA</option>
-<option>Dubai</option>
+<label class="text-[10px] font-bold text-slate-500 uppercase ml-1">Current Status</label>
+<select id="adminStatus" class="w-full bg-slate-800 border-none p-5 rounded-2xl text-white font-bold mt-1">
+<option value="PROCESSING">📦 Processing</option>
+<option value="IN TRANSIT">✈️ In Transit</option>
+<option value="ARRIVED GHANA">🇬🇭 Arrived Ghana</option>
+<option value="READY FOR PICKUP">✅ Ready for Pickup</option>
 </select>
 </div>
 <div>
-<label className="text-xs font-bold text-slate-400 uppercase ml-1">Update Status</label>
-<select
-value={status}
-onChange={(e) => setStatus(e.target.value)}
-className="w-full border-2 border-slate-100 p-4 rounded-xl outline-none focus:border-blue-500 bg-slate-50 font-bold"
->
-<option>Processing</option>
-<option>In Transit</option>
-<option>Arrived Ghana (Customs)</option>
-<option>Ready for Pickup</option>
-<option>Delivered</option>
-</select>
+<label class="text-[10px] font-bold text-slate-500 uppercase ml-1">Arrival Date (ETA)</label>
+<input type="text" id="adminETA" placeholder="e.g. Next Week Tuesday" class="w-full bg-slate-800 border-none p-5 rounded-2xl text-white font-bold mt-1">
 </div>
-<div>
-<label className="text-xs font-bold text-slate-400 uppercase ml-1">Arrival Date (Text)</label>
-<input
-type="text"
-value={eta}
-onChange={(e) => setEta(e.target.value)}
-placeholder="e.g. Next Week Friday"
-className="w-full border-2 border-slate-100 p-4 rounded-xl outline-none focus:border-blue-500 bg-slate-50 font-bold"
-/>
-</div>
-<button
-type="submit"
-disabled={loading}
-className="w-full bg-slate-900 text-white py-5 rounded-2xl font-black shadow-lg hover:bg-slate-800 transition"
->
-{loading ? 'SAVING...' : 'UPDATE SHIPMENT'}
+<button onclick="saveTracking()" class="w-full bg-blue-600 py-5 rounded-2xl font-black text-lg hover:bg-blue-500 shadow-xl shadow-blue-900/20 transition-all">
+SAVE TRACKING DATA
 </button>
-</form>
 </div>
-)}
 </div>
-)}
 </div>
-);
+
+<script>
+// Load data from LocalStorage
+let database = JSON.parse(localStorage.getItem('kash_tracking_v2')) || {};
+
+function trackOrder() {
+const id = document.getElementById('trackInput').value.toUpperCase().trim();
+const res = document.getElementById('trackResult');
+
+if (database[id]) {
+document.getElementById('statusLabel').innerText = database[id].status;
+document.getElementById('etaLabel').innerText = database[id].eta;
+res.classList.remove('hidden');
+res.classList.add('animate-in', 'fade-in', 'slide-in-from-bottom-4', 'duration-500');
+} else {
+alert("Tracking ID not found. Please contact Kash Option Service.");
 }
+}
+
+function saveTracking() {
+const id = document.getElementById('adminTrackID').value.toUpperCase().trim();
+const status = document.getElementById('adminStatus').value;
+const eta = document.getElementById('adminETA').value;
+
+if(!id) return alert("Please enter a Tracking ID");
+
+database[id] = { status, eta };
+localStorage.setItem('kash_tracking_v2', JSON.stringify(database));
+alert("SUCCESS: Shipment " + id + " has been updated!");
+
+// Clear inputs
+document.getElementById('adminTrackID').value = "";
+document.getElementById('adminETA').value = "";
+}
+
+function toggleAdmin() {
+document.getElementById('clientView').classList.toggle('hidden');
+document.getElementById('adminView').classList.toggle('hidden');
+}
+</script>
+
+</body>
+</html>
