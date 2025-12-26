@@ -1,0 +1,256 @@
+import React, { useState, useEffect } from 'react';
+import { initializeApp } from 'firebase/app';
+import {
+getFirestore,
+doc,
+setDoc,
+getDoc,
+onSnapshot,
+collection,
+query
+} from 'firebase/firestore';
+import {
+getAuth,
+signInAnonymously,
+onAuthStateChanged
+} from 'firebase/auth';
+import { Package, Search, Lock, Plus, Truck, CheckCircle, Clock, ChevronLeft } from 'lucide-react';
+
+// Firebase configuration - placeholders for the environment
+const firebaseConfig = JSON.parse(__firebase_config);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+const appId = typeof __app_id !== 'undefined' ? __app_id : 'kash-option-tracker';
+
+export default function App() {
+const [user, setUser] = useState(null);
+const [view, setView] = useState('client'); // 'client' or 'admin'
+const [searchId, setSearchId] = useState('');
+const [trackingData, setTrackingData] = useState(null);
+const [loading, setLoading] = useState(false);
+const [error, setError] = useState('');
+
+// Admin form state
+const [adminId, setAdminId] = useState('');
+const [status, setStatus] = useState('In Transit');
+const [origin, setOrigin] = useState('China');
+const [eta, setEta] = useState('');
+const [adminPass, setAdminPass] = useState('');
+const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+useEffect(() => {
+const initAuth = async () => {
+await signInAnonymously(auth);
+};
+initAuth();
+const unsubscribe = onAuthStateChanged(auth, setUser);
+return () => unsubscribe();
+}, []);
+
+const handleTrack = async () => {
+if (!searchId) return;
+setLoading(true);
+setError('');
+setTrackingData(null);
+
+try {
+const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'trackings', searchId.toUpperCase());
+const docSnap = await getDoc(docRef);
+
+if (docSnap.exists()) {
+setTrackingData(docSnap.data());
+} else {
+setError('Tracking ID not found. Please verify with Mr. Kash.');
+}
+} catch (err) {
+setError('System error. Try again later.');
+} finally {
+setLoading(false);
+}
+};
+
+const saveTracking = async (e) => {
+e.preventDefault();
+if (!user || !adminId) return;
+setLoading(true);
+
+try {
+const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'trackings', adminId.toUpperCase());
+await setDoc(docRef, {
+id: adminId.toUpperCase(),
+status,
+origin,
+eta,
+updatedAt: new Date().toISOString()
+});
+alert(`Success! ${adminId} updated.`);
+setAdminId('');
+} catch (err) {
+alert('Failed to save data.');
+} finally {
+setLoading(false);
+}
+};
+
+const loginAdmin = () => {
+if (adminPass === '1234') { // Simple pass for demo - you can change this
+setIsLoggedIn(true);
+} else {
+alert('Wrong password');
+}
+};
+
+return (
+<div className="min-h-screen bg-slate-50 font-sans text-slate-900">
+{/* Header */}
+<nav className="bg-white border-b border-slate-200 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+<div className="flex items-center gap-2">
+<Package className="text-blue-600" size={24} />
+<h1 className="font-black text-xl tracking-tighter text-blue-700">KASH TRACKER</h1>
+</div>
+<button
+onClick={() => setView(view === 'client' ? 'admin' : 'client')}
+className="text-xs font-bold uppercase text-slate-400 hover:text-blue-600 transition"
+>
+{view === 'client' ? 'Staff Portal' : 'Customer View'}
+</button>
+</nav>
+
+{view === 'client' ? (
+<div className="max-w-xl mx-auto px-6 py-12">
+<div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 border border-slate-100">
+<h2 className="text-3xl font-black mb-2">Where is your package?</h2>
+<p className="text-slate-500 mb-8">Enter the tracking number provided to you.</p>
+
+<div className="relative mb-6">
+<input
+type="text"
+value={searchId}
+onChange={(e) => setSearchId(e.target.value)}
+placeholder="e.g. KO-10293"
+className="w-full bg-slate-100 border-2 border-transparent focus:border-blue-500 focus:bg-white p-5 rounded-2xl outline-none font-bold text-lg uppercase transition-all"
+/>
+<button
+onClick={handleTrack}
+disabled={loading}
+className="absolute right-3 top-3 bg-blue-600 text-white p-3 rounded-xl hover:bg-blue-700 transition active:scale-95"
+>
+{loading ? <Clock className="animate-spin" /> : <Search size={24} />}
+</button>
+</div>
+
+{error && <p className="text-red-500 font-bold text-center text-sm">{error}</p>}
+
+{trackingData && (
+<div className="mt-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+<div className="p-6 bg-blue-50 rounded-2xl border-2 border-blue-100">
+<div className="flex items-center gap-3 mb-6">
+<div className="bg-blue-600 p-2 rounded-lg text-white">
+<Truck size={20} />
+</div>
+<div>
+<p className="text-[10px] font-bold text-blue-400 uppercase tracking-widest">Live Status</p>
+<h3 className="text-2xl font-black text-blue-900 leading-tight">{trackingData.status}</h3>
+</div>
+</div>
+
+<div className="space-y-4 border-t border-blue-200 pt-6">
+<div className="flex justify-between items-center">
+<span className="text-slate-500 font-medium italic">Origin</span>
+<span className="font-bold text-slate-800">{trackingData.origin}</span>
+</div>
+<div className="flex justify-between items-center">
+<span className="text-slate-500 font-medium italic">Estimated Arrival</span>
+<span className="font-black text-blue-600">{trackingData.eta}</span>
+</div>
+</div>
+</div>
+</div>
+)}
+</div>
+</div>
+) : (
+<div className="max-w-xl mx-auto px-6 py-12">
+{!isLoggedIn ? (
+<div className="bg-slate-900 rounded-3xl p-8 text-white shadow-2xl">
+<Lock className="text-blue-400 mb-4" size={32} />
+<h2 className="text-2xl font-bold mb-6">Staff Access</h2>
+<input
+type="password"
+placeholder="Enter Staff PIN"
+value={adminPass}
+onChange={(e) => setAdminPass(e.target.value)}
+className="w-full bg-slate-800 p-4 rounded-xl border-none text-white mb-4"
+/>
+<button onClick={loginAdmin} className="w-full bg-blue-600 py-4 rounded-xl font-bold">LOGIN</button>
+</div>
+) : (
+<div className="bg-white rounded-3xl shadow-xl p-8 border border-slate-100">
+<div className="flex justify-between items-center mb-8">
+<h2 className="text-2xl font-black">Manage Shipments</h2>
+<button onClick={() => setIsLoggedIn(false)} className="text-red-500 text-xs font-bold uppercase">Logout</button>
+</div>
+
+<form onSubmit={saveTracking} className="space-y-4">
+<div>
+<label className="text-xs font-bold text-slate-400 uppercase ml-1">Tracking ID</label>
+<input
+type="text"
+value={adminId}
+onChange={(e) => setAdminId(e.target.value)}
+placeholder="KO-8822"
+className="w-full border-2 border-slate-100 p-4 rounded-xl outline-none focus:border-blue-500 bg-slate-50 font-bold"
+/>
+</div>
+<div>
+<label className="text-xs font-bold text-slate-400 uppercase ml-1">Package Origin</label>
+<select
+value={origin}
+onChange={(e) => setOrigin(e.target.value)}
+className="w-full border-2 border-slate-100 p-4 rounded-xl outline-none focus:border-blue-500 bg-slate-50 font-bold"
+>
+<option>China</option>
+<option>USA</option>
+<option>Dubai</option>
+</select>
+</div>
+<div>
+<label className="text-xs font-bold text-slate-400 uppercase ml-1">Update Status</label>
+<select
+value={status}
+onChange={(e) => setStatus(e.target.value)}
+className="w-full border-2 border-slate-100 p-4 rounded-xl outline-none focus:border-blue-500 bg-slate-50 font-bold"
+>
+<option>Processing</option>
+<option>In Transit</option>
+<option>Arrived Ghana (Customs)</option>
+<option>Ready for Pickup</option>
+<option>Delivered</option>
+</select>
+</div>
+<div>
+<label className="text-xs font-bold text-slate-400 uppercase ml-1">Arrival Date (Text)</label>
+<input
+type="text"
+value={eta}
+onChange={(e) => setEta(e.target.value)}
+placeholder="e.g. Next Week Friday"
+className="w-full border-2 border-slate-100 p-4 rounded-xl outline-none focus:border-blue-500 bg-slate-50 font-bold"
+/>
+</div>
+<button
+type="submit"
+disabled={loading}
+className="w-full bg-slate-900 text-white py-5 rounded-2xl font-black shadow-lg hover:bg-slate-800 transition"
+>
+{loading ? 'SAVING...' : 'UPDATE SHIPMENT'}
+</button>
+</form>
+</div>
+)}
+</div>
+)}
+</div>
+);
+}
