@@ -3,150 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kash Option | Track Shipment</title>
+<title>Kash Option | Tracking</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-body { font-family: 'Inter', sans-serif; }
-.stepper-item.active .step-counter { background-color: #2563eb; color: white; }
-.stepper-item.completed .step-counter { background-color: #10b981; color: white; }
-</style>
 </head>
 <body class="bg-slate-50 min-h-screen">
 
-<!-- Navigation -->
-<nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
-<div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-<a href="index.html" class="flex items-center gap-2">
-<i class="fas fa-arrow-left text-blue-600"></i>
-<h1 class="text-xl font-black text-blue-700 tracking-tighter uppercase">KASH OPTION</h1>
-</a>
-<button onclick="toggleAdmin()" class="text-[10px] font-black text-slate-400 uppercase tracking-widest border-2 border-slate-100 px-3 py-1 rounded-full hover:bg-slate-100 transition">Staff Portal</button>
+<nav class="bg-white shadow-sm p-4 sticky top-0 z-50">
+<div class="max-w-6xl mx-auto flex justify-between items-center">
+<a href="index.html" class="font-black text-blue-700 uppercase">KASH OPTION</a>
+<button onclick="toggleAdmin()" class="text-[10px] font-bold text-slate-400 uppercase border px-2 py-1 rounded">Staff Portal</button>
 </div>
 </nav>
 
-<!-- Client Search View -->
-<div id="clientView" class="max-w-2xl mx-auto px-6 py-12">
-<div class="bg-white rounded-[2.5rem] shadow-2xl shadow-blue-100 p-8 md:p-12 border border-slate-100">
-<div class="text-center mb-10">
-<div class="w-20 h-20 bg-blue-100 text-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
-<i class="fas fa-box-open text-3xl"></i>
-</div>
-<h2 class="text-3xl font-black text-slate-800">Track Your Package</h2>
-<p class="text-slate-500 mt-2">Enter your unique tracking ID (e.g., KO-101)</p>
-</div>
+<!-- Tracking Search -->
+<div id="clientView" class="max-w-md mx-auto px-6 py-16">
+<div class="bg-white rounded-[2.5rem] shadow-2xl p-8 border border-slate-100">
+<h2 class="text-3xl font-black text-slate-800 mb-6">Track Package</h2>
+<input type="text" id="trackInput" placeholder="ENTER ID (e.g. KO-101)" class="w-full bg-slate-50 border-2 border-slate-100 p-5 rounded-2xl outline-none focus:border-blue-600 font-black uppercase mb-4">
+<button onclick="trackOrder()" class="w-full bg-blue-600 text-white font-black py-5 rounded-2xl shadow-lg">SEARCH</button>
 
-<div class="relative group">
-<input type="text" id="trackInput" placeholder="ENTER TRACKING ID"
-class="w-full bg-slate-50 border-2 border-slate-100 p-6 rounded-2xl outline-none focus:border-blue-500 focus:bg-white font-black text-xl tracking-widest uppercase transition-all">
-<button onclick="trackOrder()" class="mt-4 w-full bg-blue-600 text-white font-black py-5 rounded-2xl shadow-xl shadow-blue-200 hover:bg-blue-700 active:scale-[0.98] transition-all flex items-center justify-center gap-3">
-<i class="fas fa-search"></i> TRACK SHIPMENT
-</button>
-</div>
-
-<!-- Result Card -->
-<div id="trackResult" class="mt-12 hidden">
-<div class="border-t-2 border-dashed border-slate-100 pt-8">
-<div class="bg-blue-50 rounded-3xl p-8 border border-blue-100 relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 opacity-10">
-<i class="fas fa-truck text-6xl text-blue-900"></i>
-</div>
-
-<div class="flex justify-between items-start mb-8">
-<div>
-<p class="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-1">Status</p>
-<h3 id="statusLabel" class="text-2xl font-black text-blue-900 uppercase tracking-tight leading-none">---</h3>
-</div>
-<div class="text-right">
-<p class="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-1">ETA</p>
-<p id="etaLabel" class="text-xl font-black text-blue-700 italic">---</p>
-</div>
-</div>
-
-<div class="space-y-4">
-<div class="flex justify-between text-sm">
-<span class="text-slate-500 font-bold uppercase text-[10px]">Origin</span>
-<span class="font-black text-slate-800">International (China/US)</span>
-</div>
-<div class="flex justify-between text-sm border-t border-blue-200 pt-4">
-<span class="text-slate-500 font-bold uppercase text-[10px]">Destination</span>
-<span class="font-black text-slate-800">Accra, Ghana</span>
-</div>
-</div>
-</div>
+<div id="trackResult" class="mt-10 hidden border-t pt-8">
+<div class="bg-blue-50 p-6 rounded-2xl">
+<p class="text-[10px] font-bold text-blue-400 uppercase">Status</p>
+<h3 id="statusLabel" class="text-2xl font-black text-blue-900 uppercase">---</h3>
+<p class="text-[10px] font-bold text-blue-400 uppercase mt-4">ETA</p>
+<p id="etaLabel" class="text-xl font-bold text-slate-700">---</p>
 </div>
 </div>
 </div>
 </div>
 
-<!-- Admin Panel View -->
-<div id="adminView" class="max-w-xl mx-auto px-6 py-12 hidden">
-<div class="bg-slate-900 rounded-[2.5rem] shadow-2xl p-10 text-white">
-<div class="flex justify-between items-center mb-10">
-<h2 class="text-2xl font-black flex items-center gap-3">
-<i class="fas fa-user-shield text-blue-400"></i> STAFF PANEL
-</h2>
-<button onclick="toggleAdmin()" class="text-[10px] font-bold text-slate-500 uppercase">Close</button>
-</div>
-
-<div class="space-y-6">
-<div>
-<label class="text-[10px] font-bold text-slate-500 uppercase ml-1">Tracking ID</label>
-<input type="text" id="adminTrackID" placeholder="KO-101" class="w-full bg-slate-800 border-none p-5 rounded-2xl text-white font-bold uppercase mt-1">
-</div>
-<div>
-<label class="text-[10px] font-bold text-slate-500 uppercase ml-1">Current Status</label>
-<select id="adminStatus" class="w-full bg-slate-800 border-none p-5 rounded-2xl text-white font-bold mt-1">
-<option value="PROCESSING">📦 Processing</option>
-<option value="IN TRANSIT">✈️ In Transit</option>
-<option value="ARRIVED GHANA">🇬🇭 Arrived Ghana</option>
-<option value="READY FOR PICKUP">✅ Ready for Pickup</option>
+<!-- Admin Panel -->
+<div id="adminView" class="max-w-md mx-auto px-6 py-16 hidden">
+<div class="bg-slate-900 rounded-[2.5rem] p-8 text-white">
+<h2 class="text-2xl font-black mb-6">Staff Dashboard</h2>
+<input type="text" id="adminTrackID" placeholder="Tracking ID" class="w-full bg-slate-800 p-4 rounded-xl border-none mb-4">
+<select id="adminStatus" class="w-full bg-slate-800 p-4 rounded-xl border-none mb-4">
+<option value="PROCESSING">Processing</option>
+<option value="IN TRANSIT">In Transit</option>
+<option value="ARRIVED GHANA">Arrived Ghana</option>
+<option value="READY FOR PICKUP">Ready for Pickup</option>
 </select>
-</div>
-<div>
-<label class="text-[10px] font-bold text-slate-500 uppercase ml-1">Arrival Date (ETA)</label>
-<input type="text" id="adminETA" placeholder="e.g. Next Week Tuesday" class="w-full bg-slate-800 border-none p-5 rounded-2xl text-white font-bold mt-1">
-</div>
-<button onclick="saveTracking()" class="w-full bg-blue-600 py-5 rounded-2xl font-black text-lg hover:bg-blue-500 shadow-xl shadow-blue-900/20 transition-all">
-SAVE TRACKING DATA
-</button>
-</div>
+<input type="text" id="adminETA" placeholder="ETA (e.g. Friday)" class="w-full bg-slate-800 p-4 rounded-xl border-none mb-6">
+<button onclick="saveTracking()" class="w-full bg-blue-600 py-4 rounded-xl font-black">SAVE UPDATE</button>
+<button onclick="toggleAdmin()" class="w-full text-slate-500 text-xs mt-6">EXIT</button>
 </div>
 </div>
 
 <script>
-// Load data from LocalStorage
-let database = JSON.parse(localStorage.getItem('kash_tracking_v2')) || {};
+let db = JSON.parse(localStorage.getItem('kash_data')) || {};
 
 function trackOrder() {
-const id = document.getElementById('trackInput').value.toUpperCase().trim();
-const res = document.getElementById('trackResult');
-
-if (database[id]) {
-document.getElementById('statusLabel').innerText = database[id].status;
-document.getElementById('etaLabel').innerText = database[id].eta;
-res.classList.remove('hidden');
-res.classList.add('animate-in', 'fade-in', 'slide-in-from-bottom-4', 'duration-500');
-} else {
-alert("Tracking ID not found. Please contact Kash Option Service.");
-}
+let id = document.getElementById('trackInput').value.toUpperCase().trim();
+if (db[id]) {
+document.getElementById('statusLabel').innerText = db[id].status;
+document.getElementById('etaLabel').innerText = db[id].eta;
+document.getElementById('trackResult').classList.remove('hidden');
+} else { alert("ID Not Found"); }
 }
 
 function saveTracking() {
-const id = document.getElementById('adminTrackID').value.toUpperCase().trim();
-const status = document.getElementById('adminStatus').value;
-const eta = document.getElementById('adminETA').value;
-
-if(!id) return alert("Please enter a Tracking ID");
-
-database[id] = { status, eta };
-localStorage.setItem('kash_tracking_v2', JSON.stringify(database));
-alert("SUCCESS: Shipment " + id + " has been updated!");
-
-// Clear inputs
+let id = document.getElementById('adminTrackID').value.toUpperCase().trim();
+let status = document.getElementById('adminStatus').value;
+let eta = document.getElementById('adminETA').value;
+if(!id) return;
+db[id] = { status, eta };
+localStorage.setItem('kash_data', JSON.stringify(db));
+alert("Updated!");
 document.getElementById('adminTrackID').value = "";
-document.getElementById('adminETA').value = "";
 }
 
 function toggleAdmin() {
@@ -154,6 +79,6 @@ document.getElementById('clientView').classList.toggle('hidden');
 document.getElementById('adminView').classList.toggle('hidden');
 }
 </script>
-
 </body>
 </html>
+
