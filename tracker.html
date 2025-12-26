@@ -6,74 +6,138 @@
 <title>Kash Option | Tracking</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+body { font-family: 'Plus Jakarta Sans', sans-serif; }
+.glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+.bg-pattern { background-color: #f8fafc; background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px); background-size: 24px 24px; }
+</style>
 </head>
-<body class="bg-slate-50 min-h-screen">
+<body class="bg-pattern min-h-screen">
 
-<nav class="bg-white shadow-sm p-4 sticky top-0 z-50">
+<nav class="glass shadow-sm p-4 sticky top-0 z-50 border-b border-slate-200">
 <div class="max-w-6xl mx-auto flex justify-between items-center">
-<a href="index.html" class="font-black text-blue-700 uppercase tracking-tighter">KASH OPTION</a>
-<button onclick="checkAdminPassword()" class="text-[10px] font-bold text-slate-400 uppercase border px-2 py-1 rounded hover:bg-slate-50">Staff Portal</button>
+<a href="index.html" class="flex items-center gap-3">
+<div class="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center text-white shadow-lg">
+<i class="fas fa-shipping-fast"></i>
+</div>
+<h1 class="font-black text-blue-700 uppercase tracking-tighter text-xl">KASH OPTION</h1>
+</a>
+<button onclick="checkAdminPassword()" class="text-[10px] font-bold text-slate-400 uppercase border-2 border-slate-100 px-3 py-1.5 rounded-xl hover:bg-slate-50 transition">Staff Portal</button>
 </div>
 </nav>
 
-<!-- Tracking Search (Client View) -->
-<div id="clientView" class="max-w-md mx-auto px-6 py-16">
-<div class="bg-white rounded-[2.5rem] shadow-2xl p-8 border border-slate-100">
-<h2 class="text-3xl font-black text-slate-800 mb-6 uppercase tracking-tight">Track Order</h2>
-<input type="text" id="trackInput" placeholder="ENTER ID (e.g. KO-101)" class="w-full bg-slate-50 border-2 border-slate-100 p-5 rounded-2xl outline-none focus:border-blue-600 font-black uppercase mb-4 transition-all">
-<button onclick="trackOrder()" class="w-full bg-blue-600 text-white font-black py-5 rounded-2xl shadow-lg hover:bg-blue-700 transition-all active:scale-95">SEARCH STATUS</button>
-
-<div id="trackResult" class="mt-10 hidden border-t border-dashed pt-8 animate-pulse-once">
-<div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
-<p class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">Current Status</p>
-<h3 id="statusLabel" class="text-2xl font-black text-blue-900 uppercase">---</h3>
-<p class="text-[10px] font-bold text-blue-400 uppercase mt-4 tracking-widest">Estimated Arrival</p>
-<p id="etaLabel" class="text-xl font-bold text-slate-700 italic">---</p>
+<div id="clientView" class="max-w-md mx-auto px-6 py-12">
+<div class="text-center mb-8">
+<div class="inline-block p-4 bg-white rounded-[2rem] shadow-xl border border-slate-100 mb-4">
+<img src="https://via.placeholder.com/100x100?text=LOGO" alt="Kash Option Logo" class="w-20 h-20 object-contain rounded-xl">
 </div>
-</div>
-</div>
+<h2 class="text-2xl font-black text-slate-800 uppercase tracking-tight">Track Shipment</h2>
+<p class="text-slate-500 text-sm font-medium">Global Logistics Monitoring</p>
 </div>
 
-<!-- Admin Panel (Staff View) -->
+<div class="bg-white rounded-[2.5rem] shadow-2xl p-8 border border-slate-100 relative overflow-hidden">
+<div class="absolute -right-4 -top-4 text-blue-50 opacity-10 rotate-12 pointer-events-none">
+<i class="fas fa-globe-africa text-9xl"></i>
+</div>
+
+<div class="relative z-10">
+<label class="text-[10px] font-bold text-slate-400 uppercase ml-2 mb-2 block tracking-widest">Identification Code</label>
+<input type="text" id="trackInput" placeholder="KO-XXXX" class="w-full bg-slate-50 border-2 border-slate-100 p-5 rounded-2xl outline-none focus:border-blue-600 font-black uppercase mb-4 transition-all text-xl shadow-inner">
+<button onclick="trackOrder()" class="w-full bg-blue-700 text-white font-black py-5 rounded-2xl shadow-xl shadow-blue-200 hover:bg-blue-800 transition-all active:scale-95 flex items-center justify-center gap-3">
+<i class="fas fa-map-marker-alt"></i> TRACK PACKAGE
+</button>
+</div>
+
+<div id="trackResult" class="mt-10 hidden animate-in fade-in slide-in-from-bottom-4 duration-500">
+<div id="statusCard" class="p-6 rounded-[2rem] border relative overflow-hidden">
+<div class="flex items-center gap-4 mb-6">
+<div id="statusIcon" class="w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-sm">
+<i class="fas fa-box"></i>
+</div>
+<div>
+<p class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">Live Status</p>
+<h3 id="statusLabel" class="text-xl font-black uppercase leading-tight">---</h3>
+</div>
+</div>
+
+<div class="space-y-4 bg-white/50 p-4 rounded-xl">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-bold text-slate-400 uppercase">Route</span>
+<span class="text-xs font-black text-slate-700 italic">International ➔ Ghana</span>
+</div>
+<div class="flex justify-between items-center border-t border-slate-100 pt-3">
+<span id="etaTitle" class="text-[10px] font-bold text-slate-400 uppercase">Estimated Arrival</span>
+<span id="etaLabel" class="text-xs font-black text-blue-700">---</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 <div id="adminView" class="max-w-md mx-auto px-6 py-16 hidden">
-<div class="bg-slate-900 rounded-[2.5rem] p-8 text-white shadow-2xl">
-<h2 class="text-2xl font-black mb-6 flex items-center gap-2">
-<i class="fas fa-shield-alt text-blue-400"></i> STAFF DASHBOARD
+<div class="bg-slate-900 rounded-[2.5rem] p-10 text-white shadow-2xl relative">
+<div class="absolute top-0 right-0 p-8 opacity-5">
+<i class="fas fa-user-shield text-8xl"></i>
+</div>
+<h2 class="text-2xl font-black mb-8 flex items-center gap-3 relative z-10 uppercase tracking-tighter">
+<span class="w-2 h-8 bg-blue-500 rounded-full"></span> Staff Portal
 </h2>
-<div class="space-y-4">
+<div class="space-y-5 relative z-10">
 <div>
-<label class="text-[10px] font-bold text-slate-500 uppercase ml-1">Order ID</label>
-<input type="text" id="adminTrackID" placeholder="KO-XXX" class="w-full bg-slate-800 p-4 rounded-xl border-none text-white font-bold uppercase">
+<label class="text-[10px] font-bold text-slate-500 uppercase ml-1 mb-1 block">Tracking ID</label>
+<input type="text" id="adminTrackID" placeholder="KO-XXX" class="w-full bg-slate-800 p-5 rounded-2xl border-none text-white font-bold uppercase ring-1 ring-slate-700">
 </div>
 <div>
-<label class="text-[10px] font-bold text-slate-500 uppercase ml-1">Status Update</label>
-<select id="adminStatus" class="w-full bg-slate-800 p-4 rounded-xl border-none text-white font-bold">
+<label class="text-[10px] font-bold text-slate-500 uppercase ml-1 mb-1 block">Status</label>
+<select id="adminStatus" class="w-full bg-slate-800 p-5 rounded-2xl border-none text-white font-bold ring-1 ring-slate-700">
 <option value="PROCESSING">📦 Processing</option>
 <option value="IN TRANSIT">✈️ In Transit</option>
 <option value="ARRIVED GHANA">🇬🇭 Arrived Ghana</option>
 <option value="READY FOR PICKUP">✅ Ready for Pickup</option>
+<option value="PICKED UP / DELIVERED">🤝 Picked Up / Delivered</option>
 </select>
 </div>
 <div>
-<label class="text-[10px] font-bold text-slate-500 uppercase ml-1">Date / ETA</label>
-<input type="text" id="adminETA" placeholder="e.g. Next Tuesday" class="w-full bg-slate-800 p-4 rounded-xl border-none text-white">
+<label class="text-[10px] font-bold text-slate-500 uppercase ml-1 mb-1 block">ETA / Delivery Date</label>
+<input type="text" id="adminETA" placeholder="e.g. Dec 25th" class="w-full bg-slate-800 p-5 rounded-2xl border-none text-white ring-1 ring-slate-700">
 </div>
-<button onclick="saveTracking()" class="w-full bg-blue-600 py-4 rounded-xl font-black hover:bg-blue-500 transition-all mt-4">SAVE TRACKING</button>
-<button onclick="logoutAdmin()" class="w-full text-slate-500 text-xs mt-6 uppercase font-bold tracking-widest">Logout</button>
+<button onclick="saveTracking()" class="w-full bg-blue-600 py-5 rounded-2xl font-black text-lg hover:bg-blue-500 shadow-xl shadow-blue-900/40 transition-all mt-4 uppercase">Save Record</button>
+<button onclick="logoutAdmin()" class="w-full text-slate-500 text-[10px] mt-6 uppercase font-black tracking-widest hover:text-white transition">Exit Dashboard</button>
 </div>
 </div>
 </div>
 
 <script>
+// Updated PIN
 const STAFF_PIN = "767484";
-
 let db = JSON.parse(localStorage.getItem('kash_data_secure')) || {};
 
 function trackOrder() {
 let id = document.getElementById('trackInput').value.toUpperCase().trim();
+const card = document.getElementById('statusCard');
+const icon = document.getElementById('statusIcon');
+const etaTitle = document.getElementById('etaTitle');
+
 if (db[id]) {
-document.getElementById('statusLabel').innerText = db[id].status;
-document.getElementById('etaLabel').innerText = db[id].eta;
+const data = db[id];
+document.getElementById('statusLabel').innerText = data.status;
+document.getElementById('etaLabel').innerText = data.eta;
+
+if (data.status === "PICKED UP / DELIVERED") {
+card.className = "p-6 rounded-[2rem] border border-green-200 bg-green-50";
+icon.className = "w-12 h-12 rounded-xl flex items-center justify-center text-xl bg-green-500 text-white shadow-lg";
+icon.innerHTML = '<i class="fas fa-handshake"></i>';
+document.getElementById('statusLabel').className = "text-xl font-black text-green-700 uppercase";
+etaTitle.innerText = "Completion Date";
+} else {
+card.className = "p-6 rounded-[2rem] border border-blue-100 bg-blue-50";
+icon.className = "w-12 h-12 rounded-xl flex items-center justify-center text-xl bg-blue-600 text-white shadow-lg";
+icon.innerHTML = '<i class="fas fa-truck"></i>';
+document.getElementById('statusLabel').className = "text-xl font-black text-blue-900 uppercase";
+etaTitle.innerText = "Estimated Arrival";
+}
 document.getElementById('trackResult').classList.remove('hidden');
 } else {
 alert("Tracking ID not found. Verify with Mr. Kash.");
@@ -81,12 +145,12 @@ alert("Tracking ID not found. Verify with Mr. Kash.");
 }
 
 function checkAdminPassword() {
-let pass = prompt("Enter Staff PIN to access:");
+let pass = prompt("Enter Staff PIN:");
 if (pass === STAFF_PIN) {
 document.getElementById('clientView').classList.add('hidden');
 document.getElementById('adminView').classList.remove('hidden');
 } else if (pass !== null) {
-alert("Access Denied: Incorrect PIN");
+alert("Access Denied.");
 }
 }
 
@@ -94,13 +158,10 @@ function saveTracking() {
 let id = document.getElementById('adminTrackID').value.toUpperCase().trim();
 let status = document.getElementById('adminStatus').value;
 let eta = document.getElementById('adminETA').value;
-
-if(!id) return alert("Please enter a Tracking ID");
-
+if(!id) return alert("Enter ID");
 db[id] = { status, eta };
 localStorage.setItem('kash_data_secure', JSON.stringify(db));
-alert("Order " + id + " Updated Successfully!");
-
+alert("Order " + id + " Updated!");
 document.getElementById('adminTrackID').value = "";
 document.getElementById('adminETA').value = "";
 }
