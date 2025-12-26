@@ -1,111 +1,130 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spark Plug Finder | Pro</title>
+    <title>Kash Option | Import & Wholesale Ghana</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="bg-slate-900 min-h-screen flex items-center justify-center p-4">
-    <div class="max-w-md w-full glass-card rounded-2xl p-8 shadow-2xl">
-        <div class="text-center mb-8">
-            <h1 class="text-3xl font-black text-slate-800 uppercase tracking-tight">Plug Finder</h1>
-            <p class="text-slate-500 text-sm">Find the perfect spark for your engine</p>
+<body class="bg-gray-50 font-sans text-gray-900">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-black text-blue-700 tracking-tighter">KASH OPTION</h1>
+            <a href="https://wa.me/message/GKVHLNYNL7AEJ1" class="bg-green-500 text-white px-5 py-2 rounded-full font-bold text-sm hover:bg-green-600 transition">
+                <i class="fas fa-shopping-bag mr-2"></i>Contact Service
+            </a>
         </div>
+    </nav>
 
-        <div class="space-y-5">
-            <div>
-                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1">Vehicle Make</label>
-                <select id="make" onchange="updateModels()" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-700 outline-none focus:border-blue-500 transition-all">
-                    <option value="">Choose Make</option>
-                    <option value="Toyota">Toyota</option>
-                    <option value="Honda">Honda</option>
-                    <option value="Ford">Ford</option>
-                    <option value="Nissan">Nissan</option>
-                </select>
-            </div>
-
-            <div>
-                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1">Model</label>
-                <select id="model" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-700 outline-none focus:border-blue-500 transition-all">
-                    <option value="">Select Make First</option>
-                </select>
-            </div>
-
-            <button onclick="searchPlug()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-xl shadow-lg shadow-blue-200 transition-all active:scale-95">
-                FIND PART NUMBER
-            </button>
+    <!-- Hero Section -->
+    <header class="bg-blue-700 text-white py-16 px-4 text-center">
+        <h2 class="text-4xl md:text-5xl font-black mb-4 uppercase">Global Sourcing <br>to Ghana</h2>
+        <p class="text-blue-100 text-lg mb-8 max-w-2xl mx-auto italic font-medium">Mr. Kash: Your most trusted Plug for China, US UK etc Imports.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="https://wa.me/message/GKVHLNYNL7AEJ1" class="bg-white text-blue-700 px-8 py-4 rounded-xl font-black text-lg shadow-xl hover:bg-gray-100 transition flex items-center">
+                <i class="fab fa-whatsapp mr-2 text-2xl"></i> BROWSE CATALOG
+            </a>
+            <a href="https://chat.whatsapp.com/CKQgFPvXcNE8icTSHQWcwE" class="bg-blue-900 text-white px-8 py-4 rounded-xl font-black text-lg shadow-xl hover:bg-blue-950 transition flex items-center">
+                <i class="fas fa-users mr-2"></i> JOIN OUR WHATSAPP GROUP
+            </a>
         </div>
+    </header>
 
-        <div id="resultBox" class="mt-8 hidden animate-in fade-in zoom-in duration-300">
-            <div class="p-6 bg-blue-50 border-2 border-blue-100 rounded-2xl text-center">
-                <span class="text-xs font-bold text-blue-400 uppercase">Recommended Plug</span>
-                <h2 id="partNumber" class="text-3xl font-mono font-black text-blue-900 mt-1">---</h2>
-                <p id="partType" class="text-sm text-blue-600 mt-2 font-medium"></p>
-                <div class="mt-4 pt-4 border-t border-blue-100">
-                    <a id="shopLink" href="#" target="_blank" class="text-blue-700 font-bold hover:underline text-sm italic">Order this part now →</a>
+    <main class="max-w-6xl mx-auto px-4 -mt-10">
+        <!-- Main Import Items -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+            <div class="bg-white p-6 rounded-2xl shadow-lg text-center border-b-4 border-blue-500 hover:-translate-y-1 transition">
+                <i class="fas fa-camera text-3xl text-blue-600 mb-3"></i>
+                <h3 class="font-bold text-sm">Photography Gear</h3>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg text-center border-b-4 border-blue-500 hover:-translate-y-1 transition">
+                <i class="fas fa-laptop text-3xl text-blue-600 mb-3"></i>
+                <h3 class="font-bold text-sm">Laptops & Tech</h3>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg text-center border-b-4 border-blue-500 hover:-translate-y-1 transition">
+                <i class="fas fa-tools text-3xl text-blue-600 mb-3"></i>
+                <h3 class="font-bold text-sm">Car Parts</h3>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg text-center border-b-4 border-blue-500 hover:-translate-y-1 transition">
+                <i class="fas fa-tshirt text-3xl text-blue-600 mb-3"></i>
+                <h3 class="font-bold text-sm">Fashion Wholesale</h3>
+            </div>
+        </section>
+
+        <!-- How to Order -->
+        <section class="mb-20 text-center bg-white rounded-3xl p-10 shadow-sm border border-gray-100">
+            <h2 class="text-3xl font-black mb-12 text-slate-800">The Import Process</h2>
+            <div class="grid md:grid-cols-4 gap-8 relative">
+                <div>
+                    <div class="w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-black mx-auto mb-4 text-xl shadow-lg">1</div>
+                    <h4 class="font-bold mb-2 uppercase">Send Link</h4>
+                    <p class="text-xs text-gray-500 font-bold tracking-wider">Paste the URL or screenshot on WhatsApp</p>
+                </div>
+                <div> <div class="w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-black mx-auto mb-4 text-xl shadow-lg">2</div>
+                    <h4 class="font-bold mb-2 uppercase">Get Quote</h4>
+                    <p class="text-xs text-gray-500 font-bold tracking-wider">Receive a full price with no hidden fees</p>
+                </div>
+                <div>
+                    <div class="w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-black mx-auto mb-4 text-xl shadow-lg">3</div>
+                    <h4 class="font-bold mb-2 uppercase">Procure</h4>
+                    <p class="text-xs text-gray-500 font-bold tracking-wider">We pay and ship via Air or Sea</p>
+                </div>
+                <div>
+                    <div class="w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-black mx-auto mb-4 text-xl shadow-lg">4</div>
+                    <h4 class="font-bold mb-2 uppercase">Receive</h4>
+                    <p class="text-xs text-gray-500 font-bold tracking-wider">Pick up your goods in Ghana</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <p class="text-center mt-6 text-[10px] text-slate-400">Data provided for reference. Verify with your manual.</p>
-    </div>
+        <!-- Trust Section -->
+        <section class="bg-slate-900 rounded-3xl p-8 md:p-12 text-white mb-20">
+            <div class="md:flex items-center gap-12">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h2 class="text-3xl font-black mb-6">Why Kash Option?</h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-center bg-slate-800 p-3 rounded-xl"><i class="fas fa-check-circle text-green-400 mr-3"></i> Weekly Shipments from China & USA</li>
+                        <li class="flex items-center bg-slate-800 p-3 rounded-xl"><i class="fas fa-check-circle text-green-400 mr-3"></i> Direct Doorstep or Office Delivery</li>
+                        <li class="flex items-center bg-slate-800 p-3 rounded-xl"><i class="fas fa-check-circle text-green-400 mr-3"></i> Personal & Business Wholesale Orders</li>
+                        <li class="flex items-center bg-slate-800 p-3 rounded-xl"><i class="fas fa-check-circle text-green-400 mr-3"></i> Safe, Transparent & Professional</li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2 text-center">
+                    <div class="p-8 bg-blue-600 rounded-2xl transform md:rotate-3 shadow-2xl">
+                        <h4 class="text-4xl font-black mb-2 italic">TRUSTED BY 1000+</h4>
+                        <p class="text-blue-100 font-bold uppercase tracking-widest text-sm">Customers Across Ghana</p>
+                        <div class="flex justify-center mt-4 gap-1 text-yellow-400">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <script>
-        const database = {
-            "Toyota": {
-                "Camry": { part: "NGK 90919-01247", type: "Iridium Long Life" },
-                "Corolla": { part: "DENSO SC20HR11", type: "Iridium" },
-                "Hilux": { part: "NGK BKR6E-11", type: "Standard Nickel" }
-            },
-            "Honda": {
-                "Civic": { part: "NGK IZFR6K11S", type: "Laser Iridium" },
-                "Accord": { part: "NGK ILZKR7B11", type: "Iridium" },
-                "CR-V": { part: "DENSO SKJ20DR-M11", type: "Iridium" }
-            },
-            "Ford": {
-                "F-150": { part: "Motorcraft SP-546", type: "Platinum" },
-                "Focus": { part: "NGK LTR6GP", type: "G-Power Platinum" },
-                "Ranger": { part: "Motorcraft SP-432", type: "Standard" }
-            },
-            "Nissan": {
-                "Altima": { part: "NGK DILKAR6A11", type: "Laser Iridium" },
-                "Sentra": { part: "NGK PLZKAR6A-11", type: "Platinum" }
-            }
-        };
+        <!-- Final CTA -->
+        <section class="text-center pb-20 px-4">
+            <div class="bg-white p-10 rounded-3xl shadow-xl max-w-3xl mx-auto border-2 border-blue-50">
+                <h2 class="text-3xl font-black mb-4">Start Sourcing Today</h2>
+                <p class="text-gray-500 mb-8 font-medium">Click below to contact our service or join our community for weekly shipment updates.</p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <a href="https://wa.me/message/GKVHLNYNL7AEJ1" class="bg-green-500 text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-green-600 transition flex items-center justify-center">
+                        <i class="fab fa-whatsapp mr-3 text-2xl"></i> CONTACT SERVICE
+                    </a>
+                    <a href="https://chat.whatsapp.com/CKQgFPvXcNE8icTSHQWcwE" class="bg-blue-700 text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-blue-800 transition flex items-center justify-center">
+<i class="fas fa-users mr-3"></i> JOIN THE GROUP
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 
-        function updateModels() {
-            const make = document.getElementById('make').value;const modelSelect = document.getElementById('model');
-            modelSelect.innerHTML = '<option value="">Select Model</option>';
-            
-            if (make && database[make]) {
-                Object.keys(database[make]).forEach(model => {
-                    const opt = document.createElement('option');
-                    opt.value = model;
-                    opt.innerHTML = model;
-                    modelSelect.appendChild(opt);
-                });
-            }
-        }
+    <footer class="bg-slate-900 text-slate-500 py-12 text-center border-t border-slate-800">
+        <p class="font-bold text-slate-400">KASH OPTION LOGISTICS & IMPORTS</p>
+        <p class="text-xs mt-2 uppercase tracking-widest">Global Sourcing Specialists</p>
+    </footer>
 
-        function searchPlug() {
-            const make = document.getElementById('make').value;
-            const model = document.getElementById('model').value;
-            const resBox = document.getElementById('resultBox');
-            
-            if (!make || !model) return;
-
-            const data = database[make][model];
-            document.getElementById('partNumber').innerText = data.part;
-            document.getElementById('partType').innerText = data.type;
-            document.getElementById('shopLink').href = https://www.google.com/search?q=buy+${data.part.replace(' ', '+')};
-            
-            resBox.classList.remove('hidden');
-        }
-    </script>
 </body>
 </html>
