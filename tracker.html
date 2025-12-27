@@ -30,7 +30,8 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; }
 <div id="clientView" class="max-w-md mx-auto px-6 py-12">
 <div class="text-center mb-8">
 <div class="inline-block p-4 bg-white rounded-[2rem] shadow-xl border border-slate-100 mb-4">
-<img src="https://via.placeholder.com/100x100?text=LOGO" alt="Kash Option Logo" class="w-20 h-20 object-contain rounded-xl">
+<!-- Using your uploaded logo -->
+<img src="Kashlogo.png" alt="Kash Option Logo" class="w-24 h-24 object-contain rounded-xl" onerror="this.src='https://via.placeholder.com/150?text=KASH+OPTION'">
 </div>
 <h2 class="text-2xl font-black text-slate-800 uppercase tracking-tight">Track Shipment</h2>
 <p class="text-slate-500 text-sm font-medium">Global Logistics Monitoring</p>
@@ -45,7 +46,7 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; }
 <label class="text-[10px] font-bold text-slate-400 uppercase ml-2 mb-2 block tracking-widest">Identification Code</label>
 <input type="text" id="trackInput" placeholder="KO-XXXX" class="w-full bg-slate-50 border-2 border-slate-100 p-5 rounded-2xl outline-none focus:border-blue-600 font-black uppercase mb-4 transition-all text-xl shadow-inner">
 <button onclick="trackOrder()" class="w-full bg-blue-700 text-white font-black py-5 rounded-2xl shadow-xl shadow-blue-200 hover:bg-blue-800 transition-all active:scale-95 flex items-center justify-center gap-3">
-<i class="fas fa-map-marker-alt"></i> TRACK PACKAGE
+<i class="fas fa-map-marker-alt"></i>TRACK PACKAGE
 </button>
 </div>
 
@@ -110,7 +111,6 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; }
 </div>
 
 <script>
-// Updated PIN
 const STAFF_PIN = "767484";
 let db = JSON.parse(localStorage.getItem('kash_data_secure')) || {};
 
@@ -139,9 +139,7 @@ document.getElementById('statusLabel').className = "text-xl font-black text-blue
 etaTitle.innerText = "Estimated Arrival";
 }
 document.getElementById('trackResult').classList.remove('hidden');
-} else {
-alert("Tracking ID not found. Verify with Mr. Kash.");
-}
+} else { alert("Tracking ID not found."); }
 }
 
 function checkAdminPassword() {
@@ -173,4 +171,5 @@ document.getElementById('clientView').classList.remove('hidden');
 </script>
 </body>
 </html>
+
 
