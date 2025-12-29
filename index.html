@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title China Int Post — Real-Time Tracking</title>
+  <title>China Int Post — Real-Time Tracking</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <style>
     body { margin:0; font-family:Arial, sans-serif; background:#f4f4f4; color:#333; }
@@ -35,12 +35,12 @@
 </head>
 <body>
   <header>
-    <h1>📦 Kash Logistics Real-Time Tracking</h1>
+    <h1>📦 China Int Post Real-Time Tracking</h1>
   </header>
 
   <section id="tracking-section">
     <p>Enter your tracking number below:</p>
-    <input type="text" id="trackingNumber" placeholder="e.g. KL123456789">
+    <input type="text" id="trackingNumber" placeholder="e.g. CN123456789">
     <button onclick="trackPackage()">Track</button>
     <div id="status"></div>
   </section>
@@ -56,7 +56,7 @@
   <script>
     // === Tracking Data (edit this section to update client info) ===
     const trackingDB = {
-      "KL123456789": {
+      "CN123456789": {
         lat: 30.5,
         lon: 160.0,
         status: "In transit — ocean freight",
@@ -65,7 +65,7 @@
         stepIndex: 1, // 0=Origin,1=Ocean,2=Customs,3=Delivery
         timeline: ["Origin Scan (China)", "Ocean Transit", "Customs Clearance (USA)", "Out for Delivery"]
       },
-      "KL987654321": {
+      "CN987654321": {
         lat: 37.7749,
         lon: -122.4194,
         status: "Arrived at US entry port",
