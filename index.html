@@ -3,121 +3,322 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>China Int Post — Real-Time Tracking</title>
+  <title>Kash Logistics — Real‑Time Tracking</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <style>
-    body { margin:0; font-family:Arial, sans-serif; background:#f4f4f4; color:#333; }
-    header { background:#111; color:#fff; padding:20px; text-align:center; }
-    #tracking-section { padding:20px; text-align:center; }
-    input { padding:10px; width:300px; }
-    button { padding:10px 20px; margin-left:10px; background:#007bff; color:#fff; border:none; cursor:pointer; }
-    #status { margin-top:20px; font-size:18px; font-weight:bold; }
-    #map { height:400px; margin:20px; }
-    footer { background:#111; color:#fff; text-align:center; padding:10px; }
-
-    /* Timeline styles */
-    #timeline { margin:20px auto; max-width:600px; }
-    .step { display:flex; align-items:center; margin:10px 0; }
+    :root {
+      --bg: #0d0f14;
+      --panel: #151922;
+      --text: #e6eaf2;
+      --muted: #9aa3af;
+      --accent: #2ea44f;
+      --accent2: #0ea5e9;
+      --warning: #f59e0b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    }
+    header {
+      padding: 24px 20px; display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid #222836; background: #0d1117;
+    }
+    .brand { font-weight: 700; letter-spacing: 0.4px; }
+    .brand span { color: var(--accent2); }
+    main {
+      max-width: 1200px; margin: 0 auto; padding: 24px 20px;
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 20px;
+    }
+    @media (max-width: 980px) {
+      main { grid-template-columns: 1fr; }
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid #222836; border-radius: 14px; overflow: hidden;
+    }
+    .panel-header {
+      padding: 16px 16px; border-bottom: 1px solid #222836; display: flex; justify-content: space-between; align-items: center;
+      background: #121621;
+    }
+    .panel-title { font-weight: 600; }
+    .panel-body { padding: 16px; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; }
+    input[type="text"] {
+      flex: 1; min-width: 220px; padding: 12px 14px; border-radius: 10px; border: 1px solid #2a3242;
+      background: #0d1117; color: var(--text); outline: none;
+    }
+    input[type="text"]::placeholder { color: #6b7280; }
+    button {
+      padding: 12px 16px; border-radius: 10px; border: 1px solid #2a3242; background: #0d1117; color: var(--text); cursor: pointer;
+    }
+    button.primary { background: var(--accent2); border: none; color: #001826; font-weight: 600; }
+    button.ghost { background: transparent; }
+    #map { height: 520px; }
+    .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    @media (max-width: 540px) { .stat-grid { grid-template-columns: 1fr; } }
+    .stat {
+      background: #121621; border: 1px solid #222836; border-radius: 10px; padding: 14px;
+    }
+    .label { color: var(--muted); font-size: 12px; letter-spacing: 0.3px; }
+    .value { margin-top: 6px; font-weight: 600; }
+    .timeline { margin-top: 16px; display: grid; gap: 10px; }
+    .step {
+      background: #121621; border: 1px solid #222836; border-radius: 10px; padding: 10px 12px; display: flex; align-items: center; gap: 12px;
+    }
     .dot {
-      width:16px; height:16px; border-radius:50%;
-      background:#ccc; margin-right:10px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: #374151; border: 2px solid #374151;
     }
-    .step.done .dot { background:#28a745; }
-    .step.active .dot { background:#007bff; }
-    .step span { font-size:16px; }
-    .progress-bar {
-      width:100%; background:#ddd; height:10px; border-radius:5px; margin:20px 0;
+    .step.done .dot { background: var(--accent); border-color: var(--accent); }
+    .step.active .dot { background: var(--accent2); border-color: var(--accent2); }
+    .step .meta { color: var(--muted); font-size: 12px; }
+    .notice {
+      margin-top: 12px; color: var(--muted); font-size: 12px;
     }
-    .progress {
-      height:10px; background:#007bff; border-radius:5px;
+    footer {
+      padding: 12px 20px; text-align: center; color: var(--muted); border-top: 1px solid #222836; background: #0d1117;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>📦 China Int Post Real-Time Tracking</h1>
+    <div class="brand">Kash Logistics <span>Tracking</span></div>
+    <div class="status-pill" id="liveIndicator" title="Live connection status">Live: initializing…</div>
   </header>
 
-  <section id="tracking-section">
-    <p>Enter your tracking number below:</p>
-    <input type="text" id="trackingNumber" placeholder="e.g. CN123456789">
-    <button onclick="trackPackage()">Track</button>
-    <div id="status"></div>
-  </section>
+  <main>
+    <!-- Map Panel -->
+    <section class="panel">
+      <div class="panel-header">
+        <div class="panel-title">Geolocation — real‑time package position</div>
+        <div>
+          <button class="ghost" id="recenterBtn">Recenter</button>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div id="map"></div>
+      </div>
+    </section>
 
-  <div id="map"></div>
+    <!-- Details Panel -->
+    <section class="panel">
+      <div class="panel-header">
+        <div class="panel-title">Tracking details</div>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <input id="trackingInput" type="text" placeholder="Enter tracking number (e.g., KL123456789)" />
+          <button class="primary" id="trackBtn">Track</button>
+          <button id="simulateBtn">Demo</button>
+        </div>
 
-  <div id="timeline"></div>
-  <div class="progress-bar"><div class="progress" id="progress"></div></div>
+        <div class="stat-grid" style="margin-top: 14px;">
+          <div class="stat">
+            <div class="label">Current status</div>
+            <div class="value" id="statusText">—</div>
+          </div>
+          <div class="stat">
+            <div class="label">Estimated delivery</div>
+            <div class="value" id="etaText">—</div>
+          </div>
+          <div class="stat">
+            <div class="label">Last update</div>
+            <div class="value" id="lastUpdateText">—</div>
+          </div>
+          <div class="stat">
+            <div class="label">Carrier / Mode</div>
+            <div class="value" id="carrierText">—</div>
+          </div>
+        </div>
 
-  <footer>© 2025 China Int Post. All rights reserved.</footer>
+        <div class="timeline" id="timeline">
+          <!-- Steps injected dynamically -->
+        </div>
+        <div class="notice">No contact information is provided. You will be contacted by delivery personnel when your order is ready for pickup.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2025 Kash Logistics. All rights reserved.</footer>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    // === Tracking Data (edit this section to update client info) ===
-    const trackingDB = {
-      "CN123456789": {
-        lat: 30.5,
-        lon: 160.0,
-        status: "In transit — ocean freight",
-        eta: "2026-01-08",
-        lastUpdate: "2025-12-28T18:45:00Z",
-        stepIndex: 1, // 0=Origin,1=Ocean,2=Customs,3=Delivery
-        timeline: ["Origin Scan (China)", "Ocean Transit", "Customs Clearance (USA)", "Out for Delivery"]
-      },
-      "CN987654321": {
-        lat: 37.7749,
-        lon: -122.4194,
-        status: "Arrived at US entry port",
-        eta: "2026-01-02",
-        lastUpdate: "2025-12-28T18:50:00Z",
-        stepIndex: 2,
-        timeline: ["Origin Scan (China)", "Ocean Transit", "Customs Clearance (USA)", "Out for Delivery"]
-      }
-    };
+    // Map setup
+    const map = L.map('map', { zoomControl: true }).setView([31.2304, 121.4737], 3); // Shanghai
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
+    const shipIcon = L.icon({
+      iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+      iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34],
+      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png'
+    });
+    const marker = L.marker([31.2304, 121.4737], { icon: shipIcon }).addTo(map);
+    marker.bindPopup('Package location').openPopup();
 
-    // === Map Setup ===
-    const map = L.map('map').setView([31.2304, 121.4737], 3); // Shanghai default
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:18 }).addTo(map);
-    let marker = L.marker([31.2304, 121.4737]).addTo(map).bindPopup("Package location");
+    const liveIndicator = document.getElementById('liveIndicator');
+    const trackBtn = document.getElementById('trackBtn');
+    const simulateBtn = document.getElementById('simulateBtn');
+    const recenterBtn = document.getElementById('recenterBtn');
+    const trackingInput = document.getElementById('trackingInput');
 
-    // === Tracking Function ===
-    function trackPackage() {
-      const code = document.getElementById('trackingNumber').value.trim();
-      const statusDiv = document.getElementById('status');
-      const timelineDiv = document.getElementById('timeline');
-      const progressDiv = document.getElementById('progress');
+    const statusText = document.getElementById('statusText');
+    const etaText = document.getElementById('etaText');
+    const lastUpdateText = document.getElementById('lastUpdateText');
+    const carrierText = document.getElementById('carrierText');
+    const timelineEl = document.getElementById('timeline');
 
-      if (!trackingDB[code]) {
-        statusDiv.innerText = "❌ Tracking number not found.";
-        timelineDiv.innerHTML = "";
-        progressDiv.style.width = "0%";
+    // Default route: China -> Pacific -> West Coast -> Hub -> Final mile
+    const routePoints = [
+      { name: 'Shanghai Port', coord: [31.2304, 121.4737], status: 'Origin scan' },
+      { name: 'East China Sea', coord: [27.5, 135.0], status: 'Departed origin facility' },
+      { name: 'Pacific Ocean', coord: [30.5, 160.0], status: 'In transit — ocean freight' },
+      { name: 'San Francisco Bay', coord: [37.7749, -122.4194], status: 'Arrived at US entry port' },
+      { name: 'Oakland Hub', coord: [37.8044, -122.2711], status: 'Cleared customs' },
+      { name: 'Regional Sort', coord: [34.0522, -118.2437], status: 'Linehaul to regional hub' },
+      { name: 'Final Mile', coord: [34.15, -118.15], status: 'Out for delivery' },
+    ];
+
+    // Timeline rendering
+    function renderTimeline(activeIndex) {
+      timelineEl.innerHTML = '';
+      routePoints.forEach((p, i) => {
+        const step = document.createElement('div');
+        step.className = 'step' + (i < activeIndex ? ' done' : (i === activeIndex ? ' active' : ''));
+        step.innerHTML = `
+          <div class="dot"></div>
+          <div>
+            <div><strong>${p.name}</strong> — ${p.status}</div>
+            <div class="meta">Sequence ${i + 1} of ${routePoints.length}</div>
+          </div>
+        `;
+        timelineEl.appendChild(step);
+      });
+    }
+
+    // Simulated live stream (for demo)
+    let simInterval = null;
+    let activeIndex = 0;
+
+    function startSimulation() {
+      clearInterval(simInterval);
+      activeIndex = 0;
+      updateUI(activeIndex);
+      simInterval = setInterval(() => {
+        activeIndex += 1;
+        if (activeIndex >= routePoints.length) {
+          clearInterval(simInterval);
+          updateUI(activeIndex - 1, true);
+          return;
+        }
+        updateUI(activeIndex);
+      }, 3500);
+    }
+
+    function updateUI(index, delivered = false) {
+      const p = routePoints[index];
+      marker.setLatLng(p.coord);
+      map.setView(p.coord, 5);
+      marker.setPopupContent(`Package location — ${p.name}`);
+      renderTimeline(index);
+
+      const now = new Date();
+      lastUpdateText.textContent = now.toLocaleString();
+      statusText.textContent = delivered ? 'Delivered' : p.status;
+      etaText.textContent = delivered ? 'Delivered' : estimateETA(index);
+      carrierText.textContent = index <= 2 ? 'Ocean freight' : (index <= 5 ? 'Ground linehaul' : 'Final mile');
+    }
+
+    function estimateETA(index) {
+      // Simple ETA model: origin + ~10 days, then -2 days per step, min today+1
+      const base = new Date();
+      base.setDate(base.getDate() + Math.max(1, 10 - index * 2));
+      return base.toLocaleDateString();
+    }
+
+    // WebSocket live updates (replace WS_URL with your backend)
+    const WS_URL = ''; // e.g., wss://api.yourdomain.com/live
+    let ws = null;
+    function initWebSocket() {
+      if (!WS_URL) {
+        liveIndicator.textContent = 'Live: demo mode';
         return;
       }
-
-      const pkg = trackingDB[code];
-      statusDiv.innerText = `📦 ${pkg.status} (ETA: ${pkg.eta})`;
-
-      // Update map marker
-      marker.setLatLng([pkg.lat, pkg.lon]);
-      map.setView([pkg.lat, pkg.lon], 4);
-      marker.bindPopup(`Package location — ${pkg.status}`).openPopup();
-
-      // Render timeline
-      timelineDiv.innerHTML = "";
-      pkg.timeline.forEach((stage, i) => {
-        const step = document.createElement("div");
-        step.className = "step";
-        if (i < pkg.stepIndex) step.classList.add("done");
-        if (i === pkg.stepIndex) step.classList.add("active");
-        step.innerHTML = `<div class="dot"></div><span>${stage}</span>`;
-        timelineDiv.appendChild(step);
-      });
-
-      // Progress bar
-      const percent = ((pkg.stepIndex+1) / pkg.timeline.length) * 100;
-      progressDiv.style.width = percent + "%";
+      try {
+        ws = new WebSocket(WS_URL);
+        ws.onopen = () => { liveIndicator.textContent = 'Live: connected'; };
+        ws.onmessage = (evt) => {
+          const data = JSON.parse(evt.data);
+          // Expected payload: { lat, lon, status, stepIndex, eta, mode, lastUpdate }
+          if (typeof data.lat === 'number' && typeof data.lon === 'number') {
+            marker.setLatLng([data.lat, data.lon]);
+            map.setView([data.lat, data.lon], 5);
+          }
+          if (typeof data.stepIndex === 'number') renderTimeline(data.stepIndex);
+          if (data.status) statusText.textContent = data.status;
+          if (data.eta) etaText.textContent = data.eta;
+          if (data.mode) carrierText.textContent = data.mode;
+          lastUpdateText.textContent = data.lastUpdate || new Date().toLocaleString();
+        };
+        ws.onclose = () => { liveIndicator.textContent = 'Live: disconnected'; };
+        ws.onerror = () => { liveIndicator.textContent = 'Live: error'; };
+      } catch (e) {
+        liveIndicator.textContent = 'Live: error';
+      }
     }
+
+    // HTTP polling fallback (replace API_URL with your backend)
+    const API_URL = ''; // e.g., https://api.yourdomain.com/track?code=KL123...
+    let pollInterval = null;
+    async function startPolling(code) {
+      if (!API_URL) return; // No backend configured
+      clearInterval(pollInterval);
+      const url = API_URL + encodeURIComponent(code);
+      async function fetchUpdate() {
+        try {
+          const res = await fetch(url, { cache: 'no-store' });
+          const data = await res.json();
+          // Expected payload similar to WebSocket
+          if (data.lat && data.lon) {
+            marker.setLatLng([data.lat, data.lon]);
+            map.setView([data.lat, data.lon], 5);
+          }
+          if (typeof data.stepIndex === 'number') renderTimeline(data.stepIndex);
+          statusText.textContent = data.status || statusText.textContent;
+          etaText.textContent = data.eta || etaText.textContent;
+          carrierText.textContent = data.mode || carrierText.textContent;
+          lastUpdateText.textContent = data.lastUpdate || new Date().toLocaleString();
+          liveIndicator.textContent = 'Live: connected (polling)';
+        } catch (err) {
+          liveIndicator.textContent = 'Live: polling error';
+        }
+      }
+      await fetchUpdate();
+      pollInterval = setInterval(fetchUpdate, 5000);
+    }
+
+    // UI interactions
+    trackBtn.addEventListener('click', () => {
+      const code = trackingInput.value.trim();
+      if (!code || !/^KL[0-9A-Z]{6,}$/.test(code)) {
+        statusText.textContent = 'Invalid tracking number';
+        return;
+      }
+      // If you have backend API, start polling with code
+      if (API_URL) startPolling(code);
+      else startSimulation();
+    });
+
+    simulateBtn.addEventListener('click', startSimulation);
+    recenterBtn.addEventListener('click', () => {
+      map.setView(marker.getLatLng(), 5);
+      marker.openPopup();
+    });
+
+    // Boot
+    initWebSocket();
+    renderTimeline(0);
+    updateUI(0);
   </script>
 </body>
 </html>
+
