@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>China Int Post — Admin Portal</title>
+  <style>
+    body { font-family:Arial, sans-serif; background:#f4f4f4; margin:0; padding:0; }
+    header { background:#111; color:#fff; padding:20px; text-align:center; }
+    .container { max-width:600px; margin:30px auto; background:#fff; padding:20px; border-radius:8px; }
+    input, select { width:100%; padding:10px; margin:8px 0; }
+    button { padding:10px 20px; background:#007bff; color:#fff; border:none; cursor:pointer; }
+    #loginSection, #adminSection { display:none; }
+    table { width:100%; border-collapse:collapse; margin-top:20px; }
+    th, td { border:1px solid #ccc; padding:8px; text-align:left; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔐 China Int Post Admin Portal</h1>
+  </header>
+
+  <div class="container" id="loginSection">
+    <h2>Login</h2>
+    <input type="password" id="adminPass" placeholder="Enter admin password"/>
+    <button onclick="login()">Login</button>
+  </div>
+
+  <div class="container" id="adminSection">
+    <h2>Manage Tracking Numbers</h2>
+    <form id="updateForm">
+      <input type="text" id="trackCode" placeholder="Tracking Number (e.g. CN123456789)" required/>
+      <input type="text" id="status" placeholder="Status" required/>
+      <input type="text" id="eta" placeholder="ETA (YYYY-MM-DD)" required/>
+      <input type="number" id="lat" placeholder="Latitude" required/>
+      <input type="number" id="lon" placeholder="Longitude" required/>
+      <select id="stepIndex">
+        <option value="0">Origin</option>
+        <option value="1">Ocean Transit</option>
+        <option value="2">Customs Clearance</option>
+        <option value="3">Out for Delivery</option>
+      </select>
+      <button type="submit">Update Tracking</button>
+    </form>
+
+    <h3>Current Tracking Data</h3>
+    <table id="trackingTable">
+      <thead>
+        <tr><th>Code</th><th>Status</th><th>ETA</th><th>Location</th><th>Step</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    const PASSWORD = "admin123"; // change this to your secret password
+
+    // Load tracking data from localStorage or default
+    let trackingDB = JSON.parse(localStorage.getItem("trackingDB")) || {
+      "CN123456789": {
+        lat:30.5, lon:160.0, status:"In transit — ocean freight",
+        eta:"2026-01-08", stepIndex:1,
+        timeline:["Origin Scan (China)","Ocean Transit","Customs Clearance (USA)","Out for Delivery"]
+      }
+    };
+
+    function login() {
+      const pass = document.getElementById("adminPass").value;
+      if(pass === PASSWORD) {
+        document.getElementById("loginSection").style.display="none";
+        document.getElementById("adminSection").style.display="block";
+        renderTable();
+      } else {
+        alert("Wrong password!");
+      }
+    }
+
+    document.getElementById("updateForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const code = document.getElementById("trackCode").value.trim();
+      trackingDB[code] = {
+        lat: parseFloat(document.getElementById("lat").value),
+        lon: parseFloat(document.getElementById("lon").value),
+        status: document.getElementById("status").value,
+        eta: document.getElementById("eta").value,
+        stepIndex: parseInt(document.getElementById("stepIndex").value),
+        timeline:["Origin Scan (China)","Ocean Transit","Customs Clearance (USA)","Out for Delivery"]
+      };
+      localStorage.setItem("trackingDB", JSON.stringify(trackingDB));
+      renderTable();
+      alert("Tracking updated!");
+    });
+
+    function renderTable() {
+      const tbody = document.querySelector("#trackingTable tbody");
+      tbody.innerHTML="";
+      for(const code in trackingDB) {
+        const pkg = trackingDB[code];
+        const row = `<tr>
+          <td>${code}</td>
+          <td>${pkg.status}</td>
+          <td>${pkg.eta}</td>
+          <td>${pkg.lat}, ${pkg.lon}</td>
+          <td>${pkg.timeline[pkg.stepIndex]}</td>
+        </tr>`;
+        tbody.innerHTML += row;
+      }
+    }
+  </script>
+</body>
+</html>
