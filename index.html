@@ -41,17 +41,30 @@
     }
 
     .liquid-glass {
-      background: rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .liquid-glass:hover {
-      background: rgba(255, 255, 255, 0.05);
-      transform: translateY(-5px) scale(1.01);
-      border-color: rgba(0, 210, 255, 0.3);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(0, 210, 255, 0.1);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     @keyframes scroll { 
@@ -196,7 +209,7 @@
     </div>
   </header>
 
-  <section id="about" class="py-24 px-[5%] max-w-7xl mx-auto">
+  <section id="about" class="reveal py-24 px-[5%] max-w-7xl mx-auto">
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <div>
         <span class="text-cyan-400 font-bold uppercase tracking-widest text-xs">Premium Logistics</span>
@@ -234,7 +247,7 @@
     </div>
   </section>
 
-  <section id="catalog" class="py-24 px-[5%] max-w-7xl mx-auto">
+  <section id="catalog" class="reveal py-24 px-[5%] max-w-7xl mx-auto">
     <h2 class="text-center text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-16">What You Can Order</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="liquid-glass p-10 rounded-[2.5rem] flex flex-col items-center text-center">
@@ -280,7 +293,7 @@
     </div>
   </section>
 
-  <section id="orders" class="py-20 bg-cyan-400/5 border-y border-white/5 overflow-hidden">
+  <section id="orders" class="reveal py-20 bg-cyan-400/5 border-y border-white/5 overflow-hidden">
     <div class="text-center mb-10">
       <h2 class="text-3xl md:text-4xl font-black italic uppercase">Today’s Orders</h2>
       <p class="text-slate-400 text-sm tracking-wide mt-2">Live updates from customers across Ghana</p>
@@ -298,7 +311,7 @@
     <div id="faqList" class="space-y-6"></div>
   </section>
 
-  <section id="order-now" class="py-24 px-[5%] max-w-4xl mx-auto text-center">
+  <section id="order-now" class="reveal py-24 px-[5%] max-w-4xl mx-auto text-center">
     <h2 class="text-3xl md:text-4xl font-black mb-4">Ready to Place Your Order?</h2>
     <p class="text-slate-400 mb-8">Click below to chat with us instantly on WhatsApp.</p>
     <a href="https://wa.me/233240118846?text=Hello%20Kash" target="_blank" class="inline-flex items-center gap-3 bg-green-500 text-white px-10 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-green-600 hover:scale-105 transition-transform">
@@ -368,11 +381,35 @@
       closeMenu();
     });
 
+    // Close menu when a link inside it is clicked
+    const mobileLinks = mobileNav.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenu();
+      });
+    });
+
     document.addEventListener('click', (e) => {
       if (!mobileNav.contains(e.target) && !hmb.contains(e.target)) {
         closeMenu();
       }
     });
+
+    // Scroll Animation Observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     const faqs = [
       {q: "What does Kash Option do?", a: "Kash Option helps clients source original products from abroad and delivers them safely to Ghana. We handle purchasing, shipping, customs coordination, and local delivery."},
