@@ -83,7 +83,7 @@
     }
 
     #hamburger {
-      background: rgba(2, 6, 23, 0.6);
+      background: rgba(2, 6, 23, 0.8);
       backdrop-filter: blur(10px);
       padding: 8px;
       border-radius: 999px;
@@ -477,20 +477,31 @@
     }
 
     const reviews = [
-      {text:"Kash Logistics made my dropshipping business seamless. Orders arrive faster than expected!",author:"Ama • Accra, Ghana"},
+      {text:"Kash Option made my dropshipping business seamless. Orders arrive faster than expected!",author:"Ama • Accra, Ghana"},
       {text:"Reliable and transparent service. I trust them with all my imports.",author:"Kwame • Kumasi, Ghana"},
-      {text:"Excellent customer support and real-time tracking.",author:"Daniel • Toronto, Canada"},
-      {text:"Affordable and efficient. My fashion store depends on Kash Logistics.",author:"Fatima • Dubai, UAE"},
-      {text:"Smooth customs clearance and no delays.",author:"John • New York, USA"}
+      {text:"Excellent customer support and real-time tracking.",author:"Daniel • Tema, Ghana"},
+      {text:"Affordable and efficient. My fashion store depends on Kash Option.",author:"Fatima • Tamale, Ghana"},
+      {text:"Smooth customs clearance and no delays.",author:"John • Takoradi, Ghana"},
+      {text:"Best shipping rates I've found so far. Highly recommended!",author:"Sarah • Cape Coast, Ghana"},
+      {text:"My package arrived in perfect condition. Great service!",author:"Michael • Sunyani, Ghana"},
+      {text:"Professional team and very responsive on WhatsApp.",author:"Elizabeth • Ho, Ghana"},
+      {text:"Sourcing from China has never been easier.",author:"David • Koforidua, Ghana"},
+      {text:"They handled everything from purchase to delivery. Stress-free!",author:"Jennifer • Wa, Ghana"},
+      {text:"I love the door-to-door delivery service.",author:"Richard • Bolgatanga, Ghana"},
+      {text:"Trustworthy and fast. Will definitely use again.",author:"Grace • Accra, Ghana"}
     ];
 
     const tDisp = document.getElementById('testimonialDisplay');
-    let tIdx = 0;
+
+    function getRandomReviews(count) {
+      const shuffled = [...reviews].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, count);
+    }
 
     function showReviews() {
       tDisp.style.opacity = 0;
       setTimeout(() => {
-        const group = reviews.slice(tIdx, tIdx + 3);
+        const group = getRandomReviews(3);
         const row = document.createElement("div");
         row.className = "grid md:grid-cols-3 gap-6 animate__animated animate__fadeInUp";
         group.forEach(r => {
@@ -508,7 +519,6 @@
         tDisp.innerHTML = "";
         tDisp.appendChild(row);
         tDisp.style.opacity = 1;
-        tIdx = (tIdx + 3 >= reviews.length) ? 0 : tIdx + 3;
       }, 300);
     }
 
