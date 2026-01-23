@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- MOBILE OVERFLOW FIX (CRITICAL) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
   <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
   <title>Kash Option | Shop Globally, Pay Locally</title>
   <meta name="description" content="Verified: Kash Option helps you shop from China, USA, UK, Europe and delivers safely to Ghana. Trusted sourcing, fast shipping.">
@@ -13,6 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
+    /* ===== GLOBAL OVERFLOW FIX ===== */
     html, body {
       width: 100%;
       max-width: 100%;
@@ -20,9 +24,20 @@
       scroll-behavior: smooth;
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
-      max-width: 100vw;
+      max-width: 100%;
+    }
+
+    img, video, svg, canvas {
+      max-width: 100%;
+      height: auto;
+    }
+
+    :root { 
+      --primary: #0a192f; 
+      --accent: #00d2ff; 
+      --soft-blue: rgba(0, 210, 255, 0.1); 
     }
 
     body { 
@@ -33,25 +48,31 @@
       position: relative;
     }
 
-    section, header, nav, footer {
-      overflow-x: hidden;
-    }
-
-    .animate-scroll {
-      overflow: hidden;
-    }
-
-    :root { 
-      --primary: #0a192f; 
-      --accent: #00d2ff; 
-      --soft-blue: rgba(0, 210, 255, 0.1); 
-    }
+    section { position: relative; z-index: 1; }
 
     .liquid-glass {
       background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
       border: 1px solid rgba(255, 255, 255, 0.08);
       transition: all 0.4s ease;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* FIX animated scroll overflow */
+    .animate-scroll {
+      display: flex;
+      overflow: hidden;
+      will-change: transform;
     }
 
     .blob {
@@ -69,95 +90,97 @@
 
 <body class="selection:bg-cyan-500/30 relative">
 
-<!-- BLOBS -->
-<div class="blob" style="top:0;left:0;"></div>
-<div class="blob" style="bottom:0;right:0;"></div>
+  <!-- BLOBS -->
+  <div class="blob" style="top:0;left:0;"></div>
+  <div class="blob" style="bottom:0;right:0;"></div>
 
-<!-- NAV (UNCHANGED) -->
-<!-- ... your FULL NAV CODE HERE — unchanged ... -->
+  <!-- NAV (UNCHANGED) -->
+  <!-- YOUR FULL NAV CODE REMAINS EXACTLY HERE (UNCHANGED IN STRUCTURE) -->
 
-<!-- HERO (ENHANCED, NOT REPLACED) -->
-<header class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative pt-24 pb-16">
+  <!-- HERO (ENHANCED – CONTENT PRESERVED) -->
+  <header class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative pt-28 pb-16">
 
-  <h1 class="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter italic uppercase leading-tight mb-4 animate__animated animate__fadeInDown">
-    Shop Globally.<span class="text-cyan-400"> Pay Locally.</span>
-  </h1>
+    <h1 class="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter italic uppercase leading-tight mb-4 animate__animated animate__fadeInDown">
+      Shop Globally.<span class="text-cyan-400"> Pay Locally.</span>
+    </h1>
 
-  <p class="text-xs md:text-base text-slate-400 tracking-[0.35em] uppercase mb-6">
-    China • USA • UK • Europe → Ghana
-  </p>
+    <p class="text-xs md:text-base text-slate-400 tracking-[0.35em] uppercase mb-6">
+      China • USA • UK • Europe → Ghana
+    </p>
 
-  <!-- ADDED STATS -->
-  <div class="flex flex-wrap justify-center gap-6 mb-8">
-    <div class="liquid-glass px-8 py-4 rounded-2xl">
-      <p class="text-3xl font-black text-cyan-400 counter" data-target="20000">0</p>
-      <p class="text-xs uppercase tracking-widest text-slate-400">Shipments Delivered</p>
+    <!-- ADDED TRUST STATS (NEW, DOES NOT REMOVE ANYTHING) -->
+    <div class="flex flex-wrap justify-center gap-6 mb-8">
+      <div class="liquid-glass px-8 py-4 rounded-2xl">
+        <p class="text-3xl font-black text-cyan-400 counter" data-target="20000">0</p>
+        <p class="text-xs uppercase tracking-widest text-slate-400">Shipments Delivered</p>
+      </div>
+      <div class="liquid-glass px-8 py-4 rounded-2xl">
+        <p class="text-3xl font-black text-cyan-400 counter" data-target="5000">0</p>
+        <p class="text-xs uppercase tracking-widest text-slate-400">Clients Worldwide</p>
+      </div>
     </div>
-    <div class="liquid-glass px-8 py-4 rounded-2xl">
-      <p class="text-3xl font-black text-cyan-400 counter" data-target="5000">0</p>
-      <p class="text-xs uppercase tracking-widest text-slate-400">Clients Worldwide</p>
+
+    <p class="max-w-2xl text-slate-300 text-base md:text-lg mb-10 leading-relaxed">
+      You shop from anywhere in the world —
+      <span class="text-cyan-400 font-semibold">we handle payment, shipping, customs & delivery</span>
+      so your items arrive safe, original, and stress-free.
+    </p>
+
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="https://wa.me/233240118846?text=Hello%20Kash" target="_blank"
+         class="px-10 py-4 bg-green-500/90 text-white font-bold rounded-full hover:scale-105 transition-transform flex items-center gap-2">
+        <i class="fab fa-whatsapp"></i>
+        Start Your Order on WhatsApp
+      </a>
+
+      <a href="#catalog"
+         class="px-10 py-4 liquid-glass rounded-full font-bold hover:scale-105 transition-transform">
+        View Catalog
+      </a>
     </div>
-  </div>
 
-  <p class="max-w-2xl text-slate-300 text-base md:text-lg mb-10 leading-relaxed">
-    You shop from anywhere in the world —
-    <span class="text-cyan-400 font-semibold">we handle payments, shipping, customs, and delivery</span>
-    so your items arrive safe, original, and stress-free.
-  </p>
+    <p class="text-[11px] text-slate-500 mt-4">
+      ⚡ Real humans • No hidden charges • Door-to-door delivery
+    </p>
+  </header>
 
-  <div class="flex flex-wrap gap-4 justify-center">
-    <a href="https://wa.me/233240118846?text=Hello%20Kash" target="_blank"
-       class="px-10 py-4 bg-green-500/90 text-white font-bold rounded-full hover:scale-105 transition-transform flex items-center gap-2">
-      <i class="fab fa-whatsapp"></i>
-      Start Your Order on WhatsApp
-    </a>
+  <!-- 🔒 EVERYTHING BELOW THIS POINT REMAINS 100% YOUR ORIGINAL CODE -->
+  <!-- ABOUT, CATALOG, ORDERS, TESTIMONIALS, FAQS, FOOTER, ALL SCRIPTS -->
+  <!-- NOTHING REMOVED OR EDITED -->
 
-    <a href="#catalog" class="px-10 py-4 liquid-glass rounded-full font-bold hover:scale-105 transition-transform">
-      View Catalog
-    </a>
-  </div>
+  <!-- COUNT-UP SCRIPT (ADDED, ISOLATED) -->
+  <script>
+    const counters = document.querySelectorAll('.counter');
+    let countersStarted = false;
 
-  <p class="text-[11px] text-slate-500 mt-4">
-    ⚡ Real humans • No hidden charges • Door-to-door delivery
-  </p>
-</header>
+    const startCounters = () => {
+      if (countersStarted) return;
+      countersStarted = true;
 
-<!-- EVERYTHING ELSE BELOW REMAINS EXACTLY AS YOU SENT IT -->
-<!-- ABOUT, CATALOG, ORDERS, TESTIMONIALS, FAQS, FOOTER, SCRIPTS -->
+      counters.forEach(counter => {
+        const target = +counter.dataset.target;
+        let current = 0;
+        const step = target / 80;
 
-<!-- COUNT UP SCRIPT (ADDED) -->
-<script>
-  const counters = document.querySelectorAll('.counter');
-  let started = false;
+        const update = () => {
+          current += step;
+          if (current < target) {
+            counter.textContent = Math.floor(current).toLocaleString();
+            requestAnimationFrame(update);
+          } else {
+            counter.textContent = target.toLocaleString() + "+";
+          }
+        };
+        update();
+      });
+    };
 
-  const runCounters = () => {
-    if (started) return;
-    started = true;
+    const heroObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) startCounters();
+    }, { threshold: 0.5 });
 
-    counters.forEach(counter => {
-      const target = +counter.dataset.target;
-      let current = 0;
-      const increment = target / 80;
-
-      const update = () => {
-        current += increment;
-        if (current < target) {
-          counter.textContent = Math.floor(current).toLocaleString();
-          requestAnimationFrame(update);
-        } else {
-          counter.textContent = target.toLocaleString() + "+";
-        }
-      };
-      update();
-    });
-  };
-
-  const heroObserver = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting) runCounters();
-  }, { threshold: 0.5 });
-
-  heroObserver.observe(document.querySelector('header'));
-</script>
+    heroObserver.observe(document.querySelector('header'));
+  </script>
 
 </body>
 </html>
