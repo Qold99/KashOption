@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google Verification -->
+<!-- Google Search Console Verification -->
 <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
 
 <title>Kash Option | Global Sourcing & Logistics</title>
-<meta name="description" content="Kash Option is a Ghana-based international sourcing and logistics company providing procurement, freight forwarding, customs clearance, and last-mile delivery.">
+<meta name="description" content="Kash Option is a Ghana-based international sourcing and logistics company offering procurement, shipping, customs clearance, and delivery.">
 
 <meta name="theme-color" content="#020617">
 
@@ -26,9 +26,9 @@ body {
 }
 .liquid-glass {
   background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(24px);
+  backdrop-filter: blur(26px);
   border: 1px solid rgba(255,255,255,0.08);
-  transition: all .4s ease;
+  transition: .4s ease;
 }
 .liquid-glass:hover { transform: translateY(-4px); }
 .reveal { opacity: 0; transform: translateY(30px); transition: .9s ease; }
@@ -38,20 +38,25 @@ body {
 </style>
 </head>
 
-<body>
+<body class="selection:bg-cyan-500/30">
 
 <!-- NAV -->
-<nav class="fixed top-0 w-full z-50 liquid-glass px-[5%] py-4 border-b border-white/5">
+<nav class="fixed top-0 w-full z-50 liquid-glass border-b border-white/5 px-[5%] py-4">
   <div class="max-w-7xl mx-auto flex justify-between items-center">
-    <span class="text-2xl font-extrabold italic uppercase">KASH<span class="text-cyan-400">OPTION</span></span>
+    <span class="text-2xl font-extrabold italic uppercase">
+      KASH<span class="text-cyan-400">OPTION</span>
+    </span>
 
-    <div class="hidden md:flex items-center gap-6 text-sm text-slate-400">
+    <div class="hidden md:flex gap-6 text-sm text-slate-400">
       <a href="#about">About</a>
       <a href="#catalog">What You Can Order</a>
       <a href="#pricing">Pricing</a>
       <a href="#orders">Live Orders</a>
       <a href="#testimonials">Reviews</a>
-      <a href="tracker.html" class="px-5 py-2 bg-cyan-500 text-black font-bold rounded-full">Track Order</a>
+      <a href="#faqs">FAQs</a>
+      <a href="tracker.html" class="px-5 py-2 bg-cyan-500 text-black font-bold rounded-full">
+        Track Order
+      </a>
     </div>
 
     <button id="menuBtn" class="md:hidden text-xl"><i class="fas fa-bars"></i></button>
@@ -64,6 +69,7 @@ body {
     <a href="#pricing">Pricing</a>
     <a href="#orders">Live Orders</a>
     <a href="#testimonials">Reviews</a>
+    <a href="#faqs">FAQs</a>
     <a href="tracker.html" class="font-bold text-cyan-400">Track Order</a>
   </div>
 </nav>
@@ -75,109 +81,125 @@ body {
       Global Sourcing & Logistics<br>
       <span class="text-cyan-400">Simplified for Ghana</span>
     </h1>
+
     <p class="text-slate-300 max-w-3xl mx-auto mb-6">
-      End-to-end procurement, international shipping, customs clearance,
-      and secure last-mile delivery for individuals and businesses.
+      End-to-end international procurement, freight forwarding,
+      customs clearance, and secure nationwide delivery.
     </p>
+
     <p class="text-xs uppercase tracking-widest text-slate-500 mb-10">
       10,000+ Shipments • 3,000+ Customers • 99.8% Clearance Success
     </p>
+
     <div class="flex justify-center gap-4 flex-wrap">
       <a href="https://wa.me/233240118846" target="_blank"
-        class="px-10 py-4 bg-green-500 rounded-full font-bold">Order via WhatsApp</a>
-      <a href="tracker.html" class="px-10 py-4 liquid-glass rounded-full font-bold">Track Order</a>
+        class="px-10 py-4 bg-green-500 rounded-full font-bold">
+        Order via WhatsApp
+      </a>
+      <a href="tracker.html" class="px-10 py-4 liquid-glass rounded-full font-bold">
+        Track Order
+      </a>
     </div>
   </div>
 </header>
 
 <!-- ABOUT -->
 <section id="about" class="reveal py-24 px-[5%] max-w-7xl mx-auto">
-<h2 class="text-4xl font-black italic uppercase mb-6">About Kash Option</h2>
-<p class="text-slate-300 max-w-3xl">
-Kash Option is a Ghana-based international sourcing and logistics company
-specializing in cross-border procurement, freight forwarding,
-customs coordination, and nationwide delivery.
-</p>
+  <h2 class="text-4xl font-black italic uppercase mb-6">About Kash Option</h2>
+  <p class="text-slate-300 max-w-4xl">
+    Kash Option is a Ghana-based international sourcing and logistics company
+    specializing in cross-border procurement, freight forwarding,
+    customs coordination, and door-to-door delivery.
+  </p>
 </section>
 
 <!-- WHAT YOU CAN ORDER -->
 <section id="catalog" class="reveal py-24 px-[5%] max-w-7xl mx-auto">
-<h2 class="text-center text-4xl font-black italic uppercase mb-16">What You Can Order</h2>
+  <h2 class="text-center text-4xl font-black italic uppercase mb-16">
+    What You Can Order
+  </h2>
 
-<div class="grid md:grid-cols-3 gap-8">
-  <div class="liquid-glass p-8 rounded-3xl">
-    <h3 class="font-bold uppercase mb-3">Electronics</h3>
-    <p class="text-sm text-slate-400">Phones, laptops, gaming consoles, cameras, drones.</p>
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="liquid-glass p-8 rounded-3xl">Electronics – phones, laptops, cameras</div>
+    <div class="liquid-glass p-8 rounded-3xl">Fashion – sneakers, clothing, accessories</div>
+    <div class="liquid-glass p-8 rounded-3xl">Auto Parts – engines, gearboxes, tires</div>
+    <div class="liquid-glass p-8 rounded-3xl">Home & Office – furniture, appliances</div>
+    <div class="liquid-glass p-8 rounded-3xl">Wholesale Goods – bulk imports</div>
+    <div class="liquid-glass p-8 rounded-3xl">Special Requests – legal & shippable items</div>
   </div>
-  <div class="liquid-glass p-8 rounded-3xl">
-    <h3 class="font-bold uppercase mb-3">Fashion & Accessories</h3>
-    <p class="text-sm text-slate-400">Designer clothing, sneakers, watches, bags.</p>
-  </div>
-  <div class="liquid-glass p-8 rounded-3xl">
-    <h3 class="font-bold uppercase mb-3">Auto Parts</h3>
-    <p class="text-sm text-slate-400">Engines, gearboxes, tires, spare parts.</p>
-  </div>
-  <div class="liquid-glass p-8 rounded-3xl">
-    <h3 class="font-bold uppercase mb-3">Home & Office</h3>
-    <p class="text-sm text-slate-400">Furniture, appliances, office equipment.</p>
-  </div>
-  <div class="liquid-glass p-8 rounded-3xl">
-    <h3 class="font-bold uppercase mb-3">Wholesale Goods</h3>
-    <p class="text-sm text-slate-400">Bulk imports for shops, resellers, distributors.</p>
-  </div>
-  <div class="liquid-glass p-8 rounded-3xl">
-    <h3 class="font-bold uppercase mb-3">Special Requests</h3>
-    <p class="text-sm text-slate-400">Anything legal & shippable — we source it.</p>
-  </div>
-</div>
 </section>
 
 <!-- LIVE ORDERS -->
 <section id="orders" class="reveal py-20 border-y border-white/5 overflow-hidden">
-<h2 class="text-center text-3xl font-black italic uppercase mb-6">Live Orders</h2>
-<div id="ordersFeed" class="flex gap-4 animate-scroll px-6"></div>
+  <h2 class="text-center text-3xl font-black italic uppercase mb-6">
+    Live Orders
+  </h2>
+  <div id="ordersFeed" class="flex gap-4 px-6"></div>
 </section>
 
 <!-- TESTIMONIALS -->
 <section id="testimonials" class="reveal py-24 px-[5%] max-w-5xl mx-auto">
-<h2 class="text-center text-3xl font-black italic uppercase mb-12">Client Reviews</h2>
-<div id="testimonyBox" class="text-center"></div>
+  <h2 class="text-center text-3xl font-black italic uppercase mb-12">
+    Client Reviews
+  </h2>
+  <div id="testimonyBox"></div>
 </section>
 
 <!-- PRICING -->
 <section id="pricing" class="reveal py-24 px-[5%] max-w-7xl mx-auto">
-<h2 class="text-center text-4xl font-black italic uppercase mb-16">Pricing Overview</h2>
-<div class="grid md:grid-cols-3 gap-8">
-  <div class="liquid-glass p-8 rounded-3xl">Air Freight • 3–5 days • Charged per KG</div>
-  <div class="liquid-glass p-8 rounded-3xl border border-cyan-500/30">Sea Freight • 6–8 weeks • Best for bulk</div>
-  <div class="liquid-glass p-8 rounded-3xl">Corporate & Wholesale • Custom pricing</div>
-</div>
+  <h2 class="text-center text-4xl font-black italic uppercase mb-16">
+    Pricing Overview
+  </h2>
+
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="liquid-glass p-8 rounded-3xl">Air Freight • 3–5 Days • Per KG</div>
+    <div class="liquid-glass p-8 rounded-3xl border border-cyan-500/30">
+      Sea Freight • 6–8 Weeks • Bulk Shipping
+    </div>
+    <div class="liquid-glass p-8 rounded-3xl">
+      Corporate & Wholesale • Custom Pricing
+    </div>
+  </div>
+</section>
+
+<!-- FAQS -->
+<section id="faqs" class="reveal py-24 px-[5%] max-w-4xl mx-auto">
+  <h2 class="text-center text-4xl font-black italic uppercase mb-12">
+    Frequently Asked Questions
+  </h2>
+
+  <div id="faqList" class="space-y-6"></div>
 </section>
 
 <!-- FOOTER -->
 <footer class="border-t border-white/5 py-12 text-center text-xs text-slate-500">
-© 2025 Kash Option. All Rights Reserved.
+  © 2025 Kash Option. All Rights Reserved.
 </footer>
 
 <script>
-// Mobile menu
+/* Mobile Menu */
 menuBtn.onclick = () => mobileMenu.classList.toggle("hidden");
 
-// Reveal animation
-new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("active")),{threshold:.1})
-.observe(document.querySelector(".reveal"));
+/* Reveal Animations */
+const obs = new IntersectionObserver(e =>
+  e.forEach(x => x.isIntersecting && x.target.classList.add("active")),
+  { threshold: .1 }
+);
+document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
 
-// Infinite Orders
+/* Infinite Orders */
 const cities=["Accra","Kumasi","Tema","Takoradi","Tamale"];
 const items=["Electronics","Fashion","Auto Parts","Furniture","Wholesale"];
 setInterval(()=>{
-  ordersFeed.innerHTML+=`<div class="liquid-glass p-4 rounded-xl min-w-[220px] text-sm">
-  ${items[Math.floor(Math.random()*items.length)]} → ${cities[Math.floor(Math.random()*cities.length)]}
+  ordersFeed.innerHTML+=`
+  <div class="liquid-glass p-4 rounded-xl min-w-[220px] text-sm">
+    ${items[Math.floor(Math.random()*items.length)]}
+    → ${cities[Math.floor(Math.random()*cities.length)]}
   </div>`;
   ordersFeed.scrollLeft+=220;
-},1200);
+},1400);
 
-// Infinite Testimonials
+/* Testimonials */
 const reviews=[
 "Very reliable logistics partner.",
 "Fast delivery and clear communication.",
@@ -186,10 +208,27 @@ const reviews=[
 "Professional and transparent service."
 ];
 setInterval(()=>{
-  testimonyBox.innerHTML=`<div class="liquid-glass p-8 rounded-3xl text-slate-300">
-  “${reviews[Math.floor(Math.random()*reviews.length)]}”
+  testimonyBox.innerHTML=`
+  <div class="liquid-glass p-8 rounded-3xl text-center text-slate-300">
+    “${reviews[Math.floor(Math.random()*reviews.length)]}”
   </div>`;
-},3500);
+},4000);
+
+/* FAQs */
+const faqs=[
+{q:"What does Kash Option do?",a:"We source, ship, clear, and deliver goods from abroad to Ghana."},
+{q:"Which countries do you ship from?",a:"China, USA, UK, Europe, and approved global markets."},
+{q:"Are items original?",a:"Yes. We only source verified and original products."},
+{q:"How long does shipping take?",a:"Air: 3–5 days. Sea: 6–8 weeks."},
+{q:"Are there hidden fees?",a:"No. All costs are confirmed upfront."}
+];
+
+faqList.innerHTML = faqs.map(f => `
+<details class="liquid-glass rounded-3xl p-6">
+  <summary class="cursor-pointer font-bold">${f.q}</summary>
+  <p class="mt-3 text-slate-400 text-sm">${f.a}</p>
+</details>
+`).join("");
 </script>
 
 </body>
