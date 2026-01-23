@@ -1,226 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Verification (PRESERVED) -->
-  <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
+<!-- Google Verification -->
+<meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
 
-  <title>Kash Option | Global Sourcing & Logistics</title>
+<title>Kash Option | Global Sourcing & Logistics</title>
+<meta name="description" content="Kash Option is a Ghana-based international sourcing and logistics company providing procurement, freight forwarding, customs clearance, and last-mile delivery.">
 
-  <meta name="description" content="Kash Option is a Ghana-based international sourcing and logistics company providing procurement, freight forwarding, customs clearance, and last-mile delivery." />
+<meta name="theme-color" content="#020617">
 
-  <meta name="theme-color" content="#020617" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-  <style>
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: radial-gradient(circle at top right, #0a192f, #020617);
-      color: #f8fafc;
-      overflow-x: hidden;
-    }
-
-    .liquid-glass {
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-      transition: all .4s ease;
-    }
-
-    .liquid-glass:hover {
-      transform: translateY(-4px);
-      border-color: rgba(255,255,255,0.18);
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all .9s ease;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: none;
-    }
-
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-thumb { background: rgba(0,210,255,.25); border-radius: 10px; }
-  </style>
+<style>
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: radial-gradient(circle at top right, #0a192f, #020617);
+  color: #f8fafc;
+  overflow-x: hidden;
+}
+.liquid-glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all .4s ease;
+}
+.liquid-glass:hover { transform: translateY(-4px); }
+.reveal { opacity: 0; transform: translateY(30px); transition: .9s ease; }
+.reveal.active { opacity: 1; transform: none; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: rgba(0,210,255,.25); border-radius: 10px; }
+</style>
 </head>
 
-<body class="selection:bg-cyan-500/30">
+<body>
 
 <!-- NAV -->
 <nav class="fixed top-0 w-full z-50 liquid-glass px-[5%] py-4 border-b border-white/5">
   <div class="max-w-7xl mx-auto flex justify-between items-center">
-    <a href="#" class="text-2xl font-extrabold italic uppercase">
-      KASH<span class="text-cyan-400">OPTION</span>
-    </a>
+    <span class="text-2xl font-extrabold italic uppercase">KASH<span class="text-cyan-400">OPTION</span></span>
 
-    <div class="hidden md:flex items-center gap-6">
-      <a href="#about" class="text-sm text-slate-400 hover:text-cyan-400">About</a>
-      <a href="#pricing" class="text-sm text-slate-400 hover:text-cyan-400">Pricing</a>
-      <a href="tracker.html"
-         class="px-6 py-2 rounded-full bg-cyan-500 text-black font-bold hover:bg-cyan-400 transition">
-        Track Order
-      </a>
+    <div class="hidden md:flex items-center gap-6 text-sm text-slate-400">
+      <a href="#about">About</a>
+      <a href="#catalog">What You Can Order</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#orders">Live Orders</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="tracker.html" class="px-5 py-2 bg-cyan-500 text-black font-bold rounded-full">Track Order</a>
     </div>
+
+    <button id="menuBtn" class="md:hidden text-xl"><i class="fas fa-bars"></i></button>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu" class="hidden flex-col gap-6 pt-10 px-6 text-sm text-slate-300">
+    <a href="#about">About</a>
+    <a href="#catalog">What You Can Order</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#orders">Live Orders</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="tracker.html" class="font-bold text-cyan-400">Track Order</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <header class="min-h-screen flex items-center justify-center text-center px-6 pt-32">
   <div class="max-w-5xl">
-    <h1 class="text-4xl md:text-7xl lg:text-8xl font-black italic uppercase mb-6 leading-tight">
-      Global Sourcing & Logistics,<br>
+    <h1 class="text-4xl md:text-7xl font-black italic uppercase mb-6">
+      Global Sourcing & Logistics<br>
       <span class="text-cyan-400">Simplified for Ghana</span>
     </h1>
-
     <p class="text-slate-300 max-w-3xl mx-auto mb-6">
-      Kash Option provides end-to-end international procurement, freight forwarding,
-      customs clearance, and secure last-mile delivery for individuals and businesses.
+      End-to-end procurement, international shipping, customs clearance,
+      and secure last-mile delivery for individuals and businesses.
     </p>
-
     <p class="text-xs uppercase tracking-widest text-slate-500 mb-10">
-      Trusted by 3,000+ customers • 10,000+ shipments delivered
+      10,000+ Shipments • 3,000+ Customers • 99.8% Clearance Success
     </p>
-
-    <div class="flex flex-wrap justify-center gap-4">
+    <div class="flex justify-center gap-4 flex-wrap">
       <a href="https://wa.me/233240118846" target="_blank"
-         class="px-10 py-4 bg-green-500 text-white font-bold rounded-full hover:scale-105 transition">
-        <i class="fab fa-whatsapp mr-2"></i>Order via WhatsApp
-      </a>
-
-      <a href="tracker.html"
-         class="px-10 py-4 liquid-glass rounded-full font-bold hover:scale-105 transition">
-        Track Order
-      </a>
+        class="px-10 py-4 bg-green-500 rounded-full font-bold">Order via WhatsApp</a>
+      <a href="tracker.html" class="px-10 py-4 liquid-glass rounded-full font-bold">Track Order</a>
     </div>
   </div>
 </header>
 
 <!-- ABOUT -->
 <section id="about" class="reveal py-24 px-[5%] max-w-7xl mx-auto">
-  <div class="grid md:grid-cols-2 gap-12 items-center">
-    <div>
-      <h2 class="text-4xl md:text-5xl font-black italic uppercase mb-6">
-        About Kash Option
-      </h2>
+<h2 class="text-4xl font-black italic uppercase mb-6">About Kash Option</h2>
+<p class="text-slate-300 max-w-3xl">
+Kash Option is a Ghana-based international sourcing and logistics company
+specializing in cross-border procurement, freight forwarding,
+customs coordination, and nationwide delivery.
+</p>
+</section>
 
-      <p class="text-slate-300">
-        Kash Option is a Ghana-based international sourcing and logistics company
-        specializing in cross-border procurement, freight forwarding,
-        customs coordination, and secure local delivery.
-      </p>
+<!-- WHAT YOU CAN ORDER -->
+<section id="catalog" class="reveal py-24 px-[5%] max-w-7xl mx-auto">
+<h2 class="text-center text-4xl font-black italic uppercase mb-16">What You Can Order</h2>
 
-      <p class="mt-4 text-slate-400">
-        We serve individuals, retailers, wholesalers, and corporate clients
-        seeking reliable access to global markets without operational complexity.
-      </p>
-
-      <ul class="mt-6 space-y-2 text-sm text-slate-400">
-        <li>• 5+ years international sourcing experience</li>
-        <li>• 99.8% customs clearance success rate</li>
-        <li>• Door-to-door delivery across Ghana</li>
-      </ul>
-    </div>
-
-    <div class="liquid-glass p-10 rounded-3xl text-center">
-      <h3 class="text-6xl md:text-7xl font-black text-cyan-400 italic">
-        10,000+
-      </h3>
-      <p class="uppercase text-slate-300 font-bold mt-2">
-        Shipments Successfully Delivered
-      </p>
-    </div>
+<div class="grid md:grid-cols-3 gap-8">
+  <div class="liquid-glass p-8 rounded-3xl">
+    <h3 class="font-bold uppercase mb-3">Electronics</h3>
+    <p class="text-sm text-slate-400">Phones, laptops, gaming consoles, cameras, drones.</p>
   </div>
+  <div class="liquid-glass p-8 rounded-3xl">
+    <h3 class="font-bold uppercase mb-3">Fashion & Accessories</h3>
+    <p class="text-sm text-slate-400">Designer clothing, sneakers, watches, bags.</p>
+  </div>
+  <div class="liquid-glass p-8 rounded-3xl">
+    <h3 class="font-bold uppercase mb-3">Auto Parts</h3>
+    <p class="text-sm text-slate-400">Engines, gearboxes, tires, spare parts.</p>
+  </div>
+  <div class="liquid-glass p-8 rounded-3xl">
+    <h3 class="font-bold uppercase mb-3">Home & Office</h3>
+    <p class="text-sm text-slate-400">Furniture, appliances, office equipment.</p>
+  </div>
+  <div class="liquid-glass p-8 rounded-3xl">
+    <h3 class="font-bold uppercase mb-3">Wholesale Goods</h3>
+    <p class="text-sm text-slate-400">Bulk imports for shops, resellers, distributors.</p>
+  </div>
+  <div class="liquid-glass p-8 rounded-3xl">
+    <h3 class="font-bold uppercase mb-3">Special Requests</h3>
+    <p class="text-sm text-slate-400">Anything legal & shippable — we source it.</p>
+  </div>
+</div>
+</section>
+
+<!-- LIVE ORDERS -->
+<section id="orders" class="reveal py-20 border-y border-white/5 overflow-hidden">
+<h2 class="text-center text-3xl font-black italic uppercase mb-6">Live Orders</h2>
+<div id="ordersFeed" class="flex gap-4 animate-scroll px-6"></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="reveal py-24 px-[5%] max-w-5xl mx-auto">
+<h2 class="text-center text-3xl font-black italic uppercase mb-12">Client Reviews</h2>
+<div id="testimonyBox" class="text-center"></div>
 </section>
 
 <!-- PRICING -->
 <section id="pricing" class="reveal py-24 px-[5%] max-w-7xl mx-auto">
-  <h2 class="text-center text-4xl md:text-5xl font-black italic uppercase mb-16">
-    Transparent Pricing Model
-  </h2>
-
-  <div class="grid md:grid-cols-3 gap-8">
-    <div class="liquid-glass p-8 rounded-3xl">
-      <h3 class="font-black uppercase mb-4">Air Freight</h3>
-      <ul class="text-sm text-slate-300 space-y-2">
-        <li>• 3–5 working days</li>
-        <li>• Charged per kilogram</li>
-        <li>• Customs clearance included</li>
-      </ul>
-    </div>
-
-    <div class="liquid-glass p-8 rounded-3xl border border-cyan-500/30">
-      <h3 class="font-black uppercase mb-4 text-cyan-400">Sea Freight</h3>
-      <ul class="text-sm text-slate-300 space-y-2">
-        <li>• 6–8 weeks transit</li>
-        <li>• Best for bulk shipments</li>
-        <li>• Cost-efficient pricing</li>
-      </ul>
-    </div>
-
-    <div class="liquid-glass p-8 rounded-3xl">
-      <h3 class="font-black uppercase mb-4">Corporate & Wholesale</h3>
-      <ul class="text-sm text-slate-300 space-y-2">
-        <li>• Volume discounts</li>
-        <li>• Dedicated handling</li>
-        <li>• Priority processing</li>
-      </ul>
-    </div>
-  </div>
-
-  <p class="text-center text-xs text-slate-500 mt-10">
-    Final pricing is confirmed before purchase. No hidden charges.
-  </p>
-</section>
-
-<!-- CTA -->
-<section class="reveal py-24 text-center">
-  <h2 class="text-4xl md:text-5xl font-black mb-4">
-    Ready to Get Started?
-  </h2>
-  <p class="text-slate-400 mb-8">
-    Speak directly with our logistics team on WhatsApp.
-  </p>
-
-  <a href="https://wa.me/233240118846" target="_blank"
-     class="inline-flex items-center gap-3 bg-green-500 text-white px-12 py-4 rounded-full font-bold text-lg hover:scale-105 transition">
-    <i class="fab fa-whatsapp text-2xl"></i>
-    Start Your Order
-  </a>
+<h2 class="text-center text-4xl font-black italic uppercase mb-16">Pricing Overview</h2>
+<div class="grid md:grid-cols-3 gap-8">
+  <div class="liquid-glass p-8 rounded-3xl">Air Freight • 3–5 days • Charged per KG</div>
+  <div class="liquid-glass p-8 rounded-3xl border border-cyan-500/30">Sea Freight • 6–8 weeks • Best for bulk</div>
+  <div class="liquid-glass p-8 rounded-3xl">Corporate & Wholesale • Custom pricing</div>
+</div>
 </section>
 
 <!-- FOOTER -->
-<footer class="border-t border-white/5 py-12 text-center text-xs text-slate-500 px-6">
-  <p class="font-bold tracking-widest uppercase">
-    © 2025 Kash Option. All Rights Reserved.
-  </p>
-
-  <p class="mt-4 max-w-2xl mx-auto">
-    Kash Option is an independent logistics and procurement service.
-    We are not affiliated with Amazon, Alibaba, DHL, FedEx, or other listed platforms.
-  </p>
+<footer class="border-t border-white/5 py-12 text-center text-xs text-slate-500">
+© 2025 Kash Option. All Rights Reserved.
 </footer>
 
 <script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) e.target.classList.add("active");
-    });
-  }, { threshold: 0.1 });
+// Mobile menu
+menuBtn.onclick = () => mobileMenu.classList.toggle("hidden");
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+// Reveal animation
+new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("active")),{threshold:.1})
+.observe(document.querySelector(".reveal"));
+
+// Infinite Orders
+const cities=["Accra","Kumasi","Tema","Takoradi","Tamale"];
+const items=["Electronics","Fashion","Auto Parts","Furniture","Wholesale"];
+setInterval(()=>{
+  ordersFeed.innerHTML+=`<div class="liquid-glass p-4 rounded-xl min-w-[220px] text-sm">
+  ${items[Math.floor(Math.random()*items.length)]} → ${cities[Math.floor(Math.random()*cities.length)]}
+  </div>`;
+  ordersFeed.scrollLeft+=220;
+},1200);
+
+// Infinite Testimonials
+const reviews=[
+"Very reliable logistics partner.",
+"Fast delivery and clear communication.",
+"My business depends on Kash Option.",
+"Smooth customs clearance every time.",
+"Professional and transparent service."
+];
+setInterval(()=>{
+  testimonyBox.innerHTML=`<div class="liquid-glass p-8 rounded-3xl text-slate-300">
+  “${reviews[Math.floor(Math.random()*reviews.length)]}”
+  </div>`;
+},3500);
 </script>
 
 </body>
