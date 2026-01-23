@@ -2,11 +2,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
-
 <title>Kash Option | Shop Globally, Pay Locally</title>
 <meta name="description" content="Verified: Kash Option helps you shop from China, USA, UK, Europe and delivers safely to Ghana. Trusted sourcing, fast shipping.">
 <link rel="canonical" href="https://mrkash.net/">
-
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mrkash.net/">
 <meta property="og:title" content="Kash Option | Shop Globally, Pay Locally">
@@ -14,25 +12,20 @@
 <meta property="og:image" content="https://mrkash.net/logo.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="https://mrkash.net/">
 <meta property="twitter:title" content="Kash Option | Shop Globally, Pay Locally">
 <meta property="twitter:description" content="Shop from China, USA, UK & Europe. Safe delivery to Ghana.">
 <meta property="twitter:image" content="https://mrkash.net/logo.png">
-
 <link rel="icon" type="image/png" href="https://mrkash.net/logo.png">
-
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-
 <style>
 html {
 scroll-behavior: smooth;
 }
-
 body {
 overflow-x: hidden;
 font-family: 'Plus Jakarta Sans', sans-serif;
@@ -41,18 +34,15 @@ color: #f8fafc;
 line-height: 1.6;
 position: relative;
 }
-
 :root {
 --primary: #0a192f;
 --accent: #00d2ff;
 --soft-blue: rgba(0, 210, 255, 0.1);
 }
-
 section {
 position: relative;
 z-index: 1;
 }
-
 .liquid-glass {
 background: rgba(255, 255, 255, 0.03);
 backdrop-filter: blur(30px);
@@ -61,25 +51,21 @@ border: 1px solid rgba(255, 255, 255, 0.08);
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 .liquid-glass:hover {
 background: rgba(255, 255, 255, 0.08);
 transform: translateY(-5px);
 border-color: rgba(255, 255, 255, 0.2);
 box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(0, 210, 255, 0.1);
 }
-
 .reveal {
 opacity: 0;
 transform: translateY(30px);
 transition: all 1s cubic-bezier(0.5, 0, 0, 1);
 }
-
 .reveal.active {
 opacity: 1;
 transform: translateY(0);
 }
-
 @keyframes scroll {
 0% { transform: translateX(0); }
 100% { transform: translateX(-100%); }
@@ -94,7 +80,6 @@ overflow: visible;
 will-change: transform;
 transform: translateZ(0);
 }
-
 #hamburger {
 background: rgba(2, 6, 23, 0.8);
 backdrop-filter: blur(10px);
@@ -106,12 +91,10 @@ transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 box-shadow: 0 8px 20px rgba(0,0,0,0.6);
 z-index: 3100;
 }
-
 #hamburger span {
 transition: transform 0.25s ease, opacity 0.25s ease, background 0.25s ease;
 background: #f9fafb;
 }
-
 #hamburger.open span:nth-child(1) {
 transform: translateY(6px) rotate(45deg);
 }
@@ -121,11 +104,9 @@ opacity: 0;
 #hamburger.open span:nth-child(3) {
 transform: translateY(-6px) rotate(-45deg);
 }
-
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(0, 210, 255, 0.2); border-radius: 10px; }
-
 .blob {
 position: absolute;
 width: 350px;
@@ -137,21 +118,17 @@ z-index: -1;
 animation: move 20s infinite alternate;
 pointer-events: none;
 }
-
 @keyframes move {
 from { transform: translate(-10%, -10%); }
 to { transform: translate(10%, 10%); }
 }
-
 #mobileNav {
 transform: translateX(-100%);
 transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
-
 #mobileNav.mobile-nav-open {
 transform: translateX(0);
 }
-
 #overlay {
 position: fixed;
 inset: 0;
@@ -161,25 +138,20 @@ pointer-events: none;
 transition: opacity 0.3s ease;
 z-index: 2400;
 }
-
 #overlay.visible {
 opacity: 1;
 pointer-events: auto;
 }
 </style>
 </head>
-  
-<body class="selection:bg-cyan-500/30 relative">
-
-  <div class="blob" style="top: 0; left: 0;"></div>
+  <body class="selection:bg-cyan-500/30 relative">
+<div class="blob" style="top: 0; left: 0;"></div>
   <div class="blob" style="bottom: 0; right: 0; animation-delay: -5s;"></div>
-
-  <div id="overlay"></div>
-
-  <nav class="fixed top-0 w-full z-[3000] liquid-glass py-4 px-[5%] border-b border-white/5">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
+<div id="overlay"></div>
+<nav class="fixed top-0 w-full z-[3000] liquid-glass py-4 px-[5%] border-b border-white/5">
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
       <a href="#" class="text-2xl font-extrabold tracking-tighter uppercase italic">KASH<span class="text-cyan-400">OPTION</span></a>
-      <div class="hidden md:flex items-center gap-10 text-[10px] font-bold tracking-[0.3em] uppercase text-slate-400">
+     <div class="hidden md:flex items-center gap-10 text-[10px] font-bold tracking-[0.3em] uppercase text-slate-400">
         <a href="#about" class="hover:text-cyan-400 transition-all">About</a>
         <a href="#catalog" class="hover:text-cyan-400 transition-all">Catalog</a>
         <a href="#orders" class="hover:text-cyan-400 transition-all">Live Orders</a>
@@ -187,15 +159,13 @@ pointer-events: auto;
         <a href="#faqs" class="hover:text-cyan-400 transition-all">FAQs</a>
         <a href="tracker.html" class="px-5 py-2 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 rounded-full hover:bg-cyan-500 hover:text-white transition-all">Track Order</a>
       </div>
-
-      <button id="hamburger" class="md:hidden flex flex-col gap-1.5 w-8 h-8 items-center justify-center">
+ <button id="hamburger" class="md:hidden flex flex-col gap-1.5 w-8 h-8 items-center justify-center">
         <span class="w-6 h-[2px]"></span>
         <span class="w-6 h-[2px]"></span>
         <span class="w-6 h-[2px]"></span>
       </button>
     </div>
-
-    <div id="mobileNav" class="fixed top-0 left-0 h-full w-[80vw] bg-slate-950/95 backdrop-blur-xl border-r border-white/10 flex flex-col gap-6 pt-24 px-8 text-sm font-bold tracking-[0.3em] uppercase text-slate-300 z-[2500]">
+ <div id="mobileNav" class="fixed top-0 left-0 h-full w-[80vw] bg-slate-950/95 backdrop-blur-xl border-r border-white/10 flex flex-col gap-6 pt-24 px-8 text-sm font-bold tracking-[0.3em] uppercase text-slate-300 z-[2500]">
       <a href="#about" class="hover:text-cyan-400 transition-all">About</a>
       <a href="#catalog" class="hover:text-cyan-400 transition-all">Catalog</a>
       <a href="#orders" class="hover:text-cyan-400 transition-all">Live Orders</a>
@@ -203,10 +173,8 @@ pointer-events: auto;
       <a href="#faqs" class="hover:text-cyan-400 transition-all">FAQs</a>
       <a href="tracker.html" class="mt-4 px-5 py-3 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 rounded-full hover:bg-cyan-500 hover:text-white transition-all text-center">Track Order</a>
       <a href="https://wa.me/233240118846" target="_blank" class="mt-2 px-5 py-3 bg-green-500/10 text-green-400 border border-green-500/20 rounded-full hover:bg-green-500 hover:text-white transition-all text-center">WhatsApp Chat</a>
-    </div>
-  </nav>
-
-  <header class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative pt-24">
+    </div></nav>
+<header class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative pt-24">
     <h1 class="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter italic uppercase leading-tight mb-6 animate__animated animate__fadeInDown">
       Shop Globally.<span class="text-cyan-400"> Pay Locally.</span>
     </h1>
@@ -220,10 +188,8 @@ pointer-events: auto;
         <i class="fab fa-whatsapp"></i>
         Order via WhatsApp
       </a>
-    </div>
-  </header>
-
-  <section id="about" class="reveal py-24 px-[5%] max-w-7xl mx-auto">
+    </div></header>
+<section id="about" class="reveal py-24 px-[5%] max-w-7xl mx-auto">
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <div>
         <span class="text-cyan-400 font-bold uppercase tracking-widest text-xs">Premium Logistics</span>
@@ -260,8 +226,7 @@ pointer-events: auto;
       </div>
     </div>
   </section>
-
-  <section id="catalog" class="reveal py-24 px-[5%] max-w-7xl mx-auto">
+<section id="catalog" class="reveal py-24 px-[5%] max-w-7xl mx-auto">
     <h2 class="text-center text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-16">What You Can Order</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="liquid-glass p-10 rounded-[2.5rem] flex flex-col items-center text-center">
@@ -306,26 +271,22 @@ pointer-events: auto;
       </div>
     </div>
   </section>
-
-  <section id="orders" class="reveal py-20 bg-cyan-400/5 border-y border-white/5 overflow-hidden">
+<section id="orders" class="reveal py-20 bg-cyan-400/5 border-y border-white/5 overflow-hidden">
     <div class="text-center mb-10">
       <h2 class="text-3xl md:text-4xl font-black italic uppercase">Today’s Orders</h2>
       <p class="text-slate-400 text-sm tracking-wide mt-2">Live updates from customers across Ghana</p>
     </div>
     <div class="animate-scroll whitespace-nowrap flex gap-6 py-4 px-4" id="ordersList"></div>
   </section>
-
-  <section id="testimonials" class="py-24 px-[5%] max-w-4xl mx-auto">
+<section id="testimonials" class="py-24 px-[5%] max-w-4xl mx-auto">
     <h2 class="text-center text-3xl md:text-4xl font-black italic uppercase mb-12">What Clients Say</h2>
     <div id="testimonialDisplay" class="min-h-[260px] flex items-center justify-center text-center"></div>
   </section>
-
-  <section id="faqs" class="py-24 px-[5%] max-w-4xl mx-auto">
+<section id="faqs" class="py-24 px-[5%] max-w-4xl mx-auto">
     <h2 class="text-center text-3xl md:text-4xl font-black italic uppercase mb-12">Frequently Asked Questions</h2>
     <div id="faqList" class="space-y-6"></div>
   </section>
-
-  <section id="order-now" class="reveal py-24 px-[5%] max-w-4xl mx-auto text-center">
+<section id="order-now" class="reveal py-24 px-[5%] max-w-4xl mx-auto text-center">
     <h2 class="text-3xl md:text-4xl font-black mb-4">Ready to Place Your Order?</h2>
     <p class="text-slate-400 mb-8">Click below to chat with us instantly on WhatsApp.</p>
     <a href="https://wa.me/233240118846?text=Hello%20Kash" target="_blank" class="inline-flex items-center gap-3 bg-green-500 text-white px-10 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-green-600 hover:scale-105 transition-transform">
@@ -333,8 +294,7 @@ pointer-events: auto;
       Order via WhatsApp
     </a>
   </section>
-
-  <footer class="pt-24 pb-10 px-[5%] border-t border-white/5">
+<footer class="pt-24 pb-10 px-[5%] border-t border-white/5">
     <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 mb-16">
       <div class="md:col-span-2">
         <h2 class="text-3xl font-black italic uppercase mb-4">KASH OPTION</h2>
@@ -372,13 +332,11 @@ pointer-events: auto;
       <p class="text-[10px] font-bold tracking-[0.5em] text-slate-600 uppercase">© 2025 KASH OPTION. ALL RIGHTS RESERVED.</p>
     </div>
   </footer>
-
-  <script>
+ <script>
     const hmb = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobileNav');
     const overlay = document.getElementById('overlay');
-
-    function closeMenu() {
+function closeMenu() {
       mobileNav.classList.remove('mobile-nav-open');
       overlay.classList.remove('visible');
       hmb.classList.remove('open');
@@ -394,16 +352,14 @@ pointer-events: auto;
     overlay.addEventListener('click', () => {
       closeMenu();
     });
-
-    // Close menu when a link inside it is clicked
+// Close menu when a link inside it is clicked
     const mobileLinks = mobileNav.querySelectorAll('a');
     mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
         closeMenu();
       });
     });
-
-    document.addEventListener('click', (e) => {
+document.addEventListener('click', (e) => {
       if (!mobileNav.contains(e.target) && !hmb.contains(e.target)) {
         closeMenu();
       }
@@ -422,8 +378,7 @@ pointer-events: auto;
         }
       });
     }, observerOptions);
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     const faqs = [
       {q: "What does Kash Option do?", a: "Kash Option helps clients source original products from abroad and delivers them safely to Ghana. We handle purchasing, shipping, customs coordination, and local delivery."},
@@ -438,8 +393,7 @@ pointer-events: auto;
       {q: "What happens if there is a delay?", a: "Shipping timelines are estimates. Delays may occur due to airlines, customs, or peak seasons."},
       {q: "How do I contact Kash Option?", a: "You can reach us anytime via WhatsApp using the chat button on this website or through our official WhatsApp group."}
     ];
-
-    document.getElementById('faqList').innerHTML = faqs.map(f => `
+document.getElementById('faqList').innerHTML = faqs.map(f => `
       <details class="liquid-glass rounded-3xl overflow-hidden group">
         <summary class="p-6 md:p-8 cursor-pointer list-none flex justify-between items-center font-bold text-lg md:text-xl italic">
           ${f.q}
