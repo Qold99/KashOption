@@ -3,210 +3,728 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="logo.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>About Us | Kash Option — Shop Globally, Pay Locally</title>
-  <meta name="description" content="Learn how Kash Option sources and ships from China, USA, UK & Europe to Ghana. Verified, transparent, trusted.">
-  <link rel="canonical" href="https://mrkash.net/about.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
+
+  <title>Kash Option | Shop Globally, Pay Locally</title>
+  <meta name="description" content="Verified: Kash Option helps you shop from China, USA, UK, Europe and delivers safely to Ghana. Trusted sourcing, fast shipping.">
+  <link rel="canonical" href="https://mrkash.net/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mrkash.net/">
+  <meta property="og:title" content="Kash Option | Shop Globally, Pay Locally">
+  <meta property="og:description" content="Shop from China, USA, UK & Europe. Safe delivery to Ghana. Trusted sourcing & fast shipping.">
+  <meta property="og:image" content="https://mrkash.net/logo.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://mrkash.net/">
+  <meta property="twitter:title" content="Kash Option | Shop Globally, Pay Locally">
+  <meta property="twitter:description" content="Shop from China, USA, UK & Europe. Safe delivery to Ghana. Trusted sourcing & fast shipping.">
+  <meta property="twitter:image" content="https://mrkash.net/logo.png">
+
+  <link rel="icon" type="image/png" href="https://mrkash.net/logo.png">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+
   <style>
-    #mobileNav { transform: translateX(-100%); transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1); padding-bottom: env(safe-area-inset-bottom); }
-    #mobileNav.mobile-nav-open { transform: translateX(0); }
-    #overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 2400; }
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      overflow-x: hidden;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background:
+        radial-gradient(1200px 800px at 20% 0%, rgba(0, 210, 255, 0.10), transparent 55%),
+        radial-gradient(900px 900px at 85% 20%, rgba(124, 58, 237, 0.10), transparent 60%),
+        radial-gradient(900px 900px at 70% 100%, rgba(34, 197, 94, 0.06), transparent 55%),
+        linear-gradient(180deg, #070b18 0%, #020617 100%);
+      color: #f8fafc;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    :root {
+      --primary: #0a192f;
+      --accent: #00d2ff;
+      --soft-blue: rgba(0, 210, 255, 0.1);
+    }
+
+    section {
+      position: relative;
+      z-index: 1;
+    }
+
+    .liquid-glass {
+      position: relative;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 36px rgba(0, 0, 0, 0.28);
+      transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+
+    .liquid-glass::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.04), rgba(0,210,255,0.12));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .liquid-glass:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.16);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.3), 0 0 24px rgba(0, 210, 255, 0.10);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    .animate-scroll {
+      display: flex;
+      animation: scroll 16s linear infinite;
+      overflow: visible;
+    }
+
+    #ordersList {
+      will-change: transform;
+      transform: translateZ(0);
+    }
+
+    #hamburger {
+      background: rgba(2, 6, 23, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      z-index: 3100;
+    }
+
+    #hamburger span {
+      transition: transform 0.25s ease, opacity 0.25s ease, background 0.25s ease;
+      background: #f9fafb;
+    }
+
+    #hamburger.open span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+    #hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+    #hamburger.open span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(0, 210, 255, 0.2); border-radius: 10px; }
+
+    .blob {
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      background: linear-gradient(135deg, rgba(0, 210, 255, 0.2) 0%, rgba(58, 0, 255, 0.1) 100%);
+      filter: blur(40px);
+      border-radius: 50%;
+      z-index: -1;
+      animation: move 20s infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes move {
+      from { transform: translate(-10%, -10%); }
+      to { transform: translate(10%, 10%); }
+    }
+
+    #mobileNav {
+      transform: translateX(-100%);
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    #mobileNav.mobile-nav-open {
+      transform: translateX(0);
+    }
+
+    #overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 2400;
+    }
+
+    #overlay.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Hero background with cargo visuals */
+    .hero {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(180deg, rgba(5,7,15,0.55) 0%, rgba(5,7,15,0.85) 60%, rgba(5,7,15,0.98) 100%),
+        url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=2000&q=80');
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.05) contrast(1.02);
+      z-index: -1;
+    }
+
+    /* Inquiry form styling */
+    .inquiry-form input,
+    .inquiry-form select,
+    .inquiry-form textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      color: #f8fafc;
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .inquiry-form input::placeholder,
+    .inquiry-form textarea::placeholder {
+      color: rgba(148, 163, 184, 0.85);
+    }
+
+    .inquiry-form input:focus,
+    .inquiry-form select:focus,
+    .inquiry-form textarea:focus {
+      outline: none;
+      border-color: rgba(0, 210, 255, 0.5);
+      box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.2);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .inquiry-form select option {
+      background: #020617;
+      color: #f8fafc;
+    }
   </style>
 </head>
-<body class="selection:bg-cyan-500/30 relative" data-page="about">
+
+<body class="selection:bg-cyan-500/30 relative">
+
   <div class="blob" style="top: 0; left: 0;"></div>
-  <div class="blob" style="bottom: 0; right: 0; animation-delay: -10s;"></div>
+  <div class="blob" style="bottom: 0; right: 0; animation-delay: -5s;"></div>
+
   <div id="overlay"></div>
 
-  <nav class="fixed top-0 left-0 right-0 z-[3000] liquid-glass py-3 sm:py-4 px-4 sm:px-[5%] border-b border-white/5" style="padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right));">
+  <nav class="fixed top-0 w-full z-[3000] liquid-glass py-4 px-[5%] border-b border-white/5">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-xl sm:text-2xl font-extrabold tracking-tighter uppercase italic">KASH<span class="text-cyan-400">OPTION</span></a>
-      <div class="hidden md:flex items-center gap-6 lg:gap-8 text-[10px] font-bold tracking-[0.25em] uppercase text-slate-400">
-        <a href="index.html" class="hover:text-cyan-400 transition-all py-2">Home</a>
-        <a href="about.html" class="text-cyan-400 font-semibold py-2">About</a>
-        <a href="catalog.html" class="hover:text-cyan-400 transition-all py-2">Catalog</a>
-        <a href="orders.html" class="hover:text-cyan-400 transition-all py-2">Live Orders</a>
-        <a href="testimonials.html" class="hover:text-cyan-400 transition-all py-2">Reviews</a>
-        <a href="faqs.html" class="hover:text-cyan-400 transition-all py-2">FAQs</a>
-        <a href="contact.html" class="hover:text-cyan-400 transition-all py-2">Contact</a>
-        <a href="policy-terms.html" class="hover:text-cyan-400 transition-all py-2">Policy</a>
-        <a href="tracker.html" class="px-5 py-2.5 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 rounded-full hover:bg-cyan-500 hover:text-white transition-all">Track Order</a>
+      <a href="#" class="text-2xl font-extrabold tracking-tighter uppercase italic">KASH<span class="text-cyan-400">OPTION</span></a>
+      <div class="hidden md:flex items-center gap-10 text-[10px] font-bold tracking-[0.3em] uppercase text-slate-400">
+        <a href="#about" class="hover:text-cyan-400 transition-all">About</a>
+        <a href="#catalog" class="hover:text-cyan-400 transition-all">Catalog</a>
+        <a href="#orders" class="hover:text-cyan-400 transition-all">Live Orders</a>
+        <a href="#testimonials" class="hover:text-cyan-400 transition-all">Reviews</a>
+        <a href="#faqs" class="hover:text-cyan-400 transition-all">FAQs</a>
+        <a href="#inquiry" class="hover:text-cyan-400 transition-all">Inquiry</a>
+        <a href="tracker.html" class="px-5 py-2 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 rounded-full hover:bg-cyan-500 hover:text-white transition-all">Track Order</a>
       </div>
-      <button id="hamburger" class="md:hidden flex flex-col gap-1.5 w-10 h-10 items-center justify-center" aria-label="Open menu">
-        <span class="w-5 h-[2px] bg-slate-200"></span>
-        <span class="w-5 h-[2px] bg-slate-200"></span>
-        <span class="w-5 h-[2px] bg-slate-200"></span>
+
+      <button id="hamburger" class="md:hidden flex flex-col gap-1.5 w-8 h-8 items-center justify-center">
+        <span class="w-6 h-[2px]"></span>
+        <span class="w-6 h-[2px]"></span>
+        <span class="w-6 h-[2px]"></span>
       </button>
     </div>
-    <div id="mobileNav" class="fixed top-0 left-0 h-full w-[85vw] max-w-[320px] bg-slate-950/98 backdrop-blur-xl border-r border-white/10 flex flex-col gap-2 pt-24 px-6 text-sm font-bold tracking-widest uppercase text-slate-300 z-[2500]">
-      <a href="index.html" class="hover:text-cyan-400 transition-all">Home</a>
-      <a href="about.html" class="nav-active">About</a>
-      <a href="catalog.html" class="hover:text-cyan-400 transition-all">Catalog</a>
-      <a href="orders.html" class="hover:text-cyan-400 transition-all">Live Orders</a>
-      <a href="testimonials.html" class="hover:text-cyan-400 transition-all">Reviews</a>
-      <a href="faqs.html" class="hover:text-cyan-400 transition-all">FAQs</a>
-      <a href="contact.html" class="hover:text-cyan-400 transition-all">Contact</a>
-      <a href="policy-terms.html" class="hover:text-cyan-400 transition-all">Policy & Terms</a>
-      <a href="tracker.html" class="mt-4 px-5 py-3 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 rounded-full text-center">Track Order</a>
-      <a href="https://wa.me/233240118846" target="_blank" class="px-5 py-3 bg-green-500/10 text-green-400 border border-green-500/20 rounded-full text-center">WhatsApp</a>
+
+    <div id="mobileNav" class="fixed top-0 left-0 h-full w-[80vw] bg-slate-950/95 backdrop-blur-xl border-r border-white/10 flex flex-col gap-6 pt-24 px-8 text-sm font-bold tracking-[0.3em] uppercase text-slate-300 z-[2500]">
+      <a href="#about" class="hover:text-cyan-400 transition-all">About</a>
+      <a href="#catalog" class="hover:text-cyan-400 transition-all">Catalog</a>
+      <a href="#orders" class="hover:text-cyan-400 transition-all">Live Orders</a>
+      <a href="#testimonials" class="hover:text-cyan-400 transition-all">Reviews</a>
+      <a href="#faqs" class="hover:text-cyan-400 transition-all">FAQs</a>
+      <a href="#inquiry" class="hover:text-cyan-400 transition-all">Inquiry</a>
+      <a href="tracker.html" class="mt-4 px-5 py-3 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 rounded-full hover:bg-cyan-500 hover:text-white transition-all text-center">Track Order</a>
+      <a href="https://wa.me/233240118846" target="_blank" class="mt-2 px-5 py-3 bg-green-500/10 text-green-400 border border-green-500/20 rounded-full hover:bg-green-500 hover:text-white transition-all text-center">WhatsApp Chat</a>
     </div>
   </nav>
 
-  <main>
-    <header class="page-hero text-center px-4 sm:px-6 relative">
-      <span class="heading-accent mx-auto"></span>
-      <p class="text-cyan-400 font-bold uppercase tracking-[0.35em] text-xs sm:text-sm mb-4">Premium Logistics</p>
-      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black italic uppercase tracking-tight mb-6">About Kash Option</h1>
-      <p class="text-slate-400 max-w-2xl mx-auto text-base sm:text-lg">Your verified bridge between global markets and Ghana. We source, ship, and deliver—so you can shop with confidence.</p>
-    </header>
+  <header class="hero min-h-screen flex flex-col justify-center items-center text-center px-6 relative pt-24">
+    <h1 class="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter italic uppercase leading-tight mb-6 animate__animated animate__fadeInDown">
+      Shop Globally.<span class="text-cyan-400"> Pay Locally.</span>
+    </h1>
+    <p class="text-sm md:text-base text-slate-300 font-light tracking-[0.4em] uppercase mb-6 md:mb-8 animate__animated animate__fadeInUp">
+      China • USA • UK • Europe → Ghana
+    </p>
+    <p class="max-w-2xl text-sm md:text-base text-slate-200/80 mb-10">
+      Kash Option is your verified sourcing and cargo partner. We help you buy from trusted suppliers, ship by air or sea, clear customs and deliver across Ghana—with WhatsApp-first support.
+    </p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="#catalog" class="px-10 py-4 bg-white text-black font-bold rounded-full hover:scale-105 transition-transform">Explore Catalog</a>
+      <a href="#orders" class="px-10 py-4 liquid-glass rounded-full font-bold hover:scale-105 transition-transform">Live Orders</a>
+      <a href="https://wa.me/233240118846?text=Hello%20Kash" target="_blank" class="px-10 py-4 bg-green-500/90 text-white font-bold rounded-full hover:bg-green-500 hover:scale-105 transition-transform flex items-center gap-2">
+        <i class="fab fa-whatsapp"></i>
+        Order via WhatsApp
+      </a>
+    </div>
+  </header>
 
-    <section class="py-16 sm:py-24 px-4 sm:px-[5%] max-w-6xl mx-auto">
-      <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div class="reveal">
-          <h2 class="text-2xl sm:text-3xl font-black italic uppercase mb-6">Who We Are</h2>
-          <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-6">Kash Option is a <span class="text-cyan-400 font-semibold">verified, trusted global sourcing and logistics brand</span> built for individuals and businesses in Ghana. We don’t just ship boxes—we handle the entire journey: finding the right products, buying from trusted suppliers, coordinating customs, and delivering to your door.</p>
-          <p class="text-slate-400 leading-relaxed">Whether you need a single smartphone, wholesale fashion, auto parts, or office equipment, we make international shopping simple, transparent, and safe. You focus on your life and business; we handle the rest.</p>
-        </div>
-        <div class="reveal liquid-glass p-1 rounded-3xl">
-          <div class="bg-slate-900/80 rounded-3xl p-8 sm:p-12 flex flex-col justify-center text-center">
-            <span class="text-6xl sm:text-7xl md:text-8xl font-black text-cyan-400 italic">99.8%</span>
-            <p class="text-lg sm:text-xl font-bold uppercase italic text-slate-300 mt-2">Success Rate In Customs Clearance</p>
-            <p class="text-slate-500 text-sm mt-4">Verified track record</p>
+  <section id="about" class="reveal py-24 px-[5%] max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="text-cyan-400 font-bold uppercase tracking-widest text-xs">Premium Logistics</span>
+        <h2 class="text-4xl md:text-5xl font-black italic uppercase mt-4 mb-6">About Kash Option</h2>
+        <p class="text-base md:text-lg text-slate-300 leading-relaxed">
+          Kash Option is a <span class="text-cyan-400 font-semibold">verified trusted global sourcing</span> and logistics brand helping individuals and businesses buy goods from abroad and receive them safely in Ghana. We handle purchasing, shipping, customs coordination, and local delivery so you can focus on your life and business.
+        </p>
+        <div class="mt-8 space-y-5">
+          <div class="flex gap-4">
+            <div class="w-11 h-11 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div>
+              <h4 class="font-bold">Original Products Only</h4>
+              <p class="text-sm text-slate-400">We source from trusted suppliers and platforms, inspecting items before shipping to Ghana.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-11 h-11 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400">
+              <i class="fas fa-plane-departure"></i>
+            </div>
+            <div>
+              <h4 class="font-bold">Fast, Transparent Shipping</h4>
+              <p class="text-sm text-slate-400">Air freight in 3–5 working days after warehouse receipt, and sea freight in 6–8 weeks.</p>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <div class="section-divider max-w-6xl mx-auto"></div>
-
-    <section class="py-16 sm:py-24 px-4 sm:px-[5%] max-w-6xl mx-auto">
-      <div class="text-center mb-14">
-        <span class="heading-accent mx-auto"></span>
-        <h2 class="text-3xl sm:text-4xl font-black italic uppercase mb-4">How It Works</h2>
-        <p class="text-slate-400 max-w-xl mx-auto">From inquiry to delivery—clear steps, no surprises.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-        <div class="reveal liquid-glass rounded-2xl p-6 sm:p-8 text-center">
-          <div class="w-14 h-14 mx-auto rounded-2xl bg-cyan-500/15 flex items-center justify-center text-cyan-400 text-2xl mb-4"><i class="fas fa-comment-dots"></i></div>
-          <h3 class="font-black uppercase italic mb-2 text-lg">1. Inquire</h3>
-          <p class="text-slate-400 text-sm">Tell us what you want via WhatsApp. Share product links, photos, or descriptions. We’ll confirm availability and give you a clear quote.</p>
-        </div>
-        <div class="reveal liquid-glass rounded-2xl p-6 sm:p-8 text-center">
-          <div class="w-14 h-14 mx-auto rounded-2xl bg-purple-500/15 flex items-center justify-center text-purple-400 text-2xl mb-4"><i class="fas fa-credit-card"></i></div>
-          <h3 class="font-black uppercase italic mb-2 text-lg">2. Pay</h3>
-          <p class="text-slate-400 text-sm">Full payment secures your order. We use secure channels. Once payment is received, we purchase and prepare your items.</p>
-        </div>
-        <div class="reveal liquid-glass rounded-2xl p-6 sm:p-8 text-center">
-          <div class="w-14 h-14 mx-auto rounded-2xl bg-emerald-500/15 flex items-center justify-center text-emerald-400 text-2xl mb-4"><i class="fas fa-plane-departure"></i></div>
-          <h3 class="font-black uppercase italic mb-2 text-lg">3. Ship</h3>
-          <p class="text-slate-400 text-sm">We ship by air (3–5 working days) or sea (6–8 weeks). You get tracking details. We handle customs and documentation.</p>
-        </div>
-        <div class="reveal liquid-glass rounded-2xl p-6 sm:p-8 text-center">
-          <div class="w-14 h-14 mx-auto rounded-2xl bg-amber-500/15 flex items-center justify-center text-amber-400 text-2xl mb-4"><i class="fas fa-box-open"></i></div>
-          <h3 class="font-black uppercase italic mb-2 text-lg">4. Receive</h3>
-          <p class="text-slate-400 text-sm">Your package is delivered to your chosen address in Ghana. Door-to-door, with no hidden import charges when quoted upfront.</p>
+      <div class="liquid-glass p-1 rounded-3xl">
+        <div class="bg-slate-900 rounded-3xl p-10 h-full flex flex-col justify-center">
+          <h3 class="text-6xl md:text-7xl font-black text-cyan-400 italic">99.8%</h3>
+          <p class="text-lg md:text-xl font-bold uppercase italic text-slate-300">Success Rate In Customs Clearance</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <div class="section-divider max-w-6xl mx-auto"></div>
-
-    <section class="py-16 sm:py-24 px-4 sm:px-[5%] max-w-6xl mx-auto">
-      <div class="text-center mb-14">
-        <span class="heading-accent mx-auto"></span>
-        <h2 class="text-3xl sm:text-4xl font-black italic uppercase mb-4">Why Choose Kash Option</h2>
+  <section id="catalog" class="reveal py-24 px-[5%] max-w-7xl mx-auto">
+    <h2 class="text-center text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-16">What You Can Order</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="liquid-glass p-10 rounded-[2.5rem] flex flex-col items-center text-center">
+        <i class="fas fa-mobile-alt text-5xl text-blue-400 mb-6"></i>
+        <h3 class="text-xl font-black uppercase italic mb-4">Phones & Laptops</h3>
+        <p class="text-sm text-slate-400">High-end smartphones, MacBooks, and gaming gear.</p>
       </div>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="reveal flex gap-5">
-          <div class="w-12 h-12 shrink-0 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl"><i class="fas fa-check-double"></i></div>
+      <div class="liquid-glass p-10 rounded-[2.5rem] flex flex-col items-center text-center">
+        <i class="fas fa-camera text-5xl text-red-400 mb-6"></i>
+        <h3 class="text-xl font-black uppercase italic mb-4">Cameras & Electronics</h3>
+        <p class="text-sm text-slate-400">DSLRs, drones, and smart home gadgets.</p>
+      </div>
+      <div class="liquid-glass p-10 rounded-[2.5rem] flex flex-col items-center text-center">
+        <i class="fas fa-cogs text-5xl text-emerald-400 mb-6"></i>
+        <h3 class="text-xl font-black uppercase italic mb-4">Auto Parts</h3>
+        <p class="text-sm text-slate-400">Engines, tires, and genuine spare parts.</p>
+      </div>
+      <div class="liquid-glass p-10 rounded-[2.5rem] flex flex-col items-center text-center">
+        <i class="fas fa-couch text-5xl text-purple-400 mb-6"></i>
+        <h3 class="text-xl font-black uppercase italic mb-4">Home & Office</h3>
+        <p class="text-sm text-slate-400">Premium furniture and office equipment.</p>
+      </div>
+      <div class="liquid-glass p-10 rounded-[2.5rem] flex flex-col items-center text-center">
+        <i class="fas fa-boxes text-5xl text-indigo-400 mb-6"></i>
+        <h3 class="text-xl font-black uppercase italic mb-4">Wholesale Goods</h3>
+        <p class="text-sm text-slate-400">Bulk items and general merchandise.</p>
+      </div>
+      <div class="liquid-glass p-10 rounded-[2.5rem] flex flex-col items-center text-center">
+        <i class="fas fa-tshirt text-5xl text-rose-400 mb-6"></i>
+        <h3 class="text-xl font-black uppercase italic mb-4">Fashion & Apparel</h3>
+        <p class="text-sm text-slate-400">Designer wear, sneakers, and accessories.</p>
+      </div>
+      <div class="liquid-glass p-10 rounded-[2.5rem] flex flex-col items-center text-center">
+        <i class="fas fa-dumbbell text-5xl text-sky-400 mb-6"></i>
+        <h3 class="text-xl font-black uppercase italic mb-4">Sports & Fitness</h3>
+        <p class="text-sm text-slate-400">Gym equipment and pro sportswear.</p>
+      </div>
+      <div class="liquid-glass p-10 rounded-[2.5rem] flex flex-col items-center text-center">
+        <i class="fas fa-baby text-5xl text-amber-400 mb-6"></i>
+        <h3 class="text-xl font-black uppercase italic mb-4">Kids & Baby</h3>
+        <p class="text-sm text-slate-400">Safety-first products and educational toys.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHATSAPP INQUIRY FORM -->
+  <section id="inquiry" class="reveal py-24 px-[5%] max-w-4xl mx-auto">
+    <div class="liquid-glass rounded-3xl p-6 md:p-10">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center text-green-400">
+          <i class="fab fa-whatsapp text-2xl"></i>
+        </div>
+        <div>
+          <h2 class="text-2xl md:text-3xl font-black italic uppercase">Send an Inquiry</h2>
+          <p class="text-slate-400 text-sm">Tell us exactly what you want. We’ll reply on WhatsApp with a clear quote.</p>
+        </div>
+      </div>
+      <form id="inquiryForm" class="inquiry-form space-y-4">
+        <div class="grid md:grid-cols-2 gap-4">
           <div>
-            <h3 class="font-black uppercase italic mb-2 text-lg">Original Products Only</h3>
-            <p class="text-slate-400 text-sm sm:text-base">We source from trusted suppliers and platforms. Items are inspected before shipping to Ghana. No fakes, no surprises.</p>
+            <label for="inqName" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Your name</label>
+            <input type="text" id="inqName" name="name" placeholder="e.g. Kwame" required>
           </div>
-        </div>
-        <div class="reveal flex gap-5">
-          <div class="w-12 h-12 shrink-0 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 text-xl"><i class="fas fa-clock"></i></div>
           <div>
-            <h3 class="font-black uppercase italic mb-2 text-lg">Fast, Transparent Shipping</h3>
-            <p class="text-slate-400 text-sm sm:text-base">Air freight in 3–5 working days after warehouse receipt. Sea freight in 6–8 weeks. Clear timelines, no guesswork.</p>
+            <label for="inqCategory" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Category</label>
+            <select id="inqCategory" name="category" required>
+              <option value="">Select category</option>
+              <option>Phones & Laptops</option>
+              <option>Cameras & Electronics</option>
+              <option>Auto Parts</option>
+              <option>Home & Office</option>
+              <option>Wholesale Goods</option>
+              <option>Fashion & Apparel</option>
+              <option>Sports & Fitness</option>
+              <option>Kids & Baby</option>
+              <option>Other</option>
+            </select>
           </div>
         </div>
-        <div class="reveal flex gap-5">
-          <div class="w-12 h-12 shrink-0 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-xl"><i class="fas fa-shield-alt"></i></div>
-          <div>
-            <h3 class="font-black uppercase italic mb-2 text-lg">Customs Handled</h3>
-            <p class="text-slate-400 text-sm sm:text-base">We coordinate clearance so you don’t have to. Our 99.8% success rate means your goods move smoothly.</p>
-          </div>
-        </div>
-        <div class="reveal flex gap-5">
-          <div class="w-12 h-12 shrink-0 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 text-xl"><i class="fab fa-whatsapp"></i></div>
-          <div>
-            <h3 class="font-black uppercase italic mb-2 text-lg">Real People, Real Support</h3>
-            <p class="text-slate-400 text-sm sm:text-base">Chat with us on WhatsApp anytime. Get quotes, track orders, and resolve questions quickly—no bots, no runaround.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="py-16 sm:py-24 px-4 sm:px-[5%]">
-      <div class="max-w-4xl mx-auto text-center reveal">
-        <h2 class="text-2xl sm:text-3xl font-black italic uppercase mb-6">Ready to Shop Globally?</h2>
-        <p class="text-slate-400 mb-8">Browse our <a href="catalog.html" class="text-cyan-400 hover:underline">catalog</a>, send an <a href="contact.html" class="text-cyan-400 hover:underline">inquiry</a>, or chat with us on WhatsApp.</p>
-        <a href="https://wa.me/233240118846?text=Hello%20Kash%2C%20I%20want%20to%20learn%20more%20about%20your%20services" target="_blank" class="inline-flex items-center gap-2 bg-green-500 text-white px-8 py-4 rounded-full font-bold hover:bg-green-600 transition-colors">
-          <i class="fab fa-whatsapp text-xl"></i> Chat on WhatsApp
-        </a>
-      </div>
-    </section>
-  </main>
+        <div>
+          <label for="inqProduct" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Product you want to buy</label>
+          <input type="text" id="inqProduct" name="product" placeholder="e.g. iPhone 15 Pro Max 256GB (or paste a product link)" required>
+        </div>
 
-  <footer class="pt-16 sm:pt-24 pb-10 px-4 sm:px-[5%] border-t border-white/5">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10 sm:gap-12 mb-12 sm:mb-16">
+        <div class="grid md:grid-cols-3 gap-4">
+          <div>
+            <label for="inqUnits" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Units</label>
+            <input type="number" id="inqUnits" name="units" min="1" step="1" placeholder="e.g. 2" required>
+          </div>
+          <div>
+            <label for="inqSize" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Size / Specs</label>
+            <input type="text" id="inqSize" name="size" placeholder="Size, color, storage, part number..." required>
+          </div>
+          <div>
+            <label for="inqBudget" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Budget (optional)</label>
+            <input type="text" id="inqBudget" name="budget" placeholder="e.g. GHS 9,000">
+          </div>
+        </div>
+
+        <div>
+          <label for="inqNotes" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Extra notes (optional)</label>
+          <textarea id="inqNotes" name="notes" rows="3" placeholder="Delivery city, deadline, anything we should know..."></textarea>
+        </div>
+
+        <label class="flex items-start gap-3 text-sm text-slate-300">
+          <input id="inqAgree" type="checkbox" required class="mt-1 accent-cyan-400">
+          <span>I agree to the <a class="text-cyan-400 hover:underline" href="https://mrkash.net/policy-terms.html" target="_blank" rel="noopener">Policy &amp; Terms</a>.</span>
+        </label>
+
+        <button type="submit" class="w-full py-4 rounded-xl bg-green-500 text-white font-bold text-lg flex items-center justify-center gap-2 hover:bg-green-600 transition-transform hover:scale-[1.02]">
+          <i class="fab fa-whatsapp text-xl"></i> Open in WhatsApp
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <section id="orders" class="reveal py-20 bg-cyan-400/5 border-y border-white/5 overflow-hidden">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl md:text-4xl font-black italic uppercase">Today’s Orders</h2>
+      <p class="text-slate-400 text-sm tracking-wide mt-2">Live updates from customers across Ghana</p>
+    </div>
+    <div class="animate-scroll whitespace-nowrap flex gap-6 py-4 px-4" id="ordersList"></div>
+  </section>
+
+  <section id="testimonials" class="py-24 px-[5%] max-w-4xl mx-auto">
+    <h2 class="text-center text-3xl md:text-4xl font-black italic uppercase mb-12">What Clients Say</h2>
+    <div id="testimonialDisplay" class="min-h-[260px] flex items-center justify-center text-center"></div>
+  </section>
+
+  <section id="faqs" class="py-24 px-[5%] max-w-4xl mx-auto">
+    <h2 class="text-center text-3xl md:text-4xl font-black italic uppercase mb-12">Frequently Asked Questions</h2>
+    <div id="faqList" class="space-y-6"></div>
+  </section>
+
+  <section id="order-now" class="reveal py-24 px-[5%] max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-black mb-4">Ready to Place Your Order?</h2>
+    <p class="text-slate-400 mb-8">Click below to chat with us instantly on WhatsApp.</p>
+    <a href="https://wa.me/233240118846?text=Hello%20Kash" target="_blank" class="inline-flex items-center gap-3 bg-green-500 text-white px-10 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-green-600 hover:scale-105 transition-transform">
+      <i class="fab fa-whatsapp text-2xl"></i>
+      Order via WhatsApp
+    </a>
+  </section>
+
+  <footer class="pt-24 pb-10 px-[5%] border-t border-white/5">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 mb-16">
       <div class="md:col-span-2">
-        <h2 class="text-2xl sm:text-3xl font-black italic uppercase mb-4">KASH OPTION</h2>
-        <p class="text-slate-400 max-w-md text-sm sm:text-base">Bridging the gap between global markets and local consumers. Safe, transparent international trade for Ghana.</p>
+        <h2 class="text-3xl font-black italic uppercase mb-4">KASH OPTION</h2>
+        <p class="text-slate-400 max-w-md">
+          Bridging the gap between global markets and local consumers. We make international trade accessible, safe, and transparent for everyone in Ghana.
+        </p>
       </div>
       <div>
         <h4 class="font-bold uppercase tracking-widest text-xs mb-4 text-cyan-400">Links</h4>
         <ul class="space-y-3 text-sm text-slate-400">
           <li><a href="tracker.html" class="hover:text-white">Track Order</a></li>
-          <li><a href="faqs.html" class="hover:text-white">FAQs</a></li>
-          <li><a href="catalog.html" class="hover:text-white">Catalog</a></li>
-          <li><a href="contact.html" class="hover:text-white">Contact</a></li>
-          <li><a href="policy-terms.html" class="hover:text-white">Policy & Terms</a></li>
+          <li><a href="#faqs" class="hover:text-white">FAQs</a></li>
+          <li><a href="#catalog" class="hover:text-white">Catalog</a></li>
+          <li><a href="https://mrkash.net/policy-terms.html" class="hover:text-white">Policy &amp; Terms</a></li>
         </ul>
       </div>
       <div>
         <h4 class="font-bold uppercase tracking-widest text-xs mb-4 text-cyan-400">Connect</h4>
-        <div class="flex gap-3 sm:gap-4 flex-wrap">
-          <a href="https://www.instagram.com/kashoption1" target="_blank" class="w-10 h-10 liquid-glass rounded-full flex items-center justify-center hover:bg-pink-500 min-w-[44px] min-h-[44px]" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.facebook.com/share/1CrwnBxS8W/" target="_blank" class="w-10 h-10 liquid-glass rounded-full flex items-center justify-center hover:bg-blue-600 min-w-[44px] min-h-[44px]" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="mailto:Info@mrkash.net" class="w-10 h-10 liquid-glass rounded-full flex items-center justify-center hover:bg-slate-300 hover:text-slate-900 min-w-[44px] min-h-[44px]" aria-label="Email"><i class="fas fa-envelope"></i></a>
-          <a href="https://wa.me/233240118846" target="_blank" class="w-10 h-10 liquid-glass rounded-full flex items-center justify-center hover:bg-green-500 min-w-[44px] min-h-[44px]" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <div class="flex gap-4">
+          <a href="https://www.instagram.com/kashoption1" target="_blank" class="w-10 h-10 liquid-glass rounded-full flex items-center justify-center hover:bg-pink-500">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/share/1CrwnBxS8W/" target="_blank" class="w-10 h-10 liquid-glass rounded-full flex items-center justify-center hover:bg-blue-600">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="mailto:Info@mrkash.net" class="w-10 h-10 liquid-glass rounded-full flex items-center justify-center hover:bg-slate-300 hover:text-slate-900">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://wa.me/233240118846" target="_blank" class="w-10 h-10 liquid-glass rounded-full flex items-center justify-center hover:bg-green-500">
+            <i class="fab fa-whatsapp"></i>
+          </a>
         </div>
       </div>
     </div>
-    <div class="text-center border-t border-white/5 pt-6 sm:pt-8">
+    <div class="text-center border-t border-white/5 pt-8">
       <p class="text-[10px] font-bold tracking-[0.5em] text-slate-600 uppercase">© 2025 KASH OPTION. ALL RIGHTS RESERVED.</p>
     </div>
   </footer>
 
   <script>
-    (function() {
-      var h = document.getElementById('hamburger');
-      var nav = document.getElementById('mobileNav');
-      var overlay = document.getElementById('overlay');
-      function closeMenu() { nav.classList.remove('mobile-nav-open'); overlay.classList.remove('visible'); h.classList.remove('open'); }
-      h.addEventListener('click', function(e) { e.stopPropagation(); var open = nav.classList.toggle('mobile-nav-open'); overlay.classList.toggle('visible', open); h.classList.toggle('open', open); });
-      overlay.addEventListener('click', closeMenu);
-      nav.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
-      var obs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('active'); }); }, { threshold: 0.1 });
-      document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
-    })();
+    const hmb = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const overlay = document.getElementById('overlay');
+
+    function closeMenu() {
+      mobileNav.classList.remove('mobile-nav-open');
+      overlay.classList.remove('visible');
+      hmb.classList.remove('open');
+    }
+
+    hmb.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = mobileNav.classList.toggle('mobile-nav-open');
+      overlay.classList.toggle('visible', isOpen);
+      hmb.classList.toggle('open', isOpen);
+    });
+
+    overlay.addEventListener('click', () => {
+      closeMenu();
+    });
+
+    const mobileLinks = mobileNav.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenu();
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!mobileNav.contains(e.target) && !hmb.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const faqs = [
+      {q: "What does Kash Option do?", a: "Kash Option helps clients source original products from abroad and delivers them safely to Ghana. We handle purchasing, shipping, customs coordination, and local delivery."},
+      {q: "Which countries do you shop from?", a: "We source products from China, the USA, UK, Europe, and other approved international markets depending on product availability and client request."},
+      {q: "Are the products original?", a: "Yes. We only source original and verified products from trusted suppliers and platforms. Items are inspected before shipping to reduce risk."},
+      {q: "How long does shipping take?", a: "Air freight usually takes 3–5 working days after warehouse receipt. Sea freight takes approximately 6–8 weeks depending on the container schedule."},
+      {q: "Do I pay import duty separately?", a: "No hidden charges. Once shipping is quoted and paid, there are no additional import duties unless clearly stated before purchase."},
+      {q: "When do I make payment?", a: "Full payment must be made before items are purchased or shipped. Orders are processed strictly on a first-pay basis."},
+      {q: "Can I reserve an item?", a: "Items cannot be reserved without payment. If payment is not made, the item may be sold to another buyer."},
+      {q: "Do you offer wholesale services?", a: "Yes. We offer wholesale pricing for bulk orders and resellers. Contact us directly on WhatsApp for wholesale inquiries."},
+      {q: "How can I track my order?", a: "Once your item is shipped, tracking details will be shared. You can also use our Track Order page for live updates."},
+      {q: "What happens if there is a delay?", a: "Shipping timelines are estimates. Delays may occur due to airlines, customs, or peak seasons."},
+      {q: "How do I contact Kash Option?", a: "You can reach us anytime via WhatsApp using the chat button on this website or through our official WhatsApp group."}
+    ];
+
+    document.getElementById('faqList').innerHTML = faqs.map(f => `
+      <details class="liquid-glass rounded-3xl overflow-hidden group">
+        <summary class="p-6 md:p-8 cursor-pointer list-none flex justify-between items-center font-bold text-lg md:text-xl italic">
+          ${f.q}
+          <i class="fas fa-plus text-cyan-400 text-sm transition-transform group-open:rotate-45"></i>
+        </summary>
+        <div class="px-6 md:px-8 pb-6 md:pb-8 text-slate-400 text-sm md:text-base border-t border-white/5 pt-3 md:pt-4">
+          ${f.a}
+        </div>
+      </details>
+    `).join('');
+
+    const cities = ["Accra","Kumasi","Takoradi","Tamale","Tema","Cape Coast","Ho","Bolgatanga","Wa","Sunyani"];
+    const pkgs = ["Electronics","Fashion","Beauty","Home & Kitchen","Auto Parts","Health","Sports Gear","Baby Essentials","Office Supplies","Groceries"];
+    const ordersList = document.getElementById('ordersList');
+
+    function generateInfiniteFeed() {
+      let content = "";
+      const usedIDs = new Set();
+
+      for (let i = 0; i < 200; i++) {
+        let id;
+        do {
+          id = "KO-" + Math.floor(10000 + Math.random() * 90000);
+        } while (usedIDs.has(id));
+
+        usedIDs.add(id);
+
+        const city = cities[Math.floor(Math.random() * cities.length)];
+        const pkg = pkgs[Math.floor(Math.random() * pkgs.length)];
+        const phone = "+233******" + Math.floor(100 + Math.random() * 899);
+
+        content += `
+          <div class="flex flex-col gap-2 px-6 py-4 bg-slate-900/70 backdrop-blur-xl border border-white/10 rounded-2xl shadow-lg min-w-[260px] whitespace-normal">
+            <div class="flex items-center gap-2">
+              <div class="w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></div>
+              <span class="text-[11px] font-bold text-cyan-400 tracking-wide">${id}</span>
+            </div>
+            <div class="text-base font-bold text-white uppercase tracking-tight">
+              ${pkg} → ${city}
+            </div>
+            <div class="text-[12px] text-slate-400">
+              ${phone}
+            </div>
+          </div>
+        `;
+      }
+
+      ordersList.innerHTML = content;
+    }
+
+    const reviews = [
+      {text:"Kash Option made my dropshipping business seamless. Orders arrive faster than expected!",author:"Ama • Accra, Ghana"},
+      {text:"Reliable and transparent service. I trust them with all my imports.",author:"Kwame • Kumasi, Ghana"},
+      {text:"Excellent customer support and real-time tracking.",author:"Daniel • Tema, Ghana"},
+      {text:"Affordable and efficient. My fashion store depends on Kash Option.",author:"Fatima • Tamale, Ghana"},
+      {text:"Smooth customs clearance and no delays.",author:"John • Takoradi, Ghana"},
+      {text:"Best shipping rates I've found so far. Highly recommended!",author:"Sarah • Cape Coast, Ghana"},
+      {text:"My package arrived in perfect condition. Great service!",author:"Michael • Sunyani, Ghana"},
+      {text:"Professional team and very responsive on WhatsApp.",author:"Elizabeth • Ho, Ghana"},
+      {text:"Sourcing from China has never been easier.",author:"David • Koforidua, Ghana"},
+      {text:"They handled everything from purchase to delivery. Stress-free!",author:"Jennifer • Wa, Ghana"},
+      {text:"I love the door-to-door delivery service.",author:"Richard • Bolgatanga, Ghana"},
+      {text:"Trustworthy and fast. Will definitely use again.",author:"Grace • Accra, Ghana"}
+    ];
+
+    const tDisp = document.getElementById('testimonialDisplay');
+
+    function getRandomReviews(count) {
+      const shuffled = [...reviews].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, count);
+    }
+
+    function showReviews() {
+      tDisp.style.opacity = 0;
+      setTimeout(() => {
+        const group = getRandomReviews(3);
+        const row = document.createElement("div");
+        row.className = "grid md:grid-cols-3 gap-6 animate__animated animate__fadeInUp";
+        group.forEach(r => {
+          const initial = r.author.charAt(0);
+          row.innerHTML += `
+            <div class="liquid-glass rounded-3xl p-6 text-left flex flex-col h-full">
+              <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center font-bold text-white mb-4">
+                ${initial}
+              </div>
+              <p class="text-sm text-slate-200 italic mb-4">"${r.text}"</p>
+              <div class="mt-auto text-xs font-bold text-cyan-400 uppercase tracking-wide">${r.author}</div>
+            </div>
+          `;
+        });
+        tDisp.innerHTML = "";
+        tDisp.appendChild(row);
+        tDisp.style.opacity = 1;
+      }, 300);
+    }
+
+    generateInfiniteFeed();
+    showReviews();
+    setInterval(showReviews, 7000);
+
+    // WhatsApp inquiry submission
+    const inquiryForm = document.getElementById('inquiryForm');
+    if (inquiryForm) {
+      inquiryForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('inqName').value.trim();
+        const category = document.getElementById('inqCategory').value.trim();
+        const product = document.getElementById('inqProduct').value.trim();
+        const units = document.getElementById('inqUnits').value.trim();
+        const size = document.getElementById('inqSize').value.trim();
+        const budget = document.getElementById('inqBudget').value.trim();
+        const notes = document.getElementById('inqNotes').value.trim();
+        const agree = document.getElementById('inqAgree').checked;
+
+        if (!agree) return;
+
+        const lines = [
+          'Hello Kash Option!',
+          '',
+          'Name: ' + name,
+          'Category: ' + category,
+          'Product: ' + product,
+          'Units: ' + units,
+          'Size / Specs: ' + size,
+          budget ? ('Budget: ' + budget) : null,
+          notes ? ('Notes: ' + notes) : null,
+          '',
+          'Please send me the total quote (product + shipping to Ghana) and next steps.',
+          'I agree to the Policy & Terms: https://mrkash.net/policy-terms.html'
+        ].filter(Boolean);
+
+        const url = 'https://wa.me/233240118846?text=' + encodeURIComponent(lines.join('\n'));
+        window.open(url, '_blank');
+      });
+    }
   </script>
 </body>
 </html>
