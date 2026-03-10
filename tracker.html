@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <base href="https://mrkash.net/">
+  <link rel="icon" type="image/png" href="logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
+  <title>Track Order | Kash Option</title>
+  <meta name="description" content="Track your Kash Option order status. Enter your order ID to view updates and delivery progress to Ghana.">
+  <link rel="canonical" href="https://mrkash.net/tracker.html">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* Modern Mobile Menu Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #0a0a0f;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 15, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 1rem 5%;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-style: italic;
+      letter-spacing: -0.05em;
+      color: white;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: #22d3ee;
+    }
+
+    /* Desktop Menu */
+    .desktop-menu {
+      display: none;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .desktop-menu {
+        display: flex;
+      }
+    }
+
+    .desktop-menu a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    .desktop-menu a:hover,
+    .desktop-menu a.active {
+      color: #22d3ee;
+    }
+
+    .track-btn {
+      background: rgba(34, 211, 238, 0.1);
+      border: 1px solid rgba(34, 211, 238, 0.2);
+      border-radius: 9999px;
+      padding: 0.75rem 1.5rem;
+      color: #22d3ee !important;
+    }
+
+    .track-btn:hover {
+      background: #22d3ee;
+      color: white !important;
+    }
+
+    /* Hamburger Button */
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 48px;
+      height: 48px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    @media (min-width: 768px) {
+      .hamburger {
+        display: none;
+      }
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: white;
+      margin: 3px 0;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+      display: block;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Mobile Overlay */
+    .mobile-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 85%;
+      max-width: 340px;
+      height: 100vh;
+      background: #0f0f1a;
+      z-index: 999;
+      transition: left 0.3s ease;
+      overflow-y: auto;
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 80px 1.5rem 2rem;
+    }
+
+    .mobile-menu.active {
+      left: 0;
+    }
+
+    .mobile-menu a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 1rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .mobile-menu a i {
+      width: 24px;
+      font-size: 1.2rem;
+      color: #22d3ee;
+    }
+
+    .mobile-menu a:hover,
+    .mobile-menu a.active {
+      background: rgba(34, 211, 238, 0.1);
+      color: #22d3ee;
+    }
+
+    .mobile-menu .track-mobile {
+      margin-top: 1rem;
+      background: rgba(34, 211, 238, 0.15);
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      color: #22d3ee;
+      border-radius: 9999px;
+      justify-content: center;
+    }
+
+    .mobile-menu .track-mobile:hover {
+      background: #22d3ee;
+      color: white;
+    }
+
+    .mobile-menu .track-mobile:hover i {
+      color: white;
+    }
+
+    .mobile-menu .whatsapp-mobile {
+      margin-top: 0.5rem;
+      background: rgba(37, 211, 102, 0.15);
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      color: #25D366;
+      border-radius: 9999px;
+      justify-content: center;
+    }
+
+    .mobile-menu .whatsapp-mobile:hover {
+      background: #25D366;
+      color: white;
+    }
+
+    .mobile-menu .whatsapp-mobile:hover i {
+      color: white;
+    }
+
+    /* Main Content */
+    .main-content {
+      padding-top: 80px;
+    }
+
+    /* Original styles from tracker page */
+    .blob {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      background: rgba(34, 211, 238, 0.15);
+      border-radius: 50%;
+      filter: blur(60px);
+      z-index: -1;
+      animation: blobMove 20s infinite alternate;
+    }
+
+    @keyframes blobMove {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(100px, 100px) scale(1.2); }
+    }
+
+    .liquid-glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 24px;
+    }
+
+    .page-hero {
+      padding: 4rem 1rem 2rem;
+    }
+
+    .heading-accent {
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #22d3ee;
+      border-radius: 2px;
+      margin: 1rem auto;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 997;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background: #128C7E;
+    }
+
+    .track-step {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .track-step.is-active .font-black {
+      color: #22d3ee;
+    }
+
+    .track-step.is-current .font-black {
+      color: #22d3ee;
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .track-step.is-current .font-black::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #22d3ee;
+    }
+
+    .kbd {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+    }
+
+    #orderId {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    #orderId:focus {
+      outline: none;
+      border-color: #22d3ee;
+      background: rgba(34, 211, 238, 0.05);
+    }
+
+    #orderId::placeholder {
+      color: #4b5563;
+    }
+  </style>
+</head>
+<body>
+  <div class="blob" style="top: 0; right: 0;"></div>
+  <div class="blob" style="bottom: 0; left: 0; animation-delay: -7s;"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">KASH<span>OPTION</span></a>
+      
+      <!-- Desktop Menu -->
+      <div class="desktop-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="orders.html">Live Orders</a>
+        <a href="testimonials.html">Reviews</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html">Contact</a>
+        <a href="policy-terms.html">Policy</a>
+        <a href="tracker.html" class="track-btn active">Track Order</a>
+      </div>
+
+      <!-- Hamburger Button -->
+      <button class="hamburger" id="hamburgerBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">
+      <i class="fas fa-home"></i> Home
+    </a>
+    <a href="about.html">
+      <i class="fas fa-info-circle"></i> About
+    </a>
+    <a href="catalog.html">
+      <i class="fas fa-store"></i> Catalog
+    </a>
+    <a href="orders.html">
+      <i class="fas fa-truck"></i> Live Orders
+    </a>
+    <a href="testimonials.html">
+      <i class="fas fa-star"></i> Reviews
+    </a>
+    <a href="faqs.html">
+      <i class="fas fa-question-circle"></i> FAQs
+    </a>
+    <a href="contact.html">
+      <i class="fas fa-envelope"></i> Contact
+    </a>
+    <a href="policy-terms.html">
+      <i class="fas fa-file-contract"></i> Policy & Terms
+    </a>
+    <a href="tracker.html" class="track-mobile active">
+      <i class="fas fa-search-location"></i> Track Order
+    </a>
+    <a href="https://wa.me/233240118846" target="_blank" class="whatsapp-mobile">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <header class="page-hero text-center px-4 sm:px-6 relative">
+      <span class="heading-accent mx-auto"></span>
+      <p class="text-cyan-400 font-bold uppercase tracking-[0.35em] text-xs sm:text-sm mb-4">Tracking</p>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-black italic uppercase tracking-tight mb-4">Track Your Order</h1>
+      <p class="text-slate-400 max-w-2xl mx-auto text-base sm:text-lg">Enter your Kash Option order ID to view status updates. We share detailed delivery updates directly with you.</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-2 text-slate-500 text-sm">
+        <span class="kbd">Try demo IDs</span>
+        <button type="button" class="text-cyan-400 hover:underline" data-demo="KO-12001">KO-12001</button>
+        <button type="button" class="text-cyan-400 hover:underline" data-demo="KO-12002">KO-12002</button>
+        <button type="button" class="text-cyan-400 hover:underline" data-demo="KO-12003">KO-12003</button>
+      </div>
+    </header>
+
+    <section class="py-12 sm:py-20 px-4 sm:px-[5%] max-w-5xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-8 sm:gap-10 items-start">
+        <div class="reveal liquid-glass rounded-3xl p-6 sm:p-10">
+          <h2 class="text-xl sm:text-2xl font-black uppercase italic mb-2">Order Lookup</h2>
+          <p class="text-slate-400 text-sm mb-6">Your order ID is sent after payment (example: <span class="text-slate-200 font-bold">KO-12345</span>).</p>
+
+          <form id="trackForm" class="inquiry-form space-y-4">
+            <div>
+              <label for="orderId" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Order ID</label>
+              <input id="orderId" name="orderId" inputmode="text" autocapitalize="characters" autocomplete="off" placeholder="KO-12345" required>
+              <p class="mt-2 text-xs text-slate-500">Tip: paste directly from WhatsApp to avoid typos.</p>
+            </div>
+            <button type="submit" class="w-full py-4 rounded-xl bg-cyan-500 text-white font-bold text-lg flex items-center justify-center gap-2 hover:bg-cyan-600 transition-colors">
+              <i class="fas fa-magnifying-glass"></i> Track now
+            </button>
+          </form>
+
+          <div id="trackHelp" class="mt-6 text-sm text-slate-400">
+            Need help? Send your ID on WhatsApp and we'll assist.
+            <a id="waHelp" href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20please%20help%20me%20track%20my%20order%20ID%3A%20" target="_blank" class="text-cyan-400 hover:underline font-bold">Open WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="reveal liquid-glass rounded-3xl p-6 sm:p-10">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h2 class="text-xl sm:text-2xl font-black uppercase italic mb-1">Status</h2>
+              <p id="statusSubtitle" class="text-slate-400 text-sm">Enter an order ID to view updates.</p>
+            </div>
+            <div id="statusChip" class="hidden px-4 py-2 rounded-full border border-white/10 bg-white/5 text-xs font-black uppercase tracking-[0.25em] text-slate-200"></div>
+          </div>
+
+          <div id="trackDetails" class="mt-6 hidden">
+            <div class="grid gap-4 text-sm sm:grid-cols-2">
+              <div>
+                <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400 mb-1">Tracking ID</p>
+                <p id="tdId" class="font-semibold text-slate-100 break-all"></p>
+              </div>
+              <div>
+                <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400 mb-1">Location</p>
+                <p id="tdLocation" class="font-semibold text-slate-100"></p>
+              </div>
+              <div>
+                <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400 mb-1">Previous status</p>
+                <p id="tdPrev" class="font-semibold text-slate-100"></p>
+              </div>
+              <div>
+                <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400 mb-1">Current status</p>
+                <p id="tdCurr" class="font-semibold text-emerald-300"></p>
+              </div>
+              <div>
+                <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400 mb-1">ETA</p>
+                <p id="tdEta" class="font-semibold text-slate-100"></p>
+              </div>
+              <div>
+                <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400 mb-1">Consignee last checked</p>
+                <p id="tdLastChecked" class="font-semibold text-slate-100"></p>
+              </div>
+            </div>
+          </div>
+
+          <div id="statusBody" class="mt-8 space-y-5">
+            <div class="track-step">
+              <div class="font-black uppercase italic">Payment confirmed</div>
+              <div class="text-slate-400 text-sm">Order is created and queued for sourcing/purchase.</div>
+            </div>
+            <div class="track-step">
+              <div class="font-black uppercase italic">Purchased / received</div>
+              <div class="text-slate-400 text-sm">Supplier confirmation and warehouse receipt.</div>
+            </div>
+            <div class="track-step">
+              <div class="font-black uppercase italic">In transit</div>
+              <div class="text-slate-400 text-sm">Air cargo or sea freight moving toward Ghana.</div>
+            </div>
+            <div class="track-step">
+              <div class="font-black uppercase italic">Customs & clearance</div>
+              <div class="text-slate-400 text-sm">Documentation and clearance coordination.</div>
+            </div>
+            <div class="track-step">
+              <div class="font-black uppercase italic">Out for delivery</div>
+              <div class="text-slate-400 text-sm">Last-mile dispatch within Ghana.</div>
+            </div>
+            <div class="track-step">
+              <div class="font-black uppercase italic">Delivered</div>
+              <div class="text-slate-400 text-sm">Order delivered to the agreed location.</div>
+            </div>
+          </div>
+
+          <div id="statusNote" class="mt-8 text-xs text-slate-500">
+            Timelines are estimates and may vary due to carrier schedules, customs processing, peak seasons, and force majeure events.
+          </div>
+          <div id="trackError" class="mt-3 text-xs text-amber-300 hidden"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 sm:py-24 px-4 sm:px-[5%] max-w-5xl mx-auto">
+      <div class="reveal grid md:grid-cols-3 gap-6 sm:gap-8">
+        <div class="liquid-glass rounded-3xl p-6 sm:p-8">
+          <div class="text-cyan-300 text-xl mb-3"><i class="fas fa-shield-halved"></i></div>
+          <div class="font-black uppercase italic mb-2">Privacy-first</div>
+          <p class="text-slate-400 text-sm">We share sensitive delivery details directly with the order owner on WhatsApp to reduce fraud.</p>
+        </div>
+        <div class="liquid-glass rounded-3xl p-6 sm:p-8">
+          <div class="text-emerald-300 text-xl mb-3"><i class="fas fa-bell"></i></div>
+          <div class="font-black uppercase italic mb-2">Real updates</div>
+          <p class="text-slate-400 text-sm">We update your status at major handoff points: warehouse receipt, shipment departure, clearance, dispatch.</p>
+        </div>
+        <div class="liquid-glass rounded-3xl p-6 sm:p-8">
+          <div class="text-amber-300 text-xl mb-3"><i class="fas fa-headset"></i></div>
+          <div class="font-black uppercase italic mb-2">Priority support</div>
+          <p class="text-slate-400 text-sm">If anything looks unclear, send your order ID and we'll assist fast.</p>
+        </div>
+      </div>
+      <div class="mt-12 text-center reveal">
+        <a href="contact.html" class="inline-flex items-center gap-2 bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 px-8 py-4 rounded-full font-bold hover:bg-cyan-500 hover:text-white transition-all">Contact us for help</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="pt-16 sm:pt-24 pb-10 px-4 sm:px-[5%] border-t border-white/5">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10 sm:gap-12 mb-12 sm:mb-16">
+      <div class="md:col-span-2">
+        <h2 class="text-2xl sm:text-3xl font-black italic uppercase mb-4">KASH OPTION</h2>
+        <p class="text-slate-400 max-w-md text-sm sm:text-base">Verified sourcing and logistics for Ghana. Shop globally, pay locally.</p>
+      </div>
+      <div>
+        <h3 class="font-bold uppercase tracking-widest text-xs mb-4 text-cyan-400">Links</h3>
+        <ul class="space-y-3 text-sm text-slate-400">
+          <li><a href="catalog.html" class="hover:text-white">Catalog</a></li>
+          <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+          <li><a href="policy-terms.html" class="hover:text-white">Policy & Terms</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold uppercase tracking-widest text-xs mb-4 text-cyan-400">Connect</h3>
+        <div class="flex gap-3 sm:gap-4 flex-wrap">
+          <a href="https://www.instagram.com/kashoption1" target="_blank" class="w-10 h-10 liquid-glass rounded-full flex items-center justify-center hover:bg-pink-500 min-w-[44px] min-h-[44px]" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/1CrwnBxS8W/" target="_blank" class="w-10 h-10 liquid-glass rounded-full flex items-center justify-center hover:bg-blue-600 min-w-[44px] min-h-[44px]" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="mailto:Info@mrkash.net" class="w-10 h-10 liquid-glass rounded-full flex items-center justify-center hover:bg-slate-300 hover:text-slate-900 min-w-[44px] min-h-[44px]" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center border-t border-white/5 pt-6 sm:pt-8">
+      <p class="text-[10px] font-bold tracking-[0.5em] text-slate-600 uppercase">© 2025 KASH OPTION. ALL RIGHTS RESERVED.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/233240118846" target="_blank" rel="noopener" class="whatsapp-float">
+    <i class="fab fa-whatsapp text-2xl"></i>
+  </a>
+
+  <script>
+    (function() {
+      // Mobile Menu
+      const hamburger = document.getElementById('hamburgerBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileOverlay = document.getElementById('mobileOverlay');
+      
+      function toggleMenu() {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        mobileOverlay.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+      }
+      
+      function closeMenu() {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      
+      hamburger.addEventListener('click', toggleMenu);
+      mobileOverlay.addEventListener('click', closeMenu);
+      
+      document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      // Set active menu item
+      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.desktop-menu a, .mobile-menu a').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPath || (href === 'tracker.html' && currentPath === 'tracker.html')) {
+          link.classList.add('active');
+        }
+      });
+
+      // Tracker functionality
+      var demo = {
+        "KO-12001": { label: "Air cargo, In transit", stage: 2, note: "Departed origin hub. Next update after Ghana arrival scan." },
+        "KO-12002": { label: "Sea freight, Customs", stage: 3, note: "Clearance in progress. We'll update when released for dispatch." },
+        "KO-12003": { label: "Delivered", stage: 5, note: "Delivered successfully. Thank you for choosing Kash Option." }
+      };
+
+      var SHEET_ID = '1btTjXG_7gYVgI8y1Zdlht08IvRmSfWpiXZDSY-R0Ybc';
+      var SHEET_URL = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:json&headers=1';
+      var sheetCache = null;
+
+      var CITY_MAP = {
+        'guangzhou': 'Guangzhou, China',
+        'shenzhen': 'Shenzhen, China',
+        'shanghai': 'Shanghai, China',
+        'beijing': 'Beijing, China',
+        'hong kong': 'Hong Kong, China',
+        'new york': 'New York, USA',
+        'los angeles': 'Los Angeles, USA',
+        'chicago': 'Chicago, USA',
+        'houston': 'Houston, USA',
+        'london': 'London, UK',
+        'manchester': 'Manchester, UK',
+        'birmingham': 'Birmingham, UK',
+        'accra': 'Accra, Ghana',
+        'tema': 'Tema, Ghana',
+        'kumasi': 'Kumasi, Ghana',
+        'takoradi': 'Takoradi, Ghana',
+        'dubai': 'Dubai, UAE',
+        'abu dhabi': 'Abu Dhabi, UAE',
+        'istanbul': 'Istanbul, Turkey',
+        'doha': 'Doha, Qatar'
+      };
+
+      function normalizeId(v) {
+        return String(v || '').trim().toUpperCase().replace(/\s+/g, '');
+      }
+      function isValidId(v) {
+        return String(v || '').trim().length > 0;
+      }
+
+      var orderIdInput = document.getElementById('orderId');
+      var form = document.getElementById('trackForm');
+      var subtitle = document.getElementById('statusSubtitle');
+      var chip = document.getElementById('statusChip');
+      var statusBody = document.getElementById('statusBody');
+      var statusNote = document.getElementById('statusNote');
+      var trackDetails = document.getElementById('trackDetails');
+      var trackError = document.getElementById('trackError');
+      var tdId = document.getElementById('tdId');
+      var tdLocation = document.getElementById('tdLocation');
+      var tdPrev = document.getElementById('tdPrev');
+      var tdCurr = document.getElementById('tdCurr');
+      var tdEta = document.getElementById('tdEta');
+      var tdLastChecked = document.getElementById('tdLastChecked');
+      var waHelp = document.getElementById('waHelp');
+
+      function setTimeline(stageIndex, noteText) {
+        var steps = statusBody.querySelectorAll('.track-step');
+        steps.forEach(function(s, i) {
+          s.classList.remove('is-active', 'is-current', 'is-locked');
+          if (i < stageIndex) s.classList.add('is-active');
+          if (i === stageIndex) s.classList.add('is-current');
+        });
+        statusNote.textContent = noteText || statusNote.textContent;
+      }
+
+      function mapLocation(raw) {
+        if (!raw) return '';
+        var key = String(raw).trim().toLowerCase();
+        return CITY_MAP[key] || raw;
+      }
+
+      function formatDateTime(dt) {
+        try {
+          var d = dt instanceof Date ? dt : new Date(dt);
+          if (isNaN(d.getTime())) return '';
+          return d.toLocaleString(undefined, {
+            year: 'numeric',
+            month: 'short',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit'
+          });
+        } catch (e) {
+          return '';
+        }
+      }
+
+      function getLastChecked(id) {
+        var key = 'kash_track_lastChecked_' + id;
+        var v = localStorage.getItem(key);
+        return v ? formatDateTime(v) : '';
+      }
+
+      function setLastChecked(id) {
+        var key = 'kash_track_lastChecked_' + id;
+        var now = new Date().toISOString();
+        localStorage.setItem(key, now);
+        return formatDateTime(now);
+      }
+
+      function inferStageFromStatus(status) {
+        if (!status) return -1;
+        var s = status.toLowerCase();
+        if (s.indexOf('delivered') !== -1) return 5;
+        if (s.indexOf('out for delivery') !== -1 || s.indexOf('dispatch') !== -1) return 4;
+        if (s.indexOf('customs') !== -1 || s.indexOf('clearance') !== -1) return 3;
+        if (s.indexOf('in transit') !== -1 || s.indexOf('departed') !== -1 || s.indexOf('shipment') !== -1) return 2;
+        if (s.indexOf('purchased') !== -1 || s.indexOf('received') !== -1 || s.indexOf('warehouse') !== -1) return 1;
+        if (s.indexOf('payment') !== -1 || s.indexOf('created') !== -1) return 0;
+        return -1;
+      }
+
+      function parseSheet(jsonText) {
+        if (!jsonText) return null;
+        var start = jsonText.indexOf('{');
+        var end = jsonText.lastIndexOf('}');
+        if (start === -1 || end === -1) return null;
+        var data = JSON.parse(jsonText.slice(start, end + 1));
+        var cols = (data.table.cols || []).map(function(c) {
+          return (c.label || '').trim().toLowerCase().replace(/\s+/g, '');
+        });
+        function idx(name) {
+          return cols.indexOf(name.toLowerCase().replace(/\s+/g, ''));
+        }
+        var iTrack = idx('trackingid');
+        var iStatus = idx('status');
+        var iLoc = idx('location');
+        var iEta = idx('eta');
+        var iCosignee = idx('cosignee');
+
+        var rows = {};
+        (data.table.rows || []).forEach(function(r) {
+          function cell(i) { return (r.c[i] && (r.c[i].formattedValue || r.c[i].v)) || ''; }
+          var id = String(cell(iTrack) || '').trim().toUpperCase();
+          if (!id) return;
+          rows[id] = {
+            trackId: id,
+            previousStatus: '',
+            currentStatus: iStatus >= 0 ? cell(iStatus) : '',
+            location: iLoc >= 0 ? cell(iLoc) : '',
+            eta: iEta >= 0 ? cell(iEta) : '',
+            lastUpdated: iCosignee >= 0 ? cell(iCosignee) : ''
+          };
+        });
+        return rows;
+      }
+
+      function loadSheet() {
+        if (sheetCache) return Promise.resolve(sheetCache);
+        return fetch(SHEET_URL, { cache: 'no-store' })
+          .then(function(resp) { return resp.text(); })
+          .then(function(text) {
+            sheetCache = parseSheet(text) || {};
+            return sheetCache;
+          });
+      }
+
+      function getRecordFromCache(id) {
+        if (!sheetCache) return null;
+        return sheetCache[id] || null;
+      }
+
+      function renderRecord(record, nid) {
+        trackError.classList.add('hidden');
+        trackDetails.classList.remove('hidden');
+        tdId.textContent = record.trackId || nid;
+        tdLocation.textContent = mapLocation(record.location || '');
+        tdPrev.textContent = record.previousStatus || '—';
+        tdCurr.textContent = record.currentStatus || '—';
+        tdEta.textContent = record.eta || '—';
+
+        var cosigneeValue = record.lastUpdated || '';
+        var lastChecked = setLastChecked(nid);
+        var lastCheckedDisplay = lastChecked || getLastChecked(nid);
+        if (cosigneeValue) {
+          tdLastChecked.textContent = cosigneeValue + ' · Last checked: ' + (lastCheckedDisplay || 'just now');
+        } else {
+          tdLastChecked.textContent = lastCheckedDisplay ? ('Last checked: ' + lastCheckedDisplay) : 'Last checked: just now';
+        }
+
+        var stage = inferStageFromStatus(record.currentStatus || record.previousStatus || '');
+        if (record.currentStatus) {
+          chip.textContent = record.currentStatus;
+          chip.classList.remove('hidden');
+          subtitle.textContent = 'Showing live tracking for ' + nid + '.';
+        }
+        setTimeline(stage, statusNote.textContent);
+      }
+
+      function renderDemo(nid) {
+        var d = demo[nid];
+        trackDetails.classList.add('hidden');
+        trackError.classList.add('hidden');
+        chip.textContent = d.label;
+        chip.classList.remove('hidden');
+        subtitle.textContent = 'Showing demo tracking for ' + nid + '.';
+        setTimeline(d.stage, d.note);
+      }
+
+      function renderNotFound(nid) {
+        trackDetails.classList.add('hidden');
+        chip.classList.add('hidden');
+        // Fixed: Using double quotes to avoid apostrophe issue
+        subtitle.textContent = "We couldn't find this ID in the public tracker. For secure updates, message us on WhatsApp with your order ID.";
+        setTimeline(0, 'For privacy, detailed coordination is shared directly with the order owner on WhatsApp.');
+        trackError.textContent = 'No tracking record found for ' + nid + '.';
+        trackError.classList.remove('hidden');
+      }
+
+      async function render(id) {
+        var nid = normalizeId(id);
+        orderIdInput.value = nid;
+        waHelp.href = 'https://wa.me/233240118846?text=' + encodeURIComponent('Hello Kash Option, please help me track my order ID: ' + nid);
+
+        if (!isValidId(nid)) {
+          chip.classList.add('hidden');
+          subtitle.textContent = 'Please enter a valid ID in the format KO-12345.';
+          setTimeline(-1, 'Timelines are estimates and may vary due to carrier schedules, customs processing, peak seasons, and force majeure events.');
+          trackDetails.classList.add('hidden');
+          trackError.classList.add('hidden');
+          return;
+        }
+
+        subtitle.textContent = 'Looking up tracking information for ' + nid + '...';
+        chip.classList.add('hidden');
+        trackError.classList.add('hidden');
+
+        try {
+          var cache = await loadSheet();
+          var record = cache[nid];
+          if (record && (record.currentStatus || record.previousStatus || record.location || record.eta)) {
+            renderRecord(record, nid);
+            return;
+          }
+        } catch (e) {
+          // fall back to demo / generic message
+        }
+
+        if (demo[nid]) {
+          renderDemo(nid);
+          return;
+        }
+
+        renderNotFound(nid);
+      }
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        render(orderIdInput.value);
+      });
+
+      document.querySelectorAll('[data-demo]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          render(btn.getAttribute('data-demo'));
+          document.getElementById('statusBody').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      var params = new URLSearchParams(window.location.search);
+      var initial = params.get('id') || params.get('order') || '';
+      if (initial) render(initial);
+
+      // Intersection Observer
+      var obs = new IntersectionObserver(function(entries) { 
+        entries.forEach(function(e) { 
+          if (e.isIntersecting) e.target.classList.add('active'); 
+        }); 
+      }, { threshold: 0.1 });
+      
+      document.querySelectorAll('.reveal').forEach(function(el) { 
+        obs.observe(el); 
+      });
+    })();
+  </script>
+</body>
+</html>
