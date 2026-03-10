@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <base href="https://mrkash.net/">
+  <link rel="icon" type="image/png" href="logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
+  <title>Policy & Terms | Kash Option</title>
+  <meta name="description" content="Kash Option Policy & Terms: refunds, fitment responsibility, electrical warranty, and logistics.">
+  <link rel="canonical" href="https://mrkash.net/policy-terms.html">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* Modern Mobile Menu Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #0a0a0f;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 15, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 1rem 5%;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-style: italic;
+      letter-spacing: -0.05em;
+      color: white;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: #22d3ee;
+    }
+
+    /* Desktop Menu */
+    .desktop-menu {
+      display: none;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .desktop-menu {
+        display: flex;
+      }
+    }
+
+    .desktop-menu a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    .desktop-menu a:hover,
+    .desktop-menu a.active {
+      color: #22d3ee;
+    }
+
+    .track-btn {
+      background: rgba(34, 211, 238, 0.1);
+      border: 1px solid rgba(34, 211, 238, 0.2);
+      border-radius: 9999px;
+      padding: 0.75rem 1.5rem;
+      color: #22d3ee !important;
+    }
+
+    .track-btn:hover {
+      background: #22d3ee;
+      color: white !important;
+    }
+
+    /* Hamburger Button */
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 48px;
+      height: 48px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    @media (min-width: 768px) {
+      .hamburger {
+        display: none;
+      }
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: white;
+      margin: 3px 0;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+      display: block;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Mobile Overlay */
+    .mobile-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 85%;
+      max-width: 340px;
+      height: 100vh;
+      background: #0f0f1a;
+      z-index: 999;
+      transition: left 0.3s ease;
+      overflow-y: auto;
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 80px 1.5rem 2rem;
+    }
+
+    .mobile-menu.active {
+      left: 0;
+    }
+
+    .mobile-menu a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 1rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .mobile-menu a i {
+      width: 24px;
+      font-size: 1.2rem;
+      color: #22d3ee;
+    }
+
+    .mobile-menu a:hover,
+    .mobile-menu a.active {
+      background: rgba(34, 211, 238, 0.1);
+      color: #22d3ee;
+    }
+
+    .mobile-menu .track-mobile {
+      margin-top: 1rem;
+      background: rgba(34, 211, 238, 0.15);
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      color: #22d3ee;
+      border-radius: 9999px;
+      justify-content: center;
+    }
+
+    .mobile-menu .track-mobile:hover {
+      background: #22d3ee;
+      color: white;
+    }
+
+    .mobile-menu .track-mobile:hover i {
+      color: white;
+    }
+
+    /* Main Content */
+    .main-content {
+      padding-top: 80px;
+    }
+
+    /* Original policy page styles */
+    .blob {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      background: rgba(34, 211, 238, 0.15);
+      border-radius: 50%;
+      filter: blur(60px);
+      z-index: -1;
+      animation: blobMove 20s infinite alternate;
+    }
+
+    @keyframes blobMove {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(100px, 100px) scale(1.2); }
+    }
+
+    .liquid-glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 24px;
+    }
+
+    .page-hero {
+      padding: 4rem 1rem 2rem;
+    }
+
+    .heading-accent {
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #22d3ee;
+      border-radius: 2px;
+      margin: 1rem auto;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 997;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background: #128C7E;
+    }
+
+    .policy-toc a, .policy-toc-link { 
+      font-weight: 900; 
+      font-size: 1.125rem; 
+      color: #f8fafc; 
+      text-decoration: none; 
+      display: inline-block; 
+      -webkit-font-smoothing: antialiased; 
+    }
+    .policy-toc a:hover, .policy-toc-link:hover { 
+      color: rgb(34 211 238); 
+    }
+    .policy-bokeh { 
+      position: relative; 
+      overflow: hidden; 
+      border-radius: 1.5rem; 
+      min-height: 240px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      padding: 2rem; 
+      background: rgba(0,0,0,0.2); 
+    }
+    .policy-bokeh::before { 
+      content: ''; 
+      position: absolute; 
+      inset: -20%; 
+      background: radial-gradient(circle 40% at 15% 20%, rgba(0,210,255,0.35) 0%, transparent 45%), 
+                  radial-gradient(circle 35% at 85% 25%, rgba(124,58,237,0.3) 0%, transparent 45%), 
+                  radial-gradient(circle 30% at 50% 85%, rgba(34,197,94,0.2) 0%, transparent 45%), 
+                  radial-gradient(circle 25% at 75% 70%, rgba(0,210,255,0.2) 0%, transparent 40%); 
+      filter: blur(40px); 
+      pointer-events: none; 
+      opacity: 0.9; 
+    }
+    .policy-bokeh .policy-bokeh-img { 
+      position: relative; 
+      z-index: 1; 
+      width: 100%; 
+      max-width: 640px; 
+      border-radius: 1rem; 
+      overflow: hidden; 
+      border: 1px solid rgba(255,255,255,0.15); 
+      box-shadow: 0 24px 60px rgba(0,0,0,0.45); 
+    }
+    .policy-bokeh .policy-bokeh-img img { 
+      width: 100%; 
+      height: auto; 
+      display: block; 
+      object-fit: cover; 
+      max-height: 280px; 
+    }
+
+    details > summary {
+      list-style: none;
+    }
+
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="blob" style="top: 0; right: 0;"></div>
+  <div class="blob" style="bottom: 0; left: 0; animation-delay: -8s;"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">KASH<span>OPTION</span></a>
+      
+      <!-- Desktop Menu -->
+      <div class="desktop-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="orders.html">Live Orders</a>
+        <a href="testimonials.html">Reviews</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html">Contact</a>
+        <a href="policy-terms.html" class="active">Policy</a>
+        <a href="tracker.html" class="track-btn">Track Order</a>
+      </div>
+
+      <!-- Hamburger Button -->
+      <button class="hamburger" id="hamburgerBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">
+      <i class="fas fa-home"></i> Home
+    </a>
+    <a href="about.html">
+      <i class="fas fa-info-circle"></i> About
+    </a>
+    <a href="catalog.html">
+      <i class="fas fa-store"></i> Catalog
+    </a>
+    <a href="orders.html">
+      <i class="fas fa-truck"></i> Live Orders
+    </a>
+    <a href="testimonials.html">
+      <i class="fas fa-star"></i> Reviews
+    </a>
+    <a href="faqs.html">
+      <i class="fas fa-question-circle"></i> FAQs
+    </a>
+    <a href="contact.html">
+      <i class="fas fa-envelope"></i> Contact
+    </a>
+    <a href="policy-terms.html" class="active">
+      <i class="fas fa-file-contract"></i> Policy & Terms
+    </a>
+    <a href="tracker.html" class="track-mobile">
+      <i class="fas fa-search-location"></i> Track Order
+    </a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <header class="page-hero text-center px-4 sm:px-6 relative">
+      <span class="heading-accent mx-auto"></span>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-black italic uppercase tracking-tight mb-4">Policy & Terms</h1>
+      <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">Please read these terms carefully. By using Kash Option for sourcing and shipping, you agree to the following.</p>
+      <p class="text-slate-500 text-xs mt-3">Last updated: 9 March 2026</p>
+    </header>
+
+    <section class="py-12 sm:py-20 px-4 sm:px-[5%] max-w-4xl mx-auto">
+      <nav class="reveal liquid-glass rounded-3xl p-6 sm:p-8 mb-10" aria-label="Policy sections">
+        <h2 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-4">On this page</h2>
+        <ol class="policy-toc space-y-3 text-slate-300">
+          <li><a href="#what-we-do" class="policy-toc-link">What We Do</a></li>
+          <li><a href="#how-order-works" class="policy-toc-link">How Your Order Works</a></li>
+          <li><a href="#inventory" class="policy-toc-link">Inventory and Sourcing</a></li>
+          <li><a href="#quotes" class="policy-toc-link">1) Quotes & pricing</a></li>
+          <li><a href="#payments" class="policy-toc-link">2) Payments & cancellations</a></li>
+          <li><a href="#sourcing" class="policy-toc-link">3) Sourcing & product condition</a></li>
+          <li><a href="#prohibited" class="policy-toc-link">4) Prohibited items</a></li>
+          <li><a href="#shipping" class="policy-toc-link">5) Shipping & delivery</a></li>
+          <li><a href="#customs" class="policy-toc-link">6) Customs & duties</a></li>
+          <li><a href="#damage" class="policy-toc-link">7) Damage, loss & liability</a></li>
+          <li><a href="#returns" class="policy-toc-link">8) Returns & refunds</a></li>
+          <li><a href="#disputes" class="policy-toc-link">9) Disputes</a></li>
+          <li><a href="#chargebacks" class="policy-toc-link">10) Chargebacks & fraud</a></li>
+          <li><a href="#abuse" class="policy-toc-link">11) Acceptable use</a></li>
+          <li><a href="#warranty" class="policy-toc-link">12) Warranty disclaimer</a></li>
+          <li><a href="#governing" class="policy-toc-link">13) Governing law</a></li>
+          <li><a href="#agreement" class="policy-toc-link">14) Entire agreement</a></li>
+        </ol>
+      </nav>
+
+      <div class="reveal liquid-glass rounded-3xl p-8 sm:p-10 mb-10 policy-bokeh">
+        <div class="policy-bokeh-img">
+          <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=1200&q=80" alt="Trusted logistics and global shipping" loading="lazy">
+        </div>
+      </div>
+
+      <div id="what-we-do" class="reveal liquid-glass rounded-3xl p-6 sm:p-10 mb-10 scroll-mt-24">
+        <h2 class="text-lg sm:text-xl font-black uppercase italic mb-3 text-cyan-300">What We Do</h2>
+        <p class="text-slate-300 leading-relaxed">Kash Option is a <strong class="text-slate-200">sourcing and logistics service</strong> for customers in Ghana. We help you buy products from overseas (China, USA, UK, Europe), ship them by air or sea, clear customs, and deliver to your address. We coordinate the purchase when you ask us to, or we can ship items you have already bought from your own supplier. We are <strong class="text-slate-200">not the manufacturer</strong> of any products and do not provide a manufacturer warranty unless we say so in writing.</p>
+        <p class="text-slate-400 text-sm mt-4">If any part of these terms conflicts with the law where you live, that part will apply only to the fullest extent the law allows.</p>
+      </div>
+
+      <div id="how-order-works" class="reveal liquid-glass rounded-3xl p-6 sm:p-10 mb-10 scroll-mt-24">
+        <h2 class="text-lg sm:text-xl font-black uppercase italic mb-3 text-cyan-300">How Your Order Works</h2>
+        <p class="text-slate-300 leading-relaxed">You send us an inquiry (product, quantity, specs). We give you a quote that includes product cost and shipping to Ghana. When you accept and pay in full, we place the order with the supplier and arrange shipping. You receive an order ID and tracking when your item is on the way. Delivery is door-to-door in Ghana where we offer it. Full payment is required before we buy or ship; we do not hold or reserve items without payment.</p>
+      </div>
+
+      <div id="inventory" class="reveal liquid-glass rounded-3xl p-6 sm:p-10 mb-10 scroll-mt-24">
+        <h2 class="text-lg sm:text-xl font-black uppercase italic mb-3 text-cyan-300">Inventory and Sourcing From Abroad</h2>
+        <p class="text-slate-300 leading-relaxed">We do not keep a physical store or warehouse of products in Ghana. Everything we source is purchased from suppliers and platforms abroad and shipped to you. Prices and availability depend on those suppliers, exchange rates, and shipping options. We work with trusted suppliers and do basic checks where we can (packaging, visible condition, quantity), but we cannot guarantee every detail of a product that we did not manufacture. You are responsible for confirming the exact specs you need (model, size, color, compatibility, voltage, region) before paying.</p>
+      </div>
+
+      <div class="space-y-4">
+        <details id="quotes" class="reveal policy-section liquid-glass rounded-3xl overflow-hidden group scroll-mt-24">
+          <summary class="p-6 sm:p-7 cursor-pointer list-none flex justify-between items-center font-black text-base sm:text-lg italic gap-4">
+            <span class="min-w-0">1) Quotes & pricing</span>
+            <i class="fas fa-plus text-cyan-400 text-sm shrink-0 transition-transform group-open:rotate-45"></i>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-300 text-sm sm:text-base border-t border-white/5 pt-4 space-y-3">
+            <p>Quotes are based on supplier price, availability, exchange rates, platform fees (where applicable), shipping method (air/sea), and handling.</p>
+            <ul class="list-disc pl-5 text-slate-400 space-y-2">
+              <li>Quotes may change if supplier pricing, stock, exchange rate, taxes, or carrier rates change before payment is confirmed.</li>
+              <li>Unless stated otherwise, quotes are time-sensitive and valid for a limited period.</li>
+              <li>Any platform or payment processing charges may be included in your quote.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details id="payments" class="reveal policy-section liquid-glass rounded-3xl overflow-hidden group scroll-mt-24">
+          <summary class="p-6 sm:p-7 cursor-pointer list-none flex justify-between items-center font-black text-base sm:text-lg italic gap-4">
+            <span class="min-w-0">2) Payments, confirmation & cancellations</span>
+            <i class="fas fa-plus text-cyan-400 text-sm shrink-0 transition-transform group-open:rotate-45"></i>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-300 text-sm sm:text-base border-t border-white/5 pt-4 space-y-3">
+            <p>Orders are processed on a <strong class="text-slate-200">first-pay basis</strong>. Full payment is typically required before we purchase or ship items, unless we agree in writing.</p>
+            <ul class="list-disc pl-5 text-slate-400 space-y-2">
+              <li><strong class="text-slate-200">No reserve without payment.</strong> We do not hold, reserve, or set aside items until full payment (or agreed deposit) is received. Quotes do not guarantee availability.</li>
+              <li>Payment confirms your approval of the quote and these Policy & Terms.</li>
+              <li>Cancellation after purchase/shipment may not be possible. If possible, any supplier/platform cancellation penalties and fees will be deducted.</li>
+              <li>We do not provide cash refunds unless required by law. Where applicable, we may offer store credit at our discretion.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details id="sourcing" class="reveal policy-section liquid-glass rounded-3xl overflow-hidden group scroll-mt-24">
+          <summary class="p-6 sm:p-7 cursor-pointer list-none flex justify-between items-center font-black text-base sm:text-lg italic gap-4">
+            <span class="min-w-0">3) Sourcing & product condition</span>
+            <i class="fas fa-plus text-cyan-400 text-sm shrink-0 transition-transform group-open:rotate-45"></i>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-300 text-sm sm:text-base border-t border-white/5 pt-4 space-y-3">
+            <p>We aim to source from trusted suppliers and platforms and may perform basic checks (e.g., packaging, visible condition, quantity) where practical.</p>
+            <ul class="list-disc pl-5 text-slate-400 space-y-2">
+              <li>Some products have variations (model year, region lock, plug type, compatibility). You are responsible for confirming the exact specifications you need.</li>
+              <li>For auto parts, the customer is responsible for correct diagnosis and fitment. Installed/used parts cannot be returned.</li>
+              <li>For electronics, you are responsible for correct voltage, adapters, and safe use. Damage due to misuse, wrong voltage, power surge, or vehicle electrical issues is not covered.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details id="prohibited" class="reveal policy-section liquid-glass rounded-3xl overflow-hidden group scroll-mt-24">
+          <summary class="p-6 sm:p-7 cursor-pointer list-none flex justify-between items-center font-black text-base sm:text-lg italic gap-4">
+            <span class="min-w-0">4) Prohibited items</span>
+            <i class="fas fa-plus text-cyan-400 text-sm shrink-0 transition-transform group-open:rotate-45"></i>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-300 text-sm sm:text-base border-t border-white/5 pt-4 space-y-3">
+            <p>We reserve the right to refuse any item for safety, legal, customs, or carrier reasons.</p>
+            <ul class="list-disc pl-5 text-slate-400 space-y-2">
+              <li>Illegal, counterfeit, or regulated goods are strictly prohibited.</li>
+              <li>Hazardous items (including certain batteries, chemicals, aerosols) may be restricted and require special handling or may be refused.</li>
+              <li>You confirm that items you request are lawful to purchase, ship, import, and possess in Ghana.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details id="shipping" class="reveal policy-section liquid-glass rounded-3xl overflow-hidden group scroll-mt-24">
+          <summary class="p-6 sm:p-7 cursor-pointer list-none flex justify-between items-center font-black text-base sm:text-lg italic gap-4">
+            <span class="min-w-0">5) Shipping & delivery</span>
+            <i class="fas fa-plus text-cyan-400 text-sm shrink-0 transition-transform group-open:rotate-45"></i>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-300 text-sm sm:text-base border-t border-white/5 pt-4 space-y-3">
+            <p>Shipping timelines are estimates and depend on supplier handling, carrier schedules, customs, peak seasons, and external events.</p>
+            <ul class="list-disc pl-5 text-slate-400 space-y-2">
+              <li>Air freight typically takes 3 to 5 working days after warehouse receipt. Sea freight typically takes 6 to 8 weeks.</li>
+              <li>Delays caused by customs, carriers, inspections, weather, strikes, or force majeure are outside our control.</li>
+              <li>If delivery fails due to incorrect address, unreachable recipient, or refusal, re-delivery or storage fees may apply.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details id="customs" class="reveal policy-section liquid-glass rounded-3xl overflow-hidden group scroll-mt-24">
+          <summary class="p-6 sm:p-7 cursor-pointer list-none flex justify-between items-center font-black text-base sm:text-lg italic gap-4">
+            <span class="min-w-0">6) Customs & duties</span>
+            <i class="fas fa-plus text-cyan-400 text-sm shrink-0 transition-transform group-open:rotate-45"></i>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-300 text-sm sm:text-base border-t border-white/5 pt-4 space-y-3">
+            <p>We coordinate customs clearance as part of our service where applicable, but customs authorities may inspect, revalue, delay, or seize shipments.</p>
+            <ul class="list-disc pl-5 text-slate-400 space-y-2">
+              <li>You agree to provide accurate item descriptions and supporting documents if requested.</li>
+              <li>If duties/taxes arise outside the agreed quote due to misdeclaration, prohibited items, or customs revaluation, you are responsible for those charges.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details id="damage" class="reveal policy-section liquid-glass rounded-3xl overflow-hidden group scroll-mt-24">
+          <summary class="p-6 sm:p-7 cursor-pointer list-none flex justify-between items-center font-black text-base sm:text-lg italic gap-4">
+            <span class="min-w-0">7) Damage, loss & liability</span>
+            <i class="fas fa-plus text-cyan-400 text-sm shrink-0 transition-transform group-open:rotate-45"></i>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-300 text-sm sm:text-base border-t border-white/5 pt-4 space-y-3">
+            <p>We take care in handling; however, shipping involves third parties and risk.</p>
+            <ul class="list-disc pl-5 text-slate-400 space-y-2">
+              <li>Any visible damage or missing items must be reported within <strong class="text-slate-200">48 hours</strong> of delivery with clear photos/video and packaging evidence.</li>
+              <li>Where insurance is available, we may offer it on request; uninsured shipments may have limited compensation.</li>
+              <li>To the maximum extent permitted by law, our total liability for any claim is limited to the amount you paid for the affected shipment/service.</li>
+              <li>We are not liable for indirect losses (lost profit, business interruption, or consequential damages).</li>
+            </ul>
+          </div>
+        </details>
+
+        <details id="returns" class="reveal policy-section liquid-glass rounded-3xl overflow-hidden group scroll-mt-24">
+          <summary class="p-6 sm:p-7 cursor-pointer list-none flex justify-between items-center font-black text-base sm:text-lg italic gap-4">
+            <span class="min-w-0">8) Returns & refunds</span>
+            <i class="fas fa-plus text-cyan-400 text-sm shrink-0 transition-transform group-open:rotate-45"></i>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-300 text-sm sm:text-base border-t border-white/5 pt-4 space-y-3">
+            <ul class="list-disc pl-5 text-slate-400 space-y-2">
+              <li><strong class="text-slate-200">No cash refunds.</strong> All sales are final unless required by law.</li>
+              <li>Exchanges may be considered only for verified factory defects reported within <strong class="text-slate-200">48 hours</strong> of delivery.</li>
+              <li>Items must be unused, in original condition, with original packaging and accessories.</li>
+              <li>Return shipping costs are the buyer's responsibility unless we provide a prepaid label in writing.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details id="disputes" class="reveal policy-section liquid-glass rounded-3xl overflow-hidden group scroll-mt-24">
+          <summary class="p-6 sm:p-7 cursor-pointer list-none flex justify-between items-center font-black text-base sm:text-lg italic gap-4">
+            <span class="min-w-0">9) Disputes</span>
+            <i class="fas fa-plus text-cyan-400 text-sm shrink-0 transition-transform group-open:rotate-45"></i>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-300 text-sm sm:text-base border-t border-white/5 pt-4 space-y-3">
+            <p>We want to resolve any issue fairly. If something goes wrong with your order, contact us as soon as possible with your order ID, what happened, and (if relevant) photos or proof. We will look into it and respond. If we cannot resolve the matter, the laws of Ghana will apply to the extent they govern our relationship.</p>
+          </div>
+        </details>
+
+        <details id="chargebacks" class="reveal policy-section liquid-glass rounded-3xl overflow-hidden group scroll-mt-24">
+          <summary class="p-6 sm:p-7 cursor-pointer list-none flex justify-between items-center font-black text-base sm:text-lg italic gap-4">
+            <span class="min-w-0">10) Chargebacks & fraud</span>
+            <i class="fas fa-plus text-cyan-400 text-sm shrink-0 transition-transform group-open:rotate-45"></i>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-300 text-sm sm:text-base border-t border-white/5 pt-4 space-y-3">
+            <p>Fraud and abuse prevention is taken seriously. We reserve the right to refuse or limit service to protect the business and other customers.</p>
+            <ul class="list-disc pl-5 text-slate-400 space-y-2">
+              <li><strong class="text-slate-200">Chargebacks:</strong> Disputing a payment (chargeback) with your bank or payment provider without first contacting us to resolve the issue may result in permanent account restriction, blacklisting, and pursuit of recovery for the order amount plus chargeback fees, dispute costs, and legal expenses where permitted by law.</li>
+              <li>We may request verification for high-value or high-risk orders (e.g. ID, proof of address, proof of payment). Refusal to provide reasonable verification may result in order cancellation.</li>
+              <li>Use of stolen payment methods, identity fraud, or false information is prohibited and will be reported to the relevant authorities.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details id="abuse" class="reveal policy-section liquid-glass rounded-3xl overflow-hidden group scroll-mt-24">
+          <summary class="p-6 sm:p-7 cursor-pointer list-none flex justify-between items-center font-black text-base sm:text-lg italic gap-4">
+            <span class="min-w-0">11) Acceptable use</span>
+            <i class="fas fa-plus text-cyan-400 text-sm shrink-0 transition-transform group-open:rotate-45"></i>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-300 text-sm sm:text-base border-t border-white/5 pt-4 space-y-3">
+            <p>We expect customers to use our service in good faith. The following are not permitted and may result in refusal of service, suspension, or termination without refund.</p>
+            <ul class="list-disc pl-5 text-slate-400 space-y-2">
+              <li><strong class="text-slate-200">Abuse of returns or claims:</strong> Submitting false damage claims, claiming non-receipt when the item was delivered, returning used or altered items as "defective," or repeatedly opening disputes or chargebacks after receiving the goods.</li>
+              <li><strong class="text-slate-200">Harassment:</strong> Threatening, abusive, or excessively aggressive communication toward our team or partners.</li>
+              <li><strong class="text-slate-200">Circumvention:</strong> Using multiple identities, accounts, or contact details to evade restrictions or to obtain more favourable terms than offered.</li>
+              <li><strong class="text-slate-200">Refusal of delivery:</strong> Intentionally refusing delivery to trigger a dispute or refund without a valid reason (e.g. wrong item, genuine damage) may be treated as abuse.</li>
+              <li>We may limit the number of inquiries, orders, or returns per customer or per contact (email/phone) to prevent abuse. We are not obliged to disclose internal thresholds.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details id="warranty" class="reveal policy-section liquid-glass rounded-3xl overflow-hidden group scroll-mt-24">
+          <summary class="p-6 sm:p-7 cursor-pointer list-none flex justify-between items-center font-black text-base sm:text-lg italic gap-4">
+            <span class="min-w-0">12) Warranty disclaimer</span>
+            <i class="fas fa-plus text-cyan-400 text-sm shrink-0 transition-transform group-open:rotate-45"></i>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-300 text-sm sm:text-base border-t border-white/5 pt-4 space-y-3">
+            <p>To the fullest extent permitted by applicable law:</p>
+            <ul class="list-disc pl-5 text-slate-400 space-y-2">
+              <li>We are a <strong class="text-slate-200">sourcing and logistics service</strong>, not the manufacturer or seller of the products. We do not provide any manufacturer or merchant warranty unless we expressly state so in writing for a specific item.</li>
+              <li>Goods are supplied on an <strong class="text-slate-200">"as is"</strong> basis subject to any express commitments we make in your quote or order confirmation. We do not warrant that products will meet any particular purpose, specification, or expectation beyond what we have agreed in writing.</li>
+              <li>Any manufacturer warranty (if applicable) is between you and the manufacturer; we are not responsible for honouring or administering it unless we explicitly agree otherwise.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details id="governing" class="reveal policy-section liquid-glass rounded-3xl overflow-hidden group scroll-mt-24">
+          <summary class="p-6 sm:p-7 cursor-pointer list-none flex justify-between items-center font-black text-base sm:text-lg italic gap-4">
+            <span class="min-w-0">13) Governing law</span>
+            <i class="fas fa-plus text-cyan-400 text-sm shrink-0 transition-transform group-open:rotate-45"></i>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-300 text-sm sm:text-base border-t border-white/5 pt-4 space-y-3">
+            <p>These Policy & Terms are governed by the laws of the Republic of Ghana. Any dispute arising from or relating to our services or these terms shall be subject to the exclusive jurisdiction of the courts of Ghana, unless otherwise required by mandatory law in your country of residence.</p>
+          </div>
+        </details>
+
+        <details id="agreement" class="reveal policy-section liquid-glass rounded-3xl overflow-hidden group scroll-mt-24">
+          <summary class="p-6 sm:p-7 cursor-pointer list-none flex justify-between items-center font-black text-base sm:text-lg italic gap-4">
+            <span class="min-w-0">14) Entire agreement</span>
+            <i class="fas fa-plus text-cyan-400 text-sm shrink-0 transition-transform group-open:rotate-45"></i>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-300 text-sm sm:text-base border-t border-white/5 pt-4 space-y-3">
+            <p>These Policy & Terms, together with any written quote or order confirmation we provide, constitute the entire agreement between you and Kash Option regarding our sourcing and shipping services.</p>
+            <ul class="list-disc pl-5 text-slate-400 space-y-2">
+              <li>We may update these terms from time to time. The "Last updated" date at the top of this page will be revised when changes are made. Continued use of our services after the updated date constitutes acceptance of the revised terms.</li>
+              <li>For existing orders, the terms in effect at the time of your payment apply to that order, unless a change is required by law.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div class="mt-12 reveal liquid-glass rounded-3xl p-6 sm:p-10 text-center">
+        <p class="text-slate-300 text-sm sm:text-base">By placing an order or using our services, you acknowledge that you have read and agree to these Policy & Terms.</p>
+        <div class="mt-6 flex flex-wrap justify-center gap-3">
+          <a href="contact.html" class="inline-flex items-center gap-2 bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 px-7 py-3.5 rounded-full font-bold hover:bg-cyan-500 hover:text-white transition-all">
+            Contact us
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="pt-16 sm:pt-24 pb-10 px-4 sm:px-[5%] border-t border-white/5">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10 sm:gap-12 mb-12 sm:mb-16">
+      <div class="md:col-span-2">
+        <h2 class="text-2xl sm:text-3xl font-black italic uppercase mb-4">KASH OPTION</h2>
+        <p class="text-slate-400 max-w-md text-sm sm:text-base">Bridging the gap between global markets and local consumers. Safe, transparent international trade for Ghana.</p>
+      </div>
+      <div>
+        <h4 class="font-bold uppercase tracking-widest text-xs mb-4 text-cyan-400">Links</h4>
+        <ul class="space-y-3 text-sm text-slate-400">
+          <li><a href="tracker.html" class="hover:text-white">Track Order</a></li>
+          <li><a href="faqs.html" class="hover:text-white">FAQs</a></li>
+          <li><a href="catalog.html" class="hover:text-white">Catalog</a></li>
+          <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+          <li><a href="policy-terms.html" class="hover:text-white">Policy & Terms</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold uppercase tracking-widest text-xs mb-4 text-cyan-400">Connect</h4>
+        <div class="flex gap-3 sm:gap-4 flex-wrap">
+          <a href="https://www.instagram.com/kashoption1" target="_blank" class="w-10 h-10 liquid-glass rounded-full flex items-center justify-center hover:bg-pink-500 min-w-[44px] min-h-[44px]" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/1CrwnBxS8W/" target="_blank" class="w-10 h-10 liquid-glass rounded-full flex items-center justify-center hover:bg-blue-600 min-w-[44px] min-h-[44px]" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="mailto:Info@mrkash.net" class="w-10 h-10 liquid-glass rounded-full flex items-center justify-center hover:bg-slate-300 hover:text-slate-900 min-w-[44px] min-h-[44px]" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center border-t border-white/5 pt-6 sm:pt-8">
+      <p class="text-[10px] font-bold tracking-[0.5em] text-slate-600 uppercase">© 2025 KASH OPTION. ALL RIGHTS RESERVED.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/233240118846" target="_blank" rel="noopener" class="whatsapp-float">
+    <i class="fab fa-whatsapp text-2xl"></i>
+  </a>
+
+  <script>
+    (function() {
+      // Mobile Menu
+      const hamburger = document.getElementById('hamburgerBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileOverlay = document.getElementById('mobileOverlay');
+      
+      function toggleMenu() {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        mobileOverlay.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+      }
+      
+      function closeMenu() {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      
+      hamburger.addEventListener('click', toggleMenu);
+      mobileOverlay.addEventListener('click', closeMenu);
+      
+      document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      // Smooth scroll for policy TOC
+      document.querySelectorAll('.policy-toc a[href^="#"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          var id = this.getAttribute('href').slice(1);
+          if (!id) return;
+          var el = document.getElementById(id);
+          if (el) { 
+            e.preventDefault(); 
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' }); 
+          }
+        });
+      });
+
+      // Intersection Observer
+      var obs = new IntersectionObserver(function(entries) { 
+        entries.forEach(function(e) { 
+          if (e.isIntersecting) e.target.classList.add('active'); 
+        }); 
+      }, { threshold: 0.1 });
+      
+      document.querySelectorAll('.reveal').forEach(function(el) { 
+        obs.observe(el); 
+      });
+
+      // Set active menu item
+      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.desktop-menu a, .mobile-menu a').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPath) {
+          link.classList.add('active');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
