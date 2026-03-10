@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <base href="https://mrkash.net/">
+  <link rel="icon" type="image/png" href="logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
+  <title>About Us | Kash Option - Global Sourcing & Logistics to Ghana</title>
+  <meta name="description" content="Learn about Kash Option: Your trusted partner for sourcing and shipping products from China, USA, UK, and Europe to Ghana. Verified, reliable, and efficient.">
+  <link rel="canonical" href="https://mrkash.net/about.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mrkash.net/about.html">
+  <meta property="og:title" content="About Us | Kash Option - Global Sourcing & Logistics to Ghana">
+  <meta property="og:description" content="Learn about Kash Option: Your trusted partner for sourcing and shipping products from China, USA, UK, and Europe to Ghana. Verified, reliable, and efficient.">
+  <meta property="og:image" content="https://mrkash.net/logo.png">
+  <meta property="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="https://mrkash.net/logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* Modern Mobile Menu Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #0a0a0f;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Navbar Container */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 15, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 1rem 5%;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-style: italic;
+      letter-spacing: -0.05em;
+      color: white;
+      text-decoration: none;
+      z-index: 1001;
+    }
+
+    .logo span {
+      color: #22d3ee;
+    }
+
+    /* Desktop Menu */
+    .desktop-menu {
+      display: none;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .desktop-menu {
+        display: flex;
+      }
+    }
+
+    .desktop-menu a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    .desktop-menu a:hover,
+    .desktop-menu a.active {
+      color: #22d3ee;
+    }
+
+    .track-btn {
+      background: rgba(34, 211, 238, 0.1);
+      border: 1px solid rgba(34, 211, 238, 0.2);
+      border-radius: 9999px;
+      padding: 0.75rem 1.5rem;
+      color: #22d3ee !important;
+      transition: all 0.3s ease;
+    }
+
+    .track-btn:hover {
+      background: #22d3ee;
+      color: white !important;
+    }
+
+    /* Hamburger Button */
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 48px;
+      height: 48px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+      position: relative;
+      padding: 0;
+    }
+
+    @media (min-width: 768px) {
+      .hamburger {
+        display: none;
+      }
+    }
+
+    .hamburger-line {
+      width: 24px;
+      height: 2px;
+      background: white;
+      margin: 3px 0;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+      display: block;
+    }
+
+    .hamburger.active .hamburger-line:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active .hamburger-line:nth-child(2) {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+
+    .hamburger.active .hamburger-line:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* Mobile Menu Overlay */
+    .mobile-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 85%;
+      max-width: 340px;
+      height: 100vh;
+      background: #0f0f1a;
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .mobile-menu.active {
+      left: 0;
+    }
+
+    .mobile-menu-header {
+      padding: 2rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .mobile-menu-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-style: italic;
+      color: white;
+    }
+
+    .mobile-menu-logo span {
+      color: #22d3ee;
+    }
+
+    .mobile-menu-nav {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .mobile-menu-nav a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 1rem;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .mobile-menu-nav a i {
+      width: 24px;
+      font-size: 1.2rem;
+      color: #22d3ee;
+    }
+
+    .mobile-menu-nav a:hover,
+    .mobile-menu-nav a.active {
+      background: rgba(34, 211, 238, 0.1);
+      color: #22d3ee;
+      transform: translateX(5px);
+    }
+
+    .mobile-menu-nav .track-mobile {
+      margin-top: 1rem;
+      background: rgba(34, 211, 238, 0.15);
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      color: #22d3ee;
+      justify-content: center;
+    }
+
+    .mobile-menu-nav .track-mobile:hover {
+      background: #22d3ee;
+      color: white;
+      transform: translateX(0);
+    }
+
+    .mobile-menu-nav .track-mobile:hover i {
+      color: white;
+    }
+
+    .mobile-menu-footer {
+      padding: 2rem 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .social-icons a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      background: #22d3ee;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      font-size: 0.7rem;
+      color: #4b5563;
+      letter-spacing: 0.1em;
+    }
+
+    /* Main Content Padding */
+    .main-content {
+      padding-top: 80px;
+    }
+
+    /* Your existing styles */
+    .blob {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      background: rgba(34, 211, 238, 0.15);
+      border-radius: 50%;
+      filter: blur(60px);
+      z-index: -1;
+      animation: blobMove 20s infinite alternate;
+    }
+
+    @keyframes blobMove {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(100px, 100px) scale(1.2); }
+    }
+
+    .liquid-glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 24px;
+    }
+
+    .pill {
+      background: rgba(34, 211, 238, 0.1);
+      border: 1px solid rgba(34, 211, 238, 0.2);
+      color: #22d3ee;
+      padding: 0.5rem 1.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn {
+      border-radius: 9999px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: white;
+    }
+
+    .btn-whatsapp:hover {
+      background: #128C7E;
+      transform: scale(1.05);
+    }
+
+    .btn-primary {
+      background: #22d3ee;
+      color: #0a0a0f;
+    }
+
+    .btn-primary:hover {
+      background: #06b6d4;
+      transform: scale(1.05);
+    }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: scale(1.05);
+    }
+
+    .heading-accent {
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #22d3ee;
+      border-radius: 2px;
+    }
+
+    .kicker {
+      color: #22d3ee;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    .story-img {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .story-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .story-img:hover img {
+      transform: scale(1.05);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      margin: 4rem auto;
+    }
+
+    .fixed.whatsapp-btn {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 997;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .fixed.whatsapp-btn:hover {
+      transform: scale(1.1);
+      background: #128C7E;
+    }
+
+    /* Hide desktop menu on mobile */
+    @media (max-width: 767px) {
+      .desktop-menu {
+        display: none;
+      }
+    }
+
+    /* About page specific styles */
+    .stat-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 24px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(34, 211, 238, 0.3);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #22d3ee;
+      font-style: italic;
+      line-height: 1;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      border-left: 2px solid rgba(34, 211, 238, 0.3);
+      margin-bottom: 2rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 0;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #22d3ee;
+    }
+
+    .value-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(34, 211, 238, 0.1);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #22d3ee;
+    }
+  </style>
+</head>
+<body>
+  <div class="blob" style="top: 0; left: 0;"></div>
+  <div class="blob" style="bottom: 0; right: 0; animation-delay: -5s;"></div>
+
+  <!-- Modern Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">KASH<span>OPTION</span></a>
+      
+      <!-- Desktop Menu - Hidden on mobile -->
+      <div class="desktop-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="orders.html">Live Orders</a>
+        <a href="testimonials.html">Reviews</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html">Contact</a>
+        <a href="policy-terms.html">Policy</a>
+        <a href="tracker.html" class="track-btn">Track Order</a>
+      </div>
+
+      <!-- Hamburger Button - Only visible on mobile -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- Mobile Menu - Contains ALL navigation items for mobile -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <div class="mobile-menu-logo">KASH<span>OPTION</span></div>
+    </div>
+    
+    <div class="mobile-menu-nav">
+      <a href="index.html">
+        <i class="fas fa-home"></i>
+        Home
+      </a>
+      <a href="about.html" class="active">
+        <i class="fas fa-info-circle"></i>
+        About
+      </a>
+      <a href="catalog.html">
+        <i class="fas fa-store"></i>
+        Catalog
+      </a>
+      <a href="orders.html">
+        <i class="fas fa-truck"></i>
+        Live Orders
+      </a>
+      <a href="testimonials.html">
+        <i class="fas fa-star"></i>
+        Reviews
+      </a>
+      <a href="faqs.html">
+        <i class="fas fa-question-circle"></i>
+        FAQs
+      </a>
+      <a href="contact.html">
+        <i class="fas fa-envelope"></i>
+        Contact
+      </a>
+      <a href="policy-terms.html">
+        <i class="fas fa-file-contract"></i>
+        Policy & Terms
+      </a>
+      <a href="tracker.html" class="track-mobile">
+        <i class="fas fa-search-location"></i>
+        Track Order
+      </a>
+    </div>
+
+    <div class="mobile-menu-footer">
+      <div class="social-icons">
+        <a href="https://www.instagram.com/kashoption1" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/share/1CrwnBxS8W/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="mailto:Info@mrkash.net"><i class="fas fa-envelope"></i></a>
+      </div>
+      <div class="copyright">© 2025 KASH OPTION</div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Hero Section -->
+    <section class="relative py-20 sm:py-28 px-4 sm:px-[5%] overflow-hidden">
+      <div class="max-w-6xl mx-auto text-center">
+        <span class="pill mb-6 inline-flex"><i class="fas fa-info-circle"></i> About Us</span>
+        <h1 class="text-5xl sm:text-6xl md:text-7xl font-black italic uppercase tracking-tighter mb-6 animate__animated animate__fadeInDown">
+          Your Bridge to<br><span class="text-cyan-400">Global Markets</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-slate-300/80 max-w-3xl mx-auto leading-relaxed animate__animated animate__fadeInUp">
+          Since 2020, Kash Option has been the most trusted partner for Ghanaians looking to shop from China, USA, UK, and Europe. We don't just ship items—we deliver peace of mind.
+        </p>
+      </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="py-16 px-4 sm:px-[5%] max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="reveal">
+          <span class="kicker mb-4">Our Story</span>
+          <h2 class="text-4xl sm:text-5xl font-black italic uppercase mb-6">From A Simple Idea</h2>
+          <p class="text-slate-300 text-lg leading-relaxed mb-6">
+            Kash Option started with a simple observation: Ghanaians wanted access to global products but faced countless barriers—unreliable suppliers, confusing shipping, hidden fees, and customs headaches.
+          </p>
+          <p class="text-slate-400 leading-relaxed mb-6">
+            We built Kash Option to solve all of that. One by one, we removed every obstacle between our clients and the products they needed. Today, we're proud to be Ghana's most trusted import and logistics partner.
+          </p>
+          <div class="flex items-center gap-4">
+            <div class="w-16 h-16 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 text-2xl font-black">K</div>
+            <div>
+              <p class="font-bold text-white">Kwame Asare</p>
+              <p class="text-sm text-slate-400">Founder, Kash Option</p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="story-img">
+            <img loading="lazy" alt="Kash Option founder and team" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1400&q=80" class="w-full h-auto">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 px-4 sm:px-[5%] max-w-7xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="stat-card reveal text-center">
+          <div class="stat-number">5000+</div>
+          <p class="text-slate-400 mt-2">Orders Delivered</p>
+        </div>
+        <div class="stat-card reveal text-center">
+          <div class="stat-number">99.8%</div>
+          <p class="text-slate-400 mt-2">Customs Success</p>
+        </div>
+        <div class="stat-card reveal text-center">
+          <div class="stat-number">4</div>
+          <p class="text-slate-400 mt-2">Sourcing Countries</p>
+        </div>
+        <div class="stat-card reveal text-center">
+          <div class="stat-number">16</div>
+          <p class="text-slate-400 mt-2">Cities in Ghana</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="py-16 px-4 sm:px-[5%] max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="kicker mb-4">Our Journey</span>
+        <h2 class="text-4xl sm:text-5xl font-black italic uppercase">The Kash Option Timeline</h2>
+      </div>
+      <div class="space-y-8">
+        <div class="timeline-item reveal">
+          <div class="liquid-glass p-8">
+            <span class="text-cyan-400 font-black text-xl mb-2 block">2020</span>
+            <h3 class="text-2xl font-bold uppercase italic mb-3">The Beginning</h3>
+            <p class="text-slate-400">Kash Option launched with a single mission: help Ghanaians shop from China safely and affordably. Started with just 5 clients in Accra.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="liquid-glass p-8">
+            <span class="text-cyan-400 font-black text-xl mb-2 block">2021</span>
+            <h3 class="text-2xl font-bold uppercase italic mb-3">Expanding Horizons</h3>
+            <p class="text-slate-400">Added USA and UK sourcing. First container of wholesale goods arrives in Tema. Team grows to 10 members.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="liquid-glass p-8">
+            <span class="text-cyan-400 font-black text-xl mb-2 block">2022</span>
+            <h3 class="text-2xl font-bold uppercase italic mb-3">Going Digital</h3>
+            <p class="text-slate-400">Launched real-time tracking system. Reached 1000 orders milestone. Added European sourcing capabilities.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="liquid-glass p-8">
+            <span class="text-cyan-400 font-black text-xl mb-2 block">2023</span>
+            <h3 class="text-2xl font-bold uppercase italic mb-3">Nationwide Coverage</h3>
+            <p class="text-slate-400">Expanded delivery to all 16 regions of Ghana. Opened second office in Kumasi. Achieved 99.8% customs clearance rate.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="liquid-glass p-8">
+            <span class="text-cyan-400 font-black text-xl mb-2 block">2024</span>
+            <h3 class="text-2xl font-bold uppercase italic mb-3">Today & Beyond</h3>
+            <p class="text-slate-400">Trusted by thousands of individuals and businesses. Continuous innovation in logistics and client experience.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-16 px-4 sm:px-[5%] max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="kicker mb-4">Our Values</span>
+        <h2 class="text-4xl sm:text-5xl font-black italic uppercase">What Drives Us</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="reveal liquid-glass p-8 text-center hover:border-cyan-500/30 transition-all">
+          <div class="value-icon mx-auto mb-6">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 class="text-xl font-black uppercase italic mb-3">Trust First</h3>
+          <p class="text-slate-400">Every product we source is verified. Every promise we make, we keep. Our reputation is built on reliability.</p>
+        </div>
+        <div class="reveal liquid-glass p-8 text-center hover:border-cyan-500/30 transition-all">
+          <div class="value-icon mx-auto mb-6">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3 class="text-xl font-black uppercase italic mb-3">Speed & Efficiency</h3>
+          <p class="text-slate-400">We respect your time. From quotes to delivery, we move fast without cutting corners.</p>
+        </div>
+        <div class="reveal liquid-glass p-8 text-center hover:border-cyan-500/30 transition-all">
+          <div class="value-icon mx-auto mb-6">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h3 class="text-xl font-black uppercase italic mb-3">Client First</h3>
+          <p class="text-slate-400">Your success is our success. We go the extra mile to ensure you get exactly what you need.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-16 px-4 sm:px-[5%] max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="kicker mb-4">The Team</span>
+        <h2 class="text-4xl sm:text-5xl font-black italic uppercase">Behind The Scenes</h2>
+        <p class="text-slate-400 max-w-2xl mx-auto mt-4">Real people, real dedication. Meet the team working tirelessly to bring your orders to your doorstep.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="reveal liquid-glass p-6 text-center">
+          <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center text-4xl font-black text-white mb-4">K</div>
+          <h3 class="font-black uppercase italic">Kwame Asare</h3>
+          <p class="text-cyan-400 text-sm">Founder & CEO</p>
+        </div>
+        <div class="reveal liquid-glass p-6 text-center">
+          <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-4xl font-black text-white mb-4">A</div>
+          <h3 class="font-black uppercase italic">Abena Mensah</h3>
+          <p class="text-cyan-400 text-sm">Operations Director</p>
+        </div>
+        <div class="reveal liquid-glass p-6 text-center">
+          <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center text-4xl font-black text-white mb-4">K</div>
+          <h3 class="font-black uppercase italic">Kofi Annan</h3>
+          <p class="text-cyan-400 text-sm">Logistics Lead</p>
+        </div>
+        <div class="reveal liquid-glass p-6 text-center">
+          <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-4xl font-black text-white mb-4">E</div>
+          <h3 class="font-black uppercase italic">Esi Quansah</h3>
+          <p class="text-cyan-400 text-sm">Client Relations</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-4 sm:px-[5%] max-w-4xl mx-auto text-center">
+      <div class="liquid-glass p-12 sm:p-16 reveal">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black italic uppercase mb-6">Ready to Experience<br><span class="text-cyan-400">The Kash Option Difference?</span></h2>
+        <p class="text-slate-300 text-lg mb-8">Join thousands of satisfied Ghanaians who trust us with their international orders.</p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="https://wa.me/233240118846?text=Hello%20Kash%2C%20I%20want%20to%20place%20an%20order" target="_blank" class="btn btn-whatsapp px-8 py-4 text-base inline-flex items-center gap-2">
+            <i class="fab fa-whatsapp"></i> Start Shopping
+          </a>
+          <a href="contact.html" class="btn btn-glass px-8 py-4 text-base">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-16 sm:pt-24 pb-10 px-4 sm:px-[5%] border-t border-white/5">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10 sm:gap-12 mb-12 sm:mb-16">
+        <div class="md:col-span-2">
+          <h2 class="text-2xl sm:text-3xl font-black italic uppercase mb-4">KASH OPTION</h2>
+          <p class="text-slate-400 max-w-md text-sm sm:text-base">We connect global markets with Ghana. International shopping and shipping, done clearly and safely.</p>
+        </div>
+        <div>
+          <h4 class="font-bold uppercase tracking-widest text-xs mb-4 text-cyan-400">Links</h4>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="tracker.html" class="hover:text-white">Track Order</a></li>
+            <li><a href="faqs.html" class="hover:text-white">FAQs</a></li>
+            <li><a href="catalog.html" class="hover:text-white">Catalog</a></li>
+            <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+            <li><a href="policy-terms.html" class="hover:text-white">Policy & Terms</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold uppercase tracking-widest text-xs mb-4 text-cyan-400">Connect</h4>
+          <div class="flex gap-3 sm:gap-4 flex-wrap">
+            <a href="https://www.instagram.com/kashoption1" target="_blank" class="w-10 h-10 liquid-glass rounded-full flex items-center justify-center hover:bg-pink-500 min-w-[44px] min-h-[44px]" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1CrwnBxS8W/" target="_blank" class="w-10 h-10 liquid-glass rounded-full flex items-center justify-center hover:bg-blue-600 min-w-[44px] min-h-[44px]" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="mailto:Info@mrkash.net" class="w-10 h-10 liquid-glass rounded-full flex items-center justify-center hover:bg-slate-300 hover:text-slate-900 min-w-[44px] min-h-[44px]" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center border-t border-white/5 pt-6 sm:pt-8">
+        <p class="text-[10px] font-bold tracking-[0.5em] text-slate-600 uppercase">© 2025 KASH OPTION. ALL RIGHTS RESERVED.</p>
+      </div>
+    </footer>
+  </div>
+
+  <a href="https://wa.me/233240118846" target="_blank" rel="noopener" class="fixed whatsapp-btn" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp text-2xl"></i>
+  </a>
+
+  <script>
+    (function() {
+      // Mobile Menu Functionality
+      const hamburger = document.getElementById('hamburgerBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileOverlay = document.getElementById('mobileOverlay');
+      
+      function toggleMenu() {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        mobileOverlay.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+      }
+      
+      function closeMenu() {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      
+      hamburger.addEventListener('click', toggleMenu);
+      mobileOverlay.addEventListener('click', closeMenu);
+      
+      document.querySelectorAll('.mobile-menu-nav a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      // Set active state based on current page
+      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.desktop-menu a, .mobile-menu-nav a').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPath) {
+          link.classList.add('active');
+        }
+      });
+
+      // Intersection Observer for reveal animations
+      const obs = new IntersectionObserver(function(entries) { 
+        entries.forEach(function(e) { 
+          if (e.isIntersecting) e.target.classList.add('active'); 
+        }); 
+      }, { threshold: 0.1 });
+      
+      document.querySelectorAll('.reveal').forEach(function(el) { 
+        obs.observe(el); 
+      });
+    })();
+  </script>
+</body>
+</html>
