@@ -39,29 +39,45 @@
       --gold: #eab308;
     }
 
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-    body {
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
       overflow-x: hidden;
+      overflow-y: scroll;
+      overscroll-behavior: none;
+      background-color: var(--bg0);
+      width: 100%;
+      position: relative;
+    }
+    body {
+      overflow-x: clip;
       font-family: 'Plus Jakarta Sans', sans-serif;
       color: var(--text);
-      background: radial-gradient(1200px 800px at 20% 0%, rgba(0, 210, 255, 0.10), transparent 55%),
-                  radial-gradient(900px 900px at 85% 20%, rgba(124, 58, 237, 0.10), transparent 60%),
-                  radial-gradient(900px 900px at 70% 100%, rgba(34, 197, 94, 0.06), transparent 55%),
-                  linear-gradient(180deg, var(--bg1) 0%, var(--bg0) 100%);
+      background-color: var(--bg0);
+      background-image: radial-gradient(1200px 800px at 20% 0%, rgba(0, 210, 255, 0.10), transparent 55%),
+                        radial-gradient(900px 900px at 85% 20%, rgba(124, 58, 237, 0.10), transparent 60%),
+                        radial-gradient(900px 900px at 70% 100%, rgba(34, 197, 94, 0.06), transparent 55%),
+                        linear-gradient(180deg, var(--bg1) 0%, var(--bg0) 100%);
       line-height: 1.65;
       position: relative;
       min-width: 0;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
       padding-left: env(safe-area-inset-left);
       padding-right: env(safe-area-inset-right);
+      -webkit-overflow-scrolling: touch;
     }
 
     body::after {
       content: '';
       position: fixed;
       inset: 0;
+      background-color: var(--bg0);
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.028'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: -1;
+      backface-visibility: hidden;
     }
 
     .section-divider {
@@ -110,8 +126,8 @@
       box-shadow: var(--shadow), 0 0 24px rgba(0, 210, 255, 0.10);
     }
 
-    .reveal { opacity: 0; transform: translateY(22px); transition: all 0.9s cubic-bezier(0.2, 0.8, 0.2, 1); }
-    .reveal.active { opacity: 1; transform: translateY(0); }
+    .reveal { opacity: 0; transform: translate3d(0, 22px, 0); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.active { opacity: 1; transform: translate3d(0, 0, 0); }
 
     .heading-accent {
       display: inline-block;
@@ -146,13 +162,15 @@
     .hero-media {
       position: absolute;
       inset: 0;
+      background-color: var(--bg0);
       background-image:
         linear-gradient(180deg, rgba(5,7,15,0.55) 0%, rgba(5,7,15,0.80) 60%, rgba(5,7,15,0.98) 100%),
         url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=2000&q=80');
       background-size: cover;
       background-position: center;
       filter: saturate(1.05) contrast(1.02);
-      transform: scale(1.02);
+      transform: translateZ(0) scale(1.02);
+      backface-visibility: hidden;
     }
     .hero-media::after {
       content: '';
@@ -255,8 +273,9 @@
     }
     .inquiry-form select option { background: #0b1023; color: rgba(248,250,252,0.96); }
 
+    section { contain: layout paint; }
     .catalog-card { overflow: hidden; border-radius: 1.5rem; }
-    .catalog-card .card-img-wrap { aspect-ratio: 16 / 10; background-size: cover; background-position: center; position: relative; overflow: hidden; }
+    .catalog-card .card-img-wrap { aspect-ratio: 16 / 10; background-color: var(--bg0); background-size: cover; background-position: center; position: relative; overflow: hidden; }
     .catalog-card .card-img-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.02); filter: saturate(1.04) contrast(1.02); }
     .catalog-card .card-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,7,15,0.92) 0%, transparent 60%); }
     .catalog-card .card-icon { position: absolute; bottom: 1rem; left: 1rem; width: 54px; height: 54px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; z-index: 2; }
@@ -264,7 +283,7 @@
     .catalog-explore { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 1rem; padding-top: 1rem; }
     .product-thumb { display: block; border-radius: 1rem; overflow: hidden; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
     .product-thumb:hover { transform: translateY(-3px); border-color: rgba(0,210,255,0.3); box-shadow: 0 12px 24px rgba(0,0,0,0.25); }
-    .product-thumb .thumb-img { aspect-ratio: 1; width: 100%; object-fit: cover; display: block; }
+    .product-thumb .thumb-img { aspect-ratio: 1; width: 100%; object-fit: cover; display: block; background-color: var(--bg0); }
     .product-thumb .thumb-body { padding: 0.65rem 0.75rem; }
     .product-thumb .thumb-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(248,250,252,0.95); }
     .product-thumb .thumb-desc { font-size: 10px; color: rgba(148,163,184,0.9); margin-top: 2px; line-height: 1.3; }
@@ -738,7 +757,7 @@
                 <div class="thumb-body"><p class="thumb-title">Sofas & Couches</p><p class="thumb-desc">Fabric, leather, sectionals</p></div>
               </a>
               <a href="#inquiry" data-category="Home & Office" class="catalog-inquire product-thumb">
-                <img class="thumb-img" loading="lazy" alt="Desk" src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=400&q=80">
+                <img class="thumb-img" loading="lazy" alt="Desk" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80">
                 <div class="thumb-body"><p class="thumb-title">Desks & Tables</p><p class="thumb-desc">Standing, L-shaped, dining</p></div>
               </a>
               <a href="#inquiry" data-category="Home & Office" class="catalog-inquire product-thumb">
@@ -752,7 +771,7 @@
       <!-- Wholesale Goods -->
       <article class="reveal catalog-card liquid-glass rounded-[1.5rem] flex flex-col">
         <div class="card-img-wrap">
-          <img loading="lazy" decoding="async" alt="Wholesale" src="https://images.unsplash.com/photo-1558769132-cb1aea913002?w=1200&q=80">
+          <img loading="lazy" decoding="async" alt="Wholesale" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=80">
           <div class="card-icon bg-indigo-500/20 text-indigo-400"><i class="fas fa-boxes"></i></div>
         </div>
         <div class="p-6 sm:p-8 flex flex-col flex-1">
@@ -763,7 +782,7 @@
             <summary class="cursor-pointer list-none flex items-center gap-2 text-cyan-400 font-bold text-xs uppercase tracking-wider hover:text-cyan-300"><i class="fas fa-chevron-down transition-transform group-open/exp:rotate-180"></i> Explore products in this category</summary>
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
               <a href="#inquiry" data-category="Wholesale Goods" class="catalog-inquire product-thumb">
-                <img class="thumb-img" loading="lazy" alt="Cartons" src="https://images.unsplash.com/photo-1558769132-cb1aea913002?w=400&q=80">
+                <img class="thumb-img" loading="lazy" alt="Cartons" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&q=80">
                 <div class="thumb-body"><p class="thumb-title">Mixed Cartons</p><p class="thumb-desc">Consolidated shipments</p></div>
               </a>
               <a href="#inquiry" data-category="Wholesale Goods" class="catalog-inquire product-thumb">
@@ -924,23 +943,13 @@
             <label for="inqProduct" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Product you want to buy</label>
             <input type="text" id="inqProduct" name="product" placeholder="e.g. iPhone 15 Pro Max 256GB (or paste a product link)" required>
           </div>
-          <div class="grid sm:grid-cols-2 gap-4">
-            <div>
-              <label for="inqUnits" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Units</label>
-              <input type="number" id="inqUnits" name="units" min="1" step="1" placeholder="e.g. 2" required>
-            </div>
-            <div>
-              <label for="inqBudget" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Budget (optional)</label>
-              <input type="text" id="inqBudget" name="budget" placeholder="e.g. GHS 9,000">
-            </div>
+          <div>
+            <label for="inqUnits" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Units</label>
+            <input type="number" id="inqUnits" name="units" min="1" step="1" placeholder="e.g. 2" required>
           </div>
           <div>
             <label for="inqSpecs" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Specs you want</label>
             <textarea id="inqSpecs" name="specs" rows="4" placeholder="Model, size, color, storage, voltage, exact part number, etc." required></textarea>
-          </div>
-          <div>
-            <label for="inqNotes" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Extra notes (optional)</label>
-            <textarea id="inqNotes" name="notes" rows="3" placeholder="Delivery city, deadline, or any special instructions..."></textarea>
           </div>
           <label class="flex items-start gap-3 text-sm text-slate-300">
             <input id="inqAgree" type="checkbox" required class="mt-1 accent-cyan-400">
@@ -1135,9 +1144,7 @@
         var category = document.getElementById('inqCategory').value;
         var product = document.getElementById('inqProduct').value.trim();
         var units = document.getElementById('inqUnits').value.trim();
-        var budget = document.getElementById('inqBudget').value.trim();
         var specs = document.getElementById('inqSpecs').value.trim();
-        var notes = document.getElementById('inqNotes').value.trim();
         var agree = document.getElementById('inqAgree').checked;
 
         if (!agree) return;
@@ -1150,9 +1157,7 @@
           category ? ('Category: ' + category) : null,
           'Product: ' + product,
           'Units: ' + units,
-          budget ? ('Budget: ' + budget) : null,
           'Specs: ' + specs,
-          notes ? ('Notes: ' + notes) : null,
           '',
           'Please send me the total quote (product + shipping to Ghana) and next steps.',
           'I agree to the Policy & Terms: https://mrkash.net/policy-terms.html'
