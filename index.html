@@ -4,38 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- SEO DOMINANCE: #1 Ranking Ghana -->
-    <title>Kash Option | Verified Sourcing: Japan Ignition, Global Bikes & Tech</title>
-    <meta name="description" content="Ghana's #1 verified dealer for VIN-matched Spark Plugs, legally cleared Motorbikes, and US/UK sourced iPhones. Solving misfires and sourcing fraud with science.">
-    <meta name="keywords" content="original spark plugs ghana, huida motorbikes ghana, kash option tech, iphone sourcing ghana, verified denso ngk ghana, kashoption1">
+    <!-- SEO DOMINANCE LAYER -->
+    <title>Kash Option | Ghana's Ultimate Toyota, Honda, Hyundai & Kia Spark Plug Specialist</title>
+    <meta name="description" content="The Boss of Ignition. Stop settling for Abossey Okai fakes. We use scientific supplier hunting for Japan and USA standard VIN-matched spark plugs. Zero Misfire Guarantee.">
     
-    <!-- Structured Data (JSON-LD) for Google AI Search -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "AutoPartsStore",
-      "name": "Kash Option Logistics",
-      "url": "https://mrkash.net",
-      "logo": "https://mrkash.net/logo.png",
-      "description": "Ghana's Elite Technical Authority for Precision Ignition and Global Sourcing.",
-      "telephone": "+233240118846",
-      "areaServed": "Ghana",
-      "priceRange": "GH₵30 - GH₵15000"
-    }
-    </script>
-
-    <!-- Resources -->
+    <!-- Frameworks -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { obsidian: '#050505', electric: '#007AFF', danger: '#FF3B30' },
-                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: { obsidian: '#050505', steel: '#1A1A1A', appleBlue: '#007AFF', danger: '#FF3B30' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
                 }
             }
         }
@@ -44,268 +28,334 @@
     <style>
         body { background-color: #050505; color: white; -webkit-font-smoothing: antialiased; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .glow-blue:hover { box-shadow: 0 0 30px rgba(0, 122, 255, 0.2); border-color: rgba(0, 122, 255, 0.5); }
-        .text-hero { font-weight: 800; letter-spacing: -0.04em; line-height: 0.9; }
-        .ticker-wrap { overflow: hidden; white-space: nowrap; }
-        .ticker-move { animation: ticker 40s linear infinite; display: inline-block; }
+        .steel-border { border: 1px solid #2A2A2A; }
+        .text-hero { font-weight: 900; letter-spacing: -0.05em; line-height: 0.9; }
+        .ticker-wrap { overflow: hidden; white-space: nowrap; border-y: 1px solid rgba(255,255,255,0.1); }
+        .ticker-move { animation: ticker 50s linear infinite; display: inline-block; }
         @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .ios-tab { background: rgba(10, 10, 10, 0.8); backdrop-filter: saturate(180%) blur(20px); border-top: 1px solid rgba(255,255,255,0.1); }
-        input, select { background: rgba(255,255,255,0.05) !important; border: 1px solid rgba(255,255,255,0.1) !important; color: white !important; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
+        
+        /* Modal Transitions */
+        .modal { display: none; position: fixed; inset: 0; z-index: 200; align-items: center; justify-content: center; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); }
+        .modal.active { display: flex; }
     </style>
 </head>
-<body class="pb-24">
+<body class="pb-32">
 
-    <!-- Desktop Navigation -->
-    <nav class="fixed top-0 w-full z-[100] glass px-6 py-4 flex justify-between items-center border-b border-white/5 hidden md:flex">
-        <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-electric rounded-lg flex items-center justify-center font-black italic">K</div>
-            <span class="text-xl font-extrabold tracking-tighter uppercase italic">Kash<span class="text-electric font-black">Option</span></span>
+    <!-- 1. NAVIGATION (Tab Bar Overlay) -->
+    <nav class="fixed top-0 w-full z-[100] glass px-6 py-4 flex justify-between items-center border-b border-white/5">
+        <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+            <div class="w-8 h-8 bg-appleBlue rounded flex items-center justify-center font-black italic">K</div>
+            <span class="text-xl font-black tracking-tighter uppercase italic">Kash<span class="text-appleBlue">Option</span></span>
         </div>
-        <div class="flex gap-10 text-[10px] font-black tracking-[0.3em] uppercase text-zinc-500">
-            <a href="#lab" class="hover:text-white transition-colors">The Lab</a>
-            <a href="#catalog" class="hover:text-white transition-colors">Catalog</a>
-            <a href="#auth" class="hover:text-white transition-colors">Verification</a>
+        <div class="flex gap-8 items-center">
+            <button onclick="toggleSourceOverlay()" class="group flex flex-col items-center">
+                <i data-lucide="layout-grid" class="w-5 h-5 text-zinc-500 group-hover:text-appleBlue transition-colors"></i>
+                <span class="text-[8px] font-bold uppercase tracking-widest mt-1 text-zinc-500">Source</span>
+            </button>
+            <a href="#lab" class="group flex flex-col items-center">
+                <i data-lucide="microscope" class="w-5 h-5 text-zinc-500 group-hover:text-appleBlue transition-colors"></i>
+                <span class="text-[8px] font-bold uppercase tracking-widest mt-1 text-zinc-500">Lab</span>
+            </a>
+            <div id="cart-counter" class="relative bg-appleBlue/20 px-3 py-1 rounded-full border border-appleBlue/30 hidden">
+                <span class="text-[10px] font-black text-appleBlue">0 ITEMS</span>
+            </div>
         </div>
-        <a href="https://wa.me/233240118846" class="bg-white text-black px-6 py-2 rounded-full font-black text-[10px] uppercase tracking-widest">Support</a>
     </nav>
 
-    <!-- Mobile Top Bar -->
-    <div class="md:hidden fixed top-0 w-full z-[100] glass px-6 py-4 flex justify-between items-center border-b border-white/5">
-        <span class="text-lg font-black tracking-tighter italic uppercase">Kash Option</span>
-        <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_#22c55e]"></div>
+    <!-- 2. SCROLLING TICKER -->
+    <div class="mt-20 ticker-wrap bg-steel/50 py-3">
+        <div class="ticker-move text-[10px] font-black tracking-[0.4em] text-zinc-600 uppercase">
+            100,000+ ENGINE MISFIRES SOLVED ACROSS GHANA • THE BEST ENGINE SAVER IN GHANA • 100% OEM FITMENT GUARANTEE • JAPAN FACTORY DIRECT • 100,000+ ENGINE MISFIRES SOLVED ACROSS GHANA • THE BEST ENGINE SAVER IN GHANA • 100% OEM FITMENT GUARANTEE • JAPAN FACTORY DIRECT
+        </div>
     </div>
 
-    <!-- Hero Section -->
-    <header class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20 overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-obsidian to-obsidian z-10"></div>
-            <!-- Background Visual: Engineering Grid -->
-            <div class="w-full h-full opacity-20 bg-[radial-gradient(#1e1e1e_1px,transparent_1px)] [background-size:32px_32px]"></div>
-        </div>
-
-        <div class="relative z-20 max-w-5xl opacity-0" id="hero-reveal">
-            <span class="inline-block px-4 py-1 rounded-full bg-electric/10 border border-electric/20 text-electric text-[9px] font-black mb-8 tracking-[0.4em] uppercase">
-                #1 Sourcing Hub • Legitimate & Verified
+    <!-- 3. HERO SECTION -->
+    <header class="relative min-h-[80vh] flex flex-col items-center justify-center text-center px-6 pt-10">
+        <div class="relative z-10 max-w-5xl">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-appleBlue/10 border border-appleBlue/20 text-appleBlue text-[10px] font-black mb-8 tracking-[0.4em] uppercase">
+                VIN-Matched Engineering
             </span>
-            <h1 class="text-hero text-6xl md:text-[140px] mb-8 uppercase italic">
-                WE DON'T SHIP. <br> <span class="text-zinc-600">WE VERIFY.</span>
+            <h1 class="text-hero text-6xl md:text-[120px] mb-10 italic uppercase">
+                THE BOSS OF <br> <span class="text-zinc-600">IGNITION.</span>
             </h1>
-            <p class="text-zinc-400 text-base md:text-2xl max-w-2xl mx-auto mb-12 font-medium leading-relaxed">
-                Ghana’s Elite Authority for Japan-Grade Ignition, Global Mobility, and Verified Tech. Solving fraud with Science.
+            <p class="text-zinc-400 text-lg md:text-2xl max-w-2xl mx-auto mb-12 font-medium">
+                Scientific supplier hunting delivers Japan and USA standard plugs to your engine. Zero Misfire Guarantee.
             </p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <button onclick="scrollToCatalog()" class="bg-electric text-white px-12 py-5 rounded-2xl font-black text-xs tracking-widest uppercase hover:scale-105 transition-all shadow-xl shadow-electric/20">Source Catalog</button>
-                <button onclick="scrollToLab()" class="bg-white/5 border border-white/10 text-white px-12 py-5 rounded-2xl font-black text-xs tracking-widest uppercase hover:bg-white/10">The Truth Lab</button>
-            </div>
-        </div>
-
-        <!-- Success Ticker -->
-        <div class="absolute bottom-10 w-full ticker-wrap border-y border-white/5 py-4 glass">
-            <div class="ticker-move flex gap-20 text-[10px] font-black tracking-[0.5em] text-zinc-700 uppercase">
-                <span>102,483 Misfires Solved</span> <span>100% Battery Health Guarantee</span> <span>0% Customs Seizure Rate</span> <span>VIN-Matched Accuracy</span> <span>Japan Factory Direct</span>
-                <span>102,483 Misfires Solved</span> <span>100% Battery Health Guarantee</span> <span>0% Customs Seizure Rate</span> <span>VIN-Matched Accuracy</span> <span>Japan Factory Direct</span>
-            </div>
+            <button onclick="openDiagnostic()" class="bg-appleBlue text-white px-10 py-5 rounded-2xl font-black text-xs tracking-widest uppercase hover:scale-105 transition-transform flex items-center gap-3">
+                Match My Engine <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
         </div>
     </header>
 
-    <!-- THE POWER TRIO CATALOG -->
-    <section id="catalog" class="max-w-7xl mx-auto px-6 py-32">
-        <div class="text-center mb-20">
-            <h2 class="text-xs font-black text-electric tracking-[0.5em] uppercase mb-4">Elite Sourcing Lanes</h2>
-            <h3 class="text-5xl font-extrabold tracking-tighter uppercase italic">CHOOSE YOUR GRADE.</h3>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Card 1: Ignition -->
-            <div class="glass p-10 bento-card glow-blue flex flex-col justify-between h-[500px]">
-                <div>
-                    <i data-lucide="zap" class="text-electric w-10 h-10 mb-8"></i>
-                    <h4 class="text-3xl font-black uppercase tracking-tight italic mb-4 leading-tight">THE <br> IGNITION LAB</h4>
-                    <p class="text-zinc-500 text-sm font-medium leading-relaxed mb-8">Japan-Grade Denso, NGK, and Mobis plugs. 5,000-Ohm verified. Restores fuel economy instantly.</p>
-                </div>
-                <button onclick="openDiagnostic('Auto')" class="w-full bg-white text-black py-5 rounded-2xl font-black text-[10px] tracking-widest uppercase hover:bg-electric hover:text-white transition-all">Start Diagnostic</button>
-            </div>
-
-            <!-- Card 2: Mobility -->
-            <div class="glass p-10 bento-card glow-blue flex flex-col justify-between h-[500px]">
-                <div>
-                    <i data-lucide="bike" class="text-electric w-10 h-10 mb-8"></i>
-                    <h4 class="text-3xl font-black uppercase tracking-tight italic mb-4 leading-tight">GLOBAL <br> MOBILITY</h4>
-                    <p class="text-zinc-500 text-sm font-medium leading-relaxed mb-8">Official Huida Motorbikes & Parts. Full customs clearance. Zero-seizure sourcing guarantee.</p>
-                </div>
-                <button onclick="openDiagnostic('Bike')" class="w-full bg-white text-black py-5 rounded-2xl font-black text-[10px] tracking-widest uppercase hover:bg-electric hover:text-white transition-all">Import Catalog</button>
-            </div>
-
-            <!-- Card 3: Tech -->
-            <div class="glass p-10 bento-card glow-blue flex flex-col justify-between h-[500px]">
-                <div>
-                    <i data-lucide="smartphone" class="text-electric w-10 h-10 mb-8"></i>
-                    <h4 class="text-3xl font-black uppercase tracking-tight italic mb-4 leading-tight">VERIFIED <br> TECH</h4>
-                    <p class="text-zinc-500 text-sm font-medium leading-relaxed mb-8">US/UK sourced iPhones. Original screens, 90%+ Battery Health. Verified IMEI/Apple GSX check.</p>
-                </div>
-                <button onclick="openDiagnostic('Tech')" class="w-full bg-white text-black py-5 rounded-2xl font-black text-[10px] tracking-widest uppercase hover:bg-electric hover:text-white transition-all">Check Inventory</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- THE LAB: FAKES VS ORIGINALS -->
+    <!-- 4. THE LAB (Verification Process) -->
     <section id="lab" class="max-w-7xl mx-auto px-6 py-32 border-t border-white/5">
         <div class="grid md:grid-cols-2 gap-20 items-center">
             <div class="space-y-10">
-                <span class="text-danger font-black text-[10px] tracking-[0.4em] uppercase border-b border-danger pb-2">Technical Warning</span>
-                <h2 class="text-5xl font-black tracking-tighter leading-none italic uppercase">THE SILENT <br>ENGINE KILLER.</h2>
-                <p class="text-zinc-400 text-lg leading-relaxed italic">Market fakes look the same, but they use inferior nickel tips that melt at 800°C. Kash Japan-Grade Iridium thrives at 2,400°C. Don't turn your ¢100 plug into a ¢20,000 engine overhaul.</p>
-                
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="glass p-6 rounded-3xl">
-                        <h5 class="text-danger text-sm font-black uppercase mb-2">Cheap Fakes</h5>
-                        <p class="text-[10px] text-zinc-500">Melted electrodes, poor resistance, ruined coils.</p>
+                <h2 class="text-5xl font-black tracking-tighter italic uppercase">Verification <br>Process.</h2>
+                <div class="space-y-8">
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 glass rounded-xl flex items-center justify-center shrink-0 border border-appleBlue/30">
+                            <i data-lucide="search" class="text-appleBlue"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2 uppercase">Global Factory Hunt</h4>
+                            <p class="text-zinc-500 text-sm leading-relaxed font-medium">We vet 50+ suppliers monthly in Japan and the USA, identifying the top 1% that meet OEM standards.</p>
+                        </div>
                     </div>
-                    <div class="glass p-6 rounded-3xl border-electric/30">
-                        <h5 class="text-electric text-sm font-black uppercase mb-2">Kash Grade</h5>
-                        <p class="text-[10px] text-zinc-500">Pure Iridium, laser welding, VIN-matching.</p>
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 glass rounded-xl flex items-center justify-center shrink-0 border border-appleBlue/30">
+                            <i data-lucide="zap" class="text-appleBlue"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2 uppercase">Resistance Analysis</h4>
+                            <p class="text-zinc-500 text-sm leading-relaxed font-medium">Every batch is scientifically tested for 5,000-Ohm resistance. We kill the misfire before it starts.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="relative">
-                <div class="w-full h-[500px] bg-zinc-900 rounded-[50px] flex items-center justify-center overflow-hidden border border-white/10 group">
-                    <img src="https://images.unsplash.com/photo-1635437536607-b8572f443763?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" alt="Spark Plug Macro">
-                    <div class="absolute inset-0 bg-gradient-to-t from-obsidian p-10 flex flex-col justify-end">
-                        <h4 class="text-xl font-black italic">5,000-OHM TEST</h4>
-                        <p class="text-[9px] uppercase tracking-widest text-zinc-400">Scientific Resistance Analysis before every ship.</p>
-                    </div>
+            <div class="relative group">
+                <div class="absolute inset-0 bg-appleBlue/20 blur-[100px] opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                <div class="glass p-2 rounded-[40px] overflow-hidden steel-border">
+                    <img src="https://images.unsplash.com/photo-1635437536607-b8572f443763?auto=format&fit=crop&q=80&w=1000" class="rounded-[38px] grayscale opacity-50" alt="Technical Macro">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- DIAGNOSTIC FORM MODAL -->
-    <div id="diagnosticModal" class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/95 backdrop-blur-xl px-6">
-        <div class="glass w-full max-w-lg p-10 rounded-[40px] shadow-2xl relative border border-white/10">
-            <button onclick="closeModal()" class="absolute top-8 right-8 text-zinc-500 hover:text-white"><i data-lucide="x"></i></button>
-            <h3 class="text-3xl font-black mb-1 italic tracking-tighter uppercase" id="modalTitle">ORDER AUTH</h3>
-            <p class="text-electric text-[9px] font-black uppercase tracking-[0.3em] mb-10">Verification Step 01</p>
-            
-            <div class="space-y-6">
+    <!-- 5. PRECISION CATALOG (4 Kings) -->
+    <section id="showroom" class="max-w-7xl mx-auto px-6 py-32">
+        <div class="mb-16">
+            <h3 class="text-xs font-black text-appleBlue tracking-[0.5em] uppercase mb-4">Precision Catalog</h3>
+            <h2 class="text-5xl font-black tracking-tighter italic uppercase">The 4 Kings.</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- TOYOTA -->
+            <div class="glass p-8 rounded-[40px] flex flex-col justify-between h-[500px] steel-border group hover:border-appleBlue/50 transition-all">
                 <div>
-                    <label class="text-[9px] text-zinc-500 uppercase font-black tracking-widest mb-3 block">Model / Device Specs</label>
-                    <input type="text" id="orderModel" placeholder="e.g. Camry 2018, Huida 250cc, iPhone 15 Pro" class="w-full px-6 py-4 rounded-2xl outline-none text-sm font-bold">
+                    <div class="flex justify-between items-start mb-10">
+                        <h4 class="text-3xl font-black uppercase tracking-tighter">Toyota <br>Performance</h4>
+                        <span class="text-[10px] font-black bg-zinc-800 px-3 py-1 rounded-full">DENSO</span>
+                    </div>
+                    <ul class="text-[10px] font-bold text-zinc-500 space-y-3 uppercase tracking-widest">
+                        <li>• Laser-Welded Tip</li>
+                        <li>• Pure Iridium Center</li>
+                        <li>• VIN-Matched Fitment</li>
+                    </ul>
                 </div>
                 <div>
-                    <label class="text-[9px] text-zinc-500 uppercase font-black tracking-widest mb-3 block">VIN / Chassis / IMEI (Optional)</label>
-                    <input type="text" id="orderVIN" placeholder="For absolute accuracy" class="w-full px-6 py-4 rounded-2xl outline-none text-sm font-bold uppercase tracking-widest">
+                    <p class="text-4xl font-black mb-6">GH₵300</p>
+                    <button onclick="addToCart('Toyota Denso', 300)" class="w-full bg-white text-black py-4 rounded-2xl font-black text-xs tracking-widest uppercase active:scale-95 transition-all">Add To Cart</button>
                 </div>
-                <div class="p-6 bg-danger/5 border border-danger/20 rounded-2xl">
-                    <p class="text-[10px] text-danger font-black uppercase tracking-widest leading-relaxed">
-                        ⚠️ WARNING: Kash Standard. We do not accept returns for incorrect data provided. Accuracy is the customer's signature.
-                    </p>
+            </div>
+
+            <!-- HONDA -->
+            <div class="glass p-8 rounded-[40px] flex flex-col justify-between h-[500px] steel-border border-t-4 border-t-appleBlue group hover:border-appleBlue/50 transition-all">
+                <div>
+                    <div class="flex justify-between items-start mb-10">
+                        <h4 class="text-3xl font-black uppercase tracking-tighter">Honda <br>Precision</h4>
+                        <span class="text-[10px] font-black bg-zinc-800 px-3 py-1 rounded-full">NGK</span>
+                    </div>
+                    <ul class="text-[10px] font-bold text-zinc-500 space-y-3 uppercase tracking-widest">
+                        <li>• Laser Iridium Tech</li>
+                        <li>• Anti-Corrosion Plating</li>
+                        <li>• 0.6mm Fine Wire</li>
+                    </ul>
                 </div>
-                <button onclick="sendWhatsApp()" class="w-full bg-electric py-5 rounded-2xl font-black text-xs tracking-widest uppercase shadow-xl shadow-electric/20 active:scale-95 transition-all">Verify & Order</button>
+                <div>
+                    <p class="text-4xl font-black mb-6 text-appleBlue">GH₵500</p>
+                    <button onclick="addToCart('Honda NGK', 500)" class="w-full bg-appleBlue text-white py-4 rounded-2xl font-black text-xs tracking-widest uppercase active:scale-95 transition-all">Add To Cart</button>
+                </div>
+            </div>
+
+            <!-- HYUNDAI -->
+            <div class="glass p-8 rounded-[40px] flex flex-col justify-between h-[500px] steel-border group hover:border-appleBlue/50 transition-all">
+                <div>
+                    <div class="flex justify-between items-start mb-10">
+                        <h4 class="text-3xl font-black uppercase tracking-tighter">Hyundai <br>Ignition</h4>
+                        <span class="text-[10px] font-black bg-zinc-800 px-3 py-1 rounded-full">MOBIS</span>
+                    </div>
+                    <ul class="text-[10px] font-bold text-zinc-500 space-y-3 uppercase tracking-widest">
+                        <li>• OEM Monolithic Resistor</li>
+                        <li>• Trivalent Metal Plating</li>
+                        <li>• High-Dielectric Ceramic</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-4xl font-black mb-6">GH₵300</p>
+                    <button onclick="addToCart('Hyundai Mobis', 300)" class="w-full bg-white text-black py-4 rounded-2xl font-black text-xs tracking-widest uppercase active:scale-95 transition-all">Add To Cart</button>
+                </div>
+            </div>
+
+            <!-- KIA -->
+            <div class="glass p-8 rounded-[40px] flex flex-col justify-between h-[500px] steel-border group hover:border-appleBlue/50 transition-all">
+                <div>
+                    <div class="flex justify-between items-start mb-10">
+                        <h4 class="text-3xl font-black uppercase tracking-tighter">Kia <br>Ignition</h4>
+                        <span class="text-[10px] font-black bg-zinc-800 px-3 py-1 rounded-full">MOBIS</span>
+                    </div>
+                    <ul class="text-[10px] font-bold text-zinc-500 space-y-3 uppercase tracking-widest">
+                        <li>• Verified Heat Range</li>
+                        <li>• Copper Core Enhanced</li>
+                        <li>• OEM Grade Iridium</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-4xl font-black mb-6">GH₵300</p>
+                    <button onclick="addToCart('Kia Mobis', 300)" class="w-full bg-white text-black py-4 rounded-2xl font-black text-xs tracking-widest uppercase active:scale-95 transition-all">Add To Cart</button>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- FAQ Section -->
+    <!-- 6. SCIENTIFIC FAQ -->
     <section class="max-w-4xl mx-auto px-6 py-32 border-t border-white/5">
-        <h2 class="text-4xl font-black tracking-tighter italic mb-16 uppercase text-center">Scientific FAQ</h2>
-        <div class="space-y-6" id="faq-list">
-            <!-- FAQ 1 -->
+        <h2 class="text-4xl font-black tracking-tighter italic text-center mb-16 uppercase">Technical FAQ</h2>
+        <div class="space-y-4">
             <details class="glass rounded-3xl group">
-                <summary class="p-8 cursor-pointer list-none flex justify-between items-center font-black uppercase text-xs tracking-widest">
-                    Why is VIN-matching critical for Ghana engines?
-                    <i data-lucide="plus" class="text-electric group-open:rotate-45 transition-transform"></i>
+                <summary class="p-8 cursor-pointer list-none flex justify-between items-center font-bold uppercase text-xs tracking-widest">
+                    Are these original?
+                    <i data-lucide="plus" class="text-appleBlue group-open:rotate-45 transition-transform"></i>
                 </summary>
-                <div class="px-8 pb-8 text-sm text-zinc-500 leading-relaxed font-medium italic">
-                    Fuel quality in Ghana varies. VIN-matching ensures your heat range is perfect for your specific ECU mapping, preventing the knocking and pre-ignition that destroys local engines.
+                <div class="px-8 pb-8 text-zinc-500 text-sm italic">
+                    Yes. Unlike local market sellers, we resistance-test every single batch for 5,000-Ohm continuity. If it fails the science, we don't ship it.
                 </div>
             </details>
-            <!-- FAQ 2 -->
             <details class="glass rounded-3xl group">
-                <summary class="p-8 cursor-pointer list-none flex justify-between items-center font-black uppercase text-xs tracking-widest">
-                    How is legal clearance ensured for bikes?
-                    <i data-lucide="plus" class="text-electric group-open:rotate-45 transition-transform"></i>
+                <summary class="p-8 cursor-pointer list-none flex justify-between items-center font-bold uppercase text-xs tracking-widest">
+                    What is the "Research Man" process?
+                    <i data-lucide="plus" class="text-appleBlue group-open:rotate-45 transition-transform"></i>
                 </summary>
-                <div class="px-8 pb-8 text-sm text-zinc-500 leading-relaxed font-medium italic">
-                    We only use licensed customs brokers. Every motorcycle arrives with authentic bill of entry documents, ensuring you never face police seizures or registration issues.
+                <div class="px-8 pb-8 text-zinc-500 text-sm italic">
+                    We hunt factory sources in Japan/USA, verify OEM stamps, and check heat ranges before shipping. We don't buy from middle-men; we buy from the source.
+                </div>
+            </details>
+            <details class="glass rounded-3xl group">
+                <summary class="p-8 cursor-pointer list-none flex justify-between items-center font-bold uppercase text-xs tracking-widest">
+                    Do you have all part numbers?
+                    <i data-lucide="plus" class="text-appleBlue group-open:rotate-45 transition-transform"></i>
+                </summary>
+                <div class="px-8 pb-8 text-zinc-500 text-sm italic">
+                    Yes. Our database matches your VIN to the exact factory part number required for your engine's specific compression ratio and fuel map.
                 </div>
             </details>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-black py-20 px-6 border-t border-white/5 text-center">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
-            <div class="text-left">
-                <h4 class="text-2xl font-black italic uppercase mb-2">Kash Option</h4>
-                <p class="text-zinc-500 text-xs font-bold uppercase tracking-[0.2em]">Independent Technical Sourcing</p>
-            </div>
-            <div class="flex gap-10 text-[10px] font-black uppercase tracking-widest text-zinc-600">
-                <a href="https://tiktok.com/@kashoption1" class="hover:text-electric transition-colors">TikTok</a>
-                <a href="https://instagram.com/kashoption1" class="hover:text-electric transition-colors">Instagram</a>
-                <a href="mailto:info@mrkash.net" class="hover:text-electric transition-colors">Email</a>
+    <!-- MODAL: DIAGNOSTIC FORM -->
+    <div id="diagModal" class="modal">
+        <div class="glass p-10 rounded-[40px] w-full max-w-lg mx-6 relative shadow-2xl steel-border">
+            <button onclick="closeModal('diagModal')" class="absolute top-8 right-8 text-zinc-500 hover:text-white"><i data-lucide="x"></i></button>
+            <h3 class="text-3xl font-black italic uppercase tracking-tighter mb-2">Engine Sync.</h3>
+            <p class="text-[10px] font-black text-appleBlue uppercase tracking-widest mb-10 italic">Verification Step 01</p>
+            
+            <div id="step-form" class="space-y-6">
+                <div class="space-y-2">
+                    <label class="text-[9px] font-black text-zinc-500 uppercase tracking-widest">Car Make</label>
+                    <select id="diag-make" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none font-bold">
+                        <option value="Toyota">Toyota</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Hyundai">Hyundai</option>
+                        <option value="Kia">Kia</option>
+                    </select>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[9px] font-black text-zinc-500 uppercase tracking-widest">Model Year</label>
+                    <input type="number" id="diag-year" placeholder="e.g. 2018" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none font-bold">
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[9px] font-black text-zinc-500 uppercase tracking-widest">Engine CC</label>
+                    <input type="text" id="diag-cc" placeholder="e.g. 1.8L / 1800cc" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none font-bold">
+                </div>
+                <button onclick="submitDiagnostic()" class="w-full bg-appleBlue py-5 rounded-2xl font-black text-xs tracking-widest uppercase">Analyze Fitment</button>
             </div>
         </div>
-        <p class="text-[9px] text-zinc-800 font-black tracking-[0.6em] mt-20 uppercase">
-            © 2024 Kash Option. Not affiliated with Denso, NGK, or Apple Inc. 
-        </p>
-    </footer>
-
-    <!-- iOS Fixed Tab Bar (Mobile Only) -->
-    <div class="ios-tab fixed bottom-0 w-full px-10 py-5 flex justify-between items-center md:hidden z-[150]">
-        <button onclick="scrollToLab()" class="text-zinc-500 flex flex-col items-center gap-1 active:text-electric">
-            <i data-lucide="test-tube-2" class="w-5 h-5"></i>
-            <span class="text-[8px] font-black uppercase">Lab</span>
-        </button>
-        <button onclick="scrollToCatalog()" class="text-zinc-500 flex flex-col items-center gap-1 active:text-electric">
-            <i data-lucide="layout-grid" class="w-5 h-5"></i>
-            <span class="text-[8px] font-black uppercase">Source</span>
-        </button>
-        <button onclick="openDiagnostic('Quick')" class="bg-electric w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-electric/40 -mt-8">
-            <i data-lucide="plus" class="w-6 h-6"></i>
-        </button>
-        <button onclick="window.location.href='#faq-list'" class="text-zinc-500 flex flex-col items-center gap-1 active:text-electric">
-            <i data-lucide="help-circle" class="w-5 h-5"></i>
-            <span class="text-[8px] font-black uppercase">Science</span>
-        </button>
-        <button onclick="window.open('https://wa.me/233240118846')" class="text-zinc-500 flex flex-col items-center gap-1 active:text-electric">
-            <i data-lucide="message-circle" class="w-5 h-5"></i>
-            <span class="text-[8px] font-black uppercase">Chat</span>
-        </button>
     </div>
 
+    <!-- MODAL: SOURCE OVERLAY -->
+    <div id="sourceModal" class="modal">
+        <div class="w-full max-w-4xl px-10 text-center">
+            <h3 class="text-4xl md:text-6xl font-black italic uppercase mb-16 tracking-tight">What are we <br>securing today?</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div onclick="window.location.href='#showroom'; closeModal('sourceModal')" class="glass p-10 rounded-[40px] steel-border hover:border-appleBlue transition-all cursor-pointer group">
+                    <i data-lucide="settings" class="w-12 h-12 mx-auto mb-6 text-zinc-700 group-hover:text-appleBlue"></i>
+                    <h5 class="font-black uppercase tracking-widest">Auto Parts</h5>
+                </div>
+                <div onclick="contactWhatsAppDirect('Inquiry: Motorbikes')" class="glass p-10 rounded-[40px] steel-border hover:border-appleBlue transition-all cursor-pointer group opacity-50">
+                    <i data-lucide="bike" class="w-12 h-12 mx-auto mb-6 text-zinc-700 group-hover:text-appleBlue"></i>
+                    <h5 class="font-black uppercase tracking-widest">Motorbikes</h5>
+                </div>
+                <div onclick="contactWhatsAppDirect('Inquiry: Electronics')" class="glass p-10 rounded-[40px] steel-border hover:border-appleBlue transition-all cursor-pointer group opacity-50">
+                    <i data-lucide="smartphone" class="w-12 h-12 mx-auto mb-6 text-zinc-700 group-hover:text-appleBlue"></i>
+                    <h5 class="font-black uppercase tracking-widest">Electronics</h5>
+                </div>
+            </div>
+            <button onclick="closeModal('sourceModal')" class="mt-20 text-zinc-500 font-bold uppercase tracking-widest text-xs underline">Back to Engine</button>
+        </div>
+    </div>
+
+    <!-- 7. FLOATING QUICK VERIFICATION BUTTON -->
+    <button onclick="openDiagnostic()" class="fixed bottom-10 right-10 z-[150] bg-appleBlue text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform active:scale-95">
+        <i data-lucide="plus" class="w-8 h-8"></i>
+    </button>
+
+    <!-- 8. CHECKOUT BAR -->
+    <div id="checkout-bar" class="fixed bottom-0 w-full glass z-[150] py-6 px-10 flex justify-between items-center border-t border-white/10 translate-y-full transition-transform duration-500">
+        <div>
+            <p id="cart-summary-text" class="font-black uppercase tracking-tighter italic text-zinc-400">Total: GH₵0</p>
+        </div>
+        <button onclick="sendCartToWhatsApp()" class="bg-white text-black px-10 py-4 rounded-xl font-black text-xs uppercase tracking-widest">Review & Order</button>
+    </div>
+
+    <!-- Scripting -->
     <script>
         lucide.createIcons();
 
-        // Reveal Hero
-        window.addEventListener('load', () => {
-            gsap.to("#hero-reveal", { opacity: 1, y: 0, duration: 1.5, ease: "power4.out", delay: 0.5 });
-        });
-
-        // Navigation Controllers
-        function scrollToCatalog() { document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' }); }
-        function scrollToLab() { document.getElementById('lab').scrollIntoView({ behavior: 'smooth' }); }
-
-        // Modal Logic
-        let currentType = "";
-        function openDiagnostic(type) {
-            currentType = type;
-            document.getElementById('modalTitle').innerText = `${type} VERIFICATION`;
-            document.getElementById('diagnosticModal').classList.remove('hidden');
-            document.getElementById('diagnosticModal').classList.add('flex');
-        }
-        function closeModal() {
-            document.getElementById('diagnosticModal').classList.add('hidden');
-            document.getElementById('diagnosticModal').classList.remove('flex');
+        // Cart Logic
+        let cart = [];
+        function addToCart(item, price) {
+            cart.push({item, price});
+            updateCartUI();
         }
 
-        // WhatsApp Integration
-        function sendWhatsApp() {
-            const model = document.getElementById('orderModel').value;
-            const vin = document.getElementById('orderVIN').value || "Not Provided";
-            if(!model) return alert("Please specify the model/specs");
+        function updateCartUI() {
+            const counter = document.getElementById('cart-counter');
+            const bar = document.getElementById('checkout-bar');
+            const summary = document.getElementById('cart-summary-text');
+            
+            if(cart.length > 0) {
+                counter.classList.remove('hidden');
+                counter.innerText = `${cart.length} ITEMS`;
+                bar.classList.remove('translate-y-full');
+                const total = cart.reduce((sum, i) => sum + i.price, 0);
+                summary.innerText = `Total: GH₵${total}`;
+            }
+        }
 
-            const text = `Hello Kash Option,\n\nI need the Research Man to verify and source a ${currentType} request.\n\nMODEL: ${model}\nVIN/IMEI/CHASSIS: ${vin}\n\nI understand the Kash Standard regarding accuracy and data verification. Please provide scientific fitment details and pricing.`;
+        // Modal Controllers
+        function openDiagnostic() { document.getElementById('diagModal').classList.add('active'); }
+        function toggleSourceOverlay() { document.getElementById('sourceModal').classList.add('active'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+
+        // WhatsApp Engines
+        function sendCartToWhatsApp() {
+            const items = cart.map(i => `${i.item} (GH₵${i.price})`).join(', ');
+            const total = cart.reduce((sum, i) => sum + i.price, 0);
+            const msg = `KASH ORDER SUMMARY:\nItems: ${items}\nTotal Estimate: GH₵${total}\n\nPlease verify VIN compatibility.`;
+            window.open(`https://wa.me/233240118846?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function submitDiagnostic() {
+            const make = document.getElementById('diag-make').value;
+            const year = document.getElementById('diag-year').value;
+            const cc = document.getElementById('diag-cc').value;
+            if(!year || !cc) return alert("Please fill all tech specs");
+            
+            const msg = `DIAGNOSTIC REQUEST:\nCar: ${make}\nYear: ${year}\nEngine: ${cc}\n\nI need a scientific fitment report for my spark plugs.`;
+            window.open(`https://wa.me/233240118846?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function contactWhatsAppDirect(text) {
             window.open(`https://wa.me/233240118846?text=${encodeURIComponent(text)}`, '_blank');
         }
     </script>
