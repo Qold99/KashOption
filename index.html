@@ -21,9 +21,6 @@
     fbq('init', '1219089910311037');
     fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1219089910311037&ev=PageView&noscript=1"
-    /></noscript>
 
     <!-- Resources -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,7 +33,7 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { obsidian: '#050505', steel: '#111111', electric: '#007AFF', danger: '#FF3B30', success: '#34C759' },
+                    colors: { obsidian: '#050505', steel: '#111111', electric: '#007AFF', danger: '#FF3B30', success: '#34C759', densoRed: '#E30613' },
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
                 }
             }
@@ -44,44 +41,41 @@
     </script>
 
     <style>
-        body { background-color: #050505; color: white; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        body { background-color: #050505; color: white; -webkit-font-smoothing: antialiased; overflow-x: hidden; font-size: 16px; }
+        h1, h2, h3, h4 { font-weight: 900 !important; letter-spacing: -0.02em; }
+        h1 { font-size: clamp(3.5rem, 10vw, 8rem); }
+        
+        .btn-thumb { min-height: 52px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .text-hero { font-weight: 900; letter-spacing: -0.05em; line-height: 0.85; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         
-        /* iPhone-style Notifications */
+        #lead-modal { display: none; opacity: 0; transition: opacity 0.3s ease; }
+        #lead-modal.active { display: flex; opacity: 1; }
+
+        .faq-active .faq-content { max-height: 300px; padding-bottom: 2rem; }
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .faq-active i { transform: rotate(180deg); color: #E30613; }
+
+        .review-card:hover { transform: translateY(-5px); border-color: #E30613; background: rgba(255, 255, 255, 0.05); transition: all 0.3s ease; }
+        
         #order-notif { transform: translateX(-120%); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         #order-notif.active { transform: translateX(0); }
-
-        /* Animation Keyframes */
-        @keyframes pulse-ring { 0% { transform: scale(.33); opacity: 1; } 80%, 100% { opacity: 0; } }
-        .pulse-marker { position: relative; }
-        .pulse-marker::before { content: ''; position: absolute; width: 300%; height: 300%; animation: pulse-ring 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite; background-color: #007AFF; border-radius: 50%; opacity: 0; }
-        
-        /* Mask for Comparison Slider */
-        .comparison-slider { position: relative; height: 400px; width: 100%; border-radius: 24px; overflow: hidden; }
-        .comparison-after { position: absolute; top: 0; left: 0; height: 100%; width: 50%; border-right: 2px solid white; overflow: hidden; z-index: 10; }
     </style>
 </head>
 <body class="selection:bg-electric">
 
-    <!-- GLOBAL TOGGLE & NAVIGATION -->
+    <!-- NAVIGATION -->
     <nav class="fixed top-0 w-full z-[100] glass border-b border-white/5 px-6 py-4 flex justify-between items-center">
         <div class="flex items-center gap-4">
             <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-                <div class="w-8 h-8 bg-electric rounded flex items-center justify-center font-black italic shadow-lg shadow-electric/20">K</div>
-                <span class="text-xl font-black tracking-tighter uppercase italic hidden md:block">Kash<span class="text-electric">Option</span></span>
+                <div class="w-8 h-8 bg-densoRed rounded flex items-center justify-center font-black italic shadow-lg shadow-densoRed/20">K</div>
+                <span class="text-xl font-black tracking-tighter uppercase italic hidden md:block text-white">KashOption</span>
             </div>
-            <select id="region-toggle" onchange="updateRegion()" class="bg-white/5 border border-white/10 rounded-full px-4 py-1 text-[10px] font-bold uppercase tracking-widest outline-none">
-                <option value="GH">GHANA (₵)</option>
-                <option value="NG">NIGERIA (₦)</option>
-                <option value="US">USA ($)</option>
-            </select>
         </div>
         <div class="flex gap-8 items-center text-[10px] font-black tracking-widest text-zinc-500 uppercase">
-            <a href="#intelligence" class="hover:text-white hidden md:block">Engine Intelligence</a>
-            <a href="#lab" class="hover:text-white hidden md:block">Originality Lab</a>
-            <button onclick="contactWhatsApp('Expert Consultation')" class="bg-white text-black px-6 py-2.5 rounded-full hover:bg-electric hover:text-white transition-all active:scale-95">Support</button>
+            <a href="#catalog" class="hover:text-white hidden md:block">Catalog</a>
+            <a href="#reviews" class="hover:text-white hidden md:block">Reviews</a>
+            <button onclick="triggerLeadForm('Header Support')" class="bg-white text-black px-6 py-2.5 rounded-full hover:bg-densoRed hover:text-white transition-all btn-thumb font-black">Support</button>
         </div>
     </nav>
 
@@ -91,370 +85,284 @@
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-obsidian to-obsidian"></div>
             <div class="w-full h-full bg-[radial-gradient(#1e1e1e_1px,transparent_1px)] [background-size:40px_40px]"></div>
         </div>
-
-        <div class="relative z-10 max-w-6xl opacity-0" id="hero-reveal">
-            <span class="inline-block px-4 py-1.5 rounded-full bg-electric/10 border border-electric/20 text-electric text-[9px] font-black mb-8 tracking-[0.4em] uppercase">
-                30-Min Delivery Accra & Tema
+        <div class="relative z-10 max-w-6xl" id="hero-reveal">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-densoRed/10 border border-densoRed/20 text-densoRed text-[10px] font-black mb-8 tracking-[0.4em] uppercase">
+                Premium Sourcing Authority
             </span>
-            <h1 class="text-hero text-6xl md:text-[140px] mb-10 italic uppercase">
+            <h1 class="italic uppercase mb-10 leading-[0.85] font-black">
                 IGNITION <br> <span class="text-zinc-600">INTEL.</span>
             </h1>
             <p class="text-zinc-400 text-lg md:text-2xl max-w-3xl mx-auto mb-12 font-medium">
-                We don't sell spark plugs. We restore engine performance. Scientific OEM matching for Toyota, Honda, Kia, and Hyundai.
+                Accra's #1 verified technical dealer for Toyota, Honda, Kia, and Hyundai. Scientific OEM matching for peak performance.
             </p>
             <div class="flex flex-wrap justify-center gap-6">
-                <button onclick="scrollToSection('intelligence')" class="bg-electric text-white px-12 py-5 rounded-2xl font-black text-xs tracking-widest uppercase hover:scale-105 transition-transform shadow-2xl shadow-electric/20">Analyze My Engine</button>
-                <button onclick="scrollToSection('catalog')" class="bg-white/5 border border-white/10 px-12 py-5 rounded-2xl font-black text-xs tracking-widest uppercase hover:bg-white/10 transition-all">Browse Registry</button>
+                <button onclick="scrollToSection('catalog')" class="bg-densoRed text-white px-12 py-5 rounded-2xl font-black text-xs tracking-widest uppercase hover:scale-105 transition-transform shadow-2xl btn-thumb">Wholesale Catalog</button>
+                <button onclick="scrollToSection('intelligence')" class="bg-white/5 border border-white/10 text-white px-12 py-5 rounded-2xl font-black text-xs tracking-widest uppercase hover:bg-white/10 btn-thumb">Analyze Engine</button>
             </div>
         </div>
     </header>
 
-    <!-- LIVE SUPPLY STREAM (SOCIAL PROOF) -->
+    <!-- SOCIAL PROOF STREAM -->
     <div id="order-notif" class="fixed bottom-24 md:bottom-10 left-6 z-[150] glass p-4 rounded-3xl w-[280px] shadow-2xl border-l-4 border-l-success">
         <div class="flex gap-4">
             <div class="w-12 h-12 bg-zinc-900 rounded-2xl flex items-center justify-center shrink-0">
                 <i data-lucide="package" class="text-success w-6 h-6"></i>
             </div>
             <div>
-                <p class="text-[10px] font-black text-success uppercase tracking-widest mb-1">Live Delivery Stream</p>
-                <h5 id="notif-name" class="text-xs font-bold text-white mb-1">...</h5>
-                <p id="notif-item" class="text-[10px] text-zinc-500 font-medium italic"></p>
+                <p class="text-[10px] font-black text-success uppercase tracking-widest mb-1">Live Delivery</p>
+                <h5 id="notif-name" class="text-xs font-bold text-white mb-1">Kofi M.</h5>
+                <p id="notif-item" class="text-[10px] text-zinc-500 font-medium italic">Ordered Toyota Corolla Plugs</p>
             </div>
         </div>
     </div>
 
-    <!-- ENGINE INTELLIGENCE DASHBOARD -->
-    <section id="intelligence" class="max-w-7xl mx-auto px-6 py-32 bg-steel/30 rounded-[60px] my-20 border border-white/5">
-        <div class="mb-20 text-center">
-            <h3 class="text-xs font-black text-electric tracking-[0.5em] uppercase mb-4 italic">The Intelligence Hub</h3>
-            <h2 class="text-5xl md:text-7xl font-black tracking-tighter uppercase italic">ENGINE DIAGNOSTICS</h2>
+    <!-- CATALOG -->
+    <section id="catalog" class="max-w-7xl mx-auto px-6 py-32">
+        <div class="mb-20">
+            <h3 class="text-xs font-black text-densoRed tracking-[0.5em] uppercase mb-4">Stock Registry</h3>
+            <h2 class="uppercase italic tracking-tighter">Wholesale Catalog</h2>
         </div>
-
-        <div class="grid md:grid-cols-2 gap-10">
-            <!-- 01: SAVE MY CAR (LOCAL STORAGE) -->
-            <div class="glass p-10 rounded-[40px] border border-white/10">
-                <div class="flex justify-between items-start mb-10">
-                    <h4 class="text-2xl font-black uppercase italic">Plug Health Meter</h4>
-                    <i data-lucide="activity" class="text-electric"></i>
-                </div>
-                <div class="space-y-6">
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" id="dash-make" placeholder="Make" class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-sm font-bold outline-none focus:border-electric transition-all">
-                        <input type="number" id="dash-mileage" placeholder="Mileage (KM)" class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-sm font-bold outline-none focus:border-electric transition-all" oninput="updateHealth()">
-                    </div>
-                    <div class="relative pt-6">
-                        <div class="flex justify-between text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-2">
-                            <span>Status</span>
-                            <span id="health-percent">0%</span>
-                        </div>
-                        <div class="h-3 w-full bg-white/5 rounded-full overflow-hidden">
-                            <div id="health-bar" class="h-full bg-success transition-all duration-1000" style="width: 0%"></div>
-                        </div>
-                        <p id="health-advice" class="mt-4 text-[10px] text-zinc-500 font-medium italic"></p>
-                    </div>
-                    <button onclick="saveCarData()" class="w-full py-4 bg-white text-black rounded-2xl font-black text-[10px] tracking-widest uppercase active:scale-95 transition-all">Save My Profile</button>
-                </div>
-            </div>
-
-            <!-- 02: FUEL ROI CALCULATOR -->
-            <div class="glass p-10 rounded-[40px] border border-white/10 bg-electric/5">
-                <div class="flex justify-between items-start mb-10">
-                    <h4 class="text-2xl font-black uppercase italic">Fuel ROI Engine</h4>
-                    <i data-lucide="wallet" class="text-success"></i>
-                </div>
-                <div class="space-y-8">
-                    <div>
-                        <label class="text-[9px] font-black text-zinc-500 uppercase tracking-widest mb-3 block">Weekly Petrol Spend (₵)</label>
-                        <input type="number" id="roi-spend" oninput="calculateROI()" placeholder="e.g. 500" class="w-full bg-white/5 border border-white/10 rounded-2xl p-6 text-3xl font-black outline-none focus:border-electric transition-all">
-                    </div>
-                    <div class="p-6 bg-obsidian rounded-3xl border border-white/5">
-                        <p class="text-[10px] font-black text-zinc-500 uppercase mb-2">Estimated Monthly Savings</p>
-                        <h2 id="roi-savings" class="text-5xl font-black text-success tracking-tighter italic">₵0.00</h2>
-                        <p class="text-[10px] text-danger font-bold mt-4 uppercase italic" id="waste-text">Enter details to see wasted cash</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- COUNTERFEIT SLIDER SECTION -->
-    <section id="lab" class="max-w-7xl mx-auto px-6 py-32">
-        <div class="grid md:grid-cols-2 gap-20 items-center">
-            <div>
-                <h2 class="text-5xl font-black tracking-tighter uppercase italic mb-8 italic">The Lab: <br>Fake vs Original</h2>
-                <div class="space-y-6">
-                    <div class="flex gap-6 p-6 glass rounded-3xl border-l-4 border-l-danger">
-                        <i data-lucide="x-circle" class="text-danger shrink-0"></i>
-                        <p class="text-sm font-medium text-zinc-400 leading-relaxed italic">"Cheap fakes use nickel tips that melt at 800°C, destroying your ignition coils and burning GH₵2,000+ in damages."</p>
-                    </div>
-                    <div class="flex gap-6 p-6 glass rounded-3xl border-l-4 border-l-success">
-                        <i data-lucide="check-circle-2" class="text-success shrink-0"></i>
-                        <p class="text-sm font-medium text-zinc-400 leading-relaxed italic">"Kash Originals use Pure Japan Iridium technology with a 5,000-Ohm monolithic resistor to protect your ECU."</p>
-                    </div>
-                </div>
-            </div>
-            <div class="comparison-slider glass p-2 border border-white/10">
-                <div class="fake-label bg-danger text-white p-2 text-[8px] font-black absolute top-4 left-4 z-20 rounded">FAKE MARKET PLUG</div>
-                <div class="real-label bg-success text-white p-2 text-[8px] font-black absolute top-4 right-4 z-20 rounded">KASH ORIGINAL</div>
-                <img src="https://images.unsplash.com/photo-1635437536607-b8572f443763?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover grayscale rounded-2xl" alt="">
-                <div class="comparison-after" id="slider-overlay">
-                    <img src="https://images.unsplash.com/photo-1635437536607-b8572f443763?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover absolute top-0 left-0 max-w-none rounded-2xl" alt="">
-                </div>
-                <input type="range" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30" oninput="slideCompare(this.value)">
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ SECTION (SEO EXPANDED) -->
-    <section class="max-w-4xl mx-auto px-6 py-32">
-        <div class="text-center mb-20">
-            <h2 class="text-5xl font-black italic uppercase tracking-tighter italic">Technical FAQ</h2>
-        </div>
-        <div class="space-y-4">
-            <!-- FAQ 1 -->
-            <details class="glass rounded-3xl group">
-                <summary class="p-8 cursor-pointer list-none flex justify-between items-center font-black uppercase text-xs tracking-[0.2em] italic">
-                    How long for delivery?
-                    <i data-lucide="chevron-down" class="text-electric transition-transform group-open:rotate-180"></i>
-                </summary>
-                <div class="px-8 pb-8 text-sm text-zinc-400 leading-relaxed italic">
-                    We offer **30-minute express delivery** for Accra and Tema. If you are in the Central, Eastern, Western, Volta, Northern, or Upper North regions, orders placed before 5 PM are delivered **same-day** via our logistics partners.
-                </div>
-            </details>
-            <!-- FAQ 2 -->
-            <details class="glass rounded-3xl group">
-                <summary class="p-8 cursor-pointer list-none flex justify-between items-center font-black uppercase text-xs tracking-[0.2em] italic">
-                    Iridium, Platinum, or Copper?
-                    <i data-lucide="chevron-down" class="text-electric transition-transform group-open:rotate-180"></i>
-                </summary>
-                <div class="px-8 pb-8 text-sm text-zinc-400 leading-relaxed italic">
-                    Every engine has a specific DNA. We provide the **exact OEM match** based on your account info and engine specs (VIN matched). This ensures peak performance and fuel economy as designed by the manufacturer.
-                </div>
-            </details>
-            <!-- FAQ 3 -->
-            <details class="glass rounded-3xl group">
-                <summary class="p-8 cursor-pointer list-none flex justify-between items-center font-black uppercase text-xs tracking-[0.2em] italic">
-                    What's best for my car?
-                    <i data-lucide="chevron-down" class="text-electric transition-transform group-open:rotate-180"></i>
-                </summary>
-                <div class="px-8 pb-8 text-sm text-zinc-400 leading-relaxed italic">
-                    We match your engine to its **OEM original**. You don't have to worry about the technical details; our Intelligence Dashboard and Expert team care for your engine's health and prevent mid-road breakdowns.
-                </div>
-            </details>
-            <!-- FAQ 4 -->
-            <details class="glass rounded-3xl group">
-                <summary class="p-8 cursor-pointer list-none flex justify-between items-center font-black uppercase text-xs tracking-[0.2em] italic">
-                    How do I know they are genuine?
-                    <i data-lucide="chevron-down" class="text-electric transition-transform group-open:rotate-180"></i>
-                </summary>
-                <div class="px-8 pb-8 text-sm text-zinc-400 leading-relaxed italic">
-                    Every plug is verified **OEM Pure Iridium technology**. We are the only importers in Ghana who scientifically resistance-test batches. We do not sell counterfeits, and our 100,000+ engine saves prove it.
-                </div>
-            </details>
-        </div>
-    </section>
-
-    <!-- TESTIMONIAL GRID (MASONRY) -->
-    <section class="max-w-7xl mx-auto px-6 py-32 bg-steel/20 rounded-[60px] border border-white/5">
-        <h2 class="text-center text-4xl font-black italic uppercase mb-20 italic">The Engine Council Reviews</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="glass p-8 rounded-[40px] border-b-4 border-b-electric">
-                <p class="text-xs text-zinc-400 italic mb-6">"My Hyundai Sonata was shaking at red lights. Kash diagnosed the counterfeit plugs I bought in Abossey Okai. New plugs fixed it in 10 mins."</p>
-                <p class="text-[10px] font-black uppercase text-white">Emmanuel T. - Tema</p>
+            <div class="glass p-8 rounded-[40px] border-t-4 border-densoRed flex flex-col h-[450px] justify-between review-card">
+                <div>
+                    <span class="text-[10px] font-black text-densoRed uppercase tracking-[0.3em]">Toyota</span>
+                    <h4 class="text-3xl font-black mt-4 mb-2">₵200</h4>
+                    <p class="text-zinc-500 text-sm font-medium italic">Iridium for Corolla, Camry, Vitz. Japan Grade.</p>
+                </div>
+                <button onclick="triggerLeadForm('Toyota')" class="w-full bg-densoRed text-white rounded-2xl font-black text-xs uppercase btn-thumb">Order Now</button>
             </div>
-            <div class="glass p-8 rounded-[40px] border-b-4 border-b-success">
-                <p class="text-xs text-zinc-400 italic mb-6">"Saved me ₵400 a month in fuel on my Toyota Prado. The ROI calculator on the site is 100% accurate."</p>
-                <p class="text-[10px] font-black uppercase text-white">Dr. Kofi - East Legon</p>
+            <div class="glass p-8 rounded-[40px] border-t-4 border-densoRed flex flex-col h-[450px] justify-between review-card">
+                <div>
+                    <span class="text-[10px] font-black text-densoRed uppercase tracking-[0.3em]">Honda</span>
+                    <h4 class="text-3xl font-black mt-4 mb-2">₵500</h4>
+                    <p class="text-zinc-500 text-sm font-medium italic">Laser Iridium for Accord, Civic. High Tech.</p>
+                </div>
+                <button onclick="triggerLeadForm('Honda')" class="w-full bg-densoRed text-white rounded-2xl font-black text-xs uppercase btn-thumb">Order Now</button>
             </div>
-            <div class="glass p-8 rounded-[40px] border-b-4 border-b-electric">
-                <p class="text-xs text-zinc-400 italic mb-6">"Fastest delivery ever. Ordered Honda Civic plugs at 10 AM, received them in Tarkwa by evening. Verified originals."</p>
-                <p class="text-[10px] font-black uppercase text-white">Nana Yaw - Tarkwa</p>
+            <div class="glass p-8 rounded-[40px] border-t-4 border-densoRed flex flex-col h-[450px] justify-between review-card">
+                <div>
+                    <span class="text-[10px] font-black text-densoRed uppercase tracking-[0.3em]">Kia</span>
+                    <h4 class="text-3xl font-black mt-4 mb-2">₵300</h4>
+                    <p class="text-zinc-500 text-sm font-medium italic">Picanto, Sportage. Fuel Saver Grade.</p>
+                </div>
+                <button onclick="triggerLeadForm('Kia')" class="w-full bg-densoRed text-white rounded-2xl font-black text-xs uppercase btn-thumb">Order Now</button>
             </div>
-            <div class="glass p-8 rounded-[40px] border-b-4 border-b-success">
-                <p class="text-xs text-zinc-400 italic mb-6">"The only dealer I trust for my Kia Optima. They know the technical heat ranges better than the local dealership."</p>
-                <p class="text-[10px] font-black uppercase text-white">Sarah O. - Kumasi</p>
-            </div>
-            <div class="glass p-8 rounded-[40px] border-b-4 border-b-electric">
-                <p class="text-xs text-zinc-400 italic mb-6">"My engine was misfiring badly. Prince matched my VIN to the exact NGK plugs. Zero issues since."</p>
-                <p class="text-[10px] font-black uppercase text-white">Michael B. - Tesano</p>
-            </div>
-            <div class="glass p-8 rounded-[40px] border-b-4 border-b-success">
-                <p class="text-xs text-zinc-400 italic mb-6">"Wholesale pricing is amazing for mechanics. I only buy from Kash Option for my clients now."</p>
-                <p class="text-[10px] font-black uppercase text-white">Master Collins - Koforidua</p>
-            </div>
-            <div class="glass p-8 rounded-[40px] border-b-4 border-b-electric">
-                <p class="text-xs text-zinc-400 italic mb-6">"US Sourced plugs for my Ford. Nobody else in Accra had the right part number. Kash had it."</p>
-                <p class="text-[10px] font-black uppercase text-white">John D. - Cantonments</p>
-            </div>
-            <div class="glass p-8 rounded-[40px] border-b-4 border-b-success">
-                <p class="text-xs text-zinc-400 italic mb-6">"The diagnostic tool is world-class. Told me my plugs were at 20% health and it was spot on."</p>
-                <p class="text-[10px] font-black uppercase text-white">Patience A. - Ho</p>
+            <div class="glass p-8 rounded-[40px] border-t-4 border-densoRed flex flex-col h-[450px] justify-between review-card">
+                <div>
+                    <span class="text-[10px] font-black text-densoRed uppercase tracking-[0.3em]">Hyundai</span>
+                    <h4 class="text-3xl font-black mt-4 mb-2">₵300</h4>
+                    <p class="text-zinc-500 text-sm font-medium italic">Elantra, Tucson. Long Life Performance.</p>
+                </div>
+                <button onclick="triggerLeadForm('Hyundai')" class="w-full bg-densoRed text-white rounded-2xl font-black text-xs uppercase btn-thumb">Order Now</button>
             </div>
         </div>
     </section>
 
-    <!-- PREMIUM FOOTER -->
-    <footer class="bg-obsidian py-32 px-6 border-t border-white/5">
-        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-16 mb-20">
-            <div class="col-span-2">
-                <div class="flex items-center gap-2 mb-8">
-                    <div class="w-10 h-10 bg-electric rounded-lg flex items-center justify-center font-black italic">K</div>
-                    <span class="text-2xl font-black tracking-tighter uppercase italic">Kash<span class="text-electric">Option</span></span>
+    <!-- ENGINE INTELLIGENCE DASHBOARD -->
+    <section id="intelligence" class="max-w-7xl mx-auto px-6 py-32 bg-steel/30 rounded-[60px] border border-white/5">
+        <div class="mb-20 text-center">
+            <h3 class="text-xs font-black text-electric tracking-[0.5em] uppercase mb-4">Diagnostics</h3>
+            <h2 class="text-5xl font-black uppercase italic">ENGINE DASHBOARD</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="glass p-10 rounded-[40px] border border-white/10">
+                <h4 class="text-2xl font-black uppercase italic mb-8">Plug Health Meter</h4>
+                <div class="space-y-6">
+                    <input type="number" id="dash-mileage" placeholder="Mileage (KM)" class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-sm font-bold text-white outline-none" oninput="updateHealth()">
+                    <div class="relative pt-6">
+                        <div class="flex justify-between text-[10px] font-black uppercase mb-2"><span>Status</span><span id="health-percent">0%</span></div>
+                        <div class="h-3 w-full bg-white/5 rounded-full overflow-hidden"><div id="health-bar" class="h-full bg-success transition-all duration-1000" style="width: 0%"></div></div>
+                    </div>
                 </div>
-                <p class="text-zinc-500 max-w-sm text-sm italic font-medium">Independent Technical Authority. Not affiliated with Toyota, Honda, or Apple Inc. All plugs verified for the Ghana & Nigeria market.</p>
+            </div>
+            <div class="glass p-10 rounded-[40px] border border-white/10 bg-electric/5">
+                <h4 class="text-2xl font-black uppercase italic mb-8">Fuel ROI Engine</h4>
+                <input type="number" id="roi-spend" oninput="calculateROI()" placeholder="Weekly Petrol Spend (₵)" class="w-full bg-white/5 border border-white/10 rounded-2xl p-6 text-3xl font-black text-white outline-none">
+                <div class="p-6 bg-obsidian rounded-3xl mt-6 text-center">
+                    <p class="text-[10px] text-zinc-500 font-bold uppercase">Monthly Potential Saving</p>
+                    <h2 id="roi-savings" class="text-5xl font-black text-success tracking-tighter">₵0.00</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS SECTION -->
+    <section id="reviews" class="max-w-7xl mx-auto px-6 py-32">
+        <div class="text-center mb-20">
+            <h3 class="text-xs font-black text-densoRed tracking-[0.5em] uppercase mb-4">The Engine Council</h3>
+            <h2 class="uppercase italic tracking-tighter">Verified Reviews</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="glass p-8 rounded-[30px] review-card">
+                <p class="text-sm italic text-zinc-400 mb-6">"My Toyota Vitz misfire was gone instantly. Verified Japan quality."</p>
+                <h5 class="text-xs font-black uppercase tracking-widest">— Prince, Accra</h5>
+            </div>
+            <div class="glass p-8 rounded-[30px] review-card">
+                <p class="text-sm italic text-zinc-400 mb-6">"Saved ₵150 on fuel this month thanks to the ROI calculator."</p>
+                <h5 class="text-xs font-black uppercase tracking-widest">— Collins, Tema</h5>
+            </div>
+            <div class="glass p-8 rounded-[30px] review-card">
+                <p class="text-sm italic text-zinc-400 mb-6">"Fastest delivery in Accra. Order at 9am, delivered by 10am."</p>
+                <h5 class="text-xs font-black uppercase tracking-widest">— Daniel R., Kumasi</h5>
+            </div>
+            <div class="glass p-8 rounded-[30px] review-card">
+                <p class="text-sm italic text-zinc-400 mb-6">"Mechanics kept selling me fakes. Kash Option is the only legit dealer."</p>
+                <h5 class="text-xs font-black uppercase tracking-widest">— Sarah, East Legon</h5>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="max-w-4xl mx-auto px-6 py-32 border-t border-white/5">
+        <h2 class="text-center uppercase italic tracking-tighter mb-16">Technical FAQ</h2>
+        <div class="space-y-4">
+            <div class="glass rounded-3xl overflow-hidden">
+                <button onclick="toggleFaq(this)" class="w-full p-8 flex justify-between items-center text-left">
+                    <span class="font-bold text-lg">Delivery Timeline?</span>
+                    <i data-lucide="chevron-down"></i>
+                </button>
+                <div class="faq-content px-8 text-zinc-400 italic">30 mins for Accra. Same-day for Northern and Western regions if ordered before 5pm.</div>
+            </div>
+            <div class="glass rounded-3xl overflow-hidden">
+                <button onclick="toggleFaq(this)" class="w-full p-8 flex justify-between items-center text-left">
+                    <span class="font-bold text-lg">Are these genuine?</span>
+                    <i data-lucide="chevron-down"></i>
+                </button>
+                <div class="faq-content px-8 text-zinc-400 italic">Every plug is resistance-tested to 5,000-Ohms. We supply pure OEM Iridium only.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-obsidian pt-32 pb-16 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+            <div>
+                <div class="flex items-center gap-2 mb-8">
+                    <div class="w-10 h-10 bg-densoRed rounded flex items-center justify-center font-black italic">K</div>
+                    <span class="text-2xl font-black tracking-tighter uppercase italic">KashOption</span>
+                </div>
+                <p class="text-zinc-500 max-w-sm text-sm italic mb-6">Accra's verified technical authority. Solving engine misfires with science.</p>
+                <a href="mailto:info@mrkash.net" class="text-white hover:text-densoRed font-black uppercase flex items-center gap-2"><i data-lucide="mail"></i> info@mrkash.net</a>
             </div>
             <div>
-                <h5 class="font-black text-[10px] tracking-[0.3em] uppercase text-zinc-400 mb-8">Navigation</h5>
-                <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-zinc-600">
-                    <li><a href="#" class="hover:text-electric transition-colors">Originality Lab</a></li>
-                    <li><a href="#" class="hover:text-electric transition-colors">Delivery Terms</a></li>
-                    <li><a href="#" class="hover:text-electric transition-colors">Privacy Policy</a></li>
-                    <li><a href="#" class="hover:text-electric transition-colors">Terms of Service</a></li>
+                <h5 class="font-black text-[10px] tracking-[0.3em] uppercase text-zinc-400 mb-10">Navigation</h5>
+                <ul class="space-y-5 text-sm font-bold uppercase tracking-widest text-zinc-600">
+                    <li><a href="#catalog" class="hover:text-densoRed">Stock</a></li>
+                    <li><a href="#reviews" class="hover:text-densoRed">Reviews</a></li>
+                    <li><a href="#faq" class="hover:text-densoRed">FAQ</a></li>
                 </ul>
             </div>
             <div>
-                <h5 class="font-black text-[10px] tracking-[0.3em] uppercase text-zinc-400 mb-8">Social Intelligence</h5>
-                <div class="flex gap-6">
-                    <a href="https://instagram.com/kashoption1" class="text-zinc-500 hover:text-white transition-colors"><i data-lucide="instagram"></i></a>
-                    <a href="https://tiktok.com/@kashoption1" class="text-zinc-500 hover:text-white transition-colors"><i data-lucide="music-2"></i></a>
-                    <a href="https://facebook.com/kashoption1" class="text-zinc-500 hover:text-white transition-colors"><i data-lucide="facebook"></i></a>
+                <h5 class="font-black text-[10px] tracking-[0.3em] uppercase text-zinc-400 mb-10">Connect @kashoption1</h5>
+                <div class="flex gap-8">
+                    <a href="https://facebook.com/kashoption1" target="_blank" class="text-zinc-400 hover:text-blue-500"><i data-lucide="facebook" class="w-8 h-8"></i></a>
+                    <a href="https://instagram.com/kashoption1" target="_blank" class="text-zinc-400 hover:text-pink-500"><i data-lucide="instagram" class="w-8 h-8"></i></a>
+                    <a href="https://tiktok.com/@kashoption1" target="_blank" class="text-zinc-400 hover:text-white"><i data-lucide="music" class="w-8 h-8"></i></a>
                 </div>
             </div>
         </div>
-        <div class="text-center pt-20 border-t border-white/5">
-            <p class="text-[9px] font-black text-zinc-800 tracking-[0.6em] uppercase">© 2024 KASH OPTION LOGISTICS. ENGINEERED FOR GHANA.</p>
-        </div>
     </footer>
 
-    <!-- CHAT BUBBLE & SOUND -->
-    <audio id="notif-sound" src="https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3" preload="auto"></audio>
-    <div id="chat-bubble" class="fixed bottom-10 right-6 z-[200] opacity-0 translate-y-20 transition-all duration-700 pointer-events-none">
-        <div class="glass p-6 rounded-[30px] border border-electric shadow-2xl w-[300px]">
-            <p class="text-xs font-bold italic mb-4">"Is your engine shaking or misfiring? We have the OEM plugs ready for your car."</p>
-            <button onclick="contactWhatsApp('Engine Misfire Check')" class="w-full py-4 bg-electric text-white rounded-2xl font-black text-[10px] tracking-widest uppercase pointer-events-auto active:scale-95 transition-all">Secure My Set</button>
+    <!-- LEAD GEN MODAL -->
+    <div id="lead-modal" class="fixed inset-0 z-[1000] glass items-center justify-center p-6">
+        <div class="bg-black border border-white/10 rounded-[40px] w-full max-w-lg p-10 relative">
+            <button onclick="closeLeadForm()" class="absolute top-8 right-8 text-zinc-500"><i data-lucide="x"></i></button>
+            <h3 class="text-3xl font-black italic uppercase mb-2">Order Sync</h3>
+            <form id="leadForm" onsubmit="handleOrderSubmit(event)" class="space-y-6 mt-8">
+                <input type="text" id="form-make" readonly class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-densoRed font-black">
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="text" id="form-model" required placeholder="Model" class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-white font-bold">
+                    <input type="number" id="form-year" required placeholder="Year" class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-white font-bold">
+                </div>
+                <input type="text" id="form-capacity" required placeholder="Engine CC" class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-white font-bold">
+                <button type="submit" class="w-full bg-densoRed text-white rounded-2xl font-black text-xs uppercase btn-thumb">Request Technical Fitment</button>
+            </form>
         </div>
     </div>
 
-    <!-- SCRIPTING ENGINE -->
+    <!-- PROBLEM HOOK BUBBLE -->
+    <div id="diagnostic-bubble" class="fixed bottom-6 right-6 z-[200] flex flex-col items-end gap-4 scale-0 opacity-0 transition-all duration-700">
+        <div class="glass p-6 rounded-[32px] border-b-4 border-densoRed max-w-[280px] shadow-2xl">
+            <p class="text-sm font-bold leading-tight mb-4">Engine shaking or losing power? <span class="text-densoRed">Misfires destroy engines.</span></p>
+            <button onclick="triggerLeadForm('Diagnostic')" class="w-full bg-white text-black py-3 rounded-xl font-black text-[10px] uppercase">Get Free Engine Specs</button>
+        </div>
+    </div>
+
     <script>
         lucide.createIcons();
 
-        // 1. LIVE SUPPLY STREAM LOGIC
-        const ORDERS = [
-            { name: "Emmanuel T.", car: "Toyota Corolla", city: "Tema", phone: "478" },
-            { name: "Kofi Mensah", car: "Honda Accord", city: "Kumasi", phone: "125" },
-            { name: "Sarah Owusu", car: "Kia Optima", city: "East Legon", phone: "890" },
-            { name: "John Doe", car: "Hyundai Elantra", city: "Tesano", phone: "334" },
-            { name: "Nana Yaw", car: "Toyota Camry", city: "Tarkwa", phone: "567" },
-            { name: "Fatima", car: "Kia Sorento", city: "Tamale", phone: "112" }
-        ];
+        // SCROLL FIX
+        function scrollToSection(id) {
+            const target = document.getElementById(id);
+            if(target) target.scrollIntoView({ behavior: 'smooth' });
+        }
 
+        // ORCHESTRATION
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const bubble = document.getElementById('diagnostic-bubble');
+                bubble.classList.remove('scale-0', 'opacity-0');
+            }, 4000);
+
+            setTimeout(() => {
+                showOrderNotif();
+                setInterval(showOrderNotif, 18000);
+            }, 12000);
+        });
+
+        // ORDER GENERATOR
+        const GH_LOCS = ["East Legon", "Tema", "Kumasi", "Tesano", "Tarkwa", "Spintex"];
+        const CARS = ["Toyota Corolla", "Honda Accord", "Kia Picanto", "Hyundai Elantra"];
         function showOrderNotif() {
             const notif = document.getElementById('order-notif');
-            const data = ORDERS[Math.floor(Math.random() * ORDERS.length)];
-            
-            document.getElementById('notif-name').innerText = `${data.name} (+233******${data.phone})`;
-            document.getElementById('notif-item').innerText = `Ordered ${data.car} Plugs • Delivered to ${data.city}`;
-            
+            document.getElementById('notif-name').innerText = `Customer (+233******${Math.floor(100+Math.random()*899)})`;
+            document.getElementById('notif-item').innerText = `Ordered ${CARS[Math.floor(Math.random()*CARS.length)]} • delivered to ${GH_LOCS[Math.floor(Math.random()*GH_LOCS.length)]}`;
             notif.classList.add('active');
-            setTimeout(() => notif.classList.remove('active'), 4000);
-        }
-        setInterval(showOrderNotif, 10000);
-
-        // 2. ENGINE INTELLIGENCE DASHBOARD
-        function updateHealth() {
-            const mil = document.getElementById('dash-mileage').value;
-            const bar = document.getElementById('health-bar');
-            const pctText = document.getElementById('health-percent');
-            const advice = document.getElementById('health-advice');
-            
-            if(!mil) return;
-            
-            let health = 100 - (mil / 1000);
-            health = Math.max(0, Math.min(100, health));
-            
-            bar.style.width = health + '%';
-            pctText.innerText = Math.round(health) + '%';
-            
-            if(health > 70) {
-                bar.className = "h-full bg-success transition-all duration-1000";
-                advice.innerText = "Status: Healthy. Keep driving.";
-            } else if(health > 30) {
-                bar.className = "h-full bg-yellow-500 transition-all duration-1000";
-                advice.innerText = "Warning: Carbon buildup detected. Plan replacement.";
-            } else {
-                bar.className = "h-full bg-danger transition-all duration-1000";
-                advice.innerText = "Critical: Misfire risk high. Replace immediately.";
-            }
+            setTimeout(() => notif.classList.remove('active'), 5000);
         }
 
-        function calculateROI() {
-            const spend = document.getElementById('roi-spend').value;
-            const savingsText = document.getElementById('roi-savings');
-            const wasteText = document.getElementById('waste-text');
-            
-            if(!spend) return;
-            
-            const monthlyWaste = spend * 4 * 0.15; // 15% efficiency loss
-            savingsText.innerText = `₵${monthlyWaste.toFixed(2)}`;
-            wasteText.innerText = `Bad plugs are burning ₵${monthlyWaste.toFixed(2)} monthly`;
+        // LEAD LOGIC
+        function triggerLeadForm(make) {
+            const modal = document.getElementById('lead-modal');
+            document.getElementById('form-make').value = make;
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('active'), 10);
         }
-
-        function saveCarData() {
-            const data = {
-                make: document.getElementById('dash-make').value,
-                mileage: document.getElementById('dash-mileage').value
-            };
-            localStorage.setItem('kash_car_data', JSON.stringify(data));
-            alert('Profile Saved to Engine Council.');
+        function closeLeadForm() {
+            const modal = document.getElementById('lead-modal');
+            modal.classList.remove('active');
+            setTimeout(() => modal.style.display = 'none', 300);
         }
-
-        // 3. COMPARISON SLIDER
-        function slideCompare(val) {
-            document.getElementById('slider-overlay').style.width = val + '%';
-        }
-
-        // 4. CHAT LOGIC (40s TRigger)
-        setTimeout(() => {
-            const bubble = document.getElementById('chat-bubble');
-            const sound = document.getElementById('notif-sound');
-            bubble.classList.remove('opacity-0', 'translate-y-20', 'pointer-events-none');
-            sound.play().catch(e => console.log('User gesture needed for sound'));
-        }, 40000);
-
-        // 5. REGION TOGGLE
-        function updateRegion() {
-            const region = document.getElementById('region-toggle').value;
-            const cur = region === 'NG' ? '₦' : region === 'US' ? '$' : '₵';
-            // Logic to update all price tags can be added here
-            alert(`Currency switched to ${cur}`);
-        }
-
-        // 6. WHATSAPP ENGINE
-        function contactWhatsApp(context) {
-            const make = document.getElementById('dash-make').value || "[MAKE]";
-            const mil = document.getElementById('dash-mileage').value || "[MILEAGE]";
-            const msg = `Hello Kash Option, I am checking for my ${make}. Current Mileage is ${mil}km. Context: ${context}. Please provide part numbers and payment details.`;
+        function handleOrderSubmit(e) {
+            e.preventDefault();
+            const make = document.getElementById('form-make').value;
+            const model = document.getElementById('form-model').value;
+            const year = document.getElementById('form-year').value;
+            const msg = `URGENT TECHNICAL FITMENT: I need specs for ${make} ${model} (${year}). My engine is shaking/losing power. Please confirm zero-misfire options.`;
             window.open(`https://wa.me/233240118846?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        // INTEL LOGIC
+        function updateHealth() {
+            const mil = document.getElementById('dash-mileage').value;
+            const health = Math.max(0, 100 - (mil / 1000));
+            document.getElementById('health-bar').style.width = health + '%';
+            document.getElementById('health-percent').innerText = Math.round(health) + '%';
+        }
+        function calculateROI() {
+            const spend = document.getElementById('roi-spend').value;
+            document.getElementById('roi-savings').innerText = `₵${(spend * 4 * 0.15).toFixed(2)}`;
         }
 
-        // 7. GSAP TRANSITIONS
-        gsap.registerPlugin(ScrollTrigger);
-        gsap.to("#hero-reveal", { opacity: 1, y: -20, duration: 1.5, ease: "power4.out" });
+        // UI HELPERS
+        function toggleFaq(el) {
+            const parent = el.parentElement;
+            const isOpen = parent.classList.contains('faq-active');
+            document.querySelectorAll('.glass').forEach(i => i.classList.remove('faq-active'));
+            if(!isOpen) parent.classList.add('faq-active');
+        }
 
-        gsap.utils.toArray('.glass').forEach(card => {
-            gsap.from(card, {
-                scrollTrigger: { trigger: card, start: "top 90%" },
-                opacity: 0,
-                y: 30,
-                duration: 1,
-                ease: "power3.out"
-            });
-        });
+        gsap.to("#hero-reveal", { opacity: 1, y: -20, duration: 1.5, ease: "power4.out" });
     </script>
 </body>
 </html>
