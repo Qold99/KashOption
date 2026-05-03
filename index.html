@@ -5,371 +5,316 @@
   <base href="https://mrkash.net/">
   <link rel="icon" type="image/png" href="https://mrkash.net/logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Kash Option | Shop China, USA & UK - Pay with MoMo</title>
+  <title>KASH OPTION | Global Showroom & Logistics Ghana</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    :root { --accent: #22d3ee; --bg: #0a0a0f; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --accent: #22d3ee; --bg: #050505; --card: #0f0f12; }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
     
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: var(--bg);
       color: #fff;
       overflow-x: hidden;
+      font-weight: 500;
     }
 
-    /* --- DYNAMIC ISLAND NAVIGATION --- */
-    .nav-wrapper {
+    /* --- DYNAMIC ISLAND (PREMIUM) --- */
+    .island-wrapper {
       position: fixed;
       top: 20px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 9999;
-      width: auto;
     }
 
     .dynamic-island {
-      background: rgba(15, 15, 25, 0.7);
-      backdrop-filter: blur(20px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 50px;
-      padding: 8px 12px;
+      background: rgba(10, 10, 12, 0.85);
+      backdrop-filter: blur(25px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 60px;
+      padding: 10px 14px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      gap: 12px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.6);
     }
 
-    .island-logo {
-      font-weight: 800;
-      font-size: 0.9rem;
-      padding: 0 15px;
-      color: #fff;
-      text-decoration: none;
-      font-style: italic;
-    }
+    .island-logo { font-weight: 800; font-size: 0.9rem; padding: 0 15px; color: #fff; text-decoration: none; font-style: italic; letter-spacing: -0.5px; }
     .island-logo span { color: var(--accent); }
 
-    .island-nav {
-      display: none;
-      align-items: center;
-      gap: 4px;
-    }
-
+    .island-nav { display: none; align-items: center; gap: 4px; }
     @media (min-width: 1024px) { .island-nav { display: flex; } }
 
     .island-nav a {
-      color: #94a3b8;
+      color: #a1a1a6;
       text-decoration: none;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
-      padding: 8px 12px;
+      padding: 10px 18px;
       border-radius: 40px;
       transition: 0.3s;
     }
-    .island-nav a:hover, .island-nav a.active { color: #fff; background: rgba(255,255,255,0.05); }
+    .island-nav a:hover, .island-nav a.active { color: #fff; background: rgba(255,255,255,0.08); }
 
-    .menu-btn {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
+    .menu-trigger { width: 38px; height: 38px; border-radius: 50%; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
+
+    /* --- HERO SHOWROOM --- */
+    .hero-title {
+      font-size: clamp(3rem, 10vw, 7rem);
+      font-weight: 800;
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+    }
+
+    .showroom-card {
+      background: var(--card);
+      border-radius: 32px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    .showroom-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+    .showroom-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.5s; }
+    .showroom-card:hover img { opacity: 0.8; transform: scale(1.05); }
+
+    .card-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 40px;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    }
+
+    .btn-worldclass {
       background: var(--accent);
       color: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      border: none;
-    }
-
-    /* --- HERO & LAYOUT --- */
-    .hero-title {
-      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      padding: 20px 45px;
+      border-radius: 50px;
       font-weight: 800;
-      line-height: 1;
-      letter-spacing: -0.04em;
-    }
-
-    .liquid-glass {
-      background: rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 30px;
-    }
-
-    .btn-pill {
-      border-radius: 9999px;
-      padding: 16px 36px;
-      font-weight: 700;
-      transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.4s;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      font-size: 1rem;
     }
-    .btn-primary { background: var(--accent); color: #000; }
-    .btn-whatsapp { background: #25D366; color: #fff; }
-    .btn-pill:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+    .btn-worldclass:hover { transform: scale(1.05); background: #fff; }
 
-    .blob {
-      position: fixed;
-      width: 40vw;
-      height: 40vw;
-      background: radial-gradient(circle, rgba(34, 211, 238, 0.07) 0%, transparent 70%);
-      z-index: -1;
-      pointer-events: none;
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.2);
+      padding: 18px 45px;
+      border-radius: 50px;
+      font-weight: 700;
+      transition: 0.3s;
     }
+    .btn-outline:hover { background: #fff; color: #000; border-color: #fff; }
 
-    .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
-    .reveal.active { opacity: 1; transform: translateY(0); }
-
-    .ticker-container { background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.05); padding: 15px 0; }
-    .animate-scroll { animation: scroll 50s linear infinite; }
+    /* --- TICKER --- */
+    .ticker-wrap { background: #111; padding: 25px 0; border-top: 1px solid #222; }
+    .animate-scroll { animation: scroll 40s linear infinite; }
     @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-    /* Space Management */
-    section { padding: 80px 5%; }
-    .hero-section { padding-top: 180px; min-height: 90vh; }
-    
-    h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -0.02em; }
-    p { line-height: 1.6; }
+    .reveal { opacity: 0; transform: translateY(40px); transition: 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    section { padding: 100px 6%; }
+    .hero-section { padding-top: 200px; padding-bottom: 60px; }
   </style>
 </head>
 <body>
 
-  <div class="blob" style="top: -10%; left: -10%;"></div>
-  <div class="blob" style="bottom: -10%; right: -10%;"></div>
-
-  <!-- Dynamic Island Navigation -->
-  <div class="nav-wrapper">
+  <!-- Dynamic Island -->
+  <div class="island-wrapper">
     <nav class="dynamic-island">
       <a href="index.html" class="island-logo">KASH<span>OPTION</span></a>
       <div class="island-nav">
         <a href="about.html">About</a>
         <a href="catalog.html">Catalog</a>
-        <a href="orders.html">Live Feed</a>
-        <a href="testimonials.html">Reviews</a>
-        <a href="faqs.html">FAQs</a>
+        <a href="orders.html">Live Showroom</a>
+        <a href="faqs.html">Support</a>
         <a href="contact.html">Contact</a>
-        <a href="policy-terms.html">Policy</a>
-        <a href="tracker.html">Track</a>
+        <a href="tracker.html" class="active">Track Shipment</a>
       </div>
-      <button class="menu-btn" onclick="toggleMenu()">
-        <i class="fas fa-bars"></i>
+      <button class="menu-trigger" onclick="toggleMenu()">
+        <i class="fas fa-bars-staggered"></i>
       </button>
     </nav>
   </div>
 
-  <!-- Fullscreen Mobile Menu -->
-  <div id="mobileMenu" class="fixed inset-0 bg-[#0a0a0f] z-[9998] hidden flex-col items-center justify-center p-10">
-    <div class="flex flex-col gap-6 text-center">
-      <a href="index.html" class="text-2xl font-bold uppercase italic">Home</a>
-      <a href="about.html" class="text-2xl font-bold uppercase italic">About</a>
-      <a href="catalog.html" class="text-2xl font-bold uppercase italic">Catalog</a>
-      <a href="tracker.html" class="text-2xl font-bold uppercase italic text-cyan-400">Track Order</a>
-      <a href="testimonials.html" class="text-2xl font-bold uppercase italic">Reviews</a>
-      <a href="faqs.html" class="text-2xl font-bold uppercase italic">FAQs</a>
-      <a href="contact.html" class="text-2xl font-bold uppercase italic">Contact</a>
-      <button onclick="toggleMenu()" class="mt-10 w-12 h-12 rounded-full border border-white/20"><i class="fas fa-times"></i></button>
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 bg-[#050505] z-[9998] hidden flex-col items-center justify-center p-10">
+    <div class="flex flex-col gap-8 text-center">
+      <a href="index.html" class="text-4xl font-extrabold uppercase italic">Home</a>
+      <a href="catalog.html" class="text-4xl font-extrabold uppercase italic">Showroom</a>
+      <a href="tracker.html" class="text-4xl font-extrabold uppercase italic text-cyan-400">Track Order</a>
+      <a href="about.html" class="text-4xl font-extrabold uppercase italic">About</a>
+      <a href="contact.html" class="text-4xl font-extrabold uppercase italic">Contact</a>
+      <button onclick="toggleMenu()" class="mt-12 w-16 h-16 rounded-full border border-white/20 text-2xl"><i class="fas fa-times"></i></button>
     </div>
   </div>
 
   <main>
-    <!-- Optimized Hero -->
+    <!-- Hero Section -->
     <section class="hero-section text-center">
       <div class="reveal">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-10">
-          <i class="fas fa-shield-check"></i> Verified Logistics & Sourcing
-        </div>
-        <h1 class="hero-title mb-8 uppercase italic">
-          Shop Globally.<br><span class="text-cyan-400">Pay Locally.</span>
+        <h1 class="hero-title uppercase italic mb-8">
+          Shop The Globe.<br><span class="text-cyan-400">Pay locally.</span>
         </h1>
-        <p class="text-slate-400 text-lg max-w-2xl mx-auto mb-12">
-          Buy from China, USA, or UK and pay with MoMo. We handle sourcing, payments, and door-to-door delivery across Ghana.
+        <p class="text-gray-400 text-xl md:text-2xl max-w-3xl mx-auto mb-12 font-semibold">
+          Bridging China, USA, and UK to Ghana. We accept <span class="text-white">MoMo, Debit, and Credit Cards</span>. Direct door-to-door logistics.
         </p>
-        <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
-          <a href="https://wa.me/233240118846" class="btn-pill btn-whatsapp">
-            <i class="fab fa-whatsapp text-xl"></i> Order via WhatsApp
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <a href="https://wa.me/c/233240118846" target="_blank" class="btn-worldclass">
+            Order Now <i class="fab fa-whatsapp"></i>
           </a>
-          <a href="tracker.html" class="btn-pill btn-primary">
-            <i class="fas fa-location-dot"></i> Track Your Order
-          </a>
+          <a href="tracker.html" class="btn-outline">Track Shipment</a>
         </div>
       </div>
     </section>
 
-    <!-- The System (Consolidating Services, How it works, and Why Us) -->
-    <section class="max-w-7xl mx-auto py-20">
-      <h2 class="text-center mb-20 italic uppercase">The System</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="reveal liquid-glass p-10">
-          <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-400 text-2xl mb-8"><i class="fas fa-search"></i></div>
-          <h3 class="text-xl font-bold italic uppercase mb-4">1. Sourcing</h3>
-          <p class="text-slate-400 text-sm">Send us a link. We verify the supplier and product quality before you pay a single Cedi. Original products only.</p>
-        </div>
-        <div class="reveal liquid-glass p-10" style="transition-delay: 0.1s;">
-          <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-400 text-2xl mb-8"><i class="fas fa-wallet"></i></div>
-          <h3 class="text-xl font-bold italic uppercase mb-4">2. Payments</h3>
-          <p class="text-slate-400 text-sm">No dollar card? No problem. Use Mobile Money or Bank Transfer. We handle the international supplier payment.</p>
-        </div>
-        <div class="reveal liquid-glass p-10" style="transition-delay: 0.2s;">
-          <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-400 text-2xl mb-8"><i class="fas fa-plane-up"></i></div>
-          <h3 class="text-xl font-bold italic uppercase mb-4">3. Logistics</h3>
-          <p class="text-slate-400 text-sm">Air Cargo (3-5 days) or Sea Freight (6-8 weeks). We coordinate customs and deliver to your door in Ghana.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section (Restored & Clean) -->
-    <section id="about" class="max-w-6xl mx-auto py-20 border-t border-white/5">
-      <div class="grid md:grid-cols-2 gap-16 items-center">
-        <div class="reveal">
-          <h2 class="italic uppercase mb-6">About Kash Option</h2>
-          <p class="text-slate-400 mb-8 text-lg">We bridge the gap between global markets and Ghana. Whether you are a dropshipper or buying for yourself, we make international shopping transparent and safe.</p>
-          <div class="p-8 bg-cyan-400/5 border border-cyan-400/20 rounded-3xl inline-block">
-            <div class="text-5xl font-black text-cyan-400 mb-2">99.8%</div>
-            <div class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Customs Clearance Success</div>
+    <!-- Professional System Showroom -->
+    <section class="py-10">
+      <div class="grid md:grid-cols-3 gap-6 h-[600px]">
+        <!-- Sourcing Card -->
+        <div class="reveal showroom-card group h-full">
+          <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=1200&q=80" alt="Real Sourcing">
+          <div class="card-overlay">
+            <span class="text-cyan-400 font-bold uppercase tracking-[0.3em] text-xs">Verification</span>
+            <h3 class="text-3xl font-extrabold italic uppercase mt-2">Real-Time Sourcing</h3>
+            <p class="text-gray-300 mt-4 font-medium">We visit suppliers and verify products with live photos before you pay. Guaranteed authenticity.</p>
           </div>
         </div>
-        <div class="reveal rounded-3xl overflow-hidden glass-card">
-          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80" alt="Warehouse" class="opacity-80">
-        </div>
-      </div>
-    </section>
-
-    <!-- Catalog (Restored & Minimal) -->
-    <section id="catalog" class="max-w-7xl mx-auto py-20">
-      <div class="flex justify-between items-end mb-12">
-        <h2 class="italic uppercase">Catalog</h2>
-        <a href="catalog.html" class="text-cyan-400 font-bold uppercase text-xs tracking-widest hover:underline">View All Categories →</a>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="reveal liquid-glass overflow-hidden group">
-          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="p-8">
-            <h3 class="text-xl font-bold italic uppercase">Phones & Laptops</h3>
+        <!-- Payment Card -->
+        <div class="reveal showroom-card group h-full" style="transition-delay: 0.1s;">
+          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&q=80" alt="Secure Payment">
+          <div class="card-overlay">
+            <span class="text-emerald-400 font-bold uppercase tracking-[0.3em] text-xs">Secure Finance</span>
+            <h3 class="text-3xl font-extrabold italic uppercase mt-2">Global Payments</h3>
+            <p class="text-gray-300 mt-4 font-medium">Accepting Debit Cards, Credit Cards & MoMo. We pay your international suppliers instantly.</p>
           </div>
         </div>
-        <div class="reveal liquid-glass overflow-hidden group" style="transition-delay: 0.1s;">
-          <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=600" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="p-8">
-            <h3 class="text-xl font-bold italic uppercase">Auto Parts</h3>
-          </div>
-        </div>
-        <div class="reveal liquid-glass overflow-hidden group" style="transition-delay: 0.2s;">
-          <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=600" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="p-8">
-            <h3 class="text-xl font-bold italic uppercase">Fashion & Apparel</h3>
+        <!-- Logistics Card -->
+        <div class="reveal showroom-card group h-full" style="transition-delay: 0.2s;">
+          <img src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=1200&q=80" alt="Global Logistics">
+          <div class="card-overlay">
+            <span class="text-purple-400 font-bold uppercase tracking-[0.3em] text-xs">Express Delivery</span>
+            <h3 class="text-3xl font-extrabold italic uppercase mt-2">Elite Logistics</h3>
+            <p class="text-gray-300 mt-4 font-medium">Air Freight (3-5 Days) & Sea Freight (6-8 Weeks). Full customs clearance included.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Live Feed Ticker -->
-    <div class="ticker-container overflow-hidden">
-      <div class="animate-scroll whitespace-nowrap flex gap-12">
-        <div class="text-slate-500 text-[10px] font-bold uppercase tracking-[0.4em] flex items-center gap-3">
-          <span class="w-2 h-2 bg-cyan-400 rounded-full"></span> iPhone 15 Pro → Accra
+    <!-- Real Showroom Products (Editorial Style) -->
+    <section class="bg-[#0a0a0a]">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+        <h2 class="italic uppercase max-w-xl">Premium Sourcing Catalog</h2>
+        <div class="flex gap-4">
+          <i class="fab fa-cc-visa text-3xl opacity-50"></i>
+          <i class="fab fa-cc-mastercard text-3xl opacity-50"></i>
+          <i class="fab fa-apple-pay text-3xl opacity-50"></i>
         </div>
-        <div class="text-slate-500 text-[10px] font-bold uppercase tracking-[0.4em] flex items-center gap-3">
-          <span class="w-2 h-2 bg-cyan-400 rounded-full"></span> V6 Engine → Kumasi
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Tech -->
+        <div class="reveal showroom-card aspect-square">
+          <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800" alt="iPhones">
+          <div class="card-overlay p-8">
+            <h4 class="font-extrabold uppercase italic">Phones & Laptops</h4>
+          </div>
         </div>
-        <div class="text-slate-500 text-[10px] font-bold uppercase tracking-[0.4em] flex items-center gap-3">
-          <span class="w-2 h-2 bg-cyan-400 rounded-full"></span> Designer Bag → Takoradi
+        <!-- Auto -->
+        <div class="reveal showroom-card aspect-square" style="transition-delay: 0.1s;">
+          <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800" alt="Car Parts">
+          <div class="card-overlay p-8">
+            <h4 class="font-extrabold uppercase italic">Engine & Auto Parts</h4>
+          </div>
         </div>
-        <!-- Duplicate for continuous loop -->
-        <div class="text-slate-500 text-[10px] font-bold uppercase tracking-[0.4em] flex items-center gap-3">
-          <span class="w-2 h-2 bg-cyan-400 rounded-full"></span> iPhone 15 Pro → Accra
+        <!-- Fashion -->
+        <div class="reveal showroom-card aspect-square" style="transition-delay: 0.2s;">
+          <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800" alt="Sneakers">
+          <div class="card-overlay p-8">
+            <h4 class="font-extrabold uppercase italic">Sneakers & Fashion</h4>
+          </div>
+        </div>
+        <!-- Home -->
+        <div class="reveal showroom-card aspect-square" style="transition-delay: 0.3s;">
+          <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800" alt="Furniture">
+          <div class="card-overlay p-8">
+            <h4 class="font-extrabold uppercase italic">Home & Office</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Feed -->
+    <div class="ticker-wrap overflow-hidden">
+      <div class="animate-scroll whitespace-nowrap flex gap-16">
+        <div class="flex items-center gap-4 text-sm font-bold uppercase tracking-widest text-gray-500">
+          <span class="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></span> Order #8842: iPhone 15 Pro → Accra Delivery
+        </div>
+        <div class="flex items-center gap-4 text-sm font-bold uppercase tracking-widest text-gray-500">
+          <span class="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></span> Order #8901: Toyota Engine → Kumasi Depot
+        </div>
+        <div class="flex items-center gap-4 text-sm font-bold uppercase tracking-widest text-gray-500">
+          <span class="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></span> Order #9112: MacBook Air → Takoradi Hub
+        </div>
+        <div class="flex items-center gap-4 text-sm font-bold uppercase tracking-widest text-gray-500">
+          <span class="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></span> Order #8842: iPhone 15 Pro → Accra Delivery
         </div>
       </div>
     </div>
 
-    <!-- Inquiry Form (Restored & Classy) -->
-    <section id="contact" class="py-32 px-6">
-      <div class="max-w-2xl mx-auto reveal liquid-glass p-10 md:p-16">
-        <h2 class="text-3xl italic uppercase mb-8 text-center">Inquiry</h2>
-        <form id="inquiryForm" class="space-y-6">
-          <div class="grid sm:grid-cols-2 gap-6">
-            <input type="email" id="inqEmail" placeholder="Email" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:border-cyan-400 outline-none">
-            <input type="tel" id="inqPhone" placeholder="MoMo Number" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:border-cyan-400 outline-none">
-          </div>
-          <input type="text" id="inqProduct" placeholder="Product Name or Link" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:border-cyan-400 outline-none">
-          <textarea id="inqSpecs" placeholder="Specifications (Color, Size, Quantity)" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:border-cyan-400 outline-none" rows="3"></textarea>
-          <button type="submit" class="btn-pill btn-whatsapp w-full justify-center">Send via WhatsApp</button>
-        </form>
+    <!-- Final CTA -->
+    <section class="py-40 text-center relative overflow-hidden">
+      <div class="reveal z-10 relative">
+        <h2 class="italic uppercase mb-10">Start Your Global Order</h2>
+        <a href="https://wa.me/c/233240118846" target="_blank" class="btn-worldclass text-2xl px-16 py-8">
+          Explore Catalog <i class="fas fa-shopping-bag"></i>
+        </a>
       </div>
-    </section>
-
-    <!-- FAQ & Policy (Restored) -->
-    <section class="max-w-5xl mx-auto py-20 border-t border-white/5">
-      <div class="grid md:grid-cols-2 gap-20">
-        <div>
-          <h4 class="text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-10">Questions</h4>
-          <div id="faqList" class="space-y-6"></div>
-        </div>
-        <div>
-          <h4 class="text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-10">Policies</h4>
-          <div class="space-y-6 text-sm text-slate-400">
-            <div class="liquid-glass p-6">
-              <strong class="text-white block mb-2 italic">No Cash Refunds</strong>
-              All sales are final. Exchanges for factory defects only, reported within 48 hours.
-            </div>
-            <a href="policy-terms.html" class="text-cyan-400 hover:underline inline-block">Read full terms & conditions →</a>
-          </div>
-        </div>
+      <div class="absolute inset-0 opacity-10 pointer-events-none">
+        <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1800" class="w-full h-full object-cover" alt="">
       </div>
     </section>
   </main>
 
-  <footer class="py-20 text-center border-t border-white/5">
-    <div class="text-2xl font-black italic uppercase mb-10">KASH OPTION</div>
-    <div class="flex justify-center gap-8 mb-10">
-      <a href="https://www.instagram.com/kashoption1" class="text-slate-500 hover:text-white"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.facebook.com/share/1CrwnBxS8W/" class="text-slate-500 hover:text-white"><i class="fab fa-facebook"></i></a>
-      <a href="mailto:Info@mrkash.net" class="text-slate-500 hover:text-white"><i class="fas fa-envelope"></i></a>
+  <footer class="py-20 border-t border-white/10 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+      <div class="text-2xl font-black italic uppercase">KASH<span>OPTION</span></div>
+      <div class="flex gap-10 text-xs font-bold uppercase tracking-widest text-gray-500">
+        <a href="tracker.html" class="hover:text-white">Track Shipment</a>
+        <a href="policy-terms.html" class="hover:text-white">Policy</a>
+        <a href="faqs.html" class="hover:text-white">Support</a>
+      </div>
+      <div class="flex gap-6">
+        <a href="https://www.instagram.com/kashoption1" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:Info@mrkash.net" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all"><i class="fas fa-envelope"></i></a>
+      </div>
     </div>
-    <p class="text-[10px] text-slate-700 font-bold tracking-[0.5em] uppercase">© 2025 KASH OPTION • ACCRA, GHANA</p>
+    <div class="text-center mt-20 text-[10px] font-bold text-gray-700 tracking-[0.5em] uppercase">© 2025 KASH OPTION • Accra • Global Logistics</div>
   </footer>
 
   <script>
     function toggleMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('hidden');
-      menu.classList.toggle('flex');
+      const m = document.getElementById('mobileMenu');
+      m.classList.toggle('hidden');
+      m.classList.toggle('flex');
     }
 
-    const observer = new IntersectionObserver((entries) => {
+    const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // Dynamic FAQ Data
-    const faqs = [
-      {q: "How do I pay?", a: "We accept MoMo, Bank Transfer, and Apple Pay locally in GHS."},
-      {q: "Is it door-to-door?", a: "Yes. We deliver to your home or office anywhere in Ghana."},
-      {q: "Which countries?", a: "We source from China, USA, UK, and Europe."}
-    ];
-    document.getElementById('faqList').innerHTML = faqs.map(f => `
-      <details class="group">
-        <summary class="cursor-pointer font-bold italic uppercase text-sm mb-2 flex justify-between">
-          ${f.q} <i class="fas fa-plus text-[8px] text-cyan-400 group-open:rotate-45 transition-transform"></i>
-        </summary>
-        <p class="text-slate-500 text-xs pb-4">${f.a}</p>
-      </details>
-    `).join('');
-
-    document.getElementById('inquiryForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const product = document.getElementById('inqProduct').value;
-      const specs = document.getElementById('inqSpecs').value;
-      const text = `Hello Kash Option, I am inquiring about:\n\nProduct: ${product}\nSpecs: ${specs}`;
-      window.open(`https://wa.me/233240118846?text=${encodeURIComponent(text)}`, '_blank');
-    });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   </script>
 </body>
 </html>
