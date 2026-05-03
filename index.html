@@ -1,245 +1,322 @@
 <!DOCTYPE html>
-<html lang="en-GH" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Kash Option | #1 Engine Intelligence Ghana</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <base href="https://mrkash.net/">
+  <link rel="icon" type="image/png" href="https://mrkash.net/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Kash Option | Shop China, USA & UK - Pay with MoMo</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #050508;
+      color: #fff;
+      overflow-x: hidden;
+    }
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { 
-                        obsidian: '#050505', 
-                        electric: '#007AFF', 
-                        silver: '#E5E7EB',
-                        success: '#32D74B',
-                        densoRed: '#FF3B30'
-                    },
-                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
-                }
-            }
-        }
-    </script>
+    /* --- DYNAMIC ISLAND HEADER --- */
+    .header-container {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2000;
+      width: auto;
+      min-width: 200px;
+      display: flex;
+      justify-content: center;
+    }
 
-    <style>
-        body { background-color: #050505; color: white; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        
-        /* Mobile Grid Fix: 2 cards per row */
-        .catalog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        @media (min-width: 768px) { .catalog-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; } }
+    .dynamic-island {
+      background: rgba(15, 15, 20, 0.85);
+      backdrop-filter: blur(25px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 40px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-        /* Notification Placements */
-        #order-notif { top: 80px; left: 20px; transform: translateX(-150%); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        #order-notif.active { transform: translateX(0); }
+    .logo-island {
+      font-weight: 800;
+      font-size: 0.9rem;
+      letter-spacing: -0.02em;
+      padding: 0 12px;
+      color: #fff;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .logo-island span { color: #22d3ee; }
 
-        .iridium-tip { background: linear-gradient(45deg, #111, #222); border-radius: 16px; overflow: hidden; height: 120px; position: relative; }
-        .premium-tag { position: absolute; top: 8px; right: 8px; background: #007AFF; font-size: 8px; font-weight: 800; padding: 2px 6px; border-radius: 4px; }
-    </style>
+    .nav-links-island {
+      display: none;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @media (min-width: 1024px) {
+      .nav-links-island { display: flex; }
+      .dynamic-island:hover { padding: 8px 24px; border-color: rgba(34, 211, 238, 0.3); }
+    }
+
+    .nav-links-island a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 30px;
+      transition: all 0.3s;
+    }
+    .nav-links-island a:hover { color: #fff; background: rgba(255,255,255,0.05); }
+
+    .island-menu-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(34, 211, 238, 0.1);
+      border: none;
+      color: #22d3ee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    /* --- MOBILE MENU OVERLAY --- */
+    .mobile-nav {
+      position: fixed;
+      inset: 0;
+      background: #050508;
+      z-index: 1999;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .mobile-nav.active { display: flex; }
+    .mobile-nav a {
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin: 1rem 0;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* --- CLEAN LAYOUT UTILS --- */
+    .section-tight { padding: 60px 5% 20px; }
+    .liquid-glass {
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 24px;
+    }
+    .btn {
+      border-radius: 9999px;
+      font-weight: 700;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+    
+    .btn-whatsapp { background: #25D366; color: white; }
+    .btn-track { background: #22d3ee; color: #050508; }
+
+    .blob {
+      position: fixed;
+      width: 40vw;
+      height: 40vw;
+      background: radial-gradient(circle, rgba(34, 211, 238, 0.08) 0%, transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* --- REVEAL ANIM --- */
+    .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+  </style>
 </head>
-<body class="selection:bg-electric">
+<body>
 
-    <nav class="fixed top-0 w-full z-[100] glass border-b border-white/5 px-4 py-3 flex justify-between items-center">
-        <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-electric rounded-lg flex items-center justify-center font-extrabold italic shadow-lg shadow-electric/20">K</div>
-            <span class="text-sm font-extrabold tracking-tighter uppercase italic text-white">KASH OPTION</span>
-        </div>
-        <button onclick="triggerLeadForm('Wholesale Bulk')" class="bg-electric text-white px-5 py-2 rounded-xl text-[10px] font-extrabold uppercase tracking-widest hover:scale-105 transition-all">Wholesale</button>
-    </nav>
+  <div class="blob" style="top: -10%; left: -10%;"></div>
+  <div class="blob" style="bottom: -10%; right: -10%;"></div>
 
-    <div id="order-notif" class="fixed z-[150] glass p-3 rounded-2xl w-[240px] shadow-2xl border-l-4 border-l-electric">
-        <div class="flex gap-3 items-center">
-            <div class="w-10 h-10 bg-electric/10 rounded-xl flex items-center justify-center shrink-0">
-                <i data-lucide="zap" class="text-electric w-5 h-5"></i>
-            </div>
-            <div>
-                <h5 id="notif-name" class="text-[10px] font-extrabold text-white">Verified Order</h5>
-                <p id="notif-item" class="text-[9px] text-zinc-400 leading-tight">Toyota Vitz Plugs Delivered to East Legon</p>
-            </div>
-        </div>
+  <!-- Dynamic Island Header -->
+  <header class="header-container">
+    <div class="dynamic-island" id="island">
+      <a href="index.html" class="logo-island">KASH<span>OPTION</span></a>
+      <div class="nav-links-island">
+        <a href="about.html">About</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="testimonials.html">Reviews</a>
+        <a href="contact.html">Contact</a>
+        <a href="tracker.html">Track</a>
+      </div>
+      <button class="island-menu-btn" id="menuToggle">
+        <i class="fas fa-bars-staggered"></i>
+      </button>
     </div>
+  </header>
 
-    <header class="relative min-h-[80vh] flex flex-col items-center justify-center text-center px-6 pt-24 overflow-hidden">
-        <div class="relative z-10">
-            <h1 class="text-5xl md:text-8xl font-black italic uppercase leading-none mb-6">
-                ELITE <br><span class="text-electric italic">IGNITION.</span>
-            </h1>
-            <p class="text-zinc-400 text-sm md:text-xl max-w-xl mx-auto mb-10 font-medium italic">
-                Ghana's authority in Zero-Misfire Technology. 
-            </p>
-            <div class="flex gap-4 justify-center">
-                <button onclick="scrollToSection('catalog')" class="bg-white text-black px-8 py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest">View Catalog</button>
-            </div>
+  <!-- Mobile Fullscreen Nav -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="catalog.html">Catalog</a>
+    <a href="tracker.html">Track Order</a>
+    <a href="testimonials.html">Reviews</a>
+    <a href="contact.html">Contact</a>
+    <button class="mt-8 text-cyan-400" onclick="toggleMenu()">Close</button>
+  </nav>
+
+  <main>
+    <!-- Optimized Hero Section -->
+    <section class="min-h-[90vh] flex flex-col justify-center items-center text-center px-6 pt-32">
+      <div class="reveal">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-6">
+          <i class="fas fa-globe-africa"></i> Verified Ghana Logistics
         </div>
-    </header>
+        <h1 class="text-5xl sm:text-7xl md:text-8xl font-black italic uppercase leading-[0.9] tracking-tighter mb-6">
+          Shop Globally.<br><span class="text-cyan-400">Pay Locally.</span>
+        </h1>
+        <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mb-10 font-medium">
+          Buy from China, USA, or UK and pay with MoMo. We handle the shipping, customs, and door-to-door delivery.
+        </p>
 
-    <section id="catalog" class="max-w-7xl mx-auto px-4 py-20">
-        <h2 class="text-2xl font-black italic mb-10 uppercase border-l-4 border-electric pl-4">Premium Sourcing</h2>
-        <div class="catalog-grid">
-            <div class="glass p-4 rounded-[32px] flex flex-col justify-between hover:border-electric transition-all">
-                <div>
-                    <div class="iridium-tip mb-4 flex items-center justify-center">
-                        <span class="premium-tag uppercase tracking-tighter">Original Japan</span>
-                        <i data-lucide="target" class="text-zinc-800 w-12 h-12 absolute"></i>
-                        <p class="text-[8px] text-zinc-500 mt-16 px-4 text-center">OEM Iridium Twin-Tip Technology</p>
-                    </div>
-                    <span class="text-[8px] font-black text-electric uppercase tracking-widest">Toyota</span>
-                    <h4 class="text-xl font-black mb-1">₵200</h4>
-                </div>
-                <button onclick="triggerLeadForm('Toyota')" class="w-full bg-electric/10 text-electric py-3 mt-4 rounded-xl font-black text-[9px] uppercase hover:bg-electric hover:text-white transition-all">Get Fitment</button>
-            </div>
-
-            <div class="glass p-4 rounded-[32px] flex flex-col justify-between hover:border-electric transition-all">
-                <div>
-                    <div class="iridium-tip mb-4 flex items-center justify-center">
-                        <span class="premium-tag uppercase tracking-tighter">Laser Iridium</span>
-                        <i data-lucide="zap" class="text-zinc-800 w-12 h-12 absolute"></i>
-                        <p class="text-[8px] text-zinc-500 mt-16 px-4 text-center">Precision Spark Optimization</p>
-                    </div>
-                    <span class="text-[8px] font-black text-electric uppercase tracking-widest">Honda</span>
-                    <h4 class="text-xl font-black mb-1">₵500</h4>
-                </div>
-                <button onclick="triggerLeadForm('Honda')" class="w-full bg-electric/10 text-electric py-3 mt-4 rounded-xl font-black text-[9px] uppercase hover:bg-electric hover:text-white transition-all">Get Fitment</button>
-            </div>
-
-            <div class="glass p-4 rounded-[32px] flex flex-col justify-between hover:border-electric transition-all">
-                <div>
-                    <div class="iridium-tip mb-4 flex items-center justify-center">
-                        <span class="premium-tag uppercase tracking-tighter">Mobis Genuine</span>
-                        <i data-lucide="shield-check" class="text-zinc-800 w-12 h-12 absolute"></i>
-                        <p class="text-[8px] text-zinc-500 mt-16 px-4 text-center">Genuine Korean Performance</p>
-                    </div>
-                    <span class="text-[8px] font-black text-electric uppercase tracking-widest">Kia / Hyundai</span>
-                    <h4 class="text-xl font-black mb-1">₵300</h4>
-                </div>
-                <button onclick="triggerLeadForm('Kia/Hyundai')" class="w-full bg-electric/10 text-electric py-3 mt-4 rounded-xl font-black text-[9px] uppercase hover:bg-electric hover:text-white transition-all">Get Fitment</button>
-            </div>
-
-            <div class="glass p-4 rounded-[32px] flex flex-col justify-between hover:border-electric transition-all">
-                <div>
-                    <div class="iridium-tip mb-4 flex items-center justify-center">
-                        <span class="premium-tag uppercase tracking-tighter">High Flow</span>
-                        <i data-lucide="cpu" class="text-zinc-800 w-12 h-12 absolute"></i>
-                        <p class="text-[8px] text-zinc-500 mt-16 px-4 text-center">Advanced Alloy Protection</p>
-                    </div>
-                    <span class="text-[8px] font-black text-electric uppercase tracking-widest">Universal</span>
-                    <h4 class="text-xl font-black mb-1">₵350</h4>
-                </div>
-                <button onclick="triggerLeadForm('Other Brands')" class="w-full bg-electric/10 text-electric py-3 mt-4 rounded-xl font-black text-[9px] uppercase hover:bg-electric hover:text-white transition-all">Get Fitment</button>
-            </div>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="https://wa.me/233240118846" class="btn btn-whatsapp px-8 py-4 w-full sm:w-auto">
+            <i class="fab fa-whatsapp"></i> Order via WhatsApp
+          </a>
+          <a href="tracker.html" class="btn btn-track px-8 py-4 w-full sm:w-auto">
+            <i class="fas fa-location-dot"></i> Track Order
+          </a>
         </div>
+      </div>
+      
+      <!-- Integrated Feature Grid (No Repetition) -->
+      <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-4 mt-20 max-w-5xl w-full">
+        <div class="liquid-glass p-6 text-center">
+          <span class="text-2xl mb-2 block">✈️</span>
+          <h4 class="text-[10px] font-bold uppercase text-slate-500">Air Cargo</h4>
+          <p class="text-xs font-bold text-white">3–5 Working Days</p>
+        </div>
+        <div class="liquid-glass p-6 text-center">
+          <span class="text-2xl mb-2 block">🚢</span>
+          <h4 class="text-[10px] font-bold uppercase text-slate-500">Sea Freight</h4>
+          <p class="text-xs font-bold text-white">6–8 Weeks</p>
+        </div>
+        <div class="liquid-glass p-6 text-center">
+          <span class="text-2xl mb-2 block">🛡️</span>
+          <h4 class="text-[10px] font-bold uppercase text-slate-500">Payments</h4>
+          <p class="text-xs font-bold text-white">MoMo & Card</p>
+        </div>
+        <div class="liquid-glass p-6 text-center">
+          <span class="text-2xl mb-2 block">🏠</span>
+          <h4 class="text-[10px] font-bold uppercase text-slate-500">Delivery</h4>
+          <p class="text-xs font-bold text-white">Door-to-Door</p>
+        </div>
+      </div>
     </section>
 
-    <div id="diagnostic-bubble" class="fixed bottom-6 right-6 z-[200] flex flex-col items-end gap-4 scale-0 opacity-0 transition-all duration-700">
-        <div class="glass p-6 rounded-[32px] border-b-4 border-electric max-w-[280px] shadow-2xl">
-            <p class="text-sm font-bold leading-tight mb-4">Is your engine shaking? <br><span class="text-electric italic">Don't let it knock.</span></p>
-            <button onclick="triggerLeadForm('Misfire Diagnosis')" class="w-full bg-white text-black py-3 rounded-xl font-black text-[10px] uppercase tracking-widest">Solve It Now</button>
+    <!-- Services & How it works Combined (Clean flow) -->
+    <section class="section-tight max-w-7xl mx-auto mb-20">
+      <div class="grid lg:grid-cols-3 gap-6">
+        <div class="reveal liquid-glass p-8">
+          <i class="fas fa-search-dollar text-cyan-400 text-3xl mb-6"></i>
+          <h3 class="text-xl font-black italic uppercase mb-3">Sourcing</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Send us a link or photo. We verify the supplier and quality before you pay a Cedi.</p>
         </div>
-    </div>
-
-    <div id="lead-modal" class="fixed inset-0 z-[1000] glass hidden items-center justify-center p-6">
-        <div class="bg-obsidian border border-white/10 rounded-[40px] w-full max-w-lg p-10 relative shadow-2xl">
-            <button onclick="closeLeadForm()" class="absolute top-8 right-8 text-zinc-500"><i data-lucide="x"></i></button>
-            <h3 id="modal-title" class="text-3xl font-black italic uppercase mb-2">Technical Fitment</h3>
-            <p class="text-zinc-500 text-xs mb-8">Professional Engine Spec Verification</p>
-            <form id="leadForm" onsubmit="handleOrderSubmit(event)" class="space-y-4">
-                <input type="hidden" id="form-context">
-                <div class="grid grid-cols-2 gap-4">
-                    <input type="text" id="form-model" required placeholder="Car Model" class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-white font-bold outline-none focus:border-electric transition-all">
-                    <input type="number" id="form-year" required placeholder="Year" class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-white font-bold outline-none focus:border-electric transition-all">
-                </div>
-                <input type="text" id="form-capacity" required placeholder="Engine CC (e.g., 1.8L)" class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-white font-bold outline-none focus:border-electric transition-all">
-                <textarea id="form-note" placeholder="Any specific issues? (e.g., Shaking, High Fuel)" class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-white font-bold h-24 outline-none focus:border-electric transition-all"></textarea>
-                <button type="submit" class="w-full bg-electric text-white py-5 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-electric/20">Send Technical Request</button>
-            </form>
+        <div class="reveal liquid-glass p-8" style="transition-delay: 0.1s;">
+          <i class="fas fa-credit-card text-cyan-400 text-3xl mb-6"></i>
+          <h3 class="text-xl font-black italic uppercase mb-3">Supplier Payment</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Already found a supplier? Pay us in GHS via MoMo, and we will handle the USD/Yuan payment for you.</p>
         </div>
+        <div class="reveal liquid-glass p-8" style="transition-delay: 0.2s;">
+          <i class="fas fa-truck-fast text-cyan-400 text-3xl mb-6"></i>
+          <h3 class="text-xl font-black italic uppercase mb-3">Logistics</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Consolidation, clearing, and delivery. We are your one-stop shop for everything imports.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Unified Inquiry Form -->
+    <section id="inquiry" class="section-tight pb-32">
+      <div class="max-w-2xl mx-auto reveal">
+        <div class="liquid-glass p-8 md:p-12 border-cyan-500/20">
+          <h2 class="text-3xl font-black italic uppercase mb-2 text-center">Quick Quote</h2>
+          <p class="text-slate-400 text-center text-sm mb-10">Tell us what you need and we'll reply on WhatsApp.</p>
+          
+          <form id="inquiryForm" class="space-y-5">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <input type="email" id="inqEmail" placeholder="Email" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-sm focus:border-cyan-400 outline-none" required>
+              <input type="tel" id="inqPhone" placeholder="Phone (MoMo No.)" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-sm focus:border-cyan-400 outline-none" required>
+            </div>
+            <input type="text" id="inqProduct" placeholder="Product name or Link" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-sm focus:border-cyan-400 outline-none" required>
+            <textarea id="inqSpecs" rows="3" placeholder="Specifications (Color, Size, Quantity)" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-sm focus:border-cyan-400 outline-none" required></textarea>
+            
+            <button type="submit" class="btn btn-whatsapp w-full py-4 text-lg">
+              <i class="fab fa-whatsapp"></i> Request Pricing
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-12 border-t border-white/5 text-center">
+    <h2 class="text-xl font-black italic uppercase mb-6 tracking-tighter">KASH OPTION</h2>
+    <div class="flex justify-center gap-8 mb-8 text-slate-500 text-xs font-bold uppercase tracking-widest">
+      <a href="tracker.html" class="hover:text-cyan-400">Tracker</a>
+      <a href="policy-terms.html" class="hover:text-cyan-400">Policy</a>
+      <a href="faqs.html" class="hover:text-cyan-400">FAQs</a>
     </div>
+    <p class="text-[10px] text-slate-600 font-bold tracking-[0.4em]">© 2025 KASH OPTION • ACCRA, GHANA</p>
+  </footer>
 
-    <script>
-        lucide.createIcons();
+  <script>
+    // Dynamic Island Logic
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    
+    function toggleMenu() {
+      mobileNav.classList.toggle('active');
+    }
+    
+    menuToggle.addEventListener('click', toggleMenu);
 
-        // SCROLL
-        function scrollToSection(id) {
-            const target = document.getElementById(id);
-            if(target) target.scrollIntoView({ behavior: 'smooth' });
-        }
+    // Intersection Observer for Reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('active');
+      });
+    }, { threshold: 0.1 });
 
-        // ORCHESTRATION: $100M LEADS AUTO-PILOT
-        window.addEventListener('load', () => {
-            // Stage 1: The Hook (appears 4s, disappears 12s)
-            setTimeout(() => {
-                const bubble = document.getElementById('diagnostic-bubble');
-                bubble.classList.remove('scale-0', 'opacity-0');
-                bubble.classList.add('scale-100', 'opacity-100');
-                
-                // NEW: Auto-Disappear Logic
-                setTimeout(() => {
-                    bubble.classList.replace('scale-100', 'scale-0');
-                    bubble.classList.replace('opacity-100', 'opacity-0');
-                }, 8000); // Stays for 8 seconds, then gone
-            }, 4000);
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-            // Stage 2: Infinite Proof
-            setTimeout(() => {
-                showOrderNotif();
-                setInterval(showOrderNotif, 20000);
-            }, 10000);
-        });
-
-        // INFINITE REALISTIC LIVE FEED
-        const GH_LOCS = ["East Legon", "Tema Comm 25", "Kumasi", "Tesano", "Spintex", "Cantonments", "Dansoman", "Madina"];
-        const CAR_PLUGS = ["Toyota Vitz Plugs", "Honda Accord Laser Plugs", "Kia Picanto Mobis Plugs", "Hyundai Elantra Iridium"];
-        
-        function showOrderNotif() {
-            const notif = document.getElementById('order-notif');
-            const phone = Math.floor(100+Math.random()*899);
-            const item = CAR_PLUGS[Math.floor(Math.random()*CAR_PLUGS.length)];
-            const loc = GH_LOCS[Math.floor(Math.random()*GH_LOCS.length)];
-
-            document.getElementById('notif-name').innerText = `Customer (+233******${phone})`;
-            document.getElementById('notif-item').innerText = `${item} Delivered to ${loc}`;
-            
-            notif.classList.add('active');
-            setTimeout(() => notif.classList.remove('active'), 6000);
-        }
-
-        // DYNAMIC LEAD FORMS
-        function triggerLeadForm(context) {
-            const modal = document.getElementById('lead-modal');
-            document.getElementById('form-context').value = context;
-            
-            if(context.includes('Wholesale')) {
-                document.getElementById('modal-title').innerText = "Wholesale Registry";
-                document.getElementById('form-note').placeholder = "List your bulk order requirements here...";
-            } else {
-                document.getElementById('modal-title').innerText = "Technical Sync";
-            }
-
-            modal.style.display = 'flex';
-            setTimeout(() => modal.classList.add('active'), 10);
-        }
-
-        function closeLeadForm() {
-            const modal = document.getElementById('lead-modal');
-            modal.classList.remove('active');
-            setTimeout(() => modal.style.display = 'none', 300);
-        }
-
-        function handleOrderSubmit(e) {
-            e.preventDefault();
-            const context = document.getElementById('form-context').value;
-            const model = document.getElementById('form-model').value;
-            const year = document.getElementById('form-year').value;
-            const cap = document.getElementById('form-capacity').value;
-            const note = document.getElementById('form-note').value;
-            
-            const msg = `KASH OPTION INQUIRY\n------------------\nCategory: ${context}\nCar: ${model} (${year})\nEngine: ${cap}\nIssue: ${note}\n------------------\nSend specs and price options.`;
-            window.open(`https://wa.me/233240118846?text=${encodeURIComponent(msg)}`, '_blank');
-        }
-    </script>
+    // Form Logic
+    document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const product = document.getElementById('inqProduct').value;
+      const specs = document.getElementById('inqSpecs').value;
+      const text = `Hello Kash Option, I want a quote for:\n\nProduct: ${product}\nSpecs: ${specs}`;
+      window.open(`https://wa.me/233240118846?text=${encodeURIComponent(text)}`, '_blank');
+    });
+  </script>
 </body>
 </html>
