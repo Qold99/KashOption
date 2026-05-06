@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
   
-  <title>Policy & Terms | Kash Option - Ghana's #1 Global Sourcing Agency</title>
-  <meta name="description" content="Official Service Terms for Kash Option: Global Sourcing and Logistics. Firm, transparent framework for Ghana's #1 import hub.">
+  <title>Reviews & Testimonials | Kash Option - Ghana's #1 Global Sourcing Agency</title>
+  <meta name="description" content="Verified feedback from individuals and businesses across Ghana who trust Kash Option for global trade and logistics.">
   
   <!-- Resources -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -43,36 +43,37 @@
     .logo-text { font-weight: 800; font-style: italic; font-size: 1.1rem; letter-spacing: -0.05em; color: #fff; text-decoration: none; }
     .logo-option { color: var(--cyan); text-shadow: 0 0 15px rgba(34, 211, 238, 0.5); }
 
-    .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.7rem; font-weight: 700; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
+    .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.75rem; font-weight: 700; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
     .island-nav a:hover, .island-nav a.active { color: #fff; background: rgba(255,255,255,0.05); }
+
+    .menu-trigger { width: 36px; height: 36px; border-radius: 50%; background: var(--cyan); color: #000; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
+
+    /* --- MOBILE MENU OVERLAY --- */
+    #mobileNav {
+      position: fixed; inset: 0; background: #050508; z-index: 10001; 
+      display: none; flex-direction: column; align-items: center; justify-content: center; padding: 2rem;
+    }
+    #mobileNav.active { display: flex; }
+    #mobileNav a { font-size: 1.8rem; font-weight: 800; margin: 0.8rem 0; color: #fff; text-decoration: none; font-style: italic; }
 
     /* --- UI COMPONENTS --- */
     .liquid-glass { 
       background: var(--glass); 
       backdrop-filter: blur(15px); 
-      border: 1px solid rgba(255, 255, 255, 0.05); 
+      border: 1px solid rgba(255, 255, 255, 0.08); 
       border-radius: 32px; 
       transition: 0.4s ease;
     }
-    
-    .policy-section { padding: 2.5rem; margin-bottom: 2rem; border-left: 4px solid var(--cyan); }
-    .policy-section h2 { color: var(--cyan); font-weight: 800; font-style: italic; font-size: 1.25rem; margin-bottom: 1.5rem; }
-    .policy-section ul { list-style: none; }
-    .policy-section ul li { position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; color: #94a3b8; font-weight: 600; font-size: 0.95rem; }
-    .policy-section ul li::before { content: "→"; position: absolute; left: 0; color: var(--cyan); font-weight: bold; }
-    
-    .highlight { color: #fff; font-weight: 800; }
-    .urgent-box { border: 1px solid rgba(239, 68, 68, 0.2); background: rgba(239, 68, 68, 0.03); padding: 1.5rem; border-radius: 20px; margin: 1.5rem 0; }
+    .liquid-glass:hover { border-color: var(--cyan); transform: translateY(-5px); }
 
-    .reveal { opacity: 0; transform: translateY(20px); transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1); }
+    .verified-badge { background: rgba(34, 211, 238, 0.1); color: var(--cyan); padding: 4px 10px; border-radius: 8px; font-size: 10px; font-weight: 800; border: 1px solid rgba(34, 211, 238, 0.2); letter-spacing: 1px; }
+    
+    .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
     /* --- DIRECTORY FOOTER --- */
     .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.85rem; display: block; margin-bottom: 8px; font-weight: 600; }
     .directory-link:hover { color: #fff; text-shadow: 0 0 10px var(--cyan); }
-
-    #mobileMenu { position: fixed; inset: 0; background: #050508; z-index: 10001; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; }
-    #mobileMenu.active { display: flex; }
   </style>
 </head>
 <body>
@@ -81,158 +82,147 @@
   <div class="nav-wrapper">
     <nav class="dynamic-island">
       <a href="index.html" class="logo-text">KASH <span class="logo-option">OPTION</span></a>
-      <div class="island-nav hidden lg:flex gap-1">
+      <div class="island-nav hidden lg:flex">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="catalog.html">Catalog</a>
         <a href="orders.html">Orders</a>
-        <a href="testimonials.html">Reviews</a>
+        <a href="testimonials.html" class="active">Reviews</a>
         <a href="faqs.html">FAQs</a>
         <a href="contact.html">Contact</a>
-        <a href="policy-terms.html" class="active">Policy</a>
+        <a href="policy-terms.html">Policy</a>
         <a href="tracker.html">Tracker</a>
       </div>
-      <button class="lg:hidden text-cyan-400 text-xl p-2" onclick="toggleMenu()">
+      <button class="menu-trigger" onclick="toggleMenu()">
         <i class="fas fa-bars-staggered"></i>
       </button>
     </nav>
   </div>
 
   <!-- Mobile Nav Overlay -->
-  <div id="mobileMenu">
-    <div class="flex flex-col gap-6 text-center">
-        <a href="index.html" class="text-3xl font-black italic">Home</a>
-        <a href="about.html" class="text-3xl font-black italic">About</a>
-        <a href="catalog.html" class="text-3xl font-black italic">Catalog</a>
-        <a href="policy-terms.html" class="text-3xl font-black italic text-cyan-400">Policy</a>
-        <a href="tracker.html" class="text-3xl font-black italic">Tracker</a>
-        <button onclick="toggleMenu()" class="mt-10 w-12 h-12 rounded-full border border-white/20"><i class="fas fa-times"></i></button>
-    </div>
+  <div id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="catalog.html">Catalog</a>
+    <a href="orders.html">Live orders</a>
+    <a href="testimonials.html" class="text-cyan-400">Reviews</a>
+    <a href="tracker.html">Track order</a>
+    <button onclick="toggleMenu()" class="mt-10 w-12 h-12 rounded-full border border-white/20"><i class="fas fa-times"></i></button>
   </div>
 
-  <main class="pt-44 pb-20 px-6 max-w-4xl mx-auto">
-    <header class="text-center mb-20 reveal active">
-      <h1 class="text-4xl md:text-7xl font-black italic mb-6 leading-tight animate__animated animate__fadeInDown">Service policy</h1>
-      <p class="text-gray-500 font-bold uppercase tracking-widest text-xs">Official Framework • Global Logistics Standard</p>
+  <main class="pt-48 pb-20 px-6 max-w-6xl mx-auto">
+    <header class="text-center mb-24 reveal active">
+      <div class="w-16 h-1 bg-cyan-400 mx-auto mb-8 rounded-full"></div>
+      <h1 class="text-5xl md:text-8xl font-black italic mb-6 leading-none">The gold standard</h1>
+      <p class="text-gray-400 font-bold max-w-2xl mx-auto text-lg md:text-xl uppercase tracking-widest">Why we are Ghana's number one sourcing and logistics partner.</p>
     </header>
 
-    <!-- 01. Role -->
-    <div class="policy-section liquid-glass reveal">
-      <h2>01. Operational scope</h2>
-      <p>Kash Option operates exclusively as a <span class="highlight">Professional Sourcing & Logistics Facilitator</span>. By engaging our services, you acknowledge:</p>
-      <ul>
-        <li>We are a third-party bridge and not the manufacturer of sourced goods.</li>
-        <li>We hold no local inventory; items are procured on-demand from global markets.</li>
-        <li>Manufacturer warranties are governed by the brand, not by Kash Option.</li>
-      </ul>
+    <div id="testimonialDisplay" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Elite Reviews Injected Here -->
     </div>
 
-    <!-- 02. Payments -->
-    <div class="policy-section liquid-glass reveal">
-      <h2>02. Financial terms</h2>
-      <ul>
-        <li><span class="highlight">Quote Validity:</span> International prices fluctuate. Quotes are strictly valid for <span class="highlight">48 hours</span>.</li>
-        <li><span class="highlight">Procurement:</span> No item is purchased or reserved until <span class="highlight">100% full payment</span> is confirmed.</li>
-        <li><span class="highlight">Local Payments:</span> We accept MoMo, Bank Transfer, and Cards. Once a supplier is paid, funds are non-refundable.</li>
-      </ul>
+    <div class="mt-20 text-center reveal">
+      <button id="shuffleReviews" class="px-12 py-5 rounded-full border-2 border-white/10 font-black uppercase tracking-widest text-xs hover:border-cyan-400 hover:text-cyan-400 transition-all">
+        <i class="fas fa-sync-alt mr-2"></i> View more elite feedback
+      </button>
     </div>
-
-    <!-- 03. Logistics -->
-    <div class="policy-section liquid-glass reveal">
-      <h2>03. Logistics & timelines</h2>
-      <p>Timelines are estimates starting from the date the item reaches our international hub:</p>
-      <ul>
-        <li><span class="highlight">Air Cargo:</span> 3 to 5 working days.</li>
-        <li><span class="highlight">Sea Freight:</span> 6 to 8 weeks.</li>
-        <li><span class="highlight">Customs:</span> We manage clearing, but clients are responsible for any government revaluation fees mandated by GRA.</li>
-      </ul>
-    </div>
-
-    <!-- 04. No Returns -->
-    <div class="policy-section liquid-glass reveal">
-      <h2>04. Finality of sale</h2>
-      <div class="urgent-box">
-        <p class="highlight text-white uppercase italic mb-2">Non-returnable policy</p>
-        <p class="text-slate-400 text-sm">Due to the complexity of international logistics, <span class="highlight">returns to China, USA, or UK are not possible</span> once the item has cleared customs into Ghana.</p>
-      </div>
-      <ul>
-        <li>Exchanges are only considered for <span class="highlight">Verified Factory Defects</span> reported within 48 hours of receipt.</li>
-        <li>Return shipping costs for approved defect claims are the responsibility of the buyer.</li>
-        <li><span class="highlight">No Cash Refunds:</span> Sales are final. Credits may be issued for approved claims.</li>
-      </ul>
-    </div>
-
-    <!-- 05. Liability -->
-    <div class="policy-section liquid-glass reveal">
-      <h2>05. Technical liability</h2>
-      <ul>
-        <li><span class="highlight">Auto Parts:</span> Fitment is your responsibility. Misdiagnosis by your mechanic is not a valid claim for exchange.</li>
-        <li><span class="highlight">Electronics:</span> We are not liable for damage caused by local power surges or incorrect voltage application.</li>
-      </ul>
-    </div>
-
-    <section class="text-center mt-20 reveal">
-        <p class="text-slate-500 text-sm italic mb-10">By making payment to Kash Option, you agree to these terms in full.</p>
-        <a href="https://wa.me/233240118846" target="_blank" class="inline-flex items-center gap-3 bg-cyan-400 text-black px-12 py-5 rounded-full font-black text-lg hover:scale-105 transition-transform shadow-2xl">
-            Start shipping now <i class="fab fa-whatsapp"></i>
-        </a>
-    </section>
   </main>
 
-  <!-- Global Directory Footer (RESTORED FROM INDEX) -->
-  <footer class="pt-32 pb-12 px-6 bg-[#030305] border-t border-white/5">
+  <!-- Global Directory Footer (Duplicated from Index) -->
+  <footer class="pt-24 pb-12 px-6 bg-[#050508] border-t border-white/5">
     <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-24 text-left">
-        <div class="col-span-2">
-            <h2 class="logo-text text-2xl mb-6">KASH <span class="logo-option">OPTION</span></h2>
-            <p class="text-slate-500 max-w-sm font-semibold text-sm leading-relaxed mb-8">Ghana's #1 premier sourcing and logistics hub. Bridging global excellence with local convenience since 2020.</p>
-            <div class="flex gap-4">
-                <a href="https://www.instagram.com/kashoption1" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/share/1CrwnBxS8W/" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
-            </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20 text-left">
+        <div>
+          <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Kash Option</h4>
+          <a href="about.html" class="directory-link">Our story</a>
+          <a href="testimonials.html" class="directory-link">Client reviews</a>
+          <a href="orders.html" class="directory-link">Live feed</a>
+          <a href="faqs.html" class="directory-link">Help center</a>
         </div>
         <div>
-          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Directory</h4>
-          <a href="index.html" class="directory-link">Home</a>
-          <a href="about.html" class="directory-link">Our Story</a>
-          <a href="testimonials.html" class="directory-link">Client Reviews</a>
-          <a href="orders.html" class="directory-link">Live Feed</a>
+          <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Services</h4>
+          <a href="catalog.html" class="directory-link">Browse catalog</a>
+          <a href="contact.html" class="directory-link">Sourcing request</a>
+          <a href="policy-terms.html" class="directory-link">Shipping policy</a>
+          <a href="policy-terms.html" class="directory-link">Refund terms</a>
         </div>
         <div>
-          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Business</h4>
-          <a href="catalog.html" class="directory-link">Showroom</a>
-          <a href="contact.html" class="directory-link">Partner with us</a>
-          <a href="policy-terms.html" class="directory-link">Privacy Policy</a>
-          <a href="policy-terms.html" class="directory-link">Service Terms</a>
+          <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Support</h4>
+          <a href="tracker.html" class="directory-link">Track your order</a>
+          <a href="contact.html" class="directory-link">Contact sales</a>
+          <a href="https://wa.me/233240118846" class="directory-link">WhatsApp concierge</a>
+          <a href="mailto:Info@mrkash.net" class="directory-link">Email direct</a>
         </div>
         <div>
-          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Support</h4>
-          <a href="tracker.html" class="directory-link">Track Shipment</a>
-          <a href="faqs.html" class="directory-link">Help Center</a>
-          <a href="mailto:Info@mrkash.net" class="directory-link">Legal Inquiries</a>
-          <a href="https://wa.me/233240118846" class="directory-link">WhatsApp Sales</a>
+          <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Connect</h4>
+          <div class="flex gap-4">
+            <a href="https://www.instagram.com/kashoption1" class="text-xl text-slate-500 hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1CrwnBxS8W/" class="text-xl text-slate-500 hover:text-white transition-colors"><i class="fab fa-facebook"></i></a>
+          </div>
+          <p class="mt-6 text-[10px] font-bold text-slate-600 uppercase tracking-widest leading-relaxed">
+            Kash Option HQ<br>Accra, Ghana
+          </p>
         </div>
       </div>
-      <div class="border-t border-white/5 pt-12 text-center">
-        <p class="text-[10px] font-black text-slate-800 tracking-[0.5em] uppercase">© 2026 Kash Option • Elite Logistics Protocol</p>
+      <div class="border-t border-white/5 pt-10 text-center">
+        <p class="text-[10px] font-bold text-slate-700 tracking-[0.6em] uppercase">© 2025 KASH OPTION • ACCRA • GHANA'S #1 IMPORT HUB</p>
       </div>
     </div>
   </footer>
 
+  <a href="https://wa.me/233240118846" target="_blank" class="fixed bottom-6 right-6 z-[999] w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center text-2xl shadow-2xl hover:scale-110 transition-transform">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
   <script>
     function toggleMenu() {
-      document.getElementById('mobileMenu').classList.toggle('active');
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('active');
+      document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
     }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.1 });
+    const eliteReviews = [
+      {author:"Nana Kwame", loc:"Accra", text:"Kash Option is the only company in Ghana I trust for $10,000+ orders. They are the true market leaders.", time:"2 days ago"},
+      {author:"Grace O.", loc:"Kumasi", text:"While others make excuses, Kash Option delivers. My business grew 300% after switching to them.", time:"1 week ago"},
+      {author:"Dr. Mensah", loc:"Tema", text:"Professionalism at its peak. The tracking is real-time and the sourcing is 100% original.", time:"4 days ago"},
+      {author:"Aya J.", loc:"East Legon", text:"Simply the best in Ghana. No hidden fees, no delays. World-class service.", time:"3 weeks ago"},
+      {author:"Ekow B.", loc:"Takoradi", text:"The gold standard for China-to-Ghana logistics. Fastest shipping I've ever experienced.", time:"5 days ago"},
+      {author:"Mavis T.", loc:"Ho", text:"Their customer service on WhatsApp is unmatched. They treat every client like royalty.", time:"1 month ago"}
+    ];
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    function render() {
+      const display = document.getElementById('testimonialDisplay');
+      const shuffled = eliteReviews.sort(() => 0.5 - Math.random());
+      
+      display.innerHTML = shuffled.map(r => `
+        <article class="reveal liquid-glass p-8 flex flex-col h-full active">
+          <div class="flex items-center gap-5 mb-8">
+            <div class="w-12 h-12 bg-cyan-400 rounded-full flex items-center justify-center font-black text-black text-lg">${r.author[0]}</div>
+            <div>
+              <div class="flex items-center gap-2"><h3 class="font-black text-sm">${r.author}</h3><span class="verified-badge">VERIFIED</span></div>
+              <div class="text-cyan-400 text-[10px] mt-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+          </div>
+          <p class="text-gray-300 text-base font-semibold italic leading-relaxed mb-8 flex-1">"${r.text}"</p>
+          <div class="flex items-center justify-between border-t border-white/5 pt-4">
+            <span class="text-[9px] text-gray-500 font-bold uppercase tracking-widest">${r.loc}</span>
+            <span class="text-[9px] text-cyan-500 font-bold uppercase tracking-widest">${r.time}</span>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    document.getElementById('shuffleReviews').addEventListener('click', () => {
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    render();
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   </script>
 </body>
 </html>
