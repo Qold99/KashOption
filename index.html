@@ -2,33 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <base href="https://mrkash.net/">
+  <link rel="icon" type="image/png" href="logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>The global showroom | Kash Option</title>
-  
   <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
-  <link rel="icon" type="image/png" href="https://mrkash.net/logo.png">
   
+  <title>Kash Option - Ghana's #1 Global Sourcing Agency</title>
+  <meta name="description" content="Contact Kash Option's concierge to place global orders. Ghana's premier sourcing and logistics bridge.">
+  
+  <!-- Resources -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
-    :root { --accent: #22d3ee; --bg: #050508; --glass: rgba(255, 255, 255, 0.02); }
+    :root { --cyan: #22d3ee; --dark: #0a0a0f; --glass: rgba(255, 255, 255, 0.03); }
     * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; text-transform: none !important; }
-    
+
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--bg);
+      background: var(--dark);
       color: #fff;
       overflow-x: hidden;
-      font-weight: 500;
     }
 
-    /* --- DYNAMIC ISLAND --- */
-    .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1100px; }
+    /* --- DYNAMIC ISLAND (TWO-TONE) --- */
+    .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 1000; width: 95%; max-width: 1100px; }
     .dynamic-island {
-      background: rgba(10, 10, 15, 0.85);
+      background: rgba(10, 10, 15, 0.75);
       backdrop-filter: blur(30px) saturate(180%);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 60px;
@@ -38,136 +40,75 @@
       justify-content: space-between;
       box-shadow: 0 30px 60px rgba(0,0,0,0.6);
     }
-    .logo-text { font-weight: 800; font-style: italic; font-size: 1.1rem; letter-spacing: -0.05em; color: #fff; text-decoration: none; }
-    .logo-option { color: var(--accent); text-shadow: 0 0 15px rgba(34, 211, 238, 0.5); }
-    
+    .logo-text { font-weight: 800; font-style: italic; font-size: 1.1rem; letter-spacing: -0.05em; }
+    .logo-option { color: var(--cyan); text-shadow: 0 0 15px rgba(34, 211, 238, 0.5); }
+
     .island-nav { display: none; align-items: center; gap: 4px; }
     @media (min-width: 1024px) { .island-nav { display: flex; } }
-    .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.75rem; font-weight: 600; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
+    .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.75rem; font-weight: 700; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
     .island-nav a:hover, .island-nav a.active { color: #fff; background: rgba(255,255,255,0.05); }
 
-    .menu-trigger { 
-      width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #000; 
-      display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; 
-    }
+    .menu-trigger { width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
 
     /* --- MOBILE MENU OVERLAY --- */
     #mobileMenu {
       position: fixed; inset: 0; background: rgba(5, 5, 8, 0.98); 
-      backdrop-filter: blur(20px); z-index: 10000; display: none;
+      backdrop-filter: blur(20px); z-index: 2000; display: none;
       flex-direction: column; align-items: center; justify-content: center; padding: 2rem;
     }
     #mobileMenu.active { display: flex; }
     #mobileMenu a { font-size: 1.8rem; font-weight: 800; margin: 0.8rem 0; color: #fff; text-decoration: none; font-style: italic; }
-    .close-menu { position: absolute; top: 30px; right: 30px; font-size: 1.5rem; color: #94a3b8; cursor: pointer; }
 
-    /* --- REALISTIC CATEGORY CARDS (MOBILE OPTIMIZED) --- */
-    .catalog-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 24px; }
-    @media (min-width: 768px) { .catalog-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 1200px) { .catalog-grid { grid-template-columns: repeat(3, 1fr); } }
-
-    .category-card {
-      position: relative;
-      height: 420px; /* Fixed height for desktop */
-      border-radius: 32px;
-      overflow: hidden;
-      background: #111;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 40px 100px -20px rgba(0,0,0,0.8);
-      transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    /* --- AERO-LANDING ENGINE --- */
+    @keyframes aeroLanding {
+      0% { transform: translateY(-300px) scale(1.5); opacity: 0; filter: blur(20px); }
+      100% { transform: translateY(0) scale(1); opacity: 1; filter: blur(0); }
     }
+    .hero-animate { animation: aeroLanding 1.2s cubic-bezier(0.23, 1, 0.32, 1) both; }
+
+    /* --- UI COMPONENTS --- */
+    .liquid-glass { 
+      background: var(--glass); 
+      backdrop-filter: blur(15px); 
+      border: 1px solid rgba(255, 255, 255, 0.05); 
+      border-radius: 32px; 
+      transition: 0.4s ease;
+    }
+    .liquid-glass:hover { border-color: var(--cyan); transform: translateY(-5px); }
     
-    /* Ensure photos display properly on small screens */
-    @media (max-width: 767px) {
-      .category-card { height: 380px; }
-    }
-
-    .card-image {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block !important; /* Force display */
-      filter: brightness(0.7) contrast(1.1);
-      transition: 0.8s ease;
-    }
-    .category-card:hover .card-image { filter: brightness(0.9) contrast(1.1); transform: scale(1.08); }
-
-    .card-scrim {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,1) 5%, rgba(0,0,0,0.4) 50%, transparent 100%);
-      z-index: 1;
-    }
-
-    .card-content {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding: 30px;
-      z-index: 2;
-    }
-
-    .card-content h3 { font-size: 1.4rem; font-weight: 800; font-style: italic; margin-bottom: 8px; color: #fff; }
-    .card-content p { color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.5; font-weight: 500; }
-
-    /* --- CONCIERGE DESK --- */
-    .concierge-wrap {
-      background: #08080a;
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 40px;
-    }
-    .desk-input {
-      width: 100%;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      padding: 15px 0;
-      color: #fff;
-      font-size: 1rem;
-      outline: none;
-    }
-    .desk-input:focus { border-bottom-color: var(--accent); }
-    .desk-label { display: block; font-size: 0.7rem; font-weight: 800; color: #4b5563; text-transform: uppercase !important; margin-top: 20px; }
-
-    .btn-concierge {
-      background: #fff;
-      color: #000;
-      width: 100%;
-      padding: 20px;
-      border-radius: 100px;
-      font-weight: 800;
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-      transition: 0.4s;
-      margin-top: 40px;
-      cursor: pointer;
-      border: none;
-    }
-    .btn-concierge:hover { background: var(--accent); transform: translateY(-2px); }
-
-    .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.85rem; display: block; margin-bottom: 8px; font-weight: 600; }
-    .directory-link:hover { color: #fff; text-shadow: 0 0 10px var(--accent); }
-
-    .reveal { opacity: 0; transform: translateY(30px); transition: 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
+    .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
     .reveal.active { opacity: 1; transform: translateY(0); }
+
+    .btn-wa { background: #25D366; color: #fff; border-radius: 50px; font-weight: 800; transition: 0.3s; }
+    .btn-wa:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
+
+    .inquiry-form input, .inquiry-form select, .inquiry-form textarea {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px; padding: 16px; color: #fff; width: 100%; outline: none; transition: 0.3s;
+    }
+    .inquiry-form input:focus { border-color: var(--cyan); background: rgba(34, 211, 238, 0.02); }
+
+    /* --- FOOTER --- */
+    .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.85rem; display: block; margin-bottom: 8px; font-weight: 600; }
+    .directory-link:hover { color: #fff; text-shadow: 0 0 10px var(--cyan); }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Dynamic Island Nav -->
   <div class="nav-wrapper">
     <nav class="dynamic-island">
       <a href="index.html" class="logo-text">KASH <span class="logo-option">OPTION</span></a>
       <div class="island-nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="catalog.html" class="active">Catalog</a>
+        <a href="catalog.html">Catalog</a>
         <a href="orders.html">Orders</a>
         <a href="testimonials.html">Reviews</a>
-        <a href="faqs.html">Support</a>
-        <a href="contact.html">Contact</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a href="policy-terms.html">Policy</a>
         <a href="tracker.html">Tracker</a>
       </div>
       <button class="menu-trigger" onclick="toggleMenu()">
@@ -176,127 +117,94 @@
     </nav>
   </div>
 
-  <!-- Mobile Menu -->
+  <!-- Mobile Nav Overlay -->
   <div id="mobileMenu">
-    <div class="close-menu" onclick="toggleMenu()"><i class="fas fa-times"></i></div>
+    <button onclick="toggleMenu()" class="absolute top-10 right-10 text-white text-3xl"><i class="fas fa-times"></i></button>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="catalog.html">Catalog</a>
-    <a href="orders.html">Live orders</a>
-    <a href="tracker.html" style="color: var(--accent);">Track order</a>
-    <a href="faqs.html">FAQs</a>
-    <a href="contact.html">Contact</a>
+    <a href="orders.html">Live Feed</a>
+    <a href="tracker.html">Track Order</a>
+    <a href="contact.html" class="text-cyan-400">Contact</a>
   </div>
 
-  <main class="pt-32 pb-32 px-6">
-    <header class="text-center max-w-4xl mx-auto mb-20 reveal">
-      <h1 class="text-4xl md:text-7xl font-black italic mb-6 leading-[1.1]">The global bridge</h1>
-      <p class="text-gray-400 font-medium text-lg md:text-xl max-w-2xl mx-auto">
-        Exceptional sourcing for authentic global products. Every item is verified at our hubs before departure to Ghana.
+  <main class="pt-44 pb-20">
+    <!-- Hero Section -->
+    <header class="text-center px-6 mb-20 reveal active">
+      <h1 class="text-5xl md:text-7xl font-black italic mb-6 leading-tight hero-animate">Contact our concierge</h1>
+      <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-medium">
+        Whether you are placing an order or tracking a shipment, our team is active and ready to assist you.
       </p>
     </header>
 
-    <!-- Category Grid -->
-    <section class="max-w-7xl mx-auto catalog-grid mb-40">
-      
-      <!-- Computing -->
-      <div class="reveal category-card">
-        <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Computing">
-        <div class="card-scrim"></div>
-        <div class="card-content">
-          <h3>High-end computing</h3>
-          <p>Original Apple Silicon, workstation laptops, and custom gaming builds with factory authenticity.</p>
+    <section class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12">
+      <!-- Info Column -->
+      <div class="space-y-6 reveal">
+        <div class="liquid-glass p-10">
+          <h2 class="text-2xl font-black italic mb-6">Order via WhatsApp</h2>
+          <p class="text-slate-400 font-medium mb-8 leading-relaxed">
+            The fastest way to get a quote. Send us product links, photos, or descriptions. Our sourcing experts usually reply within minutes.
+          </p>
+          <a href="https://wa.me/233240118846" target="_blank" class="btn-wa inline-flex items-center gap-3 px-10 py-5">
+            Open WhatsApp <i class="fab fa-whatsapp text-xl"></i>
+          </a>
+        </div>
+
+        <div class="liquid-glass p-10">
+          <h3 class="text-xl font-black italic mb-6">Global reach</h3>
+          <ul class="space-y-4 font-bold text-sm text-slate-400">
+            <li><a href="mailto:Info@mrkash.net" class="hover:text-white transition-all"><i class="fas fa-envelope text-cyan-400 mr-3"></i> Info@mrkash.net</a></li>
+            <li><a href="https://www.instagram.com/kashoption1" target="_blank" class="hover:text-white transition-all"><i class="fab fa-instagram text-cyan-400 mr-3"></i> @kashoption1</a></li>
+            <li><a href="https://www.facebook.com/share/1CrwnBxS8W/" target="_blank" class="hover:text-white transition-all"><i class="fab fa-facebook-f text-cyan-400 mr-3"></i> Facebook Support</a></li>
+          </ul>
         </div>
       </div>
 
-      <!-- Auto Engineering -->
-      <div class="reveal category-card" style="transition-delay: 0.1s;">
-        <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Auto">
-        <div class="card-scrim"></div>
-        <div class="card-content">
-          <h3>Automotive engineering</h3>
-          <p>Genuine OEM engines, transmission systems, and performance components verified at the source.</p>
-        </div>
-      </div>
-
-      <!-- Pro Electronics -->
-      <div class="reveal category-card" style="transition-delay: 0.2s;">
-        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Electronics">
-        <div class="card-scrim"></div>
-        <div class="card-content">
-          <h3>Professional electronics</h3>
-          <p>Cinema-grade camera gear, drones, and smart ecosystems from authorized distributors.</p>
-        </div>
-      </div>
-
-      <!-- Interior Design -->
-      <div class="reveal category-card">
-        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Interior">
-        <div class="card-scrim"></div>
-        <div class="card-content">
-          <h3>Interior design</h3>
-          <p>Premium ergonomic furniture and contemporary home styling crated for safe long-haul transit.</p>
-        </div>
-      </div>
-
-      <!-- Wholesale Logistics -->
-      <div class="reveal category-card" style="transition-delay: 0.1s;">
-        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Logistics">
-        <div class="card-scrim"></div>
-        <div class="card-content">
-          <h3>Wholesale logistics</h3>
-          <p>Bulk inventory and container-load procurement for retailers with strict quality control.</p>
-        </div>
-      </div>
-
-      <!-- Luxury Apparel -->
-      <div class="reveal category-card" style="transition-delay: 0.2s;">
-        <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Apparel">
-        <div class="card-scrim"></div>
-        <div class="card-content">
-          <h3>Luxury apparel</h3>
-          <p>Verified designer clothing, technical footwear, and timepieces from European and American markets.</p>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- Digital Concierge -->
-    <section class="max-w-4xl mx-auto py-20 reveal">
-      <div class="concierge-wrap p-8 md:p-20 relative overflow-hidden">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-5xl font-black italic mb-4">Digital concierge</h2>
-            <p class="text-gray-500 font-medium">Provide procurement details to initialize a formal inquiry.</p>
-        </div>
-        <form id="conciergeForm">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
-            <div><label class="desk-label">Full name</label><input type="text" id="cName" class="desk-input" placeholder="e.g. Prince Okyere" required></div>
-            <div><label class="desk-label">WhatsApp number</label><input type="tel" id="cPhone" class="desk-input" placeholder="+233..." required></div>
+      <!-- Form Column -->
+      <div class="reveal">
+        <div class="liquid-glass p-8 md:p-12 border-cyan-400/20 shadow-2xl">
+          <div class="text-center mb-10">
+            <h2 class="text-3xl font-black italic mb-2">Send an inquiry</h2>
+            <p class="text-slate-500 font-bold text-sm">We'll review and reply on WhatsApp</p>
           </div>
-          <label class="desk-label">Select category</label>
-          <select id="cCat" class="desk-input" required>
-              <option value="Computing">High-end computing</option>
-              <option value="Auto Engineering">Automotive engineering</option>
-              <option value="Electronics">Professional electronics</option>
-              <option value="Interiors">Interior design</option>
-              <option value="Wholesale">Wholesale logistics</option>
-              <option value="Apparel">Luxury apparel</option>
-          </select>
-          <label class="desk-label">Specifications or product link</label>
-          <textarea id="cSpecs" class="desk-input" rows="2" placeholder="Describe the item or paste a web link..." required></textarea>
-          <button type="submit" class="btn-concierge">Initialize via WhatsApp <i class="fab fa-whatsapp text-2xl"></i></button>
-        </form>
+
+          <form id="inquiryForm" class="inquiry-form space-y-4">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <input type="email" id="inqEmail" placeholder="Email address" required>
+              <input type="tel" id="inqPhone" placeholder="WhatsApp number" required>
+            </div>
+            <select id="inqCategory" required>
+              <option value="" disabled selected>Select category</option>
+              <option value="Phones & Laptops">Phones & Laptops</option>
+              <option value="Auto Parts">Auto Parts</option>
+              <option value="Luxury Apparel">Luxury Apparel</option>
+              <option value="Wholesale">Wholesale Goods</option>
+              <option value="Other">Other</option>
+            </select>
+            <input type="text" id="inqProduct" placeholder="Product name or link" required>
+            <textarea id="inqSpecs" rows="3" placeholder="Specifications (Color, Size, Memory, etc.)" required></textarea>
+
+            <label class="flex items-center gap-3 text-xs text-slate-500 font-bold cursor-pointer mt-4">
+              <input type="checkbox" required class="accent-cyan-400">
+              I agree to the Policy and Terms
+            </label>
+
+            <button type="submit" class="w-full btn-wa py-5 text-lg mt-6">
+              Submit inquiry
+            </button>
+          </form>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Apple Style Directory Footer -->
+  <!-- Apple Style Directory Footer (Restored from Index) -->
   <footer class="pt-32 pb-12 px-6 bg-[#030305] border-t border-white/5">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-24 text-left">
         <div class="col-span-2">
             <h2 class="logo-text text-2xl mb-6">KASH <span class="logo-option">OPTION</span></h2>
-            <p class="text-slate-500 max-w-sm font-semibold text-sm leading-relaxed mb-8">Ghana's #1 premier sourcing and logistics hub. Bridging global excellence with local convenience.</p>
+            <p class="text-slate-500 max-w-sm font-semibold text-sm leading-relaxed mb-8">Ghana's #1 premier sourcing and logistics hub. Bridging global excellence with local convenience since 2020.</p>
             <div class="flex gap-4">
                 <a href="https://www.instagram.com/kashoption1" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.facebook.com/share/1CrwnBxS8W/" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
@@ -330,22 +238,36 @@
     </div>
   </footer>
 
-  <script>
-    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/233240118846" target="_blank" class="fixed bottom-6 right-6 z-[999] w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center text-2xl shadow-2xl hover:scale-110 transition-transform">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
-    document.getElementById('conciergeForm').addEventListener('submit', function(e) {
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('active');
+    }
+
+    // Inquiry Form Logic
+    document.getElementById('inquiryForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const message = `*PROCUREMENT INQUIRY*%0A%0A` +
-                      `*Client Name:* ${document.getElementById('cName').value}%0A` +
-                      `*Contact Number:* ${document.getElementById('cPhone').value}%0A` +
-                      `*Category:* ${document.getElementById('cCat').value}%0A` +
-                      `*Specifications:* ${document.getElementById('cSpecs').value}`;
-      window.open(`https://wa.me/233240118846?text=${message}`, '_blank');
+      const phone = document.getElementById('inqPhone').value;
+      const cat = document.getElementById('inqCategory').value;
+      const product = document.getElementById('inqProduct').value;
+      const specs = document.getElementById('inqSpecs').value;
+      const msg = `*NEW INQUIRY*%0A%0A*Phone:* ${phone}%0A*Category:* ${cat}%0A*Product:* ${product}%0A*Specs:* ${specs}`;
+      window.open(`https://wa.me/233240118846?text=${msg}`, '_blank');
     });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
