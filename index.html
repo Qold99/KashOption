@@ -3,30 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The global showroom | Kash Option</title>
   
-  <!-- Industrial SEO -->
-  <title>About Us | Kash Option - Ghana's #1 Global Sourcing Agency</title>
-  <meta name="description" content="Founded by Prince Okyere, Kash Option is Ghana's premier bridge to global markets. Specializing in China, USA, and UK logistics.">
-  
-  <!-- Resources -->
+  <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
   <link rel="icon" type="image/png" href="https://mrkash.net/logo.png">
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    :root { --cyan: #22d3ee; --dark: #050508; --glass: rgba(255, 255, 255, 0.03); }
+    :root { --accent: #22d3ee; --bg: #050508; --glass: rgba(255, 255, 255, 0.02); }
     * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; text-transform: none !important; }
     
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--dark);
+      background: var(--bg);
       color: #fff;
       overflow-x: hidden;
+      font-weight: 500;
     }
 
-    /* --- DYNAMIC ISLAND --- */
+    /* --- DYNAMIC ISLAND (SENTENCE CASE) --- */
     .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1100px; }
     .dynamic-island {
       background: rgba(10, 10, 15, 0.75);
@@ -39,181 +38,215 @@
       justify-content: space-between;
       box-shadow: 0 30px 60px rgba(0,0,0,0.6);
     }
-    .logo-text { font-weight: 800; font-style: italic; font-size: 1.1rem; letter-spacing: -0.05em; }
-    .logo-option { color: var(--cyan); text-shadow: 0 0 15px rgba(34, 211, 238, 0.5); }
-
-    .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.7rem; font-weight: 700; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
+    .logo-text { font-weight: 800; font-style: italic; font-size: 1.1rem; letter-spacing: -0.05em; color: #fff; text-decoration: none; }
+    .logo-option { color: var(--accent); text-shadow: 0 0 15px rgba(34, 211, 238, 0.5); }
+    
+    .island-nav { display: none; align-items: center; gap: 4px; }
+    @media (min-width: 1024px) { .island-nav { display: flex; } }
+    .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.75rem; font-weight: 600; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
     .island-nav a:hover, .island-nav a.active { color: #fff; background: rgba(255,255,255,0.05); }
 
-    /* --- AERO-LANDING ENGINE --- */
-    @keyframes aeroLanding {
-      0% { transform: translateY(-300px) scale(1.5); opacity: 0; filter: blur(20px); }
-      100% { transform: translateY(0) scale(1); opacity: 1; filter: blur(0); }
+    .menu-trigger { 
+      width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #000; 
+      display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; 
     }
-    .hero-animate { animation: aeroLanding 1.2s cubic-bezier(0.23, 1, 0.32, 1) both; }
 
-    /* --- UI COMPONENTS --- */
-    .liquid-glass { 
-      background: var(--glass); 
-      backdrop-filter: blur(15px); 
-      border: 1px solid rgba(255,255,255,0.08); 
-      border-radius: 32px; 
-      transition: 0.4s ease;
+    /* --- MOBILE MENU OVERLAY --- */
+    #mobileMenu {
+      position: fixed; inset: 0; background: rgba(5, 5, 8, 0.98); 
+      backdrop-filter: blur(20px); z-index: 10000; display: none;
+      flex-direction: column; align-items: center; justify-content: center; padding: 2rem;
     }
-    
-    .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
-    .reveal.active { opacity: 1; transform: translateY(0); }
-
-    .timeline-item { position: relative; padding-left: 40px; border-left: 2px solid rgba(34, 211, 238, 0.2); margin-bottom: 30px; }
-    .timeline-dot { position: absolute; left: -7px; top: 0; width: 12px; height: 12px; background: var(--cyan); border-radius: 50%; box-shadow: 0 0 10px var(--cyan); }
-
-    .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.85rem; display: block; margin-bottom: 8px; font-weight: 600; }
-    .directory-link:hover { color: #fff; text-shadow: 0 0 10px var(--cyan); }
-
-    #mobileMenu { position: fixed; inset: 0; background: #050508; z-index: 10001; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; }
     #mobileMenu.active { display: flex; }
-    #mobileMenu a { font-size: 2rem; font-weight: 800; margin: 0.8rem 0; color: #fff; text-decoration: none; font-style: italic; }
+    #mobileMenu a { font-size: 1.8rem; font-weight: 800; margin: 0.8rem 0; color: #fff; text-decoration: none; font-style: italic; }
+    .close-menu { position: absolute; top: 30px; right: 30px; font-size: 1.5rem; color: #94a3b8; cursor: pointer; }
+
+    /* --- REALISTIC CATEGORY CARDS --- */
+    .catalog-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 24px; }
+    @media (min-width: 768px) { .catalog-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1200px) { .catalog-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .category-card {
+      position: relative;
+      height: 480px;
+      border-radius: 32px;
+      overflow: hidden;
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 40px 100px -20px rgba(0,0,0,0.8);
+      transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    .category-card:hover { transform: translateY(-12px) scale(1.01); border-color: rgba(34,211,238,0.3); }
+
+    .card-image {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.8); transition: 0.8s ease;
+    }
+    .category-card:hover .card-image { filter: brightness(1); transform: scale(1.05); }
+
+    .card-scrim {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
+      z-index: 1;
+    }
+
+    .card-content { position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px; z-index: 2; }
+    .card-content h3 { font-size: 1.5rem; font-weight: 800; font-style: italic; margin-bottom: 12px; letter-spacing: -0.02em; color: #fff; }
+    .card-content p { color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6; font-weight: 500; }
+
+    /* --- CONCIERGE DESK --- */
+    .concierge-wrap {
+      background: #08080a; border: 1px solid rgba(255,255,255,0.05); border-radius: 40px;
+      box-shadow: 0 50px 120px -30px rgba(0,0,0,0.9);
+    }
+    .desk-input {
+      width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 20px 0; color: #fff; font-size: 1rem; outline: none; transition: 0.3s;
+    }
+    .desk-input:focus { border-bottom-color: var(--accent); }
+    .desk-label { display: block; font-size: 0.7rem; font-weight: 800; color: #4b5563; text-transform: uppercase !important; letter-spacing: 2px; margin-top: 25px; }
+
+    .btn-concierge {
+      background: #fff; color: #000; width: 100%; padding: 24px; border-radius: 100px;
+      font-weight: 800; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 12px;
+      transition: 0.4s; margin-top: 50px; cursor: pointer; border: none;
+    }
+    .btn-concierge:hover { background: var(--accent); box-shadow: 0 0 40px rgba(34, 211, 238, 0.4); transform: translateY(-2px); }
+
+    /* --- FOOTER & MISC --- */
+    .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.85rem; display: block; margin-bottom: 8px; font-weight: 600; }
+    .directory-link:hover { color: #fff; text-shadow: 0 0 10px var(--accent); }
+    .reveal { opacity: 0; transform: translateY(30px); transition: 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
-  <!-- Dynamic Island Nav -->
+  <!-- Dynamic Island Navigation -->
   <div class="nav-wrapper">
     <nav class="dynamic-island">
       <a href="index.html" class="logo-text">KASH <span class="logo-option">OPTION</span></a>
-      <div class="island-nav hidden lg:flex gap-1">
+      <div class="island-nav">
         <a href="index.html">Home</a>
-        <a href="about.html" class="active">About</a>
-        <a href="catalog.html">Catalog</a>
-        <a href="orders.html">Orders</a>
-        <a href="testimonials.html">Reviews</a>
-        <a href="faqs.html">FAQs</a>
-        <a href="contact.html">Contact</a>
-        <a href="policy-terms.html">Policy</a>
+        <a href="about.html">About</a>
+        <a href="catalog.html" class="active">Catalog</a>
+        <a href="orders.html">Live orders</a>
         <a href="tracker.html">Tracker</a>
+        <a href="faqs.html">Support</a>
+        <a href="contact.html">Contact</a>
       </div>
-      <button class="lg:hidden text-cyan-400 text-xl p-2" onclick="toggleMenu()">
+      <button class="menu-trigger" onclick="toggleMenu()">
         <i class="fas fa-bars-staggered"></i>
       </button>
     </nav>
   </div>
 
-  <!-- Mobile Nav Overlay -->
+  <!-- Mobile Menu -->
   <div id="mobileMenu">
+    <div class="close-menu" onclick="toggleMenu()"><i class="fas fa-times"></i></div>
     <a href="index.html">Home</a>
-    <a href="about.html" class="text-cyan-400">About</a>
+    <a href="about.html">About</a>
     <a href="catalog.html">Catalog</a>
-    <a href="orders.html">Live Feed</a>
-    <a href="tracker.html">Track Order</a>
-    <button onclick="toggleMenu()" class="mt-10 w-12 h-12 rounded-full border border-white/20"><i class="fas fa-times"></i></button>
+    <a href="orders.html">Live orders</a>
+    <a href="tracker.html" style="color: var(--accent);">Track order</a>
+    <a href="contact.html">Contact</a>
   </div>
 
-  <main>
-    <!-- Hero -->
-    <section class="min-h-[70vh] flex flex-col justify-center items-center text-center px-6 pt-32">
-      <div class="hero-animate">
-        <h1 class="text-5xl sm:text-7xl md:text-8xl font-black italic leading-none tracking-tighter mb-8">
-            Your bridge to<br><span class="text-cyan-400">global markets</span>
-        </h1>
-        <p class="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto mb-12 font-medium leading-relaxed">
-            Since 2020, we have been eliminating the barriers of international trade. We source, we pay, we ship—you simply enjoy the best products the world has to offer.
-        </p>
-      </div>
-      
-      <!-- Trust Metrics -->
-      <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl mt-10">
-        <div class="liquid-glass p-8">
-            <div class="text-5xl font-black text-cyan-400 mb-2 italic">20,000+</div>
-            <div class="text-[10px] uppercase font-bold tracking-widest text-slate-500">Orders delivered successfully</div>
-        </div>
-        <div class="liquid-glass p-8">
-            <div class="text-5xl font-black text-cyan-400 mb-2 italic">99.8%</div>
-            <div class="text-[10px] uppercase font-bold tracking-widest text-slate-500">Customs clearance accuracy</div>
+  <main class="pt-44 pb-32 px-6">
+    <header class="text-center max-w-4xl mx-auto mb-24 reveal">
+      <h1 class="text-4xl md:text-7xl font-black italic mb-8 leading-[1]">The global bridge</h1>
+      <p class="text-gray-400 font-medium text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+        Exceptional sourcing and logistics for authentic global products. Every item is verified at our international hubs before departure to Ghana.
+      </p>
+    </header>
+
+    <!-- Category Grid -->
+    <section class="max-w-7xl mx-auto catalog-grid mb-40">
+      <div class="reveal category-card">
+        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=1000" class="card-image" alt="Computing">
+        <div class="card-scrim"></div>
+        <div class="card-content">
+          <h3>High-end computing</h3>
+          <p>Original Apple Silicon, workstation laptops, and custom gaming builds with guaranteed factory authenticity.</p>
         </div>
       </div>
+
+      <div class="reveal category-card" style="transition-delay: 0.1s;">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1000" class="card-image" alt="Auto Parts">
+        <div class="card-scrim"></div>
+        <div class="card-content">
+          <h3>Automotive engineering</h3>
+          <p>Genuine OEM engines, transmission systems, and performance components verified directly at the source.</p>
+        </div>
+      </div>
+
+      <div class="reveal category-card" style="transition-delay: 0.2s;">
+        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=1000" class="card-image" alt="Electronics">
+        <div class="card-scrim"></div>
+        <div class="card-content">
+          <h3>Professional electronics</h3>
+          <p>Cinema-grade camera gear, professional drones, and smart home ecosystems from authorized global distributors.</p>
+        </div>
+      </div>
+
+      <div class="reveal category-card">
+        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=1000" class="card-image" alt="Interior">
+        <div class="card-scrim"></div>
+        <div class="card-content">
+          <h3>Interior and office design</h3>
+          <p>Premium ergonomic furniture and contemporary home styling crated for safe long-haul international transit.</p>
+        </div>
+      </div>
+
+      <div class="reveal category-card" style="transition-delay: 0.1s;">
+        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1000" class="card-image" alt="Wholesale">
+        <div class="card-scrim"></div>
+        <div class="card-content">
+          <h3>Wholesale logistics</h3>
+          <p>Bulk inventory and container-load procurement for retailers requiring locked-in pricing and strict quality control.</p>
+        </div>
+      </div>
+
+      <div class="reveal category-card" style="transition-delay: 0.2s;">
+        <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=1000" class="card-image" alt="Apparel">
+        <div class="card-scrim"></div>
+        <div class="card-content">
+          <h3>Luxury apparel</h3>
+          <p>Verified designer clothing, technical footwear, and luxury timepieces sourced from European and American markets.</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Founder's Story -->
-    <section class="py-24 px-6 max-w-6xl mx-auto">
-        <div class="reveal grid md:grid-cols-2 gap-16 items-center">
-            <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000" alt="Founder" class="opacity-80">
-            </div>
-            <div>
-                <h2 class="text-4xl md:text-5xl font-black italic mb-8">The founder's story</h2>
-                <p class="text-slate-300 leading-relaxed text-lg mb-6 font-medium">
-                    Kash Option was founded by <span class="text-white font-bold">Prince Okyere</span> to solve a major problem: shopping abroad from Ghana was broken. 
-                </p>
-                <p class="text-slate-400 leading-relaxed font-medium">
-                    By removing obstacles like unreliable suppliers and complex customs hurdles, we transformed international sourcing into a simple WhatsApp message. Today, we are Ghana's most trusted logistics gateway.
-                </p>
-            </div>
+    <!-- Concierge Form -->
+    <section class="max-w-4xl mx-auto py-20 reveal">
+      <div class="concierge-wrap p-8 md:p-20 relative overflow-hidden text-left">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-5xl font-black italic mb-4">Digital concierge</h2>
+            <p class="text-gray-500 font-medium">Please provide your procurement details to initialize a formal inquiry.</p>
         </div>
-    </section>
-
-    <!-- Timeline -->
-    <section class="py-24 bg-[#08080a] border-y border-white/5 px-6">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-center text-4xl md:text-5xl font-black italic mb-20">The journey</h2>
-            <div class="reveal">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <h4 class="text-cyan-400 font-bold italic text-xl mb-2">2020: The launch</h4>
-                    <p class="text-slate-400 font-medium">Started in Accra with a focus on high-speed China sourcing for small businesses.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <h4 class="text-cyan-400 font-bold italic text-xl mb-2">2021: Global expansion</h4>
-                    <p class="text-slate-400 font-medium">Activated USA and UK logistics hubs, opening Western markets to the Ghanaian consumer.</p>
-                </div>
-                <div class="timeline-item" style="border:none;">
-                    <div class="timeline-dot"></div>
-                    <h4 class="text-cyan-400 font-bold italic text-xl mb-2">2024: The #1 standard</h4>
-                    <p class="text-slate-400 font-medium">Recognized as the premier procurement and logistics standard for elite global sourcing.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="py-24 px-6 max-w-7xl mx-auto text-center">
-        <h2 class="text-4xl md:text-5xl font-black italic mb-20">The core team</h2>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            <div class="reveal liquid-glass p-6 md:p-8">
-                <div class="w-16 h-16 mx-auto bg-cyan-400/10 rounded-full flex items-center justify-center text-xl font-black text-cyan-400 mb-6">P</div>
-                <h3 class="font-bold italic text-sm">Prince Okyere</h3>
-                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-2">Founder & CEO</p>
-            </div>
-            <div class="reveal liquid-glass p-6 md:p-8" style="transition-delay: 0.1s;">
-                <div class="w-16 h-16 mx-auto bg-white/5 rounded-full flex items-center justify-center text-xl font-black text-white mb-6">A</div>
-                <h3 class="font-bold italic text-sm">Abena Mensah</h3>
-                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-2">Operations Director</p>
-            </div>
-            <div class="reveal liquid-glass p-6 md:p-8" style="transition-delay: 0.2s;">
-                <div class="w-16 h-16 mx-auto bg-white/5 rounded-full flex items-center justify-center text-xl font-black text-white mb-6">K</div>
-                <h3 class="font-bold italic text-sm">Kofi Annan</h3>
-                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-2">Logistics Lead</p>
-            </div>
-            <div class="reveal liquid-glass p-6 md:p-8" style="transition-delay: 0.3s;">
-                <div class="w-16 h-16 mx-auto bg-white/5 rounded-full flex items-center justify-center text-xl font-black text-white mb-6">E</div>
-                <h3 class="font-bold italic text-sm">Esi Quansah</h3>
-                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-2">Client Relations</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA - Optimized for Mobile -->
-    <section class="py-20 px-6 text-center">
-        <div class="reveal liquid-glass p-8 md:p-16 max-w-2xl mx-auto border-cyan-400/20">
-            <h2 class="text-3xl md:text-4xl font-black italic mb-8 leading-tight">Ready to experience the<br>Kash Option standard?</h2>
-            <a href="https://wa.me/233240118846" target="_blank" class="inline-flex items-center gap-3 bg-cyan-400 text-black px-10 py-4 rounded-full font-black text-base hover:scale-105 transition-transform shadow-2xl">
-                Start shopping now <i class="fab fa-whatsapp"></i>
-            </a>
-        </div>
+        <form id="conciergeForm">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+            <div><label class="desk-label">Full name</label><input type="text" id="cName" class="desk-input" placeholder="e.g. John Doe" required></div>
+            <div><label class="desk-label">WhatsApp number</label><input type="tel" id="cPhone" class="desk-input" placeholder="+233..." required></div>
+          </div>
+          <label class="desk-label">Select category</label>
+          <select id="cCat" class="desk-input" required>
+              <option value="Computing">High-end computing</option>
+              <option value="Auto Engineering">Automotive engineering</option>
+              <option value="Electronics">Professional electronics</option>
+              <option value="Interiors">Interior and office design</option>
+              <option value="Wholesale">Wholesale logistics</option>
+              <option value="Apparel">Luxury apparel</option>
+          </select>
+          <label class="desk-label">Specifications or product link</label>
+          <textarea id="cSpecs" class="desk-input" rows="2" placeholder="Describe the item or paste a web link..." required></textarea>
+          <button type="submit" class="btn-concierge">Initialize via WhatsApp <i class="fab fa-whatsapp text-2xl"></i></button>
+        </form>
+      </div>
     </section>
   </main>
 
-  <!-- Apple Style Directory Footer -->
+  <!-- Apple Style Directory Footer (Synchronized with Index) -->
   <footer class="pt-32 pb-12 px-6 bg-[#030305] border-t border-white/5">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-24 text-left">
@@ -254,19 +287,22 @@
   </footer>
 
   <script>
-    function toggleMenu() {
-      document.getElementById('mobileMenu').classList.toggle('active');
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
     }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.getElementById('conciergeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const message = `*PROCUREMENT INQUIRY*%0A%0A` +
+                      `*Client Name:* ${document.getElementById('cName').value}%0A` +
+                      `*Contact Number:* ${document.getElementById('cPhone').value}%0A` +
+                      `*Category:* ${document.getElementById('cCat').value}%0A` +
+                      `*Specifications:* ${document.getElementById('cSpecs').value}%0A%0A` +
+                      `_Inquiry sent via Kash Option Digital Concierge_`;
+      window.open(`https://wa.me/233240118846?text=${message}`, '_blank');
+    });
   </script>
 </body>
 </html>
