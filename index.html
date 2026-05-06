@@ -25,10 +25,10 @@
       font-weight: 500;
     }
 
-    /* --- DYNAMIC ISLAND (SENTENCE CASE) --- */
+    /* --- DYNAMIC ISLAND --- */
     .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1100px; }
     .dynamic-island {
-      background: rgba(10, 10, 15, 0.75);
+      background: rgba(10, 10, 15, 0.85);
       backdrop-filter: blur(30px) saturate(180%);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 60px;
@@ -61,14 +61,14 @@
     #mobileMenu a { font-size: 1.8rem; font-weight: 800; margin: 0.8rem 0; color: #fff; text-decoration: none; font-style: italic; }
     .close-menu { position: absolute; top: 30px; right: 30px; font-size: 1.5rem; color: #94a3b8; cursor: pointer; }
 
-    /* --- REALISTIC CATEGORY CARDS --- */
+    /* --- REALISTIC CATEGORY CARDS (MOBILE OPTIMIZED) --- */
     .catalog-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 24px; }
     @media (min-width: 768px) { .catalog-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 1200px) { .catalog-grid { grid-template-columns: repeat(3, 1fr); } }
 
     .category-card {
       position: relative;
-      height: 480px;
+      height: 420px; /* Fixed height for desktop */
       border-radius: 32px;
       overflow: hidden;
       background: #111;
@@ -76,53 +76,87 @@
       box-shadow: 0 40px 100px -20px rgba(0,0,0,0.8);
       transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     }
-    .category-card:hover { transform: translateY(-12px) scale(1.01); border-color: rgba(34,211,238,0.3); }
+    
+    /* Ensure photos display properly on small screens */
+    @media (max-width: 767px) {
+      .category-card { height: 380px; }
+    }
 
     .card-image {
-      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-      filter: brightness(0.8); transition: 0.8s ease;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block !important; /* Force display */
+      filter: brightness(0.7) contrast(1.1);
+      transition: 0.8s ease;
     }
-    .category-card:hover .card-image { filter: brightness(1); transform: scale(1.05); }
+    .category-card:hover .card-image { filter: brightness(0.9) contrast(1.1); transform: scale(1.08); }
 
     .card-scrim {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,1) 5%, rgba(0,0,0,0.4) 50%, transparent 100%);
       z-index: 1;
     }
 
-    .card-content { position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px; z-index: 2; }
-    .card-content h3 { font-size: 1.5rem; font-weight: 800; font-style: italic; margin-bottom: 12px; letter-spacing: -0.02em; color: #fff; }
-    .card-content p { color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6; font-weight: 500; }
+    .card-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 30px;
+      z-index: 2;
+    }
+
+    .card-content h3 { font-size: 1.4rem; font-weight: 800; font-style: italic; margin-bottom: 8px; color: #fff; }
+    .card-content p { color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.5; font-weight: 500; }
 
     /* --- CONCIERGE DESK --- */
     .concierge-wrap {
-      background: #08080a; border: 1px solid rgba(255,255,255,0.05); border-radius: 40px;
-      box-shadow: 0 50px 120px -30px rgba(0,0,0,0.9);
+      background: #08080a;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 40px;
     }
     .desk-input {
-      width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.1);
-      padding: 20px 0; color: #fff; font-size: 1rem; outline: none; transition: 0.3s;
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 15px 0;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
     }
     .desk-input:focus { border-bottom-color: var(--accent); }
-    .desk-label { display: block; font-size: 0.7rem; font-weight: 800; color: #4b5563; text-transform: uppercase !important; letter-spacing: 2px; margin-top: 25px; }
+    .desk-label { display: block; font-size: 0.7rem; font-weight: 800; color: #4b5563; text-transform: uppercase !important; margin-top: 20px; }
 
     .btn-concierge {
-      background: #fff; color: #000; width: 100%; padding: 24px; border-radius: 100px;
-      font-weight: 800; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 12px;
-      transition: 0.4s; margin-top: 50px; cursor: pointer; border: none;
+      background: #fff;
+      color: #000;
+      width: 100%;
+      padding: 20px;
+      border-radius: 100px;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: 0.4s;
+      margin-top: 40px;
+      cursor: pointer;
+      border: none;
     }
-    .btn-concierge:hover { background: var(--accent); box-shadow: 0 0 40px rgba(34, 211, 238, 0.4); transform: translateY(-2px); }
+    .btn-concierge:hover { background: var(--accent); transform: translateY(-2px); }
 
-    /* --- FOOTER & MISC --- */
     .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.85rem; display: block; margin-bottom: 8px; font-weight: 600; }
     .directory-link:hover { color: #fff; text-shadow: 0 0 10px var(--accent); }
+
     .reveal { opacity: 0; transform: translateY(30px); transition: 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
     .reveal.active { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
-  <!-- Dynamic Island Navigation -->
+  <!-- Navigation -->
   <div class="nav-wrapper">
     <nav class="dynamic-island">
       <a href="index.html" class="logo-text">KASH <span class="logo-option">OPTION</span></a>
@@ -130,10 +164,11 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="catalog.html" class="active">Catalog</a>
-        <a href="orders.html">Live orders</a>
-        <a href="tracker.html">Tracker</a>
+        <a href="orders.html">Orders</a>
+        <a href="testimonials.html">Reviews</a>
         <a href="faqs.html">Support</a>
         <a href="contact.html">Contact</a>
+        <a href="tracker.html">Tracker</a>
       </div>
       <button class="menu-trigger" onclick="toggleMenu()">
         <i class="fas fa-bars-staggered"></i>
@@ -149,84 +184,93 @@
     <a href="catalog.html">Catalog</a>
     <a href="orders.html">Live orders</a>
     <a href="tracker.html" style="color: var(--accent);">Track order</a>
+    <a href="faqs.html">FAQs</a>
     <a href="contact.html">Contact</a>
   </div>
 
-  <main class="pt-44 pb-32 px-6">
-    <header class="text-center max-w-4xl mx-auto mb-24 reveal">
-      <h1 class="text-4xl md:text-7xl font-black italic mb-8 leading-[1]">The global bridge</h1>
-      <p class="text-gray-400 font-medium text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-        Exceptional sourcing and logistics for authentic global products. Every item is verified at our international hubs before departure to Ghana.
+  <main class="pt-32 pb-32 px-6">
+    <header class="text-center max-w-4xl mx-auto mb-20 reveal">
+      <h1 class="text-4xl md:text-7xl font-black italic mb-6 leading-[1.1]">The global bridge</h1>
+      <p class="text-gray-400 font-medium text-lg md:text-xl max-w-2xl mx-auto">
+        Exceptional sourcing for authentic global products. Every item is verified at our hubs before departure to Ghana.
       </p>
     </header>
 
     <!-- Category Grid -->
     <section class="max-w-7xl mx-auto catalog-grid mb-40">
+      
+      <!-- Computing -->
       <div class="reveal category-card">
-        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=1000" class="card-image" alt="Computing">
+        <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Computing">
         <div class="card-scrim"></div>
         <div class="card-content">
           <h3>High-end computing</h3>
-          <p>Original Apple Silicon, workstation laptops, and custom gaming builds with guaranteed factory authenticity.</p>
+          <p>Original Apple Silicon, workstation laptops, and custom gaming builds with factory authenticity.</p>
         </div>
       </div>
 
+      <!-- Auto Engineering -->
       <div class="reveal category-card" style="transition-delay: 0.1s;">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1000" class="card-image" alt="Auto Parts">
+        <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Auto">
         <div class="card-scrim"></div>
         <div class="card-content">
           <h3>Automotive engineering</h3>
-          <p>Genuine OEM engines, transmission systems, and performance components verified directly at the source.</p>
+          <p>Genuine OEM engines, transmission systems, and performance components verified at the source.</p>
         </div>
       </div>
 
+      <!-- Pro Electronics -->
       <div class="reveal category-card" style="transition-delay: 0.2s;">
-        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=1000" class="card-image" alt="Electronics">
+        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Electronics">
         <div class="card-scrim"></div>
         <div class="card-content">
           <h3>Professional electronics</h3>
-          <p>Cinema-grade camera gear, professional drones, and smart home ecosystems from authorized global distributors.</p>
+          <p>Cinema-grade camera gear, drones, and smart ecosystems from authorized distributors.</p>
         </div>
       </div>
 
+      <!-- Interior Design -->
       <div class="reveal category-card">
-        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=1000" class="card-image" alt="Interior">
+        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Interior">
         <div class="card-scrim"></div>
         <div class="card-content">
-          <h3>Interior and office design</h3>
-          <p>Premium ergonomic furniture and contemporary home styling crated for safe long-haul international transit.</p>
+          <h3>Interior design</h3>
+          <p>Premium ergonomic furniture and contemporary home styling crated for safe long-haul transit.</p>
         </div>
       </div>
 
+      <!-- Wholesale Logistics -->
       <div class="reveal category-card" style="transition-delay: 0.1s;">
-        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1000" class="card-image" alt="Wholesale">
+        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Logistics">
         <div class="card-scrim"></div>
         <div class="card-content">
           <h3>Wholesale logistics</h3>
-          <p>Bulk inventory and container-load procurement for retailers requiring locked-in pricing and strict quality control.</p>
+          <p>Bulk inventory and container-load procurement for retailers with strict quality control.</p>
         </div>
       </div>
 
+      <!-- Luxury Apparel -->
       <div class="reveal category-card" style="transition-delay: 0.2s;">
-        <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=1000" class="card-image" alt="Apparel">
+        <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Apparel">
         <div class="card-scrim"></div>
         <div class="card-content">
           <h3>Luxury apparel</h3>
-          <p>Verified designer clothing, technical footwear, and luxury timepieces sourced from European and American markets.</p>
+          <p>Verified designer clothing, technical footwear, and timepieces from European and American markets.</p>
         </div>
       </div>
+
     </section>
 
-    <!-- Concierge Form -->
+    <!-- Digital Concierge -->
     <section class="max-w-4xl mx-auto py-20 reveal">
-      <div class="concierge-wrap p-8 md:p-20 relative overflow-hidden text-left">
-        <div class="text-center mb-16">
+      <div class="concierge-wrap p-8 md:p-20 relative overflow-hidden">
+        <div class="text-center mb-12">
             <h2 class="text-3xl md:text-5xl font-black italic mb-4">Digital concierge</h2>
-            <p class="text-gray-500 font-medium">Please provide your procurement details to initialize a formal inquiry.</p>
+            <p class="text-gray-500 font-medium">Provide procurement details to initialize a formal inquiry.</p>
         </div>
         <form id="conciergeForm">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
-            <div><label class="desk-label">Full name</label><input type="text" id="cName" class="desk-input" placeholder="e.g. John Doe" required></div>
+            <div><label class="desk-label">Full name</label><input type="text" id="cName" class="desk-input" placeholder="e.g. Prince Okyere" required></div>
             <div><label class="desk-label">WhatsApp number</label><input type="tel" id="cPhone" class="desk-input" placeholder="+233..." required></div>
           </div>
           <label class="desk-label">Select category</label>
@@ -234,7 +278,7 @@
               <option value="Computing">High-end computing</option>
               <option value="Auto Engineering">Automotive engineering</option>
               <option value="Electronics">Professional electronics</option>
-              <option value="Interiors">Interior and office design</option>
+              <option value="Interiors">Interior design</option>
               <option value="Wholesale">Wholesale logistics</option>
               <option value="Apparel">Luxury apparel</option>
           </select>
@@ -246,13 +290,13 @@
     </section>
   </main>
 
-  <!-- Apple Style Directory Footer (Synchronized with Index) -->
+  <!-- Apple Style Directory Footer -->
   <footer class="pt-32 pb-12 px-6 bg-[#030305] border-t border-white/5">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-24 text-left">
         <div class="col-span-2">
             <h2 class="logo-text text-2xl mb-6">KASH <span class="logo-option">OPTION</span></h2>
-            <p class="text-slate-500 max-w-sm font-semibold text-sm leading-relaxed mb-8">Ghana's #1 premier sourcing and logistics hub. Bridging global excellence with local convenience since 2020.</p>
+            <p class="text-slate-500 max-w-sm font-semibold text-sm leading-relaxed mb-8">Ghana's #1 premier sourcing and logistics hub. Bridging global excellence with local convenience.</p>
             <div class="flex gap-4">
                 <a href="https://www.instagram.com/kashoption1" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.facebook.com/share/1CrwnBxS8W/" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
@@ -299,8 +343,7 @@
                       `*Client Name:* ${document.getElementById('cName').value}%0A` +
                       `*Contact Number:* ${document.getElementById('cPhone').value}%0A` +
                       `*Category:* ${document.getElementById('cCat').value}%0A` +
-                      `*Specifications:* ${document.getElementById('cSpecs').value}%0A%0A` +
-                      `_Inquiry sent via Kash Option Digital Concierge_`;
+                      `*Specifications:* ${document.getElementById('cSpecs').value}`;
       window.open(`https://wa.me/233240118846?text=${message}`, '_blank');
     });
   </script>
