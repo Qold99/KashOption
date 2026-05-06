@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Elite Tracking | Kash Option Ghana</title>
+  <title>Live Orders | Kash Option - Real-Time Procurement</title>
   
   <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
   <link rel="icon" type="image/png" href="https://mrkash.net/logo.png">
@@ -11,92 +11,106 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    :root { --accent: #22d3ee; --bg: #050508; --card: #0f0f15; }
-    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+    :root { --accent: #22d3ee; --bg: #050508; --glass: rgba(255, 255, 255, 0.02); }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; text-transform: none !important; }
     
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: var(--bg);
       color: #fff;
       overflow-x: hidden;
-      font-weight: 700;
     }
 
-    /* --- DYNAMIC ISLAND --- */
-    .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1200px; }
+    /* --- DYNAMIC ISLAND NAVIGATION --- */
+    .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1100px; }
     .dynamic-island {
-      background: rgba(10, 10, 15, 0.85);
-      backdrop-filter: blur(25px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 50px; padding: 6px 12px;
-      display: flex; align-items: center; justify-content: space-between;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+      background: rgba(10, 10, 15, 0.75);
+      backdrop-filter: blur(30px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 60px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
     }
-    .island-logo { font-weight: 800; font-size: 1rem; padding: 0 15px; color: #fff; text-decoration: none; font-style: italic; }
-    .island-logo span { color: var(--accent); }
+    .logo-text { font-weight: 800; font-style: italic; font-size: 1.1rem; letter-spacing: -0.05em; color: #fff; text-decoration: none; }
+    .logo-option { color: var(--accent); text-shadow: 0 0 15px rgba(34, 211, 238, 0.5); }
+    
     .island-nav { display: none; align-items: center; gap: 4px; }
     @media (min-width: 1024px) { .island-nav { display: flex; } }
-    .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.75rem; font-weight: 700; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
-    .island-nav a:hover, .island-nav a.active { color: #fff; background: rgba(255,255,255,0.08); }
-    .menu-trigger { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: #000; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
+    .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.75rem; font-weight: 600; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
+    .island-nav a:hover, .island-nav a.active { color: #fff; background: rgba(255,255,255,0.05); }
 
-    /* --- TRACKER UI --- */
-    .hero-title { font-size: clamp(2.2rem, 8vw, 4.2rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
-    .search-container { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 30px; padding: 8px; transition: 0.4s; }
-    .search-container:focus-within { border-color: var(--accent); background: rgba(34, 211, 238, 0.05); }
-    .btn-track { background: var(--accent); color: #000; padding: 12px 35px; border-radius: 25px; font-weight: 800; font-style: italic; transition: 0.3s; cursor: pointer; border: none; }
-
-    /* --- WORLD CLASS PROGRESS DASHBOARD --- */
-    .dashboard-ready { background: var(--card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 30px; padding: 60px 40px; text-align: center; }
-    .progress-bar-wrap { width: 100%; max-width: 320px; height: 6px; background: rgba(255, 255, 255, 0.05); border-radius: 10px; margin: 30px auto; position: relative; overflow: hidden; }
-    .progress-fill { position: absolute; width: 45%; height: 100%; background: linear-gradient(90deg, transparent, var(--accent), transparent); filter: drop-shadow(0 0 10px var(--accent)); animation: progressSlide 2s infinite ease-in-out; }
-    @keyframes progressSlide { 0% { left: -50%; } 100% { left: 100%; } }
-
-    /* --- SMART SUPPORT BUBBLE --- */
-    #supportBubble { position: fixed; bottom: 30px; right: 30px; z-index: 10000; display: none; }
-    .bubble-main { width: 70px; height: 70px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 1.8rem; cursor: pointer; border: 4px solid #fff; box-shadow: 0 10px 30px rgba(34, 211, 238, 0.5); }
-    .bubble-pop { position: absolute; bottom: 85px; right: 0; background: #fff; color: #000; padding: 20px; border-radius: 25px; width: 280px; font-size: 0.9rem; font-weight: 800; box-shadow: 0 15px 40px rgba(0,0,0,0.5); border: 1px solid var(--accent); }
-
-    /* --- CARDS --- */
-    .result-card { background: var(--card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 30px; margin-bottom: 1.5rem; transition: 0.4s; overflow: hidden;}
-    .result-card:hover { border-color: var(--accent); transform: translateY(-5px); }
-    .status-pill { padding: 6px 16px; border-radius: 50px; font-size: 0.7rem; font-weight: 800; }
+    /* --- LIVE FEED UI --- */
+    .order-card {
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 16px;
+      transition: all 0.5s ease;
+      animation: slideIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+    }
     
-    /* --- MOBILE OVERLAY --- */
-    #mobileNav { position: fixed; inset: 0; background: #050508; z-index: 10001; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; }
-    #mobileNav.active { display: flex; }
-    #mobileNav a { font-size: 1.8rem; font-weight: 800; margin: 0.8rem 0; color: #fff; text-decoration: none; font-style: italic; }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-30px) scale(0.98); filter: blur(10px); }
+      to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    }
 
-    /* --- DIRECTORY FOOTER --- */
+    .live-dot {
+      width: 8px; height: 8px; background: #22c55e; border-radius: 50%;
+      display: inline-block; margin-right: 8px; box-shadow: 0 0 10px #22c55e;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+    .order-id { font-family: monospace; letter-spacing: 1px; color: var(--accent); font-weight: 800; }
+    .mask-text { color: rgba(255,255,255,0.3); font-size: 0.8rem; font-weight: 600; }
+
+    /* --- MOBILE OVERLAY --- */
+    #mobileMenu {
+      position: fixed; inset: 0; background: rgba(5, 5, 8, 0.98); 
+      backdrop-filter: blur(20px); z-index: 10000; display: none;
+      flex-direction: column; align-items: center; justify-content: center; padding: 2rem;
+    }
+    #mobileMenu.active { display: flex; }
+    #mobileMenu a { font-size: 1.8rem; font-weight: 800; margin: 0.8rem 0; color: #fff; text-decoration: none; font-style: italic; }
+
+    .menu-trigger { 
+      width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #000; 
+      display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; 
+    }
+
+    /* --- DIRECTORY FOOTER STYLES --- */
     .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.85rem; display: block; margin-bottom: 8px; font-weight: 600; }
     .directory-link:hover { color: #fff; text-shadow: 0 0 10px var(--accent); }
 
-    h1, h2, h3, h4, a, button, p, span { text-transform: none; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
-  <!-- Loud Sound for Support Bubble -->
-  <audio id="popSound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" preload="auto"></audio>
-
-  <!-- Navigation -->
+  <!-- Dynamic Island Navigation -->
   <div class="nav-wrapper">
     <nav class="dynamic-island">
-      <a href="index.html" class="island-logo">Kash <span>Option</span></a>
+      <a href="index.html" class="logo-text">KASH <span class="logo-option">OPTION</span></a>
       <div class="island-nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="catalog.html">Catalog</a>
-        <a href="orders.html">Orders</a>
+        <a href="orders.html" class="active">Live orders</a>
         <a href="testimonials.html">Reviews</a>
         <a href="faqs.html">FAQs</a>
         <a href="contact.html">Contact</a>
-        <a href="policy-terms.html">Policy</a>
-        <a href="tracker.html" class="active">Tracker</a>
+        <a href="tracker.html">Tracker</a>
       </div>
       <button class="menu-trigger" onclick="toggleMenu()">
         <i class="fas fa-bars-staggered"></i>
@@ -104,50 +118,39 @@
     </nav>
   </div>
 
-  <!-- Mobile Overlay -->
-  <div id="mobileNav">
+  <!-- Mobile Menu Overlay -->
+  <div id="mobileMenu">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="catalog.html">Catalog</a>
-    <a href="tracker.html" class="text-cyan-400">Track order</a>
+    <a href="orders.html" style="color: var(--accent);">Live orders</a>
+    <a href="tracker.html">Track order</a>
     <a href="contact.html">Contact</a>
-    <button onclick="toggleMenu()" class="mt-10 w-12 h-12 rounded-full border border-white/20"><i class="fas fa-times"></i></button>
+    <button onclick="toggleMenu()" class="mt-10 text-gray-500 text-sm font-bold uppercase">Close</button>
   </div>
 
-  <main class="pt-40 px-6 max-w-5xl mx-auto pb-32">
-    <header class="text-center mb-12">
-      <h1 class="hero-title italic mb-6">Track your <span class="text-cyan-400">Packages</span></h1>
-      <p class="text-gray-500 font-bold mb-10 text-sm md:text-base max-w-2xl mx-auto">Enter tracking IDs separated by commas for instant status audio and real-time logistics data.</p>
-      
-      <div class="search-container max-w-2xl mx-auto flex items-center gap-3">
-        <i class="fas fa-search ml-4 text-gray-600"></i>
-        <input type="text" id="trackingInput" placeholder="KO-101, KO-202..." class="w-full bg-transparent outline-none py-3 text-white font-bold">
-        <button id="trackBtn" class="btn-track">Track</button>
-      </div>
+  <main class="pt-44 pb-32 px-6">
+    <header class="text-center max-w-4xl mx-auto mb-20 reveal active">
+      <h1 class="text-4xl md:text-6xl font-black italic mb-6 leading-[1.1]">
+        Live global procurement
+      </h1>
+      <p class="text-gray-500 font-medium text-lg md:text-xl">
+        Real-time updates from our sourcing hubs. Validating authenticity across the globe.
+      </p>
     </header>
 
-    <!-- Multi-Result Container -->
-    <section id="multiResults" class="min-h-[300px] mb-20">
-      <div id="emptyState" class="dashboard-ready">
-        <div class="w-16 h-16 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-400 mx-auto mb-6">
-            <i class="fas fa-signal animate-pulse"></i>
-        </div>
-        <h3 class="text-xl font-bold italic mb-2">System online</h3>
-        <p class="text-gray-500 text-sm font-semibold max-w-sm mx-auto">Your live tracking details will display and be read aloud here as soon as your tracking number is received.</p>
-        <div class="progress-bar-wrap">
-            <div class="progress-fill"></div>
-        </div>
-        <p class="text-[10px] uppercase tracking-[0.3em] text-cyan-400 font-bold">Scanning Global Logistics Database</p>
-      </div>
+    <!-- Infinite Feed Container -->
+    <section id="orderFeed" class="max-w-2xl mx-auto min-h-[600px] mb-40">
+      <!-- Orders injected by JS -->
     </section>
   </main>
 
-  <!-- Global Directory Footer -->
+  <!-- Apple Style Directory Footer (Restored from Index) -->
   <footer class="pt-32 pb-12 px-6 bg-[#030305] border-t border-white/5">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-24 text-left">
         <div class="col-span-2">
-            <h2 class="island-logo text-2xl mb-6">KASH <span style="color: var(--accent);">OPTION</span></h2>
+            <h2 class="logo-text text-2xl mb-6">KASH <span class="logo-option">OPTION</span></h2>
             <p class="text-slate-500 max-w-sm font-semibold text-sm leading-relaxed mb-8">Ghana's #1 premier sourcing and logistics hub. Bridging global excellence with local convenience since 2020.</p>
             <div class="flex gap-4">
                 <a href="https://www.instagram.com/kashoption1" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
@@ -182,140 +185,63 @@
     </div>
   </footer>
 
-  <!-- Smart Chat Support Bubble -->
-  <div id="supportBubble">
-    <div class="bubble-pop animate__animated animate__fadeInUp" id="bubbleMsg">
-      Issue with your tracking ID? 🚚 Tap to chat with a warehouse agent now!
-      <button onclick="contactSupport()" class="block w-full mt-4 bg-black text-white py-3 rounded-xl text-[11px] font-bold italic uppercase">Open Support Chat</button>
-    </div>
-    <div class="bubble-main animate__animated animate__pulse animate__infinite" onclick="contactSupport()">
-      <i class="fab fa-whatsapp"></i>
-    </div>
-  </div>
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/233240118846" target="_blank" class="fixed bottom-6 right-6 z-[999] w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center text-2xl shadow-2xl hover:scale-110 transition-transform">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
   <script>
-    const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1btTjXG_7gYVgI8y1Zdlht08IvRmSfWpiXZDSY-R0Ybc/export?format=csv';
-    let database = [];
-    let lastQuery = "";
+    const categories = ["High-end computing", "Auto engineering", "Luxury apparel", "Professional electronics", "Industrial design", "Wholesale logistics", "Health & Wellness", "Kids & Baby"];
+    const cities = ["Accra", "Kumasi", "Takoradi", "Tamale", "Tema", "Cape Coast", "Sekondi", "Bolgatanga", "Koforidua", "Sunyani", "Ho", "Bawku", "Wa"];
+    const container = document.getElementById('orderFeed');
+    let generatedIDs = new Set();
 
-    function toggleMenu() { document.getElementById('mobileNav').classList.toggle('active'); }
-
-    // Fetch Database on Load
-    async function loadDB() {
-      try {
-        const response = await fetch(SHEET_URL);
-        const csv = await response.text();
-        Papa.parse(csv, { 
-            header: true, 
-            skipEmptyLines: true,
-            complete: (res) => { database = res.data; } 
-        });
-      } catch (e) { console.error("Database connection failed"); }
-    }
-    loadDB();
-
-    // AI Voice Synthesis (Optimized for Mobile Gestures)
-    const synth = window.speechSynthesis;
-    function speakStatus(text) {
-      if (!synth) return;
-      synth.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.volume = 1;
-      utterance.rate = 0.9; 
-      utterance.pitch = 1;
-      const voices = synth.getVoices();
-      utterance.voice = voices.find(v => v.lang === 'en-GB' || v.lang === 'en-US');
-      synth.speak(utterance);
+    function generateUniqueID() {
+      let id;
+      do { id = 'KO-' + Math.floor(10000 + Math.random() * 90000); } 
+      while (generatedIDs.has(id));
+      generatedIDs.add(id);
+      return id;
     }
 
-    function trackNow() {
-      const input = document.getElementById('trackingInput').value.trim();
-      const resultsSection = document.getElementById('multiResults');
-      if (!input) return;
-      lastQuery = input;
-
-      // Mobile Audio Unlock
-      speakStatus("Connecting to Kash Option satellite link.");
-
-      // Fetching UI
-      resultsSection.innerHTML = `
-        <div class="dashboard-ready animate__animated animate__fadeIn">
-            <div class="w-10 h-10 border-4 border-cyan-400/20 border-t-cyan-400 rounded-full animate-spin mx-auto mb-4"></div>
-            <p class="text-xs uppercase tracking-[0.3em] text-gray-400 font-bold">Accessing Secure Records...</p>
-        </div>`;
-
-      setTimeout(() => {
-        const ids = input.split(',').map(i => i.trim().toLowerCase());
-        let html = '';
-        let voiceScript = "";
-
-        ids.forEach(id => {
-          const row = database.find(item => {
-              const val = item['TrackingID'] || item['Tracking ID'] || item['tracking_id'];
-              return val && val.toString().toLowerCase().trim() === id;
-          });
-
-          if (row) {
-            const status = row.Status || 'Processing';
-            const loc = row.Location || 'International Hub';
-            const idVal = row.TrackingID || row['Tracking ID'];
-            const date = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
-
-            html += generateCard(row);
-            voiceScript += `Your Kash Option Order ${idVal} is ${status}. Current location is ${loc}. Today is ${date}. `;
-          } else {
-            html += `<div class="result-card p-10 border-red-500/20 bg-red-500/5 text-center">
-                      <h4 class="text-sm font-bold text-red-400 italic">Tracking ID "${id.toUpperCase()}" not found.</h4>
-                    </div>`;
-            voiceScript += `Tracking ID ${id} was not found in our records. `;
-          }
-        });
-
-        resultsSection.innerHTML = html;
-        voiceScript += "Please tap the chat bubble for live support to inquire about your tracking I D.";
-        speakStatus(voiceScript);
-        triggerBubble(input);
-      }, 1200);
-    }
-
-    function generateCard(data) {
-      const timeStamp = new Date().toLocaleString('en-GB', { hour12: true });
-      const statusValue = data.Status || 'Processing';
-      const statusStyle = { 'Delivered': 'bg-emerald-500/10 text-emerald-400', 'In Transit': 'bg-cyan-500/10 text-cyan-400', 'Processing': 'bg-amber-500/10 text-amber-400' };
-      const pillClass = statusStyle[statusValue] || 'bg-white/10 text-white';
-
-      return `
-        <div class="result-card animate__animated animate__fadeInUp">
-          <div class="p-8">
-            <div class="flex justify-between items-start mb-8">
-              <div><p class="text-[10px] text-gray-500 font-bold uppercase mb-1">Package verified</p><h3 class="text-2xl font-black italic">${data.TrackingID || data['Tracking ID']}</h3></div>
-              <span class="status-pill ${pillClass}">${statusValue}</span>
-            </div>
-            <div class="grid grid-cols-2 gap-8">
-              <div><p class="text-[10px] text-gray-500 font-bold uppercase mb-2">Location</p><p class="text-base font-black">${data.Location || 'Hub'}</p></div>
-              <div><p class="text-[10px] text-gray-500 font-bold uppercase mb-2">Arrival Est.</p><p class="text-base font-black">${data.ETA || 'TBD'}</p></div>
-            </div>
-            <div class="mt-10 pt-6 border-t border-white/5 flex justify-between items-center">
-              <p class="text-[10px] text-gray-600 font-bold italic"><i class="fas fa-clock mr-1"></i> Live: ${timeStamp}</p>
-              <button onclick="contactSupport('${data.TrackingID || data['Tracking ID']}')" class="text-cyan-400 text-[10px] font-black italic hover:underline">Report Issue</button>
-            </div>
+    function createOrderCard() {
+      const id = generateUniqueID();
+      const cat = categories[Math.floor(Math.random() * categories.length)];
+      const city = cities[Math.floor(Math.random() * cities.length)];
+      const mask = `+233******${Math.floor(100 + Math.random() * 899)}`;
+      
+      const card = document.createElement('div');
+      card.className = 'order-card';
+      card.innerHTML = `
+        <div class="flex justify-between items-start mb-4">
+          <span class="order-id text-sm underline underline-offset-4 decoration-cyan-500/30">${id}</span>
+          <div class="flex items-center text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+            <span class="live-dot"></span> Live • Verified
           </div>
-        </div>`;
+        </div>
+        <div class="text-xl font-bold text-white mb-2">
+          ${cat} <span class="text-gray-600 mx-2">→</span> ${city}
+        </div>
+        <div class="mask-text font-medium italic">Sourced for client: ${mask}</div>
+      `;
+
+      container.insertBefore(card, container.firstChild);
+      if (container.children.length > 20) { container.removeChild(container.lastChild); }
     }
 
-    function triggerBubble(id) {
-      document.getElementById('supportBubble').style.display = 'block';
-      const sound = document.getElementById('popSound');
-      sound.play().catch(e => {});
-      document.getElementById('bubbleMsg').innerHTML = `Tracking <b>${id}</b>? Tap below to open live support with an agent on WhatsApp.`;
-    }
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
 
-    function contactSupport(id = lastQuery) {
-      const msg = `Hi Kash Option, I need a live status update for Tracking ID: ${id}. I'm searching from the website.`;
-      window.open(`https://wa.me/233240118846?text=${encodeURIComponent(msg)}`, '_blank');
-    }
+    // Initial load batch
+    for(let i=0; i<6; i++) { setTimeout(createOrderCard, i * 400); }
 
-    document.getElementById('trackBtn').addEventListener('click', trackNow);
+    // HUMAN SPEED: New order every 20 seconds
+    setInterval(createOrderCard, 20000);
+
+    // Reveal Effect
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   </script>
 </body>
 </html>
