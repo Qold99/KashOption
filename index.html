@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
   
-  <title>Kash Option - Ghana's #1 Global Sourcing Agency</title>
+  <title>Contact & Order | Kash Option - Ghana's #1 Global Sourcing Agency</title>
   <meta name="description" content="Contact Kash Option's concierge to place global orders. Ghana's premier sourcing and logistics bridge.">
   
   <!-- Resources -->
@@ -80,7 +80,7 @@
     .reveal.active { opacity: 1; transform: translateY(0); }
 
     .btn-wa { background: #25D366; color: #fff; border-radius: 50px; font-weight: 800; transition: 0.3s; }
-    .btn-wa:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
+    .btn-wa:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
 
     .inquiry-form input, .inquiry-form select, .inquiry-form textarea {
       background: rgba(255, 255, 255, 0.02);
@@ -88,6 +88,15 @@
       border-radius: 16px; padding: 16px; color: #fff; width: 100%; outline: none; transition: 0.3s;
     }
     .inquiry-form input:focus { border-color: var(--cyan); background: rgba(34, 211, 238, 0.02); }
+
+    /* --- WHATSAPP CONCIERGE --- */
+    #waConcierge {
+      position: fixed; bottom: 30px; right: 30px; z-index: 1500;
+      opacity: 0; transform: translateY(50px); transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    #waConcierge.visible { opacity: 1; transform: translateY(0); }
+    .status-dot { width: 10px; height: 10px; background: #22c55e; border-radius: 50%; display: inline-block; box-shadow: 0 0 10px #22c55e; animation: pulse-green 2s infinite; }
+    @keyframes pulse-green { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
 
     /* --- FOOTER --- */
     .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.85rem; display: block; margin-bottom: 8px; font-weight: 600; }
@@ -123,7 +132,6 @@
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="catalog.html">Catalog</a>
-    <a href="orders.html">Live Feed</a>
     <a href="tracker.html">Track Order</a>
     <a href="contact.html" class="text-cyan-400">Contact</a>
   </div>
@@ -178,18 +186,21 @@
               <option value="Phones & Laptops">Phones & Laptops</option>
               <option value="Auto Parts">Auto Parts</option>
               <option value="Luxury Apparel">Luxury Apparel</option>
-              <option value="Wholesale">Wholesale Goods</option>
+              <option value="Wholesale Goods">Wholesale Goods</option>
               <option value="Other">Other</option>
             </select>
             <input type="text" id="inqProduct" placeholder="Product name or link" required>
             <textarea id="inqSpecs" rows="3" placeholder="Specifications (Color, Size, Memory, etc.)" required></textarea>
 
-            <label class="flex items-center gap-3 text-xs text-slate-500 font-bold cursor-pointer mt-4">
-              <input type="checkbox" required class="accent-cyan-400">
-              I agree to the Policy and Terms
-            </label>
+            <!-- Fixed Checkbox: Positioned clearly above the button -->
+            <div class="pt-4">
+                <label class="flex items-center gap-3 text-xs text-slate-400 font-bold cursor-pointer group">
+                  <input type="checkbox" required class="w-5 h-5 rounded border-white/10 bg-white/5 accent-cyan-400">
+                  <span>I agree to the <a href="policy-terms.html" class="text-cyan-400 hover:underline">Policy and Terms</a></span>
+                </label>
+            </div>
 
-            <button type="submit" class="w-full btn-wa py-5 text-lg mt-6">
+            <button type="submit" class="w-full btn-wa py-5 text-lg mt-2">
               Submit inquiry
             </button>
           </form>
@@ -198,7 +209,7 @@
     </section>
   </main>
 
-  <!-- Apple Style Directory Footer (Restored from Index) -->
+  <!-- Apple Style Directory Footer -->
   <footer class="pt-32 pb-12 px-6 bg-[#030305] border-t border-white/5">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-24 text-left">
@@ -238,9 +249,13 @@
     </div>
   </footer>
 
-  <!-- WhatsApp Float -->
-  <a href="https://wa.me/233240118846" target="_blank" class="fixed bottom-6 right-6 z-[999] w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center text-2xl shadow-2xl hover:scale-110 transition-transform">
-    <i class="fab fa-whatsapp"></i>
+  <!-- AI Concierge Bubble -->
+  <a id="waConcierge" href="https://wa.me/c/233240118846" target="_blank">
+    <div class="bg-white text-black px-6 py-4 rounded-full flex items-center gap-4 shadow-2xl border-2 border-cyan-400 cursor-pointer hover:scale-105 transition-transform">
+        <span class="status-dot"></span>
+        <span class="font-black text-sm">Ready to order? Browse our Catalog 👋</span>
+        <i class="fab fa-whatsapp text-2xl text-[#25D366]"></i>
+    </div>
   </a>
 
   <script>
@@ -268,6 +283,16 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Concierge Scroll Logic
+    window.addEventListener('scroll', () => {
+      const concierge = document.getElementById('waConcierge');
+      if (window.scrollY > 400) {
+        concierge.classList.add('visible');
+      } else {
+        concierge.classList.remove('visible');
+      }
+    });
   </script>
 </body>
 </html>
