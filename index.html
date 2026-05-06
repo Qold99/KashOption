@@ -26,7 +26,7 @@
       overflow-x: hidden;
     }
 
-    /* --- DYNAMIC ISLAND (BRAND MATCH) --- */
+    /* --- DYNAMIC ISLAND --- */
     .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1100px; }
     .dynamic-island {
       background: rgba(10, 10, 15, 0.75);
@@ -42,7 +42,7 @@
     .logo-text { font-weight: 800; font-style: italic; font-size: 1.1rem; letter-spacing: -0.05em; }
     .logo-option { color: var(--cyan); text-shadow: 0 0 15px rgba(34, 211, 238, 0.5); }
 
-    .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.75rem; font-weight: 700; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
+    .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.7rem; font-weight: 700; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
     .island-nav a:hover, .island-nav a.active { color: #fff; background: rgba(255,255,255,0.05); }
 
     /* --- AERO-LANDING ENGINE --- */
@@ -60,21 +60,19 @@
       border-radius: 32px; 
       transition: 0.4s ease;
     }
-    .liquid-glass:hover { border-color: var(--cyan); transform: translateY(-5px); }
     
     .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
-    /* --- TIMELINE --- */
     .timeline-item { position: relative; padding-left: 40px; border-left: 2px solid rgba(34, 211, 238, 0.2); margin-bottom: 30px; }
     .timeline-dot { position: absolute; left: -7px; top: 0; width: 12px; height: 12px; background: var(--cyan); border-radius: 50%; box-shadow: 0 0 10px var(--cyan); }
 
-    /* --- DIRECTORY FOOTER --- */
     .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.85rem; display: block; margin-bottom: 8px; font-weight: 600; }
     .directory-link:hover { color: #fff; text-shadow: 0 0 10px var(--cyan); }
 
     #mobileMenu { position: fixed; inset: 0; background: #050508; z-index: 10001; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; }
     #mobileMenu.active { display: flex; }
+    #mobileMenu a { font-size: 2rem; font-weight: 800; margin: 0.8rem 0; color: #fff; text-decoration: none; font-style: italic; }
   </style>
 </head>
 <body>
@@ -83,7 +81,7 @@
   <div class="nav-wrapper">
     <nav class="dynamic-island">
       <a href="index.html" class="logo-text">KASH <span class="logo-option">OPTION</span></a>
-      <div class="island-nav hidden lg:flex gap-2">
+      <div class="island-nav hidden lg:flex gap-1">
         <a href="index.html">Home</a>
         <a href="about.html" class="active">About</a>
         <a href="catalog.html">Catalog</a>
@@ -102,46 +100,44 @@
 
   <!-- Mobile Nav Overlay -->
   <div id="mobileMenu">
-    <div class="flex flex-col gap-6 text-center">
-        <a href="index.html" class="text-3xl font-black italic">Home</a>
-        <a href="about.html" class="text-3xl font-black italic text-cyan-400">About</a>
-        <a href="catalog.html" class="text-3xl font-black italic">Catalog</a>
-        <a href="tracker.html" class="text-3xl font-black italic">Tracker</a>
-        <a href="contact.html" class="text-3xl font-black italic">Contact</a>
-        <button onclick="toggleMenu()" class="mt-10 w-12 h-12 rounded-full border border-white/20"><i class="fas fa-times"></i></button>
-    </div>
+    <a href="index.html">Home</a>
+    <a href="about.html" class="text-cyan-400">About</a>
+    <a href="catalog.html">Catalog</a>
+    <a href="orders.html">Live Feed</a>
+    <a href="tracker.html">Track Order</a>
+    <button onclick="toggleMenu()" class="mt-10 w-12 h-12 rounded-full border border-white/20"><i class="fas fa-times"></i></button>
   </div>
 
   <main>
-    <!-- Hero Section -->
-    <section class="min-h-[80vh] flex flex-col justify-center items-center text-center px-6 pt-32">
+    <!-- Hero -->
+    <section class="min-h-[70vh] flex flex-col justify-center items-center text-center px-6 pt-32">
       <div class="hero-animate">
         <h1 class="text-5xl sm:text-7xl md:text-8xl font-black italic leading-none tracking-tighter mb-8">
             Your bridge to<br><span class="text-cyan-400">global markets</span>
         </h1>
-        <p class="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto mb-12 font-medium">
+        <p class="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto mb-12 font-medium leading-relaxed">
             Since 2020, we have been eliminating the barriers of international trade. We source, we pay, we ship—you simply enjoy the best products the world has to offer.
         </p>
       </div>
       
       <!-- Trust Metrics -->
-      <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mt-10">
-        <div class="liquid-glass p-10">
-            <div class="text-6xl font-black text-cyan-400 mb-2 italic">20,000+</div>
+      <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl mt-10">
+        <div class="liquid-glass p-8">
+            <div class="text-5xl font-black text-cyan-400 mb-2 italic">20,000+</div>
             <div class="text-[10px] uppercase font-bold tracking-widest text-slate-500">Orders delivered successfully</div>
         </div>
-        <div class="liquid-glass p-10">
-            <div class="text-6xl font-black text-cyan-400 mb-2 italic">99.8%</div>
+        <div class="liquid-glass p-8">
+            <div class="text-5xl font-black text-cyan-400 mb-2 italic">99.8%</div>
             <div class="text-[10px] uppercase font-bold tracking-widest text-slate-500">Customs clearance accuracy</div>
         </div>
       </div>
     </section>
 
     <!-- Founder's Story -->
-    <section class="py-32 px-6 max-w-6xl mx-auto">
-        <div class="reveal grid md:grid-cols-2 gap-20 items-center">
+    <section class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="reveal grid md:grid-cols-2 gap-16 items-center">
             <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Founder" class="opacity-80 scale-105">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000" alt="Founder" class="opacity-80">
             </div>
             <div>
                 <h2 class="text-4xl md:text-5xl font-black italic mb-8">The founder's story</h2>
@@ -149,85 +145,75 @@
                     Kash Option was founded by <span class="text-white font-bold">Prince Okyere</span> to solve a major problem: shopping abroad from Ghana was broken. 
                 </p>
                 <p class="text-slate-400 leading-relaxed font-medium">
-                    By removing obstacles like unreliable suppliers, high foreign exchange barriers, and complex customs hurdles, we transformed international sourcing into a simple WhatsApp message. Today, we are Ghana's most trusted logistics gateway.
+                    By removing obstacles like unreliable suppliers and complex customs hurdles, we transformed international sourcing into a simple WhatsApp message. Today, we are Ghana's most trusted logistics gateway.
                 </p>
             </div>
         </div>
     </section>
 
     <!-- Timeline -->
-    <section class="py-32 bg-[#08080a] border-y border-white/5 px-6">
+    <section class="py-24 bg-[#08080a] border-y border-white/5 px-6">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-center text-4xl md:text-5xl font-black italic mb-24">The journey</h2>
+            <h2 class="text-center text-4xl md:text-5xl font-black italic mb-20">The journey</h2>
             <div class="reveal">
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <h4 class="text-cyan-400 font-bold italic text-xl mb-2">2020: The launch</h4>
-                    <p class="text-slate-400 font-medium">Started in Accra with a focus on solving China-to-Ghana sourcing for small businesses.</p>
+                    <p class="text-slate-400 font-medium">Started in Accra with a focus on high-speed China sourcing for small businesses.</p>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <h4 class="text-cyan-400 font-bold italic text-xl mb-2">2021: Global expansion</h4>
-                    <p class="text-slate-400 font-medium">Activated USA and UK logistics hubs, opening western markets to the Ghanaian consumer.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <h4 class="text-cyan-400 font-bold italic text-xl mb-2">2022: Digital evolution</h4>
-                    <p class="text-slate-400 font-medium">Introduced real-time automated tracking, providing 100% transparency for every package.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <h4 class="text-cyan-400 font-bold italic text-xl mb-2">2023: Nationwide scale</h4>
-                    <p class="text-slate-400 font-medium">Extended door-to-door delivery coverage to all 16 regions across Ghana.</p>
+                    <p class="text-slate-400 font-medium">Activated USA and UK logistics hubs, opening Western markets to the Ghanaian consumer.</p>
                 </div>
                 <div class="timeline-item" style="border:none;">
                     <div class="timeline-dot"></div>
                     <h4 class="text-cyan-400 font-bold italic text-xl mb-2">2024: The #1 standard</h4>
-                    <p class="text-slate-400 font-medium">Recognized as the premier procurement and logistics hub for elite global sourcing.</p>
+                    <p class="text-slate-400 font-medium">Recognized as the premier procurement and logistics standard for elite global sourcing.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Team Section -->
-    <section class="py-32 px-6 max-w-7xl mx-auto text-center">
+    <section class="py-24 px-6 max-w-7xl mx-auto text-center">
         <h2 class="text-4xl md:text-5xl font-black italic mb-20">The core team</h2>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="reveal liquid-glass p-8">
-                <div class="w-20 h-20 mx-auto bg-cyan-400/10 rounded-full flex items-center justify-center text-2xl font-black text-cyan-400 mb-6">P</div>
-                <h3 class="font-bold italic text-base">Prince Okyere</h3>
-                <p class="text-[10px] text-gray-500 uppercase tracking-widest mt-2">Founder & CEO</p>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            <div class="reveal liquid-glass p-6 md:p-8">
+                <div class="w-16 h-16 mx-auto bg-cyan-400/10 rounded-full flex items-center justify-center text-xl font-black text-cyan-400 mb-6">P</div>
+                <h3 class="font-bold italic text-sm">Prince Okyere</h3>
+                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-2">Founder & CEO</p>
             </div>
-            <div class="reveal liquid-glass p-8" style="transition-delay: 0.1s;">
-                <div class="w-20 h-20 mx-auto bg-white/5 rounded-full flex items-center justify-center text-2xl font-black text-white mb-6">A</div>
-                <h3 class="font-bold italic text-base">Abena Mensah</h3>
-                <p class="text-[10px] text-gray-500 uppercase tracking-widest mt-2">Operations Director</p>
+            <div class="reveal liquid-glass p-6 md:p-8" style="transition-delay: 0.1s;">
+                <div class="w-16 h-16 mx-auto bg-white/5 rounded-full flex items-center justify-center text-xl font-black text-white mb-6">A</div>
+                <h3 class="font-bold italic text-sm">Abena Mensah</h3>
+                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-2">Operations Director</p>
             </div>
-            <div class="reveal liquid-glass p-8" style="transition-delay: 0.2s;">
-                <div class="w-20 h-20 mx-auto bg-white/5 rounded-full flex items-center justify-center text-2xl font-black text-white mb-6">K</div>
-                <h3 class="font-bold italic text-base">Kofi Annan</h3>
-                <p class="text-[10px] text-gray-500 uppercase tracking-widest mt-2">Logistics Lead</p>
+            <div class="reveal liquid-glass p-6 md:p-8" style="transition-delay: 0.2s;">
+                <div class="w-16 h-16 mx-auto bg-white/5 rounded-full flex items-center justify-center text-xl font-black text-white mb-6">K</div>
+                <h3 class="font-bold italic text-sm">Kofi Annan</h3>
+                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-2">Logistics Lead</p>
             </div>
-            <div class="reveal liquid-glass p-8" style="transition-delay: 0.3s;">
-                <div class="w-20 h-20 mx-auto bg-white/5 rounded-full flex items-center justify-center text-2xl font-black text-white mb-6">E</div>
-                <h3 class="font-bold italic text-base">Esi Quansah</h3>
-                <p class="text-[10px] text-gray-500 uppercase tracking-widest mt-2">Client Relations</p>
+            <div class="reveal liquid-glass p-6 md:p-8" style="transition-delay: 0.3s;">
+                <div class="w-16 h-16 mx-auto bg-white/5 rounded-full flex items-center justify-center text-xl font-black text-white mb-6">E</div>
+                <h3 class="font-bold italic text-sm">Esi Quansah</h3>
+                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-2">Client Relations</p>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="py-32 px-6 text-center">
-        <div class="reveal liquid-glass p-12 md:p-24 max-w-4xl mx-auto border-cyan-400/20">
-            <h2 class="text-4xl md:text-5xl font-black italic mb-8 leading-tight">Ready to experience the<br>Kash Option standard?</h2>
-            <a href="https://wa.me/233240118846" target="_blank" class="inline-flex items-center gap-3 bg-cyan-400 text-black px-12 py-5 rounded-full font-black text-lg hover:scale-105 transition-transform shadow-2xl">
+    <!-- Final CTA - Optimized for Mobile -->
+    <section class="py-20 px-6 text-center">
+        <div class="reveal liquid-glass p-8 md:p-16 max-w-2xl mx-auto border-cyan-400/20">
+            <h2 class="text-3xl md:text-4xl font-black italic mb-8 leading-tight">Ready to experience the<br>Kash Option standard?</h2>
+            <a href="https://wa.me/233240118846" target="_blank" class="inline-flex items-center gap-3 bg-cyan-400 text-black px-10 py-4 rounded-full font-black text-base hover:scale-105 transition-transform shadow-2xl">
                 Start shopping now <i class="fab fa-whatsapp"></i>
             </a>
         </div>
     </section>
   </main>
 
-  <!-- Apple Style Directory Footer (RESTORED FROM INDEX) -->
+  <!-- Apple Style Directory Footer -->
   <footer class="pt-32 pb-12 px-6 bg-[#030305] border-t border-white/5">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-24 text-left">
