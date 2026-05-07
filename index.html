@@ -7,10 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
   
-  <title>Kash Option | Ghana's #1 Trusted Logistics Partner</title>
-  <meta name="description" content="Shop Globally, Pay Locally. Ghana's premier sourcing and logistics agency. USA, UK & China to your doorstep.">
-  
-  <!-- Resources -->
+  <title>Kash Option | Ghana's #1 Trusted Logistics: Buy from China, USA & UK</title>
+  <meta name="description" content="Shop Globally, Pay Locally. Ghana's premier agent for 1688, Pinduoduo, Amazon & eBay. We handle MoMo payments, customs clearing in Tema, and doorstep delivery.">
+  <meta name="keywords" content="buy from China to Ghana, 1688 agent in Ghana, Pinduoduo agent, Amazon shipping to Ghana, Customs clearing in Tema, shipping from USA to Ghana">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -28,17 +28,14 @@
       width: 100%;
     }
 
-    /* --- TASK: FLUID CONTAINER SYSTEM --- */
     .locked-container {
       width: 100%;
       max-width: 1280px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
 
-    /* --- TASK: DYNAMIC ISLAND (TWO-TONE GLOW) --- */
+    /* --- NAVIGATION --- */
     .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1100px; }
     .dynamic-island {
       background: rgba(10, 10, 15, 0.75);
@@ -51,7 +48,7 @@
       justify-content: space-between;
       box-shadow: 0 30px 60px rgba(0,0,0,0.6);
     }
-    .logo-text { font-weight: 800; font-style: italic; font-size: 1.1rem; letter-spacing: -0.05em; color: #fff; text-decoration: none; }
+    .logo-text { font-weight: 800; font-style: italic; font-size: 1.1rem; color: #fff; text-decoration: none; }
     .logo-option { color: var(--cyan); text-shadow: 0 0 15px rgba(34, 211, 238, 0.5); }
     
     .island-nav { display: none; align-items: center; gap: 4px; }
@@ -61,243 +58,189 @@
 
     .menu-trigger { width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
 
-    /* --- TASK: MOBILE MENU OVERLAY --- */
     #mobileMenu {
       position: fixed; inset: 0; background: rgba(5, 5, 8, 0.98); 
       backdrop-filter: blur(25px); z-index: 10000; display: none;
       flex-direction: column; align-items: center; justify-content: center; padding: 2rem;
     }
     #mobileMenu.active { display: flex; }
-    #mobileMenu a { font-size: 1.6rem; font-weight: 800; margin: 0.7rem 0; color: #fff; text-decoration: none; font-style: italic; border-bottom: 1px solid rgba(255,255,255,0.05); width: 80%; text-align: center; padding-bottom: 10px; }
-    #mobileMenu a:hover { color: var(--cyan); }
+    #mobileMenu a { font-size: 1.6rem; font-weight: 800; margin: 0.7rem 0; color: #fff; text-decoration: none; font-style: italic; width: 80%; text-align: center; }
 
-    /* --- AERO-LANDING ENGINE --- */
+    /* --- HERO --- */
     @keyframes aeroLanding {
-      0% { transform: translateY(-350px) translateX(-100px) scale(1.6) rotate(-10deg); opacity: 0; filter: blur(20px); }
-      75% { transform: translateY(15px) translateX(5px) scale(0.96); opacity: 1; filter: blur(0); }
-      100% { transform: translateY(0) translateX(0) scale(1); opacity: 1; }
+      0% { transform: translateY(-350px) scale(1.6); opacity: 0; filter: blur(20px); }
+      100% { transform: translateY(0) scale(1); opacity: 1; filter: blur(0); }
     }
     .hero-animate { animation: aeroLanding 1.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
-    
     .btn-glow { animation: cyanPulse 3s infinite ease-in-out; }
     @keyframes cyanPulse {
-      0% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.4); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.4); }
       70% { box-shadow: 0 0 30px 2px rgba(34, 211, 238, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.4); }
     }
 
-    /* --- HUB CARDS (AMBIENT STYLE) --- */
+    /* --- CONTENT CARDS --- */
     .hub-card {
       background: rgba(255, 255, 255, 0.02);
       backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.05);
       border-radius: 32px;
-      transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-      display: flex; flex-direction: column; overflow: hidden; height: 100%;
+      transition: 0.5s;
+      height: 100%;
+      overflow: hidden;
     }
-    .hub-card:hover { transform: translateY(-12px); border-color: var(--cyan); background: rgba(34, 211, 238, 0.02); }
-    .hub-img-wrap { width: 100%; aspect-ratio: 16/10; overflow: hidden; position: relative; }
-    .hub-img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
-    .hub-card:hover .hub-img { transform: scale(1.08); filter: brightness(1.1); }
-    .hub-scrim { position: absolute; inset: 0; background: linear-gradient(to top, var(--dark) 0%, transparent 100%); }
+    .hub-card:hover { transform: translateY(-12px); border-color: var(--cyan); }
+    .step-number { font-size: 4rem; font-weight: 900; color: rgba(34, 211, 238, 0.1); position: absolute; top: 10px; right: 20px; }
 
-    /* --- SWIPE-TO-ACTION BUBBLE --- */
     #swipeChat {
       position: fixed; bottom: 30px; right: 30px; z-index: 1500;
-      opacity: 0; transform: translateY(50px) scale(0.9); transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+      opacity: 0; transform: translateY(50px); transition: 0.8s;
       cursor: pointer; pointer-events: none;
     }
-    #swipeChat.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
-    .liquid-bubble {
-      background: rgba(10, 10, 15, 0.85);
-      backdrop-filter: blur(25px);
-      border: 1px solid rgba(34, 211, 238, 0.4);
-      padding: 14px 24px;
-      border-radius: 50px;
-      display: flex; align-items: center; gap: 15px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-    }
-    .status-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 10px #22c55e; animation: pulse 2s infinite; }
-    @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
-
-    /* --- UTILS --- */
-    .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
+    #swipeChat.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: 1s; }
     .reveal.active { opacity: 1; transform: translateY(0); }
-    .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.85rem; display: block; margin-bottom: 8px; font-weight: 600; }
-    .directory-link:hover { color: #fff; text-shadow: 0 0 10px var(--cyan); }
   </style>
 </head>
 <body>
 
-  <!-- Mobile Nav Overlay -->
   <div id="mobileMenu">
     <button onclick="toggleMenu()" class="absolute top-10 right-10 text-white text-3xl"><i class="fas fa-times"></i></button>
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
-    <a href="catalog.html">Catalog</a>
     <a href="tracker.html">Track Order</a>
-    <a href="orders.html">Today's Orders</a>
-    <a href="testimonials.html">Testimonials</a>
     <a href="faqs.html">FAQs</a>
     <a href="contact.html">Contact Us</a>
-    <a href="policy-terms.html">Policy & Terms</a>
   </div>
 
-  <!-- Dynamic Island -->
   <div class="nav-wrapper">
     <nav class="dynamic-island">
       <a href="index.html" class="logo-text">KASH <span class="logo-option">OPTION</span></a>
       <div class="island-nav">
         <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
-        <a href="catalog.html">Catalog</a>
         <a href="tracker.html">Tracker</a>
         <a href="contact.html">Contact</a>
       </div>
-      <button class="menu-trigger" onclick="toggleMenu()">
-        <i class="fas fa-bars-staggered"></i>
-      </button>
+      <button class="menu-trigger" onclick="toggleMenu()"><i class="fas fa-bars-staggered"></i></button>
     </nav>
   </div>
 
   <main>
-    <!-- Hero Section -->
     <header class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
       <div class="hero-animate">
         <span class="inline-block py-1 px-4 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-10">
-          <i class="fas fa-shield-check"></i> Verified Logistics Partner
+          <i class="fas fa-shield-check"></i> Ghana's Trusted Logistics Partner
         </span>
         <h1 class="text-5xl sm:text-7xl md:text-9xl font-black italic mb-8 leading-none tracking-tighter">
           Shop Globally.<br><span class="text-cyan-400">Pay Locally.</span>
         </h1>
-        <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-medium leading-relaxed">
-          Ghana's premier gateway to USA, UK, and China. Order any global product and pay instantly in GHS via MoMo or Card. Fully cleared and delivered.
+        <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-medium">
+          The safest way to buy from <b>China, USA, and UK</b> directly to your doorstep in Ghana. 
+          No foreign cards needed—pay via <b>MTN MoMo or Telecel Cash</b> at competitive Cedi rates.
         </p>
-        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <a href="https://wa.me/c/233240118846" target="_blank" class="btn-glow bg-cyan-400 text-black px-12 py-5 rounded-full font-black text-lg transition-transform hover:scale-105">
-             Browse Catalog <i class="fab fa-whatsapp ml-2"></i>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a href="https://wa.me/233240118846" target="_blank" class="btn-glow bg-cyan-400 text-black px-12 py-5 rounded-full font-black text-lg transition-transform hover:scale-105">
+              Start Order on WhatsApp <i class="fab fa-whatsapp ml-2"></i>
           </a>
           <a href="tracker.html" class="border-2 border-white/20 px-12 py-5 rounded-full font-black text-lg hover:bg-white hover:text-black transition-all">
-            Track Order <i class="fas fa-location-arrow ml-2"></i>
+            Track Your Shipment <i class="fas fa-location-arrow ml-2"></i>
           </a>
         </div>
       </div>
     </header>
 
-    <!-- Task: Global Sourcing Hubs (USA -> UK -> CHINA) -->
-    <section class="py-24 border-t border-white/5">
+    <section class="py-24 bg-[#0a0a0f] border-y border-white/5">
       <div class="locked-container">
-        <div class="text-center mb-20 reveal">
-          <h2 class="text-4xl md:text-6xl font-black italic mb-4 tracking-tighter">Global sourcing hubs</h2>
-          <p class="text-gray-500 font-bold uppercase tracking-widest text-[10px]">Strategic Trade Routes</p>
+        <div class="text-center mb-16 reveal">
+          <h2 class="text-4xl md:text-6xl font-black italic mb-4">Importing made simple.</h2>
+          <p class="text-slate-500 font-bold uppercase tracking-widest text-xs">No USD or RMB Bank accounts required</p>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-          <!-- USA -->
-          <div class="reveal hub-card">
-            <div class="hub-img-wrap">
-              <img src="https://images.unsplash.com/photo-1485871982741-9987a54636af?auto=format&fit=crop&q=80&w=1000" class="hub-img" alt="USA Sourcing">
-              <div class="hub-scrim"></div>
-            </div>
-            <div class="p-10">
-                <h3 class="text-2xl font-black italic mb-4">New York, USA</h3>
-                <p class="text-slate-400 font-bold text-sm leading-relaxed">High-performance tech and specialized automotive parts procurement with direct express shipping to Accra.</p>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="hub-card p-10 relative">
+            <span class="step-number">01</span>
+            <h3 class="text-2xl font-black italic mb-4 text-cyan-400">Link Submission</h3>
+            <p class="text-slate-400 font-bold text-sm leading-relaxed">Browse any international site like <b>1688, Amazon, or Pinduoduo</b>. Send the product links to our WhatsApp team.</p>
           </div>
-          
-          <!-- UK -->
-          <div class="reveal hub-card" style="transition-delay: 0.1s;">
-            <div class="hub-img-wrap">
-              <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=1000" class="hub-img" alt="UK Sourcing">
-              <div class="hub-scrim"></div>
-            </div>
-            <div class="p-10">
-                <h3 class="text-2xl font-black italic mb-4">London, UK</h3>
-                <p class="text-slate-400 font-bold text-sm leading-relaxed">Premier luxury apparel, footwear, and corporate sourcing with weekly air cargo flights and guaranteed accuracy.</p>
-            </div>
+          <div class="hub-card p-10 relative">
+            <span class="step-number">02</span>
+            <h3 class="text-2xl font-black italic mb-4 text-cyan-400">MoMo Payment</h3>
+            <p class="text-slate-400 font-bold text-sm leading-relaxed">We calculate your total in <b>Ghana Cedis</b>. You pay via MoMo, and we handle the currency conversion instantly.</p>
           </div>
-          
-          <!-- CHINA (Fixed with Text Hook) -->
-          <div class="reveal hub-card" style="transition-delay: 0.2s;">
-            <div class="hub-img-wrap">
-              <img src="https://images.unsplash.com/photo-1540608801476-6e9858346387?auto=format&fit=crop&q=80&w=1000" class="hub-img" alt="China Sourcing">
-              <div class="hub-scrim"></div>
-            </div>
-            <div class="p-10">
-                <h3 class="text-2xl font-black italic mb-4 text-cyan-400">Guangzhou, CN</h3>
-                <p class="text-white font-black text-base leading-relaxed mb-4 italic">"Whatever products you are looking to source, we can import them for you."</p>
-                <p class="text-slate-400 font-bold text-sm leading-relaxed">Direct factory verification and expert sea/air freight management from the manufacturing heart of the world.</p>
-            </div>
+          <div class="hub-card p-10 relative">
+            <span class="step-number">03</span>
+            <h3 class="text-2xl font-black italic mb-4 text-cyan-400">Doorstep Delivery</h3>
+            <p class="text-slate-400 font-bold text-sm leading-relaxed">We receive, inspect, and clear your goods through <b>Customs in Tema</b>. Enjoy secure delivery anywhere in Ghana.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Success Stats Block -->
-    <section class="py-24 bg-[#0a0a0f] border-y border-white/5">
-        <div class="locked-container">
-          <div class="grid md:grid-cols-2 gap-20 items-center">
-            <div class="reveal">
-              <h2 class="text-4xl md:text-6xl font-black italic mb-8">One seamless system.</h2>
-              <p class="text-slate-400 text-lg mb-12 font-medium">We bridge the gap between global stores and your doorstep. Every order is inspected, cleared, and delivered with 99.8% accuracy.</p>
-              <div class="space-y-6">
-                <div class="flex items-center gap-6"><div class="w-10 h-10 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-400 font-black text-xs">01</div><span class="text-white font-bold">Verified Factory Sourcing</span></div>
-                <div class="flex items-center gap-6"><div class="w-10 h-10 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-400 font-black text-xs">02</div><span class="text-white font-bold">Secure Local Payments</span></div>
-                <div class="flex items-center gap-6"><div class="w-10 h-10 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-400 font-black text-xs">03</div><span class="text-white font-bold">Door-to-Door Delivery</span></div>
-              </div>
-            </div>
-            <div class="reveal bg-cyan-400/5 p-12 rounded-[40px] border border-cyan-400/20 text-center">
-                <div class="text-[10rem] font-black italic text-cyan-400 leading-none">99.8%</div>
-                <p class="text-xl font-bold uppercase tracking-widest text-slate-300 mt-4">Success rate</p>
-            </div>
+    <section class="py-24">
+      <div class="locked-container">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div class="reveal hub-card p-12 border-cyan-400/20">
+            <h2 class="text-3xl font-black italic mb-6">China Sourcing & 1688 Agent</h2>
+            <p class="text-slate-300 mb-6 font-semibold">Access factory prices on <b>1688, Alibaba, and Pinduoduo</b> without an Alipay account.</p>
+            <ul class="space-y-4 text-sm text-slate-400 font-bold">
+              <li><i class="fas fa-check text-cyan-400 mr-2"></i> Strict Quality Inspection at Guangzhou Warehouse</li>
+              <li><i class="fas fa-check text-cyan-400 mr-2"></i> Air Freight (7-10 days) | Sea Freight (45-60 days)</li>
+              <li><i class="fas fa-check text-cyan-400 mr-2"></i> Buy directly from Pinduoduo to Ghana</li>
+            </ul>
           </div>
+          <div class="reveal hub-card p-12">
+            <h2 class="text-3xl font-black italic mb-6">USA & UK Personal Shopper</h2>
+            <p class="text-slate-300 mb-6 font-semibold">Shop <b>Amazon, eBay, and Zara</b> using our dedicated warehouse addresses.</p>
+            <ul class="space-y-4 text-sm text-slate-400 font-bold">
+              <li><i class="fas fa-check text-cyan-400 mr-2"></i> Cargo Consolidation: Save 30% on shipping costs</li>
+              <li><i class="fas fa-check text-cyan-400 mr-2"></i> Express Air Freight for Electronics & Fashion</li>
+              <li><i class="fas fa-check text-cyan-400 mr-2"></i> We buy for you if the site rejects your card</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-cyan-400/5">
+        <div class="locked-container text-center">
+            <h2 class="text-4xl md:text-6xl font-black italic mb-8">Stress-free clearing.</h2>
+            <p class="text-slate-400 text-lg max-w-3xl mx-auto mb-12 font-medium">Skip the headache of the port. We handle all <b>Customs clearing in Tema and KIA</b>—the price we quote is the price you pay. No hidden fees.</p>
+            <div class="inline-block bg-dark border border-white/10 p-8 rounded-[30px]">
+                <div class="text-6xl font-black text-cyan-400 italic leading-none">99.8%</div>
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mt-2">Delivery Success Rate</p>
+            </div>
         </div>
     </section>
   </main>
 
-  <!-- Global Directory Footer -->
   <footer class="pt-32 pb-12 bg-[#030305] border-t border-white/5">
     <div class="locked-container">
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-24 text-left">
-        <div class="col-span-2">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-24">
+        <div class="col-span-2 md:col-span-1">
             <h2 class="logo-text text-2xl mb-6">KASH <span class="logo-option">OPTION</span></h2>
-            <p class="text-slate-500 max-w-sm font-semibold text-sm leading-relaxed mb-8">Ghana's #1 premier sourcing and logistics hub. Bridging global excellence with local convenience since 2020.</p>
-            <div class="flex gap-4">
-                <a href="https://www.instagram.com/kashoption1" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/share/1CrwnBxS8W/" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
-            </div>
+            <p class="text-slate-500 text-sm font-semibold leading-relaxed">Ghana's #1 logistics hub for international sourcing and stress-free clearing.</p>
         </div>
         <div>
-          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Directory</h4>
+          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Quick Links</h4>
           <a href="index.html" class="directory-link">Home</a>
-          <a href="about.html" class="directory-link">About Us</a>
-          <a href="testimonials.html" class="directory-link">Client Reviews</a>
-          <a href="orders.html" class="directory-link">Live Feed</a>
+          <a href="tracker.html" class="directory-link">Track Shipment</a>
+          <a href="faqs.html" class="directory-link">Shipping Times</a>
         </div>
         <div>
-          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Resources</h4>
-          <a href="catalog.html" class="directory-link">Catalog</a>
-          <a href="tracker.html" class="directory-link">Track shipment</a>
-          <a href="faqs.html" class="directory-link">Support hub</a>
-          <a href="policy-terms.html" class="directory-link">Policy and terms</a>
-        </div>
-        <div>
-          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Concierge</h4>
-          <a href="mailto:Info@mrkash.net" class="directory-link">Email support</a>
-          <a href="https://wa.me/233240118846" class="directory-link">WhatsApp sales</a>
+          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Contact</h4>
+          <a href="mailto:Info@mrkash.net" class="directory-link">Info@mrkash.net</a>
+          <p class="text-[10px] text-slate-600 font-bold mt-4">ACCRA, GHANA</p>
         </div>
       </div>
-      <div class="border-t border-white/5 pt-12 text-center">
-        <p class="text-[10px] font-black text-slate-800 tracking-[0.5em] uppercase">© 2026 Kash Option • Elite Logistics Protocol</p>
+      <div class="text-center pt-12 border-t border-white/5">
+        <p class="text-[10px] font-black text-slate-800 tracking-widest uppercase">© 2026 Kash Option • Elite Logistics Protocol</p>
       </div>
     </div>
   </footer>
 
-  <!-- Task: Swipe-to-Action Concierge Bubble -->
-  <div id="swipeChat" onclick="window.open('https://wa.me/233240118846?text=Hi%20Kash%20Option%20I%20want%20to%20order...', '_blank')">
+  <div id="swipeChat" onclick="window.open('https://wa.me/233240118846', '_blank')">
     <div class="liquid-bubble">
       <div class="status-dot"></div>
-      <span class="text-xs md:text-sm font-bold text-white">Ready to order? <span class="text-cyan-400 italic">Browse our Catalog 👋</span></span>
+      <span class="text-xs font-bold text-white">Need help sourcing? <span class="text-cyan-400 italic">Chat with us</span></span>
       <i class="fab fa-whatsapp text-2xl text-[#22c55e]"></i>
     </div>
   </div>
@@ -306,10 +249,7 @@
     function toggleMenu() {
       const menu = document.getElementById('mobileMenu');
       menu.classList.toggle('active');
-      document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
     }
-
-    // Swipe/Scroll Trigger
     let triggered = false;
     window.addEventListener('scroll', () => {
       if (!triggered && window.scrollY > 200) {
@@ -317,7 +257,6 @@
         triggered = true;
       }
     });
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
     }, { threshold: 0.1 });
