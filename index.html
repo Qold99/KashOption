@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow-x: hidden;">
 <head>
   <meta charset="UTF-8">
   <base href="https://mrkash.net/">
@@ -10,7 +10,6 @@
   <title>Kash Option | Ghana's #1 Trusted Logistics Partner</title>
   <meta name="description" content="Shop Globally, Pay Locally. Ghana's premier sourcing and logistics agency. USA, UK & China to your doorstep.">
   
-  <!-- Resources -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -18,29 +17,29 @@
   
   <style>
     :root { --cyan: #22d3ee; --dark: #050508; --glass: rgba(255, 255, 255, 0.03); }
-    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; text-transform: none !important; }
+    
+    /* PREVENT SCREEN SHAKING */
+    html, body { 
+      margin: 0; padding: 0; width: 100%; overflow-x: hidden; 
+      -webkit-font-smoothing: antialiased; text-transform: none !important; 
+    }
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: var(--dark);
       color: #fff;
-      overflow-x: hidden;
-      width: 100%;
     }
 
     .locked-container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
 
-    /* --- DYNAMIC ISLAND (TWO-TONE BRANDING) --- */
+    /* --- DYNAMIC ISLAND (TWO-TONE) --- */
     .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1100px; }
     .dynamic-island {
-      background: rgba(10, 10, 15, 0.85);
-      backdrop-filter: blur(30px) saturate(180%);
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(25px) saturate(180%);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 60px;
-      padding: 8px 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      border-radius: 60px; padding: 8px 12px;
+      display: flex; align-items: center; justify-content: space-between;
       box-shadow: 0 30px 60px rgba(0,0,0,0.6);
     }
     .logo-text { font-weight: 800; font-style: italic; font-size: 1.1rem; letter-spacing: -0.05em; color: #fff; text-decoration: none; }
@@ -56,11 +55,11 @@
     /* --- MOBILE MENU OVERLAY --- */
     #mobileMenu {
       position: fixed; inset: 0; background: rgba(5, 5, 8, 0.98); 
-      backdrop-filter: blur(25px); z-index: 10000; display: none;
+      backdrop-filter: blur(20px); z-index: 10000; display: none;
       flex-direction: column; align-items: center; justify-content: center; padding: 2rem;
     }
     #mobileMenu.active { display: flex; }
-    #mobileMenu a { font-size: 1.5rem; font-weight: 800; margin: 0.6rem 0; color: #fff; text-decoration: none; font-style: italic; border-bottom: 1px solid rgba(255,255,255,0.05); width: 80%; text-align: center; padding-bottom: 10px; }
+    #mobileMenu a { font-size: 1.6rem; font-weight: 800; margin: 0.6rem 0; color: #fff; text-decoration: none; font-style: italic; border-bottom: 1px solid rgba(255,255,255,0.05); width: 80%; text-align: center; padding-bottom: 10px; }
 
     /* --- AERO-LANDING ENGINE --- */
     @keyframes aeroLanding {
@@ -74,44 +73,19 @@
       70% { box-shadow: 0 0 30px 2px rgba(34, 211, 238, 0); }
     }
 
-    /* --- CONTENT CARDS --- */
+    /* --- HUB CARDS --- */
     .hub-card {
-      background: rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 32px;
-      transition: 0.5s;
-      height: 100%;
+      background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 32px; transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
     }
     .hub-card:hover { transform: translateY(-12px); border-color: var(--cyan); }
+    .hub-img { width: 100%; height: 220px; object-fit: cover; border-radius: 24px; margin-bottom: 24px; }
 
-    /* --- KASH AI SALES CLOSER (WIDGET) --- */
-    #kashAI {
-      position: fixed; bottom: 24px; right: 24px; z-index: 9998;
-      display: none; cursor: pointer;
-    }
-    .ai-avatar {
-      width: 64px; height: 64px; background: #000; border: 2px solid var(--cyan);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      position: relative; box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
-    }
-    .ai-orbit {
-      position: absolute; inset: -4px; border-radius: 50%;
-      border: 1px solid rgba(34, 211, 238, 0.5);
-      animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-    }
-    .ai-glow {
-      position: absolute; inset: 0; border-radius: 50%;
-      box-shadow: 0 0 15px var(--cyan);
-      animation: pulse 2s infinite;
-      opacity: 0.3;
-    }
-    .ai-bubble {
-      position: absolute; bottom: 80px; right: 0; width: 260px;
-      background: rgba(10, 10, 15, 0.9); backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.1); padding: 16px;
-      border-radius: 20px 20px 4px 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    }
+    /* --- KASH AI --- */
+    #kashAI { position: fixed; bottom: 24px; right: 24px; z-index: 9998; display: none; cursor: pointer; }
+    .ai-avatar { width: 64px; height: 64px; background: #000; border: 2px solid var(--cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; }
+    .ai-orbit { position: absolute; inset: -4px; border-radius: 50%; border: 1px solid rgba(34, 211, 238, 0.5); animation: ping 2s infinite; }
+    .ai-bubble { position: absolute; bottom: 80px; right: 0; width: 260px; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 16px; border-radius: 20px 20px 4px 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
 
     /* --- UI REVEALS --- */
     .reveal { opacity: 0; transform: translateY(30px); transition: 1s; }
@@ -124,24 +98,7 @@
 </head>
 <body>
 
-  <!-- Dynamic Island Nav -->
-  <div class="nav-wrapper">
-    <nav class="dynamic-island">
-      <a href="index.html" class="logo-text">KASH <span class="logo-option">OPTION</span></a>
-      <div class="island-nav">
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About</a>
-        <a href="catalog.html">Catalog</a>
-        <a href="tracker.html">Tracker</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <button class="menu-trigger" onclick="toggleMenu()">
-        <i class="fas fa-bars-staggered"></i>
-      </button>
-    </nav>
-  </div>
-
-  <!-- Mobile Menu -->
+  <!-- Mobile Nav Overlay -->
   <div id="mobileMenu">
     <button onclick="toggleMenu()" class="absolute top-10 right-10 text-white text-3xl"><i class="fas fa-times"></i></button>
     <a href="index.html">Home</a>
@@ -155,7 +112,23 @@
     <a href="policy-terms.html">Policy & Terms</a>
   </div>
 
+  <!-- Dynamic Island -->
+  <div class="nav-wrapper" id="islandWrapper">
+    <nav class="dynamic-island">
+      <a href="index.html" class="logo-text">KASH <span class="logo-option">OPTION</span></a>
+      <div class="island-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="tracker.html">Tracker</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <button class="menu-trigger" onclick="toggleMenu()"><i class="fas fa-bars-staggered"></i></button>
+    </nav>
+  </div>
+
   <main>
+    <!-- Hero Section -->
     <header class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
       <div class="hero-animate">
         <span class="inline-block py-1 px-4 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-10">
@@ -164,11 +137,11 @@
         <h1 class="text-5xl sm:text-7xl md:text-9xl font-black italic mb-8 leading-none tracking-tighter">
           Shop Globally.<br><span class="text-cyan-400">Pay Locally.</span>
         </h1>
-        <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-medium leading-relaxed">
-          The safest way to buy from China, USA, and UK. Pay via MTN MoMo or Telecel Cash at competitive rates. Fully cleared and delivered to your door.
+        <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-medium">
+          The safest way to buy from China, USA, and UK. Pay via MTN MoMo or Telecel Cash at competitive rates. Fully cleared and delivered.
         </p>
         <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <a href="https://wa.me/c/233240118846" target="_blank" class="btn-glow bg-cyan-400 text-black px-12 py-5 rounded-full font-black text-lg transition-transform hover:scale-105">
+          <a href="https://wa.me/c/233240118846" target="_blank" class="btn-glow bg-cyan-400 text-black px-12 py-5 rounded-full font-black text-lg transition-transform">
              Browse Catalog <i class="fab fa-whatsapp ml-2"></i>
           </a>
           <a href="tracker.html" class="border-2 border-white/20 px-12 py-5 rounded-full font-black text-lg hover:bg-white hover:text-black transition-all">
@@ -178,33 +151,36 @@
       </div>
     </header>
 
-    <!-- Hubs -->
+    <!-- Global Wholesale Hubs (Order: USA, UK, CHINA) -->
     <section class="py-24 border-t border-white/5">
       <div class="locked-container">
         <div class="text-center mb-20 reveal">
-          <h2 class="text-4xl md:text-6xl font-black italic mb-4 tracking-tighter text-white">Global Wholesale Hubs</h2>
+          <h2 class="text-4xl md:text-6xl font-black italic mb-4 tracking-tighter">Global wholesale hubs</h2>
+          <p class="text-gray-500 font-bold uppercase tracking-widest text-[10px]">Strategic Trade Routes</p>
         </div>
+        
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="reveal hub-card p-10 text-center">
-            <img src="https://images.unsplash.com/photo-1508433957232-3107f5fd5995?auto=format&fit=crop&q=80&w=800" class="w-full h-48 object-cover rounded-2xl mb-8" alt="USA">
-            <h3 class="text-2xl font-black italic mb-4 uppercase">New York, USA</h3>
-            <p class="text-slate-400 font-bold text-sm">Express sourcing for high-end tech, Amazon, and Walmart orders.</p>
+          <div class="reveal hub-card p-10">
+            <img src="https://images.unsplash.com/photo-1508433957232-3107f5fd5995?auto=format&fit=crop&q=80&w=800" class="hub-img" alt="USA">
+            <h3 class="text-2xl font-black italic mb-4">New York, USA</h3>
+            <p class="text-slate-400 font-bold text-sm leading-relaxed">Express sourcing for high-end tech, Amazon, and Walmart orders directly to Accra.</p>
           </div>
-          <div class="reveal hub-card p-10 text-center" style="transition-delay: 0.1s;">
-            <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=800" class="w-full h-48 object-cover rounded-2xl mb-8" alt="UK">
-            <h3 class="text-2xl font-black italic mb-4 uppercase">London, UK</h3>
-            <p class="text-slate-400 font-bold text-sm">Premier luxury apparel and corporate sourcing with weekly flights.</p>
+          <div class="reveal hub-card p-10" style="transition-delay: 0.1s;">
+            <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=800" class="hub-img" alt="UK">
+            <h3 class="text-2xl font-black italic mb-4">London, UK</h3>
+            <p class="text-slate-400 font-bold text-sm leading-relaxed">Premier luxury apparel and corporate sourcing with weekly express air cargo flights.</p>
           </div>
-          <div class="reveal hub-card p-10 text-center" style="transition-delay: 0.2s;">
-            <img src="https://images.unsplash.com/photo-1540608801476-6e9858346387?auto=format&fit=crop&q=80&w=800" class="w-full h-48 object-cover rounded-2xl mb-8" alt="China">
-            <h3 class="text-2xl font-black italic mb-4 uppercase">Guangzhou, CN</h3>
-            <p class="text-slate-400 font-bold text-sm">Direct manufacturing access and expert sea/air freight management.</p>
+          <div class="reveal hub-card p-10" style="transition-delay: 0.2s;">
+            <img src="https://images.unsplash.com/photo-1540608801476-6e9858346387?auto=format&fit=crop&q=80&w=800" class="hub-img" alt="China">
+            <h3 class="text-2xl font-black italic mb-4">Guangzhou, CN</h3>
+            <p class="text-white font-black text-base leading-relaxed mb-4 italic">"Whatever products you are looking to source, we can import them for you."</p>
+            <p class="text-slate-400 font-bold text-sm leading-relaxed">Direct manufacturing access and expert sea/air freight management.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SEO Process -->
+    <!-- The Kash-Flow -->
     <section class="py-24 bg-[#0a0a0f] border-y border-white/5">
         <div class="locked-container">
             <div class="grid md:grid-cols-2 gap-20 items-center">
@@ -218,21 +194,36 @@
                     </div>
                 </div>
                 <div class="reveal bg-cyan-400/5 p-12 rounded-[40px] border border-cyan-400/20 text-center">
-                    <div class="text-[10rem] font-black italic text-cyan-400 leading-none">99.8%</div>
+                    <div class="text-8xl md:text-[10rem] font-black italic text-cyan-400 leading-none">99.8%</div>
                     <p class="text-xl font-bold uppercase tracking-widest text-slate-300 mt-4">Success Rate</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Live Ticker -->
+    <div class="py-12 bg-white/5 overflow-hidden">
+      <div class="animate-scroll whitespace-nowrap flex gap-12">
+        <div class="text-slate-500 text-[10px] font-bold uppercase tracking-[0.4em] flex items-center gap-3">
+          <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span> iPhone 15 Pro → Accra Delivery
+        </div>
+        <div class="text-slate-500 text-[10px] font-bold uppercase tracking-[0.4em] flex items-center gap-3">
+          <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span> V8 Engine → Kumasi Hub
+        </div>
+        <div class="text-slate-500 text-[10px] font-bold uppercase tracking-[0.4em] flex items-center gap-3">
+          <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span> Designer Bag → Takoradi Delivery
+        </div>
+      </div>
+    </div>
   </main>
 
-  <!-- Global Directory Footer -->
+  <!-- Apple Directory Footer -->
   <footer class="pt-32 pb-12 bg-[#030305] border-t border-white/5 px-6">
     <div class="locked-container">
       <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-24 text-left">
         <div class="col-span-2">
             <h2 class="logo-text text-2xl mb-6">KASH <span class="logo-option">OPTION</span></h2>
-            <p class="text-slate-500 max-w-sm font-semibold text-sm leading-relaxed mb-8">Ghana's #1 sourcing hub. Bridging global excellence with local convenience since 2020.</p>
+            <p class="text-slate-500 max-w-sm font-semibold text-sm leading-relaxed mb-8">Ghana's #1 premier sourcing hub. Bridging global excellence with local convenience since 2020.</p>
             <div class="flex gap-4">
                 <a href="https://www.instagram.com/kashoption1" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.facebook.com/share/1CrwnBxS8W/" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
@@ -264,8 +255,8 @@
     </div>
   </footer>
 
-  <!-- KASH AI SALES CLOSER -->
-  <div id="kashAI" class="animate__animated" onclick="window.open('https://wa.me/c/233240118846', '_blank')">
+  <!-- KASH AI -->
+  <a id="kashAI" href="https://wa.me/c/233240118846" target="_blank">
     <div class="ai-bubble">
       <p class="text-white text-xs font-bold leading-relaxed">
         <span class="text-cyan-400">KASH AI:</span> Ready to order? Browse our elite catalog for the best deals from USA, UK, and China!
@@ -276,20 +267,27 @@
       <div class="ai-glow"></div>
       <img src="https://mrkash.net/logo.png" class="w-10 h-10 object-contain relative z-10" alt="Kash Logo">
     </div>
-  </div>
+  </a>
 
   <script>
-    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const island = document.getElementById('islandWrapper');
+      menu.classList.toggle('active');
+      if (menu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+        island.style.opacity = '0';
+      } else {
+        document.body.style.overflow = '';
+        island.style.opacity = '1';
+      }
+    }
 
-    // Scroll Logic for KASH AI Agent
+    // Scroll Logic for AI
     window.addEventListener('scroll', () => {
       const kashAI = document.getElementById('kashAI');
-      const threshold = document.documentElement.scrollHeight * 0.2;
-      if (window.scrollY > threshold) {
+      if (window.scrollY > (document.documentElement.scrollHeight * 0.15)) {
         kashAI.style.display = 'block';
-        if (!kashAI.classList.contains('animate__fadeInUp')) {
-            kashAI.classList.add('animate__fadeInUp');
-        }
       } else {
         kashAI.style.display = 'none';
       }
