@@ -26,16 +26,13 @@
     }
 
     /* --- DYNAMIC ISLAND --- */
-    .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1100px; }
+    .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1100px; transition: 0.3s; }
     .dynamic-island {
       background: rgba(10, 10, 15, 0.85);
       backdrop-filter: blur(30px) saturate(180%);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 60px;
-      padding: 8px 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      border-radius: 60px; padding: 8px 12px;
+      display: flex; align-items: center; justify-content: space-between;
       box-shadow: 0 30px 60px rgba(0,0,0,0.6);
     }
     .logo-text { font-weight: 800; font-style: italic; font-size: 1.1rem; letter-spacing: -0.05em; color: #fff; text-decoration: none; }
@@ -46,10 +43,7 @@
     .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.75rem; font-weight: 600; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
     .island-nav a:hover, .island-nav a.active { color: #fff; background: rgba(255,255,255,0.05); }
 
-    .menu-trigger { 
-      width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #000; 
-      display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; 
-    }
+    .menu-trigger { width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
 
     /* --- CATALOG GRID --- */
     .catalog-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 24px; }
@@ -57,22 +51,15 @@
     @media (min-width: 1200px) { .catalog-grid { grid-template-columns: repeat(3, 1fr); } }
 
     .category-card {
-      position: relative;
-      height: 420px;
-      border-radius: 32px;
-      overflow: hidden;
-      background: #111;
-      border: 1px solid rgba(255,255,255,0.08);
+      position: relative; height: 420px; border-radius: 32px; overflow: hidden;
+      background: #111; border: 1px solid rgba(255,255,255,0.08);
       box-shadow: 0 40px 100px -20px rgba(0,0,0,0.8);
       transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     }
+    @media (max-width: 767px) { .category-card { height: 380px; } }
 
-    .card-image {
-      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-      filter: brightness(0.7) contrast(1.1); transition: 0.8s ease;
-    }
+    .card-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); transition: 0.8s ease; }
     .category-card:hover .card-image { filter: brightness(0.9); transform: scale(1.08); }
-
     .card-scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,1) 5%, rgba(0,0,0,0.4) 50%, transparent 100%); z-index: 1; }
     .card-content { position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px; z-index: 2; }
     .card-content h3 { font-size: 1.4rem; font-weight: 800; font-style: italic; margin-bottom: 8px; color: #fff; }
@@ -80,64 +67,37 @@
 
     /* --- KASH AI WIDGET --- */
     #kashAI { position: fixed; bottom: 24px; right: 24px; z-index: 9998; display: none; cursor: pointer; }
-    .ai-avatar {
-      width: 64px; height: 64px; background: #000; border: 2px solid var(--accent);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      position: relative; box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
-    }
-    .ai-orbit {
-      position: absolute; inset: -4px; border-radius: 50%;
-      border: 1px solid rgba(34, 211, 238, 0.5);
-      animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-    }
-    .ai-bubble {
-      position: absolute; bottom: 80px; right: 0; width: 260px;
-      background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.1); padding: 16px;
-      border-radius: 20px 20px 4px 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    }
+    .ai-avatar { width: 64px; height: 64px; background: #000; border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: 0 0 20px rgba(34, 211, 238, 0.2); }
+    .ai-orbit { position: absolute; inset: -4px; border-radius: 50%; border: 1px solid rgba(34, 211, 238, 0.5); animation: ping 2s infinite; }
+    .ai-bubble { position: absolute; bottom: 80px; right: 0; width: 260px; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 16px; border-radius: 20px 20px 4px 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
 
-    /* --- MODAL FORM --- */
-    #aiModal {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.95);
-      backdrop-filter: blur(20px); z-index: 10002;
-      display: none; align-items: center; justify-content: center; padding: 20px;
-    }
-    .modal-content {
-      background: #08080a; border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 40px; width: 100%; max-width: 480px; padding: 40px;
-      box-shadow: 0 50px 120px -30px rgba(0,0,0,0.9);
-    }
+    /* --- MODAL --- */
+    #aiModal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); z-index: 10002; display: none; align-items: center; justify-content: center; padding: 20px; }
+    .modal-content { background: #08080a; border: 1px solid rgba(255,255,255,0.05); border-radius: 40px; width: 100%; max-width: 480px; padding: 40px; }
     .form-step { display: none; }
     .form-step.active { display: block; }
-
     .desk-label { display: block; font-size: 0.7rem; font-weight: 800; color: #4b5563; text-transform: uppercase !important; letter-spacing: 2px; margin-top: 20px; }
-    .desk-input {
-      width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.1);
-      padding: 15px 0; color: #fff; font-size: 1rem; outline: none; transition: 0.3s;
-    }
+    .desk-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; color: #fff; font-size: 1rem; outline: none; transition: 0.3s; }
     .desk-input:focus { border-bottom-color: var(--accent); }
-
-    .btn-action {
-      background: #fff; color: #000; width: 100%; padding: 20px; border-radius: 100px;
-      font-weight: 800; margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s;
-    }
+    .btn-action { background: #fff; color: #000; width: 100%; padding: 20px; border-radius: 100px; font-weight: 800; margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; border:none; cursor:pointer; }
     .btn-action:hover { background: var(--accent); transform: translateY(-2px); }
 
-    .reveal { opacity: 0; transform: translateY(30px); transition: 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
-    .reveal.active { opacity: 1; transform: translateY(0); }
-
+    /* --- FOOTER (APPLE STYLE) --- */
+    .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.85rem; display: block; margin-bottom: 10px; font-weight: 600; text-decoration: none; }
+    .directory-link:hover { color: #fff; text-shadow: 0 0 10px var(--accent); }
+    
     #mobileMenu { position: fixed; inset: 0; background: #050508; z-index: 10001; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; }
     #mobileMenu.active { display: flex; }
     #mobileMenu a { font-size: 1.8rem; font-weight: 800; margin: 0.8rem 0; color: #fff; text-decoration: none; font-style: italic; }
 
-    footer { padding: 80px 6%; background: #07070a; border-top: 1px solid rgba(255,255,255,0.05); }
+    .reveal { opacity: 0; transform: translateY(30px); transition: 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
   <!-- Navigation -->
-  <div class="nav-wrapper">
+  <div class="nav-wrapper" id="islandWrapper">
     <nav class="dynamic-island">
       <a href="index.html" class="logo-text">KASH <span class="logo-option">OPTION</span></a>
       <div class="island-nav">
@@ -145,12 +105,11 @@
         <a href="about.html">About</a>
         <a href="catalog.html" class="active">Catalog</a>
         <a href="orders.html">Orders</a>
-        <a href="tracker.html">Tracker</a>
+        <a href="testimonials.html">Reviews</a>
+        <a href="faqs.html">Support</a>
         <a href="contact.html">Contact</a>
       </div>
-      <button class="menu-trigger" onclick="toggleMenu()">
-        <i class="fas fa-bars-staggered"></i>
-      </button>
+      <button class="menu-trigger" onclick="toggleMenu()"><i class="fas fa-bars-staggered"></i></button>
     </nav>
   </div>
 
@@ -164,62 +123,73 @@
     <a href="contact.html">Contact</a>
   </div>
 
-  <main class="pt-32 pb-32 px-6">
-    <header class="text-center max-w-4xl mx-auto mb-20 reveal">
+  <main class="pt-40 pb-32 px-6">
+    <header class="text-center max-w-4xl mx-auto mb-24 reveal">
       <h1 class="text-4xl md:text-7xl font-black italic mb-6 leading-[1.1]">The global bridge</h1>
-      <p class="text-gray-400 font-medium text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-        Exceptional sourcing for authentic global products. Every item is verified at our hubs before departure to Ghana.
-      </p>
+      <p class="text-gray-400 font-medium text-lg md:text-xl max-w-2xl mx-auto">Exceptional sourcing for authentic global products. Every item is verified at our hubs before departure to Ghana.</p>
     </header>
 
-    <!-- Category Grid -->
-    <section class="max-w-7xl mx-auto catalog-grid">
+    <!-- Showroom Grid -->
+    <section class="max-w-7xl mx-auto catalog-grid mb-40">
       <div class="reveal category-card">
         <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Computing">
         <div class="card-scrim"></div>
         <div class="card-content">
           <h3>High-end computing</h3>
-          <p>Original Apple Silicon, workstation laptops, and custom gaming builds with factory authenticity.</p>
+          <p>Original Apple Silicon, workstation laptops, and custom gaming builds.</p>
         </div>
       </div>
-
       <div class="reveal category-card" style="transition-delay: 0.1s;">
         <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Auto">
         <div class="card-scrim"></div>
         <div class="card-content">
           <h3>Automotive engineering</h3>
-          <p>Genuine OEM engines, transmission systems, and performance components verified at the source.</p>
+          <p>Genuine OEM engines and performance components verified at source.</p>
         </div>
       </div>
-
       <div class="reveal category-card" style="transition-delay: 0.2s;">
-        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Electronics">
+        <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Apparel">
         <div class="card-scrim"></div>
         <div class="card-content">
-          <h3>Professional electronics</h3>
-          <p>Cinema-grade camera gear, drones, and smart ecosystems from authorized global distributors.</p>
+          <h3>Luxury apparel</h3>
+          <p>Verified designer clothing and footwear from European and American markets.</p>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- RESTORED APPLE DIRECTORY FOOTER -->
   <footer class="pt-32 pb-12 px-6 bg-[#030305] border-t border-white/5">
     <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-24 text-left">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-24 text-left">
         <div class="col-span-2">
             <h2 class="logo-text text-2xl mb-6">KASH <span class="logo-option">OPTION</span></h2>
             <p class="text-slate-500 max-w-sm font-semibold text-sm leading-relaxed mb-8">Ghana's #1 premier sourcing and logistics hub. Bridging global excellence with local convenience since 2020.</p>
+            <div class="flex gap-4">
+                <a href="https://www.instagram.com/kashoption1" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1CrwnBxS8W/" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
+            </div>
         </div>
         <div>
-          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Navigation</h4>
+          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Directory</h4>
           <a href="index.html" class="directory-link">Home</a>
           <a href="about.html" class="directory-link">Our Story</a>
-          <a href="tracker.html" class="directory-link">Track Shipment</a>
+          <a href="testimonials.html" class="directory-link">Client Reviews</a>
+          <a href="orders.html" class="directory-link">Live Feed</a>
         </div>
         <div>
-          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Concierge</h4>
-          <a href="mailto:Info@mrkash.net" class="directory-link">Email support</a>
-          <a href="https://wa.me/233240118846" class="directory-link">WhatsApp sales</a>
+          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Business</h4>
+          <a href="catalog.html" class="directory-link">Showroom</a>
+          <a href="contact.html" class="directory-link">Partner with us</a>
+          <a href="policy-terms.html" class="directory-link">Privacy Policy</a>
+          <a href="policy-terms.html" class="directory-link">Service Terms</a>
+        </div>
+        <div>
+          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Support</h4>
+          <a href="tracker.html" class="directory-link">Track Shipment</a>
+          <a href="faqs.html" class="directory-link">Help Center</a>
+          <a href="mailto:Info@mrkash.net" class="directory-link">Legal Inquiries</a>
+          <a href="https://wa.me/233240118846" class="directory-link">WhatsApp Sales</a>
         </div>
       </div>
       <div class="border-t border-white/5 pt-12 text-center text-[10px] font-black text-slate-800 uppercase">
@@ -228,103 +198,50 @@
     </div>
   </footer>
 
-  <!-- KASH AI SALES CLOSER -->
+  <!-- KASH AI -->
   <div id="kashAI" class="animate__animated" onclick="openAIModal()">
-    <div class="ai-bubble">
-      <p class="text-white text-xs font-bold leading-relaxed">
-        <span class="text-cyan-400">KASH AI:</span> Ready to order from abroad? Tap me to initialize your procurement request. 👋
-      </p>
-    </div>
-    <div class="ai-avatar">
-      <div class="ai-orbit"></div>
-      <img src="https://mrkash.net/logo.png" class="w-10 h-10 object-contain relative z-10" alt="Kash Logo">
-    </div>
+    <div class="ai-bubble"><p class="text-white text-xs font-bold leading-relaxed"><span class="text-cyan-400">KASH AI:</span> Ready to order? Tap me to initialize your procurement request. 👋</p></div>
+    <div class="ai-avatar"><div class="ai-orbit"></div><img src="https://mrkash.net/logo.png" class="w-10 h-10 object-contain relative z-10" alt="Kash Logo"></div>
   </div>
 
-  <!-- AI MODAL QUESTIONNAIRE -->
   <div id="aiModal" onclick="closeAIModal()">
     <div class="modal-content animate__animated animate__zoomIn" onclick="event.stopPropagation()">
-      
-      <!-- Step 1: Choice -->
       <div id="step1" class="form-step active text-center">
         <h2 class="text-2xl font-black italic mb-6">How can I help you?</h2>
         <button onclick="goToOrder()" class="btn-action">I want to order something <i class="fas fa-shopping-bag"></i></button>
         <button onclick="chatSales()" class="btn-action bg-white/5 border border-white/10 text-white">Just chat with sales <i class="fab fa-whatsapp"></i></button>
       </div>
-
-      <!-- Step 2: Order Details -->
       <div id="step2" class="form-step">
         <h2 class="text-2xl font-black italic mb-4">Order details</h2>
-        <p class="text-gray-500 text-xs font-bold mb-6 uppercase tracking-widest">Pristine Procurement Protocol</p>
-        
-        <label class="desk-label">What do you want?</label>
-        <input type="text" id="qItem" class="desk-input" placeholder="e.g. iPhone 15 Pro Max or Product Link">
-        
+        <label class="desk-label">What do you want?</label><input type="text" id="qItem" class="desk-input" placeholder="e.g. MacBook Pro M3">
         <div class="grid grid-cols-2 gap-4">
-          <div>
-            <label class="desk-label">Quantity</label>
-            <input type="number" id="qQty" class="desk-input" value="1">
-          </div>
-          <div>
-            <label class="desk-label">Size / Color</label>
-            <input type="text" id="qSize" class="desk-input" placeholder="e.g. Medium / Blue">
-          </div>
+          <div><label class="desk-label">Quantity</label><input type="number" id="qQty" class="desk-input" value="1"></div>
+          <div><label class="desk-label">Size / Color</label><input type="text" id="qSize" class="desk-input" placeholder="e.g. Space Gray"></div>
         </div>
-
-        <label class="desk-label">Any other description?</label>
-        <textarea id="qDesc" class="desk-input" rows="2" placeholder="Storage, model version, etc."></textarea>
-
+        <label class="desk-label">Description</label><textarea id="qDesc" class="desk-input" rows="2" placeholder="Specifications..."></textarea>
         <button onclick="sendOrder()" class="btn-action mt-8">Submit to WhatsApp <i class="fab fa-whatsapp"></i></button>
         <button onclick="goToStep1()" class="w-full text-[10px] text-gray-600 font-bold uppercase mt-4">Go back</button>
       </div>
-
     </div>
   </div>
 
   <script>
     function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
-    
-    // AI Widget Scroll Logic
     window.addEventListener('scroll', () => {
       const kashAI = document.getElementById('kashAI');
       if (window.scrollY > 300) { kashAI.style.display = 'block'; kashAI.classList.add('animate__fadeInUp'); }
     });
-
-    // AI Modal Logic
     function openAIModal() { document.getElementById('aiModal').style.display = 'flex'; }
     function closeAIModal() { document.getElementById('aiModal').style.display = 'none'; }
-    function goToOrder() { 
-      document.getElementById('step1').classList.remove('active');
-      document.getElementById('step2').classList.add('active');
-    }
-    function goToStep1() {
-      document.getElementById('step2').classList.remove('active');
-      document.getElementById('step1').classList.add('active');
-    }
+    function goToOrder() { document.getElementById('step1').classList.remove('active'); document.getElementById('step2').classList.add('active'); }
+    function goToStep1() { document.getElementById('step2').classList.remove('active'); document.getElementById('step1').classList.add('active'); }
     function chatSales() { window.open('https://wa.me/233240118846?text=Hi%20Kash%20Option%2C%20I%20have%20some%20questions%20about%20your%20services.', '_blank'); }
-
     function sendOrder() {
-      const item = document.getElementById('qItem').value;
-      const qty = document.getElementById('qQty').value;
-      const size = document.getElementById('qSize').value;
-      const desc = document.getElementById('qDesc').value;
-      
-      if(!item) return alert("Please specify the item.");
-
-      const msg = `*NEW PROCUREMENT REQUEST*%0A%0A` +
-                  `*Item:* ${item}%0A` +
-                  `*Quantity:* ${qty}%0A` +
-                  `*Size/Color:* ${size}%0A` +
-                  `*Description:* ${desc}%0A%0A` +
-                  `_Sent via Kash AI Concierge_`;
-      
+      const msg = `*NEW PROCUREMENT REQUEST*%0A%0A*Item:* ${document.getElementById('qItem').value}%0A*Quantity:* ${document.getElementById('qQty').value}%0A*Size/Color:* ${document.getElementById('qSize').value}%0A*Description:* ${document.getElementById('qDesc').value}`;
       window.open(`https://wa.me/233240118846?text=${msg}`, '_blank');
       closeAIModal();
     }
-
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
-    }, { threshold: 0.1 });
+    const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }); }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   </script>
 </body>
