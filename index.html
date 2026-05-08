@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow-x: hidden;">
 <head>
   <meta charset="UTF-8">
   <base href="https://mrkash.net/">
@@ -14,59 +14,58 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    :root { --cyan: #22d3ee; --dark: #0a0a0f; --glass: rgba(255, 255, 255, 0.03); }
-    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; text-transform: none !important; }
+    :root { --cyan: #22d3ee; --dark: #050508; --glass: rgba(255, 255, 255, 0.03); }
+    
+    /* PREVENT SCREEN SHAKING */
+    html, body { 
+      margin: 0; padding: 0; width: 100%; overflow-x: hidden; 
+      -webkit-font-smoothing: antialiased; text-transform: none !important; 
+    }
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: var(--dark);
       color: #fff;
-      overflow-x: hidden;
     }
 
-    /* --- DYNAMIC ISLAND (TWO-TONE) --- */
-    .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 1000; width: 95%; max-width: 1100px; }
+    /* --- DYNAMIC ISLAND --- */
+    .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1100px; transition: 0.3s; }
     .dynamic-island {
-      background: rgba(10, 10, 15, 0.75);
-      backdrop-filter: blur(30px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 60px;
-      padding: 8px 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(25px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 60px; padding: 8px 12px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.6);
     }
-    .logo-text { font-weight: 800; font-style: italic; font-size: 1.1rem; letter-spacing: -0.05em; }
+    .logo-text { font-weight: 800; font-style: italic; font-size: 1.1rem; letter-spacing: -0.05em; color: #fff; text-decoration: none; }
     .logo-option { color: var(--cyan); text-shadow: 0 0 15px rgba(34, 211, 238, 0.5); }
 
     .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.75rem; font-weight: 700; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
     .island-nav a:hover, .island-nav a.active { color: #fff; background: rgba(255,255,255,0.05); }
 
-    .menu-trigger { width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
+    .menu-trigger { width: 36px; height: 36px; border-radius: 50%; background: var(--cyan); color: #000; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
 
-    /* --- MOBILE MENU OVERLAY --- */
+    /* --- MOBILE MENU --- */
     #mobileMenu {
-      position: fixed; inset: 0; background: rgba(5, 5, 8, 0.98); 
-      backdrop-filter: blur(20px); z-index: 2000; display: none;
-      flex-direction: column; align-items: center; justify-content: center; padding: 2rem;
+      position: fixed; inset: 0; background: #050508; z-index: 10001; 
+      display: none; flex-direction: column; align-items: center; justify-content: center; padding: 2rem;
+      backdrop-filter: blur(20px);
     }
     #mobileMenu.active { display: flex; }
-    #mobileMenu a { font-size: 1.8rem; font-weight: 800; margin: 0.8rem 0; color: #fff; text-decoration: none; font-style: italic; }
+    #mobileMenu a { font-size: 1.8rem; font-weight: 800; margin: 0.8rem 0; color: #fff; text-decoration: none; font-style: italic; border-bottom: 1px solid rgba(255,255,255,0.05); width: 80%; text-align: center; padding-bottom: 10px; }
 
     /* --- UI COMPONENTS --- */
     .liquid-glass { 
       background: var(--glass); 
       backdrop-filter: blur(15px); 
-      border: 1px solid rgba(255, 255, 255, 0.05); 
+      border: 1px solid rgba(255, 255, 255, 0.08); 
       border-radius: 32px; 
       transition: 0.4s ease;
     }
-    .liquid-glass:hover { border-color: var(--cyan); transform: translateY(-5px); }
-    
     .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -77,46 +76,27 @@
     }
     .inquiry-form input:focus { border-color: var(--cyan); background: rgba(34, 211, 238, 0.02); }
 
-    /* --- WHATSAPP CONCIERGE --- */
-    #waConcierge {
-      position: fixed; bottom: 30px; right: 30px; z-index: 1500;
-      opacity: 0; transform: translateY(50px); transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-    }
-    #waConcierge.visible { opacity: 1; transform: translateY(0); }
-    .status-dot { width: 10px; height: 10px; background: #22c55e; border-radius: 50%; display: inline-block; box-shadow: 0 0 10px #22c55e; animation: pulse-green 2s infinite; }
-    @keyframes pulse-green { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
+    /* --- KASH AI --- */
+    #kashAI { position: fixed; bottom: 24px; right: 24px; z-index: 9998; display: none; cursor: pointer; }
+    .ai-avatar { width: 64px; height: 64px; background: #000; border: 2px solid var(--cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; }
+    .ai-orbit { position: absolute; inset: -4px; border-radius: 50%; border: 1px solid rgba(34, 211, 238, 0.5); animation: ping 2s infinite; }
+    .ai-bubble { position: absolute; bottom: 80px; right: 0; width: 260px; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 16px; border-radius: 20px 20px 4px 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
 
-    /* --- LUXURY SOCIAL SECTION --- */
-    .social-card {
-        background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
-        border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 24px;
-        transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        aspect-ratio: 1/1;
-    }
-    .social-card:hover {
-        border-color: var(--cyan);
-        transform: scale(1.05);
-        box-shadow: 0 0 30px rgba(34, 211, 238, 0.2);
-    }
-    .social-icon-large { font-size: 3.5rem; color: #fff; transition: 0.3s; }
-    .social-card:hover .social-icon-large { color: var(--cyan); }
+    /* --- SOCIAL CARDS --- */
+    .social-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; transition: 0.4s; }
+    .social-card:hover { transform: translateY(-8px); border-color: var(--cyan); background: rgba(34, 211, 238, 0.05); }
 
-    /* --- FOOTER --- */
-    .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.85rem; display: block; margin-bottom: 8px; font-weight: 600; }
+    .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.9rem; display: block; margin-bottom: 10px; font-weight: 700; }
     .directory-link:hover { color: #fff; text-shadow: 0 0 10px var(--cyan); }
   </style>
 </head>
 <body>
 
   <!-- Dynamic Island Nav -->
-  <div class="nav-wrapper">
+  <div class="nav-wrapper" id="islandWrapper">
     <nav class="dynamic-island">
       <a href="index.html" class="logo-text">KASH <span class="logo-option">OPTION</span></a>
-      <div class="island-nav">
+      <div class="island-nav hidden lg:flex gap-1">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="catalog.html">Catalog</a>
@@ -126,7 +106,7 @@
         <a href="contact.html" class="active">Contact</a>
         <a href="tracker.html">Tracker</a>
       </div>
-      <button class="menu-trigger" onclick="toggleMenu()">
+      <button class="menu-trigger p-2" onclick="toggleMenu()">
         <i class="fas fa-bars-staggered"></i>
       </button>
     </nav>
@@ -136,18 +116,18 @@
   <div id="mobileMenu">
     <button onclick="toggleMenu()" class="absolute top-10 right-10 text-white text-3xl"><i class="fas fa-times"></i></button>
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
+    <a href="about.html">About Us</a>
     <a href="catalog.html">Catalog</a>
     <a href="tracker.html">Track Order</a>
     <a href="contact.html" class="text-cyan-400">Contact</a>
+    <button onclick="toggleMenu()" class="mt-10 w-12 h-12 rounded-full border border-white/20"><i class="fas fa-times"></i></button>
   </div>
 
   <main class="pt-44 pb-20">
-    <!-- Hero Section -->
-    <header class="text-center px-6 mb-16 reveal active">
+    <header class="text-center px-6 mb-20 reveal active">
       <h1 class="text-5xl md:text-7xl font-black italic mb-6 leading-tight">Contact our concierge</h1>
       <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-medium">
-        Ghana's verified bridge to global trade. Connect with our official channels.
+        Initialize your global procurement request or connect with our official verified channels.
       </p>
     </header>
 
@@ -157,37 +137,24 @@
       <div class="space-y-10 reveal">
         <div>
             <h2 class="text-2xl font-black italic mb-4 text-white uppercase tracking-tight">Official Channels</h2>
-            <p class="text-slate-500 font-bold text-sm mb-6 leading-relaxed">
+            <p class="text-slate-500 font-bold text-sm mb-8 leading-relaxed">
               <i class="fas fa-triangle-exclamation text-amber-500 mr-2"></i> SECURITY WARNING: Do not engage with any accounts claiming to be Kash Option unless they are linked directly from this verified list.
             </p>
             
-            <!-- Icon Grid -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
-                <a href="https://www.instagram.com/kashoption1" target="_blank" class="social-card">
-                    <i class="fab fa-instagram social-icon-large"></i>
-                </a>
-                <a href="https://www.facebook.com/share/1CrwnBxS8W/" target="_blank" class="social-card">
-                    <i class="fab fa-facebook-f social-icon-large"></i>
-                </a>
-                <a href="https://www.google.com/search?q=KASH+OPTION" target="_blank" class="social-card">
-                    <i class="fab fa-google social-icon-large"></i>
-                </a>
-                <a href="mailto:Info@mrkash.net" class="social-card">
-                    <i class="fas fa-envelope social-icon-large"></i>
-                </a>
-                <a href="https://wa.me/233240118846" target="_blank" class="social-card border-green-500/30">
-                    <i class="fab fa-whatsapp social-icon-large text-green-500"></i>
-                </a>
-                <div class="social-card bg-cyan-400/5">
-                    <p class="text-[10px] font-black uppercase text-cyan-400 tracking-tighter text-center px-2">Verified Protocol</p>
-                </div>
+            <div class="grid grid-cols-3 gap-4">
+                <a href="https://www.instagram.com/kashoption1" target="_blank" class="social-card"><i class="fab fa-instagram text-4xl"></i></a>
+                <a href="https://www.facebook.com/share/1CrwnBxS8W/" target="_blank" class="social-card"><i class="fab fa-facebook-f text-4xl"></i></a>
+                <a href="https://www.google.com/search?q=KASH+OPTION" target="_blank" class="social-card"><i class="fab fa-google text-4xl text-cyan-400"></i></a>
+                <a href="mailto:Info@mrkash.net" class="social-card"><i class="fas fa-envelope text-4xl"></i></a>
+                <a href="https://wa.me/233240118846" target="_blank" class="social-card border-green-500/30"><i class="fab fa-whatsapp text-4xl text-green-500"></i></a>
+                <div class="social-card bg-cyan-400/5"><p class="text-[9px] font-black uppercase text-cyan-400 text-center px-1">Verified Protocol</p></div>
             </div>
         </div>
 
-        <div class="liquid-glass p-10 border-cyan-400/20">
-            <h3 class="text-xl font-bold italic mb-4">Authority Search</h3>
-            <p class="text-slate-400 text-sm font-medium mb-6 italic">Verify our market presence instantly by searching our brand on Google.</p>
-            <a href="https://www.google.com/search?q=KASH+OPTION" target="_blank" class="flex items-center justify-between bg-white text-black px-6 py-4 rounded-full font-black uppercase text-xs tracking-widest hover:bg-cyan-400 transition-all">
+        <div class="liquid-glass p-8 border-cyan-400/20">
+            <h3 class="text-lg font-bold italic mb-4 text-white">Authority search</h3>
+            <p class="text-slate-400 text-sm font-medium mb-6 italic">Verify our market authority instantly by searching our brand on Google.</p>
+            <a href="https://www.google.com/search?q=KASH+OPTION" target="_blank" class="flex items-center justify-between bg-white text-black px-6 py-4 rounded-full font-black uppercase text-[10px] tracking-widest hover:bg-cyan-400 transition-all">
                 Search "Kash Option" on Google <i class="fab fa-google"></i>
             </a>
         </div>
@@ -196,41 +163,35 @@
       <!-- INQUIRY FORM -->
       <div class="reveal">
         <div class="liquid-glass p-8 md:p-12 border-cyan-400/20 shadow-2xl">
-          <div class="mb-10">
-            <h2 class="text-3xl font-black italic mb-2 uppercase">Send an inquiry</h2>
-            <p class="text-slate-500 font-bold text-sm">Secure procurement protocol initialized</p>
-          </div>
+          <h2 class="text-3xl font-black italic mb-2 uppercase">Send an inquiry</h2>
+          <p class="text-slate-500 font-bold text-sm mb-10">Secure protocol initialized</p>
 
-          <form id="inquiryForm" class="inquiry-form space-y-6">
+          <form id="inquiryForm" class="inquiry-form space-y-5">
             <div class="grid sm:grid-cols-2 gap-5">
               <input type="email" id="inqEmail" placeholder="Email Address" required>
               <input type="tel" id="inqPhone" placeholder="WhatsApp Number" required>
             </div>
-            
             <select id="inqCategory" required>
               <option value="" disabled selected>Select Category</option>
-              <option value="Phones & Laptops">High-End Tech</option>
-              <option value="Auto Engineering">Automotive Parts</option>
-              <option value="Luxury Apparel">Luxury Apparel</option>
-              <option value="Wholesale Goods">Wholesale Goods</option>
-              <option value="Other">Other</option>
+              <option value="Computing">High-End Tech</option>
+              <option value="Auto Parts">Automotive Parts</option>
+              <option value="Apparel">Luxury Apparel</option>
+              <option value="Wholesale">Wholesale Goods</option>
             </select>
-
             <input type="text" id="inqProduct" placeholder="Product Name or Link" required>
-            
-            <textarea id="inqSpecs" rows="3" placeholder="Detailed Specifications (Color, Size, Version)" required></textarea>
+            <textarea id="inqSpecs" rows="3" placeholder="Specifications (Color, Size, etc.)" required></textarea>
 
-            <!-- FIXED CHECKBOX: RESPONSIVE ROW -->
+            <!-- FIXED POLICY BOX -->
             <div class="bg-white/5 border border-white/5 rounded-2xl p-5">
                 <label class="flex items-start gap-4 cursor-pointer">
-                  <input type="checkbox" required class="w-6 h-6 mt-0.5 rounded border-white/10 bg-white/5 accent-cyan-400 shrink-0">
+                  <input type="checkbox" required class="w-6 h-6 rounded border-white/10 bg-white/5 accent-cyan-400 shrink-0 mt-0.5">
                   <span class="text-xs text-slate-400 font-bold leading-relaxed">
-                    I acknowledge and agree to the <a href="policy-terms.html" class="text-cyan-400 underline underline-offset-4 hover:text-white transition-all">Policy and Terms</a> regarding global logistics.
+                    I acknowledge and agree to the <a href="policy-terms.html" class="text-cyan-400 underline decoration-cyan-400/30">Policy and Terms</a> regarding global logistics.
                   </span>
                 </label>
             </div>
 
-            <button type="submit" class="w-full bg-cyan-400 text-black py-5 rounded-full font-black text-lg hover:bg-white transition-all shadow-lg shadow-cyan-400/20">
+            <button type="submit" class="w-full bg-cyan-400 text-black py-5 rounded-full font-black text-lg hover:bg-white transition-all">
               Submit Inquiry
             </button>
           </form>
@@ -239,26 +200,25 @@
     </section>
   </main>
 
-  <!-- Apple Style Directory Footer -->
+  <!-- Global Directory Footer -->
   <footer class="pt-32 pb-12 px-6 bg-[#030305] border-t border-white/5">
-    <div class="max-w-7xl mx-auto text-left">
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-24">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-24 text-left">
         <div class="col-span-2">
             <h2 class="logo-text text-2xl mb-6">KASH <span class="logo-option">OPTION</span></h2>
-            <p class="text-slate-500 max-w-sm font-semibold text-sm leading-relaxed mb-8">Ghana's #1 premier sourcing and logistics hub since 2020.</p>
+            <p class="text-slate-500 max-w-sm font-bold text-sm leading-relaxed mb-8">Ghana's #1 premier sourcing hub since 2020. Bridging global excellence with local convenience.</p>
         </div>
         <div>
           <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Directory</h4>
           <a href="index.html" class="directory-link">Home</a>
           <a href="about.html" class="directory-link">Our Story</a>
-          <a href="testimonials.html" class="directory-link">Client Reviews</a>
+          <a href="testimonials.html" class="directory-link">Reviews</a>
           <a href="orders.html" class="directory-link">Live Feed</a>
         </div>
         <div>
           <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Business</h4>
           <a href="catalog.html" class="directory-link">Showroom</a>
           <a href="contact.html" class="directory-link">Partner</a>
-          <a href="policy-terms.html" class="directory-link">Privacy</a>
           <a href="policy-terms.html" class="directory-link">Terms</a>
         </div>
         <div>
@@ -266,50 +226,62 @@
           <a href="tracker.html" class="directory-link">Track Shipment</a>
           <a href="faqs.html" class="directory-link">Help Center</a>
           <a href="mailto:Info@mrkash.net" class="directory-link">Legal</a>
-          <a href="https://wa.me/233240118846" class="directory-link">WhatsApp</a>
         </div>
       </div>
-      <div class="border-t border-white/5 pt-12 text-center">
-        <p class="text-[10px] font-black text-slate-800 tracking-[0.5em] uppercase">© 2026 Kash Option • Elite Logistics Protocol</p>
+      <div class="border-t border-white/5 pt-12 text-center text-[11px] font-black text-slate-800 uppercase tracking-widest">
+        © 2026 Kash Option • Elite Logistics Protocol
       </div>
     </div>
   </footer>
 
-  <!-- AI Concierge Bubble -->
-  <a id="waConcierge" href="https://wa.me/c/233240118846" target="_blank">
-    <div class="bg-white text-black px-6 py-4 rounded-full flex items-center gap-4 shadow-2xl border-2 border-cyan-400 cursor-pointer hover:scale-105 transition-transform">
-        <span class="status-dot"></span>
-        <span class="font-black text-sm">Ready to order? Browse our Catalog 👋</span>
-        <i class="fab fa-whatsapp text-2xl text-[#25D366]"></i>
+  <!-- KASH AI -->
+  <div id="kashAI" class="animate__animated" onclick="window.open('https://wa.me/233240118846?text=Hi%20Kash%20Option%2C%20I%20need%20help%20contacting%20you.', '_blank')">
+    <div class="ai-bubble">
+      <p class="text-white text-xs font-bold leading-relaxed">
+        <span class="text-cyan-400">KASH AI:</span> Need help or support contacting us? Tap to get help instantly. 🕵️‍♂️
+      </p>
     </div>
-  </a>
+    <div class="ai-avatar">
+      <div class="ai-orbit"></div>
+      <img src="https://mrkash.net/logo.png" class="w-10 h-10 object-contain relative z-10" alt="Kash Logo">
+    </div>
+  </div>
 
   <script>
     function toggleMenu() {
-      document.getElementById('mobileMenu').classList.toggle('active');
+      const menu = document.getElementById('mobileMenu');
+      const island = document.getElementById('islandWrapper');
+      menu.classList.toggle('active');
+      if (menu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+        island.style.opacity = '0';
+      } else {
+        document.body.style.overflow = '';
+        island.style.opacity = '1';
+      }
     }
 
-    // Inquiry Form Logic
-    document.getElementById('inquiryForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const phone = document.getElementById('inqPhone').value;
-      const cat = document.getElementById('inqCategory').value;
-      const product = document.getElementById('inqProduct').value;
-      const specs = document.getElementById('inqSpecs').value;
-      const msg = `*NEW PROCUREMENT INQUIRY*%0A%0A*Phone:* ${phone}%0A*Category:* ${cat}%0A*Product:* ${product}%0A*Specs:* ${specs}`;
-      window.open(`https://wa.me/233240118846?text=${msg}`, '_blank');
+    // Scroll Logic for AI
+    window.addEventListener('scroll', () => {
+      const kashAI = document.getElementById('kashAI');
+      if (window.scrollY > 400) {
+        kashAI.style.display = 'block';
+        kashAI.classList.add('animate__fadeInUp');
+      } else {
+        kashAI.style.display = 'none';
+      }
     });
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Concierge Scroll Logic
-    window.addEventListener('scroll', () => {
-      const concierge = document.getElementById('waConcierge');
-      if (window.scrollY > 300) { concierge.classList.add('visible'); } 
-      else { concierge.classList.remove('visible'); }
+    // Form logic
+    document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const msg = `*NEW PROCUREMENT INQUIRY*%0A%0A*Phone:* ${document.getElementById('inqPhone').value}%0A*Product:* ${document.getElementById('inqProduct').value}`;
+      window.open(`https://wa.me/233240118846?text=${msg}`, '_blank');
     });
   </script>
 </body>
