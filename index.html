@@ -91,31 +91,36 @@
   <!-- Navigation -->
   <div class="nav-wrapper" id="islandWrapper">
     <nav class="dynamic-island">
-      <a href="index.html" class="logo-text">KASH <span class="logo-option">OPTION</span></a>
+      <a href="index.html" class="island-logo">KASH <span>OPTION</span></a>
       <div class="island-nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="catalog.html">Catalog</a>
         <a href="orders.html">Orders</a>
         <a href="testimonials.html">Reviews</a>
-        <a href="faqs.html" class="active">FAQs</a>
+        <a href="faqs.html">FAQs</a>
         <a href="contact.html">Contact</a>
-        <a href="tracker.html">Tracker</a>
+        <a href="policy-terms.html">Policy</a>
+        <a href="tracker.html" class="active">Tracker</a>
       </div>
-      <button class="menu-trigger" onclick="toggleMenu()"><i class="fas fa-bars-staggered"></i></button>
+      <button class="menu-trigger" onclick="toggleMenu()">
+        <i class="fas fa-bars-staggered"></i>
+      </button>
     </nav>
   </div>
 
   <!-- Mobile Nav Overlay -->
   <div id="mobileMenu">
     <button onclick="toggleMenu()" class="absolute top-10 right-10 text-white text-3xl"><i class="fas fa-times"></i></button>
-    <a href="index.html" onclick="toggleMenu()">Home</a>
-    <a href="about.html" onclick="toggleMenu()">About us</a>
-    <a href="catalog.html" onclick="toggleMenu()">Catalog</a>
-    <a href="orders.html" onclick="toggleMenu()">Live orders</a>
-    <a href="tracker.html" onclick="toggleMenu()" style="color: var(--accent);">Track order</a>
-    <a href="faqs.html" onclick="toggleMenu()">FAQs</a>
-    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="catalog.html">Catalog</a>
+    <a href="tracker.html" style="color: var(--cyan);">Track Order</a>
+    <a href="orders.html">Today's Orders</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="faqs.html">FAQs</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="policy-terms.html">Policy & Terms</a>
   </div>
 
   <main class="pt-44 pb-32 px-6 max-w-4xl mx-auto">
