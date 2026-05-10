@@ -26,7 +26,6 @@
       overflow-x: hidden;
     }
 
-   <style>
     /* --- DYNAMIC ISLAND (BRAND MATCH) --- */
     .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1100px; transition: 0.3s; }
     .dynamic-island {
@@ -109,20 +108,20 @@
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Dynamic Island Nav -->
   <div class="nav-wrapper" id="islandWrapper">
     <nav class="dynamic-island">
-      <a href="index.html" class="island-logo">KASH <span>OPTION</span></a>
-      <div class="island-nav">
+      <a href="index.html" class="logo-text">KASH <span class="logo-option">OPTION</span></a>
+      <div class="island-nav hidden lg:flex gap-1">
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
+        <a href="about.html" class="active">About</a>
         <a href="catalog.html">Catalog</a>
         <a href="orders.html">Orders</a>
         <a href="testimonials.html">Reviews</a>
         <a href="faqs.html">FAQs</a>
         <a href="contact.html">Contact</a>
         <a href="policy-terms.html">Policy</a>
-        <a href="tracker.html" class="active">Tracker</a>
+        <a href="tracker.html">Tracker</a>
       </div>
       <button class="menu-trigger" onclick="toggleMenu()">
         <i class="fas fa-bars-staggered"></i>
@@ -132,19 +131,19 @@
 
   <!-- Mobile Nav Overlay -->
   <div id="mobileMenu">
-    <button onclick="toggleMenu()" class="absolute top-10 right-10 text-white text-3xl"><i class="fas fa-times"></i></button>
+   <button onclick="toggleMenu()" class="absolute top-10 right-10 text-white text-3xl"><i class="fas fa-times"></i></button>
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
     <a href="catalog.html">Catalog</a>
-    <a href="tracker.html" style="color: var(--cyan);">Track Order</a>
+    <a href="tracker.html">Track Order</a>
     <a href="orders.html">Today's Orders</a>
     <a href="testimonials.html">Testimonials</a>
     <a href="faqs.html">FAQs</a>
     <a href="contact.html">Contact Us</a>
     <a href="policy-terms.html">Policy & Terms</a>
   </div>
+
   <main>
-    
     <!-- Hero -->
     <section class="min-h-[70vh] flex flex-col justify-center items-center text-center px-6 pt-32">
       <div class="hero-animate">
