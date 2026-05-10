@@ -48,34 +48,49 @@
     .menu-trigger { width: 36px; height: 36px; border-radius: 50%; background: var(--cyan); color: #000; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
 
     /* --- MOBILE NAV OVERLAY --- */
-    #mobileMenu {
-      position: fixed; inset: 0; background: #050508; z-index: 10001; 
-      display: none; flex-direction: column; align-items: center; justify-content: center; padding: 2rem;
-      backdrop-filter: blur(20px);
-    }
-    #mobileMenu.active { display: flex; }
-    #mobileMenu a { font-size: 2rem; font-weight: 800; margin: 0.8rem 0; color: #fff; text-decoration: none; font-style: italic; border-bottom: 1px solid rgba(255,255,255,0.05); width: 80%; text-align: center; padding-bottom: 10px; }
+   #mobileMenu {
+  position: absolute;
+  top: 60px;              /* sits just below your header */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;             /* not full screen */
+  max-width: 600px;       /* medium size */
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(15px);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  z-index: 10001;
+  display: none;
+  flex-direction: column;
+  padding: 1rem 2rem;
+}
 
-    /* --- UI COMPONENTS --- */
-    .liquid-glass { 
-      background: var(--glass); 
-      backdrop-filter: blur(15px); 
-      border: 1px solid rgba(255, 255, 255, 0.08); 
-      border-radius: 32px; 
-      transition: 0.4s ease;
-    }
-    .liquid-glass:hover { border-color: var(--cyan); transform: translateY(-5px); }
-    
-    .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
-    .reveal.active { opacity: 1; transform: translateY(0); }
+#mobileMenu.active {
+  display: flex;
+  animation: fadeDown 0.3s ease forwards;
+}
 
-    /* --- TIMELINE --- */
-    .timeline-item { position: relative; padding-left: 40px; border-left: 2px solid rgba(34, 211, 238, 0.2); margin-bottom: 30px; }
-    .timeline-dot { position: absolute; left: -7px; top: 0; width: 12px; height: 12px; background: var(--cyan); border-radius: 50%; box-shadow: 0 0 10px var(--cyan); }
+#mobileMenu a {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0.6rem 0;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  width: 100%;
+  text-align: left;
+  padding: 8px 0;
+}
 
-    /* --- DIRECTORY FOOTER --- */
-    .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.85rem; display: block; margin-bottom: 8px; font-weight: 600; }
-    .directory-link:hover { color: #fff; text-shadow: 0 0 10px var(--cyan); }
+#mobileMenu a:hover {
+  color: #007aff; /* Apple blue */
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translate(-50%, -10px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+
 
     /* --- KASH AI SALES CLOSER (WIDGET) --- */
     #kashAI {
