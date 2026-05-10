@@ -153,17 +153,21 @@
   </div>
 
   <!-- Mobile Menu -->
-  <button onclick="toggleMenu()" class="absolute top-10 right-10 text-white text-3xl"><i class="fas fa-times"></i></button>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Us</a>
-    <a href="catalog.html">Catalog</a>
-    <a href="tracker.html">Track Order</a>
-    <a href="orders.html">Today's Orders</a>
-    <a href="testimonials.html">Testimonials</a>
-    <a href="faqs.html">FAQs</a>
-    <a href="contact.html">Contact Us</a>
-    <a href="policy-terms.html">Policy & Terms</a>
-  </div>
+ <!-- Mobile Menu -->
+<div id="mobileMenu">
+  <button onclick="toggleMenu()" class="close-btn">
+    <i class="fas fa-times"></i>
+  </button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="catalog.html">Catalog</a>
+  <a href="tracker.html">Track Order</a>
+  <a href="orders.html">Today's Orders</a>
+  <a href="testimonials.html">Testimonials</a>
+  <a href="faqs.html">FAQs</a>
+  <a href="contact.html">Contact Us</a>
+  <a href="policy-terms.html">Policy & Terms</a>
+</div>
 
   <main class="pt-40 pb-32 px-6">
     <header class="text-center max-w-4xl mx-auto mb-24 reveal">
@@ -314,5 +318,11 @@
     const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }); }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   </script>
+  <script>
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('active');
+}
+</script>
 </body>
 </html>
