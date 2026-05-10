@@ -3,52 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The global showroom | Kash Option</title>
   
-  <!-- Industrial SEO -->
-  <title>About Us | Kash Option - Ghana's #1 Global Sourcing Agency</title>
-  <meta name="description" content="Founded by Prince Okyere, Kash Option is Ghana's premier bridge to global markets. Specializing in China, USA, and UK logistics.">
-  
-  <!-- Resources -->
+  <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
   <link rel="icon" type="image/png" href="https://mrkash.net/logo.png">
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    :root { --cyan: #22d3ee; --dark: #050508; --glass: rgba(255, 255, 255, 0.03); }
+    :root { --accent: #22d3ee; --bg: #050508; --glass: rgba(255, 255, 255, 0.02); }
     * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; text-transform: none !important; }
     
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--dark);
+      background: var(--bg);
       color: #fff;
       overflow-x: hidden;
+      font-weight: 500;
     }
 
-    /* --- DYNAMIC ISLAND (BRAND MATCH) --- */
+    /* --- DYNAMIC ISLAND --- */
     .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1100px; transition: 0.3s; }
     .dynamic-island {
-      background: rgba(10, 10, 15, 0.75);
+      background: rgba(10, 10, 15, 0.85);
       backdrop-filter: blur(30px) saturate(180%);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 60px;
-      padding: 8px 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      border-radius: 60px; padding: 8px 12px;
+      display: flex; align-items: center; justify-content: space-between;
       box-shadow: 0 30px 60px rgba(0,0,0,0.6);
     }
     .logo-text { font-weight: 800; font-style: italic; font-size: 1.1rem; letter-spacing: -0.05em; color: #fff; text-decoration: none; }
-    .logo-option { color: var(--cyan); text-shadow: 0 0 15px rgba(34, 211, 238, 0.5); }
-
-    .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.7rem; font-weight: 700; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
+    .logo-option { color: var(--accent); text-shadow: 0 0 15px rgba(34, 211, 238, 0.5); }
+    
+    .island-nav { display: none; align-items: center; gap: 4px; }
+    @media (min-width: 1024px) { .island-nav { display: flex; } }
+    .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.75rem; font-weight: 600; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
     .island-nav a:hover, .island-nav a.active { color: #fff; background: rgba(255,255,255,0.05); }
 
-    .menu-trigger { width: 36px; height: 36px; border-radius: 50%; background: var(--cyan); color: #000; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
+    .menu-trigger { width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
 
-    /* --- MOBILE NAV OVERLAY --- */
- #mobileMenu {
+    /* --- CATALOG GRID --- */
+    .catalog-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 24px; }
+    @media (min-width: 768px) { .catalog-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1200px) { .catalog-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .category-card {
+      position: relative; height: 420px; border-radius: 32px; overflow: hidden;
+      background: #111; border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 40px 100px -20px rgba(0,0,0,0.8);
+      transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    @media (max-width: 767px) { .category-card { height: 380px; } }
+
+    .card-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); transition: 0.8s ease; }
+    .category-card:hover .card-image { filter: brightness(0.9); transform: scale(1.08); }
+    .card-scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,1) 5%, rgba(0,0,0,0.4) 50%, transparent 100%); z-index: 1; }
+    .card-content { position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px; z-index: 2; }
+    .card-content h3 { font-size: 1.4rem; font-weight: 800; font-style: italic; margin-bottom: 8px; color: #fff; }
+    .card-content p { color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.5; }
+
+    /* --- KASH AI WIDGET --- */
+    #kashAI { position: fixed; bottom: 24px; right: 24px; z-index: 9998; display: none; cursor: pointer; }
+    .ai-avatar { width: 64px; height: 64px; background: #000; border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: 0 0 20px rgba(34, 211, 238, 0.2); }
+    .ai-orbit { position: absolute; inset: -4px; border-radius: 50%; border: 1px solid rgba(34, 211, 238, 0.5); animation: ping 2s infinite; }
+    .ai-bubble { position: absolute; bottom: 80px; right: 0; width: 260px; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 16px; border-radius: 20px 20px 4px 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+
+    /* --- MODAL --- */
+    #aiModal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); z-index: 10002; display: none; align-items: center; justify-content: center; padding: 20px; }
+    .modal-content { background: #08080a; border: 1px solid rgba(255,255,255,0.05); border-radius: 40px; width: 100%; max-width: 480px; padding: 40px; }
+    .form-step { display: none; }
+    .form-step.active { display: block; }
+    .desk-label { display: block; font-size: 0.7rem; font-weight: 800; color: #4b5563; text-transform: uppercase !important; letter-spacing: 2px; margin-top: 20px; }
+    .desk-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; color: #fff; font-size: 1rem; outline: none; transition: 0.3s; }
+    .desk-input:focus { border-bottom-color: var(--accent); }
+    .btn-action { background: #fff; color: #000; width: 100%; padding: 20px; border-radius: 100px; font-weight: 800; margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; border:none; cursor:pointer; }
+    .btn-action:hover { background: var(--accent); transform: translateY(-2px); }
+
+    /* --- FOOTER (APPLE STYLE) --- */
+    .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.85rem; display: block; margin-bottom: 10px; font-weight: 600; text-decoration: none; }
+    .directory-link:hover { color: #fff; text-shadow: 0 0 10px var(--accent); }
+    
+  #mobileMenu {
   position: absolute;
   top: 60px;              /* sits just below your header */
   left: 50%;
@@ -91,61 +129,31 @@
   to   { opacity: 1; transform: translate(-50%, 0); }
 }
 
-    /* --- KASH AI SALES CLOSER (WIDGET) --- */
-    #kashAI {
-      position: fixed; bottom: 24px; right: 24px; z-index: 9998;
-      display: none; cursor: pointer;
-    }
-    .ai-avatar {
-      width: 64px; height: 64px; background: #000; border: 2px solid var(--cyan);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      position: relative; box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
-    }
-    .ai-orbit {
-      position: absolute; inset: -4px; border-radius: 50%;
-      border: 1px solid rgba(34, 211, 238, 0.5);
-      animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-    }
-    .ai-glow {
-      position: absolute; inset: 0; border-radius: 50%;
-      box-shadow: 0 0 15px var(--cyan);
-      animation: pulse 2s infinite;
-      opacity: 0.3;
-    }
-    .ai-bubble {
-      position: absolute; bottom: 80px; right: 0; width: 260px;
-      background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.1); padding: 16px;
-      border-radius: 20px 20px 4px 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    }
+    .reveal { opacity: 0; transform: translateY(30px); transition: 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
-  <!-- Dynamic Island Nav -->
+  <!-- Navigation -->
   <div class="nav-wrapper" id="islandWrapper">
     <nav class="dynamic-island">
       <a href="index.html" class="logo-text">KASH <span class="logo-option">OPTION</span></a>
-      <div class="island-nav hidden lg:flex gap-1">
+      <div class="island-nav">
         <a href="index.html">Home</a>
-        <a href="about.html" class="active">About</a>
-        <a href="catalog.html">Catalog</a>
+        <a href="about.html">About</a>
+        <a href="catalog.html" class="active">Catalog</a>
         <a href="orders.html">Orders</a>
         <a href="testimonials.html">Reviews</a>
-        <a href="faqs.html">FAQs</a>
+        <a href="faqs.html">Support</a>
         <a href="contact.html">Contact</a>
-        <a href="policy-terms.html">Policy</a>
-        <a href="tracker.html">Tracker</a>
       </div>
-      <button class="menu-trigger" onclick="toggleMenu()">
-        <i class="fas fa-bars-staggered"></i>
-      </button>
+      <button class="menu-trigger" onclick="toggleMenu()"><i class="fas fa-bars-staggered"></i></button>
     </nav>
   </div>
 
-  <!-- Mobile Nav Overlay -->
-  <div id="mobileMenu">
-   <button onclick="toggleMenu()" class="absolute top-10 right-10 text-white text-3xl"><i class="fas fa-times"></i></button>
+  <!-- Mobile Menu -->
+  <button onclick="toggleMenu()" class="absolute top-10 right-10 text-white text-3xl"><i class="fas fa-times"></i></button>
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
     <a href="catalog.html">Catalog</a>
@@ -157,126 +165,70 @@
     <a href="policy-terms.html">Policy & Terms</a>
   </div>
 
-  <main>
-    <!-- Hero -->
-    <section class="min-h-[70vh] flex flex-col justify-center items-center text-center px-6 pt-32">
-      <div class="hero-animate">
-        <h1 class="text-5xl sm:text-7xl md:text-8xl font-black italic leading-none tracking-tighter mb-8">
-            The bridge to<br><span class="text-cyan-400">global markets</span>
-        </h1>
-        <p class="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto mb-12 font-medium leading-relaxed">
-            Since 2020, we have been eliminating the barriers of international trade. We source, we pay, we ship—you simply enjoy the best products the world has to offer.
-        </p>
+  <main class="pt-40 pb-32 px-6">
+    <header class="text-center max-w-4xl mx-auto mb-24 reveal">
+      <h1 class="text-4xl md:text-7xl font-black italic mb-6 leading-[1.1]">The global bridge</h1>
+      <p class="text-gray-400 font-medium text-lg md:text-xl max-w-2xl mx-auto">Exceptional sourcing for authentic global products. Every item is verified at our hubs before departure to Ghana.</p>
+    </header>
+
+  <section class="max-w-7xl mx-auto catalog-grid mb-40">
+    <div class="reveal category-card">
+      <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Computing">
+      <div class="card-scrim"></div>
+      <div class="card-content">
+        <h3>High-end computing</h3>
+        <p>Original Apple Silicon, workstation laptops, and custom gaming builds.</p>
       </div>
-      
-      <!-- Trust Metrics -->
-      <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl mt-10">
-        <div class="liquid-glass p-8">
-            <div class="text-5xl font-black text-cyan-400 mb-2 italic">20,000+</div>
-            <div class="text-[10px] uppercase font-bold tracking-widest text-slate-500">Orders delivered successfully</div>
-        </div>
-        <div class="liquid-glass p-8">
-            <div class="text-5xl font-black text-cyan-400 mb-2 italic">99.8%</div>
-            <div class="text-[10px] uppercase font-bold tracking-widest text-slate-500">Customs clearance accuracy</div>
-        </div>
+    </div>
+
+    <div class="reveal category-card" style="transition-delay: 0.1s;">
+      <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Auto">
+      <div class="card-scrim"></div>
+      <div class="card-content">
+        <h3>Automotive engineering</h3>
+        <p>Genuine OEM engines and performance components verified at source.</p>
       </div>
-    </section>
+    </div>
 
-    <!-- Founder's Story -->
-    <section class="py-24 px-6 max-w-6xl mx-auto">
-        <div class="reveal grid md:grid-cols-2 gap-16 items-center">
-            <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000" alt="Founder" class="opacity-80">
-            </div>
-            <div>
-                <h2 class="text-4xl md:text-5xl font-black italic mb-8">The founder's story</h2>
-                <p class="text-slate-300 leading-relaxed text-lg mb-6 font-medium">
-                    Kash Option was founded by <span class="text-white font-bold">Prince Okyere</span> to solve a major problem: shopping abroad from Ghana was broken. 
-                </p>
-                <p class="text-slate-400 leading-relaxed font-medium">
-                    By removing obstacles like unreliable suppliers and complex customs hurdles, we transformed international sourcing into a simple WhatsApp message. Today, we are Ghana's most trusted logistics gateway.
-                </p>
-            </div>
-        </div>
-    </section>
+    <div class="reveal category-card" style="transition-delay: 0.2s;">
+      <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Electronics">
+      <div class="card-scrim"></div>
+      <div class="card-content">
+        <h3>Professional electronics</h3>
+        <p>Cinema-grade camera gear, drones, and smart ecosystems from authorized distributors.</p>
+      </div>
+    </div>
 
-    <!-- Timeline -->
-    <section class="py-24 bg-[#08080a] border-y border-white/5 px-6">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-center text-4xl md:text-5xl font-black italic mb-20">The journey</h2>
-            <div class="reveal">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <h4 class="text-cyan-400 font-bold italic text-xl mb-2">2020: The launch</h4>
-                    <p class="text-slate-400 font-medium">Started in Accra with a focus on high-speed China sourcing for small businesses.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <h4 class="text-cyan-400 font-bold italic text-xl mb-2">2021: Global expansion</h4>
-                    <p class="text-slate-400 font-medium">Activated USA and UK logistics hubs, opening Western markets to the Ghanaian consumer.</p>
-                </div>
-                <div class="timeline-item" style="border:none;">
-                    <div class="timeline-dot"></div>
-                    <h4 class="text-cyan-400 font-bold italic text-xl mb-2">2024: The #1 standard</h4>
-                    <p class="text-slate-400 font-medium">Recognized as the premier procurement and logistics standard for elite global sourcing.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="reveal category-card">
+      <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Interior">
+      <div class="card-scrim"></div>
+      <div class="card-content">
+        <h3>Interior design</h3>
+        <p>Premium ergonomic furniture and contemporary home styling crated for safe long-haul transit.</p>
+      </div>
+    </div>
 
-    <!-- Team Section -->
-    <section class="py-24 px-6 max-w-7xl mx-auto text-center">
-        <h2 class="text-4xl md:text-5xl font-black italic mb-20">The core team</h2>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            <div class="reveal liquid-glass p-6 md:p-8">
-                <div class="w-16 h-16 mx-auto bg-cyan-400/10 rounded-full flex items-center justify-center text-xl font-black text-cyan-400 mb-6">P</div>
-                <h3 class="font-bold italic text-sm">Prince Okyere</h3>
-                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-2">Founder & CEO</p>
-            </div>
-            <div class="reveal liquid-glass p-6 md:p-8" style="transition-delay: 0.1s;">
-                <div class="w-16 h-16 mx-auto bg-white/5 rounded-full flex items-center justify-center text-xl font-black text-white mb-6">A</div>
-                <h3 class="font-bold italic text-sm">Abena Mensah</h3>
-                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-2">Operations Director</p>
-            </div>
-            <div class="reveal liquid-glass p-6 md:p-8" style="transition-delay: 0.2s;">
-                <div class="w-16 h-16 mx-auto bg-white/5 rounded-full flex items-center justify-center text-xl font-black text-white mb-6">K</div>
-                <h3 class="font-bold italic text-sm">Kofi Annan</h3>
-                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-2">Logistics Lead</p>
-            </div>
-            <div class="reveal liquid-glass p-6 md:p-8" style="transition-delay: 0.3s;">
-                <div class="w-16 h-16 mx-auto bg-white/5 rounded-full flex items-center justify-center text-xl font-black text-white mb-6">E</div>
-                <h3 class="font-bold italic text-sm">Esi Quansah</h3>
-                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-2">Client Relations</p>
-            </div>
-        </div>
-    </section>
+    <div class="reveal category-card" style="transition-delay: 0.1s;">
+      <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Logistics">
+      <div class="card-scrim"></div>
+      <div class="card-content">
+        <h3>Wholesale logistics</h3>
+        <p>Bulk inventory and container-load procurement for retailers with strict quality control.</p>
+      </div>
+    </div>
 
-    <!-- Final CTA - Optimized for Mobile Padding/Size -->
-    <section class="py-20 px-6 text-center">
-        <div class="reveal liquid-glass p-10 md:p-16 max-w-2xl mx-auto border-cyan-400/20">
-            <h2 class="text-3xl md:text-4xl font-black italic mb-8 leading-tight">Ready to experience the<br>Kash Option standard?</h2>
-            <a href="https://wa.me/233240118846" target="_blank" class="inline-flex items-center gap-3 bg-cyan-400 text-black px-10 py-4 rounded-full font-black text-base hover:scale-105 transition-transform shadow-2xl">
-                Start shopping now <i class="fab fa-whatsapp"></i>
-            </a>
-        </div>
-    </section>
+    <div class="reveal category-card" style="transition-delay: 0.2s;">
+      <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Apparel">
+      <div class="card-scrim"></div>
+      <div class="card-content">
+        <h3>Luxury apparel</h3>
+        <p>Verified designer clothing and footwear from European and American markets.</p>
+      </div>
+    </div>
+</section>
   </main>
 
-  <!-- KASH AI - INFORMATION & WHATSAPP REDIRECT -->
-  <div id="kashAI" class="animate__animated" onclick="window.open('https://wa.me/233240118846?text=Hi%20Kash%20Option%2C%20I%20am%20on%20the%20About%20Us%20page%20and%20need%20more%20information.', '_blank')">
-    <div class="ai-bubble">
-      <p class="text-white text-xs font-bold leading-relaxed">
-        <span class="text-cyan-400">KASH AI:</span> Curious about our global network? If you need more information or a custom sourcing strategy, I'm here to help! 👋
-      </p>
-    </div>
-    <div class="ai-avatar">
-      <div class="ai-orbit"></div>
-      <div class="ai-glow"></div>
-      <img src="https://mrkash.net/logo.png" class="w-10 h-10 object-contain relative z-10" alt="Kash Logo">
-    </div>
-  </div>
-
-  <!-- Apple Style Directory Footer -->
+  <!-- RESTORED APPLE DIRECTORY FOOTER -->
   <footer class="pt-32 pb-12 px-6 bg-[#030305] border-t border-white/5">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-24 text-left">
@@ -310,50 +262,57 @@
           <a href="https://wa.me/233240118846" class="directory-link">WhatsApp Sales</a>
         </div>
       </div>
-      <div class="border-t border-white/5 pt-12 text-center">
-        <p class="text-[10px] font-black text-slate-800 tracking-[0.5em] uppercase">© 2026 Kash Option • Elite Logistics Protocol</p>
+      <div class="border-t border-white/5 pt-12 text-center text-[10px] font-black text-slate-800 uppercase">
+        © 2026 Kash Option • Elite Logistics Protocol
       </div>
     </div>
   </footer>
 
-  <script>
-    // Navigation Toggle
-    function toggleMenu() {
-      const menu = document.getElementById('mobileMenu');
-      const island = document.getElementById('islandWrapper');
-      menu.classList.toggle('active');
-      if (menu.classList.contains('active')) {
-        document.body.style.overflow = 'hidden';
-        island.style.opacity = '0';
-      } else {
-        document.body.style.overflow = '';
-        island.style.opacity = '1';
-      }
-    }
+  <!-- KASH AI -->
+  <div id="kashAI" class="animate__animated" onclick="openAIModal()">
+    <div class="ai-bubble"><p class="text-white text-xs font-bold leading-relaxed"><span class="text-cyan-400">KASH AI:</span> Ready to order? Tap me to initialize your procurement request. 👋</p></div>
+    <div class="ai-avatar"><div class="ai-orbit"></div><img src="https://mrkash.net/logo.png" class="w-10 h-10 object-contain relative z-10" alt="Kash Logo"></div>
+  </div>
 
-    // Scroll Logic for AI Agent
+  <div id="aiModal" onclick="closeAIModal()">
+    <div class="modal-content animate__animated animate__zoomIn" onclick="event.stopPropagation()">
+      <div id="step1" class="form-step active text-center">
+        <h2 class="text-2xl font-black italic mb-6">How can I help you?</h2>
+        <button onclick="goToOrder()" class="btn-action">I want to order something <i class="fas fa-shopping-bag"></i></button>
+        <button onclick="chatSales()" class="btn-action bg-white/5 border border-white/10 text-white">Just chat with sales <i class="fab fa-whatsapp"></i></button>
+      </div>
+      <div id="step2" class="form-step">
+        <h2 class="text-2xl font-black italic mb-4">Order details</h2>
+        <label class="desk-label">What do you want?</label><input type="text" id="qItem" class="desk-input" placeholder="e.g. MacBook Pro M3">
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="desk-label">Quantity</label><input type="number" id="qQty" class="desk-input" value="1"></div>
+          <div><label class="desk-label">Size / Color</label><input type="text" id="qSize" class="desk-input" placeholder="e.g. Space Gray"></div>
+        </div>
+        <label class="desk-label">Description</label><textarea id="qDesc" class="desk-input" rows="2" placeholder="Specifications..."></textarea>
+        <button onclick="sendOrder()" class="btn-action mt-8">Submit to WhatsApp <i class="fab fa-whatsapp"></i></button>
+        <button onclick="goToStep1()" class="w-full text-[10px] text-gray-600 font-bold uppercase mt-4">Go back</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
     window.addEventListener('scroll', () => {
       const kashAI = document.getElementById('kashAI');
-      const threshold = document.documentElement.scrollHeight * 0.20; // 20% scroll
-      if (window.scrollY > threshold) {
-        kashAI.style.display = 'block';
-        if (!kashAI.classList.contains('animate__fadeInUp')) {
-            kashAI.classList.add('animate__fadeInUp');
-        }
-      } else {
-        kashAI.style.display = 'none';
-      }
+      if (window.scrollY > 300) { kashAI.style.display = 'block'; kashAI.classList.add('animate__fadeInUp'); }
     });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    function openAIModal() { document.getElementById('aiModal').style.display = 'flex'; }
+    function closeAIModal() { document.getElementById('aiModal').style.display = 'none'; }
+    function goToOrder() { document.getElementById('step1').classList.remove('active'); document.getElementById('step2').classList.add('active'); }
+    function goToStep1() { document.getElementById('step2').classList.remove('active'); document.getElementById('step1').classList.add('active'); }
+    function chatSales() { window.open('https://wa.me/233240118846?text=Hi%20Kash%20Option%2C%20I%20have%20some%20questions%20about%20your%20services.', '_blank'); }
+    function sendOrder() {
+      const msg = `*NEW PROCUREMENT REQUEST*%0A%0A*Item:* ${document.getElementById('qItem').value}%0A*Quantity:* ${document.getElementById('qQty').value}%0A*Size/Color:* ${document.getElementById('qSize').value}%0A*Description:* ${document.getElementById('qDesc').value}`;
+      window.open(`https://wa.me/233240118846?text=${msg}`, '_blank');
+      closeAIModal();
+    }
+    const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }); }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   </script>
 </body>
 </html>
