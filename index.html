@@ -3,134 +3,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>The global showroom | Kash Option</title>
+  
+  <title>Elite Tracking | Ghana's #1 Logistics Partner | Kash Option</title>
+  <meta name="description" content="AI-powered real-time tracking for your orders from USA, UK, and China. Ghana's premier logistics agency. Shop globally, stay updated locally.">
   
   <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
   <link rel="icon" type="image/png" href="https://mrkash.net/logo.png">
-  
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
   <style>
-    :root { --accent: #22d3ee; --bg: #050508; --glass: rgba(255, 255, 255, 0.02); }
-    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; text-transform: none !important; }
+    :root { --accent: #22d3ee; --dark: #050508; --card: #0f0f15; --glass: rgba(255, 255, 255, 0.03); }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
     
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--bg);
+      background: var(--dark);
       color: #fff;
       overflow-x: hidden;
-      font-weight: 500;
+      font-weight: 700;
     }
 
     /* --- DYNAMIC ISLAND --- */
-    .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1100px; transition: 0.3s; }
+    .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1200px; transition: 0.3s; }
     .dynamic-island {
       background: rgba(10, 10, 15, 0.85);
-      backdrop-filter: blur(30px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(25px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 60px; padding: 8px 12px;
       display: flex; align-items: center; justify-content: space-between;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.6);
     }
-    .logo-text { font-weight: 800; font-style: italic; font-size: 1.1rem; letter-spacing: -0.05em; color: #fff; text-decoration: none; }
-    .logo-option { color: var(--accent); text-shadow: 0 0 15px rgba(34, 211, 238, 0.5); }
+    .island-logo { font-weight: 800; font-size: 1rem; padding: 0 15px; color: #fff; text-decoration: none; font-style: italic; }
+    .island-logo span { color: var(--accent); }
     
     .island-nav { display: none; align-items: center; gap: 4px; }
     @media (min-width: 1024px) { .island-nav { display: flex; } }
-    .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.75rem; font-weight: 600; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
-    .island-nav a:hover, .island-nav a.active { color: #fff; background: rgba(255,255,255,0.05); }
+    .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.75rem; font-weight: 800; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
+    .island-nav a:hover, .island-nav a.active { color: #fff; background: rgba(255,255,255,0.08); }
+    .menu-trigger { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: #000; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
 
-    .menu-trigger { width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
-
-    /* --- CATALOG GRID --- */
-    .catalog-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 24px; }
-    @media (min-width: 768px) { .catalog-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 1200px) { .catalog-grid { grid-template-columns: repeat(3, 1fr); } }
-
-    .category-card {
-      position: relative; height: 420px; border-radius: 32px; overflow: hidden;
-      background: #111; border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 40px 100px -20px rgba(0,0,0,0.8);
-      transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    /* --- MOBILE MENU --- */
+    #mobileMenu { 
+      position: fixed; inset: 0; background: #050508; z-index: 10001; 
+      display: none; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; 
+      backdrop-filter: blur(20px);
     }
-    @media (max-width: 767px) { .category-card { height: 380px; } }
+    #mobileMenu.active { display: flex; }
+    #mobileMenu a { font-size: 1.8rem; font-weight: 800; margin: 0.8rem 0; color: #fff; text-decoration: none; font-style: italic; border-bottom: 1px solid rgba(255,255,255,0.05); width: 80%; text-align: center; padding-bottom: 10px; }
 
-    .card-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); transition: 0.8s ease; }
-    .category-card:hover .card-image { filter: brightness(0.9); transform: scale(1.08); }
-    .card-scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,1) 5%, rgba(0,0,0,0.4) 50%, transparent 100%); z-index: 1; }
-    .card-content { position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px; z-index: 2; }
-    .card-content h3 { font-size: 1.4rem; font-weight: 800; font-style: italic; margin-bottom: 8px; color: #fff; }
-    .card-content p { color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.5; }
+    /* --- TRACKER UI --- */
+    .search-container { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 30px; padding: 10px; transition: 0.4s; }
+    .search-container:focus-within { border-color: var(--accent); background: rgba(34, 211, 238, 0.05); }
+    .btn-track { background: var(--accent); color: #000; padding: 12px 35px; border-radius: 25px; font-weight: 800; font-style: italic; transition: 0.3s; cursor: pointer; border: none; }
 
-    /* --- KASH AI WIDGET --- */
-    #kashAI { position: fixed; bottom: 24px; right: 24px; z-index: 9998; display: none; cursor: pointer; }
-    .ai-avatar { width: 64px; height: 64px; background: #000; border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: 0 0 20px rgba(34, 211, 238, 0.2); }
-    .ai-orbit { position: absolute; inset: -4px; border-radius: 50%; border: 1px solid rgba(34, 211, 238, 0.5); animation: ping 2s infinite; }
-    .ai-bubble { position: absolute; bottom: 80px; right: 0; width: 260px; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 16px; border-radius: 20px 20px 4px 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+    /* --- DASHBOARD & PROGRESS --- */
+    .dashboard-ready { background: var(--card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 30px; padding: 60px 40px; text-align: center; }
+    .progress-bar-wrap { width: 100%; max-width: 320px; height: 6px; background: rgba(255, 255, 255, 0.05); border-radius: 10px; margin: 30px auto; position: relative; overflow: hidden; }
+    .progress-fill { position: absolute; width: 45%; height: 100%; background: linear-gradient(90deg, transparent, var(--accent), transparent); filter: drop-shadow(0 0 10px var(--accent)); animation: progressSlide 2s infinite ease-in-out; }
+    @keyframes progressSlide { 0% { left: -50%; } 100% { left: 100%; } }
 
-    /* --- MODAL --- */
-    #aiModal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); z-index: 10002; display: none; align-items: center; justify-content: center; padding: 20px; }
-    .modal-content { background: #08080a; border: 1px solid rgba(255,255,255,0.05); border-radius: 40px; width: 100%; max-width: 480px; padding: 40px; }
-    .form-step { display: none; }
-    .form-step.active { display: block; }
-    .desk-label { display: block; font-size: 0.7rem; font-weight: 800; color: #4b5563; text-transform: uppercase !important; letter-spacing: 2px; margin-top: 20px; }
-    .desk-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; color: #fff; font-size: 1rem; outline: none; transition: 0.3s; }
-    .desk-input:focus { border-bottom-color: var(--accent); }
-    .btn-action { background: #fff; color: #000; width: 100%; padding: 20px; border-radius: 100px; font-weight: 800; margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; border:none; cursor:pointer; }
-    .btn-action:hover { background: var(--accent); transform: translateY(-2px); }
+    .premium-glass-card {
+      background: rgba(15, 15, 22, 0.6);
+      backdrop-filter: blur(30px);
+      border: 1px solid rgba(34, 211, 238, 0.15);
+      border-radius: 32px;
+      padding: 24px;
+      margin-bottom: 1.5rem;
+    }
 
-    /* --- FOOTER (APPLE STYLE) --- */
-    .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.85rem; display: block; margin-bottom: 10px; font-weight: 600; text-decoration: none; }
+    /* --- PERSISTENT CHATBOT WIDGET --- */
+    #chatbot-widget {
+      position: fixed; bottom: 25px; right: 25px; z-index: 10000;
+      width: 350px; display: flex; flex-direction: column; align-items: flex-end;
+    }
+    #chat-window {
+      width: 100%; height: 450px; background: #0f0f15; border: 1px solid rgba(34, 211, 238, 0.3);
+      border-radius: 24px; margin-bottom: 15px; display: none; flex-direction: column;
+      overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); backdrop-filter: blur(15px);
+    }
+    #chat-header { background: var(--accent); color: #000; padding: 15px 20px; font-weight: 800; display: flex; justify-content: space-between; align-items: center; }
+    #chat-messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; scroll-behavior: smooth; }
+    .msg { padding: 10px 15px; border-radius: 15px; max-width: 85%; line-height: 1.4; }
+    .bot-msg { background: rgba(255,255,255,0.05); color: #fff; align-self: flex-start; border-bottom-left-radius: 2px; }
+    .user-msg { background: var(--accent); color: #000; align-self: flex-end; border-bottom-right-radius: 2px; }
+    #chat-input-area { padding: 15px; background: rgba(0,0,0,0.2); display: flex; gap: 10px; border-top: 1px solid rgba(255,255,255,0.05); }
+    #chat-input-area input { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 8px 12px; color: #fff; outline: none; }
+    #chat-trigger {
+      width: 65px; height: 65px; background: #000; border: 2px solid var(--accent);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; position: relative; box-shadow: 0 10px 30px rgba(34, 211, 238, 0.3);
+    }
+    .pulse-ring { position: absolute; inset: -4px; border: 2px solid var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
+
+    .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.9rem; display: block; margin-bottom: 10px; font-weight: 700; }
     .directory-link:hover { color: #fff; text-shadow: 0 0 10px var(--accent); }
-    
-  #mobileMenu {
-  position: absolute;
-  top: 60px;              /* sits just below your header */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;             /* not full screen */
-  max-width: 600px;       /* medium size */
-  background: rgba(5, 5, 8, 0.95); /* dark translucent background */
-  backdrop-filter: blur(20px);
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  z-index: 10001;
-  display: none;
-  flex-direction: column;
-  padding: 1rem 2rem;
-}
-
-#mobileMenu.active {
-  display: flex;
-  animation: fadeDown 0.3s ease forwards;
-}
-
-#mobileMenu a {
-  font-size: 1rem;
-  font-weight: 500;
-  margin: 0.6rem 0;
-  color: #fff;            /* keep links white for dark background */
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  width: 100%;
-  text-align: left;
-  padding: 8px 0;
-}
-
-#mobileMenu a:hover {
-  color: #00d4ff; /* cyan highlight for dark theme */
-}
-
-@keyframes fadeDown {
-  from { opacity: 0; transform: translate(-50%, -10px); }
-  to   { opacity: 1; transform: translate(-50%, 0); }
-}
-
-    .reveal { opacity: 0; transform: translateY(30px); transition: 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
-    .reveal.active { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
@@ -138,184 +109,172 @@
   <!-- Navigation -->
   <div class="nav-wrapper" id="islandWrapper">
     <nav class="dynamic-island">
-      <a href="index.html" class="logo-text">KASH <span class="logo-option">OPTION</span></a>
+      <a href="index.html" class="island-logo">KASH <span>OPTION</span></a>
       <div class="island-nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="catalog.html" class="active">Catalog</a>
+        <a href="catalog.html">Catalog</a>
         <a href="orders.html">Orders</a>
-        <a href="testimonials.html">Reviews</a>
-        <a href="faqs.html">Support</a>
+        <a href="tracker.html" class="active">Tracker</a>
         <a href="contact.html">Contact</a>
       </div>
       <button class="menu-trigger" onclick="toggleMenu()"><i class="fas fa-bars-staggered"></i></button>
     </nav>
   </div>
 
-  <!-- Mobile Menu -->
-<div id="mobileMenu">
-  <button onclick="toggleMenu()" class="close-btn">
-    <i class="fas fa-times"></i>
-  </button>
-  <a href="index.html">Home</a>
-  <a href="about.html">About Us</a>
-  <a href="catalog.html">Catalog</a>
-  <a href="tracker.html">Track Order</a>
-  <a href="orders.html">Today's Orders</a>
-  <a href="testimonials.html">Testimonials</a>
-  <a href="faqs.html">FAQs</a>
-  <a href="contact.html">Contact Us</a>
-  <a href="policy-terms.html">Policy & Terms</a>
-</div>
-  
-  <main class="pt-40 pb-32 px-6">
-    <header class="text-center max-w-4xl mx-auto mb-24 reveal">
-      <h1 class="text-4xl md:text-7xl font-black italic mb-6 leading-[1.1]">The global bridge</h1>
-      <p class="text-gray-400 font-medium text-lg md:text-xl max-w-2xl mx-auto">Exceptional sourcing for authentic global products. Every item is verified at our hubs before departure to Ghana.</p>
+  <div id="mobileMenu">
+    <button onclick="toggleMenu()" class="absolute top-10 right-10 text-white text-3xl"><i class="fas fa-times"></i></button>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="catalog.html">Catalog</a>
+    <a href="tracker.html" style="color: var(--accent);">Track Order</a>
+    <a href="orders.html">Today's Orders</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+
+  <main class="pt-40 px-6 max-w-5xl mx-auto pb-32">
+    <header class="text-center mb-12">
+      <h1 class="hero-title italic mb-6">Track your <span class="text-cyan-400">Packages</span></h1>
+      <p class="text-gray-500 font-bold mb-10 text-lg max-w-2xl mx-auto">Enter tracking IDs for instant logistics data or chat with our live assistant below.</p>
+      
+      <div class="search-container max-w-2xl mx-auto flex items-center gap-3">
+        <i class="fas fa-search ml-4 text-gray-700"></i>
+        <input type="text" id="trackingInput" placeholder="Enter ID (e.g. KO-101)..." class="w-full bg-transparent outline-none py-3 text-white font-bold text-lg">
+        <button id="trackBtn" class="btn-track">Track</button>
+      </div>
     </header>
 
-  <section class="max-w-7xl mx-auto catalog-grid mb-40">
-    <div class="reveal category-card">
-      <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Computing">
-      <div class="card-scrim"></div>
-      <div class="card-content">
-        <h3>High-end computing</h3>
-        <p>Original Apple Silicon, workstation laptops, and custom gaming builds.</p>
+    <section id="multiResults" class="min-h-[300px] mb-20">
+      <div id="emptyState" class="dashboard-ready">
+        <div class="w-20 h-20 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-400 mx-auto mb-8">
+            <i class="fas fa-satellite-dish fa-2x animate-pulse"></i>
+        </div>
+        <h3 class="text-2xl font-bold italic mb-4">System online</h3>
+        <p class="text-slate-500 text-lg font-bold max-w-sm mx-auto mb-8">Search results will display here. For conversational help, use the KASH AI at the bottom right.</p>
+        <div class="progress-bar-wrap"><div class="progress-fill"></div></div>
       </div>
-    </div>
-
-    <div class="reveal category-card" style="transition-delay: 0.1s;">
-      <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Auto">
-      <div class="card-scrim"></div>
-      <div class="card-content">
-        <h3>Automotive engineering</h3>
-        <p>Genuine OEM engines and performance components verified at source.</p>
-      </div>
-    </div>
-
-    <div class="reveal category-card" style="transition-delay: 0.2s;">
-      <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Electronics">
-      <div class="card-scrim"></div>
-      <div class="card-content">
-        <h3>Professional electronics</h3>
-        <p>Cinema-grade camera gear, drones, and smart ecosystems from authorized distributors.</p>
-      </div>
-    </div>
-
-    <div class="reveal category-card">
-      <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Interior">
-      <div class="card-scrim"></div>
-      <div class="card-content">
-        <h3>Interior design</h3>
-        <p>Premium ergonomic furniture and contemporary home styling crated for safe long-haul transit.</p>
-      </div>
-    </div>
-
-    <div class="reveal category-card" style="transition-delay: 0.1s;">
-      <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Logistics">
-      <div class="card-scrim"></div>
-      <div class="card-content">
-        <h3>Wholesale logistics</h3>
-        <p>Bulk inventory and container-load procurement for retailers with strict quality control.</p>
-      </div>
-    </div>
-
-    <div class="reveal category-card" style="transition-delay: 0.2s;">
-      <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=800" class="card-image" alt="Apparel">
-      <div class="card-scrim"></div>
-      <div class="card-content">
-        <h3>Luxury apparel</h3>
-        <p>Verified designer clothing and footwear from European and American markets.</p>
-      </div>
-    </div>
-</section>
+    </section>
   </main>
 
-  <!-- RESTORED APPLE DIRECTORY FOOTER -->
+  <!-- Chatbot Widget -->
+  <div id="chatbot-widget">
+    <div id="chat-window">
+      <div id="chat-header">
+        <span>KASH AI ASSISTANT</span>
+        <button onclick="toggleChat()"><i class="fas fa-times"></i></button>
+      </div>
+      <div id="chat-messages">
+        <div class="msg bot-msg">Hello! I'm your logistics assistant. Please enter your Tracking ID to check your package status. 👋</div>
+      </div>
+      <div id="chat-input-area">
+        <input type="text" id="bot-input" placeholder="Enter Tracking ID...">
+        <button onclick="handleBotSend()" class="text-cyan-400"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+    <div id="chat-trigger" onclick="toggleChat()">
+      <div class="pulse-ring"></div>
+      <img src="https://mrkash.net/logo.png" class="w-10 h-10 object-contain" alt="Kash Logo">
+    </div>
+  </div>
+
+  <!-- Global Footer -->
   <footer class="pt-32 pb-12 px-6 bg-[#030305] border-t border-white/5">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-24 text-left">
         <div class="col-span-2">
-            <h2 class="logo-text text-2xl mb-6">KASH <span class="logo-option">OPTION</span></h2>
-            <p class="text-slate-500 max-w-sm font-semibold text-sm leading-relaxed mb-8">Ghana's #1 premier sourcing and logistics hub. Bridging global excellence with local convenience since 2020.</p>
-            <div class="flex gap-4">
-                <a href="https://www.instagram.com/kashoption1" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/share/1CrwnBxS8W/" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
-            </div>
+            <h2 class="island-logo text-2xl mb-6" style="padding:0">KASH <span style="color: var(--accent);">OPTION</span></h2>
+            <p class="text-slate-500 max-w-sm font-semibold text-sm leading-relaxed">Ghana's #1 premier sourcing hub since 2020.</p>
         </div>
         <div>
           <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Directory</h4>
           <a href="index.html" class="directory-link">Home</a>
           <a href="about.html" class="directory-link">Our Story</a>
-          <a href="testimonials.html" class="directory-link">Client Reviews</a>
           <a href="orders.html" class="directory-link">Live Feed</a>
         </div>
         <div>
-          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Business</h4>
+          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Resources</h4>
           <a href="catalog.html" class="directory-link">Showroom</a>
-          <a href="contact.html" class="directory-link">Partner with us</a>
-          <a href="policy-terms.html" class="directory-link">Privacy Policy</a>
-          <a href="policy-terms.html" class="directory-link">Service Terms</a>
+          <a href="policy-terms.html" class="directory-link">Privacy</a>
+          <a href="policy-terms.html" class="directory-link">Terms</a>
         </div>
         <div>
           <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Support</h4>
           <a href="tracker.html" class="directory-link">Track Shipment</a>
           <a href="faqs.html" class="directory-link">Help Center</a>
-          <a href="mailto:Info@mrkash.net" class="directory-link">Legal Inquiries</a>
           <a href="https://wa.me/233240118846" class="directory-link">WhatsApp Sales</a>
         </div>
       </div>
-      <div class="border-t border-white/5 pt-12 text-center text-[10px] font-black text-slate-800 uppercase">
+      <div class="border-t border-white/5 pt-12 text-center text-[11px] font-black text-slate-800 uppercase tracking-widest">
         © 2026 Kash Option • Elite Logistics Protocol
       </div>
     </div>
   </footer>
 
-  <!-- KASH AI -->
-  <div id="kashAI" class="animate__animated" onclick="openAIModal()">
-    <div class="ai-bubble"><p class="text-white text-xs font-bold leading-relaxed"><span class="text-cyan-400">KASH AI:</span> Ready to order? Tap me to initialize your procurement request. 👋</p></div>
-    <div class="ai-avatar"><div class="ai-orbit"></div><img src="https://mrkash.net/logo.png" class="w-10 h-10 object-contain relative z-10" alt="Kash Logo"></div>
-  </div>
-
-  <div id="aiModal" onclick="closeAIModal()">
-    <div class="modal-content animate__animated animate__zoomIn" onclick="event.stopPropagation()">
-      <div id="step1" class="form-step active text-center">
-        <h2 class="text-2xl font-black italic mb-6">How can I help you?</h2>
-        <button onclick="goToOrder()" class="btn-action">I want to order something <i class="fas fa-shopping-bag"></i></button>
-        <button onclick="chatSales()" class="btn-action bg-white/5 border border-white/10 text-white">Just chat with sales <i class="fab fa-whatsapp"></i></button>
-      </div>
-      <div id="step2" class="form-step">
-        <h2 class="text-2xl font-black italic mb-4">Order details</h2>
-        <label class="desk-label">What do you want?</label><input type="text" id="qItem" class="desk-input" placeholder="e.g. MacBook Pro M3">
-        <div class="grid grid-cols-2 gap-4">
-          <div><label class="desk-label">Quantity</label><input type="number" id="qQty" class="desk-input" value="1"></div>
-          <div><label class="desk-label">Size / Color</label><input type="text" id="qSize" class="desk-input" placeholder="e.g. Space Gray"></div>
-        </div>
-        <label class="desk-label">Description</label><textarea id="qDesc" class="desk-input" rows="2" placeholder="Specifications..."></textarea>
-        <button onclick="sendOrder()" class="btn-action mt-8">Submit to WhatsApp <i class="fab fa-whatsapp"></i></button>
-        <button onclick="goToStep1()" class="w-full text-[10px] text-gray-600 font-bold uppercase mt-4">Go back</button>
-      </div>
-    </div>
-  </div>
-
   <script>
-    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
-    window.addEventListener('scroll', () => {
-      const kashAI = document.getElementById('kashAI');
-      if (window.scrollY > 300) { kashAI.style.display = 'block'; kashAI.classList.add('animate__fadeInUp'); }
-    });
-    function openAIModal() { document.getElementById('aiModal').style.display = 'flex'; }
-    function closeAIModal() { document.getElementById('aiModal').style.display = 'none'; }
-    function goToOrder() { document.getElementById('step1').classList.remove('active'); document.getElementById('step2').classList.add('active'); }
-    function goToStep1() { document.getElementById('step2').classList.remove('active'); document.getElementById('step1').classList.add('active'); }
-    function chatSales() { window.open('https://wa.me/233240118846?text=Hi%20Kash%20Option%2C%20I%20have%20some%20questions%20about%20your%20services.', '_blank'); }
-    function sendOrder() {
-      const msg = `*NEW PROCUREMENT REQUEST*%0A%0A*Item:* ${document.getElementById('qItem').value}%0A*Quantity:* ${document.getElementById('qQty').value}%0A*Size/Color:* ${document.getElementById('qSize').value}%0A*Description:* ${document.getElementById('qDesc').value}`;
-      window.open(`https://wa.me/233240118846?text=${msg}`, '_blank');
-      closeAIModal();
+    const API_URL = 'https://script.google.com/macros/s/AKfycbwYLLsHVW58LFu97j8bnqY076yCAbKjoaae-q0ueSosW4AT8gGVCPXRDrQ0h5KNAWw/exec';
+    
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('active');
     }
-    const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }); }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    function toggleChat() {
+      const win = document.getElementById('chat-window');
+      win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
+    }
+
+    async function handleBotSend() {
+      const input = document.getElementById('bot-input');
+      const msgContainer = document.getElementById('chat-messages');
+      const id = input.value.trim();
+      
+      if(!id) return;
+
+      // User Message
+      appendMessage('user', id);
+      input.value = '';
+
+      // Bot Loading
+      const loadingId = appendMessage('bot', '<i class="fas fa-spinner fa-spin"></i> Accessing database...');
+
+      try {
+        const response = await fetch(`${API_URL}?id=${encodeURIComponent(id)}`);
+        const data = await response.json();
+        
+        // Remove loading
+        document.getElementById(loadingId).remove();
+
+        if(data && data.Status && data.Status !== "Not Found") {
+          const reply = `📦 <b>Tracking ID:</b> ${data.TrackingID}<br>
+                         ⏳ <b>Status:</b> ${data.Status}<br>
+                         📍 <b>Location:</b> ${data.Location}<br>
+                         🗓 <b>ETA:</b> ${data.ETA}`;
+          appendMessage('bot', reply);
+        } else {
+          appendMessage('bot', '❌ Sorry, tracking ID not found. Please verify the ID and try again.');
+          appendMessage('bot', '<a href="https://wa.me/233240118846" style="color:#22d3ee; font-weight:bold;">Need more help? Chat on WhatsApp.</a>');
+        }
+      } catch (error) {
+        document.getElementById(loadingId).remove();
+        appendMessage('bot', '⚠️ Error connecting to server. Please try again later.');
+      }
+    }
+
+    function appendMessage(sender, text) {
+      const id = 'msg-' + Date.now();
+      const div = document.createElement('div');
+      div.id = id;
+      div.className = `msg ${sender}-msg animate__animated animate__fadeInUp`;
+      div.innerHTML = text;
+      document.getElementById('chat-messages').appendChild(div);
+      document.getElementById('chat-messages').scrollTop = document.getElementById('chat-messages').scrollHeight;
+      return id;
+    }
+
+    // Enter Key Listener
+    document.getElementById('bot-input').addEventListener('keypress', (e) => {
+      if(e.key === 'Enter') handleBotSend();
+    });
   </script>
 </body>
 </html>
