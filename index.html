@@ -1,1 +1,636 @@
-<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, viewport-fit=cover\">\n  <title>Elite Tracking | Kash Option Ghana</title>\n  <link rel=\"icon\" type=\"image/png\" href=\"https://mrkash.net/logo.png\">\n  <script src=\"https://cdn.tailwindcss.com\"></script>\n  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css\"/>\n  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css\">\n  <link href=\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap\" rel=\"stylesheet\">\n\n  <style>\n    :root { --accent: #22d3ee; --bg: #050508; --card: #0f0f15; }\n    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }\n    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: #fff; overflow-x: hidden; font-weight: 700; }\n\n    /* --- DYNAMIC ISLAND --- */\n    .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1200px; transition: 0.3s; }\n    .dynamic-island {\n      background: rgba(10, 10, 15, 0.85); backdrop-filter: blur(25px) saturate(180%);\n      border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 60px; padding: 8px 12px;\n      display: flex; align-items: center; justify-content: space-between; box-shadow: 0 15px 30px rgba(0,0,0,0.6);\n    }\n    .island-logo { font-weight: 800; font-size: 1rem; color: #fff; text-decoration: none; font-style: italic; }\n    .island-logo span { color: var(--accent); }\n\n    /* --- OPTIMIZED CHATBOT WIDGET --- */\n    #chatbot-widget {\n      position: fixed; bottom: 20px; right: 20px; z-index: 10000;\n      width: 300px; display: flex; flex-direction: column; align-items: flex-end;\n    }\n    #chat-window {\n      width: 100%; height: 400px; background: #08080a; border: 1px solid rgba(34, 211, 238, 0.2);\n      border-radius: 20px; margin-bottom: 12px; display: none; flex-direction: column;\n      overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.8); backdrop-filter: blur(20px);\n    }\n    #chat-header { background: var(--accent); color: #000; padding: 12px 15px; font-weight: 800; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; }\n    #chat-messages { flex: 1; padding: 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; font-size: 0.8rem; }\n    .msg { padding: 8px 12px; border-radius: 12px; max-width: 90%; line-height: 1.4; }\n    .bot-msg { background: rgba(255,255,255,0.05); color: #fff; align-self: flex-start; border-bottom-left-radius: 2px; }\n    .user-msg { background: var(--accent); color: #000; align-self: flex-end; border-bottom-right-radius: 2px; }\n    #chat-input-area { padding: 10px; background: rgba(0,0,0,0.3); display: flex; gap: 8px; }\n    #chat-input-area input { flex: 1; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 6px 10px; color: #fff; outline: none; font-size: 0.8rem; }\n    #chat-trigger {\n      width: 56px; height: 56px; background: #000; border: 2px solid var(--accent); border-radius: 50%;\n      display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s;\n    }\n    #chat-trigger:hover { transform: scale(1.05); background: var(--accent); }\n\n    /* --- UI ELEMENTS --- */\n    .btn-track { background: var(--accent); color: #000; padding: 12px 35px; border-radius: 25px; font-weight: 800; font-style: italic; cursor: pointer; border: none; }\n    .search-container { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 30px; padding: 10px; }\n  </style>\n</head>\n<body>\n\n  <div class=\"nav-wrapper\">\n    <nav class=\"dynamic-island\">\n      <a href=\"index.html\" class=\"island-logo\">KASH <span>OPTION</span></a>\n      <div class=\"hidden md:flex gap-4\">\n        <a href=\"index.html\" class=\"text-[10px] uppercase font-bold text-gray-400\">Home</a>\n        <a href=\"tracker.html\" class=\"text-[10px] uppercase font-bold text-white\">Tracker</a>\n      </div>\n      <button class=\"menu-trigger\" onclick=\"toggleChat()\" style=\"width:32px; height:32px; border-radius:50%; background:var(--accent); color:#000; border:none;\">\n        <i class=\"fas fa-headset\"></i>\n      </button>\n    </nav>\n  </div>\n\n  <main class=\"pt-40 px-6 max-w-5xl mx-auto pb-32\">\n    <header class=\"text-center mb-12\">\n      <h1 class=\"text-4xl md:text-7xl font-black italic mb-6\">Elite <span class=\"text-cyan-400\">Tracking</span></h1>\n      <div class=\"search-container max-w-2xl mx-auto flex items-center gap-3\">\n        <i class=\"fas fa-search ml-4 text-gray-700\"></i>\n        <input type=\"text\" id=\"trackingInput\" placeholder=\"Enter Tracking ID...\" class=\"w-full bg-transparent outline-none py-3 text-white font-bold text-lg\">\n        <button id=\"trackBtn\" class=\"btn-track\" onclick=\"handleBotSend(document.getElementById('trackingInput').value)\">Track</button>\n      </div>\n    </header>\n\n    <div id=\"multiResults\"></div>\n  </main>\n\n  <!-- Classic Floating Chatbot -->\n  <div id=\"chatbot-widget\">\n    <div id=\"chat-window\">\n      <div id=\"chat-header\">\n        <span>KASH LOGISTICS ASSISTANT</span>\n        <button onclick=\"toggleChat()\"><i class=\"fas fa-minus\"></i></button>\n      </div>\n      <div id=\"chat-messages\">\n        <div class=\"msg bot-msg\">Hello! Enter your Tracking ID to see your live package status with full ETA details. 🚚</div>\n      </div>\n      <div id=\"chat-input-area\">\n        <input type=\"text\" id=\"bot-input\" placeholder=\"Tracking ID...\">\n        <button onclick=\"handleBotSend()\" class=\"text-cyan-400\"><i class=\"fas fa-paper-plane\"></i></button>\n      </div>\n    </div>\n    <div id=\"chat-trigger\" onclick=\"toggleChat()\">\n      <img src=\"https://mrkash.net/logo.png\" class=\"w-8 h-8 object-contain\" alt=\"Kash AI\">\n    </div>\n  </div>\n\n  <script>\n    const API_URL = 'https://script.google.com/macros/s/AKfycbwYLLsHVW58LFu97j8bnqY076yCAbKjoaae-q0ueSosW4AT8gGVCPXRDrQ0h5KNAWw/exec';\n\n    function toggleChat() {\n      const win = document.getElementById('chat-window');\n      win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';\n    }\n\n    async function handleBotSend(manualId = null) {\n      const input = document.getElementById('bot-input');\n      const id = manualId || input.value.trim();\n      if(!id) return;\n      if(!manualId) input.value = '';\n      if(document.getElementById('chat-window').style.display !== 'flex') toggleChat();\n\n      appendMessage('user', id);\n      const loadingId = appendMessage('bot', '<i class=\"fas fa-circle-notch fa-spin\"></i> Verifying with satellite hub...');\n\n      try {\n        const response = await fetch(`${API_URL}?id=${encodeURIComponent(id)}`);\n        const data = await response.json();\n        document.getElementById(loadingId).remove();\n\n        if(data && data.Status && data.Status !== \"Not Found\") {\n          appendMessage('bot', `📦 <b>Tracking ID:</b> ${data.TrackingID}<br>⏳ <b>Status:</b> ${data.Status}<br>📍 <b>Location:</b> ${data.Location}<br>🗓 <b>ETA:</b> ${data.ETA}`);\n        } else {\n          appendMessage('bot', '❌ Sorry, tracking ID not found. Verify the number or chat with us.');\n          appendMessage('bot', '<a href=\"https://wa.me/233240118846\" target=\"_blank\" style=\"color:#22d3ee;font-weight:bold;\">Chat on WhatsApp</a>');\n        }\n      } catch (e) {\n        document.getElementById(loadingId).remove();\n        appendMessage('bot', '⚠️ Connection error. Please try again.');\n      }\n    }\n\n    function appendMessage(sender, text) {\n      const id = 'msg-' + Date.now();\n      const div = document.createElement('div');\n      div.id = id; div.className = `msg ${sender}-msg animate__animated animate__fadeInUp`;\n      div.innerHTML = text; \n      const container = document.getElementById('chat-messages');\n      container.appendChild(div); \n      container.scrollTop = container.scrollHeight;\n      return id;\n    }\n\n    document.getElementById('bot-input').addEventListener('keypress', (e) => { if(e.key === 'Enter') handleBotSend(); });\n  </script>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  
+  <title>Elite Tracking | Ghana's #1 Logistics Partner | Kash Option</title>
+  <meta name="description" content="AI-powered real-time tracking for your orders from USA, UK, and China. Ghana's premier logistics agency. Shop globally, stay updated locally.">
+  
+  <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
+  <link rel="icon" type="image/png" href="https://mrkash.net/logo.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+  <style>
+    :root { --cyan: #22d3ee; --dark: #050508; --card: #0f0f15; --support-phone: '233240118846'; }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; text-transform: none !important; }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--dark);
+      color: #fff;
+      overflow-x: hidden;
+      font-weight: 700;
+    }
+
+    /* --- DYNAMIC ISLAND --- */
+    .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1200px; transition: 0.3s; }
+    .dynamic-island {
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(25px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 60px; padding: 6px 12px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+    }
+    .island-logo { font-weight: 800; font-size: 1rem; padding: 0 15px; color: #fff; text-decoration: none; font-style: italic; }
+    .island-logo span { color: var(--cyan); }
+    
+    .island-nav { display: none; align-items: center; gap: 4px; }
+    @media (min-width: 1024px) { .island-nav { display: flex; } }
+    .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.75rem; font-weight: 800; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
+    .island-nav a:hover, .island-nav a.active { color: #fff; background: rgba(255,255,255,0.08); }
+    .island-nav a:focus { outline: 2px solid var(--cyan); outline-offset: 2px; }
+    
+    .menu-trigger { 
+      width: 36px; height: 36px; border-radius: 50%; background: var(--cyan); color: #000; 
+      display: flex; align-items: center; justify-content: center; cursor: pointer; border: none;
+      transition: 0.3s;
+    }
+    .menu-trigger:hover, .menu-trigger:focus { transform: scale(1.1); outline: none; }
+
+    /* --- MOBILE MENU --- */
+    #mobileMenu { 
+      position: fixed; inset: 0; background: #050508; z-index: 10001; 
+      display: none; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; 
+      backdrop-filter: blur(20px);
+    }
+    #mobileMenu.active { display: flex; }
+    #mobileMenu a { 
+      font-size: 1.8rem; font-weight: 800; margin: 0.8rem 0; color: #fff; text-decoration: none; 
+      font-style: italic; border-bottom: 1px solid rgba(255,255,255,0.05); width: 80%; text-align: center;
+      padding: 0.5rem 0; transition: 0.3s;
+    }
+    #mobileMenu a:hover, #mobileMenu a:focus { color: var(--cyan); outline: none; }
+
+    /* --- TRACKER UI --- */
+    .hero-title { font-size: clamp(2.2rem, 8vw, 4.2rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
+    .search-container { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 30px; padding: 8px; transition: 0.4s; }
+    .search-container:focus-within { border-color: var(--cyan); background: rgba(34, 211, 238, 0.05); }
+    
+    .btn-track { 
+      background: var(--cyan); color: #000; padding: 12px 35px; border-radius: 25px; font-weight: 800; 
+      font-style: italic; transition: 0.3s; cursor: pointer; border: none;
+    }
+    .btn-track:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(34, 211, 238, 0.3); }
+    .btn-track:focus { outline: 2px solid #fff; outline-offset: 2px; }
+
+    /* --- DASHBOARD & PROGRESS --- */
+    .dashboard-ready { background: var(--card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 30px; padding: 60px 40px; text-align: center; }
+    .progress-bar-wrap { width: 100%; max-width: 320px; height: 6px; background: rgba(255, 255, 255, 0.05); border-radius: 10px; margin: 30px auto; position: relative; overflow: hidden; }
+    .progress-fill { position: absolute; width: 45%; height: 100%; background: linear-gradient(90deg, transparent, var(--cyan), transparent); filter: drop-shadow(0 0 10px var(--cyan)); animation: progressSlide 2s infinite; }
+    @keyframes progressSlide { 0% { left: -50%; } 100% { left: 100%; } }
+
+    /* --- PREMIUM TRACKING CARD --- */
+    .premium-glass-card {
+      background: rgba(15, 15, 22, 0.6);
+      backdrop-filter: blur(30px);
+      border: 1px solid rgba(34, 211, 238, 0.15);
+      border-radius: 32px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+    .status-badge-elite { 
+      background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(34, 211, 238, 0.3); 
+      color: var(--cyan); padding: 6px 14px; border-radius: 12px; font-size: 0.7rem; font-weight: 800;
+    }
+    .premium-glass-card .report-btn {
+      color: var(--cyan); text-decoration: none; font-size: 0.625rem; font-weight: 800; font-style: italic;
+      transition: 0.3s; cursor: pointer; border: none; background: none; padding: 0;
+    }
+    .premium-glass-card .report-btn:hover, .premium-glass-card .report-btn:focus { 
+      text-decoration: underline; outline: none;
+    }
+
+    /* --- ERROR STATE --- */
+    .error-card {
+      background: rgba(239, 68, 68, 0.05);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    /* --- KASH AI --- */
+    #kashAI { position: fixed; bottom: 24px; right: 24px; z-index: 9998; display: none; cursor: pointer; }
+    .ai-avatar { 
+      width: 64px; height: 64px; background: #000; border: 2px solid var(--cyan); 
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative;
+    }
+    .ai-orbit { position: absolute; inset: -4px; border-radius: 50%; border: 1px solid rgba(34, 211, 238, 0.5); animation: ping 2s infinite; }
+    .ai-bubble { 
+      position: absolute; bottom: 80px; right: 0; width: 280px; background: rgba(10, 10, 15, 0.95); 
+      backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 16px; 
+      border-radius: 20px 20px 4px 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.9rem; display: block; margin-bottom: 10px; font-weight: 700; }
+    .directory-link:hover { color: #fff; text-shadow: 0 0 10px var(--cyan); }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <div class="nav-wrapper" id="islandWrapper">
+    <nav class="dynamic-island">
+      <a href="index.html" class="island-logo">KASH <span>OPTION</span></a>
+      <div class="island-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="orders.html">Orders</a>
+        <a href="testimonials.html">Reviews</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html">Contact</a>
+        <a href="policy-terms.html">Policy</a>
+        <a href="tracker.html" class="active">Tracker</a>
+      </div>
+      <button class="menu-trigger" onclick="toggleMenu()" aria-label="Open navigation menu">
+        <i class="fas fa-bars-staggered" aria-hidden="true"></i>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobile Nav Overlay -->
+  <div id="mobileMenu">
+    <button onclick="toggleMenu()" class="absolute top-10 right-10 text-white text-3xl" aria-label="Close menu">
+      <i class="fas fa-times" aria-hidden="true"></i>
+    </button>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="catalog.html">Catalog</a>
+    <a href="tracker.html" style="color: var(--cyan);">Track Order</a>
+    <a href="orders.html">Today's Orders</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="faqs.html">FAQs</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="policy-terms.html">Policy & Terms</a>
+  </div>
+
+  <main class="pt-40 px-6 max-w-5xl mx-auto pb-32">
+    <header class="text-center mb-12">
+      <h1 class="hero-title italic mb-6">Track your <span class="text-cyan-400">Packages</span></h1>
+      <p class="text-gray-500 font-bold mb-10 text-sm md:text-base max-w-2xl mx-auto">Enter tracking IDs separated by commas for instant status audio and real-time logistics data.</p>
+      
+      <div class="search-container max-w-2xl mx-auto flex items-center gap-3">
+        <i class="fas fa-search ml-4 text-gray-700" aria-hidden="true"></i>
+        <input 
+          type="text" 
+          id="trackingInput" 
+          placeholder="KO-101, KO-202..." 
+          aria-label="Enter tracking IDs separated by commas"
+          class="w-full bg-transparent outline-none py-3 text-white font-bold text-lg"
+        >
+        <button 
+          id="trackBtn" 
+          class="btn-track"
+          aria-label="Track packages"
+        >
+          Track
+        </button>
+      </div>
+      <p id="inputError" class="text-red-400 text-sm mt-2 hidden" role="alert"></p>
+    </header>
+
+    <!-- Results / Dashboard Container -->
+    <section id="multiResults" class="min-h-[300px] mb-20" aria-live="polite" aria-label="Tracking results">
+      <div id="emptyState" class="dashboard-ready">
+        <div class="w-16 h-16 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-400 mx-auto mb-6">
+            <i class="fas fa-signal animate-pulse" aria-hidden="true"></i>
+        </div>
+        <h3 class="text-xl font-bold italic mb-2">System online</h3>
+        <p class="text-gray-500 text-sm font-semibold max-w-sm mx-auto">Your live tracking details will display and be read aloud here as soon as your tracking number is received.</p>
+        <div class="progress-bar-wrap">
+            <div class="progress-fill"></div>
+        </div>
+        <p class="text-[10px] uppercase tracking-[0.3em] text-cyan-400 font-bold">Scanning Global Logistics Database</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Directory Footer -->
+  <footer class="pt-32 pb-12 px-6 bg-[#030305] border-t border-white/5">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-24 text-left">
+        <div class="col-span-2">
+            <h2 class="island-logo text-2xl mb-6 p-0">KASH <span>OPTION</span></h2>
+            <p class="text-slate-500 max-w-sm font-semibold text-sm leading-relaxed mb-8">Ghana's #1 premier sourcing and logistics hub. Bridging global excellence with local convenience since 2020.</p>
+            <div class="flex gap-4">
+                <a href="https://www.instagram.com/kashoption1" class="text-xl text-white/40 hover:text-white transition-all" aria-label="Visit Kash Option on Instagram">
+                  <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.facebook.com/share/1CrwnBxS8W/" class="text-xl text-white/40 hover:text-white transition-all" aria-label="Visit Kash Option on Facebook">
+                  <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+        <div>
+          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Directory</h4>
+          <a href="index.html" class="directory-link">Home</a>
+          <a href="about.html" class="directory-link">Our Story</a>
+          <a href="testimonials.html" class="directory-link">Client Reviews</a>
+          <a href="orders.html" class="directory-link">Live Feed</a>
+        </div>
+        <div>
+          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Business</h4>
+          <a href="catalog.html" class="directory-link">Showroom</a>
+          <a href="contact.html" class="directory-link">Partner</a>
+          <a href="policy-terms.html" class="directory-link">Privacy</a>
+          <a href="policy-terms.html" class="directory-link">Terms</a>
+        </div>
+        <div>
+          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Support</h4>
+          <a href="tracker.html" class="directory-link">Track Shipment</a>
+          <a href="faqs.html" class="directory-link">Help Center</a>
+          <a href="mailto:Info@mrkash.net" class="directory-link">Legal Inquiries</a>
+          <a href="https://wa.me/233240118846" class="directory-link">WhatsApp Sales</a>
+        </div>
+      </div>
+      <div class="border-t border-white/5 pt-12 text-center">
+        <p class="text-[10px] font-black text-slate-800 tracking-[0.5em] uppercase">© 2026 Kash Option • Elite Logistics Protocol</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Smart Chat Support Bubble -->
+  <div id="kashAI" class="animate__animated" onclick="contactSupport()" role="button" tabindex="0" aria-label="Chat with Kash AI support">
+    <div class="ai-bubble">
+      <p class="text-white text-xs font-bold leading-relaxed">
+        <span class="text-cyan-400">KASH AI:</span> Issue with your tracking ID? 🚚 Tap here to chat with an agent!
+      </p>
+    </div>
+    <div class="ai-avatar">
+      <div class="ai-orbit"></div>
+      <img src="https://mrkash.net/logo.png" class="w-10 h-10 object-contain relative z-10" alt="Kash Logo">
+    </div>
+  </div>
+
+  <script>
+    // ============================================
+    // CONFIGURATION
+    // ============================================
+    const CONFIG = {
+      SHEET_URL: 'https://docs.google.com/spreadsheets/d/1btTjXG_7gYVgI8y1Zdlht08IvRmSfWpiXZDSY-R0Ybc/export?format=csv',
+      SUPPORT_PHONE: '233240118846',
+      LOAD_TIMEOUT: 3000,
+      ANIMATION_DELAY: 1200
+    };
+
+    // ============================================
+    // STATE MANAGEMENT
+    // ============================================
+    let state = {
+      database: [],
+      dbLoaded: false,
+      dbError: false,
+      lastQuery: "",
+      isLoading: false
+    };
+
+    // ============================================
+    // UTILITY FUNCTIONS
+    // ============================================
+
+    /**
+     * Sanitize HTML to prevent XSS attacks
+     */
+    function sanitizeHTML(str) {
+      if (!str) return '';
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    /**
+     * Show error message to user
+     */
+    function showError(message) {
+      const errorEl = document.getElementById('inputError');
+      errorEl.textContent = message;
+      errorEl.classList.remove('hidden');
+      setTimeout(() => {
+        errorEl.classList.add('hidden');
+      }, 5000);
+    }
+
+    /**
+     * Text-to-speech with proper error handling
+     */
+    function speakStatus(text) {
+      try {
+        const synth = window.speechSynthesis;
+        if (!synth) {
+          console.warn('Speech synthesis not supported');
+          return;
+        }
+
+        synth.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.volume = 1;
+        utterance.rate = 0.95;
+        utterance.pitch = 1;
+
+        const voices = synth.getVoices();
+        utterance.voice = voices.find(v => v.lang === 'en-GB' || v.lang === 'en-US') || voices[0];
+
+        synth.speak(utterance);
+      } catch (e) {
+        console.error('Speech synthesis error:', e);
+      }
+    }
+
+    // ============================================
+    // DATABASE OPERATIONS
+    // ============================================
+
+    /**
+     * Load tracking database from Google Sheets
+     */
+    async function loadDatabase() {
+      if (state.dbLoaded || state.dbError) return;
+
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), CONFIG.LOAD_TIMEOUT);
+
+        const response = await fetch(CONFIG.SHEET_URL, { signal: controller.signal });
+        clearTimeout(timeoutId);
+
+        if (!response.ok) throw new Error('Database fetch failed');
+
+        const csv = await response.text();
+        Papa.parse(csv, {
+          header: true,
+          skipEmptyLines: true,
+          complete: (res) => {
+            state.database = res.data;
+            state.dbLoaded = true;
+          },
+          error: (err) => {
+            console.error('CSV parse error:', err);
+            state.dbError = true;
+          }
+        });
+      } catch (e) {
+        console.error('Database load error:', e);
+        state.dbError = true;
+      }
+    }
+
+    /**
+     * Find tracking record by ID (case-insensitive)
+     */
+    function findTrackingRecord(id) {
+      const normalized = id.trim().toUpperCase();
+      return state.database.find(item => {
+        const trackingId = (item['TrackingID'] || item['Tracking ID'] || item['tracking_id'] || '').toString().trim().toUpperCase();
+        return trackingId === normalized;
+      });
+    }
+
+    // ============================================
+    // UI FUNCTIONS
+    // ============================================
+
+    /**
+     * Toggle mobile menu
+     */
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const island = document.getElementById('islandWrapper');
+      menu.classList.toggle('active');
+
+      if (menu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+        island.style.opacity = '0';
+      } else {
+        document.body.style.overflow = '';
+        island.style.opacity = '1';
+      }
+    }
+
+    /**
+     * Generate tracking card HTML
+     */
+    function generateCard(data) {
+      const timeStamp = new Date().toLocaleString('en-GB', { hour12: true });
+      const statusValue = sanitizeHTML(data.Status || 'Processing');
+      const trackingId = sanitizeHTML(data.TrackingID || data['Tracking ID'] || 'Unknown');
+      const location = sanitizeHTML(data.Location || 'International Hub');
+      const eta = sanitizeHTML(data.ETA || 'TBD');
+
+      const statusStyles = {
+        'Delivered': 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+        'In Transit': 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20'
+      };
+      const pillClass = statusStyles[statusValue] || 'bg-white/10 text-white border-white/20';
+
+      return `
+        <div class="premium-glass-card animate__animated animate__fadeInUp mb-6">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+            <div>
+              <p class="text-[10px] text-gray-500 font-black uppercase mb-1">Package verified</p>
+              <h3 class="text-2xl font-black italic tracking-tighter">${trackingId}</h3>
+            </div>
+            <span class="status-badge-elite ${pillClass}">${statusValue}</span>
+          </div>
+          <div class="grid grid-cols-2 gap-8 px-2">
+            <div>
+              <p class="text-[10px] text-gray-500 font-black uppercase mb-2">Location</p>
+              <p class="text-sm font-black">${location}</p>
+            </div>
+            <div>
+              <p class="text-[10px] text-gray-500 font-black uppercase mb-2">Arrival Est.</p>
+              <p class="text-sm font-black">${eta}</p>
+            </div>
+          </div>
+          <div class="mt-8 pt-6 border-t border-white/5 flex justify-between items-center">
+            <p class="text-[9px] text-gray-600 font-bold italic">
+              <i class="fas fa-clock mr-1" aria-hidden="true"></i> Verified: ${timeStamp}
+            </p>
+            <button onclick="contactSupport()" class="report-btn" aria-label="Report issue with this tracking">
+              Report Issue
+            </button>
+          </div>
+        </div>`;
+    }
+
+    /**
+     * Generate error card HTML
+     */
+    function generateErrorCard(id) {
+      const sanitizedId = sanitizeHTML(id.toUpperCase());
+      return `
+        <div class="premium-glass-card error-card animate__animated animate__fadeInUp mb-6 p-10 text-center">
+          <i class="fas fa-exclamation-circle text-red-400 text-2xl mb-4" aria-hidden="true"></i>
+          <h4 class="text-sm font-bold text-red-400 italic">Tracking ID "${sanitizedId}" not found.</h4>
+          <p class="text-xs text-red-300 mt-2">Please verify the ID and try again, or contact support.</p>
+        </div>`;
+    }
+
+    /**
+     * Display loading state
+     */
+    function showLoadingState() {
+      const resultsSection = document.getElementById('multiResults');
+      resultsSection.innerHTML = `
+        <div class="dashboard-ready animate__animated animate__fadeIn">
+          <div class="w-10 h-10 border-4 border-cyan-400/20 border-t-cyan-400 rounded-full animate-spin mx-auto mb-4"></div>
+          <p class="text-xs uppercase tracking-[0.3em] text-gray-400 font-black">Accessing Secure Records...</p>
+        </div>`;
+    }
+
+    /**
+     * Display database error
+     */
+    function showDatabaseError() {
+      const resultsSection = document.getElementById('multiResults');
+      resultsSection.innerHTML = `
+        <div class="premium-glass-card error-card p-10 text-center">
+          <i class="fas fa-server text-red-400 text-3xl mb-4" aria-hidden="true"></i>
+          <h3 class="text-lg font-bold text-red-400 italic mb-2">Database unavailable</h3>
+          <p class="text-sm text-red-300 mb-4">Please try again in a moment or contact support.</p>
+          <button onclick="contactSupport()" class="bg-cyan-400 text-black px-6 py-2 rounded-full font-bold text-sm hover:bg-white transition-colors">
+            Contact Support
+          </button>
+        </div>`;
+    }
+
+    // ============================================
+    // MAIN TRACKING FUNCTION
+    // ============================================
+
+    async function trackNow() {
+      const input = document.getElementById('trackingInput').value.trim();
+      const resultsSection = document.getElementById('multiResults');
+
+      // Validation
+      if (!input) {
+        showError('Please enter at least one tracking ID');
+        return;
+      }
+
+      if (state.isLoading) return;
+      state.isLoading = true;
+
+      // Show loading state
+      showLoadingState();
+      state.lastQuery = input;
+
+      try {
+        speakStatus("Authenticating.");
+
+        // Ensure database is loaded
+        if (!state.dbLoaded && !state.dbError) {
+          await loadDatabase();
+        }
+
+        // Wait for animation
+        await new Promise(resolve => setTimeout(resolve, CONFIG.ANIMATION_DELAY));
+
+        // Check if database failed
+        if (state.dbError) {
+          showDatabaseError();
+          speakStatus("Database is temporarily unavailable. Please contact support for assistance.");
+          return;
+        }
+
+        // Process tracking IDs
+        const ids = input.split(',').map(i => i.trim()).filter(i => i.length > 0);
+
+        if (ids.length === 0) {
+          showError('Please enter valid tracking IDs');
+          return;
+        }
+
+        let html = '';
+        let voiceScript = "";
+        let foundCount = 0;
+
+        ids.forEach(id => {
+          const row = findTrackingRecord(id);
+
+          if (row) {
+            foundCount++;
+            const status = row.Status || 'Processing';
+            const location = row.Location || 'International Hub';
+            const trackingId = row.TrackingID || row['Tracking ID'] || id;
+            const date = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
+
+            html += generateCard(row);
+            voiceScript += `Your Order ${trackingId} is ${status}. Current location is ${location}. Today is ${date}. `;
+          } else {
+            html += generateErrorCard(id);
+            voiceScript += `Tracking ID ${id} was not found. `;
+          }
+        });
+
+        // Display results
+        resultsSection.innerHTML = html;
+        voiceScript += foundCount > 0 ? "Need further assistance? Tap the chat button." : "Please tap the chat button for instant support.";
+        speakStatus(voiceScript);
+
+        // Show support AI
+        const ai = document.getElementById('kashAI');
+        ai.style.display = 'block';
+        ai.classList.add('animate__fadeInUp');
+
+      } catch (e) {
+        console.error('Track error:', e);
+        showError('An error occurred. Please try again.');
+        resultsSection.innerHTML = document.getElementById('emptyState').parentElement.innerHTML;
+      } finally {
+        state.isLoading = false;
+      }
+    }
+
+    /**
+     * Contact support via WhatsApp
+     */
+    function contactSupport() {
+      const msg = state.lastQuery
+        ? `Hi Kash Option, I need help with Tracking ID: ${encodeURIComponent(state.lastQuery)}`
+        : 'Hi Kash Option, I need tracking assistance.';
+
+      window.open(`https://wa.me/${CONFIG.SUPPORT_PHONE}?text=${msg}`, '_blank');
+    }
+
+    // ============================================
+    // EVENT LISTENERS
+    // ============================================
+
+    // Track on button click
+    document.getElementById('trackBtn').addEventListener('click', trackNow);
+
+    // Track on Enter key
+    document.getElementById('trackingInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        trackNow();
+      }
+    });
+
+    // AI bubble keyboard support
+    document.getElementById('kashAI').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        contactSupport();
+      }
+    });
+
+    // ============================================
+    // INITIALIZATION
+    // ============================================
+
+    // Pre-load database on page ready
+    document.addEventListener('DOMContentLoaded', () => {
+      loadDatabase();
+    });
+
+  </script>
+</body>
+</html>
