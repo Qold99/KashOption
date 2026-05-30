@@ -28,7 +28,7 @@
     /* --- DYNAMIC ISLAND --- */
     .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1100px; transition: 0.3s; }
     .dynamic-island {
-      background: rgba(10, 10, 15, 0.75);
+      background: rgba(10, 10, 15, 0.85);
       backdrop-filter: blur(30px) saturate(180%);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 60px; padding: 8px 12px;
@@ -40,20 +40,15 @@
     
     .island-nav { display: none; align-items: center; gap: 4px; }
     @media (min-width: 1024px) { .island-nav { display: flex; } }
-    .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.75rem; font-weight: 700; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
+    .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.75rem; font-weight: 600; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
     .island-nav a:hover, .island-nav a.active { color: #fff; background: rgba(255,255,255,0.05); }
 
     .menu-trigger { width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
 
     /* --- MOBILE MENU --- */
-    #mobileMenu {
-      position: fixed; inset: 0; background: #050508; z-index: 10001; 
-      display: none; flex-direction: column; align-items: center; justify-content: center; padding: 2rem;
-      backdrop-filter: blur(20px);
-    }
-    #mobileMenu.active { display: flex; animation: fadeIn 0.3s ease-in-out; }
-    #mobileMenu a { font-size: 1.8rem; font-weight: 800; margin: 0.8rem 0; color: #fff; text-decoration: none; font-style: italic; border-bottom: 1px solid rgba(255,255,255,0.05); width: 80%; text-align: center; padding: 1rem 0; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    #mobileMenu { position: fixed; inset: 0; background: #050508; z-index: 10001; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; }
+    #mobileMenu.active { display: flex; }
+    #mobileMenu a { font-size: 1.8rem; font-weight: 800; margin: 0.8rem 0; color: #fff; text-decoration: none; font-style: italic; }
 
     /* --- CATALOG GRID --- */
     .catalog-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 24px; }
@@ -95,7 +90,7 @@
     /* --- FOOTER (APPLE STYLE) --- */
     .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.85rem; display: block; margin-bottom: 10px; font-weight: 600; text-decoration: none; }
     .directory-link:hover { color: #fff; text-shadow: 0 0 10px var(--accent); }
-
+    
     .reveal { opacity: 0; transform: translateY(30px); transition: 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
     .reveal.active { opacity: 1; transform: translateY(0); }
   </style>
@@ -117,19 +112,17 @@
         <a href="policy-terms.html">Policy</a>
         <a href="tracker.html">Tracker</a>
       </div>
-      <button class="menu-trigger" onclick="toggleMenu()">
-        <i class="fas fa-bars-staggered"></i>
-      </button>
+      <button class="menu-trigger" onclick="toggleMenu()"><i class="fas fa-bars-staggered"></i></button>
     </nav>
   </div>
 
-  <!-- Mobile Nav Overlay -->
+  <!-- Mobile Menu -->
   <div id="mobileMenu">
     <button onclick="toggleMenu()" class="absolute top-10 right-10 text-white text-3xl"><i class="fas fa-times"></i></button>
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
     <a href="catalog.html">Catalog</a>
-    <a href="tracker.html" style="color: var(--accent);">Track Order</a>
+    <a href="tracker.html" style="color: var(--cyan);">Track Order</a>
     <a href="orders.html">Today's Orders</a>
     <a href="testimonials.html">Testimonials</a>
     <a href="faqs.html">FAQs</a>
@@ -215,23 +208,23 @@
         <div>
           <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Directory</h4>
           <a href="index.html" class="directory-link">Home</a>
-          <a href="about.html" class="directory-link">Our story</a>
-          <a href="catalog.html" class="directory-link">Showroom</a>
-          <a href="orders.html" class="directory-link">Live feed</a>
+          <a href="about.html" class="directory-link">Our Story</a>
+          <a href="testimonials.html" class="directory-link">Client Reviews</a>
+          <a href="orders.html" class="directory-link">Live Feed</a>
         </div>
         <div>
           <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Business</h4>
-          <a href="catalog.html" class="directory-link">Partner</a>
-          <a href="policy-terms.html" class="directory-link">Privacy</a>
-          <a href="policy-terms.html" class="directory-link">Service terms</a>
-          <a href="contact.html" class="directory-link">Contact</a>
+          <a href="catalog.html" class="directory-link">Showroom</a>
+          <a href="contact.html" class="directory-link">Partner with us</a>
+          <a href="policy-terms.html" class="directory-link">Privacy Policy</a>
+          <a href="policy-terms.html" class="directory-link">Service Terms</a>
         </div>
         <div>
           <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Support</h4>
-          <a href="tracker.html" class="directory-link">Track shipment</a>
-          <a href="faqs.html" class="directory-link">Help center</a>
-          <a href="mailto:Info@mrkash.net" class="directory-link">Email direct</a>
-          <a href="https://wa.me/233240118846" class="directory-link">WhatsApp concierge</a>
+          <a href="tracker.html" class="directory-link">Track Shipment</a>
+          <a href="faqs.html" class="directory-link">Help Center</a>
+          <a href="mailto:Info@mrkash.net" class="directory-link">Legal Inquiries</a>
+          <a href="https://wa.me/233240118846" class="directory-link">WhatsApp Sales</a>
         </div>
       </div>
       <div class="border-t border-white/5 pt-12 text-center text-[10px] font-black text-slate-800 uppercase">
@@ -268,12 +261,7 @@
   </div>
 
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('active');
-      document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
-    }
-
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
     window.addEventListener('scroll', () => {
       const kashAI = document.getElementById('kashAI');
       if (window.scrollY > 300) { kashAI.style.display = 'block'; kashAI.classList.add('animate__fadeInUp'); }
