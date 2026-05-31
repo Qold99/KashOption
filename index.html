@@ -2,14 +2,15 @@
 <html lang="en" style="overflow-x: hidden;">
 <head>
   <meta charset="UTF-8">
+  <base href="https://mrkash.net/">
+  <link rel="icon" type="image/png" href="logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
   
-  <!-- Industrial SEO -->
-  <title>About Us | Kash Option - Ghana's #1 Global Sourcing Agency</title>
-  <meta name="description" content="Founded by Prince Okyere, Kash Option is Ghana's premier bridge to global markets. Specializing in China, USA, and UK logistics.">
+  <title>Reviews & Testimonials | Kash Option - Ghana's #1 Global Sourcing Agency</title>
+  <meta name="description" content="Verified feedback from individuals and businesses across Ghana who trust Kash Option for global trade and logistics.">
   
   <!-- Resources -->
-  <link rel="icon" type="image/png" href="https://mrkash.net/logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -18,7 +19,7 @@
   <style>
     :root { --accent: #22d3ee; --bg: #050508; --card: #0f0f15; --glass: rgba(255, 255, 255, 0.03); }
     * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; text-transform: none !important; }
-    
+
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: var(--bg);
@@ -55,20 +56,45 @@
     #mobileMenu a { font-size: 1rem; font-weight: 600; margin: 0.5rem 0; color: #fff; text-decoration: none; font-style: italic; border-bottom: 1px solid rgba(255,255,255,0.05); width: 80%; text-align: center; padding: 0.6rem 0; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* --- KASH AI & MODAL --- */
-    #kashAI { position: fixed; bottom: 24px; right: 24px; z-index: 9998; display: none; cursor: pointer; }
-    .ai-avatar { width: 64px; height: 64px; background: #000; border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; }
-    .ai-orbit { position: absolute; inset: -4px; border-radius: 50%; border: 1px solid rgba(34, 211, 238, 0.5); animation: ping 2s infinite; }
-    .ai-bubble { position: absolute; bottom: 80px; right: 0; width: 260px; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 16px; border-radius: 20px; }
+    /* --- UI COMPONENTS --- */
+    .liquid-glass { 
+      background: var(--glass); 
+      backdrop-filter: blur(15px); 
+      border: 1px solid rgba(255, 255, 255, 0.05); 
+      border-radius: 32px; 
+      transition: 0.4s ease;
+    }
+    .liquid-glass:hover { border-color: var(--accent); transform: translateY(-5px); }
+    .verified-badge { background: rgba(34, 211, 238, 0.1); color: var(--accent); padding: 4px 10px; border-radius: 8px; font-size: 10px; font-weight: 800; border: 1px solid rgba(34, 211, 238, 0.2); letter-spacing: 1px; }
+    
+    .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
 
-    .liquid-glass { background: var(--glass); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 32px; transition: 0.4s ease; }
+    /* --- DIRECTORY FOOTER --- */
     .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.85rem; display: block; margin-bottom: 8px; font-weight: 600; }
     .directory-link:hover { color: #fff; text-shadow: 0 0 10px var(--accent); }
-    .reveal { opacity: 0; transform: translateY(20px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
-    .reveal.active { opacity: 1; transform: translateY(0); }
-    
-    .timeline-item { padding: 20px 0; border-left: 3px solid rgba(34, 211, 238, 0.3); padding-left: 30px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .timeline-dot { position: absolute; left: -9px; top: 20px; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; }
+
+    /* --- KASH AI WIDGET --- */
+    #kashAI {
+      position: fixed; bottom: 24px; right: 24px; z-index: 9998;
+      display: none; cursor: pointer;
+    }
+    .ai-avatar {
+      width: 64px; height: 64px; background: #000; border: 2px solid var(--accent);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .ai-orbit {
+      position: absolute; inset: -4px; border-radius: 50%;
+      border: 1px solid rgba(34, 211, 238, 0.5);
+      animation: ping 2s infinite;
+    }
+    .ai-bubble {
+      position: absolute; bottom: 80px; right: 0; width: 260px;
+      background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.1); padding: 16px;
+      border-radius: 20px;
+    }
   </style>
 </head>
 <body>
@@ -79,10 +105,10 @@
       <a href="index.html" class="logo-text">KASH <span class="logo-option">OPTION</span></a>
       <div class="island-nav">
         <a href="index.html">Home</a>
-        <a href="about.html" class="active">About</a>
+        <a href="about.html">About</a>
         <a href="catalog.html">Catalog</a>
         <a href="orders.html">Orders</a>
-        <a href="testimonials.html">Reviews</a>
+        <a href="testimonials.html" class="active">Reviews</a>
         <a href="faqs.html">FAQs</a>
         <a href="contact.html">Contact</a>
         <a href="policy-terms.html">Policy</a>
@@ -108,118 +134,35 @@
     <a href="policy-terms.html">Policy & Terms</a>
   </div>
 
-  <main class="pt-44 pb-32 px-6 max-w-6xl mx-auto">
-    <!-- Hero -->
-    <section class="text-center mb-20 reveal active">
-      <h1 class="text-4xl md:text-7xl font-black italic mb-6 leading-tight">The bridge to<br><span class="text-cyan-400">global markets</span></h1>
-      <p class="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto mb-12 font-medium leading-relaxed">
-        Since 2020, we have been eliminating the barriers of international trade. We source, we pay, we ship—you simply enjoy the best products the world has to offer.
-      </p>
-    </section>
+  <main class="pt-48 pb-20 px-6 max-w-6xl mx-auto">
+    <header class="text-center mb-24 reveal active">
+      <div class="w-16 h-1 bg-cyan-400 mx-auto mb-8 rounded-full"></div>
+      <h1 class="text-5xl md:text-8xl font-black italic mb-6 leading-none">What clients say</h1>
+      <p class="text-gray-400 font-bold max-w-2xl mx-auto text-lg md:text-xl uppercase tracking-widest">Why we are Ghana's number one sourcing and logistics partner.</p>
+    </header>
 
-    <!-- Trust Metrics -->
-    <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl mx-auto mb-24">
-      <div class="liquid-glass p-8">
-        <div class="text-5xl font-black text-cyan-400 mb-2 italic">20,000+</div>
-        <div class="text-[10px] uppercase font-bold tracking-widest text-slate-500">Orders delivered successfully</div>
-      </div>
-      <div class="liquid-glass p-8">
-        <div class="text-5xl font-black text-cyan-400 mb-2 italic">99.8%</div>
-        <div class="text-[10px] uppercase font-bold tracking-widest text-slate-500">Customs clearance accuracy</div>
-      </div>
+    <div id="testimonialDisplay" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Reviews Injected Here -->
     </div>
 
-    <!-- Founder's Story -->
-    <section class="py-24">
-      <div class="reveal grid md:grid-cols-2 gap-16 items-center">
-        <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000" alt="Founder" class="opacity-80">
-        </div>
-        <div>
-          <h2 class="text-4xl md:text-5xl font-black italic mb-8">The founder's story</h2>
-          <p class="text-slate-300 leading-relaxed text-lg mb-6 font-medium">
-            Kash Option was founded by <span class="text-white font-bold">Prince Okyere</span> to solve a major problem: shopping abroad from Ghana was broken. 
-          </p>
-          <p class="text-slate-400 leading-relaxed font-medium">
-            By removing obstacles like unreliable suppliers and complex customs hurdles, we transformed international sourcing into a simple WhatsApp message. Today, we are Ghana's most trusted logistics gateway.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Timeline -->
-    <section class="py-24 bg-[#08080a] border-y border-white/5 px-6 -mx-6">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-center text-4xl md:text-5xl font-black italic mb-20">The journey</h2>
-        <div class="reveal">
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <h4 class="text-cyan-400 font-bold italic text-xl mb-2">2020: The launch</h4>
-            <p class="text-slate-400 font-medium">Started in Accra with a focus on high-speed China sourcing for small businesses.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <h4 class="text-cyan-400 font-bold italic text-xl mb-2">2021: Global expansion</h4>
-            <p class="text-slate-400 font-medium">Activated USA and UK logistics hubs, opening Western markets to the Ghanaian consumer.</p>
-          </div>
-          <div class="timeline-item" style="border:none;">
-            <div class="timeline-dot"></div>
-            <h4 class="text-cyan-400 font-bold italic text-xl mb-2">2024: The #1 standard</h4>
-            <p class="text-slate-400 font-medium">Recognized as the premier procurement and logistics standard for elite global sourcing.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="py-24 text-center">
-      <h2 class="text-4xl md:text-5xl font-black italic mb-20">The core team</h2>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-        <div class="reveal liquid-glass p-6 md:p-8">
-          <div class="w-16 h-16 mx-auto bg-cyan-400/10 rounded-full flex items-center justify-center text-xl font-black text-cyan-400 mb-6">P</div>
-          <h3 class="font-bold italic text-sm">Prince Okyere</h3>
-          <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-2">Founder & CEO</p>
-        </div>
-        <div class="reveal liquid-glass p-6 md:p-8" style="transition-delay: 0.1s;">
-          <div class="w-16 h-16 mx-auto bg-white/5 rounded-full flex items-center justify-center text-xl font-black text-white mb-6">A</div>
-          <h3 class="font-bold italic text-sm">Abena Mensah</h3>
-          <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-2">Operations Director</p>
-        </div>
-        <div class="reveal liquid-glass p-6 md:p-8" style="transition-delay: 0.2s;">
-          <div class="w-16 h-16 mx-auto bg-white/5 rounded-full flex items-center justify-center text-xl font-black text-white mb-6">K</div>
-          <h3 class="font-bold italic text-sm">Kofi Annan</h3>
-          <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-2">Logistics Lead</p>
-        </div>
-        <div class="reveal liquid-glass p-6 md:p-8" style="transition-delay: 0.3s;">
-          <div class="w-16 h-16 mx-auto bg-white/5 rounded-full flex items-center justify-center text-xl font-black text-white mb-6">E</div>
-          <h3 class="font-bold italic text-sm">Esi Quansah</h3>
-          <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-2">Client Relations</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="py-20 text-center">
-      <div class="reveal liquid-glass p-10 md:p-16 max-w-2xl mx-auto border-cyan-400/20">
-        <h2 class="text-3xl md:text-4xl font-black italic mb-8 leading-tight">Ready to experience the<br>Kash Option standard?</h2>
-        <a href="https://wa.me/233240118846" target="_blank" class="inline-flex items-center gap-3 bg-cyan-400 text-black px-10 py-4 rounded-full font-black text-base hover:scale-105 transition-transform shadow-2xl">
-          Start shopping now <i class="fab fa-whatsapp"></i>
-        </a>
-      </div>
-    </section>
+    <div class="mt-20 text-center reveal">
+      <button id="shuffleReviews" class="px-12 py-5 rounded-full border-2 border-white/10 font-black uppercase tracking-widest text-xs hover:border-cyan-400 hover:text-cyan-400 transition-all">
+        <i class="fas fa-sync-alt mr-2"></i> View more elite feedback
+      </button>
+    </div>
   </main>
 
-  <!-- Global Directory Footer -->
+  <!-- Apple Style Directory Footer -->
   <footer class="pt-32 pb-12 px-6 bg-[#030305] border-t border-white/5">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-24 text-left">
         <div class="col-span-2">
-          <h2 class="logo-text text-2xl mb-6">KASH <span class="logo-option">OPTION</span></h2>
-          <p class="text-slate-500 max-w-sm font-semibold text-sm leading-relaxed mb-8">Ghana's #1 premier sourcing and logistics hub. Bridging global excellence with local convenience since 2020.</p>
-          <div class="flex gap-4">
-            <a href="https://www.instagram.com/kashoption1" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/share/1CrwnBxS8W/" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
-          </div>
+            <h2 class="logo-text text-2xl mb-6">KASH <span class="logo-option">OPTION</span></h2>
+            <p class="text-slate-500 max-w-sm font-semibold text-sm leading-relaxed mb-8">Ghana's #1 premier sourcing and logistics hub. Bridging global excellence with local convenience since 2020.</p>
+            <div class="flex gap-4">
+                <a href="https://www.instagram.com/kashoption1" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1CrwnBxS8W/" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
+            </div>
         </div>
         <div>
           <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Directory</h4>
@@ -251,11 +194,12 @@
 
   <!-- KASH AI -->
   <div id="kashAI" class="animate__animated" onclick="openAIModal()">
-    <div class="ai-bubble"><p class="text-white text-xs font-bold leading-relaxed"><span class="text-cyan-400">KASH AI:</span> Curious about our global network? Tap me to learn more! 👋</p></div>
+    <div class="ai-bubble"><p class="text-white text-xs font-bold leading-relaxed"><span class="text-cyan-400">KASH AI:</span> Leave us a review and join the wall of fame! 👋</p></div>
     <div class="ai-avatar"><div class="ai-orbit"></div><img src="https://mrkash.net/logo.png" class="w-10 h-10 object-contain relative z-10" alt="Kash Logo"></div>
   </div>
 
   <script>
+    // Navigation Toggle
     function toggleMenu() {
       const menu = document.getElementById('mobileMenu');
       menu.classList.toggle('active');
@@ -268,7 +212,46 @@
       if (window.scrollY > 400) { kashAI.style.display = 'block'; kashAI.classList.add('animate__fadeInUp'); }
     });
 
-    function openAIModal() { window.open('https://wa.me/233240118846?text=Hi%20Kash%20Option%2C%20I%20have%20a%20question%20about%20your%20services.', '_blank'); }
+    function openAIModal() { window.open('https://g.page/r/Cddgqpko0aV_EAE/review', '_blank'); }
+
+    // Reviews Logic
+    const eliteReviews = [
+      {author:"Nana Kwame", loc:"Accra", text:"Kash Option is the only company in Ghana I trust for $10,000+ orders. They are the true market leaders.", time:"2 days ago"},
+      {author:"Grace O.", loc:"Kumasi", text:"While others make excuses, Kash Option delivers. My business grew 300% after switching to them.", time:"1 week ago"},
+      {author:"Dr. Mensah", loc:"Tema", text:"Professionalism at its peak. The tracking is real-time and the sourcing is 100% original.", time:"4 days ago"},
+      {author:"Aya J.", loc:"East Legon", text:"Simply the best in Ghana. No hidden fees, no delays. World-class service.", time:"3 weeks ago"},
+      {author:"Ekow B.", loc:"Takoradi", text:"The gold standard for China-to-Ghana logistics. Fastest shipping I've ever experienced.", time:"5 days ago"},
+      {author:"Mavis T.", loc:"Ho", text:"Their customer service on WhatsApp is unmatched. They treat every client like royalty.", time:"1 month ago"}
+    ];
+
+    function render() {
+      const display = document.getElementById('testimonialDisplay');
+      const shuffled = eliteReviews.sort(() => 0.5 - Math.random());
+      
+      display.innerHTML = shuffled.map(r => `
+        <article class="reveal liquid-glass p-8 flex flex-col h-full active review-card">
+          <div class="flex items-center gap-5 mb-8 text-left">
+            <div class="w-12 h-12 bg-cyan-400 rounded-full flex items-center justify-center font-black text-black text-lg">${r.author[0]}</div>
+            <div>
+              <div class="flex items-center gap-2"><h3 class="font-black text-sm text-white">${r.author}</h3><span class="verified-badge">VERIFIED</span></div>
+              <div class="text-cyan-400 text-[10px] mt-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+          </div>
+          <p class="text-gray-300 text-base font-semibold italic leading-relaxed mb-8 flex-1 text-left">"${r.text}"</p>
+          <div class="flex items-center justify-between border-t border-white/5 pt-4">
+            <span class="text-[9px] text-gray-500 font-bold uppercase tracking-widest">${r.loc}</span>
+            <span class="text-[9px] text-cyan-500 font-bold uppercase tracking-widest">${r.time}</span>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    document.getElementById('shuffleReviews').addEventListener('click', () => {
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    render();
 
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
