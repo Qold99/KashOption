@@ -2,61 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <base href="https://mrkash.net/">
+  <link rel="icon" type="image/png" href="https://mrkash.net/logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Kash Option | Ghana's #1 Original Spark Plugs Wholesaler: Toyota, Honda, Hyundai, Kia</title>
-  <meta name="description" content="Ghana's premier wholesale and retail gateway for genuine NGK & Denso spark plugs from Japan and USA. Pay via MoMo. Expert fitment matching.">
+  <meta name="google-site-verification" content="4S5CfgSapiMri3H9hrZAMW-SLzm_N8JxD9vIdPVGL4A" />
+  
+  <title>Kash Option | Ghana's #1 Logistics Hub: Shop USA, UK & China</title>
+  <meta name="description" content="Shop globally from Ghana. Specialized in Direct Manufacturing Access and retail concierge for Amazon, eBay, and Walmart. Pay with MoMo. Expert customs clearing in Tema.">
+  <meta name="keywords" content="shipping from USA to Ghana, buy from China to Ghana, Amazon shipping to Ghana, eBay agent Ghana, Walmart shipping Ghana, customs clearing Tema, global procurement Ghana">
 
-  <!-- CDNs: Tailwind, FontAwesome, Google Fonts, Animate.css -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['Space Grotesk', 'sans-serif'],
-            mono: ['Fira Code', 'monospace']
-          },
-          colors: {
-            brand: {
-              cyan: '#22d3ee',
-              dark: '#050508',
-              darkCard: 'rgba(10, 10, 15, 0.75)'
-            }
-          }
-        }
-      }
-    }
-  </script>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
   <style>
     :root { --cyan: #22d3ee; --dark: #050508; }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; text-transform: none !important; }
+
     body {
-      background: var(--dark);
-      color: #fff;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-    .text-glow-cyan { text-shadow: 0 0 15px rgba(34, 211, 238, 0.5); }
-    .box-glow-cyan { box-shadow: 0 0 30px rgba(34, 211, 238, 0.12); }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(25px) saturate(160%);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-    .glass-card-hover {
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .glass-card-hover:hover {
-      transform: translateY(-6px);
-      border-color: rgba(34, 211, 238, 0.4);
-      background: rgba(34, 211, 238, 0.03);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(34, 211, 238, 0.1);
-    }
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--dark);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Remove all italic text from the entire website */
+.italic,
+.logo-text,
+i,
+em {
+  font-style: normal !important;
+}
+
+    .locked-container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* --- DYNAMIC ISLAND --- */
     .nav-wrapper { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 95%; max-width: 1100px; }
     .dynamic-island {
       background: rgba(10, 10, 15, 0.75);
@@ -69,721 +49,362 @@
       justify-content: space-between;
       box-shadow: 0 30px 60px rgba(0,0,0,0.6);
     }
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #050508; }
-    ::-webkit-scrollbar-thumb { background: #1e1e24; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #22d3ee; }
+    .logo-text { font-weight: 800; font-style: normal; font-size: 1.1rem; letter-spacing: -0.05em; color: #fff; text-decoration: none; }
+    .logo-option { color: var(--cyan); text-shadow: 0 0 15px rgba(34, 211, 238, 0.5); }
+    
+    .island-nav { display: none; align-items: center; gap: 4px; }
+    @media (min-width: 1024px) { .island-nav { display: flex; } }
+    .island-nav a { color: #94a3b8; text-decoration: none; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; padding: 10px 16px; border-radius: 40px; transition: 0.3s; }
+    .island-nav a:hover, .island-nav a.active { color: #fff; background: rgba(255,255,255,0.05); }
+
+    .menu-trigger { width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
+
+    /* --- MOBILE MENU OVERLAY --- */
+    #mobileMenu {
+      position: fixed; inset: 0; background: rgba(5, 5, 8, 0.98); 
+      backdrop-filter: blur(25px); z-index: 10000; display: none;
+      flex-direction: column; align-items: center; justify-content: center; padding: 2rem;
+    }
+    #mobileMenu.active { display: flex; }
+    #mobileMenu a { font-size: 1rem; font-weight: 600; margin: 0.5rem 0; color: #fff; text-decoration: none; font-style: italic; border-bottom: 1px solid rgba(255,255,255,0.05); width: 80%; text-align: center; padding-bottom: 10px; }
+    #mobileMenu a:hover { color: var(--cyan); }
+
+    /* --- CTAs --- */
+    .btn-wa-pristine {
+      background: var(--cyan); color: #000; padding: 14px 28px; border-radius: 50px; font-weight: 800; font-size: 0.85rem;
+      transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1); box-shadow: 0 0 20px rgba(34, 211, 238, 0.3); border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .btn-wa-pristine:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(34, 211, 238, 0.6); background: #fff; }
+
+    .btn-track-sharp {
+      border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.03); padding: 14px 28px;
+      border-radius: 50px; font-weight: 800; font-size: 0.85rem; transition: 0.4s;
+    }
+    .btn-track-sharp:hover { border-color: var(--cyan); color: var(--cyan); background: rgba(34, 211, 238, 0.05); }
+
+    /* --- CARDS --- */
+    .hub-card {
+      background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 32px; transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    .hub-card:hover { transform: translateY(-10px); border-color: var(--cyan); background: rgba(34, 211, 238, 0.02); }
+    .hub-img { width: 100%; height: 220px; object-fit: cover; border-radius: 24px; margin-bottom: 24px; }
+
+    /* --- CHAT BUBBLE --- */
+    #swipeChat {
+      position: fixed; bottom: 30px; right: 30px; z-index: 1500;
+      opacity: 0; transform: translateY(50px) scale(0.9); transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+      cursor: pointer; pointer-events: none;
+    }
+    #swipeChat.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+    .liquid-bubble {
+      background: rgba(10, 10, 15, 0.8); backdrop-filter: blur(25px); border: 1px solid rgba(34, 211, 238, 0.4);
+      padding: 12px 24px; border-radius: 50px; display: flex; align-items: center; gap: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+    .status-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 10px #22c55e; animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+
+    /* --- ANIMATIONS --- */
+    @keyframes aeroLanding {
+      0% { transform: translateY(-300px) scale(1.5); opacity: 0; filter: blur(15px); }
+      100% { transform: translateY(0) scale(1); opacity: 1; filter: blur(0); }
+    }
+    .hero-animate { animation: aeroLanding 1.2s cubic-bezier(0.23, 1, 0.32, 1) both; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    .directory-link { color: rgba(255,255,255,0.4); transition: 0.3s; font-size: 0.85rem; display: block; margin-bottom: 8px; font-weight: 600; }
+    .directory-link:hover { color: #fff; text-shadow: 0 0 10px var(--cyan); }
   </style>
 </head>
-<body class="font-sans">
+<body>
 
-  <!-- BACKGROUND GRID -->
-  <div class="absolute inset-0 bg-[linear-gradient(to_right,#111115_1px,transparent_1px),linear-gradient(to_bottom,#111115_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] z-0 pointer-events-none"></div>
+  <div id="mobileMenu">
+    <button onclick="toggleMenu()" class="absolute top-10 right-10 text-white text-3xl"><i class="fas fa-times"></i></button>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="catalog.html">Catalog</a>
+    <a href="tracker.html">Track Order</a>
+    <a href="orders.html">Today's Orders</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="faqs.html">FAQs</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="policy-terms.html">Policy & Terms</a>
+  </div>
 
-  <!-- FLOATING NAVIGATION ISLAND -->
   <div class="nav-wrapper">
     <nav class="dynamic-island">
-      <a href="#" onclick="showPage('home')" class="flex items-center gap-2 font-display font-extrabold text-base tracking-wider text-white">
-        <span class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400">⚡</span>
-        KASH <span class="text-brand-cyan text-glow-cyan">OPTION</span>
-      </a>
-      <div class="hidden md:flex items-center gap-1">
-        <button onclick="showPage('home')" class="nav-link px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-white/10" id="nav-home">Home</button>
-        <button onclick="showPage('toyota')" class="nav-link px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-white" id="nav-toyota">Toyota</button>
-        <button onclick="showPage('honda')" class="nav-link px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-white" id="nav-honda">Honda</button>
-        <button onclick="showPage('hyundai')" class="nav-link px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-white" id="nav-hyundai">Hyundai</button>
-        <button onclick="showPage('kia')" class="nav-link px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-white" id="nav-kia">Kia</button>
+      <a href="index.html" class="logo-text">KASH <span class="logo-option">OPTION</span></a>
+      <div class="island-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="tracker.html">Tracker</a>
+        <a href="contact.html">Contact</a>
       </div>
-      <button onclick="scrollToSection('order-form-block')" class="hidden md:block px-5 py-2.5 bg-brand-cyan text-black font-black text-xs uppercase tracking-widest rounded-full hover:bg-white transition-all">
-        Direct Order
-      </button>
-      <!-- Mobile menu trigger -->
-      <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white">
-        <i class="fa-solid fa-bars"></i>
+      <button class="menu-trigger" onclick="toggleMenu()">
+        <i class="fas fa-bars-staggered"></i>
       </button>
     </nav>
   </div>
 
-  <!-- MOBILE OVERLAY MENU -->
-  <div id="mobile-menu" class="fixed inset-0 bg-brand-dark/98 backdrop-blur-2xl z-50 hidden flex-col justify-center items-center p-6">
-    <button onclick="toggleMobileMenu()" class="absolute top-8 right-8 text-white text-3xl"><i class="fa-solid fa-times"></i></button>
-    <div class="flex flex-col items-center gap-6 w-full max-w-sm">
-      <span class="font-display font-extrabold text-2xl tracking-widest text-zinc-500 mb-4">KASH <span class="text-brand-cyan">OPTION</span></span>
-      <button onclick="showPage('home'); toggleMobileMenu();" class="w-full py-4 bg-white/5 text-white border border-white/10 rounded-xl font-bold uppercase text-sm">Home Hub</button>
-      <button onclick="showPage('toyota'); toggleMobileMenu();" class="w-full py-4 bg-white/5 text-white border border-white/10 rounded-xl font-bold uppercase text-sm">Toyota Catalog</button>
-      <button onclick="showPage('honda'); toggleMobileMenu();" class="w-full py-4 bg-white/5 text-white border border-white/10 rounded-xl font-bold uppercase text-sm">Honda Catalog</button>
-      <button onclick="showPage('hyundai'); toggleMobileMenu();" class="w-full py-4 bg-white/5 text-white border border-white/10 rounded-xl font-bold uppercase text-sm">Hyundai Catalog</button>
-      <button onclick="showPage('kia'); toggleMobileMenu();" class="w-full py-4 bg-white/5 text-white border border-white/10 rounded-xl font-bold uppercase text-sm">Kia Catalog</button>
-      <button onclick="scrollToSection('order-form-block'); toggleMobileMenu();" class="w-full py-4 bg-brand-cyan text-black rounded-xl font-black uppercase text-sm">WhatsApp Quote Form 📲</button>
-    </div>
-  </div>
-
-  <!-- MAIN VIEWPORTS -->
-  <main class="relative z-10 pt-28">
-
-    <!-- ==================== HOME MAIN VIEWPORT ==================== -->
-    <div id="page-home" class="view-panel animate__animated animate__fadeIn">
-      
-      <!-- HERO LANDING SECTION -->
-      <header class="min-h-[80vh] flex flex-col justify-center items-center text-center px-6 pt-16 max-w-5xl mx-auto">
-        <span class="inline-block py-1 px-4 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 text-brand-cyan text-[10px] font-bold uppercase tracking-widest mb-8 animate-pulse">
-          🏆 Ghana's #1 Original Spark Plugs Importer & Wholesaler
+  <main>
+    <header class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
+      <div class="hero-animate">
+        <span class="inline-block py-1 px-4 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-10">
+          <i class="fas fa-shield-check"></i> Verified Logistics and Sourcing Hub
         </span>
-        <h1 class="font-display text-5xl sm:text-7xl md:text-8xl font-black mb-8 leading-tight tracking-tight">
-          Shop Globally.<br><span class="text-brand-cyan text-glow-cyan">Original Spark Plugs.</span>
+        <h1 class="text-5xl sm:text-7xl md:text-9xl font-black italic mb-8 leading-none tracking-tighter">
+          Shop Globally.<br><span class="text-cyan-400">Pay Locally.</span>
         </h1>
-        <p class="text-zinc-400 text-base md:text-lg max-w-3xl mx-auto mb-10 font-medium leading-relaxed">
-          Sourcing directly from original <strong>DENSO & NGK</strong> factories in <strong>Japan & USA</strong>. Guaranteed fuel efficiency and extreme throttle responsiveness for Toyota, Honda, Hyundai, and Kia engines. Pay in Ghana Cedis via MTN MoMo or Telecel Cash. We manage custom clearance.
+        <p class="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto mb-12 font-medium">
+          Ghana's premier gateway to the West and East. Purchase from <b>Amazon, eBay, or Walmart</b> and pay via <b>MTN MoMo or Telecel Cash</b>. We manage the currency and the customs.
         </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <a href="https://wa.me/c/233240118846" target="_blank" class="btn-wa-pristine">
+              Start Order on WhatsApp <i class="fab fa-whatsapp ml-2"></i>
+          </a>
+          <a href="tracker.html" class="btn-track-sharp">
+            Track Your Shipment <i class="fas fa-location-arrow ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section class="py-24 border-t border-white/5">
+      <div class="locked-container">
+        <div class="text-center mb-20 reveal">
+          <h2 class="text-4xl md:text-6xl font-black italic mb-4 tracking-tighter">Global Wholesale Hubs</h2>
+          <p class="text-gray-500 font-bold uppercase tracking-widest text-[10px]">Optimized Logistics Routes</p>
+        </div>
         
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md mb-16">
-          <button onclick="scrollToSection('fitment-advisor')" class="w-full sm:w-auto px-8 py-4 bg-brand-cyan text-black rounded-full font-black text-xs uppercase tracking-widest hover:bg-white hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] transition-all">
-            Find My Spark Plug 🔍
-          </button>
-          <button onclick="scrollToSection('order-form-block')" class="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest transition-all">
-            Wholesale Quote
-          </button>
-        </div>
-      </header>
-
-      <!-- 3D HOLOGRAM BRAND DISPLAY -->
-      <section class="py-16 max-w-6xl mx-auto px-6">
-        <div class="text-center mb-12">
-          <span class="text-[9px] font-black text-brand-cyan uppercase tracking-widest font-mono">Premium OEM Portals</span>
-          <h2 class="font-display text-3xl font-extrabold mt-2">Select Your Vehicle Line</h2>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- Toyota -->
-          <div onclick="showPage('toyota')" class="relative cursor-pointer rounded-[32px] p-6 glass-card border border-red-500/20 hover:border-red-500 hover:scale-105 transition-all text-center overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-b from-red-600/10 to-transparent opacity-60"></div>
-            <div class="relative z-10 w-16 h-16 bg-black/40 rounded-full border border-white/10 flex items-center justify-center mx-auto mb-4 text-red-500">
-              <i class="fa-solid fa-car text-2xl"></i>
-            </div>
-            <h3 class="font-display text-xl font-black text-white">TOYOTA</h3>
-            <p class="text-[10px] text-zinc-400 font-mono mt-1">Denso SC20HR11 & more</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="reveal hub-card p-10">
+            <img src="https://images.unsplash.com/photo-1508433957232-3107f5fd5995?auto=format&fit=crop&q=80&w=1000" class="hub-img" alt="USA Retail Hub">
+            <h3 class="text-2xl font-black italic mb-4">North American Concierge</h3>
+            <p class="text-slate-400 font-bold text-sm leading-relaxed">Direct procurement from <b>Amazon, eBay, and Walmart</b>. Specialized high-performance tech and automotive freight to Accra.</p>
           </div>
-          <!-- Honda -->
-          <div onclick="showPage('honda')" class="relative cursor-pointer rounded-[32px] p-6 glass-card border border-zinc-500/20 hover:border-zinc-300 hover:scale-105 transition-all text-center overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-b from-zinc-600/10 to-transparent opacity-60"></div>
-            <div class="relative z-10 w-16 h-16 bg-black/40 rounded-full border border-white/10 flex items-center justify-center mx-auto mb-4 text-zinc-300">
-              <i class="fa-solid fa-gauge-high text-2xl"></i>
-            </div>
-            <h3 class="font-display text-xl font-black text-white">HONDA</h3>
-            <p class="text-[10px] text-zinc-400 font-mono mt-1">Genuine NGK Laser Iridium</p>
+          <div class="reveal hub-card p-10" style="transition-delay: 0.1s;">
+            <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=1000" class="hub-img" alt="UK Logistics Hub">
+            <h3 class="text-2xl font-black italic mb-4">European Terminal</h3>
+            <p class="text-slate-400 font-bold text-sm leading-relaxed">Premium luxury apparel and corporate sourcing from London. Weekly air cargo flights with guaranteed delivery accuracy.</p>
           </div>
-          <!-- Hyundai -->
-          <div onclick="showPage('hyundai')" class="relative cursor-pointer rounded-[32px] p-6 glass-card border border-blue-500/20 hover:border-blue-500 hover:scale-105 transition-all text-center overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-b from-blue-600/10 to-transparent opacity-60"></div>
-            <div class="relative z-10 w-16 h-16 bg-black/40 rounded-full border border-white/10 flex items-center justify-center mx-auto mb-4 text-blue-400">
-              <i class="fa-solid fa-bolt text-2xl"></i>
-            </div>
-            <h3 class="font-display text-xl font-black text-white">HYUNDAI</h3>
-            <p class="text-[10px] text-zinc-400 font-mono mt-1">Mobis SILZKR6B10E & more</p>
+          <div class="reveal hub-card p-10" style="transition-delay: 0.2s;">
+            <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80&w=1000" class="hub-img" alt="China Manufacturing Hub">
+            <h3 class="text-2xl font-black italic mb-4">Direct Manufacturing Access</h3>
+            <p class="text-white font-black text-base leading-relaxed mb-4 italic">Whatever products you are looking to source, we can import them for you.</p>
+            <p class="text-slate-400 font-bold text-sm leading-relaxed">Verified factory auditing and wholesale machinery procurement from Guangzhou. End-to-end RMB facilitation.</p>
           </div>
-          <!-- Kia -->
-          <div onclick="showPage('kia')" class="relative cursor-pointer rounded-[32px] p-6 glass-card border border-cyan-500/20 hover:border-brand-cyan hover:scale-105 transition-all text-center overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-b from-cyan-600/10 to-transparent opacity-60"></div>
-            <div class="relative z-10 w-16 h-16 bg-black/40 rounded-full border border-white/10 flex items-center justify-center mx-auto mb-4 text-brand-cyan">
-              <i class="fa-solid fa-gears text-2xl"></i>
-            </div>
-            <h3 class="font-display text-xl font-black text-white">KIA</h3>
-            <p class="text-[10px] text-zinc-400 font-mono mt-1">Mobis Korean Sourced</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- OEM FITMENT FINDER -->
-      <section class="py-16 max-w-4xl mx-auto px-6" id="fitment-advisor">
-        <div class="glass-card rounded-[32px] p-8 border border-white/5 relative overflow-hidden box-glow-cyan">
-          <div class="absolute top-0 right-0 w-48 h-48 bg-brand-cyan/5 rounded-full blur-3xl"></div>
-          <div class="flex items-center gap-3 mb-6">
-            <span class="w-2.5 h-2.5 bg-brand-cyan rounded-full animate-pulse"></span>
-            <h3 class="font-display text-xl font-bold uppercase tracking-wider">OEM FITMENT ADVISOR</h3>
-          </div>
-          <p class="text-zinc-400 text-xs mb-6 font-mono">Select your brand and model to find the official pre-gapped spark plug.</p>
-
-          <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-4">
-            <div>
-              <label class="block text-[10px] font-black uppercase text-zinc-400 mb-1">Brand</label>
-              <select id="finder-brand" onchange="updateFinderModels()" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-xs text-white">
-                <option value="toyota">Toyota</option>
-                <option value="honda">Honda</option>
-                <option value="hyundai">Hyundai</option>
-                <option value="kia">Kia</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-[10px] font-black uppercase text-zinc-400 mb-1">Model</label>
-              <select id="finder-model" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-xs text-white">
-                <!-- Populated dynamically -->
-              </select>
-            </div>
-            <div>
-              <label class="block text-[10px] font-black uppercase text-zinc-400 mb-1">Engine Code/Size</label>
-              <input type="text" id="finder-engine" placeholder="e.g. 1.8L / 2AR-FE" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-xs text-white">
-            </div>
-            <div>
-              <label class="block text-[10px] font-black uppercase text-zinc-400 mb-1">Year</label>
-              <input type="text" id="finder-year" placeholder="e.g. 2016" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-xs text-white">
-            </div>
-          </div>
-          <button onclick="runFinderLookup()" class="w-full py-3.5 bg-brand-cyan text-black font-black text-xs uppercase tracking-widest rounded-xl hover:bg-white transition-all">
-            Recommend Factory Specs
-          </button>
-
-          <div id="finder-result" class="mt-6 p-5 rounded-2xl bg-brand-cyan/5 border border-brand-cyan/20 hidden">
-            <!-- Results injected here -->
-          </div>
-        </div>
-      </section>
-
-      <!-- FAKE VS GENUINE WARNINGS -->
-      <section class="py-16 max-w-5xl mx-auto px-6">
-        <div class="text-center mb-12">
-          <span class="inline-block py-1 px-4 rounded-full border border-red-500/30 bg-red-500/10 text-red-400 text-[10px] font-bold uppercase tracking-widest mb-4">⚠️ EMERGENCY ALERT</span>
-          <h2 class="font-display text-3xl font-extrabold text-white">Avoid high-copy counterfeit spark plugs in Ghana</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="rounded-3xl p-8 border border-red-500/20 bg-red-950/5">
-            <h3 class="font-display text-lg font-bold text-red-400 mb-4">🔴 Cheap Open Market Plugs</h3>
-            <ul class="space-y-3 text-xs text-zinc-300">
-              <li>• <b>Imitation Welds:</b> Made of cheap nickel that melts in high cylinder compression, causing instant engine knocks.</li>
-              <li>• <b>Weak Ceramic Insulation:</b> Leaks voltage arc, destroying your premium Toyota & Honda ignition coils.</li>
-              <li>• <b>High Failure Rate:</b> Less than 15,000 km lifespan.</li>
-            </ul>
-          </div>
-          <div class="rounded-3xl p-8 border border-emerald-500/20 bg-emerald-950/5 box-glow-cyan">
-            <h3 class="font-display text-lg font-bold text-emerald-400 mb-4">🟢 Kash Original Japan / USA Plugs</h3>
-            <ul class="space-y-3 text-xs text-zinc-300">
-              <li>• <b>99.9% Pure Iridium/Ruthenium:</b> Melting point of 2,466°C, withstands severe tropical driving.</li>
-              <li>• <b>Five-Ribbed Alumina Insulator:</b> Stops voltage bypass, protecting ECM modules.</li>
-              <li>• <b>Guaranteed Lifespan:</b> 100,000 km to 120,000 km with pristine fuel mileage.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-    </div>
-
-    <!-- ==================== GENERIC CATALOG TEMPLATE SECTION ==================== -->
-    <div id="page-catalog" class="view-panel hidden px-6 max-w-6xl mx-auto animate__animated animate__fadeIn">
-      
-      <!-- Dynamic header -->
-      <header id="catalog-header" class="rounded-[40px] p-8 md:p-14 border relative overflow-hidden mb-12">
-        <!-- Filled by JS -->
-      </header>
-
-      <!-- Spark Plugs List -->
-      <section class="mb-16">
-        <h2 class="font-display text-2xl font-extrabold mb-8" id="catalog-brand-title">Original Packaging Inventory</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="catalog-grid">
-          <!-- Dynamic cards injected here -->
-        </div>
-      </section>
-    </div>
-
-    <!-- ==================== SHARED ORDER FORM AND CONTACT DECK ==================== -->
-    <section class="py-20 border-t border-white/5 bg-black/40 px-6" id="order-form-block">
-      <div class="max-w-4xl mx-auto">
-        <div class="glass-card rounded-[32px] p-8 border border-white/5 relative overflow-hidden box-glow-cyan">
-          
-          <div class="flex justify-center mb-8 bg-black/40 p-1.5 rounded-full border border-white/10 max-w-[420px] mx-auto">
-            <button onclick="switchFormMode('direct')" id="btn-form-direct" class="flex-1 py-2 text-[10px] font-black uppercase tracking-wider rounded-full bg-brand-cyan text-black font-black shadow-lg">
-              Direct Purchase
-            </button>
-            <button onclick="switchFormMode('wholesale')" id="btn-form-wholesale" class="flex-1 py-2 text-[10px] font-black uppercase tracking-wider rounded-full text-zinc-400">
-              Wholesale Sourcing
-            </button>
-          </div>
-
-          <!-- Direct Buyer Form -->
-          <form id="form-direct" onsubmit="submitForm(event, 'direct')" class="space-y-6">
-            <div class="text-center max-w-xl mx-auto mb-6">
-              <h3 class="font-display text-2xl font-black">Pre-Verify Car & Order Specs</h3>
-              <p class="text-xs text-zinc-400 mt-1">Our system cross-references your Chassis Number in official databases to guarantee perfect clearance match.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-              <div>
-                <label class="block text-[10px] font-black uppercase text-zinc-400 mb-1">Full Name / Garage Name *</label>
-                <input type="text" id="direct-name" placeholder="Kofi Mensah" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-xs text-white focus:border-brand-cyan outline-none">
-              </div>
-              <div>
-                <label class="block text-[10px] font-black uppercase text-zinc-400 mb-1">WhatsApp Number *</label>
-                <input type="text" id="direct-phone" placeholder="e.g. 0240118846" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-xs text-white focus:border-brand-cyan outline-none">
-              </div>
-              <div>
-                <label class="block text-[10px] font-black uppercase text-zinc-400 mb-1">Car Brand Make *</label>
-                <select id="direct-make" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-xs text-white">
-                  <option value="toyota">Toyota</option>
-                  <option value="honda">Honda</option>
-                  <option value="hyundai">Hyundai</option>
-                  <option value="kia">Kia</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-[10px] font-black uppercase text-zinc-400 mb-1">Car Model Name *</label>
-                <input type="text" id="direct-model" placeholder="e.g. Corolla, Civic" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-xs text-white focus:border-brand-cyan outline-none">
-              </div>
-              <div>
-                <label class="block text-[10px] font-black uppercase text-zinc-400 mb-1">Engine Capacity / Code *</label>
-                <input type="text" id="direct-engine" placeholder="e.g. 1.8L (1NZ-FE)" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-xs text-white focus:border-brand-cyan outline-none">
-              </div>
-              <div>
-                <label class="block text-[10px] font-black uppercase text-zinc-400 mb-1">Chassis Number / VIN *</label>
-                <input type="text" id="direct-vin" placeholder="17-Digit Number" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-xs text-white font-mono focus:border-brand-cyan outline-none">
-              </div>
-              <div class="md:col-span-2">
-                <label class="block text-[10px] font-black uppercase text-zinc-400 mb-1">Additional Notes / Misfire Symptoms</label>
-                <textarea id="direct-notes" placeholder="Morning starting issues, high petrol consumption, rough idling..." rows="3" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-xs text-white focus:border-brand-cyan outline-none"></textarea>
-              </div>
-            </div>
-
-            <button type="submit" class="w-full py-4 bg-brand-cyan text-black text-xs font-black uppercase tracking-widest rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)]">
-              Format WhatsApp Payload 📲
-            </button>
-          </form>
-
-          <!-- Wholesale Sourcing Form -->
-          <form id="form-wholesale" onsubmit="submitForm(event, 'wholesale')" class="space-y-6 hidden">
-            <div class="text-center max-w-xl mx-auto mb-6">
-              <h3 class="font-display text-2xl font-black">Direct Factory Wholesale Access</h3>
-              <p class="text-xs text-zinc-400 mt-1">Bypass intermediate importers. Order full-carton lots of NGK and Denso direct from Nagoya/Houston depots.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
-              <div>
-                <label class="block text-[10px] font-black uppercase text-zinc-400 mb-1">Registered Business Name *</label>
-                <input type="text" id="wholesale-business" placeholder="Kingsway Auto Parts" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-xs text-white focus:border-brand-cyan outline-none">
-              </div>
-              <div>
-                <label class="block text-[10px] font-black uppercase text-zinc-400 mb-1">City / Location in Ghana *</label>
-                <input type="text" id="wholesale-location" placeholder="Abossey Okai, Accra" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-xs text-white focus:border-brand-cyan outline-none">
-              </div>
-              <div>
-                <label class="block text-[10px] font-black uppercase text-zinc-400 mb-1">WhatsApp Number *</label>
-                <input type="text" id="wholesale-phone" placeholder="e.g. 0240118846" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-xs text-white focus:border-brand-cyan outline-none">
-              </div>
-            </div>
-
-            <div class="text-left">
-              <label class="block text-[10px] font-black uppercase text-zinc-400 mb-2">Target Vehicle Brands (Choose all that apply)</label>
-              <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                <label class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl p-3 text-xs cursor-pointer"><input type="checkbox" name="w-brand" value="toyota" class="accent-cyan-500"> Toyota</label>
-                <label class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl p-3 text-xs cursor-pointer"><input type="checkbox" name="w-brand" value="honda" class="accent-cyan-500"> Honda</label>
-                <label class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl p-3 text-xs cursor-pointer"><input type="checkbox" name="w-brand" value="hyundai" class="accent-cyan-500"> Hyundai</label>
-                <label class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl p-3 text-xs cursor-pointer"><input type="checkbox" name="w-brand" value="kia" class="accent-cyan-500"> Kia</label>
-              </div>
-            </div>
-
-            <div class="text-left">
-              <label class="block text-[10px] font-black uppercase text-zinc-400 mb-1">Desired Part Numbers & Carton Quantities *</label>
-              <textarea id="wholesale-parts" placeholder="e.g. Denso SC20HR11 (90919-01253) - 500 pcs&#10;NGK IZFR6K11 (9807B-561BW) - 200 pcs" rows="4" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-xs text-white font-mono focus:border-brand-cyan outline-none"></textarea>
-            </div>
-
-            <button type="submit" class="w-full py-4 bg-brand-cyan text-black text-xs font-black uppercase tracking-widest rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)]">
-              Submit Wholesale Order Form 📲
-            </button>
-          </form>
-
         </div>
       </div>
     </section>
 
-  </main>
+    <section class="py-24 bg-[#0a0a0f] border-y border-white/5">
+        <div class="locked-container">
+          <div class="grid md:grid-cols-2 gap-20 items-center">
+            <div class="reveal">
+              <h2 class="text-4xl md:text-6xl font-black italic mb-8">Proprietary Procurement.</h2>
+              <p class="text-slate-400 text-lg mb-12 font-medium leading-relaxed">We eliminate the "what I ordered vs what I got" risk. Our hubs perform multi-point inspections on every item before departure to Ghana.</p>
+              <div class="space-y-6">
+                <div class="flex items-center gap-6"><div class="w-10 h-10 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-400 font-black text-xs">01</div><span class="text-white font-bold">In-Hub Quality Verification</span></div>
+                <div class="flex items-center gap-6"><div class="w-10 h-10 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-400 font-black text-xs">02</div><span class="text-white font-bold">MTN MoMo & Telecel Cash Accepted</span></div>
+                <div class="flex items-center gap-6"><div class="w-10 h-10 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-400 font-black text-xs">03</div><span class="text-white font-bold">Customs Mastery in Tema & KIA</span></div>
+              </div>
+            </div>
+            <div class="reveal bg-cyan-400/5 p-12 rounded-[40px] border border-cyan-400/20 text-center">
+                <div class="text-7xl md:text-9xl font-black italic text-cyan-400 leading-none">99.8%</div>
+                <p class="text-xl font-bold uppercase tracking-widest text-slate-300 mt-4">Success Rate</p>
+            </div>
+          </div>
+        </div>
+    </section>
+  </main> 
+ <!-- SEO Section 1: The Kash-Flow Process -->
+<section class="py-20 border-t border-white/5">
+    <div class="locked-container">
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-4xl md:text-5xl font-black italic mb-4 tracking-tighter">Buy from abroad to Ghana: The Kash-flow</h2>
+            <p class="text-gray-500 font-bold uppercase tracking-widest text-[10px]">Your 4-step global procurement protocol</p>
+        </div>
 
-  <!-- FOOTER -->
-  <footer class="pt-24 pb-12 bg-black border-t border-white/5 text-left relative z-10">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-12 mb-16">
-        <div class="col-span-2 space-y-6">
-          <h2 class="font-display font-extrabold text-2xl tracking-wider text-white">KASH <span class="text-brand-cyan">OPTION</span></h2>
-          <p class="text-zinc-500 max-w-sm font-semibold text-xs leading-relaxed">Ghana's #1 original premier spark plug importer. Bridging Japanese & USA manufacturing directly with mechanical garages and regional auto parts distributors.</p>
-          <div class="flex gap-4">
-            <a href="https://www.instagram.com/kashoption1" target="_blank" class="text-zinc-500 hover:text-white transition-colors">Instagram</a>
-            <span class="text-zinc-800">•</span>
-            <a href="https://www.facebook.com/share/1CrwnBxS8W/" target="_blank" class="text-zinc-500 hover:text-white transition-colors">Facebook</a>
-          </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Step 1 -->
+            <div class="reveal hub-card p-8 relative">
+                <span class="text-[10px] font-black text-cyan-400/50 uppercase tracking-widest block mb-2">Step 01</span>
+                <h3 class="text-xl font-black italic mb-3">Send your request</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Simply send us a photo or description of <strong>any item</strong> you want via WhatsApp. We find the best global matches instantly.</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="reveal hub-card p-8 relative" style="transition-delay: 0.1s;">
+                <span class="text-[10px] font-black text-cyan-400/50 uppercase tracking-widest block mb-2">Step 02</span>
+                <h3 class="text-xl font-black italic mb-3">Get a Cedi quote</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">We provide a total cost in <strong>GH₵</strong>. Pay easily via <strong>MTN MoMo or Telecel Cash</strong>. We handle all currency conversions.</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="reveal hub-card p-8 relative" style="transition-delay: 0.2s;">
+                <span class="text-[10px] font-black text-cyan-400/50 uppercase tracking-widest block mb-2">Step 03</span>
+                <h3 class="text-xl font-black italic mb-3">Rapid shipping</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Choose <strong>Air Freight (3-5 Days)</strong> for speed or <strong>Sea Freight (6-8 Weeks)</strong> for maximum wholesale savings on large shipments.</p>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="reveal hub-card p-8 relative" style="transition-delay: 0.3s;">
+                <span class="text-[10px] font-black text-cyan-400/50 uppercase tracking-widest block mb-2">Step 04</span>
+                <h3 class="text-xl font-black italic mb-3">Stress-free delivery</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">We handle <strong>Customs clearing at Tema and KIA</strong>. Pick up at our office or get doorstep delivery anywhere in Ghana.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEO Section 2: The Kash Advantage -->
+<section class="py-20 bg-[#0a0a0f] border-y border-white/5">
+    <div class="locked-container">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl font-black italic mb-8">Wholesale shipping to Ghana: The Kash advantage</h2>
+                <p class="text-slate-400 text-lg mb-10 font-medium">Positioning your business for success with Ghana's premier logistics infrastructure.</p>
+                
+                <div class="space-y-8">
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 shrink-0 bg-cyan-400/10 rounded-2xl flex items-center justify-center text-cyan-400 text-xl"></div>
+                        <div>
+                            <h3 class="text-lg font-black italic text-white mb-1">Factory-direct pricing</h3>
+                            <p class="text-slate-400 text-sm">We cut out the middlemen. Buy directly from global manufacturers at true wholesale prices.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 shrink-0 bg-cyan-400/10 rounded-2xl flex items-center justify-center text-cyan-400 text-xl"></div>
+                        <div>
+                            <h3 class="text-lg font-black italic text-white mb-1">Quality inspection</h3>
+                            <p class="text-slate-400 text-sm">Our teams physically verify your items before departure to ensure 100% accuracy and quality.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 shrink-0 bg-cyan-400/10 rounded-2xl flex items-center justify-center text-cyan-400 text-xl"></div>
+                        <div>
+                            <h3 class="text-lg font-black italic text-white mb-1">Secure local payments</h3>
+                            <p class="text-slate-400 text-sm">No need for USD or RMB bank accounts. Keep your capital safe by dealing entirely in Ghana Cedis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="reveal liquid-glass p-10 border-cyan-400/20 text-center">
+                <div class="w-20 h-20 bg-cyan-400/20 rounded-full flex items-center justify-center text-cyan-400 text-4xl mx-auto mb-6"></div>
+                <h3 class="text-2xl font-black italic uppercase mb-4 text-white">Customs clearing services Accra</h3>
+                <p class="text-slate-400 font-medium leading-relaxed">
+                    Kash Option is a fully registered logistics agency. We navigate the complexities of <strong>Tema Port and Kotoka International Airport</strong> on your behalf. We ensure your goods are cleared legally, quickly, and without the typical stress of import documentation.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="pt-32 pb-12 bg-[#030305] border-t border-white/5">
+    <div class="locked-container">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-24 text-left">
+        <div class="col-span-2">
+            <h2 class="logo-text text-2xl mb-6">KASH <span class="logo-option">OPTION</span></h2>
+            <p class="text-slate-500 max-w-sm font-semibold text-sm leading-relaxed mb-8">Ghana's #1 premier sourcing hub. Bridging global excellence with local convenience since 2020.</p>
+            <div class="flex gap-4">
+                <a href="https://www.instagram.com/kashoption1" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1CrwnBxS8W/" class="text-xl text-white/40 hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
+            </div>
         </div>
         <div>
-          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-6 font-mono font-bold">Catalog portals</h4>
-          <div class="space-y-3">
-            <button onclick="showPage('toyota')" class="text-zinc-500 hover:text-white block text-xs font-semibold uppercase text-left">Toyota Denso</button>
-            <button onclick="showPage('honda')" class="text-zinc-500 hover:text-white block text-xs font-semibold uppercase text-left">Honda NGK</button>
-            <button onclick="showPage('hyundai')" class="text-zinc-500 hover:text-white block text-xs font-semibold uppercase text-left">Hyundai Mobis</button>
-            <button onclick="showPage('kia')" class="text-zinc-500 hover:text-white block text-xs font-semibold uppercase text-left">Kia Mobis</button>
-          </div>
+          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Directory</h4>
+          <a href="index.html" class="directory-link">Home</a>
+          <a href="about.html" class="directory-link">Our Story</a>
+          <a href="testimonials.html" class="directory-link">Client Reviews</a>
+          <a href="orders.html" class="directory-link">Live Feed</a>
         </div>
         <div>
-          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-6 font-mono font-bold">Support</h4>
-          <div class="space-y-3">
-            <button onclick="scrollToSection('fitment-advisor')" class="text-zinc-500 hover:text-white block text-xs font-semibold uppercase text-left">Fitment lookup</button>
-            <a href="mailto:Info@mrkash.net" class="text-zinc-500 hover:text-white block text-xs font-semibold uppercase text-left">Legal Inquiry</a>
-            <a href="https://wa.me/233240118846" target="_blank" class="text-zinc-500 hover:text-white block text-xs font-semibold uppercase text-left">WhatsApp Sales</a>
-          </div>
+          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Business</h4>
+          <a href="catalog.html" class="directory-link">Showroom</a>
+          <a href="contact.html" class="directory-link">Partner with us</a>
+          <a href="policy-terms.html" class="directory-link">Privacy Policy</a>
+          <a href="policy-terms.html" class="directory-link">Service Terms</a>
         </div>
         <div>
-          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-6 font-mono font-bold">Physical Hub</h4>
-          <p class="text-zinc-500 text-xs leading-relaxed font-semibold">Nagoya Depot (Japan)<br>Houston Depot (USA)<br>Local pickup across Accra and Kumasi upon MoMo verification.</p>
+          <h4 class="text-[10px] font-black text-white uppercase tracking-widest mb-8">Support</h4>
+          <a href="tracker.html" class="directory-link">Track Shipment</a>
+          <a href="faqs.html" class="directory-link">Help Center</a>
+          <a href="mailto:Info@mrkash.net" class="directory-link">Legal Inquiries</a>
+          <a href="https://wa.me/233240118846" class="directory-link">WhatsApp Sales</a>
         </div>
       </div>
-      <div class="border-t border-white/5 pt-8 text-center flex flex-col sm:flex-row justify-between items-center gap-4 text-zinc-700 text-[10px] font-mono">
-        <p>© 2026 KASH OPTION • ELITE LOGISTICS SPARK PLUGS PROTOCOL</p>
-        <p>ABOSSEY OKAI, ACCRA • KUMASI MAGAZINE, GHANA</p>
+      <div class="border-t border-white/5 pt-12 text-center">
+        <p class="text-[10px] font-black text-slate-800 tracking-[0.5em] uppercase">© 2026 Kash Option • Elite Logistics Protocol</p>
       </div>
     </div>
   </footer>
 
-  <!-- DYNAMIC JAVASCRIPT SYSTEM ENGINE -->
+  <div id="kashAI" class="fixed bottom-6 right-6 z-[9999] cursor-pointer hidden flex-col items-end animate__animated" onclick="window.open('https://wa.me/c/233240118846', '_blank')">
+    
+    <div class="bg-black/95 backdrop-blur-2xl border-2 border-cyan-400/50 p-4 rounded-2xl mb-4 shadow-[0_20px_50px_rgba(0,0,0,0.8)] max-w-[260px] text-right">
+      <p class="text-white text-[13px] font-[900] leading-snug">
+        <span class="text-cyan-400 uppercase tracking-tighter block mb-1">Kash Shopping Assistant:</span> 
+        Ready to order? Browse our latest catalog for the best deals from USA, UK, and China!
+      </p>
+    </div>
+    
+    <div class="relative w-20 h-20 flex items-center justify-center">
+      <div class="absolute inset-0 border-2 border-cyan-400/40 rounded-full animate-spin-slow"></div>
+      <div class="absolute inset-0 bg-cyan-400 rounded-full blur-xl opacity-30 animate-pulse"></div>
+      <div class="relative w-16 h-16 bg-black rounded-full border-2 border-cyan-400 flex items-center justify-center overflow-hidden shadow-[0_0_30px_rgba(34,211,238,0.6)]">
+        <img src="https://mrkash.net/logo.png" class="w-12 h-12 object-contain" alt="Kash AI">
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .animate-spin-slow { animation: spin-slow 6s linear infinite; }
+  </style>
+
   <script>
-    // SPARKS DATABASE MATRIX
-    const DATABASE = {
-      toyota: [
-        {
-          id: 'toyota-1',
-          name: 'Toyota Genuine Denso SC20HR11 Iridium Spark Plug',
-          part: '90919-01253',
-          fit: 'Corolla (2009-2019), Auris, Yaris, Vitz (1.3L / 1.5L / 1.8L)',
-          material: 'Laser Iridium / Platinum Ground',
-          gap: '1.1mm (0.044")',
-          longevity: '100,000 km Guaranteed',
-          retail: 145,
-          wholesale: 480,
-          origin: 'JAPAN',
-          manufacturer: 'DENSO',
-          benefits: ['Genuine Toyota packaged component', 'Ultra-fine 0.7mm center electrode', 'Tested in extreme traffic temperatures']
-        },
-        {
-          id: 'toyota-2',
-          name: 'Toyota Genuine Denso FK20HR11 Iridium Tough',
-          part: '90919-01247',
-          fit: 'Camry (2008-2021), RAV4, Avalon, Highlander (2.4L / 2.5L / 3.5L)',
-          material: 'Iridium Center / Platinum Needle',
-          gap: '1.1mm',
-          longevity: '120,000 km Guaranteed',
-          retail: 165,
-          wholesale: 550,
-          origin: 'JAPAN',
-          manufacturer: 'DENSO',
-          benefits: ['Dual needle-type tech', 'Resistant to sulfur carbon build-up', 'Optimized for high-temp 2AR-FE blocks']
-        }
-      ],
-      honda: [
-        {
-          id: 'honda-1',
-          name: 'Honda Genuine NGK Laser Iridium IZFR6K11',
-          part: '9807B-561BW',
-          fit: 'Civic (2006-2015), Accord (2003-2012), CR-V (2.0L / 2.4L)',
-          material: 'Laser Iridium / Platinum Pad',
-          gap: '1.1mm',
-          longevity: '100,000 km Guaranteed',
-          retail: 185,
-          wholesale: 620,
-          origin: 'JAPAN',
-          manufacturer: 'NGK',
-          benefits: ['Approved by Honda Motor Co.', 'Preserves sensitive ignition coils', 'Maintains precise VTEC timing']
-        }
-      ],
-      hyundai: [
-        {
-          id: 'hyundai-1',
-          name: 'Hyundai Genuine Mobis SILZKR6B10E Laser Iridium',
-          part: '18846-10060',
-          fit: 'Elantra, Accent, i30 (1.6L GDI / MPI, 2011-2020)',
-          material: 'Laser Iridium / Platinum Ground',
-          gap: '1.0mm',
-          longevity: '100,000 km Guaranteed',
-          retail: 155,
-          wholesale: 510,
-          origin: 'JAPAN',
-          manufacturer: 'NGK',
-          benefits: ['Hologram-sealed Korean Mobis product', 'Prevents direct-injection soot', 'Perfect gap pre-sets']
-        }
-      ],
-      kia: [
-        {
-          id: 'kia-1',
-          name: 'Kia Genuine Mobis SILZKR7B11 Laser Iridium',
-          part: '18846-11070',
-          fit: 'Sportage, Sorento, Optima, K5, Cerato (2.0L / 2.4L, 2011-2021)',
-          material: 'Laser Iridium Center',
-          gap: '1.1mm',
-          longevity: '100,000 km Guaranteed',
-          retail: 160,
-          wholesale: 530,
-          origin: 'KOREA / JAPAN',
-          manufacturer: 'NGK',
-          benefits: ['Genuine Mobis packaging security', 'Protects complex digital sensor rails', 'Restores factory Cedi economy']
-        }
-      ]
-    };
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('active');
+      document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+    }
 
-    // VIEW STATE MANAGEMENT
-    function showPage(pageId) {
-      document.querySelectorAll('.view-panel').forEach(panel => panel.classList.add('hidden'));
+    const kashAI = document.getElementById('kashAI');
+    let lastScrollTop = 0;
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+
+      // Threshold: 20% Scroll Depth
+      if (scrollPercent >= 20) {
+        // Downward scroll: Show Agent
+        if (scrollTop > lastScrollTop) {
+          kashAI.classList.remove('hidden', 'animate__fadeOutDown');
+          kashAI.classList.add('flex', 'animate__fadeInUp');
+        } 
+        // Upward scroll: Hide Agent
+        else {
+          kashAI.classList.remove('animate__fadeInUp');
+          kashAI.classList.add('animate__fadeOutDown');
+        }
+      } else {
+        // Hide if at top of page
+        kashAI.classList.add('hidden');
+      }
       
-      // Reset Navigation classes
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('bg-white/10', 'text-white');
-        link.classList.add('text-zinc-400');
-      });
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+    }, { passive: true });
 
-      const activeLink = document.getElementById(`nav-${pageId}`);
-      if (activeLink) {
-        activeLink.classList.remove('text-zinc-400');
-        activeLink.classList.add('bg-white/10', 'text-white');
-      }
-
-      if (pageId === 'home') {
-        document.getElementById('page-home').classList.remove('hidden');
-      } else {
-        const catalogPanel = document.getElementById('page-catalog');
-        catalogPanel.classList.remove('hidden');
-        renderCatalogPage(pageId);
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // TOGGLE MOBILE NAVIGATION OVERLAY
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobile-menu');
-      if (menu.classList.contains('hidden')) {
-        menu.classList.remove('hidden');
-        menu.classList.add('flex');
-      } else {
-        menu.classList.add('hidden');
-        menu.classList.remove('flex');
-      }
-    }
-
-    // SCROLL TO DESIRED SECTION
-    function scrollToSection(id) {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }
-
-    // UPDATE FINDER COMPONENT
-    function updateFinderModels() {
-      const brand = document.getElementById('finder-brand').value;
-      const modelDropdown = document.getElementById('finder-model');
-      modelDropdown.innerHTML = '';
-
-      const modelsMap = {
-        toyota: ['Corolla', 'Camry', 'Prado / Hilux', 'Land Cruiser', 'Aqua / Prius'],
-        honda: ['Civic', 'Fit / Jazz', 'Accord', 'CR-V'],
-        hyundai: ['Elantra', 'Tucson', 'Accent / i10', 'Creta'],
-        kia: ['Sportage', 'Picanto / Rio', 'Cerato', 'Sorento']
-      };
-
-      modelsMap[brand].forEach(m => {
-        const opt = document.createElement('option');
-        opt.value = m.toLowerCase().replace(/\s/g, '');
-        opt.textContent = m;
-        modelDropdown.appendChild(opt);
-      });
-    }
-
-    // LOOKUP MATCH ALGORITHM
-    function runFinderLookup() {
-      const brand = document.getElementById('finder-brand').value;
-      const model = document.getElementById('finder-model').value;
-      const resultBox = document.getElementById('finder-result');
-      resultBox.classList.remove('hidden');
-
-      const match = DATABASE[brand] ? DATABASE[brand][0] : null;
-
-      if (match) {
-        resultBox.innerHTML = `
-          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div>
-              <span class="inline-block px-2 py-0.5 bg-brand-cyan/20 text-brand-cyan text-[9px] font-black uppercase rounded mb-2 font-mono">RECOMMENDED MATCH FOUND</span>
-              <h4 class="font-display font-black text-white text-base">${match.name}</h4>
-              <p class="text-zinc-400 text-xs mt-1">Part No: <span class="font-mono text-brand-cyan font-bold">${match.part}</span> (${match.manufacturer})</p>
-              <div class="flex gap-4 mt-2 text-[10px] font-mono text-zinc-300">
-                <span>⚡ Gap: ${match.gap}</span>
-                <span>🔥 Longevity: ${match.longevity}</span>
-              </div>
-            </div>
-            <div class="text-right">
-              <span class="block text-[9px] text-zinc-400 font-mono">Wholesale:</span>
-              <span class="text-xl font-display font-extrabold text-brand-cyan text-glow-cyan">GH₵ ${match.wholesale}</span>
-              <button onclick="prefillDirectOrder('${brand}', '${match.part}', '${model}')" class="block mt-2 px-4 py-2 bg-brand-cyan text-black text-[10px] font-black uppercase rounded-lg hover:bg-white transition-all">Pre-fill Order</button>
-            </div>
-          </div>
-        `;
-      }
-    }
-
-    // PREFILL FORM DETAILS
-    function prefillDirectOrder(brand, part, model) {
-      document.getElementById('direct-make').value = brand;
-      document.getElementById('direct-vin').value = "VERIFIED-" + part;
-      document.getElementById('direct-model').value = model.toUpperCase();
-      scrollToSection('order-form-block');
-    }
-
-    // DYNAMIC BRAND PORTALS RENDERER
-    function renderCatalogPage(brand) {
-      const header = document.getElementById('catalog-header');
-      const grid = document.getElementById('catalog-grid');
-      const title = document.getElementById('catalog-brand-title');
-
-      const headerConfigs = {
-        toyota: {
-          style: 'from-red-600/20 via-black to-black border-red-500/20',
-          title: 'Toyota OEM Ignition Hub',
-          desc: 'Premium original packages certified direct from Nagoya, Japan. Optimized for Variable Valve VVT-i fuel systems.'
-        },
-        honda: {
-          style: 'from-zinc-600/20 via-black to-black border-zinc-500/20',
-          title: 'Honda High-Performance Terminal',
-          desc: 'Keep high-RPM response flawless. Authentic NGK Laser Iridium matching Civic, Fit, Accord, and EarthDreams motors.'
-        },
-        hyundai: {
-          style: 'from-blue-600/20 via-black to-black border-blue-500/20',
-          title: 'Hyundai Genuine Mobis Depot',
-          desc: 'Authentic sealed Mobis spark units combating Accra cylinder misfire. Safe mileage mapping.'
-        },
-        kia: {
-          style: 'from-cyan-600/20 via-black to-black border-cyan-500/20',
-          title: 'Kia Smart Ignition Depot',
-          desc: 'Designed for ultimate fuel savings per liter in heavy Accra/Kumasi commuter environments. Perfect soluto, Soluto, picanto, Sportage calibration.'
-        }
-      };
-
-      const config = headerConfigs[brand];
-      header.className = `rounded-[40px] p-8 md:p-14 border bg-gradient-to-br ${config.style} relative overflow-hidden mb-12`;
-      header.innerHTML = `
-        <div class="max-w-xl relative z-10">
-          <span class="inline-block py-1 px-4 rounded-full border border-brand-cyan/20 bg-brand-cyan/5 text-brand-cyan text-[9px] font-black tracking-widest uppercase mb-4 font-mono">Verified Japan Sourcing</span>
-          <h1 class="font-display text-4xl md:text-5xl font-black text-white leading-none mb-4">${config.title}</h1>
-          <p class="text-zinc-300 text-xs md:text-sm leading-relaxed">${config.desc}</p>
-        </div>
-      `;
-
-      title.textContent = `Genuine ${brand.toUpperCase()} Catalog List`;
-
-      grid.innerHTML = '';
-      const items = DATABASE[brand] || [];
-
-      items.forEach(plug => {
-        const card = document.createElement('div');
-        card.className = 'glass-card rounded-[32px] p-6 flex flex-col justify-between border border-white/5 relative overflow-hidden transition-all duration-300 hover:border-brand-cyan/40 hover:bg-brand-cyan/[0.02] hover:-translate-y-2';
-        card.innerHTML = `
-          <div>
-            <div class="flex justify-between items-center mb-4">
-              <span class="px-2.5 py-1 text-[9px] font-black uppercase tracking-widest border border-brand-cyan/25 rounded-full text-brand-cyan bg-brand-cyan/10">${plug.manufacturer}</span>
-              <span class="px-2.5 py-1 text-[9px] font-mono text-zinc-400 bg-white/5 rounded-full border border-white/10 uppercase">IMPORTED FROM ${plug.origin}</span>
-            </div>
-            
-            <div class="w-full h-[180px] flex items-center justify-center bg-black/40 rounded-2xl border border-white/5 mb-4 relative">
-              <span class="text-4xl">⚡</span>
-              <span class="absolute top-2 right-2 px-2.5 py-1 text-[8px] font-bold uppercase bg-black/80 rounded-full text-brand-cyan">GENUINE APART</span>
-            </div>
-
-            <h3 class="font-display font-extrabold text-white text-lg tracking-tight">${plug.name}</h3>
-            
-            <div class="mt-2 flex items-center gap-2">
-              <span class="text-[10px] text-zinc-500 font-mono">OEM NO:</span>
-              <span class="font-mono text-xs text-brand-cyan font-extrabold tracking-widest bg-brand-cyan/10 px-2 py-0.5 rounded border border-brand-cyan/20">${plug.part}</span>
-            </div>
-
-            <p class="mt-4 text-xs text-zinc-400 leading-relaxed font-mono">Fits: ${plug.fit}</p>
-            
-            <div class="mt-4 space-y-1 text-[11px] font-mono text-zinc-300">
-              <div>Thread Size: ${plug.material}</div>
-              <div>Ignition Lifespan: <span class="text-emerald-400">${plug.longevity}</span></div>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-            <div>
-              <span class="text-[9px] text-zinc-500 block uppercase font-mono">Wholesale Box Rate:</span>
-              <span class="text-2xl font-display font-black text-brand-cyan text-glow-cyan">GH₵ ${plug.wholesale}</span>
-            </div>
-            <button onclick="prefillDirectOrder('${brand}', '${plug.part}', '${brand}')" class="px-4 py-2 bg-brand-cyan text-black text-[10px] font-black uppercase rounded-lg hover:bg-white transition-all">Pre-fill Order</button>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    // FORM SWITCH
-    function switchFormMode(mode) {
-      const btnDirect = document.getElementById('btn-form-direct');
-      const btnWholesale = document.getElementById('btn-form-wholesale');
-      const formDirect = document.getElementById('form-direct');
-      const formWholesale = document.getElementById('form-wholesale');
-
-      if (mode === 'direct') {
-        btnDirect.className = 'flex-1 py-2 text-[10px] font-black uppercase tracking-wider rounded-full bg-brand-cyan text-black font-black shadow-lg';
-        btnWholesale.className = 'flex-1 py-2 text-[10px] font-black uppercase tracking-wider rounded-full text-zinc-400';
-        formDirect.classList.remove('hidden');
-        formWholesale.classList.add('hidden');
-      } else {
-        btnWholesale.className = 'flex-1 py-2 text-[10px] font-black uppercase tracking-wider rounded-full bg-brand-cyan text-black font-black shadow-lg';
-        btnDirect.className = 'flex-1 py-2 text-[10px] font-black uppercase tracking-wider rounded-full text-zinc-400';
-        formWholesale.classList.remove('hidden');
-        formDirect.classList.add('hidden');
-      }
-    }
-
-    // WHATSAPP API SUBMISSION PAYLOAD
-    function submitForm(event, type) {
-      event.preventDefault();
-      const phone = '233240118846';
-      let textMessage = '';
-
-      if (type === 'direct') {
-        const name = document.getElementById('direct-name').value;
-        const customerPhone = document.getElementById('direct-phone').value;
-        const brand = document.getElementById('direct-make').value;
-        const model = document.getElementById('direct-model').value;
-        const engine = document.getElementById('direct-engine').value;
-        const vin = document.getElementById('direct-vin').value;
-        const notes = document.getElementById('direct-notes').value;
-
-        textMessage = `⚡ *KASH OPTION SPARK PLUGS - DIRECT DRIVER TICKET* ⚡\n\n` +
-          `👤 *Buyer Name:* ${name}\n` +
-          `📱 *WhatsApp Contact:* ${customerPhone}\n\n` +
-          `🚗 *VEHICLE SPECIFICATIONS:*\n` +
-          `• *Brand:* ${brand.toUpperCase()}\n` +
-          `• *Model:* ${model}\n` +
-          `• *Engine size:* ${engine}\n` +
-          `• *Chassis Number (VIN):* ${vin.toUpperCase()}\n\n` +
-          `📝 *Misfire Symptoms / Request:* ${notes || 'Not specified'}\n\n` +
-          `🕒 _Form sent from Kash Option Spark Plug Advisor Ghana_`;
-      } else {
-        const business = document.getElementById('wholesale-business').value;
-        const location = document.getElementById('wholesale-location').value;
-        const customerPhone = document.getElementById('wholesale-phone').value;
-        const parts = document.getElementById('wholesale-parts').value;
-
-        const checkboxes = document.querySelectorAll('input[name="w-brand"]:checked');
-        let selectedBrands = [];
-        checkboxes.forEach((c) => selectedBrands.push(c.value.toUpperCase()));
-
-        textMessage = `🏢 *KASH OPTION SPARK PLUGS - WHOLESALE INQUIRY* 🏢\n\n` +
-          `💼 *Business Name:* ${business}\n` +
-          `📍 *Location:* ${location}\n` +
-          `📱 *WhatsApp Contact:* ${customerPhone}\n\n` +
-          `🏷️ *Brands Requested:* ${selectedBrands.join(', ')}\n\n` +
-          `📋 *Wanted Part Numbers & Cartons:* \n${parts}\n\n` +
-          `🕒 _Wholesale inquiry sent from Kash Option Spark Plug Advisor Ghana_`;
-      }
-
-      const encoded = encodeURIComponent(textMessage);
-      const url = `https://wa.me/${phone}?text=${encoded}`;
-      window.open(url, '_blank');
-    }
-
-    // INITIALIZE ADVISER SELECTS
-    window.onload = function() {
-      updateFinderModels();
-    };
+    // Global Section Reveal Logic
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   </script>
-
 </body>
 </html>
