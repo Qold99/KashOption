@@ -3,22 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>KASH OPTION | Ghana's #1 Genuine OEM Spark Plugs Distributor</title>
+  <title>KASH OPTION | Genuine Spark Plugs in Ghana • Toyota, Honda, Hyundai & Kia OEM</title>
   
-  <meta name="description" content="Ghana's premier distributor of genuine OEM spark plugs for Toyota, Honda, Hyundai, and Kia. Direct sourcing from Japan and USA. 100% genuine fitment guaranteed. Nationwide delivery.">
-  <meta name="keywords" content="genuine spark plugs in Ghana, original Toyota spark plugs Ghana, Honda OEM spark plugs Accra, Hyundai spark plugs Ghana, Kia spark plugs Ghana, Denso Iridium Ghana, NGK Laser Iridium Ghana">
+  <meta name="description" content="Ghana's premier distributor of 100% genuine OEM spark plugs for Toyota, Honda, Hyundai, and Kia. Sourced directly from Japan and USA. Wholesale & retail nationwide.">
+  <meta name="keywords" content="Genuine spark plugs in Ghana, original Toyota spark plugs Ghana, Honda OEM spark plugs Accra, Hyundai spark plugs Ghana, Kia spark plugs Ghana, Denso Iridium Ghana, NGK Laser Iridium Accra">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://mrkash.net/">
-  
+
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="KASH OPTION | Ghana's #1 Genuine OEM Spark Plugs Distributor">
-  <meta property="og:description" content="Genuine OEM Spark Plugs. Japan & USA sourced for Toyota, Honda, Hyundai, and Kia. Nationwide delivery across Ghana.">
+  <meta property="og:title" content="KASH OPTION | Genuine Spark Plugs in Ghana">
+  <meta property="og:description" content="Premium. Trusted. Wholesale. Genuine OEM spark plugs sourced from Japan & USA for Toyota, Honda, Hyundai, and Kia.">
   <meta property="og:image" content="https://mrkash.net/logo.png">
   <meta property="og:url" content="https://mrkash.net/">
 
-  <!-- Favicon -->
+  <!-- Official Logo Favicon -->
   <link rel="icon" type="image/png" href="https://mrkash.net/logo.png">
+
+  <!-- Google Font: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS & FontAwesome -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -29,14 +34,16 @@
       theme: {
         extend: {
           colors: {
-            brandDark: '#08080A',
-            brandCarbon: '#111116',
-            brandSurface: '#16161D',
-            brandVolt: '#DFFF00',
-            brandCyan: '#22D3EE',
+            matteBlack: '#050505',
+            pureWhite: '#FFFFFF',
+            signatureRed: '#E50914',
+            metallicSilver: '#BFC3C7',
+            charcoalGrey: '#242424',
+            surfaceCard: '#0E0E10',
+            surfaceBorder: '#1F1F24',
           },
           fontFamily: {
-            sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Inter', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
           }
         }
       }
@@ -44,44 +51,80 @@
   </script>
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-    body { background-color: #08080A; color: #FFFFFF; overflow-x: hidden; }
-    
-    /* Nike-inspired typographic tension */
-    .headline-display {
-      font-weight: 900;
-      letter-spacing: -0.05em;
-      line-height: 0.92;
-      text-transform: uppercase;
-    }
-    
-    .category-card {
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .category-card:hover {
-      transform: translateY(-6px);
-    }
-    
-    .glass-nav {
-      background: rgba(8, 8, 10, 0.85);
-      backdrop-filter: blur(24px) saturate(160%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    :root {
+      --matte-black: #050505;
+      --pure-white: #FFFFFF;
+      --signature-red: #E50914;
+      --metallic-silver: #BFC3C7;
+      --charcoal-grey: #242424;
     }
 
-    .badge-blur {
-      background: rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+    body {
+      background-color: var(--matte-black);
+      color: var(--pure-white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
-    /* Custom select aesthetics */
+    /* Editorial Headline Typography */
+    .headline-editorial {
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.94;
+    }
+
+    /* Subdued Technical Accent Lines */
+    .red-accent-line {
+      width: 48px;
+      height: 3px;
+      background-color: var(--signature-red);
+    }
+
+    /* Nike-styled clean product cards */
+    .product-card {
+      background-color: #0B0B0D;
+      border: 1px solid #1C1C22;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .product-card:hover {
+      border-color: #383842;
+      transform: translateY(-4px);
+    }
+
+    /* Ceramic Spark Plug realistic shadow utility */
+    .plug-shadow {
+      filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.85));
+    }
+
+    /* Technical Data Grid */
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.78rem;
+    }
+    .spec-row:last-child {
+      border-bottom: none;
+    }
+
+    /* Clean navigation background */
+    .nav-glass {
+      background: rgba(5, 5, 5, 0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Select option styles */
     select option {
-      background: #111116;
-      color: #fff;
+      background: #121214;
+      color: #FFFFFF;
     }
   </style>
 
-  <!-- Structured Data / SEO Schema -->
+  <!-- Schema.org Technical Auto Parts Store -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -91,81 +134,76 @@
     "@id": "https://mrkash.net/#store",
     "url": "https://mrkash.net",
     "telephone": "+233243093930",
+    "slogan": "Genuine Spark plugs in Ghana",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Greater Accra",
       "addressLocality": "Accra",
+      "addressRegion": "Greater Accra",
       "addressCountry": "GH"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 5.6037,
-      "longitude": -0.1870
     },
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
-        ],
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         "opens": "07:00",
         "closes": "22:00"
       }
     ],
-    "description": "Ghana's leading distributor of genuine OEM spark plugs for Toyota, Honda, Hyundai, and Kia, sourced directly from Japan and USA."
+    "description": "Ghana's leading destination for genuine OEM automotive spark plugs. We supply verified Denso, NGK, and Mobis factory parts for Toyota, Honda, Hyundai, and Kia."
   }
   </script>
 </head>
 
-<body class="selection:bg-brandVolt selection:text-black">
+<body class="selection:bg-signatureRed selection:text-white">
 
-  <!-- ================= TOP SERVICE TICKER ================= -->
-  <aside aria-label="Store alerts and operating hours" class="bg-black border-b border-white/5 py-2 px-4 text-xs font-semibold tracking-wider uppercase text-slate-400">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+  <!-- ================= EDITORIAL UTILITY BAR ================= -->
+  <aside aria-label="Operating standards" class="bg-[#0A0A0C] border-b border-[#1A1A1F] py-2.5 px-4 sm:px-8 text-xs font-medium text-metallicSilver">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
       <div class="flex items-center gap-3">
-        <span class="inline-flex items-center gap-1.5 text-brandVolt font-bold">
-          <span class="w-2 h-2 rounded-full bg-brandVolt animate-pulse"></span> OEM AUTHENTICITY GUARANTEE
-        </span>
-        <span class="hidden md:inline text-white/30">•</span>
-        <span class="hidden md:inline text-white/70">Direct Japan & USA Sourcing</span>
+        <span class="inline-block w-1.5 h-1.5 bg-signatureRed rounded-full"></span>
+        <span class="text-pureWhite font-bold uppercase tracking-wider text-[11px]">KASH OPTION</span>
+        <span class="text-charcoalGrey">|</span>
+        <span class="tracking-wide">Genuine Spark plugs in Ghana &bull; Premium. Trusted. Wholesale.</span>
       </div>
-      <div class="flex items-center gap-4 text-[11px]">
-        <span>Support Desk: <strong class="text-white">7:00 AM – 10:00 PM Daily</strong></span>
-        <span class="text-white/30">•</span>
-        <span class="text-brandCyan font-bold">Nationwide Delivery Across Ghana</span>
+      <div class="flex items-center gap-6 text-[11px] font-semibold">
+        <span>Support: <strong class="text-pureWhite">7:00 AM – 10:00 PM Daily</strong></span>
+        <span class="text-[#333] hidden sm:inline">•</span>
+        <span class="text-pureWhite hidden sm:inline"><i class="fas fa-truck-fast text-signatureRed mr-1.5"></i> Nationwide Delivery Across Ghana</span>
       </div>
     </div>
   </aside>
 
-  <!-- ================= NAVIGATION ================= -->
-  <header class="sticky top-0 z-50 px-4 sm:px-8 py-3">
-    <div class="max-w-7xl mx-auto glass-nav rounded-2xl px-6 py-4 flex items-center justify-between">
+  <!-- ================= TOP NAVIGATION ================= -->
+  <header class="sticky top-0 z-50 nav-glass">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-4 flex items-center justify-between">
       
-      <!-- Brand Logo -->
-      <a href="index.html" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center p-1.5 transition-transform group-hover:scale-105">
-          <img src="https://mrkash.net/logo.png" alt="KASH OPTION Logo" class="w-full h-full object-contain">
-        </div>
-        <div>
-          <span class="text-xl font-black tracking-tighter text-white block leading-none">KASH<span class="text-brandVolt">OPTION</span></span>
-          <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400">OEM Spark Plugs Ghana</span>
+      <!-- Official Logo Branding -->
+      <a href="index.html" class="flex items-center gap-3.5 group">
+        <img src="https://mrkash.net/logo.png" alt="KASH OPTION Logo" class="h-10 w-auto object-contain">
+        <div class="flex flex-col">
+          <span class="text-lg font-extrabold tracking-tight text-pureWhite uppercase leading-none">
+            KASH <span class="text-signatureRed">OPTION</span>
+          </span>
+          <span class="text-[9px] font-semibold uppercase tracking-widest text-metallicSilver mt-0.5">
+            OEM Spark Plugs Ghana
+          </span>
         </div>
       </a>
 
-      <!-- Desktop Links -->
-      <nav class="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-slate-300">
-        <a href="#fitment-finder" class="hover:text-brandVolt transition-colors">Plug Finder</a>
-        <a href="#toyota" class="hover:text-brandVolt transition-colors">Toyota OEM</a>
-        <a href="#honda" class="hover:text-brandVolt transition-colors">Honda OEM</a>
-        <a href="#hyundai" class="hover:text-brandVolt transition-colors">Hyundai OEM</a>
-        <a href="#kia" class="hover:text-brandVolt transition-colors">Kia OEM</a>
-        <a href="#authenticity" class="hover:text-brandVolt transition-colors">Authenticity Check</a>
+      <!-- Clean Editorial Navigation -->
+      <nav class="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-metallicSilver">
+        <a href="#fitment-engine" class="hover:text-pureWhite transition-colors">Fitment Selector</a>
+        <a href="#toyota" class="hover:text-pureWhite transition-colors">Toyota</a>
+        <a href="#honda" class="hover:text-pureWhite transition-colors">Honda</a>
+        <a href="#hyundai" class="hover:text-pureWhite transition-colors">Hyundai</a>
+        <a href="#kia" class="hover:text-pureWhite transition-colors">Kia</a>
+        <a href="#authenticity" class="hover:text-pureWhite transition-colors">Anti-Counterfeit</a>
       </nav>
 
-      <!-- Primary CTA -->
-      <div class="flex items-center gap-3">
-        <a href="https://wa.me/c/233243093930" target="_blank" rel="noopener" class="bg-brandVolt hover:bg-white text-black text-xs font-black uppercase tracking-wider px-5 py-3 rounded-xl flex items-center gap-2 transition-all duration-300 shadow-lg shadow-brandVolt/10 hover:scale-105">
+      <!-- Primary Action: Direct WhatsApp Catalogue -->
+      <div class="flex items-center gap-4">
+        <a href="https://wa.me/c/233243093930" target="_blank" rel="noopener" class="bg-signatureRed hover:bg-[#c40811] text-pureWhite text-xs font-bold uppercase tracking-wider px-5 py-3 rounded transition-all duration-200 flex items-center gap-2.5">
           <span>WhatsApp Catalogue</span>
           <i class="fab fa-whatsapp text-sm"></i>
         </a>
@@ -173,666 +211,856 @@
     </div>
   </header>
 
-  <!-- ================= HERO SECTION (NIKE EDITORIAL STYLE) ================= -->
-  <section class="relative min-h-[88vh] flex items-center justify-center px-4 sm:px-6 pt-12 pb-24 overflow-hidden">
-    <!-- Background atmospheric glow -->
-    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brandVolt/5 rounded-full blur-[140px] pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto w-full text-center relative z-10">
+  <main>
+    <!-- ================= HERO SECTION (NIKE EDITORIAL STYLE) ================= -->
+    <section class="relative pt-20 pb-28 sm:pt-28 sm:pb-36 px-4 sm:px-8 border-b border-[#1A1A1F] overflow-hidden">
       
-      <!-- Sub-headline badge -->
-      <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full badge-blur mb-8">
-        <i class="fas fa-certificate text-brandVolt text-xs"></i>
-        <span class="text-[11px] font-extrabold uppercase tracking-widest text-slate-200">
-          The Gold Standard for Ignition Performance in Ghana
-        </span>
-      </div>
-
-      <!-- Main Impact Headline -->
-      <h1 class="headline-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl mb-8 tracking-tighter">
-        GENUINE OEM.<br>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-500">CORRECT FITMENT.</span><br>
-        <span class="text-brandVolt">ZERO COMPROMISE.</span>
-      </h1>
-
-      <p class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-slate-400 font-medium leading-relaxed mb-10">
-        Counterfeit spark plugs damage coils, waste fuel, and ruin engines. We supply genuine, factory-spec <strong>Iridium and Platinum spark plugs</strong> directly imported from Japan and the USA for Toyota, Honda, Hyundai, and Kia.
-      </p>
-
-      <!-- Primary Action Buttons -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto mb-16">
-        <a href="#fitment-finder" class="w-full sm:w-auto bg-white hover:bg-brandVolt text-black text-xs font-black uppercase tracking-widest px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 shadow-xl">
-          Find Your Spark Plug
-        </a>
-        <a href="https://wa.me/c/233243093930" target="_blank" rel="noopener" class="w-full sm:w-auto bg-brandSurface hover:bg-brandCarbon text-white border border-white/10 hover:border-brandVolt/40 text-xs font-black uppercase tracking-widest px-8 py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2">
-          <span>Open Full Catalogue</span>
-          <i class="fab fa-whatsapp text-brandVolt"></i>
-        </a>
-      </div>
-
-      <!-- Quick Brand Marquee -->
-      <div class="pt-8 border-t border-white/5 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-4xl mx-auto opacity-70">
-        <div class="flex flex-col items-center justify-center">
-          <span class="text-xl font-black tracking-tight text-white">TOYOTA</span>
-          <span class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Denso OEM • Twin Tip</span>
-        </div>
-        <div class="flex flex-col items-center justify-center">
-          <span class="text-xl font-black tracking-tight text-white">HONDA</span>
-          <span class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">NGK Laser Iridium OEM</span>
-        </div>
-        <div class="flex flex-col items-center justify-center">
-          <span class="text-xl font-black tracking-tight text-white">HYUNDAI</span>
-          <span class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Mobis Genuine • Korea</span>
-        </div>
-        <div class="flex flex-col items-center justify-center">
-          <span class="text-xl font-black tracking-tight text-white">KIA</span>
-          <span class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Mobis OEM • Precision</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= INTERACTIVE OEM FITMENT FINDER ================= -->
-  <section id="fitment-finder" class="py-20 px-4 sm:px-6 bg-brandCarbon border-y border-white/5 relative">
-    <div class="max-w-5xl mx-auto">
+      <!-- Subtle Architectural Grid Background -->
+      <div class="absolute inset-0 bg-[radial-gradient(#1c1c22_1px,transparent_1px)] [background-size:32px_32px] opacity-40 pointer-events-none"></div>
       
-      <div class="text-center mb-12">
-        <span class="text-brandVolt text-xs font-black tracking-widest uppercase mb-3 block">Engine Precision Protocol</span>
-        <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">Find Your Exact OEM Spark Plug</h2>
-        <p class="text-slate-400 text-sm mt-3 max-w-xl mx-auto">Select your vehicle details below. Our technical desk will immediately identify your OEM part number, verify fitment, and prepare your order on WhatsApp.</p>
-      </div>
-
-      <!-- Fitment Selection Engine Form -->
-      <div class="bg-brandSurface p-6 sm:p-10 rounded-3xl border border-white/10 shadow-2xl">
-        <form id="plugFinderForm" onsubmit="handleFitmentSearch(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          
-          <div>
-            <label for="carMake" class="block text-[11px] font-black uppercase tracking-wider text-slate-400 mb-2">1. Vehicle Make</label>
-            <select id="carMake" required onchange="updateModels()" class="w-full bg-brandDark border border-white/10 focus:border-brandVolt text-white rounded-xl px-4 py-3.5 text-sm outline-none transition-colors">
-              <option value="">Select Make</option>
-              <option value="Toyota">Toyota</option>
-              <option value="Honda">Honda</option>
-              <option value="Hyundai">Hyundai</option>
-              <option value="Kia">Kia</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="carModel" class="block text-[11px] font-black uppercase tracking-wider text-slate-400 mb-2">2. Model</label>
-            <select id="carModel" required class="w-full bg-brandDark border border-white/10 focus:border-brandVolt text-white rounded-xl px-4 py-3.5 text-sm outline-none transition-colors">
-              <option value="">Select Make First</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="carYear" class="block text-[11px] font-black uppercase tracking-wider text-slate-400 mb-2">3. Year of Manufacture</label>
-            <select id="carYear" required class="w-full bg-brandDark border border-white/10 focus:border-brandVolt text-white rounded-xl px-4 py-3.5 text-sm outline-none transition-colors">
-              <option value="">Select Year</option>
-              <option value="2024">2024</option>
-              <option value="2023">2023</option>
-              <option value="2022">2022</option>
-              <option value="2021">2021</option>
-              <option value="2020">2020</option>
-              <option value="2019">2019</option>
-              <option value="2018">2018</option>
-              <option value="2017">2017</option>
-              <option value="2016">2016</option>
-              <option value="2015">2015</option>
-              <option value="2014">2014</option>
-              <option value="2013">2013</option>
-              <option value="2012">2012</option>
-              <option value="2011">2011</option>
-              <option value="2010">2010</option>
-              <option value="2009-Earlier">2009 or Earlier</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="engineSize" class="block text-[11px] font-black uppercase tracking-wider text-slate-400 mb-2">4. Engine Capacity</label>
-            <input type="text" id="engineSize" placeholder="e.g. 1.8L, 2.0L, 2.4L, V6" required class="w-full bg-brandDark border border-white/10 focus:border-brandVolt text-white rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder:text-slate-600">
-          </div>
-
-          <div class="sm:col-span-2 lg:col-span-4 mt-4">
-            <button type="submit" class="w-full bg-brandVolt hover:bg-white text-black py-4 rounded-xl text-xs font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-300 hover:scale-[1.01] shadow-lg shadow-brandVolt/10">
-              <span>Verify Fitment & Check WhatsApp Availability</span>
-              <i class="fab fa-whatsapp text-lg"></i>
-            </button>
-          </div>
-        </form>
+      <div class="max-w-7xl mx-auto relative z-10">
         
-        <p class="text-center text-xs text-slate-500 mt-4">
-          <i class="fas fa-shield-alt text-brandVolt mr-1"></i> Technical Desk is active today <strong>7:00 AM – 10:00 PM</strong> • Immediate response guaranteed.
+        <!-- Red Accent + Position Tag -->
+        <div class="flex items-center gap-3 mb-8">
+          <div class="red-accent-line"></div>
+          <span class="text-xs font-bold uppercase tracking-widest text-metallicSilver">
+            Direct Japan &amp; USA Sourcing &bull; Zero Counterfeits
+          </span>
+        </div>
+
+        <!-- Grand Statement Headline -->
+        <div class="max-w-5xl mb-10">
+          <h1 class="headline-editorial text-5xl sm:text-7xl md:text-8xl lg:text-[6.75rem] text-pureWhite mb-6">
+            GENUINE IGNITION.<br>
+            <span class="text-metallicSilver">PRECISE FITMENT.</span><br>
+            <span class="text-signatureRed">NO MISFIRES.</span>
+          </h1>
+          <p class="text-lg sm:text-xl text-metallicSilver max-w-2xl font-normal leading-relaxed">
+            Ghana’s authoritative hub for genuine OEM spark plugs. We supply verified Denso, NGK, and Mobis factory-fit components for <strong>Toyota, Honda, Hyundai, and Kia</strong> engines.
+          </p>
+        </div>
+
+        <!-- Strong Action Rows -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 max-w-xl mb-20">
+          <a href="#fitment-engine" class="bg-pureWhite hover:bg-metallicSilver text-matteBlack text-xs font-extrabold uppercase tracking-widest px-8 py-4 rounded text-center transition-all duration-200">
+            Find Your Spark Plug
+          </a>
+          <a href="https://wa.me/c/233243093930" target="_blank" rel="noopener" class="bg-charcoalGrey hover:bg-[#2e2e2e] text-pureWhite border border-[#333] text-xs font-extrabold uppercase tracking-widest px-8 py-4 rounded text-center flex items-center justify-center gap-2.5 transition-all duration-200">
+            <span>View Full Catalogue</span>
+            <i class="fab fa-whatsapp text-signatureRed text-sm"></i>
+          </a>
+        </div>
+
+        <!-- Brand Strip with Automotive Precision -->
+        <div class="pt-10 border-t border-[#1C1C22] grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="border-l-2 border-charcoalGrey pl-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-metallicSilver block mb-1">Toyota OEM</span>
+            <span class="text-xl font-extrabold text-pureWhite">Denso Iridium</span>
+            <p class="text-xs text-metallicSilver/70 mt-1">Twin-Tip &amp; Long-Life Specifications</p>
+          </div>
+          <div class="border-l-2 border-charcoalGrey pl-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-metallicSilver block mb-1">Honda OEM</span>
+            <span class="text-xl font-extrabold text-pureWhite">NGK Laser Iridium</span>
+            <p class="text-xs text-metallicSilver/70 mt-1">VTEC &amp; Earth Dreams Powertrains</p>
+          </div>
+          <div class="border-l-2 border-charcoalGrey pl-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-metallicSilver block mb-1">Hyundai OEM</span>
+            <span class="text-xl font-extrabold text-pureWhite">Mobis Genuine</span>
+            <p class="text-xs text-metallicSilver/70 mt-1">Nu, Gamma &amp; Theta Engine Matches</p>
+          </div>
+          <div class="border-l-2 border-charcoalGrey pl-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-metallicSilver block mb-1">Kia OEM</span>
+            <span class="text-xl font-extrabold text-pureWhite">Mobis / NGK</span>
+            <p class="text-xs text-metallicSilver/70 mt-1">Original Korean Production Tolerances</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= INTERACTIVE FITMENT LOOKUP (PRESERVED FUNCTIONALITY) ================= -->
+    <section id="fitment-engine" class="py-20 px-4 sm:px-8 bg-[#09090C] border-b border-[#1A1A1F]">
+      <div class="max-w-5xl mx-auto">
+        
+        <div class="mb-10 text-center sm:text-left">
+          <div class="red-accent-line mb-4 mx-auto sm:mx-0"></div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-pureWhite mb-2">
+            Spark Plug Fitment Selector
+          </h2>
+          <p class="text-sm text-metallicSilver">
+            Select your exact vehicle specifications. Our technical desk confirms the correct OEM part number, verifies inventory, and coordinates order delivery via WhatsApp.
+          </p>
+        </div>
+
+        <div class="bg-surfaceCard p-6 sm:p-10 rounded border border-surfaceBorder">
+          <form id="fitmentForm" onsubmit="submitFitmentQuery(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            
+            <div>
+              <label for="carMake" class="block text-[11px] font-bold uppercase tracking-wider text-metallicSilver mb-2">1. Vehicle Make</label>
+              <select id="carMake" required onchange="populateModels()" class="w-full bg-[#121216] border border-[#26262E] focus:border-signatureRed text-pureWhite rounded px-4 py-3 text-sm outline-none transition-colors">
+                <option value="">Select Make</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Honda">Honda</option>
+                <option value="Hyundai">Hyundai</option>
+                <option value="Kia">Kia</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="carModel" class="block text-[11px] font-bold uppercase tracking-wider text-metallicSilver mb-2">2. Model</label>
+              <select id="carModel" required class="w-full bg-[#121216] border border-[#26262E] focus:border-signatureRed text-pureWhite rounded px-4 py-3 text-sm outline-none transition-colors">
+                <option value="">Select Make First</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="carYear" class="block text-[11px] font-bold uppercase tracking-wider text-metallicSilver mb-2">3. Production Year</label>
+              <select id="carYear" required class="w-full bg-[#121216] border border-[#26262E] focus:border-signatureRed text-pureWhite rounded px-4 py-3 text-sm outline-none transition-colors">
+                <option value="">Select Year</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+                <option value="2010">2010</option>
+                <option value="2009-Earlier">2009 or earlier</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="engineDisplacement" class="block text-[11px] font-bold uppercase tracking-wider text-metallicSilver mb-2">4. Engine Size / Code</label>
+              <input type="text" id="engineDisplacement" placeholder="e.g. 1.8L 2ZR, 2.4L, V6" required class="w-full bg-[#121216] border border-[#26262E] focus:border-signatureRed text-pureWhite rounded px-4 py-3 text-sm outline-none transition-colors placeholder:text-metallicSilver/40">
+            </div>
+
+            <div class="sm:col-span-2 lg:col-span-4 pt-2">
+              <button type="submit" class="w-full bg-signatureRed hover:bg-[#c40811] text-pureWhite py-4 rounded text-xs font-extrabold uppercase tracking-widest flex items-center justify-center gap-3 transition-colors duration-200">
+                <span>Check Availability On WhatsApp</span>
+                <i class="fab fa-whatsapp text-lg"></i>
+              </button>
+            </div>
+
+          </form>
+
+          <div class="mt-4 pt-4 border-t border-surfaceBorder flex flex-col sm:flex-row justify-between items-center text-xs text-metallicSilver gap-2">
+            <span><i class="fas fa-certificate text-signatureRed mr-1.5"></i> All fitments confirmed against manufacturer repair manuals.</span>
+            <span>Technical Desk Direct: <strong class="text-pureWhite">024 309 3930</strong></span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= MANUFACTURER CATALOGUE 1: TOYOTA ================= -->
+    <section id="toyota" class="py-24 px-4 sm:px-8 max-w-7xl mx-auto">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-[#1C1C22] pb-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-signatureRed block mb-2">Japanese OEM Specification</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-pureWhite">Toyota OEM Spark Plugs</h2>
+        </div>
+        <p class="text-metallicSilver text-sm max-w-md mt-4 md:mt-0 font-normal">
+          Factory-specified Denso Iridium Long-Life &amp; Twin-Tip spark plugs engineered for Toyota VVT-i, Dual VVT-i, and D-4S injection engines.
         </p>
       </div>
 
-    </div>
-  </section>
-
-  <!-- ================= BRAND CATEGORY SECTION 1: TOYOTA ================= -->
-  <section id="toyota" class="py-24 px-4 sm:px-6 max-w-7xl mx-auto">
-    
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-white/5 pb-6">
-      <div>
-        <span class="text-brandVolt text-xs font-black tracking-widest uppercase block mb-1">OEM Japanese Manufacturing</span>
-        <h2 class="text-4xl sm:text-6xl font-black uppercase tracking-tight">Toyota Genuine Spark Plugs</h2>
-      </div>
-      <p class="text-slate-400 text-sm max-w-md mt-4 md:mt-0 font-medium">
-        Genuine Denso Iridium Long-Life & Twin-Tip spark plugs engineered specifically for Toyota VVT-i and Dual VVT-i powertrains.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      
-      <!-- Product Card 1 -->
-      <div class="category-card bg-brandCarbon rounded-3xl border border-white/10 p-6 flex flex-col justify-between">
-        <div>
-          <div class="aspect-square rounded-2xl bg-brandDark p-6 flex items-center justify-center relative overflow-hidden mb-6 border border-white/5">
-            <span class="absolute top-3 left-3 bg-white/10 text-[10px] font-black uppercase px-2.5 py-1 rounded-md text-white">Toyota OEM</span>
-            <span class="absolute top-3 right-3 text-brandVolt text-[10px] font-black uppercase">Denso Japan</span>
-            <i class="fas fa-bolt text-7xl text-slate-700/50"></i>
-          </div>
-          <span class="text-xs font-black tracking-widest text-brandVolt uppercase">Denso SC20HR11</span>
-          <h3 class="text-xl font-black uppercase mt-1 mb-2">Toyota Corolla / Matrix / Auris</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-4">
-            Engine Fitment: 1.8L 2ZR-FE, 2ZR-FXE. High-grade 0.7mm fine-wire Iridium center electrode. Extended 100,000km service interval.
-          </p>
-          <div class="text-[11px] font-semibold text-slate-400 border-t border-white/5 pt-3">
-            OEM Cross: <strong class="text-white">90919-01253 / SC20HR11</strong>
-          </div>
-        </div>
-        <div class="mt-6 pt-4 border-t border-white/5">
-          <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Toyota%20OEM%20Spark%20Plug%20SC20HR11%20for%20my%20vehicle." target="_blank" rel="noopener" class="w-full bg-white/10 hover:bg-brandVolt hover:text-black text-white text-xs font-black uppercase tracking-wider py-3.5 rounded-xl transition-all flex items-center justify-center gap-2">
-            <span>Check Availability</span>
-            <i class="fab fa-whatsapp"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Product Card 2 -->
-      <div class="category-card bg-brandCarbon rounded-3xl border border-white/10 p-6 flex flex-col justify-between">
-        <div>
-          <div class="aspect-square rounded-2xl bg-brandDark p-6 flex items-center justify-center relative overflow-hidden mb-6 border border-white/5">
-            <span class="absolute top-3 left-3 bg-white/10 text-[10px] font-black uppercase px-2.5 py-1 rounded-md text-white">Toyota OEM</span>
-            <span class="absolute top-3 right-3 text-brandVolt text-[10px] font-black uppercase">Denso Japan</span>
-            <i class="fas fa-bolt text-7xl text-slate-700/50"></i>
-          </div>
-          <span class="text-xs font-black tracking-widest text-brandVolt uppercase">Denso SK20R11</span>
-          <h3 class="text-xl font-black uppercase mt-1 mb-2">Toyota Camry / RAV4 / Highlander</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-4">
-            Engine Fitment: 2.4L 2AZ-FE, 3.0L 1MZ-FE, 3.3L 3MZ-FE. Patented Iridium alloy withstands severe combustion heat in Ghanaian conditions.
-          </p>
-          <div class="text-[11px] font-semibold text-slate-400 border-t border-white/5 pt-3">
-            OEM Cross: <strong class="text-white">90919-01210 / SK20R11</strong>
-          </div>
-        </div>
-        <div class="mt-6 pt-4 border-t border-white/5">
-          <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Toyota%20Camry%20Denso%20SK20R11%20spark%20plugs." target="_blank" rel="noopener" class="w-full bg-white/10 hover:bg-brandVolt hover:text-black text-white text-xs font-black uppercase tracking-wider py-3.5 rounded-xl transition-all flex items-center justify-center gap-2">
-            <span>Check Availability</span>
-            <i class="fab fa-whatsapp"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Product Card 3 -->
-      <div class="category-card bg-brandCarbon rounded-3xl border border-white/10 p-6 flex flex-col justify-between">
-        <div>
-          <div class="aspect-square rounded-2xl bg-brandDark p-6 flex items-center justify-center relative overflow-hidden mb-6 border border-white/5">
-            <span class="absolute top-3 left-3 bg-white/10 text-[10px] font-black uppercase px-2.5 py-1 rounded-md text-white">Toyota OEM</span>
-            <span class="absolute top-3 right-3 text-brandVolt text-[10px] font-black uppercase">Denso Japan</span>
-            <i class="fas fa-bolt text-7xl text-slate-700/50"></i>
-          </div>
-          <span class="text-xs font-black tracking-widest text-brandVolt uppercase">Denso FK20HR11</span>
-          <h3 class="text-xl font-black uppercase mt-1 mb-2">Toyota Prado / Land Cruiser / V6</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-4">
-            Engine Fitment: 4.0L 1GR-FE, 3.5L 2GR-FE. Super-ignition twin-tip electrode provides instant ignition response and smooth idle.
-          </p>
-          <div class="text-[11px] font-semibold text-slate-400 border-t border-white/5 pt-3">
-            OEM Cross: <strong class="text-white">90919-01247 / FK20HR11</strong>
-          </div>
-        </div>
-        <div class="mt-6 pt-4 border-t border-white/5">
-          <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Toyota%20V6%20Prado%20FK20HR11%20spark%20plugs." target="_blank" rel="noopener" class="w-full bg-white/10 hover:bg-brandVolt hover:text-black text-white text-xs font-black uppercase tracking-wider py-3.5 rounded-xl transition-all flex items-center justify-center gap-2">
-            <span>Check Availability</span>
-            <i class="fab fa-whatsapp"></i>
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Category Footnote CTA -->
-    <div class="mt-10 p-6 bg-brandSurface rounded-2xl border border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <i class="fas fa-tools text-brandVolt text-xl"></i>
-        <span class="text-xs font-semibold text-slate-300">Driving a Yaris, Fortuner, Tacoma, Vitz, or Hilux? We have your specific OEM part.</span>
-      </div>
-      <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20need%20genuine%20spark%20plugs%20for%20my%20Toyota." target="_blank" rel="noopener" class="text-xs font-black uppercase tracking-widest text-brandVolt hover:text-white flex items-center gap-2">
-        <span>Order Toyota Plugs On WhatsApp</span>
-        <i class="fas fa-arrow-right"></i>
-      </a>
-    </div>
-
-  </section>
-
-  <!-- ================= BRAND CATEGORY SECTION 2: HONDA ================= -->
-  <section id="honda" class="py-24 px-4 sm:px-6 max-w-7xl mx-auto border-t border-white/5">
-    
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-white/5 pb-6">
-      <div>
-        <span class="text-brandCyan text-xs font-black tracking-widest uppercase block mb-1">VTEC & Earth Dreams Ignition</span>
-        <h2 class="text-4xl sm:text-6xl font-black uppercase tracking-tight">Honda Genuine Spark Plugs</h2>
-      </div>
-      <p class="text-slate-400 text-sm max-w-md mt-4 md:mt-0 font-medium">
-        Genuine NGK Laser Iridium and Denso Long-Life plugs factory-mandated for Honda Civic, Accord, CR-V, and Pilot.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      
-      <!-- Product Card 1 -->
-      <div class="category-card bg-brandCarbon rounded-3xl border border-white/10 p-6 flex flex-col justify-between">
-        <div>
-          <div class="aspect-square rounded-2xl bg-brandDark p-6 flex items-center justify-center relative overflow-hidden mb-6 border border-white/5">
-            <span class="absolute top-3 left-3 bg-white/10 text-[10px] font-black uppercase px-2.5 py-1 rounded-md text-white">Honda OEM</span>
-            <span class="absolute top-3 right-3 text-brandCyan text-[10px] font-black uppercase">NGK Japan</span>
-            <i class="fas fa-bolt text-7xl text-slate-700/50"></i>
-          </div>
-          <span class="text-xs font-black tracking-widest text-brandCyan uppercase">NGK IZFR6K11</span>
-          <h3 class="text-xl font-black uppercase mt-1 mb-2">Honda Accord / CR-V 2.4L</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-4">
-            Engine Fitment: K24A, K24Z. Laser-welded Iridium center tip with platinum ground disc ensures complete combustion and zero misfires.
-          </p>
-          <div class="text-[11px] font-semibold text-slate-400 border-t border-white/5 pt-3">
-            OEM Cross: <strong class="text-white">9807B-5617W / IZFR6K11</strong>
-          </div>
-        </div>
-        <div class="mt-6 pt-4 border-t border-white/5">
-          <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20need%20Honda%20Accord/CRV%20NGK%20IZFR6K11%20spark%20plugs." target="_blank" rel="noopener" class="w-full bg-white/10 hover:bg-brandCyan hover:text-black text-white text-xs font-black uppercase tracking-wider py-3.5 rounded-xl transition-all flex items-center justify-center gap-2">
-            <span>Check Availability</span>
-            <i class="fab fa-whatsapp"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Product Card 2 -->
-      <div class="category-card bg-brandCarbon rounded-3xl border border-white/10 p-6 flex flex-col justify-between">
-        <div>
-          <div class="aspect-square rounded-2xl bg-brandDark p-6 flex items-center justify-center relative overflow-hidden mb-6 border border-white/5">
-            <span class="absolute top-3 left-3 bg-white/10 text-[10px] font-black uppercase px-2.5 py-1 rounded-md text-white">Honda OEM</span>
-            <span class="absolute top-3 right-3 text-brandCyan text-[10px] font-black uppercase">NGK Japan</span>
-            <i class="fas fa-bolt text-7xl text-slate-700/50"></i>
-          </div>
-          <span class="text-xs font-black tracking-widest text-brandCyan uppercase">NGK ILZKR7B11</span>
-          <h3 class="text-xl font-black uppercase mt-1 mb-2">Honda Civic 1.8L / HR-V</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-4">
-            Engine Fitment: R18A, R18Z. High thermal conductivity porcelain prevent heat-fouling during heavy Accra traffic and hot climate idling.
-          </p>
-          <div class="text-[11px] font-semibold text-slate-400 border-t border-white/5 pt-3">
-            OEM Cross: <strong class="text-white">12290-R1A-H01 / ILZKR7B11</strong>
-          </div>
-        </div>
-        <div class="mt-6 pt-4 border-t border-white/5">
-          <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Honda%20Civic%20ILZKR7B11%20spark%20plugs." target="_blank" rel="noopener" class="w-full bg-white/10 hover:bg-brandCyan hover:text-black text-white text-xs font-black uppercase tracking-wider py-3.5 rounded-xl transition-all flex items-center justify-center gap-2">
-            <span>Check Availability</span>
-            <i class="fab fa-whatsapp"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Product Card 3 -->
-      <div class="category-card bg-brandCarbon rounded-3xl border border-white/10 p-6 flex flex-col justify-between">
-        <div>
-          <div class="aspect-square rounded-2xl bg-brandDark p-6 flex items-center justify-center relative overflow-hidden mb-6 border border-white/5">
-            <span class="absolute top-3 left-3 bg-white/10 text-[10px] font-black uppercase px-2.5 py-1 rounded-md text-white">Honda OEM</span>
-            <span class="absolute top-3 right-3 text-brandCyan text-[10px] font-black uppercase">Denso / NGK</span>
-            <i class="fas fa-bolt text-7xl text-slate-700/50"></i>
-          </div>
-          <span class="text-xs font-black tracking-widest text-brandCyan uppercase">NGK DILZKR7B11GS</span>
-          <h3 class="text-xl font-black uppercase mt-1 mb-2">Honda Earth Dreams 1.5L Turbo</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-4">
-            Engine Fitment: L15B7, L15BA Turbocharged Civic & CR-V. Dual fine-wire design engineered for high compression and direct injection.
-          </p>
-          <div class="text-[11px] font-semibold text-slate-400 border-t border-white/5 pt-3">
-            OEM Cross: <strong class="text-white">12290-59B-003</strong>
-          </div>
-        </div>
-        <div class="mt-6 pt-4 border-t border-white/5">
-          <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20need%20spark%20plugs%20for%20Honda%201.5L%20Turbo%20Earth%20Dreams." target="_blank" rel="noopener" class="w-full bg-white/10 hover:bg-brandCyan hover:text-black text-white text-xs font-black uppercase tracking-wider py-3.5 rounded-xl transition-all flex items-center justify-center gap-2">
-            <span>Check Availability</span>
-            <i class="fab fa-whatsapp"></i>
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Category Footnote CTA -->
-    <div class="mt-10 p-6 bg-brandSurface rounded-2xl border border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <i class="fas fa-car-side text-brandCyan text-xl"></i>
-        <span class="text-xs font-semibold text-slate-300">Need spark plugs for Honda Pilot V6, Odyssey, Insight, or Fit?</span>
-      </div>
-      <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20need%20genuine%20OEM%20plugs%20for%20my%20Honda." target="_blank" rel="noopener" class="text-xs font-black uppercase tracking-widest text-brandCyan hover:text-white flex items-center gap-2">
-        <span>Order Honda Plugs On WhatsApp</span>
-        <i class="fas fa-arrow-right"></i>
-      </a>
-    </div>
-
-  </section>
-
-  <!-- ================= BRAND CATEGORY SECTION 3: HYUNDAI & KIA ================= -->
-  <section id="hyundai" class="py-24 px-4 sm:px-6 max-w-7xl mx-auto border-t border-white/5">
-    
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-white/5 pb-6">
-      <div>
-        <span class="text-brandVolt text-xs font-black tracking-widest uppercase block mb-1">Mobis Korea & USA Specification</span>
-        <h2 class="text-4xl sm:text-6xl font-black uppercase tracking-tight">Hyundai & Kia Genuine Plugs</h2>
-      </div>
-      <p class="text-slate-400 text-sm max-w-md mt-4 md:mt-0 font-medium">
-        Genuine OEM Mobis / NGK spark plugs for Hyundai Elantra, Sonata, Tucson, Santa Fe, and Kia Forte, Optima, Sportage, and Sorento.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="kia">
-      
-      <!-- Product Card 1 -->
-      <div class="category-card bg-brandCarbon rounded-3xl border border-white/10 p-6 flex flex-col justify-between">
-        <div>
-          <div class="aspect-square rounded-2xl bg-brandDark p-6 flex items-center justify-center relative overflow-hidden mb-6 border border-white/5">
-            <span class="absolute top-3 left-3 bg-white/10 text-[10px] font-black uppercase px-2.5 py-1 rounded-md text-white">Mobis Genuine</span>
-            <span class="absolute top-3 right-3 text-brandVolt text-[10px] font-black uppercase">Korea / USA</span>
-            <i class="fas fa-bolt text-7xl text-slate-700/50"></i>
-          </div>
-          <span class="text-xs font-black tracking-widest text-brandVolt uppercase">SILZKR6B10E / 18846-10060</span>
-          <h3 class="text-xl font-black uppercase mt-1 mb-2">Hyundai Elantra / Accent 1.6L - 1.8L</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-4">
-            Engine Fitment: Nu 1.8L, Gamma 1.6L MPi. Solves sluggish acceleration, rough morning cold starts, and high fuel consumption.
-          </p>
-          <div class="text-[11px] font-semibold text-slate-400 border-t border-white/5 pt-3">
-            OEM Part No: <strong class="text-white">18846-10060</strong>
-          </div>
-        </div>
-        <div class="mt-6 pt-4 border-t border-white/5">
-          <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20need%20Hyundai%20Elantra%20OEM%20Spark%20Plugs%2018846-10060." target="_blank" rel="noopener" class="w-full bg-white/10 hover:bg-brandVolt hover:text-black text-white text-xs font-black uppercase tracking-wider py-3.5 rounded-xl transition-all flex items-center justify-center gap-2">
-            <span>Check Availability</span>
-            <i class="fab fa-whatsapp"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Product Card 2 -->
-      <div class="category-card bg-brandCarbon rounded-3xl border border-white/10 p-6 flex flex-col justify-between">
-        <div>
-          <div class="aspect-square rounded-2xl bg-brandDark p-6 flex items-center justify-center relative overflow-hidden mb-6 border border-white/5">
-            <span class="absolute top-3 left-3 bg-white/10 text-[10px] font-black uppercase px-2.5 py-1 rounded-md text-white">Mobis Genuine</span>
-            <span class="absolute top-3 right-3 text-brandVolt text-[10px] font-black uppercase">Korea / USA</span>
-            <i class="fas fa-bolt text-7xl text-slate-700/50"></i>
-          </div>
-          <span class="text-xs font-black tracking-widest text-brandVolt uppercase">SILZKR7B11 / 18846-11070</span>
-          <h3 class="text-xl font-black uppercase mt-1 mb-2">Hyundai Sonata / Tucson 2.0L - 2.4L</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-4">
-            Engine Fitment: Theta II 2.4L GDI / MPi. High resistance to carbon deposit buildup. Recommended replacement every 80,000 km.
-          </p>
-          <div class="text-[11px] font-semibold text-slate-400 border-t border-white/5 pt-3">
-            OEM Part No: <strong class="text-white">18846-11070</strong>
-          </div>
-        </div>
-        <div class="mt-6 pt-4 border-t border-white/5">
-          <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Hyundai%20Sonata/Tucson%20OEM%20Plugs%2018846-11070." target="_blank" rel="noopener" class="w-full bg-white/10 hover:bg-brandVolt hover:text-black text-white text-xs font-black uppercase tracking-wider py-3.5 rounded-xl transition-all flex items-center justify-center gap-2">
-            <span>Check Availability</span>
-            <i class="fab fa-whatsapp"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Product Card 3 -->
-      <div class="category-card bg-brandCarbon rounded-3xl border border-white/10 p-6 flex flex-col justify-between">
-        <div>
-          <div class="aspect-square rounded-2xl bg-brandDark p-6 flex items-center justify-center relative overflow-hidden mb-6 border border-white/5">
-            <span class="absolute top-3 left-3 bg-white/10 text-[10px] font-black uppercase px-2.5 py-1 rounded-md text-white">Kia Genuine</span>
-            <span class="absolute top-3 right-3 text-brandVolt text-[10px] font-black uppercase">Mobis OEM</span>
-            <i class="fas fa-bolt text-7xl text-slate-700/50"></i>
-          </div>
-          <span class="text-xs font-black tracking-widest text-brandVolt uppercase">SILZKR8E9G / 18849-09085</span>
-          <h3 class="text-xl font-black uppercase mt-1 mb-2">Kia Forte / Sportage / Optima</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-4">
-            Engine Fitment: 2.0L Nu GDI, 2.4L Theta II. Engineered with anti-corrosive nickel plating to prevent thread seizure in aluminum cylinder heads.
-          </p>
-          <div class="text-[11px] font-semibold text-slate-400 border-t border-white/5 pt-3">
-            OEM Part No: <strong class="text-white">18849-09085 / 18846-10060</strong>
-          </div>
-        </div>
-        <div class="mt-6 pt-4 border-t border-white/5">
-          <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20need%20genuine%20OEM%20spark%20plugs%20for%20Kia%20Sportage/Forte." target="_blank" rel="noopener" class="w-full bg-white/10 hover:bg-brandVolt hover:text-black text-white text-xs font-black uppercase tracking-wider py-3.5 rounded-xl transition-all flex items-center justify-center gap-2">
-            <span>Check Availability</span>
-            <i class="fab fa-whatsapp"></i>
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Category Footnote CTA -->
-    <div class="mt-10 p-6 bg-brandSurface rounded-2xl border border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <i class="fas fa-certificate text-brandVolt text-xl"></i>
-        <span class="text-xs font-semibold text-slate-300">Have a Hyundai Santa Fe V6, Kia Sorento, Cadenza, or Rio?</span>
-      </div>
-      <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20need%20genuine%20Mobis%20OEM%20plugs%20for%20my%20Hyundai/Kia." target="_blank" rel="noopener" class="text-xs font-black uppercase tracking-widest text-brandVolt hover:text-white flex items-center gap-2">
-        <span>Order On WhatsApp Desk</span>
-        <i class="fas fa-arrow-right"></i>
-      </a>
-    </div>
-
-  </section>
-
-  <!-- ================= AUTHENTICITY / THE COUNTERFEIT WARNING ================= -->
-  <section id="authenticity" class="py-24 px-4 sm:px-6 bg-brandCarbon border-y border-white/5">
-    <div class="max-w-7xl mx-auto">
-      
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <span class="text-brandVolt text-xs font-black tracking-widest uppercase block mb-3">Consumer Alert in Ghana</span>
-          <h2 class="text-4xl sm:text-6xl font-black uppercase tracking-tight text-white mb-8">
-            Why 8 out of 10 "Iridium" plugs sold locally fail.
-          </h2>
-          <p class="text-slate-300 text-sm leading-relaxed mb-6 font-medium">
-            Accra and Kumasi spare-part markets are flooded with imitation spark plugs. Counterfeiters use cheap, standard copper cores disguised with spray paint and stamped with Denso, NGK, or Mobis logos.
-          </p>
-          
-          <div class="space-y-4 mb-8">
-            <div class="flex items-start gap-4 p-4 rounded-xl bg-brandSurface border border-white/5">
-              <i class="fas fa-exclamation-triangle text-red-500 mt-1"></i>
-              <div>
-                <strong class="text-white text-sm block">Blown Ignition Coils & ECUs</strong>
-                <p class="text-slate-400 text-xs">Fake plugs feature incorrect internal resistance, sending voltage spikes directly into your vehicle’s engine computer.</p>
-              </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Toyota Item 1 -->
+        <article class="product-card rounded p-7 flex flex-col justify-between">
+          <div>
+            <div class="aspect-[4/3] rounded bg-[#070709] border border-[#1A1A20] p-6 flex items-center justify-center relative mb-6">
+              <span class="absolute top-3 left-3 bg-[#17171C] text-metallicSilver text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Toyota Genuine</span>
+              <span class="absolute top-3 right-3 text-signatureRed text-[10px] font-bold uppercase tracking-wider">Denso Japan</span>
+              <!-- Technical Realistic SVG representation -->
+              <svg class="w-36 h-36 plug-shadow" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="47" y="10" width="6" height="15" fill="#EAEAEA" rx="1"/>
+                <path d="M44 25H56V45H44V25Z" fill="#F4F4F6"/>
+                <line x1="44" y1="30" x2="56" y2="30" stroke="#BFC3C7" stroke-width="1.5"/>
+                <line x1="44" y1="35" x2="56" y2="35" stroke="#BFC3C7" stroke-width="1.5"/>
+                <line x1="44" y1="40" x2="56" y2="40" stroke="#BFC3C7" stroke-width="1.5"/>
+                <path d="M41 45H59L61 55H39L41 45Z" fill="#71717A"/>
+                <rect x="43" y="55" width="14" height="25" fill="#52525B"/>
+                <line x1="43" y1="59" x2="57" y2="59" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="63" x2="57" y2="63" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="67" x2="57" y2="67" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="71" x2="57" y2="71" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="75" x2="57" y2="75" stroke="#BFC3C7" stroke-width="1.2"/>
+                <rect x="46" y="80" width="8" height="6" fill="#D4D4D8"/>
+                <rect x="48.5" y="86" width="3" height="5" fill="#E50914"/>
+                <path d="M46 91H51V88" stroke="#71717A" stroke-width="1.5"/>
+              </svg>
             </div>
             
-            <div class="flex items-start gap-4 p-4 rounded-xl bg-brandSurface border border-white/5">
-              <i class="fas fa-exclamation-triangle text-red-500 mt-1"></i>
-              <div>
-                <strong class="text-white text-sm block">Center Electrode Melt-Off</strong>
-                <p class="text-slate-400 text-xs">Counterfeits lack true Iridium alloys. The ceramic and ground electrode melt under load, dropping metal shards into your cylinders.</p>
-              </div>
+            <div class="mb-4">
+              <span class="text-[11px] font-bold text-signatureRed uppercase tracking-wider block">Denso SC20HR11</span>
+              <h3 class="text-xl font-bold uppercase text-pureWhite mt-0.5">Toyota Corolla &bull; Auris &bull; Matrix</h3>
+              <p class="text-xs text-metallicSilver mt-2 leading-relaxed">
+                Primary applications for 1.8L (2ZR-FE, 2ZR-FXE) powertrains. 0.7mm high-purity laser-welded fine-wire Iridium center pin.
+              </p>
             </div>
 
-            <div class="flex items-start gap-4 p-4 rounded-xl bg-brandSurface border border-white/5">
-              <i class="fas fa-check-circle text-brandVolt mt-1"></i>
-              <div>
-                <strong class="text-white text-sm block">The KASH OPTION Zero-Imitation Policy</strong>
-                <p class="text-slate-400 text-xs">We source exclusively through authorized manufacturer distribution hubs in Japan and North America. Every set is verifiable.</p>
+            <div class="border-t border-[#1C1C22] pt-3 mb-6">
+              <div class="spec-row"><span class="text-metallicSilver">OEM Part No:</span><span class="font-bold text-pureWhite">90919-01253</span></div>
+              <div class="spec-row"><span class="text-metallicSilver">Heat Range:</span><span class="font-bold text-pureWhite">20</span></div>
+              <div class="spec-row"><span class="text-metallicSilver">Electrode:</span><span class="font-bold text-pureWhite">Iridium + Platinum Tip</span></div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Toyota%20OEM%20Spark%20Plug%20SC20HR11%20(90919-01253)." target="_blank" rel="noopener" class="w-full bg-[#18181D] hover:bg-signatureRed hover:text-pureWhite text-pureWhite border border-[#2A2A35] hover:border-signatureRed text-xs font-bold uppercase tracking-wider py-3.5 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <span>Check Availability</span>
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </article>
+
+        <!-- Toyota Item 2 -->
+        <article class="product-card rounded p-7 flex flex-col justify-between">
+          <div>
+            <div class="aspect-[4/3] rounded bg-[#070709] border border-[#1A1A20] p-6 flex items-center justify-center relative mb-6">
+              <span class="absolute top-3 left-3 bg-[#17171C] text-metallicSilver text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Toyota Genuine</span>
+              <span class="absolute top-3 right-3 text-signatureRed text-[10px] font-bold uppercase tracking-wider">Denso Japan</span>
+              <svg class="w-36 h-36 plug-shadow" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="47" y="10" width="6" height="15" fill="#EAEAEA" rx="1"/>
+                <path d="M44 25H56V45H44V25Z" fill="#F4F4F6"/>
+                <line x1="44" y1="30" x2="56" y2="30" stroke="#BFC3C7" stroke-width="1.5"/>
+                <line x1="44" y1="35" x2="56" y2="35" stroke="#BFC3C7" stroke-width="1.5"/>
+                <line x1="44" y1="40" x2="56" y2="40" stroke="#BFC3C7" stroke-width="1.5"/>
+                <path d="M41 45H59L61 55H39L41 45Z" fill="#71717A"/>
+                <rect x="43" y="55" width="14" height="25" fill="#52525B"/>
+                <line x1="43" y1="59" x2="57" y2="59" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="63" x2="57" y2="63" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="67" x2="57" y2="67" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="71" x2="57" y2="71" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="75" x2="57" y2="75" stroke="#BFC3C7" stroke-width="1.2"/>
+                <rect x="46" y="80" width="8" height="6" fill="#D4D4D8"/>
+                <rect x="48.5" y="86" width="3" height="5" fill="#E50914"/>
+                <path d="M46 91H51V88" stroke="#71717A" stroke-width="1.5"/>
+              </svg>
+            </div>
+            
+            <div class="mb-4">
+              <span class="text-[11px] font-bold text-signatureRed uppercase tracking-wider block">Denso SK20R11</span>
+              <h3 class="text-xl font-bold uppercase text-pureWhite mt-0.5">Toyota Camry &bull; RAV4 &bull; Highlander</h3>
+              <p class="text-xs text-metallicSilver mt-2 leading-relaxed">
+                Suits 2.4L (2AZ-FE), 3.0L (1MZ-FE) and 3.3L (3MZ-FE). Designed for high-heat continuous highway driving in African climates.
+              </p>
+            </div>
+
+            <div class="border-t border-[#1C1C22] pt-3 mb-6">
+              <div class="spec-row"><span class="text-metallicSilver">OEM Part No:</span><span class="font-bold text-pureWhite">90919-01210</span></div>
+              <div class="spec-row"><span class="text-metallicSilver">Gap Specification:</span><span class="font-bold text-pureWhite">1.1mm (Pre-Gapped)</span></div>
+              <div class="spec-row"><span class="text-metallicSilver">Durability:</span><span class="font-bold text-pureWhite">100,000 KM</span></div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Toyota%20OEM%20Spark%20Plug%20SK20R11%20(90919-01210)." target="_blank" rel="noopener" class="w-full bg-[#18181D] hover:bg-signatureRed hover:text-pureWhite text-pureWhite border border-[#2A2A35] hover:border-signatureRed text-xs font-bold uppercase tracking-wider py-3.5 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <span>Check Availability</span>
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </article>
+
+        <!-- Toyota Item 3 -->
+        <article class="product-card rounded p-7 flex flex-col justify-between">
+          <div>
+            <div class="aspect-[4/3] rounded bg-[#070709] border border-[#1A1A20] p-6 flex items-center justify-center relative mb-6">
+              <span class="absolute top-3 left-3 bg-[#17171C] text-metallicSilver text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Toyota Genuine</span>
+              <span class="absolute top-3 right-3 text-signatureRed text-[10px] font-bold uppercase tracking-wider">Denso Japan</span>
+              <svg class="w-36 h-36 plug-shadow" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="47" y="10" width="6" height="15" fill="#EAEAEA" rx="1"/>
+                <path d="M44 25H56V45H44V25Z" fill="#F4F4F6"/>
+                <line x1="44" y1="30" x2="56" y2="30" stroke="#BFC3C7" stroke-width="1.5"/>
+                <line x1="44" y1="35" x2="56" y2="35" stroke="#BFC3C7" stroke-width="1.5"/>
+                <line x1="44" y1="40" x2="56" y2="40" stroke="#BFC3C7" stroke-width="1.5"/>
+                <path d="M41 45H59L61 55H39L41 45Z" fill="#71717A"/>
+                <rect x="43" y="55" width="14" height="25" fill="#52525B"/>
+                <line x1="43" y1="59" x2="57" y2="59" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="63" x2="57" y2="63" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="67" x2="57" y2="67" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="71" x2="57" y2="71" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="75" x2="57" y2="75" stroke="#BFC3C7" stroke-width="1.2"/>
+                <rect x="46" y="80" width="8" height="6" fill="#D4D4D8"/>
+                <rect x="48.5" y="86" width="3" height="5" fill="#E50914"/>
+                <path d="M46 91H51V88" stroke="#71717A" stroke-width="1.5"/>
+              </svg>
+            </div>
+            
+            <div class="mb-4">
+              <span class="text-[11px] font-bold text-signatureRed uppercase tracking-wider block">Denso FK20HR11</span>
+              <h3 class="text-xl font-bold uppercase text-pureWhite mt-0.5">Toyota Land Cruiser &bull; Prado &bull; V6 4.0L</h3>
+              <p class="text-xs text-metallicSilver mt-2 leading-relaxed">
+                Engineered for 1GR-FE and 2GR-FE V6 engines. Iridium Tough twin needle design ensuring rapid ignition for heavy-duty torque.
+              </p>
+            </div>
+
+            <div class="border-t border-[#1C1C22] pt-3 mb-6">
+              <div class="spec-row"><span class="text-metallicSilver">OEM Part No:</span><span class="font-bold text-pureWhite">90919-01247</span></div>
+              <div class="spec-row"><span class="text-metallicSilver">Design:</span><span class="font-bold text-pureWhite">Twin-Tip (TT) Super Ignition</span></div>
+              <div class="spec-row"><span class="text-metallicSilver">Applications:</span><span class="font-bold text-pureWhite">Prado, V6 Hilux, Fortuner</span></div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Toyota%20V6%20FK20HR11%20(90919-01247)." target="_blank" rel="noopener" class="w-full bg-[#18181D] hover:bg-signatureRed hover:text-pureWhite text-pureWhite border border-[#2A2A35] hover:border-signatureRed text-xs font-bold uppercase tracking-wider py-3.5 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <span>Check Availability</span>
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </article>
+
+      </div>
+
+      <div class="mt-8 p-5 bg-[#09090C] border border-[#1A1A1F] rounded flex flex-col sm:flex-row items-center justify-between gap-4">
+        <span class="text-xs text-metallicSilver font-medium">Looking for Yaris, Vitz, Sienna, or Hilux Diesel Glow Plugs?</span>
+        <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20need%20to%20verify%20Toyota%20spark%20plug%20fitment." target="_blank" rel="noopener" class="text-xs font-bold uppercase tracking-wider text-signatureRed hover:text-pureWhite transition-colors flex items-center gap-2">
+          <span>Inquire via WhatsApp Desk</span>
+          <i class="fas fa-arrow-right text-[10px]"></i>
+        </a>
+      </div>
+
+    </section>
+
+    <!-- ================= MANUFACTURER CATALOGUE 2: HONDA ================= -->
+    <section id="honda" class="py-24 px-4 sm:px-8 max-w-7xl mx-auto border-t border-[#1C1C22]">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-[#1C1C22] pb-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-signatureRed block mb-2">NGK Spark Plug Co. Japan</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-pureWhite">Honda OEM Spark Plugs</h2>
+        </div>
+        <p class="text-metallicSilver text-sm max-w-md mt-4 md:mt-0 font-normal">
+          Genuine Honda-packaged NGK Laser Iridium components factory calibrated for high-revving i-VTEC and Earth Dreams Turbocharged engines.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Honda Item 1 -->
+        <article class="product-card rounded p-7 flex flex-col justify-between">
+          <div>
+            <div class="aspect-[4/3] rounded bg-[#070709] border border-[#1A1A20] p-6 flex items-center justify-center relative mb-6">
+              <span class="absolute top-3 left-3 bg-[#17171C] text-metallicSilver text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Honda Genuine</span>
+              <span class="absolute top-3 right-3 text-signatureRed text-[10px] font-bold uppercase tracking-wider">NGK Japan</span>
+              <svg class="w-36 h-36 plug-shadow" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="47" y="10" width="6" height="15" fill="#EAEAEA" rx="1"/>
+                <path d="M44 25H56V45H44V25Z" fill="#F4F4F6"/>
+                <line x1="44" y1="30" x2="56" y2="30" stroke="#BFC3C7" stroke-width="1.5"/>
+                <line x1="44" y1="35" x2="56" y2="35" stroke="#BFC3C7" stroke-width="1.5"/>
+                <line x1="44" y1="40" x2="56" y2="40" stroke="#BFC3C7" stroke-width="1.5"/>
+                <path d="M41 45H59L61 55H39L41 45Z" fill="#71717A"/>
+                <rect x="43" y="55" width="14" height="25" fill="#52525B"/>
+                <line x1="43" y1="59" x2="57" y2="59" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="63" x2="57" y2="63" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="67" x2="57" y2="67" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="71" x2="57" y2="71" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="75" x2="57" y2="75" stroke="#BFC3C7" stroke-width="1.2"/>
+                <rect x="46" y="80" width="8" height="6" fill="#D4D4D8"/>
+                <rect x="48.5" y="86" width="3" height="5" fill="#E50914"/>
+                <path d="M46 91H51V88" stroke="#71717A" stroke-width="1.5"/>
+              </svg>
+            </div>
+            
+            <div class="mb-4">
+              <span class="text-[11px] font-bold text-signatureRed uppercase tracking-wider block">NGK IZFR6K11</span>
+              <h3 class="text-xl font-bold uppercase text-pureWhite mt-0.5">Honda Accord &bull; CR-V 2.4L</h3>
+              <p class="text-xs text-metallicSilver mt-2 leading-relaxed">
+                Original specification for K24A and K24Z engines. Laser-welded Iridium center tip with platinum ground surface for stable idle and zero misfires.
+              </p>
+            </div>
+
+            <div class="border-t border-[#1C1C22] pt-3 mb-6">
+              <div class="spec-row"><span class="text-metallicSilver">Honda Part No:</span><span class="font-bold text-pureWhite">9807B-5617W</span></div>
+              <div class="spec-row"><span class="text-metallicSilver">Terminal Type:</span><span class="font-bold text-pureWhite">Solid Post</span></div>
+              <div class="spec-row"><span class="text-metallicSilver">Thread:</span><span class="font-bold text-pureWhite">14mm x 19mm</span></div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Honda%20Accord/CRV%20IZFR6K11%20(9807B-5617W)." target="_blank" rel="noopener" class="w-full bg-[#18181D] hover:bg-signatureRed hover:text-pureWhite text-pureWhite border border-[#2A2A35] hover:border-signatureRed text-xs font-bold uppercase tracking-wider py-3.5 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <span>Check Availability</span>
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </article>
+
+        <!-- Honda Item 2 -->
+        <article class="product-card rounded p-7 flex flex-col justify-between">
+          <div>
+            <div class="aspect-[4/3] rounded bg-[#070709] border border-[#1A1A20] p-6 flex items-center justify-center relative mb-6">
+              <span class="absolute top-3 left-3 bg-[#17171C] text-metallicSilver text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Honda Genuine</span>
+              <span class="absolute top-3 right-3 text-signatureRed text-[10px] font-bold uppercase tracking-wider">NGK Japan</span>
+              <svg class="w-36 h-36 plug-shadow" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="47" y="10" width="6" height="15" fill="#EAEAEA" rx="1"/>
+                <path d="M44 25H56V45H44V25Z" fill="#F4F4F6"/>
+                <line x1="44" y1="30" x2="56" y2="30" stroke="#BFC3C7" stroke-width="1.5"/>
+                <line x1="44" y1="35" x2="56" y2="35" stroke="#BFC3C7" stroke-width="1.5"/>
+                <line x1="44" y1="40" x2="56" y2="40" stroke="#BFC3C7" stroke-width="1.5"/>
+                <path d="M41 45H59L61 55H39L41 45Z" fill="#71717A"/>
+                <rect x="43" y="55" width="14" height="25" fill="#52525B"/>
+                <line x1="43" y1="59" x2="57" y2="59" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="63" x2="57" y2="63" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="67" x2="57" y2="67" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="71" x2="57" y2="71" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="75" x2="57" y2="75" stroke="#BFC3C7" stroke-width="1.2"/>
+                <rect x="46" y="80" width="8" height="6" fill="#D4D4D8"/>
+                <rect x="48.5" y="86" width="3" height="5" fill="#E50914"/>
+                <path d="M46 91H51V88" stroke="#71717A" stroke-width="1.5"/>
+              </svg>
+            </div>
+            
+            <div class="mb-4">
+              <span class="text-[11px] font-bold text-signatureRed uppercase tracking-wider block">NGK ILZKR7B11</span>
+              <h3 class="text-xl font-bold uppercase text-pureWhite mt-0.5">Honda Civic &bull; HR-V 1.8L</h3>
+              <p class="text-xs text-metallicSilver mt-2 leading-relaxed">
+                Manufactured for R18A and R18Z i-VTEC engines. Corrugated ribs on insulator body prevent flashover even under extreme Ghanaian humidity.
+              </p>
+            </div>
+
+            <div class="border-t border-[#1C1C22] pt-3 mb-6">
+              <div class="spec-row"><span class="text-metallicSilver">Honda Part No:</span><span class="font-bold text-pureWhite">12290-R1A-H01</span></div>
+              <div class="spec-row"><span class="text-metallicSilver">Gap:</span><span class="font-bold text-pureWhite">1.1 mm</span></div>
+              <div class="spec-row"><span class="text-metallicSilver">Type:</span><span class="font-bold text-pureWhite">Laser Iridium Long Reach</span></div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Honda%20Civic%20ILZKR7B11%20(12290-R1A-H01)." target="_blank" rel="noopener" class="w-full bg-[#18181D] hover:bg-signatureRed hover:text-pureWhite text-pureWhite border border-[#2A2A35] hover:border-signatureRed text-xs font-bold uppercase tracking-wider py-3.5 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <span>Check Availability</span>
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </article>
+
+        <!-- Honda Item 3 -->
+        <article class="product-card rounded p-7 flex flex-col justify-between">
+          <div>
+            <div class="aspect-[4/3] rounded bg-[#070709] border border-[#1A1A20] p-6 flex items-center justify-center relative mb-6">
+              <span class="absolute top-3 left-3 bg-[#17171C] text-metallicSilver text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Honda Genuine</span>
+              <span class="absolute top-3 right-3 text-signatureRed text-[10px] font-bold uppercase tracking-wider">NGK Japan</span>
+              <svg class="w-36 h-36 plug-shadow" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="47" y="10" width="6" height="15" fill="#EAEAEA" rx="1"/>
+                <path d="M44 25H56V45H44V25Z" fill="#F4F4F6"/>
+                <line x1="44" y1="30" x2="56" y2="30" stroke="#BFC3C7" stroke-width="1.5"/>
+                <line x1="44" y1="35" x2="56" y2="35" stroke="#BFC3C7" stroke-width="1.5"/>
+                <line x1="44" y1="40" x2="56" y2="40" stroke="#BFC3C7" stroke-width="1.5"/>
+                <path d="M41 45H59L61 55H39L41 45Z" fill="#71717A"/>
+                <rect x="43" y="55" width="14" height="25" fill="#52525B"/>
+                <line x1="43" y1="59" x2="57" y2="59" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="63" x2="57" y2="63" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="67" x2="57" y2="67" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="71" x2="57" y2="71" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="75" x2="57" y2="75" stroke="#BFC3C7" stroke-width="1.2"/>
+                <rect x="46" y="80" width="8" height="6" fill="#D4D4D8"/>
+                <rect x="48.5" y="86" width="3" height="5" fill="#E50914"/>
+                <path d="M46 91H51V88" stroke="#71717A" stroke-width="1.5"/>
+              </svg>
+            </div>
+            
+            <div class="mb-4">
+              <span class="text-[11px] font-bold text-signatureRed uppercase tracking-wider block">DILZKR7B11GS</span>
+              <h3 class="text-xl font-bold uppercase text-pureWhite mt-0.5">Honda 1.5L Turbo Earth Dreams</h3>
+              <p class="text-xs text-metallicSilver mt-2 leading-relaxed">
+                Specified for turbocharged L15B7 direct injection engines. High anti-oxidation threshold preventing pre-ignition under boost.
+              </p>
+            </div>
+
+            <div class="border-t border-[#1C1C22] pt-3 mb-6">
+              <div class="spec-row"><span class="text-metallicSilver">Honda Part No:</span><span class="font-bold text-pureWhite">12290-59B-003</span></div>
+              <div class="spec-row"><span class="text-metallicSilver">Technology:</span><span class="font-bold text-pureWhite">High Heat Dissipation Extended</span></div>
+              <div class="spec-row"><span class="text-metallicSilver">Engine:</span><span class="font-bold text-pureWhite">Civic Turbo, CR-V Turbo</span></div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Honda%20Turbo%20DILZKR7B11GS%20(12290-59B-003)." target="_blank" rel="noopener" class="w-full bg-[#18181D] hover:bg-signatureRed hover:text-pureWhite text-pureWhite border border-[#2A2A35] hover:border-signatureRed text-xs font-bold uppercase tracking-wider py-3.5 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <span>Check Availability</span>
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </article>
+
+      </div>
+
+      <div class="mt-8 p-5 bg-[#09090C] border border-[#1A1A1F] rounded flex flex-col sm:flex-row items-center justify-between gap-4">
+        <span class="text-xs text-metallicSilver font-medium">Need plugs for Honda Pilot V6, Odyssey, Fit, or Insight Hybrid?</span>
+        <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20need%20to%20verify%20Honda%20spark%20plug%20fitment." target="_blank" rel="noopener" class="text-xs font-bold uppercase tracking-wider text-signatureRed hover:text-pureWhite transition-colors flex items-center gap-2">
+          <span>Inquire via WhatsApp Desk</span>
+          <i class="fas fa-arrow-right text-[10px]"></i>
+        </a>
+      </div>
+
+    </section>
+
+    <!-- ================= MANUFACTURER CATALOGUE 3: HYUNDAI & KIA ================= -->
+    <section id="hyundai" class="py-24 px-4 sm:px-8 max-w-7xl mx-auto border-t border-[#1C1C22]">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-[#1C1C22] pb-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-signatureRed block mb-2">Mobis Genuine Korea &amp; USA</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-pureWhite">Hyundai &amp; Kia OEM Plugs</h2>
+        </div>
+        <p class="text-metallicSilver text-sm max-w-md mt-4 md:mt-0 font-normal">
+          Directly imported genuine Mobis / NGK parts for Hyundai Elantra, Sonata, Tucson, and Kia Forte, Optima, and Sportage.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="kia">
+        
+        <!-- Hyundai/Kia Item 1 -->
+        <article class="product-card rounded p-7 flex flex-col justify-between">
+          <div>
+            <div class="aspect-[4/3] rounded bg-[#070709] border border-[#1A1A20] p-6 flex items-center justify-center relative mb-6">
+              <span class="absolute top-3 left-3 bg-[#17171C] text-metallicSilver text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Mobis Genuine</span>
+              <span class="absolute top-3 right-3 text-signatureRed text-[10px] font-bold uppercase tracking-wider">Korea / USA</span>
+              <svg class="w-36 h-36 plug-shadow" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="47" y="10" width="6" height="15" fill="#EAEAEA" rx="1"/>
+                <path d="M44 25H56V45H44V25Z" fill="#F4F4F6"/>
+                <line x1="44" y1="30" x2="56" y2="30" stroke="#BFC3C7" stroke-width="1.5"/>
+                <line x1="44" y1="35" x2="56" y2="35" stroke="#BFC3C7" stroke-width="1.5"/>
+                <line x1="44" y1="40" x2="56" y2="40" stroke="#BFC3C7" stroke-width="1.5"/>
+                <path d="M41 45H59L61 55H39L41 45Z" fill="#71717A"/>
+                <rect x="43" y="55" width="14" height="25" fill="#52525B"/>
+                <line x1="43" y1="59" x2="57" y2="59" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="63" x2="57" y2="63" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="67" x2="57" y2="67" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="71" x2="57" y2="71" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="75" x2="57" y2="75" stroke="#BFC3C7" stroke-width="1.2"/>
+                <rect x="46" y="80" width="8" height="6" fill="#D4D4D8"/>
+                <rect x="48.5" y="86" width="3" height="5" fill="#E50914"/>
+                <path d="M46 91H51V88" stroke="#71717A" stroke-width="1.5"/>
+              </svg>
+            </div>
+            
+            <div class="mb-4">
+              <span class="text-[11px] font-bold text-signatureRed uppercase tracking-wider block">SILZKR6B10E</span>
+              <h3 class="text-xl font-bold uppercase text-pureWhite mt-0.5">Hyundai Elantra &bull; Kia Forte</h3>
+              <p class="text-xs text-metallicSilver mt-2 leading-relaxed">
+                Factory part for Nu 1.8L and Gamma 1.6L MPI engines. Eliminates sluggish cold starts, rough idle, and unburned fuel odor.
+              </p>
+            </div>
+
+            <div class="border-t border-[#1C1C22] pt-3 mb-6">
+              <div class="spec-row"><span class="text-metallicSilver">Mobis Part No:</span><span class="font-bold text-pureWhite">18846-10060</span></div>
+              <div class="spec-row"><span class="text-metallicSilver">Origin:</span><span class="font-bold text-pureWhite">Mobis Korea Genuine</span></div>
+              <div class="spec-row"><span class="text-metallicSilver">Applications:</span><span class="font-bold text-pureWhite">Elantra, Accent, Forte, Soul</span></div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Mobis%20OEM%20Spark%20Plug%2018846-10060%20(SILZKR6B10E)." target="_blank" rel="noopener" class="w-full bg-[#18181D] hover:bg-signatureRed hover:text-pureWhite text-pureWhite border border-[#2A2A35] hover:border-signatureRed text-xs font-bold uppercase tracking-wider py-3.5 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <span>Check Availability</span>
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </article>
+
+        <!-- Hyundai/Kia Item 2 -->
+        <article class="product-card rounded p-7 flex flex-col justify-between">
+          <div>
+            <div class="aspect-[4/3] rounded bg-[#070709] border border-[#1A1A20] p-6 flex items-center justify-center relative mb-6">
+              <span class="absolute top-3 left-3 bg-[#17171C] text-metallicSilver text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Mobis Genuine</span>
+              <span class="absolute top-3 right-3 text-signatureRed text-[10px] font-bold uppercase tracking-wider">Korea / USA</span>
+              <svg class="w-36 h-36 plug-shadow" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="47" y="10" width="6" height="15" fill="#EAEAEA" rx="1"/>
+                <path d="M44 25H56V45H44V25Z" fill="#F4F4F6"/>
+                <line x1="44" y1="30" x2="56" y2="30" stroke="#BFC3C7" stroke-width="1.5"/>
+                <line x1="44" y1="35" x2="56" y2="35" stroke="#BFC3C7" stroke-width="1.5"/>
+                <line x1="44" y1="40" x2="56" y2="40" stroke="#BFC3C7" stroke-width="1.5"/>
+                <path d="M41 45H59L61 55H39L41 45Z" fill="#71717A"/>
+                <rect x="43" y="55" width="14" height="25" fill="#52525B"/>
+                <line x1="43" y1="59" x2="57" y2="59" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="63" x2="57" y2="63" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="67" x2="57" y2="67" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="71" x2="57" y2="71" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="75" x2="57" y2="75" stroke="#BFC3C7" stroke-width="1.2"/>
+                <rect x="46" y="80" width="8" height="6" fill="#D4D4D8"/>
+                <rect x="48.5" y="86" width="3" height="5" fill="#E50914"/>
+                <path d="M46 91H51V88" stroke="#71717A" stroke-width="1.5"/>
+              </svg>
+            </div>
+            
+            <div class="mb-4">
+              <span class="text-[11px] font-bold text-signatureRed uppercase tracking-wider block">SILZKR7B11</span>
+              <h3 class="text-xl font-bold uppercase text-pureWhite mt-0.5">Hyundai Sonata &bull; Tucson 2.4L</h3>
+              <p class="text-xs text-metallicSilver mt-2 leading-relaxed">
+                Specified for Theta II 2.4L GDI / MPI engines. Resists carbon accumulation during continuous low-speed urban traffic.
+              </p>
+            </div>
+
+            <div class="border-t border-[#1C1C22] pt-3 mb-6">
+              <div class="spec-row"><span class="text-metallicSilver">Mobis Part No:</span><span class="font-bold text-pureWhite">18846-11070</span></div>
+              <div class="spec-row"><span class="text-metallicSilver">Thread Reach:</span><span class="font-bold text-pureWhite">26.5 mm (Extended)</span></div>
+              <div class="spec-row"><span class="text-metallicSilver">Gap Spec:</span><span class="font-bold text-pureWhite">1.1 mm</span></div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Hyundai%20Sonata/Tucson%20OEM%20Plugs%2018846-11070." target="_blank" rel="noopener" class="w-full bg-[#18181D] hover:bg-signatureRed hover:text-pureWhite text-pureWhite border border-[#2A2A35] hover:border-signatureRed text-xs font-bold uppercase tracking-wider py-3.5 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <span>Check Availability</span>
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </article>
+
+        <!-- Hyundai/Kia Item 3 -->
+        <article class="product-card rounded p-7 flex flex-col justify-between">
+          <div>
+            <div class="aspect-[4/3] rounded bg-[#070709] border border-[#1A1A20] p-6 flex items-center justify-center relative mb-6">
+              <span class="absolute top-3 left-3 bg-[#17171C] text-metallicSilver text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Kia Genuine</span>
+              <span class="absolute top-3 right-3 text-signatureRed text-[10px] font-bold uppercase tracking-wider">Mobis OEM</span>
+              <svg class="w-36 h-36 plug-shadow" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="47" y="10" width="6" height="15" fill="#EAEAEA" rx="1"/>
+                <path d="M44 25H56V45H44V25Z" fill="#F4F4F6"/>
+                <line x1="44" y1="30" x2="56" y2="30" stroke="#BFC3C7" stroke-width="1.5"/>
+                <line x1="44" y1="35" x2="56" y2="35" stroke="#BFC3C7" stroke-width="1.5"/>
+                <line x1="44" y1="40" x2="56" y2="40" stroke="#BFC3C7" stroke-width="1.5"/>
+                <path d="M41 45H59L61 55H39L41 45Z" fill="#71717A"/>
+                <rect x="43" y="55" width="14" height="25" fill="#52525B"/>
+                <line x1="43" y1="59" x2="57" y2="59" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="63" x2="57" y2="63" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="67" x2="57" y2="67" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="71" x2="57" y2="71" stroke="#BFC3C7" stroke-width="1.2"/>
+                <line x1="43" y1="75" x2="57" y2="75" stroke="#BFC3C7" stroke-width="1.2"/>
+                <rect x="46" y="80" width="8" height="6" fill="#D4D4D8"/>
+                <rect x="48.5" y="86" width="3" height="5" fill="#E50914"/>
+                <path d="M46 91H51V88" stroke="#71717A" stroke-width="1.5"/>
+              </svg>
+            </div>
+            
+            <div class="mb-4">
+              <span class="text-[11px] font-bold text-signatureRed uppercase tracking-wider block">SILZKR8E9G</span>
+              <h3 class="text-xl font-bold uppercase text-pureWhite mt-0.5">Kia Sportage &bull; Optima 2.0L</h3>
+              <p class="text-xs text-metallicSilver mt-2 leading-relaxed">
+                Direct fit for Nu GDI and Theta II 2.0L &amp; 2.4L. High-grade trivalent nickel metal plating protects aluminum cylinder heads against seizing.
+              </p>
+            </div>
+
+            <div class="border-t border-[#1C1C22] pt-3 mb-6">
+              <div class="spec-row"><span class="text-metallicSilver">Mobis Part No:</span><span class="font-bold text-pureWhite">18849-09085</span></div>
+              <div class="spec-row"><span class="text-metallicSilver">Construction:</span><span class="font-bold text-pureWhite">Double Fine Wire Iridium</span></div>
+              <div class="spec-row"><span class="text-metallicSilver">Applications:</span><span class="font-bold text-pureWhite">Sportage, Optima / K5, Sorento</span></div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Kia%20Sportage/Optima%20OEM%20Plugs%2018849-09085." target="_blank" rel="noopener" class="w-full bg-[#18181D] hover:bg-signatureRed hover:text-pureWhite text-pureWhite border border-[#2A2A35] hover:border-signatureRed text-xs font-bold uppercase tracking-wider py-3.5 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <span>Check Availability</span>
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </article>
+
+      </div>
+
+      <div class="mt-8 p-5 bg-[#09090C] border border-[#1A1A1F] rounded flex flex-col sm:flex-row items-center justify-between gap-4">
+        <span class="text-xs text-metallicSilver font-medium">Looking for Santa Fe V6, Kia Sorento, Cadenza, or Rio?</span>
+        <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20need%20to%20verify%20Hyundai%20or%20Kia%20spark%20plug%20fitment." target="_blank" rel="noopener" class="text-xs font-bold uppercase tracking-wider text-signatureRed hover:text-pureWhite transition-colors flex items-center gap-2">
+          <span>Inquire via WhatsApp Desk</span>
+          <i class="fas fa-arrow-right text-[10px]"></i>
+        </a>
+      </div>
+
+    </section>
+
+    <!-- ================= AUTHENTICITY / COUNTERFEIT WARNING ================= -->
+    <section id="authenticity" class="py-24 px-4 sm:px-8 bg-[#09090C] border-y border-[#1A1A1F]">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-6">
+            <div class="red-accent-line mb-4"></div>
+            <span class="text-xs font-bold uppercase tracking-widest text-signatureRed block mb-2">Technical Advisory for Ghana</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-pureWhite mb-6">
+              The Real Cost of Fake Spark Plugs in Accra
+            </h2>
+            <p class="text-sm text-metallicSilver leading-relaxed mb-6">
+              Upwards of 70% of "Iridium" plugs sold in local markets are basic copper plugs with printed counterfeit brand labels. Their incorrect internal resistance destroys expensive ignition coils and damages ECUs.
+            </p>
+            
+            <div class="space-y-4">
+              <div class="p-4 rounded bg-surfaceCard border border-surfaceBorder flex items-start gap-4">
+                <i class="fas fa-triangle-exclamation text-signatureRed text-lg mt-0.5"></i>
+                <div>
+                  <h4 class="text-sm font-bold text-pureWhite uppercase">Burnt Ignition Coils &amp; Drivers</h4>
+                  <p class="text-xs text-metallicSilver mt-1">Imitation plugs lack calibrated internal ceramic resistors, causing electrical flash-back that fries your vehicle's engine computer.</p>
+                </div>
+              </div>
+
+              <div class="p-4 rounded bg-surfaceCard border border-surfaceBorder flex items-start gap-4">
+                <i class="fas fa-triangle-exclamation text-signatureRed text-lg mt-0.5"></i>
+                <div>
+                  <h4 class="text-sm font-bold text-pureWhite uppercase">Electrode Shearing &amp; Cylinder Damage</h4>
+                  <p class="text-xs text-metallicSilver mt-1">Counterfeit tips are glued rather than 360° laser welded. Under high combustion heat, tips detach directly into engine combustion chambers.</p>
+                </div>
+              </div>
+
+              <div class="p-4 rounded bg-surfaceCard border border-surfaceBorder flex items-start gap-4">
+                <i class="fas fa-shield-check text-pureWhite text-lg mt-0.5"></i>
+                <div>
+                  <h4 class="text-sm font-bold text-pureWhite uppercase">KASH OPTION Genuine Guarantee</h4>
+                  <p class="text-xs text-metallicSilver mt-1">100% sourced through authorized Tier-1 international distributor pipelines in Japan &amp; USA. Packaged in original manufacturer boxes.</p>
+                </div>
               </div>
             </div>
           </div>
 
-          <a href="https://wa.me/c/233243093930" target="_blank" rel="noopener" class="inline-flex items-center gap-3 bg-brandVolt hover:bg-white text-black px-8 py-4 rounded-xl font-black text-xs uppercase tracking-widest transition-all">
-            <span>Browse Certified Catalogue</span>
-            <i class="fab fa-whatsapp"></i>
-          </a>
+          <!-- 5-Point Authenticity Checklist -->
+          <div class="lg:col-span-6 bg-surfaceCard p-8 sm:p-10 rounded border border-surfaceBorder">
+            <h3 class="text-xl font-bold uppercase tracking-tight text-pureWhite mb-6 flex items-center gap-3">
+              <span class="w-2.5 h-2.5 bg-signatureRed rounded-full"></span>
+              Our 5-Point Verification Protocol
+            </h3>
+            
+            <ul class="space-y-4 text-xs">
+              <li class="pb-3 border-b border-[#1C1C22] flex items-center justify-between">
+                <span class="font-bold text-pureWhite">1. Laser-Welded 0.7mm Tip:</span>
+                <span class="text-metallicSilver">Microscopic weld bead, never glued</span>
+              </li>
+              <li class="pb-3 border-b border-[#1C1C22] flex items-center justify-between">
+                <span class="font-bold text-pureWhite">2. Calibrated 5kΩ Resistor:</span>
+                <span class="text-metallicSilver">Strict manufacturer ohm tolerances</span>
+              </li>
+              <li class="pb-3 border-b border-[#1C1C22] flex items-center justify-between">
+                <span class="font-bold text-pureWhite">3. High-Density Ceramic:</span>
+                <span class="text-metallicSilver">Pure alumina prevents electrical leakage</span>
+              </li>
+              <li class="pb-3 border-b border-[#1C1C22] flex items-center justify-between">
+                <span class="font-bold text-pureWhite">4. Rolled Precision Threads:</span>
+                <span class="text-metallicSilver">Smooth threads prevent cylinder head damage</span>
+              </li>
+              <li class="flex items-center justify-between">
+                <span class="font-bold text-pureWhite">5. Authentic Packaging:</span>
+                <span class="text-metallicSilver">Crisp batch codes matching plug markings</span>
+              </li>
+            </ul>
+
+            <div class="mt-8 pt-6 border-t border-[#1C1C22]">
+              <a href="https://wa.me/c/233243093930" target="_blank" rel="noopener" class="w-full bg-pureWhite hover:bg-metallicSilver text-matteBlack text-xs font-extrabold uppercase tracking-widest py-3.5 rounded block text-center transition-colors">
+                Order Genuine Sets via WhatsApp
+              </a>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Verification Checklist Matrix -->
-        <div class="bg-brandSurface p-8 sm:p-10 rounded-3xl border border-white/10">
-          <h3 class="text-2xl font-black uppercase text-white mb-6 flex items-center gap-3">
-            <i class="fas fa-microscope text-brandVolt"></i>
-            Our 5-Point Verification Matrix
-          </h3>
-          <ul class="space-y-4 text-xs font-medium text-slate-300">
-            <li class="flex items-center gap-3 pb-3 border-b border-white/5">
-              <span class="w-6 h-6 rounded-full bg-brandVolt/10 text-brandVolt font-black flex items-center justify-center text-[10px]">1</span>
-              <span><strong>0.7mm Laser Iridium Tip:</strong> Authentic laser welded joint, never glued or stamped.</span>
-            </li>
-            <li class="flex items-center gap-3 pb-3 border-b border-white/5">
-              <span class="w-6 h-6 rounded-full bg-brandVolt/10 text-brandVolt font-black flex items-center justify-center text-[10px]">2</span>
-              <span><strong>Calibrated Ohmmeter Resistance:</strong> Exact 5.0 kΩ internal resistor matching OEM factory tolerances.</span>
-            </li>
-            <li class="flex items-center gap-3 pb-3 border-b border-white/5">
-              <span class="w-6 h-6 rounded-full bg-brandVolt/10 text-brandVolt font-black flex items-center justify-center text-[10px]">3</span>
-              <span><strong>Rolled High-Tensile Threads:</strong> Smooth, unchipped rolled metal that never cross-threads in cylinder heads.</span>
-            </li>
-            <li class="flex items-center gap-3 pb-3 border-b border-white/5">
-              <span class="w-6 h-6 rounded-full bg-brandVolt/10 text-brandVolt font-black flex items-center justify-center text-[10px]">4</span>
-              <span><strong>High-Dielectric Ceramic Insulator:</strong> High purity alumina prevents internal flashover sparking.</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-6 h-6 rounded-full bg-brandVolt/10 text-brandVolt font-black flex items-center justify-center text-[10px]">5</span>
-              <span><strong>Pre-Gapped to Factory Spec:</strong> Ready to install immediately with zero gap modification required.</span>
-            </li>
-          </ul>
-        </div>
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- ================= CUSTOMER SUPPORT & LOGISTICS STRIP ================= -->
-  <section class="py-20 px-4 sm:px-6 max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      
-      <div class="p-8 rounded-3xl bg-brandCarbon border border-white/5 text-center sm:text-left">
-        <div class="w-12 h-12 rounded-2xl bg-brandVolt/10 text-brandVolt flex items-center justify-center text-xl mb-6 mx-auto sm:mx-0">
-          <i class="fas fa-clock"></i>
+    <!-- ================= SERVICE & LOGISTICS OVERVIEW ================= -->
+    <section class="py-20 px-4 sm:px-8 max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="p-8 rounded bg-surfaceCard border border-surfaceBorder">
+          <div class="w-10 h-10 rounded bg-[#17171C] border border-[#26262E] flex items-center justify-center text-signatureRed text-lg mb-6">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3 class="text-lg font-bold uppercase text-pureWhite mb-2">7:00 AM – 10:00 PM Support</h3>
+          <p class="text-xs text-metallicSilver leading-relaxed mb-4">
+            Our technical support team is online 7 days a week to cross-reference VINs, verify compatibility with your mechanic, and confirm availability.
+          </p>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-signatureRed">Prompt WhatsApp Assistance</span>
         </div>
-        <h4 class="text-xl font-black uppercase text-white mb-2">7:00 AM – 10:00 PM Desk</h4>
-        <p class="text-slate-400 text-xs leading-relaxed mb-4">
-          Our technical advisors are active 7 days a week to confirm part numbers, guide mechanics, and process orders on WhatsApp.
-        </p>
-        <span class="text-brandVolt text-xs font-bold uppercase tracking-wider">Fast Response Time</span>
-      </div>
 
-      <div class="p-8 rounded-3xl bg-brandCarbon border border-white/5 text-center sm:text-left">
-        <div class="w-12 h-12 rounded-2xl bg-brandCyan/10 text-brandCyan flex items-center justify-center text-xl mb-6 mx-auto sm:mx-0">
-          <i class="fas fa-truck-fast"></i>
+        <div class="p-8 rounded bg-surfaceCard border border-surfaceBorder">
+          <div class="w-10 h-10 rounded bg-[#17171C] border border-[#26262E] flex items-center justify-center text-signatureRed text-lg mb-6">
+            <i class="fas fa-truck-ramp-box"></i>
+          </div>
+          <h3 class="text-lg font-bold uppercase text-pureWhite mb-2">Nationwide Ghana Delivery</h3>
+          <p class="text-xs text-metallicSilver leading-relaxed mb-4">
+            Expedited dispatch across Greater Accra and Tema. Next-day secure delivery arrangements to Kumasi, Takoradi, Sunyani, Tamale, and all regional capitals.
+          </p>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-signatureRed">All 16 Regions Covered</span>
         </div>
-        <h4 class="text-xl font-black uppercase text-white mb-2">Nationwide Ghana Delivery</h4>
-        <p class="text-slate-400 text-xs leading-relaxed mb-4">
-          Same-day dispatch across Accra & Tema. Next-day secured transit to Kumasi, Takoradi, Sunyani, Tamale, Cape Coast, and Ho.
-        </p>
-        <span class="text-brandCyan text-xs font-bold uppercase tracking-wider">Reliable Dispatch</span>
-      </div>
 
-      <div class="p-8 rounded-3xl bg-brandCarbon border border-white/5 text-center sm:text-left">
-        <div class="w-12 h-12 rounded-2xl bg-white/10 text-white flex items-center justify-center text-xl mb-6 mx-auto sm:mx-0">
-          <i class="fas fa-tags"></i>
+        <div class="p-8 rounded bg-surfaceCard border border-surfaceBorder">
+          <div class="w-10 h-10 rounded bg-[#17171C] border border-[#26262E] flex items-center justify-center text-signatureRed text-lg mb-6">
+            <i class="fas fa-box-check"></i>
+          </div>
+          <h3 class="text-lg font-bold uppercase text-pureWhite mb-2">Wholesale &amp; Retail Supply</h3>
+          <p class="text-xs text-metallicSilver leading-relaxed mb-4">
+            Whether you need a single set for your personal car or bulk cartons for an automotive repair workshop, our wholesale rates ensure maximum value.
+          </p>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-signatureRed">Verified Pricing on WhatsApp</span>
         </div>
-        <h4 class="text-xl font-black uppercase text-white mb-2">Fair, Direct Pricing</h4>
-        <p class="text-slate-400 text-xs leading-relaxed mb-4">
-          By removing intermediaries and importing direct from Japan and USA, you receive genuine quality at reasonable market rates.
-        </p>
-        <span class="text-white text-xs font-bold uppercase tracking-wider">Confirmed via WhatsApp</span>
-      </div>
 
-    </div>
-  </section>
+      </div>
+    </section>
+  </main>
 
   <!-- ================= FOOTER ================= -->
-  <footer class="pt-20 pb-12 bg-black border-t border-white/10 px-4 sm:px-8">
+  <footer class="bg-[#040405] border-t border-[#16161A] pt-16 pb-12 px-4 sm:px-8">
     <div class="max-w-7xl mx-auto">
       
       <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         
-        <!-- Brand Info -->
         <div class="md:col-span-2">
-          <a href="index.html" class="flex items-center gap-3 mb-4">
-            <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center p-1">
-              <img src="https://mrkash.net/logo.png" alt="KASH OPTION Logo" class="w-full h-full object-contain">
-            </div>
-            <span class="text-2xl font-black tracking-tighter text-white">KASH<span class="text-brandVolt">OPTION</span></span>
+          <a href="index.html" class="flex items-center gap-3.5 mb-4">
+            <img src="https://mrkash.net/logo.png" alt="KASH OPTION Logo" class="h-9 w-auto object-contain">
+            <span class="text-xl font-extrabold tracking-tight text-pureWhite uppercase">
+              KASH <span class="text-signatureRed">OPTION</span>
+            </span>
           </a>
-          <p class="text-slate-400 text-xs leading-relaxed max-w-md mb-6">
-            Ghana's leading destination for genuine OEM automotive spark plugs. We supply verified ignition components for Toyota, Honda, Hyundai, and Kia vehicles.
+          <p class="text-xs text-metallicSilver max-w-sm leading-relaxed mb-6 font-normal">
+            Genuine Spark plugs in Ghana. Premium. Trusted. Wholesale. Direct importer and distributor of authentic OEM spark plugs for Toyota, Honda, Hyundai, and Kia.
           </p>
-          <div class="text-xs text-slate-500 space-y-1">
-            <p>Direct Japan & USA Sourcing Channels</p>
-            <p>Orders & Availability: <strong>024 309 3930</strong></p>
-            <p>Operating Hours: Monday – Sunday: 7:00 AM – 10:00 PM</p>
+          <div class="text-xs text-metallicSilver space-y-1">
+            <p>Customer Support Desk: <strong class="text-pureWhite">024 309 3930</strong></p>
+            <p>Hours: Monday – Sunday &bull; 7:00 AM – 10:00 PM</p>
+            <p>Delivery: Nationwide across Ghana</p>
           </div>
         </div>
 
-        <!-- Quick Links -->
         <div>
-          <h5 class="text-xs font-black uppercase tracking-widest text-white mb-4">OEM Categories</h5>
-          <ul class="space-y-2.5 text-xs text-slate-400">
-            <li><a href="#toyota" class="hover:text-brandVolt transition-colors">Toyota Spark Plugs Ghana</a></li>
-            <li><a href="#honda" class="hover:text-brandVolt transition-colors">Honda OEM Spark Plugs</a></li>
-            <li><a href="#hyundai" class="hover:text-brandVolt transition-colors">Hyundai Genuine Mobis</a></li>
-            <li><a href="#kia" class="hover:text-brandVolt transition-colors">Kia Spark Plugs Accra</a></li>
-            <li><a href="#fitment-finder" class="hover:text-brandVolt transition-colors">Spark Plug Fitment Finder</a></li>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-pureWhite mb-4">OEM Hubs</h4>
+          <ul class="space-y-2 text-xs text-metallicSilver">
+            <li><a href="#toyota" class="hover:text-pureWhite transition-colors">Toyota Spark Plugs</a></li>
+            <li><a href="#honda" class="hover:text-pureWhite transition-colors">Honda OEM Spark Plugs</a></li>
+            <li><a href="#hyundai" class="hover:text-pureWhite transition-colors">Hyundai Spark Plugs</a></li>
+            <li><a href="#kia" class="hover:text-pureWhite transition-colors">Kia Spark Plugs</a></li>
+            <li><a href="#fitment-engine" class="hover:text-pureWhite transition-colors">Fitment Selector</a></li>
           </ul>
         </div>
 
-        <!-- Order Channels -->
         <div>
-          <h5 class="text-xs font-black uppercase tracking-widest text-white mb-4">Direct Order Desk</h5>
-          <p class="text-xs text-slate-400 mb-4">
-            Click below to access our active WhatsApp product catalogue:
+          <h4 class="text-xs font-bold uppercase tracking-widest text-pureWhite mb-4">Official Catalogue</h4>
+          <p class="text-xs text-metallicSilver mb-4 leading-relaxed">
+            Access our complete active product catalogue on WhatsApp to view available stock and confirm prices:
           </p>
-          <a href="https://wa.me/c/233243093930" target="_blank" rel="noopener" class="bg-brandVolt hover:bg-white text-black text-xs font-black uppercase tracking-widest px-6 py-3.5 rounded-xl block text-center transition-all">
+          <a href="https://wa.me/c/233243093930" target="_blank" rel="noopener" class="bg-signatureRed hover:bg-[#c40811] text-pureWhite text-xs font-bold uppercase tracking-wider px-5 py-3 rounded block text-center transition-colors">
             WhatsApp: 024 309 3930
           </a>
-          <p class="text-[10px] text-slate-500 mt-3 text-center">Nationwide courier delivery available across Ghana.</p>
         </div>
 
       </div>
 
-      <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-        <p>© 2026 KASH OPTION. Quality Parts. Better Drives. A Stronger Ghana.</p>
-        <p class="tracking-widest uppercase text-[10px]">Ghana's Leading OEM Spark Plugs Distributor</p>
+      <div class="pt-8 border-t border-[#141418] flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-metallicSilver/60">
+        <p>&copy; 2026 KASH OPTION. All rights reserved.</p>
+        <p class="uppercase tracking-wider text-[11px]">Genuine Spark plugs in Ghana &bull; Premium. Trusted. Wholesale.</p>
       </div>
 
     </div>
   </footer>
 
-  <!-- ================= FLOATING WHATSAPP ACTION BUTTON ================= -->
-  <aside aria-label="Customer Support Contact" class="fixed bottom-6 right-6 z-50">
-    <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20am%20looking%20for%20genuine%20OEM%20spark%20plugs%20for%20my%20car." target="_blank" rel="noopener" class="group flex items-center gap-3 bg-brandVolt text-black px-5 py-3.5 rounded-full font-black text-xs tracking-wider uppercase shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-white border-2 border-black">
+  <!-- ================= FLOATING WHATSAPP BUTTON ================= -->
+  <aside aria-label="WhatsApp direct link" class="fixed bottom-6 right-6 z-50">
+    <a href="https://wa.me/233243093930?text=Hello%20Kash%20Option%2C%20I%20want%20to%20inquire%20about%20genuine%20OEM%20spark%20plugs." target="_blank" rel="noopener" class="flex items-center gap-2.5 bg-signatureRed hover:bg-[#c40811] text-pureWhite px-5 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-2xl transition-all duration-200 border border-pureWhite/10">
       <i class="fab fa-whatsapp text-lg"></i>
-      <span class="hidden sm:inline">Order On WhatsApp</span>
-      <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 animate-pulse"></span>
+      <span class="hidden sm:inline">WhatsApp Support</span>
     </a>
   </aside>
 
-  <!-- ================= DYNAMIC JAVASCRIPT ================= -->
+  <!-- ================= SCRIPT: FITMENT DATA & INTERACTION ================= -->
   <script>
-    // Dynamic Model Populations
-    const carData = {
+    const vehicleDatabase = {
       Toyota: ["Camry", "Corolla", "RAV4", "Highlander", "Prado", "Land Cruiser", "Yaris", "Matrix", "Hilux", "Vitz", "Tacoma", "Auris"],
       Honda: ["Civic", "Accord", "CR-V", "Pilot", "HR-V", "Odyssey", "Fit / Jazz", "Insight"],
       Hyundai: ["Elantra", "Sonata", "Tucson", "Santa Fe", "Accent", "Creta", "Genesis", "i10 / i20"],
       Kia: ["Forte / Cerato", "Optima / K5", "Sportage", "Sorento", "Rio", "Soul", "Cadenza"]
     };
 
-    function updateModels() {
-      const makeSelect = document.getElementById('carMake');
+    function populateModels() {
+      const make = document.getElementById('carMake').value;
       const modelSelect = document.getElementById('carModel');
-      const selectedMake = makeSelect.value;
-
+      
       modelSelect.innerHTML = '<option value="">Select Model</option>';
 
-      if (selectedMake && carData[selectedMake]) {
-        carData[selectedMake].forEach(model => {
+      if (make && vehicleDatabase[make]) {
+        vehicleDatabase[make].forEach(model => {
           const opt = document.createElement('option');
           opt.value = model;
           opt.textContent = model;
@@ -841,21 +1069,18 @@
       }
     }
 
-    // Handle Fitment Submission to WhatsApp
-    function handleFitmentSearch(e) {
-      e.preventDefault();
+    function submitFitmentQuery(event) {
+      event.preventDefault();
       
       const make = document.getElementById('carMake').value;
       const model = document.getElementById('carModel').value;
       const year = document.getElementById('carYear').value;
-      const engine = document.getElementById('engineSize').value;
+      const engine = document.getElementById('engineDisplacement').value;
 
-      const message = `*OEM SPARK PLUG FITMENT INQUIRY*%0A%0A*Make:* ${encodeURIComponent(make)}%0A*Model:* ${encodeURIComponent(model)}%0A*Year:* ${encodeURIComponent(year)}%0A*Engine:* ${encodeURIComponent(engine)}%0A%0APlease check OEM part availability and quote for my car.`;
+      const messageText = `*KASH OPTION OEM FITMENT INQUIRY*%0A%0A*Make:* ${encodeURIComponent(make)}%0A*Model:* ${encodeURIComponent(model)}%0A*Year:* ${encodeURIComponent(year)}%0A*Engine:* ${encodeURIComponent(engine)}%0A%0APlease check OEM spark plug availability and confirm the price.`;
 
-      // Redirect to WhatsApp with pre-filled message
-      window.open(`https://wa.me/233243093930?text=${message}`, '_blank');
+      window.open(`https://wa.me/233243093930?text=${messageText}`, '_blank');
     }
   </script>
-
 </body>
 </html>
