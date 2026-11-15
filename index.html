@@ -145,9 +145,39 @@
                   linear-gradient(to bottom, rgba(10, 10, 10, 0.8) 0%, transparent 25%, transparent 75%, #0A0A0A 100%);
     }
 
-    /* Subtle product reflection */
-    .product-reflection {
-      -webkit-box-reflect: below 2px linear-gradient(to bottom, transparent 75%, rgba(255, 255, 255, 0.12));
+    /* Hide scrollbars for secondary sub-nav */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* ================= MENU OPEN BLUR & HIDE EFFECT ================= */
+    body.menu-open main,
+    body.menu-open footer,
+    body.menu-open aside,
+    body.menu-open .secondary-nav-bar {
+      filter: blur(24px) brightness(0.12);
+      -webkit-filter: blur(24px) brightness(0.12);
+      pointer-events: none;
+      user-select: none;
+      opacity: 0.12;
+      transition: filter 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+    }
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    /* Fullscreen Menu Overlay Transition */
+    #menuOverlay {
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease;
+    }
+    #menuOverlay.hidden-overlay {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    #menuOverlay.active-overlay {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
     }
   </style>
 
@@ -251,11 +281,11 @@
 
 <body class="selection:bg-porscheRed selection:text-white">
 
-  <!-- ================= MINIMALIST PORSCHE-INSPIRED STICKY HEADER ================= -->
-  <header class="sticky top-0 z-50 nav-glass">
+  <!-- ================= MINIMALIST STICKY HEADER (RESTRICTED TO TWO PRIMARY PAGES) ================= -->
+  <header class="sticky top-0 z-40 nav-glass">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       
-      <!-- "KO KASH OPTION" Brand Identity -->
+      <!-- Brand Logo ("KO KASH OPTION") -->
       <a href="#home" class="flex items-center gap-3 group focus:outline-none" aria-label="KASH OPTION Home">
         <div class="w-9 h-9 rounded bg-[#16161A] border border-white/10 flex items-center justify-center font-black text-xs tracking-tighter text-white group-hover:border-porscheRed transition-colors">
           <span class="text-white">K</span><span class="text-porscheRed">O</span>
@@ -270,81 +300,174 @@
         </div>
       </a>
 
-      <!-- Desktop Navigation Links -->
-      <nav class="hidden lg:flex items-center gap-7 text-xs font-semibold uppercase tracking-wider text-metallicSilver" aria-label="Main Navigation">
-        <a href="#home" class="text-white hover:text-porscheRed transition-colors">Home</a>
-        <a href="#catalogue" class="hover:text-white transition-colors">Shop Catalogue</a>
-        <a href="#fitment-finder" class="hover:text-white transition-colors">Fitment Finder</a>
-        <a href="#wholesale" class="hover:text-white transition-colors">Wholesale</a>
-        <a href="#trust" class="hover:text-white transition-colors">Why KASH OPTION</a>
-        <a href="#knowledge" class="hover:text-white transition-colors">Knowledge</a>
-        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+      <!-- Primary Navigation: Strictly Restricted to Two Primary Pages for Sleek Minimalist Feel -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-extrabold uppercase tracking-widest text-metallicSilver" aria-label="Primary Navigation">
+        <a href="#catalogue" class="hover:text-white transition-colors py-1 flex items-center gap-1.5 group">
+          <span>Shop Catalogue</span>
+          <span class="w-1 h-1 rounded-full bg-porscheRed opacity-0 group-hover:opacity-100 transition-opacity"></span>
+        </a>
+        <a href="#fitment-finder" class="hover:text-white transition-colors py-1 flex items-center gap-1.5 group">
+          <span>Fitment Finder</span>
+          <span class="w-1 h-1 rounded-full bg-porscheRed opacity-0 group-hover:opacity-100 transition-opacity"></span>
+        </a>
       </nav>
 
-      <!-- Right CTAs: WhatsApp Catalogue Button & Clean Mobile Menu Trigger -->
+      <!-- Right CTAs: WhatsApp Catalogue Button & Clean Menu Overlay Trigger -->
       <div class="flex items-center gap-3">
         <a href="https://wa.me/c/233240118846" target="_blank" rel="noopener" class="bg-porscheRed hover:bg-porscheRedHover text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded transition-all duration-200 flex items-center gap-2 shadow-sm">
           <span>WhatsApp Catalogue</span>
           <i class="fab fa-whatsapp text-sm"></i>
         </a>
 
-        <!-- Mobile Drawer Hamburger Trigger -->
-        <button id="mobileMenuBtn" type="button" class="lg:hidden w-9 h-9 flex items-center justify-center text-silverMuted hover:text-white focus:outline-none" aria-label="Toggle Navigation Drawer">
-          <i class="fas fa-bars text-lg"></i>
+        <!-- Menu Trigger Button (Available across Mobile and Desktop) -->
+        <button id="menuTriggerBtn" onclick="openMenu()" type="button" class="w-9 h-9 rounded bg-[#16161A] border border-white/10 flex items-center justify-center text-silverMuted hover:text-white hover:border-porscheRed transition-colors focus:outline-none" aria-label="Open Full Navigation Menu" aria-haspopup="dialog">
+          <i class="fas fa-bars text-sm"></i>
         </button>
       </div>
 
     </div>
 
-    <!-- Mobile Slide-Down Drawer Navigation -->
-    <div id="mobileDrawer" class="hidden lg:hidden bg-porscheBlack/95 backdrop-blur-xl border-b border-charcoalBorder px-6 pt-4 pb-6 transition-all duration-300">
-      <nav class="flex flex-col gap-3 text-xs font-bold uppercase tracking-wider text-silverMuted">
-        <a href="#home" onclick="closeMobileDrawer()" class="py-2.5 border-b border-white/5 text-white flex justify-between items-center">
-          <span>Home</span>
-          <i class="fas fa-chevron-right text-[10px] text-silverMuted"></i>
-        </a>
-        <a href="#catalogue" onclick="closeMobileDrawer()" class="py-2.5 border-b border-white/5 hover:text-white flex justify-between items-center">
-          <span>Shop All Spark Plugs</span>
-          <i class="fas fa-chevron-right text-[10px] text-silverMuted"></i>
-        </a>
-        <div class="grid grid-cols-2 gap-2 py-1 pl-2 text-[11px] font-semibold text-silverMuted">
-          <a href="#catalogue" onclick="triggerBrandFilter('toyota')" class="hover:text-white">&bull; Toyota Plugs</a>
-          <a href="#catalogue" onclick="triggerBrandFilter('honda')" class="hover:text-white">&bull; Honda Plugs</a>
-          <a href="#catalogue" onclick="triggerBrandFilter('hyundai')" class="hover:text-white">&bull; Hyundai Plugs</a>
-          <a href="#catalogue" onclick="triggerBrandFilter('kia')" class="hover:text-white">&bull; Kia Plugs</a>
-        </div>
-        <a href="#fitment-finder" onclick="closeMobileDrawer()" class="py-2.5 border-b border-white/5 hover:text-white flex justify-between items-center">
-          <span>Chassis Fitment Finder</span>
-          <i class="fas fa-chevron-right text-[10px] text-silverMuted"></i>
-        </a>
-        <a href="#wholesale" onclick="closeMobileDrawer()" class="py-2.5 border-b border-white/5 hover:text-white flex justify-between items-center">
-          <span>Wholesale Trade Portal</span>
-          <i class="fas fa-chevron-right text-[10px] text-silverMuted"></i>
-        </a>
-        <a href="#trust" onclick="closeMobileDrawer()" class="py-2.5 border-b border-white/5 hover:text-white flex justify-between items-center">
-          <span>Why KASH OPTION</span>
-          <i class="fas fa-chevron-right text-[10px] text-silverMuted"></i>
-        </a>
-        <a href="#knowledge" onclick="closeMobileDrawer()" class="py-2.5 border-b border-white/5 hover:text-white flex justify-between items-center">
-          <span>Technical Knowledge Centre</span>
-          <i class="fas fa-chevron-right text-[10px] text-silverMuted"></i>
-        </a>
-        <a href="#faqs" onclick="closeMobileDrawer()" class="py-2.5 border-b border-white/5 hover:text-white flex justify-between items-center">
-          <span>FAQs</span>
-          <i class="fas fa-chevron-right text-[10px] text-silverMuted"></i>
-        </a>
-        <a href="#contact" onclick="closeMobileDrawer()" class="py-2.5 hover:text-white flex justify-between items-center">
-          <span>Contact &amp; Customer Desk</span>
-          <i class="fas fa-chevron-right text-[10px] text-silverMuted"></i>
-        </a>
-      </nav>
-
-      <div class="mt-4 pt-4 border-t border-white/10 text-[11px] text-silverMuted flex justify-between items-center">
-        <span>Support: <strong>9:00 AM – 10:00 PM Mon–Sat</strong></span>
-        <a href="tel:0240118846" class="text-white font-bold tracking-wider hover:text-porscheRed">024 011 8846</a>
+    <!-- ================= SECONDARY HYPERLINKS (NEATLY DISPLAYED BENEATH MAIN MENU) ================= -->
+    <div class="secondary-nav-bar border-t border-white/5 bg-[#0A0A0A]/95 backdrop-blur-md py-2 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto flex items-center justify-between sm:justify-start gap-4 sm:gap-6 text-[11px] font-semibold tracking-wider uppercase text-silverMuted overflow-x-auto no-scrollbar">
+        <span class="text-[9px] font-bold text-porscheRed uppercase tracking-widest hidden sm:inline whitespace-nowrap">Quick Links</span>
+        <span class="text-white/10 hidden sm:inline">|</span>
+        <a href="#home" class="hover:text-white transition-colors whitespace-nowrap">Home</a>
+        <span class="text-white/10 hidden sm:inline">&bull;</span>
+        <a href="#wholesale" class="hover:text-white transition-colors whitespace-nowrap">Wholesale Trade</a>
+        <span class="text-white/10 hidden sm:inline">&bull;</span>
+        <a href="#trust" class="hover:text-white transition-colors whitespace-nowrap">Why KASH OPTION</a>
+        <span class="text-white/10 hidden sm:inline">&bull;</span>
+        <a href="#how-to-order" class="hover:text-white transition-colors whitespace-nowrap">How to Order</a>
+        <span class="text-white/10 hidden sm:inline">&bull;</span>
+        <a href="#knowledge" class="hover:text-white transition-colors whitespace-nowrap">Knowledge Centre</a>
+        <span class="text-white/10 hidden sm:inline">&bull;</span>
+        <a href="#faqs" class="hover:text-white transition-colors whitespace-nowrap">FAQs</a>
+        <span class="text-white/10 hidden sm:inline">&bull;</span>
+        <a href="#contact" class="hover:text-white transition-colors whitespace-nowrap">Contact &amp; Support</a>
       </div>
     </div>
   </header>
+
+  <!-- ================= FULLSCREEN MENU OVERLAY (STRONGLY BLURS & HIDES UNDERLYING WEBSITE CONTENT) ================= -->
+  <div id="menuOverlay" class="hidden-overlay fixed inset-0 z-50 bg-[#0A0A0A]/95 backdrop-blur-2xl flex flex-col justify-between p-6 sm:p-10 overflow-y-auto" role="dialog" aria-modal="true" aria-label="Navigation Menu">
+    
+    <!-- Menu Overlay Top Bar -->
+    <div class="max-w-7xl mx-auto w-full flex items-center justify-between pb-6 border-b border-white/10">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded bg-[#16161A] border border-white/10 flex items-center justify-center font-black text-xs text-white">
+          <span class="text-white">K</span><span class="text-porscheRed">O</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-sm font-extrabold tracking-tight text-white uppercase leading-none">
+            KASH <span class="text-porscheRed">OPTION</span>
+          </span>
+          <span class="text-[8.5px] font-semibold uppercase tracking-widest text-silverMuted mt-0.5">
+            Automotive Parts &bull; Ghana
+          </span>
+        </div>
+      </div>
+
+      <!-- Close Button -->
+      <button onclick="closeMenu()" type="button" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:border-porscheRed hover:bg-porscheRed flex items-center justify-center text-white transition-all focus:outline-none" aria-label="Close Navigation Menu">
+        <i class="fas fa-times text-base"></i>
+      </button>
+    </div>
+
+    <!-- Menu Overlay Body -->
+    <div class="max-w-7xl mx-auto w-full py-10 my-auto grid grid-cols-1 md:grid-cols-12 gap-10">
+      
+      <!-- Primary Two Pages (Large Highlighted Display) -->
+      <div class="md:col-span-6 space-y-6">
+        <span class="text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-2">Primary Destinations</span>
+        <div class="space-y-4">
+          <a href="#catalogue" onclick="closeMenu()" class="block group">
+            <span class="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-white group-hover:text-porscheRed transition-colors flex items-center justify-between">
+              <span>Shop All Spark Plugs</span>
+              <i class="fas fa-arrow-right text-base text-silverMuted group-hover:text-porscheRed transform group-hover:translate-x-2 transition-all"></i>
+            </span>
+            <span class="text-xs text-silverMuted font-normal mt-1 block">Browse verified OEM stock for Toyota, Honda, Hyundai, and Kia</span>
+          </a>
+
+          <a href="#fitment-finder" onclick="closeMenu()" class="block group pt-4 border-t border-white/5">
+            <span class="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-white group-hover:text-porscheRed transition-colors flex items-center justify-between">
+              <span>Chassis Fitment Finder</span>
+              <i class="fas fa-arrow-right text-base text-silverMuted group-hover:text-porscheRed transform group-hover:translate-x-2 transition-all"></i>
+            </span>
+            <span class="text-xs text-silverMuted font-normal mt-1 block">Instant vehicle and VIN verification with our technical desk</span>
+          </a>
+        </div>
+
+        <!-- Quick Manufacturer Lines -->
+        <div class="pt-6 border-t border-white/10">
+          <span class="text-[10px] font-bold uppercase tracking-widest text-silverMuted block mb-3">Direct Manufacturer Lines:</span>
+          <div class="grid grid-cols-2 gap-2 text-xs font-bold uppercase tracking-wider">
+            <a href="#catalogue" onclick="triggerBrandFilter('toyota')" class="p-2.5 rounded bg-[#16161A] border border-white/5 hover:border-porscheRed hover:text-white transition-colors text-silverMuted">Toyota (Denso)</a>
+            <a href="#catalogue" onclick="triggerBrandFilter('honda')" class="p-2.5 rounded bg-[#16161A] border border-white/5 hover:border-porscheRed hover:text-white transition-colors text-silverMuted">Honda (NGK)</a>
+            <a href="#catalogue" onclick="triggerBrandFilter('hyundai')" class="p-2.5 rounded bg-[#16161A] border border-white/5 hover:border-porscheRed hover:text-white transition-colors text-silverMuted">Hyundai (Mobis)</a>
+            <a href="#catalogue" onclick="triggerBrandFilter('kia')" class="p-2.5 rounded bg-[#16161A] border border-white/5 hover:border-porscheRed hover:text-white transition-colors text-silverMuted">Kia (Mobis)</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secondary Site Links / Hyperlinks Inside Overlay -->
+      <div class="md:col-span-6 flex flex-col justify-between border-t md:border-t-0 md:border-l border-white/10 pt-8 md:pt-0 md:pl-10">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-4">Complete Directory</span>
+          <nav class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-bold uppercase tracking-wider text-silverMuted">
+            <a href="#home" onclick="closeMenu()" class="py-2 hover:text-white transition-colors flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+              <span>Home Overview</span>
+            </a>
+            <a href="#wholesale" onclick="closeMenu()" class="py-2 hover:text-white transition-colors flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+              <span>Wholesale Trade</span>
+            </a>
+            <a href="#trust" onclick="closeMenu()" class="py-2 hover:text-white transition-colors flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+              <span>Why KASH OPTION</span>
+            </a>
+            <a href="#how-to-order" onclick="closeMenu()" class="py-2 hover:text-white transition-colors flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+              <span>How to Order</span>
+            </a>
+            <a href="#knowledge" onclick="closeMenu()" class="py-2 hover:text-white transition-colors flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+              <span>Knowledge Centre</span>
+            </a>
+            <a href="#faqs" onclick="closeMenu()" class="py-2 hover:text-white transition-colors flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+              <span>Support FAQs</span>
+            </a>
+            <a href="#contact" onclick="closeMenu()" class="py-2 hover:text-white transition-colors flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+              <span>Contact &amp; Orders</span>
+            </a>
+          </nav>
+        </div>
+
+        <!-- Contact Box in Overlay -->
+        <div class="mt-8 pt-6 border-t border-white/10 text-xs text-silverMuted flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div>
+            <span class="text-[10px] uppercase font-bold text-white block">Immediate Support Line:</span>
+            <a href="tel:0240118846" class="text-sm font-extrabold text-white hover:text-porscheRed transition-colors">024 011 8846</a>
+          </div>
+          <a href="https://wa.me/c/233240118846" target="_blank" rel="noopener" class="bg-porscheRed hover:bg-porscheRedHover text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded transition-all flex items-center gap-2">
+            <span>Browse WhatsApp Catalogue</span>
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Menu Overlay Footer -->
+    <div class="max-w-7xl mx-auto w-full pt-6 border-t border-white/10 text-center text-xs text-silverMuted/60 flex flex-col sm:flex-row justify-between items-center gap-2">
+      <p>&copy; 2026 KASH OPTION AUTOMOTIVE PARTS &bull; GHANA.</p>
+      <p class="text-[10px] uppercase tracking-widest text-silverMuted/40">Press ESC or click close to exit</p>
+    </div>
+
+  </div>
 
   <main>
     <!-- ================= HERO SECTION (PORSCHE AESTHETIC WITH HOSTED IMAGE BACKGROUND) ================= -->
@@ -1396,13 +1519,13 @@
   </footer>
 
   <!-- ================= DISCREET FLOATING WHATSAPP CTA ================= -->
-  <aside aria-label="WhatsApp quick chat" class="fixed bottom-5 right-5 z-40">
+  <aside aria-label="WhatsApp quick chat" class="fixed bottom-5 right-5 z-30">
     <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20verify%20spark%20plug%20fitment%20for%20my%20vehicle." target="_blank" rel="noopener" class="w-12 h-12 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white flex items-center justify-center shadow-2xl transition-transform duration-200 hover:scale-105 focus:outline-none border-2 border-white/10" aria-label="Chat on WhatsApp">
       <i class="fab fa-whatsapp text-2xl"></i>
     </a>
   </aside>
 
-  <!-- ================= JAVASCRIPT: MODEL SYNC, LIVE SEARCH, WHATSAPP ENGINE & DRAWER ================= -->
+  <!-- ================= JAVASCRIPT: MODEL SYNC, LIVE SEARCH, WHATSAPP ENGINE & OVERLAY CONTROLS ================= -->
   <script>
     const vehicleRegistry = {
       Toyota: ["Camry", "Corolla", "RAV4", "Highlander", "Prado", "Land Cruiser", "Yaris", "Matrix", "Hilux", "Vitz", "Tacoma", "Auris", "C-HR", "Sienna"],
@@ -1489,7 +1612,7 @@
     }
 
     function triggerBrandFilter(brand) {
-      closeMobileDrawer();
+      closeMenu();
       const targetBtn = Array.from(document.querySelectorAll('#filterTabs button')).find(
         btn => btn.textContent.toLowerCase() === brand.toLowerCase()
       );
@@ -1502,24 +1625,31 @@
       }
     }
 
-    function toggleMenu() {
-      const drawer = document.getElementById('mobileDrawer');
-      if (drawer) {
-        drawer.classList.toggle('hidden');
+    /* Menu Overlay Blur/Hide Controllers */
+    function openMenu() {
+      const overlay = document.getElementById('menuOverlay');
+      if (overlay) {
+        overlay.classList.remove('hidden-overlay');
+        overlay.classList.add('active-overlay');
+        document.body.classList.add('menu-open');
       }
     }
 
-    function closeMobileDrawer() {
-      const drawer = document.getElementById('mobileDrawer');
-      if (drawer && !drawer.classList.contains('hidden')) {
-        drawer.classList.add('hidden');
+    function closeMenu() {
+      const overlay = document.getElementById('menuOverlay');
+      if (overlay) {
+        overlay.classList.remove('active-overlay');
+        overlay.classList.add('hidden-overlay');
+        document.body.classList.remove('menu-open');
       }
     }
 
-    const mobileBtn = document.getElementById('mobileMenuBtn');
-    if (mobileBtn) {
-      mobileBtn.addEventListener('click', toggleMenu);
-    }
+    // Close menu with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeMenu();
+      }
+    });
   </script>
 
 </body>
