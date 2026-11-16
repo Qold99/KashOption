@@ -506,10 +506,10 @@
             <!-- Direct Brand Shortcuts -->
             <div class="mt-12 flex flex-wrap items-center gap-3 text-xs text-silverMuted">
               <span class="font-bold uppercase tracking-wider text-[11px] text-white mr-1">Direct Brand Stock:</span>
-              <a href="#toyota" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Toyota (Denso)</a>
-              <a href="#honda" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Honda (NGK)</a>
-              <a href="#hyundai" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Hyundai (Mobis)</a>
-              <a href="#kia" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Kia (Mobis)</a>
+              <a href="#toyota" onclick="triggerBrandFilter('toyota')" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Toyota (Denso)</a>
+              <a href="#honda" onclick="triggerBrandFilter('honda')" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Honda (NGK)</a>
+              <a href="#hyundai" onclick="triggerBrandFilter('hyundai')" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Hyundai (Mobis)</a>
+              <a href="#kia" onclick="triggerBrandFilter('kia')" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Kia (Mobis)</a>
             </div>
 
           </div>
@@ -620,8 +620,8 @@
         <!-- Toyota 1 -->
         <div class="porsche-card rounded p-6 flex flex-col justify-between product-item" data-brand="toyota denso" data-keywords="toyota corolla auris matrix prius sc20hr11 90919-01253 2zr-fe 1.8l denso japan">
           <div>
-            <div class="aspect-[16/10] bg-porscheBlack rounded border border-white/5 p-4 mb-5 flex items-center justify-center overflow-hidden">
-              <img src="https://iili.io/oJbQRvp.webp" alt="Denso SC20HR11 Toyota Spark Plug" class="h-36 w-auto object-contain transition-transform duration-300 hover:scale-105">
+            <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
+              <img src="https://iili.io/oJbQRvp.webp" alt="Denso SC20HR11 Toyota Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
             </div>
             <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
               <span class="font-bold text-white uppercase tracking-wider">Toyota OEM &bull; Denso Japan</span>
@@ -646,8 +646,8 @@
         <!-- Toyota 2 -->
         <div class="porsche-card rounded p-6 flex flex-col justify-between product-item" data-brand="toyota denso" data-keywords="toyota camry rav4 highlander sk20r11 90919-01210 2az-fe 1mz-fe 3mz-fe 2.4l 3.0l denso japan">
           <div>
-            <div class="aspect-[16/10] bg-porscheBlack rounded border border-white/5 p-4 mb-5 flex items-center justify-center overflow-hidden">
-              <img src="https://iili.io/oJbyTxV.jpg" alt="Denso SK20R11 Toyota Spark Plug" class="h-36 w-auto object-contain transition-transform duration-300 hover:scale-105">
+            <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
+              <img src="https://iili.io/oJbyTxV.jpg" alt="Denso SK20R11 Toyota Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
             </div>
             <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
               <span class="font-bold text-white uppercase tracking-wider">Toyota OEM &bull; Denso Japan</span>
@@ -672,8 +672,8 @@
         <!-- Toyota 3 -->
         <div class="porsche-card rounded p-6 flex flex-col justify-between product-item" data-brand="toyota denso" data-keywords="toyota land cruiser prado fortuner 4runner fk20hr11 90919-01247 1gr-fe 2gr-fe 4.0l v6 3.5l denso japan">
           <div>
-            <div class="aspect-[16/10] bg-porscheBlack rounded border border-white/5 p-4 mb-5 flex items-center justify-center overflow-hidden">
-              <img src="https://iili.io/oJmqKTF.png" alt="Denso FK20HR11 Toyota Prado V6 Spark Plug" class="h-36 w-auto object-contain transition-transform duration-300 hover:scale-105">
+            <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
+              <img src="https://iili.io/oJmqKTF.png" alt="Denso FK20HR11 Toyota Prado V6 Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
             </div>
             <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
               <span class="font-bold text-white uppercase tracking-wider">Toyota OEM &bull; Denso Japan</span>
@@ -698,8 +698,8 @@
         <!-- Honda 1 -->
         <div class="porsche-card rounded p-6 flex flex-col justify-between product-item" data-brand="honda ngk" data-keywords="honda accord cr-v crv izfr6k11 9807b-5617w k24a k24z 2.4l ngk japan">
           <div>
-            <div class="aspect-[16/10] bg-porscheBlack rounded border border-white/5 p-4 mb-5 flex items-center justify-center overflow-hidden">
-              <img src="https://iili.io/odJ6qDN.webp" alt="NGK IZFR6K11 Honda Spark Plug" class="h-36 w-auto object-contain transition-transform duration-300 hover:scale-105">
+            <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
+              <img src="https://iili.io/odJ6qDN.webp" alt="NGK IZFR6K11 Honda Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
             </div>
             <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
               <span class="font-bold text-white uppercase tracking-wider">Honda OEM &bull; NGK Japan</span>
@@ -724,8 +724,8 @@
         <!-- Honda 2 -->
         <div class="porsche-card rounded p-6 flex flex-col justify-between product-item" data-brand="honda ngk" data-keywords="honda civic hr-v hrv ilzkr7b11 12290-r1a-h01 r18a r18z 1.8l ngk japan">
           <div>
-            <div class="aspect-[16/10] bg-porscheBlack rounded border border-white/5 p-4 mb-5 flex items-center justify-center overflow-hidden">
-              <img src="https://iili.io/oddHUb9.webp" alt="NGK ILZKR7B11 Honda Civic Spark Plug" class="h-36 w-auto object-contain transition-transform duration-300 hover:scale-105">
+            <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
+              <img src="https://iili.io/oddHUb9.webp" alt="NGK ILZKR7B11 Honda Civic Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
             </div>
             <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
               <span class="font-bold text-white uppercase tracking-wider">Honda OEM &bull; NGK Japan</span>
@@ -750,8 +750,8 @@
         <!-- Honda 3 -->
         <div class="porsche-card rounded p-6 flex flex-col justify-between product-item" data-brand="honda ngk" data-keywords="honda civic cr-v crv accord dilzkr7b11gs 12290-59b-003 l15b7 1.5l turbo earth dreams ngk japan">
           <div>
-            <div class="aspect-[16/10] bg-porscheBlack rounded border border-white/5 p-4 mb-5 flex items-center justify-center overflow-hidden">
-              <img src="https://iili.io/oddT9Lv.jpg" alt="NGK DILZKR7B11GS Honda 1.5L Turbo Spark Plug" class="h-36 w-auto object-contain transition-transform duration-300 hover:scale-105">
+            <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
+              <img src="https://iili.io/oddT9Lv.jpg" alt="NGK DILZKR7B11GS Honda 1.5L Turbo Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
             </div>
             <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
               <span class="font-bold text-white uppercase tracking-wider">Honda OEM &bull; NGK Japan</span>
@@ -776,8 +776,8 @@
         <!-- Hyundai 1 -->
         <div class="porsche-card rounded p-6 flex flex-col justify-between product-item" data-brand="hyundai mobis" data-keywords="hyundai elantra accent silzkr6b10e 18846-10060 nu 1.8l gamma 1.6l mobis genuine korea">
           <div>
-            <div class="aspect-[16/10] bg-porscheBlack rounded border border-white/5 p-4 mb-5 flex items-center justify-center overflow-hidden">
-              <img src="https://iili.io/oddjVWv.jpg" alt="Mobis 18846-10060 Hyundai Elantra Spark Plug" class="h-36 w-auto object-contain transition-transform duration-300 hover:scale-105">
+            <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
+              <img src="https://iili.io/oddjVWv.jpg" alt="Mobis 18846-10060 Hyundai Elantra Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
             </div>
             <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
               <span class="font-bold text-white uppercase tracking-wider">Hyundai OEM &bull; Mobis Korea</span>
@@ -802,8 +802,8 @@
         <!-- Hyundai 2 -->
         <div class="porsche-card rounded p-6 flex flex-col justify-between product-item" data-brand="hyundai mobis" data-keywords="hyundai sonata tucson silzkr7b11 18846-11070 theta ii 2.4l 2.0l mobis genuine korea">
           <div>
-            <div class="aspect-[16/10] bg-porscheBlack rounded border border-white/5 p-4 mb-5 flex items-center justify-center overflow-hidden">
-              <img src="https://iili.io/oddiY11.jpg" alt="Mobis 18846-11070 Hyundai Sonata Spark Plug" class="h-36 w-auto object-contain transition-transform duration-300 hover:scale-105">
+            <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
+              <img src="https://iili.io/oddiY11.jpg" alt="Mobis 18846-11070 Hyundai Sonata Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
             </div>
             <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
               <span class="font-bold text-white uppercase tracking-wider">Hyundai OEM &bull; Mobis Korea</span>
@@ -828,8 +828,8 @@
         <!-- Kia 1 -->
         <div class="porsche-card rounded p-6 flex flex-col justify-between product-item" data-brand="kia mobis" data-keywords="kia forte cerato soul 18846-10060 silzkr6b10e 1.6l 2.0l mobis genuine korea">
           <div>
-            <div class="aspect-[16/10] bg-porscheBlack rounded border border-white/5 p-4 mb-5 flex items-center justify-center overflow-hidden">
-              <img src="https://iili.io/oddjVWv.jpg" alt="Mobis 18846-10060 Kia Forte Spark Plug" class="h-36 w-auto object-contain transition-transform duration-300 hover:scale-105">
+            <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
+              <img src="https://iili.io/oddjVWv.jpg" alt="Mobis 18846-10060 Kia Forte Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
             </div>
             <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
               <span class="font-bold text-white uppercase tracking-wider">Kia OEM &bull; Mobis Korea</span>
@@ -854,8 +854,8 @@
         <!-- Kia 2 -->
         <div class="porsche-card rounded p-6 flex flex-col justify-between product-item" data-brand="kia mobis" data-keywords="kia sportage optima k5 sorento 18846-11070 18849-09085 2.4l v6 3.3l mobis genuine korea">
           <div>
-            <div class="aspect-[16/10] bg-porscheBlack rounded border border-white/5 p-4 mb-5 flex items-center justify-center overflow-hidden">
-              <img src="https://iili.io/oddiY11.jpg" alt="Mobis 18846-11070 Kia Sportage Spark Plug" class="h-36 w-auto object-contain transition-transform duration-300 hover:scale-105">
+            <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
+              <img src="https://iili.io/oddiY11.jpg" alt="Mobis 18846-11070 Kia Sportage Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
             </div>
             <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
               <span class="font-bold text-white uppercase tracking-wider">Kia OEM &bull; Mobis Korea</span>
@@ -1514,10 +1514,10 @@
         <div>
           <h4 class="text-xs font-bold uppercase tracking-widest text-white mb-4">Manufacturer Catalogues</h4>
           <ul class="space-y-2 text-xs text-silverMuted">
-            <li><a href="#toyota" class="hover:text-white transition-colors">Toyota OEM Spark Plugs</a></li>
-            <li><a href="#honda" class="hover:text-white transition-colors">Honda OEM Spark Plugs</a></li>
-            <li><a href="#hyundai" class="hover:text-white transition-colors">Hyundai OEM Spark Plugs</a></li>
-            <li><a href="#kia" class="hover:text-white transition-colors">Kia OEM Spark Plugs</a></li>
+            <li><a href="#toyota" onclick="triggerBrandFilter('toyota')" class="hover:text-white transition-colors">Toyota OEM Spark Plugs</a></li>
+            <li><a href="#honda" onclick="triggerBrandFilter('honda')" class="hover:text-white transition-colors">Honda OEM Spark Plugs</a></li>
+            <li><a href="#hyundai" onclick="triggerBrandFilter('hyundai')" class="hover:text-white transition-colors">Hyundai OEM Spark Plugs</a></li>
+            <li><a href="#kia" onclick="triggerBrandFilter('kia')" class="hover:text-white transition-colors">Kia OEM Spark Plugs</a></li>
             <li><a href="#fitment-finder" class="hover:text-white transition-colors">Chassis Verification Tool</a></li>
             <li><a href="#wholesale" class="hover:text-white transition-colors">Trade &amp; Wholesale Supply</a></li>
           </ul>
@@ -1608,13 +1608,23 @@
         view.hidden = !isTarget;
       });
 
+      // Clear search input on brand selection so all filtered items render
+      const searchInput = document.getElementById('catalogueSearch');
+      if (searchInput && brandFilter) {
+        searchInput.value = '';
+      }
+
       // Handle brand filters in catalogue
       if (validPage === 'catalogue') {
-        const brandToApply = brandFilter || (['toyota', 'honda', 'hyundai', 'kia', 'denso', 'ngk', 'mobis'].includes(pageKey) ? pageKey : 'all');
+        const brandToApply = (brandFilter || (['toyota', 'honda', 'hyundai', 'kia', 'denso', 'ngk', 'mobis'].includes(pageKey) ? pageKey : 'all')).toLowerCase();
         const targetBtn = Array.from(document.querySelectorAll('#filterTabs button')).find(
-          btn => btn.textContent.toLowerCase() === brandToApply.toLowerCase()
+          btn => {
+            const btnText = btn.textContent.trim().toLowerCase();
+            const btnOnclick = btn.getAttribute('onclick') || '';
+            return btnText === brandToApply || btnOnclick.includes(`'${brandToApply}'`);
+          }
         );
-        if (targetBtn && typeof setBrandFilter === 'function') {
+        if (typeof setBrandFilter === 'function') {
           setBrandFilter(brandToApply, targetBtn);
         }
       }
@@ -1639,11 +1649,13 @@
     document.addEventListener('click', function(e) {
       const link = e.target.closest('a[href^="#"]');
       if (!link) return;
-      const hashKey = link.getAttribute('href').slice(1).toLowerCase();
+      const href = link.getAttribute('href');
+      if (!href || href === '#') return;
+      const hashKey = href.slice(1).toLowerCase();
       if (routeMap[hashKey] !== undefined) {
         e.preventDefault();
         const brand = ['toyota', 'honda', 'hyundai', 'kia', 'denso', 'ngk', 'mobis'].includes(hashKey) ? hashKey : null;
-        showPage(hashKey, brand, true);
+        showPage(routeMap[hashKey] === 'catalogue' ? 'catalogue' : hashKey, brand || (routeMap[hashKey] === 'catalogue' ? hashKey : null), true);
       }
     });
 
@@ -1741,13 +1753,21 @@
     }
 
     function setBrandFilter(brand, btn) {
-      activeBrandFilter = brand.toLowerCase();
-      document.querySelectorAll('#filterTabs button').forEach(b => b.classList.remove('active'));
+      activeBrandFilter = (brand || 'all').toLowerCase();
+      document.querySelectorAll('#filterTabs button').forEach(b => {
+        b.classList.remove('active');
+        const bText = b.textContent.trim().toLowerCase();
+        const bOnclick = b.getAttribute('onclick') || '';
+        if (bText === activeBrandFilter || bOnclick.includes(`'${activeBrandFilter}'`)) {
+          b.classList.add('active');
+        }
+      });
       if (btn) btn.classList.add('active');
       filterCatalogueCards();
     }
 
     function triggerBrandFilter(brand) {
+      closeMenu();
       showPage('catalogue', brand, true);
     }
 
