@@ -157,21 +157,20 @@
     /* ================= GLOBAL SCROLL-TRIGGERED REVEAL ANIMATIONS ================= */
     .scroll-reveal {
       opacity: 0;
+      transform: translate3d(0, 42px, 0);
       will-change: transform, opacity;
       transition:
-        opacity 0.72s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity 1200ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 1200ms cubic-bezier(0.16, 1, 0.3, 1);
       transition-delay: var(--reveal-delay, 0ms);
     }
-    .scroll-reveal[data-reveal="left"] {
-      transform: translate3d(-44px, 0, 0);
-    }
-    .scroll-reveal[data-reveal="right"] {
-      transform: translate3d(44px, 0, 0);
+    .scroll-reveal[data-reveal="fade-up"] {
+      transform: translate3d(0, 42px, 0);
     }
     .scroll-reveal.is-revealed {
       opacity: 1;
       transform: translate3d(0, 0, 0);
+      will-change: auto;
     }
     @media (prefers-reduced-motion: reduce) {
       .scroll-reveal {
@@ -494,7 +493,7 @@
 
         <!-- Hero Main Content (Foreground with Crisp Legibility) -->
         <div class="max-w-7xl mx-auto w-full relative z-10 my-auto py-8">
-          <div class="max-w-3xl scroll-reveal" data-reveal="left">
+          <div class="max-w-3xl scroll-reveal" data-reveal="fade-up">
 
             <!-- Eyebrow text -->
             <div class="flex items-center gap-3 mb-6">
@@ -544,21 +543,21 @@
         <div class="max-w-7xl mx-auto w-full relative z-10 pt-8 border-t border-charcoalBorder">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
 
-            <div class="scroll-reveal border-l-0 sm:border-l border-white/15 pl-0 sm:pl-5 py-1" data-reveal="left" data-reveal-delay="60">
+            <div class="scroll-reveal border-l-0 sm:border-l border-white/15 pl-0 sm:pl-5 py-1" data-reveal="fade-up" data-reveal-delay="60">
               <span class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-white block">
                 STOP ENGINE MISFIRES &amp; HIGH FUEL BURN
               </span>
               <p class="text-[11px] text-silverMuted mt-1">Weak or fake plugs ruin your fuel economy and coils. Get factory-spec Iridium and Platinum plugs that last up to 100,000 km.</p>
             </div>
 
-            <div class="scroll-reveal border-l-0 sm:border-l border-white/15 pl-0 sm:pl-5 py-1" data-reveal="right" data-reveal-delay="140">
+            <div class="scroll-reveal border-l-0 sm:border-l border-white/15 pl-0 sm:pl-5 py-1" data-reveal="fade-up" data-reveal-delay="140">
               <span class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-white block">
                 1 SET OR 100 CARTONS IN STOCK
               </span>
               <p class="text-[11px] text-silverMuted mt-1">Whether you are servicing one personal car or stocking an entire shop, we have ready stock at fair Cedi prices.</p>
             </div>
 
-            <div class="scroll-reveal border-l-0 sm:border-l border-white/15 pl-0 sm:pl-5 py-1" data-reveal="right" data-reveal-delay="220">
+            <div class="scroll-reveal border-l-0 sm:border-l border-white/15 pl-0 sm:pl-5 py-1" data-reveal="fade-up" data-reveal-delay="220">
               <span class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-white block">
                 FAST DELIVERY TO YOUR MECHANIC OR DOOR
               </span>
@@ -573,7 +572,7 @@
       <!-- Concise Commercial Overview & Direct Entry (Landing Page Ending) -->
       <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="bg-porscheDark p-8 sm:p-12 rounded border border-charcoalBorder flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
-          <div class="scroll-reveal flex items-center gap-6 z-10 max-w-2xl" data-reveal="left">
+          <div class="scroll-reveal flex items-center gap-6 z-10 max-w-2xl" data-reveal="fade-up">
             <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Spark Plugs Dealer" class="h-20 w-auto object-contain hidden sm:block filter drop-shadow-[0_10px_20px_rgba(213,0,28,0.25)]">
             <div>
               <span class="text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-1">Commercial Reliability</span>
@@ -585,7 +584,7 @@
               </p>
             </div>
           </div>
-          <div class="scroll-reveal flex items-center gap-3 z-10" data-reveal="right" data-reveal-delay="100">
+          <div class="scroll-reveal flex items-center gap-3 z-10" data-reveal="fade-up" data-reveal-delay="100">
             <a href="#catalogue" class="bg-white hover:bg-metallicSilver text-porscheBlack text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded transition-colors whitespace-nowrap">
               Open Catalogue
             </a>
@@ -602,7 +601,7 @@
     <section id="catalogue" data-page="catalogue" class="page-view py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-charcoalBorder" hidden>
 
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-white/5 gap-4">
-        <div class="scroll-reveal" data-reveal="left">
+        <div class="scroll-reveal" data-reveal="fade-up">
           <div class="flex items-center gap-2 mb-2">
             <span class="accent-indicator"></span>
             <span class="text-[11px] font-bold uppercase tracking-widest text-porscheRed">Verified Stock Reference</span>
@@ -611,7 +610,7 @@
             OEM Spark Plug Catalogue
           </h2>
         </div>
-        <div class="scroll-reveal" data-reveal="right" data-reveal-delay="80">
+        <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="80">
           <p class="text-xs sm:text-sm text-silverMuted max-w-md font-normal leading-relaxed">
             Fast-moving OEM references for Toyota, Honda, Hyundai, and Kia. Every spark plug features genuine laser-welded tips and calibrated internal resistance.
           </p>
@@ -619,7 +618,7 @@
       </div>
 
       <!-- Real-Time Filter & Search Toolbar -->
-      <div class="scroll-reveal" data-reveal="left" data-reveal-delay="100">
+      <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="100">
         <div class="bg-porscheDark p-4 sm:p-5 rounded border border-charcoalBorder mb-10 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
 
           <!-- Live Search Input -->
@@ -647,7 +646,7 @@
       <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <!-- Toyota 1 -->
-        <div class="scroll-reveal h-full product-item" data-reveal="left" data-reveal-delay="0" data-brand="toyota denso" data-keywords="toyota corolla auris matrix prius sc20hr11 90919-01253 2zr-fe 1.8l denso japan">
+        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="0" data-brand="toyota denso" data-keywords="toyota corolla auris matrix prius sc20hr11 90919-01253 2zr-fe 1.8l denso japan">
           <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
             <div>
               <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
@@ -675,7 +674,7 @@
         </div>
 
         <!-- Toyota 2 -->
-        <div class="scroll-reveal h-full product-item" data-reveal="right" data-reveal-delay="80" data-brand="toyota denso" data-keywords="toyota camry rav4 highlander sk20r11 90919-01210 2az-fe 1mz-fe 3mz-fe 2.4l 3.0l denso japan">
+        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="80" data-brand="toyota denso" data-keywords="toyota camry rav4 highlander sk20r11 90919-01210 2az-fe 1mz-fe 3mz-fe 2.4l 3.0l denso japan">
           <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
             <div>
               <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
@@ -703,7 +702,7 @@
         </div>
 
         <!-- Toyota 3 -->
-        <div class="scroll-reveal h-full product-item" data-reveal="left" data-reveal-delay="160" data-brand="toyota denso" data-keywords="toyota land cruiser prado fortuner 4runner fk20hr11 90919-01247 1gr-fe 2gr-fe 4.0l v6 3.5l denso japan">
+        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="160" data-brand="toyota denso" data-keywords="toyota land cruiser prado fortuner 4runner fk20hr11 90919-01247 1gr-fe 2gr-fe 4.0l v6 3.5l denso japan">
           <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
             <div>
               <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
@@ -731,7 +730,7 @@
         </div>
 
         <!-- Honda 1 -->
-        <div class="scroll-reveal h-full product-item" data-reveal="right" data-reveal-delay="0" data-brand="honda ngk" data-keywords="honda accord cr-v crv izfr6k11 9807b-5617w k24a k24z 2.4l ngk japan">
+        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="0" data-brand="honda ngk" data-keywords="honda accord cr-v crv izfr6k11 9807b-5617w k24a k24z 2.4l ngk japan">
           <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
             <div>
               <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
@@ -759,7 +758,7 @@
         </div>
 
         <!-- Honda 2 -->
-        <div class="scroll-reveal h-full product-item" data-reveal="left" data-reveal-delay="80" data-brand="honda ngk" data-keywords="honda civic hr-v hrv ilzkr7b11 12290-r1a-h01 r18a r18z 1.8l ngk japan">
+        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="80" data-brand="honda ngk" data-keywords="honda civic hr-v hrv ilzkr7b11 12290-r1a-h01 r18a r18z 1.8l ngk japan">
           <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
             <div>
               <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
@@ -787,7 +786,7 @@
         </div>
 
         <!-- Honda 3 -->
-        <div class="scroll-reveal h-full product-item" data-reveal="right" data-reveal-delay="160" data-brand="honda ngk" data-keywords="honda civic cr-v crv accord dilzkr7b11gs 12290-59b-003 l15b7 1.5l turbo earth dreams ngk japan">
+        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="160" data-brand="honda ngk" data-keywords="honda civic cr-v crv accord dilzkr7b11gs 12290-59b-003 l15b7 1.5l turbo earth dreams ngk japan">
           <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
             <div>
               <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
@@ -815,7 +814,7 @@
         </div>
 
         <!-- Hyundai 1 -->
-        <div class="scroll-reveal h-full product-item" data-reveal="left" data-reveal-delay="0" data-brand="hyundai mobis" data-keywords="hyundai elantra accent silzkr6b10e 18846-10060 nu 1.8l gamma 1.6l mobis genuine korea">
+        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="0" data-brand="hyundai mobis" data-keywords="hyundai elantra accent silzkr6b10e 18846-10060 nu 1.8l gamma 1.6l mobis genuine korea">
           <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
             <div>
               <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
@@ -843,7 +842,7 @@
         </div>
 
         <!-- Hyundai 2 -->
-        <div class="scroll-reveal h-full product-item" data-reveal="right" data-reveal-delay="80" data-brand="hyundai mobis" data-keywords="hyundai sonata tucson silzkr7b11 18846-11070 theta ii 2.4l 2.0l mobis genuine korea">
+        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="80" data-brand="hyundai mobis" data-keywords="hyundai sonata tucson silzkr7b11 18846-11070 theta ii 2.4l 2.0l mobis genuine korea">
           <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
             <div>
               <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
@@ -871,7 +870,7 @@
         </div>
 
         <!-- Kia 1 -->
-        <div class="scroll-reveal h-full product-item" data-reveal="left" data-reveal-delay="160" data-brand="kia mobis" data-keywords="kia forte cerato soul 18846-10060 silzkr6b10e 1.6l 2.0l mobis genuine korea">
+        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="160" data-brand="kia mobis" data-keywords="kia forte cerato soul 18846-10060 silzkr6b10e 1.6l 2.0l mobis genuine korea">
           <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
             <div>
               <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
@@ -899,7 +898,7 @@
         </div>
 
         <!-- Kia 2 -->
-        <div class="scroll-reveal h-full product-item" data-reveal="right" data-reveal-delay="0" data-brand="kia mobis" data-keywords="kia sportage optima k5 sorento 18846-11070 18849-09085 2.4l v6 3.3l mobis genuine korea">
+        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="0" data-brand="kia mobis" data-keywords="kia sportage optima k5 sorento 18846-11070 18849-09085 2.4l v6 3.3l mobis genuine korea">
           <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
             <div>
               <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
@@ -946,7 +945,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
           <!-- Left: Verification Form -->
-          <div class="lg:col-span-7 scroll-reveal" data-reveal="left">
+          <div class="lg:col-span-7 scroll-reveal" data-reveal="fade-up">
             <div class="flex items-center gap-2 mb-3">
               <span class="accent-indicator"></span>
               <span class="text-[11px] font-bold uppercase tracking-widest text-porscheRed">Precision Engineering Protocol</span>
@@ -1025,7 +1024,7 @@
           </div>
 
           <!-- Right: Authentic Studio Display featuring the hosted image -->
-          <div class="lg:col-span-5 scroll-reveal" data-reveal="right" data-reveal-delay="120">
+          <div class="lg:col-span-5 scroll-reveal" data-reveal="fade-up" data-reveal-delay="120">
             <div class="bg-porscheBlack p-8 rounded border border-charcoalBorder relative overflow-hidden text-center">
               <span class="text-[10px] font-extrabold uppercase tracking-widest text-porscheRed block mb-2">Direct Authorized Supply</span>
               <h3 class="text-lg font-bold uppercase text-white mb-4">Precision OEM Spark Plugs</h3>
@@ -1052,7 +1051,7 @@
     <section id="wholesale" data-page="wholesale" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-porscheDark border-b border-charcoalBorder" hidden>
       <div class="max-w-7xl mx-auto">
 
-        <div class="max-w-3xl mb-12 scroll-reveal" data-reveal="left">
+        <div class="max-w-3xl mb-12 scroll-reveal" data-reveal="fade-up">
           <div class="flex items-center gap-2 mb-3">
             <span class="accent-indicator"></span>
             <span class="text-[11px] font-bold uppercase tracking-widest text-porscheRed">Commercial Fleet &amp; Workshop Supply</span>
@@ -1068,7 +1067,7 @@
         <!-- 3 Tier Volume Cards -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
 
-          <div class="scroll-reveal h-full" data-reveal="left" data-reveal-delay="40">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="40">
             <div class="bg-porscheBlack p-6 rounded border border-charcoalBorder flex flex-col justify-between h-full">
               <div>
                 <span class="text-[10px] font-bold uppercase tracking-widest text-silverMuted block mb-1">Tier 01 &bull; Retail Maintenance</span>
@@ -1088,7 +1087,7 @@
             </div>
           </div>
 
-          <div class="scroll-reveal h-full" data-reveal="right" data-reveal-delay="120">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="120">
             <div class="bg-porscheBlack p-6 rounded border border-porscheRed/40 relative flex flex-col justify-between shadow-lg shadow-porscheRed/10 h-full">
               <span class="absolute -top-2.5 right-6 bg-porscheRed text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">Most Popular with Garages</span>
               <div>
@@ -1109,7 +1108,7 @@
             </div>
           </div>
 
-          <div class="scroll-reveal h-full" data-reveal="right" data-reveal-delay="200">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="200">
             <div class="bg-porscheBlack p-6 rounded border border-charcoalBorder flex flex-col justify-between h-full">
               <div>
                 <span class="text-[10px] font-bold uppercase tracking-widest text-silverMuted block mb-1">Tier 03 &bull; Distributor Master Case</span>
@@ -1132,7 +1131,7 @@
         </div>
 
         <!-- Interactive Wholesale Quotation Form -->
-        <div class="scroll-reveal" data-reveal="left" data-reveal-delay="80">
+        <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="80">
           <div class="bg-porscheBlack p-6 sm:p-8 rounded border border-charcoalBorder">
             <h3 class="text-lg font-bold uppercase text-white mb-1">Instant Trade Quotation Request</h3>
             <p class="text-xs text-silverMuted mb-6">Select your required volume and brands. We provide instant trade availability and tiered pricing directly to your WhatsApp.</p>
@@ -1183,7 +1182,7 @@
 
     <!-- ================= DISCRETE PAGE: TRUST & QUALITY ================= -->
     <section id="trust" data-page="trust" class="page-view py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-charcoalBorder" hidden>
-      <div class="max-w-3xl mb-12 scroll-reveal" data-reveal="left">
+      <div class="max-w-3xl mb-12 scroll-reveal" data-reveal="fade-up">
         <div class="flex items-center gap-2 mb-3">
           <span class="accent-indicator"></span>
           <span class="text-[11px] font-bold uppercase tracking-widest text-porscheRed">Authenticity &amp; Integrity</span>
@@ -1199,35 +1198,35 @@
       <!-- 5 Core Pillars -->
       <div class="grid grid-cols-1 md:grid-cols-5 gap-6 mb-16">
 
-        <div class="scroll-reveal border-l border-white/10 pl-4 py-1" data-reveal="left" data-reveal-delay="0">
+        <div class="scroll-reveal border-l border-white/10 pl-4 py-1" data-reveal="fade-up" data-reveal-delay="0">
           <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1">Genuine OEM Products</span>
           <p class="text-xs text-silverMuted leading-relaxed">
             Zero re-boxed generic spark plugs. Factory-sealed manufacturer packaging from Denso, NGK, and Mobis.
           </p>
         </div>
 
-        <div class="scroll-reveal border-l border-white/10 pl-4 py-1" data-reveal="right" data-reveal-delay="70">
+        <div class="scroll-reveal border-l border-white/10 pl-4 py-1" data-reveal="fade-up" data-reveal-delay="70">
           <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1">Chassis Fitment</span>
           <p class="text-xs text-silverMuted leading-relaxed">
             Chassis and VIN verification cross-referenced against factory repair manuals to eliminate guesswork.
           </p>
         </div>
 
-        <div class="scroll-reveal border-l border-white/10 pl-4 py-1" data-reveal="left" data-reveal-delay="140">
+        <div class="scroll-reveal border-l border-white/10 pl-4 py-1" data-reveal="fade-up" data-reveal-delay="140">
           <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1">Japan &amp; USA Sourcing</span>
           <p class="text-xs text-silverMuted leading-relaxed">
             Imported directly through verified distribution pipelines, avoiding dubious intermediary stockists.
           </p>
         </div>
 
-        <div class="scroll-reveal border-l border-white/10 pl-4 py-1" data-reveal="right" data-reveal-delay="210">
+        <div class="scroll-reveal border-l border-white/10 pl-4 py-1" data-reveal="fade-up" data-reveal-delay="210">
           <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1">Competitive Pricing</span>
           <p class="text-xs text-silverMuted leading-relaxed">
             Direct international freight allows us to offer honest pricing for both retail sets and trade cartons.
           </p>
         </div>
 
-        <div class="scroll-reveal border-l border-white/10 pl-4 py-1" data-reveal="right" data-reveal-delay="280">
+        <div class="scroll-reveal border-l border-white/10 pl-4 py-1" data-reveal="fade-up" data-reveal-delay="280">
           <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1">Nationwide Delivery</span>
           <p class="text-xs text-silverMuted leading-relaxed">
             Reliable, tracked delivery across Greater Accra, Kumasi, Takoradi, Tamale, and all 16 regions.
@@ -1238,7 +1237,7 @@
 
       <!-- Comparison: Marketplace Listings vs Specialist Sourcing -->
       <div class="bg-porscheDark p-8 sm:p-10 rounded border border-charcoalBorder">
-        <div class="max-w-2xl mb-8 scroll-reveal" data-reveal="left">
+        <div class="max-w-2xl mb-8 scroll-reveal" data-reveal="fade-up">
           <h3 class="text-xl font-bold uppercase text-white mb-2">Understanding Marketplace Listings vs Specialist Suppliers in Ghana</h3>
           <p class="text-xs text-silverMuted leading-relaxed">
             Customers frequently compare online marketplace listings (such as Jiji or informal street stalls) with specialist suppliers. Counterfeiters use cheap, standard copper cores disguised with spray paint and stamped with Denso, NGK, or Mobis logos.
@@ -1247,7 +1246,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs">
 
-          <div class="scroll-reveal h-full" data-reveal="left" data-reveal-delay="80">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="80">
             <div class="bg-porscheBlack p-6 rounded border border-white/5 space-y-3 h-full">
               <h4 class="text-xs font-bold uppercase tracking-wider text-porscheRed">Marketplace Imitation Risks</h4>
               <p class="text-silverMuted leading-relaxed">
@@ -1262,7 +1261,7 @@
             </div>
           </div>
 
-          <div class="scroll-reveal h-full" data-reveal="right" data-reveal-delay="140">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="140">
             <div class="bg-porscheBlack p-6 rounded border border-white/10 space-y-3 h-full">
               <h4 class="text-xs font-bold uppercase tracking-wider text-white">KASH OPTION Specialist Guarantee</h4>
               <p class="text-silverMuted leading-relaxed">
@@ -1286,7 +1285,7 @@
     <section id="how-to-order" data-page="how-to-order" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-porscheDark border-b border-charcoalBorder" hidden>
       <div class="max-w-7xl mx-auto">
 
-        <div class="max-w-2xl mb-12 scroll-reveal" data-reveal="left">
+        <div class="max-w-2xl mb-12 scroll-reveal" data-reveal="fade-up">
           <div class="flex items-center gap-2 mb-3">
             <span class="accent-indicator"></span>
             <span class="text-[11px] font-bold uppercase tracking-widest text-porscheRed">Frictionless Flow</span>
@@ -1299,7 +1298,7 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-          <div class="scroll-reveal h-full" data-reveal="left" data-reveal-delay="0">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="0">
             <div class="p-6 rounded bg-porscheBlack border border-charcoalBorder h-full">
               <span class="text-porscheRed font-extrabold text-xs block mb-3 uppercase tracking-widest">Step 01</span>
               <h3 class="text-sm font-bold uppercase text-white mb-2">Identify Your Vehicle</h3>
@@ -1309,7 +1308,7 @@
             </div>
           </div>
 
-          <div class="scroll-reveal h-full" data-reveal="right" data-reveal-delay="80">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="80">
             <div class="p-6 rounded bg-porscheBlack border border-charcoalBorder h-full">
               <span class="text-porscheRed font-extrabold text-xs block mb-3 uppercase tracking-widest">Step 02</span>
               <h3 class="text-sm font-bold uppercase text-white mb-2">Verify Your Part</h3>
@@ -1319,7 +1318,7 @@
             </div>
           </div>
 
-          <div class="scroll-reveal h-full" data-reveal="left" data-reveal-delay="160">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="160">
             <div class="p-6 rounded bg-porscheBlack border border-charcoalBorder h-full">
               <span class="text-porscheRed font-extrabold text-xs block mb-3 uppercase tracking-widest">Step 03</span>
               <h3 class="text-sm font-bold uppercase text-white mb-2">Get Your Price</h3>
@@ -1329,7 +1328,7 @@
             </div>
           </div>
 
-          <div class="scroll-reveal h-full" data-reveal="right" data-reveal-delay="240">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="240">
             <div class="p-6 rounded bg-porscheBlack border border-charcoalBorder h-full">
               <span class="text-porscheRed font-extrabold text-xs block mb-3 uppercase tracking-widest">Step 04</span>
               <h3 class="text-sm font-bold uppercase text-white mb-2">Order and Receive</h3>
@@ -1347,7 +1346,7 @@
     <!-- ================= DISCRETE PAGE: KNOWLEDGE CENTRE ================= -->
     <section id="knowledge" data-page="knowledge" class="page-view py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-charcoalBorder" hidden>
 
-      <div class="max-w-3xl mb-12 scroll-reveal" data-reveal="left">
+      <div class="max-w-3xl mb-12 scroll-reveal" data-reveal="fade-up">
         <div class="flex items-center gap-2 mb-3">
           <span class="accent-indicator"></span>
           <span class="text-[11px] font-bold uppercase tracking-widest text-porscheRed">Automotive Engineering</span>
@@ -1363,7 +1362,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
         <!-- Article 1 -->
-        <div class="scroll-reveal h-full" data-reveal="left" data-reveal-delay="0">
+        <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="0">
           <article class="bg-porscheDark p-8 rounded border border-charcoalBorder flex flex-col justify-between h-full">
             <div>
               <div class="flex items-center gap-4 mb-4">
@@ -1385,7 +1384,7 @@
         </div>
 
         <!-- Article 2 -->
-        <div class="scroll-reveal h-full" data-reveal="right" data-reveal-delay="90">
+        <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="90">
           <article class="bg-porscheDark p-8 rounded border border-charcoalBorder flex flex-col justify-between h-full">
             <div>
               <div class="flex items-center gap-4 mb-4">
@@ -1407,7 +1406,7 @@
         </div>
 
         <!-- Article 3 -->
-        <div class="scroll-reveal h-full" data-reveal="left" data-reveal-delay="0">
+        <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="0">
           <article class="bg-porscheDark p-8 rounded border border-charcoalBorder flex flex-col justify-between h-full">
             <div>
               <div class="flex items-center gap-4 mb-4">
@@ -1429,7 +1428,7 @@
         </div>
 
         <!-- Article 4 -->
-        <div class="scroll-reveal h-full" data-reveal="right" data-reveal-delay="90">
+        <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="90">
           <article class="bg-porscheDark p-8 rounded border border-charcoalBorder flex flex-col justify-between h-full">
             <div>
               <div class="flex items-center gap-4 mb-4">
@@ -1457,7 +1456,7 @@
     <section id="faqs" data-page="faqs" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-porscheDark border-b border-charcoalBorder" hidden>
       <div class="max-w-4xl mx-auto">
 
-        <div class="mb-12 text-center sm:text-left scroll-reveal" data-reveal="left">
+        <div class="mb-12 text-center sm:text-left scroll-reveal" data-reveal="fade-up">
           <div class="flex items-center justify-center sm:justify-start gap-2 mb-3">
             <span class="accent-indicator"></span>
             <span class="text-[11px] font-bold uppercase tracking-widest text-porscheRed">Help &amp; Clarity</span>
@@ -1472,35 +1471,35 @@
 
         <div class="space-y-4 text-xs">
 
-          <div class="scroll-reveal bg-porscheBlack p-6 rounded border border-charcoalBorder" data-reveal="left" data-reveal-delay="0">
+          <div class="scroll-reveal bg-porscheBlack p-6 rounded border border-charcoalBorder" data-reveal="fade-up" data-reveal-delay="0">
             <h3 class="font-bold uppercase text-white text-sm mb-2">How can I be 100% certain I am getting the right spark plug?</h3>
             <p class="text-silverMuted leading-relaxed">
               Simply send your vehicle chassis number (VIN) or frame number via our fitment tool or WhatsApp. Our technicians verify the exact engine code and cross-reference factory parts catalogues before fulfilling your order.
             </p>
           </div>
 
-          <div class="scroll-reveal bg-porscheBlack p-6 rounded border border-charcoalBorder" data-reveal="right" data-reveal-delay="60">
+          <div class="scroll-reveal bg-porscheBlack p-6 rounded border border-charcoalBorder" data-reveal="fade-up" data-reveal-delay="60">
             <h3 class="font-bold uppercase text-white text-sm mb-2">Why are prices not displayed publicly on the website?</h3>
             <p class="text-silverMuted leading-relaxed">
               We serve both wholesale trade buyers (workshops, parts retailers) and retail car owners. Because trade discounts vary with volume and international exchange rates fluctuate, we quote current pricing directly via our active WhatsApp catalogue.
             </p>
           </div>
 
-          <div class="scroll-reveal bg-porscheBlack p-6 rounded border border-charcoalBorder" data-reveal="left" data-reveal-delay="120">
+          <div class="scroll-reveal bg-porscheBlack p-6 rounded border border-charcoalBorder" data-reveal="fade-up" data-reveal-delay="120">
             <h3 class="font-bold uppercase text-white text-sm mb-2">How fast is delivery to locations outside Accra?</h3>
             <p class="text-silverMuted leading-relaxed">
               Greater Accra deliveries arrive same-day. For regional orders to Kumasi, Takoradi, Sunyani, Tamale, and other regional hubs, parcels are dispatched same-day via secure transit services for next-morning pickup or doorstep drop-off.
             </p>
           </div>
 
-          <div class="scroll-reveal bg-porscheBlack p-6 rounded border border-charcoalBorder" data-reveal="right" data-reveal-delay="180">
+          <div class="scroll-reveal bg-porscheBlack p-6 rounded border border-charcoalBorder" data-reveal="fade-up" data-reveal-delay="180">
             <h3 class="font-bold uppercase text-white text-sm mb-2">Do you sell genuine Denso, NGK, and Mobis plugs?</h3>
             <p class="text-silverMuted leading-relaxed">
               Yes. Every spark plug we distribute is sourced directly from authorized Tier-1 supply lines in Japan and the USA. We maintain a zero-tolerance policy for imitation parts.
             </p>
           </div>
 
-          <div class="scroll-reveal bg-porscheBlack p-6 rounded border border-charcoalBorder" data-reveal="left" data-reveal-delay="240">
+          <div class="scroll-reveal bg-porscheBlack p-6 rounded border border-charcoalBorder" data-reveal="fade-up" data-reveal-delay="240">
             <h3 class="font-bold uppercase text-white text-sm mb-2">What is your policy if an item has a factory defect?</h3>
             <p class="text-silverMuted leading-relaxed">
               In the unlikely event of an authentic factory defect reported within 48 hours of receipt prior to installation damage, our technical desk will immediately review and facilitate an exchange or store credit.
@@ -1515,7 +1514,7 @@
     <!-- ================= DISCRETE PAGE: CONTACT & CUSTOMER DESK ================= -->
     <section id="contact-view" data-page="contact" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-porscheDark border-b border-charcoalBorder" hidden>
       <div class="max-w-4xl mx-auto">
-        <div class="mb-12 text-center sm:text-left scroll-reveal" data-reveal="left">
+        <div class="mb-12 text-center sm:text-left scroll-reveal" data-reveal="fade-up">
           <div class="flex items-center justify-center sm:justify-start gap-2 mb-3">
             <span class="accent-indicator"></span>
             <span class="text-[11px] font-bold uppercase tracking-widest text-porscheRed">Direct Communication</span>
@@ -1529,7 +1528,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
-          <div class="scroll-reveal h-full" data-reveal="left" data-reveal-delay="80">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="80">
             <div class="bg-porscheBlack p-8 rounded border border-charcoalBorder flex flex-col justify-between h-full">
               <div>
                 <span class="text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-2">WhatsApp Direct</span>
@@ -1542,7 +1541,7 @@
             </div>
           </div>
 
-          <div class="scroll-reveal h-full" data-reveal="right" data-reveal-delay="140">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="140">
             <div class="bg-porscheBlack p-8 rounded border border-charcoalBorder flex flex-col justify-between h-full">
               <div>
                 <span class="text-[10px] font-bold uppercase tracking-widest text-white block mb-2">Operational Details</span>
@@ -1571,7 +1570,7 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-14">
 
         <!-- Brand Summary -->
-        <div class="md:col-span-2 scroll-reveal" data-reveal="left">
+        <div class="md:col-span-2 scroll-reveal" data-reveal="fade-up">
           <div class="flex items-center gap-3 mb-4">
             <div class="w-8 h-8 rounded bg-[#16161A] border border-white/10 flex items-center justify-center font-black text-xs text-white">
               <span>K</span><span class="text-porscheRed">O</span>
@@ -1592,7 +1591,7 @@
         </div>
 
         <!-- Quick Links -->
-        <div class="scroll-reveal" data-reveal="right" data-reveal-delay="90">
+        <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="90">
           <h4 class="text-xs font-bold uppercase tracking-widest text-white mb-4">Manufacturer Catalogues</h4>
           <ul class="space-y-2 text-xs text-silverMuted">
             <li><a href="#toyota" onclick="triggerBrandFilter('toyota')" class="hover:text-white transition-colors">Toyota OEM Spark Plugs</a></li>
@@ -1605,7 +1604,7 @@
         </div>
 
         <!-- Support & Logistics Desk -->
-        <div class="scroll-reveal" data-reveal="right" data-reveal-delay="160">
+        <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="160">
           <h4 class="text-xs font-bold uppercase tracking-widest text-white mb-4">Customer Support</h4>
           <div class="text-xs text-silverMuted space-y-2 mb-4 leading-relaxed">
             <p>WhatsApp Orders: <a href="https://wa.me/233240118846" class="text-white font-bold hover:underline">024 011 8846</a></p>
@@ -1621,7 +1620,7 @@
       </div>
 
       <!-- Legal & Copyright -->
-      <div class="scroll-reveal pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-silverMuted/60" data-reveal="left" data-reveal-delay="100">
+      <div class="scroll-reveal pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-silverMuted/60" data-reveal="fade-up" data-reveal-delay="100">
         <p>&copy; 2026 KASH OPTION AUTOMOTIVE PARTS &bull; GHANA. All rights reserved. The Right Spark Plug. The Right Fit. Zero Guesswork.</p>
         <div class="flex gap-6">
           <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20please%20share%20your%20ordering%20and%20returns%20terms." target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Ordering &amp; Returns Policy</a>
@@ -1706,8 +1705,8 @@
               });
             },
             {
-              threshold: 0.06,
-              rootMargin: '0px 0px -24px 0px',
+              threshold: 0.04,
+              rootMargin: '0px 0px -12px 0px',
             }
           );
 
