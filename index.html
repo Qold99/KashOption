@@ -963,7 +963,17 @@
       scrollbar-width: thin;
       scrollbar-color: #2A2A2E #121212;
     }
-    /* ================= UNIFORM INTERACTIVE OEM CATALOGUE & DETAIL DRAWER ================= */
+    /* ================= SEAMLESS OBSIDIAN HERO BLEND & MINIMALIST CATALOGUE ================= */
+    .hero-plug-masked-wrap {
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .hero-plug-masked-img {
+      -webkit-mask-image: radial-gradient(ellipse 68% 72% at 54% 48%, #000000 36%, rgba(0, 0, 0, 0.65) 62%, transparent 94%);
+      mask-image: radial-gradient(ellipse 68% 72% at 54% 48%, #000000 36%, rgba(0, 0, 0, 0.65) 62%, transparent 94%);
+      filter: contrast(1.22) brightness(1.08) saturate(1.06) drop-shadow(0 0 42px rgba(255, 31, 31, 0.34));
+    }
     .catalogue-card-interactive {
       cursor: pointer;
     }
@@ -1035,6 +1045,21 @@
       background: #0B0B0F;
     }
     .plug-drawer-scroll::-webkit-scrollbar-thumb {
+      background: #2A2A2E;
+      border-radius: 9999px;
+    }
+    .plug-drawer-row {
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #2A2A2E transparent;
+    }
+    .plug-drawer-row::-webkit-scrollbar {
+      height: 4px;
+    }
+    .plug-drawer-row::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .plug-drawer-row::-webkit-scrollbar-thumb {
       background: #2A2A2E;
       border-radius: 9999px;
     }
@@ -1362,102 +1387,91 @@
     <!-- ================= ISOLATED LANDING PAGE ================= -->
     <div id="home" data-page="home" class="page-view">
 
-      <!-- Hero Section with Crisp Framed Spark Plug Showcase & High-Contrast Editorial Copy -->
-      <section class="relative min-h-[88vh] flex flex-col justify-between pt-10 sm:pt-14 pb-10 px-4 sm:px-6 lg:px-8 border-b border-charcoalBorder hero-studio-glow overflow-hidden">
+      <!-- Minimalist Apple-Style Obsidian Hero (Seamless Radial-Masked Spark Plug Blend) -->
+      <section class="relative min-h-[92vh] flex flex-col justify-between pt-16 sm:pt-24 pb-20 sm:pb-28 px-4 sm:px-6 lg:px-8 hero-studio-glow overflow-hidden">
 
-        <!-- Subtle Ambient Background Glow (Never Covers Hero Copy or Spark Plug Metal) -->
-        <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-          <div class="absolute inset-0 bg-[radial-gradient(ellipse_65%_55%_at_76%_42%,rgba(255,31,31,0.14),transparent_70%)]"></div>
+        <!-- Seamless Radial-Masked Spark Plug Emerging From Pure #050505 Obsidian Canvas -->
+        <div class="hero-plug-masked-wrap absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
+          <div class="absolute inset-0 bg-[radial-gradient(ellipse_55%_60%_at_76%_44%,rgba(255,31,31,0.22)_0%,rgba(227,24,24,0.08)_44%,transparent_76%)]"></div>
+          <div class="absolute right-[-14%] sm:right-[-4%] lg:right-[2%] top-[-4%] sm:top-[2%] w-[92vw] sm:w-[62vw] lg:w-[48vw] max-w-[660px] h-[52vh] sm:h-[70vh] lg:h-[82vh] flex items-center justify-center opacity-55 sm:opacity-80 lg:opacity-90">
+            <div data-parallax="0.14" class="w-full h-full flex items-center justify-center">
+              <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine OEM Automotive Spark Plugs" class="hero-plug-masked-img w-full h-full object-contain object-center">
+            </div>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/80 lg:via-[#050505]/55 to-transparent"></div>
+          <div class="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#050505] via-[#050505]/85 to-transparent"></div>
         </div>
 
-        <!-- Hero Main Content (Split Visual Frame on Desktop, Compact Top Frame on Mobile) -->
-        <div class="max-w-7xl mx-auto w-full relative z-10 my-auto py-4 sm:py-8">
-          <div class="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-10">
+        <!-- Hero Editorial Copy & Primary CTAs -->
+        <div class="max-w-7xl mx-auto w-full relative z-10 my-auto py-8 sm:py-14">
+          <div class="max-w-3xl scroll-reveal" data-reveal="hero">
 
-            <!-- Spark Plug Studio Showcase (Crisp Metal, Ceramic Insulator & Iridium Tip) -->
-            <div class="lg:col-span-5 order-1 lg:order-2 flex items-center justify-center">
-              <div class="relative w-full max-w-[290px] sm:max-w-[360px] lg:max-w-[440px] h-56 sm:h-72 lg:h-[430px] flex items-center justify-center rounded-3xl border border-white/10 bg-[#0A0A0D]/70 overflow-hidden shadow-[0_24px_70px_rgba(0,0,0,0.85)]">
-                <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_46%,rgba(255,31,31,0.34)_0%,rgba(227,24,24,0.12)_42%,transparent_74%)]"></div>
-                <div class="absolute inset-x-10 top-6 bottom-10 rounded-full pointer-events-none bg-[radial-gradient(circle_at_50%_45%,rgba(255,255,255,0.12)_0%,transparent_66%)]"></div>
-                <div data-parallax="0.14" class="relative z-10 w-full h-full p-4 sm:p-6 flex items-center justify-center">
-                  <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine OEM Automotive Spark Plugs" class="w-full h-full object-contain object-center filter contrast-125 brightness-110 saturate-110 drop-shadow-[0_16px_38px_rgba(255,31,31,0.42)]">
-                </div>
-                <div class="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#050505]/70 to-transparent pointer-events-none"></div>
-              </div>
+            <!-- Eyebrow text -->
+            <div class="flex items-center gap-3 mb-7">
+              <span class="accent-indicator"></span>
+              <span class="text-xs sm:text-[13px] font-bold uppercase tracking-widest text-silverMuted">
+                ORIGINAL SPARK PLUGS IN ACCRA &amp; NATIONWIDE
+              </span>
             </div>
 
-            <!-- Hero Editorial Copy & Primary CTAs -->
-            <div class="lg:col-span-7 order-2 lg:order-1 scroll-reveal" data-reveal="hero">
+            <!-- H1 Headline -->
+            <h1 class="headline-editorial text-4xl sm:text-6xl md:text-7xl text-white mb-6 drop-shadow-[0_6px_28px_rgba(0,0,0,0.95)]">
+              100% ORIGINAL SPARK PLUGS.<br>
+              <span class="text-silverMuted">ZERO COUNTERFEIT</span>
+            </h1>
 
-              <!-- Eyebrow text -->
-              <div class="flex items-center gap-3 mb-5">
-                <span class="accent-indicator"></span>
-                <span class="text-xs sm:text-[13px] font-bold uppercase tracking-widest text-silverMuted">
-                  ORIGINAL SPARK PLUGS IN ACCRA &amp; NATIONWIDE
-                </span>
-              </div>
+            <!-- Concise 2-Line Supporting Subtext -->
+            <p class="text-base sm:text-lg text-metallicSilver max-w-xl font-normal leading-relaxed mb-10">
+              Genuine Denso, NGK, and Mobis spark plugs for Toyota, Honda, Hyundai, and Kia.<br class="hidden sm:inline">
+              Confirm your exact OEM part number and live Ghana Cedi pricing before ordering.
+            </p>
 
-              <!-- H1 Headline -->
-              <h1 class="headline-editorial text-4xl sm:text-6xl md:text-7xl text-white mb-5 drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
-                100% ORIGINAL SPARK PLUGS.<br>
-                <span class="text-silverMuted">ZERO COUNTERFEIT</span>
-              </h1>
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 max-w-md">
+              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20ready%20to%20order%20genuine%20OEM%20spark%20plugs%20for%20my%20vehicle." onclick="event.preventDefault(); openSalesChat();" aria-haspopup="dialog" aria-controls="salesRepChat" class="bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white text-xs font-extrabold uppercase tracking-widest px-8 py-4 rounded-xl text-center flex items-center justify-center gap-2.5">
+                <span>GET PRICE ON WHATSAPP</span>
+              </a>
 
-              <!-- Tight Supporting Subtext -->
-              <p class="text-base sm:text-lg text-metallicSilver max-w-xl font-normal leading-relaxed mb-8">
-                Genuine Denso, NGK, and Mobis spark plugs for Toyota, Honda, Hyundai, and Kia. Confirm your exact OEM part number and live Ghana Cedi pricing before ordering.
-              </p>
+              <a href="#wholesale" class="liquid-glass-btn text-white text-xs font-bold uppercase tracking-widest px-8 py-4 rounded-xl text-center flex items-center justify-center gap-2">
+                <span>EXPLORE WHOLESALE</span>
+              </a>
+            </div>
 
-              <!-- Action Buttons -->
-              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 max-w-md">
-                <!-- Primary CTA Button: ORDER ON WHATSAPP -->
-                <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20ready%20to%20order%20genuine%20OEM%20spark%20plugs%20for%20my%20vehicle." onclick="event.preventDefault(); openSalesChat();" aria-haspopup="dialog" aria-controls="salesRepChat" class="bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white text-xs font-extrabold uppercase tracking-widest px-8 py-4 rounded-lg text-center flex items-center justify-center gap-2.5">
-                  <span>GET PRICE ON WHATSAPP</span>
-                </a>
-
-                <!-- Secondary CTA Button: EXPLORE WHOLESALE -->
-                <a href="#wholesale" class="liquid-glass-btn text-white text-xs font-bold uppercase tracking-widest px-8 py-4 rounded-lg text-center flex items-center justify-center gap-2">
-                  <span>EXPLORE WHOLESALE</span>
-                </a>
-              </div>
-
-              <!-- Direct Brand Shortcuts -->
-              <div class="mt-9 flex flex-wrap items-center gap-2.5 text-xs text-silverMuted">
-                <span class="font-bold uppercase tracking-wider text-[11px] text-white mr-1">Direct Brand Stock:</span>
-                <a href="#toyota" data-brand-filter="toyota" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('toyota');" class="px-3.5 py-1.5 rounded-lg liquid-glass-btn text-white text-[11px] font-semibold">Toyota (Denso)</a>
-                <a href="#honda" data-brand-filter="honda" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('honda');" class="px-3.5 py-1.5 rounded-lg liquid-glass-btn text-white text-[11px] font-semibold">Honda (NGK)</a>
-                <a href="#hyundai" data-brand-filter="hyundai" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('hyundai');" class="px-3.5 py-1.5 rounded-lg liquid-glass-btn text-white text-[11px] font-semibold">Hyundai (Mobis)</a>
-                <a href="#kia" data-brand-filter="kia" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('kia');" class="px-3.5 py-1.5 rounded-lg liquid-glass-btn text-white text-[11px] font-semibold">Kia (Mobis)</a>
-              </div>
-
+            <!-- Direct Brand Shortcuts -->
+            <div class="mt-12 flex flex-wrap items-center gap-2.5 text-xs text-silverMuted">
+              <span class="font-bold uppercase tracking-wider text-[11px] text-white mr-1">Direct Brand Stock:</span>
+              <a href="#toyota" data-brand-filter="toyota" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('toyota');" class="px-3.5 py-1.5 rounded-lg liquid-glass-btn text-white text-[11px] font-semibold">Toyota (Denso)</a>
+              <a href="#honda" data-brand-filter="honda" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('honda');" class="px-3.5 py-1.5 rounded-lg liquid-glass-btn text-white text-[11px] font-semibold">Honda (NGK)</a>
+              <a href="#hyundai" data-brand-filter="hyundai" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('hyundai');" class="px-3.5 py-1.5 rounded-lg liquid-glass-btn text-white text-[11px] font-semibold">Hyundai (Mobis)</a>
+              <a href="#kia" data-brand-filter="kia" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('kia');" class="px-3.5 py-1.5 rounded-lg liquid-glass-btn text-white text-[11px] font-semibold">Kia (Mobis)</a>
             </div>
 
           </div>
         </div>
 
-        <!-- Authority Strip (3-Column Minimalist Bar) -->
-        <div class="max-w-7xl mx-auto w-full relative z-10 pt-8 border-t border-white/10">
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
+        <!-- Authority Strip (Borderless Open Layout) -->
+        <div class="home-authority-strip max-w-7xl mx-auto w-full relative z-10 pt-16 sm:pt-24">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 lg:gap-14 text-center sm:text-left">
 
-            <div class="scroll-reveal border-l-0 sm:border-l border-white/15 pl-0 sm:pl-5 py-1" data-reveal="fade-up" data-reveal-delay="0">
+            <div class="scroll-reveal py-1" data-reveal="fade-up" data-reveal-delay="0">
               <span class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-white block">
                 STOP ENGINE MISFIRES &amp; HIGH FUEL BURN
               </span>
-              <p class="text-[11px] text-silverMuted mt-1">Weak or fake plugs ruin your fuel economy and coils. Get factory-spec Iridium and Platinum plugs that last up to 100,000 km.</p>
+              <p class="text-xs text-silverMuted mt-2 leading-relaxed">Weak or fake plugs ruin your fuel economy and coils. Get factory-spec Iridium and Platinum plugs that last up to 100,000 km.</p>
             </div>
 
-            <div class="scroll-reveal border-l-0 sm:border-l border-white/15 pl-0 sm:pl-5 py-1" data-reveal="fade-up" data-reveal-delay="100">
+            <div class="scroll-reveal py-1" data-reveal="fade-up" data-reveal-delay="100">
               <span class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-white block">
                 1 SET OR 100 CARTONS IN STOCK
               </span>
-              <p class="text-[11px] text-silverMuted mt-1">Whether you are servicing one personal car or stocking an entire shop, we have ready stock at fair Cedi prices.</p>
+              <p class="text-xs text-silverMuted mt-2 leading-relaxed">Whether you are servicing one personal car or stocking an entire shop, we have ready stock at fair Cedi prices.</p>
             </div>
 
-            <div class="scroll-reveal border-l-0 sm:border-l border-white/15 pl-0 sm:pl-5 py-1" data-reveal="fade-up" data-reveal-delay="200">
+            <div class="scroll-reveal py-1" data-reveal="fade-up" data-reveal-delay="200">
               <span class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-white block">
                 FAST DELIVERY TO YOUR MECHANIC OR DOOR
               </span>
-              <p class="text-[11px] text-silverMuted mt-1">30-45 minutes rider dispatch across Accra and Tema. Same-day VIP/STC parcel waybill to Kumasi, Takoradi, Tamale, and nationwide.</p>
+              <p class="text-xs text-silverMuted mt-2 leading-relaxed">30-45 minutes rider dispatch across Accra and Tema. Same-day VIP/STC parcel waybill to Kumasi, Takoradi, Tamale, and nationwide.</p>
             </div>
 
           </div>
@@ -1465,26 +1479,26 @@
 
       </section>
 
-      <!-- Concise Commercial Overview & Direct Entry (Landing Page Ending) -->
-      <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="liquid-glass liquid-glass-interactive p-8 sm:p-12 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
-          <div class="scroll-reveal flex items-center gap-6 z-10 max-w-2xl" data-reveal="fade-up">
+      <!-- Concise Commercial Overview & Direct Entry (Generous Breathing Room) -->
+      <section class="py-24 sm:py-36 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="liquid-glass liquid-glass-interactive p-8 sm:p-14 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-10 relative overflow-hidden">
+          <div class="scroll-reveal flex items-center gap-7 z-10 max-w-2xl" data-reveal="fade-up">
             <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Spark Plugs Dealer" class="h-20 w-auto object-contain hidden sm:block filter drop-shadow-[0_10px_20px_rgba(255,31,31,0.28)]">
             <div>
-              <span class="text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-1">Commercial Reliability</span>
-              <h2 class="text-xl sm:text-2xl font-extrabold uppercase text-white mb-2">
-                ORIGINAL DENSO AND NGK SPARK PLUGS IN ACCCRA - GHANA
+              <span class="text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-1.5">Commercial Reliability</span>
+              <h2 class="text-xl sm:text-2xl font-extrabold uppercase text-white mb-2.5">
+                ORIGINAL DENSO AND NGK SPARK PLUGS IN ACCRA - GHANA
               </h2>
-              <p class="text-xs text-silverMuted leading-relaxed">
-                Genuine Denso, NGK, and Hyundai/Kia Mobis plugs for your exact car model. Same-day dispatch in nationwide, plus wholesale supply for mechanics and shops
+              <p class="text-xs sm:text-sm text-silverMuted leading-relaxed">
+                Genuine Denso, NGK, and Hyundai/Kia Mobis plugs for your exact car model. Same-day dispatch nationwide, plus wholesale supply for mechanics and shops.
               </p>
             </div>
           </div>
-          <div class="scroll-reveal flex items-center gap-3 z-10" data-reveal="fade-up" data-reveal-delay="100">
-            <a href="#catalogue" class="bg-white hover:bg-metallicSilver text-porscheBlack text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-lg transition-all active:scale-[0.98] whitespace-nowrap shadow-[0_10px_25px_rgba(255,255,255,0.12)]">
+          <div class="scroll-reveal flex items-center gap-3.5 z-10" data-reveal="fade-up" data-reveal-delay="100">
+            <a href="#catalogue" class="bg-white hover:bg-metallicSilver text-porscheBlack text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all active:scale-[0.98] whitespace-nowrap shadow-[0_10px_25px_rgba(255,255,255,0.12)]">
               Open Catalogue
             </a>
-            <a href="#fitment-finder" class="bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-lg whitespace-nowrap">
+            <a href="#fitment-finder" class="bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl whitespace-nowrap">
               Verify Fitment
             </a>
           </div>
@@ -1494,11 +1508,11 @@
     </div>
 
     <!-- ================= DISCRETE PAGE: PRODUCT CATALOGUE & REAL-TIME SEARCH ================= -->
-    <section id="catalogue" data-page="catalogue" class="page-view py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-white/10" hidden>
+    <section id="catalogue" data-page="catalogue" class="page-view py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" hidden>
 
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-white/10 gap-4">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
         <div class="scroll-reveal" data-reveal="headline">
-          <div class="flex items-center gap-2 mb-2">
+          <div class="flex items-center gap-2 mb-2.5">
             <span class="accent-indicator"></span>
             <span class="text-[11px] font-bold uppercase tracking-widest text-porscheRed">Verified Stock Reference</span>
           </div>
@@ -1508,19 +1522,19 @@
         </div>
         <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="100">
           <p class="text-xs sm:text-sm text-silverMuted max-w-md font-normal leading-relaxed">
-            Fast-moving OEM references for Toyota, Honda, Hyundai, and Kia. Every spark plug features genuine laser-welded tips and calibrated internal resistance.
+            Tap any genuine OEM spark plug below to inspect full thread, reach, hex, electrode, and Ghana vehicle fitment specifications.
           </p>
         </div>
       </div>
 
       <!-- Real-Time Filter & Search Toolbar -->
       <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="100">
-        <div class="liquid-glass p-4 sm:p-5 rounded-xl mb-10 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+        <div class="liquid-glass p-4 sm:p-5 rounded-2xl mb-12 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
 
           <!-- Live Search Input -->
           <div class="relative flex-1">
             <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-silverMuted/60 text-xs"></i>
-            <input type="search" id="catalogueSearch" oninput="filterCatalogueCards()" placeholder="Search by model, OEM part number (e.g. SC20HR11, SK20R11, IZFR6K11, 18846-10060)..." class="w-full bg-porscheBlack/90 border border-white/15 focus:border-porscheRed text-white rounded-lg pl-9 pr-4 py-2.5 text-base outline-none transition-colors placeholder:text-silverMuted/50 placeholder:text-xs">
+            <input type="search" id="catalogueSearch" oninput="filterCatalogueCards()" placeholder="Search by model, OEM part number (e.g. SC20HR11, SK20R11, IZFR6K11, 18846-10060)..." class="w-full bg-porscheBlack/90 border border-white/15 focus:border-porscheRed text-white rounded-xl pl-9 pr-4 py-2.5 text-base outline-none transition-colors placeholder:text-silverMuted/50 placeholder:text-xs">
           </div>
 
           <!-- Filter Pill Tabs -->
@@ -1538,437 +1552,185 @@
         </div>
       </div>
 
-      <!-- Catalogue Product Cards Grid (Uniform Interactive OEM Cards Across All 4 Brands) -->
-      <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Minimalist Product Cards Grid (Clean Image + Brand Authenticity Label + Bold OEM Part Number Only) -->
+      <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-9">
 
         <!-- Toyota 1 -->
         <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="0" data-plug-id="toyota-sc20hr11" data-primary-brand="Toyota" data-brand="toyota denso" data-keywords="toyota corolla auris matrix prius yaris vitz c-hr sc20hr11 90919-01253 2zr-fe 2zr-fxe 1.8l denso japan">
-          <div role="button" tabindex="0" onclick="openPlugDetailModal('toyota-sc20hr11')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('toyota-sc20hr11');}" aria-label="View fitment and specs for Toyota SC20HR11 Denso Spark Plug" class="porsche-card catalogue-card-interactive group rounded-2xl p-6 flex flex-col justify-between h-full">
-            <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
-                <div data-parallax="0.06" class="w-full h-full">
-                  <img src="https://iili.io/oJbQRvp.webp" alt="Denso SC20HR11 Toyota Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
-                </div>
-              </div>
-              <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Toyota OEM &bull; Denso Japan</span>
-                <span class="text-porscheRed font-bold text-[10px] uppercase">Part: SC20HR11</span>
-              </div>
-              <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Toyota Corolla &bull; Auris &bull; Matrix 1.8L</h3>
-              <p class="text-xs text-silverMuted leading-relaxed mb-4">
-                Factory standard for 2ZR-FE and 2ZR-FXE engines. 0.7mm fine-wire Iridium center pin with platinum ground disc delivers clean starts and maximum fuel economy.
-              </p>
-              <div class="border-t border-white/10 pt-3 mb-4">
-                <div class="spec-item"><span class="text-silverMuted">OEM Part Number:</span><span class="font-bold text-white">90919-01253 / SC20HR11</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Thread &bull; Reach:</span><span class="font-bold text-white">M12 x 1.25 &bull; 26.5mm</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Hex &bull; Heat Range:</span><span class="font-bold text-white">14mm Bi-Hex &bull; Heat 20</span></div>
+          <div role="button" tabindex="0" onclick="openPlugDetailModal('toyota-sc20hr11')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('toyota-sc20hr11');}" aria-label="Inspect GENUINE TOYOTA OEM SC20HR11 specifications" class="porsche-card catalogue-card-interactive group rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full">
+            <div class="aspect-[16/11] w-full bg-[#07070A] rounded-2xl mb-6 overflow-hidden relative">
+              <div data-parallax="0.06" class="w-full h-full">
+                <img src="https://iili.io/oJbQRvp.webp" alt="Denso SC20HR11 Genuine Toyota OEM Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
               </div>
             </div>
             <div>
-              <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-zinc-200 group-hover:text-[#FF1F1F] transition-colors pb-3 mb-3 border-b border-white/10">
-                <span>View Fitment &amp; Specs</span>
-                <span class="text-[#FF1F1F] inline-block transform group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
-              </div>
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Toyota%20Corolla%20Denso%20SC20HR11%20(90919-01253).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
-                <span>Enquire on WhatsApp</span>
-                <i class="fab fa-whatsapp text-sm" aria-hidden="true"></i>
-              </a>
+              <span class="oem-eyebrow block text-[11px] font-bold uppercase tracking-[0.18em] text-silverMuted mb-2">GENUINE TOYOTA OEM</span>
+              <h3 class="text-2xl sm:text-3xl font-extrabold uppercase text-white tracking-tight group-hover:text-[#FF1F1F] transition-colors">SC20HR11</h3>
             </div>
           </div>
         </div>
 
         <!-- Toyota 2 -->
         <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="100" data-plug-id="toyota-sk20r11" data-primary-brand="Toyota" data-brand="toyota denso" data-keywords="toyota camry rav4 highlander sienna hilux avalon sk20r11 90919-01210 2az-fe 1mz-fe 3mz-fe 2.4l 3.0l denso japan">
-          <div role="button" tabindex="0" onclick="openPlugDetailModal('toyota-sk20r11')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('toyota-sk20r11');}" aria-label="View fitment and specs for Toyota SK20R11 Denso Spark Plug" class="porsche-card catalogue-card-interactive group rounded-2xl p-6 flex flex-col justify-between h-full">
-            <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
-                <div data-parallax="0.06" class="w-full h-full">
-                  <img src="https://iili.io/oJbyTxV.jpg" alt="Denso SK20R11 Toyota Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
-                </div>
-              </div>
-              <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Toyota OEM &bull; Denso Japan</span>
-                <span class="text-porscheRed font-bold text-[10px] uppercase">Part: SK20R11</span>
-              </div>
-              <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Toyota Camry &bull; RAV4 &bull; Highlander 2.4L</h3>
-              <p class="text-xs text-silverMuted leading-relaxed mb-4">
-                Factory specification for 2AZ-FE 2.4L and 1MZ-FE / 3MZ-FE V6 engines. Laser-welded Iridium alloy engineered for smooth power under high Ghana highway heat.
-              </p>
-              <div class="border-t border-white/10 pt-3 mb-4">
-                <div class="spec-item"><span class="text-silverMuted">OEM Part Number:</span><span class="font-bold text-white">90919-01210 / SK20R11</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Thread &bull; Reach:</span><span class="font-bold text-white">M14 x 1.25 &bull; 19mm</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Hex &bull; Heat Range:</span><span class="font-bold text-white">16mm Hex &bull; Heat 20</span></div>
+          <div role="button" tabindex="0" onclick="openPlugDetailModal('toyota-sk20r11')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('toyota-sk20r11');}" aria-label="Inspect GENUINE TOYOTA OEM SK20R11 specifications" class="porsche-card catalogue-card-interactive group rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full">
+            <div class="aspect-[16/11] w-full bg-[#07070A] rounded-2xl mb-6 overflow-hidden relative">
+              <div data-parallax="0.06" class="w-full h-full">
+                <img src="https://iili.io/oJbyTxV.jpg" alt="Denso SK20R11 Genuine Toyota OEM Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
               </div>
             </div>
             <div>
-              <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-zinc-200 group-hover:text-[#FF1F1F] transition-colors pb-3 mb-3 border-b border-white/10">
-                <span>View Fitment &amp; Specs</span>
-                <span class="text-[#FF1F1F] inline-block transform group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
-              </div>
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Toyota%20Camry/RAV4%20Denso%20SK20R11%20(90919-01210).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
-                <span>Enquire on WhatsApp</span>
-                <i class="fab fa-whatsapp text-sm" aria-hidden="true"></i>
-              </a>
+              <span class="oem-eyebrow block text-[11px] font-bold uppercase tracking-[0.18em] text-silverMuted mb-2">GENUINE TOYOTA OEM</span>
+              <h3 class="text-2xl sm:text-3xl font-extrabold uppercase text-white tracking-tight group-hover:text-[#FF1F1F] transition-colors">SK20R11</h3>
             </div>
           </div>
         </div>
 
         <!-- Toyota 3 -->
         <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="200" data-plug-id="toyota-fk20hr11" data-primary-brand="Toyota" data-brand="toyota denso" data-keywords="toyota land cruiser prado fortuner 4runner tacoma avalon highlander v6 fk20hr11 90919-01247 1gr-fe 2gr-fe 4.0l v6 3.5l denso japan">
-          <div role="button" tabindex="0" onclick="openPlugDetailModal('toyota-fk20hr11')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('toyota-fk20hr11');}" aria-label="View fitment and specs for Toyota FK20HR11 Denso Spark Plug" class="porsche-card catalogue-card-interactive group rounded-2xl p-6 flex flex-col justify-between h-full">
-            <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
-                <div data-parallax="0.06" class="w-full h-full">
-                  <img src="https://iili.io/oJmqKTF.png" alt="Denso FK20HR11 Toyota Prado V6 Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
-                </div>
-              </div>
-              <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Toyota OEM &bull; Denso Japan</span>
-                <span class="text-porscheRed font-bold text-[10px] uppercase">Part: FK20HR11</span>
-              </div>
-              <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Toyota Prado &bull; Land Cruiser &bull; V6 4.0L</h3>
-              <p class="text-xs text-silverMuted leading-relaxed mb-4">
-                Super Ignition Twin-Tip technology for 1GR-FE and 2GR-FE V6 engines. Delivers instant throttle response and clean torque under heavy SUV terrain load.
-              </p>
-              <div class="border-t border-white/10 pt-3 mb-4">
-                <div class="spec-item"><span class="text-silverMuted">OEM Part Number:</span><span class="font-bold text-white">90919-01247 / FK20HR11</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Thread &bull; Reach:</span><span class="font-bold text-white">M14 x 1.25 &bull; 26.5mm</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Hex &bull; Heat Range:</span><span class="font-bold text-white">16mm Hex &bull; Heat 20</span></div>
+          <div role="button" tabindex="0" onclick="openPlugDetailModal('toyota-fk20hr11')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('toyota-fk20hr11');}" aria-label="Inspect GENUINE TOYOTA OEM FK20HR11 specifications" class="porsche-card catalogue-card-interactive group rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full">
+            <div class="aspect-[16/11] w-full bg-[#07070A] rounded-2xl mb-6 overflow-hidden relative">
+              <div data-parallax="0.06" class="w-full h-full">
+                <img src="https://iili.io/oJmqKTF.png" alt="Denso FK20HR11 Genuine Toyota OEM Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
               </div>
             </div>
             <div>
-              <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-zinc-200 group-hover:text-[#FF1F1F] transition-colors pb-3 mb-3 border-b border-white/10">
-                <span>View Fitment &amp; Specs</span>
-                <span class="text-[#FF1F1F] inline-block transform group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
-              </div>
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Toyota%20Prado/Land%20Cruiser%20FK20HR11%20(90919-01247).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
-                <span>Enquire on WhatsApp</span>
-                <i class="fab fa-whatsapp text-sm" aria-hidden="true"></i>
-              </a>
+              <span class="oem-eyebrow block text-[11px] font-bold uppercase tracking-[0.18em] text-silverMuted mb-2">GENUINE TOYOTA OEM</span>
+              <h3 class="text-2xl sm:text-3xl font-extrabold uppercase text-white tracking-tight group-hover:text-[#FF1F1F] transition-colors">FK20HR11</h3>
             </div>
           </div>
         </div>
 
         <!-- Honda 1 -->
         <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="0" data-plug-id="honda-izfr6k11" data-primary-brand="Honda" data-brand="honda ngk" data-keywords="honda accord cr-v crv odyssey element izfr6k11 9807b-5617w k24a k24z 2.4l ngk japan">
-          <div role="button" tabindex="0" onclick="openPlugDetailModal('honda-izfr6k11')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('honda-izfr6k11');}" aria-label="View fitment and specs for Honda IZFR6K11 NGK Spark Plug" class="porsche-card catalogue-card-interactive group rounded-2xl p-6 flex flex-col justify-between h-full">
-            <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
-                <div data-parallax="0.06" class="w-full h-full">
-                  <img src="https://iili.io/odJ6qDN.webp" alt="NGK IZFR6K11 Honda Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
-                </div>
-              </div>
-              <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Honda OEM &bull; NGK Japan</span>
-                <span class="text-porscheRed font-bold text-[10px] uppercase">Part: IZFR6K11</span>
-              </div>
-              <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Honda Accord &bull; CR-V 2.4L i-VTEC</h3>
-              <p class="text-xs text-silverMuted leading-relaxed mb-4">
-                Factory specification for K24A and K24Z i-VTEC engines. Laser-welded Iridium center tip with platinum ground disc maintains crisp idle and zero misfires.
-              </p>
-              <div class="border-t border-white/10 pt-3 mb-4">
-                <div class="spec-item"><span class="text-silverMuted">OEM Part Number:</span><span class="font-bold text-white">9807B-5617W / IZFR6K11</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Thread &bull; Reach:</span><span class="font-bold text-white">M14 x 1.25 &bull; 19mm</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Hex &bull; Heat Range:</span><span class="font-bold text-white">16mm Hex &bull; Heat 6</span></div>
+          <div role="button" tabindex="0" onclick="openPlugDetailModal('honda-izfr6k11')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('honda-izfr6k11');}" aria-label="Inspect GENUINE HONDA OEM IZFR6K11 specifications" class="porsche-card catalogue-card-interactive group rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full">
+            <div class="aspect-[16/11] w-full bg-[#07070A] rounded-2xl mb-6 overflow-hidden relative">
+              <div data-parallax="0.06" class="w-full h-full">
+                <img src="https://iili.io/odJ6qDN.webp" alt="NGK IZFR6K11 Genuine Honda OEM Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
               </div>
             </div>
             <div>
-              <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-zinc-200 group-hover:text-[#FF1F1F] transition-colors pb-3 mb-3 border-b border-white/10">
-                <span>View Fitment &amp; Specs</span>
-                <span class="text-[#FF1F1F] inline-block transform group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
-              </div>
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Honda%20Accord/CR-V%20NGK%20IZFR6K11%20(9807B-5617W).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
-                <span>Enquire on WhatsApp</span>
-                <i class="fab fa-whatsapp text-sm" aria-hidden="true"></i>
-              </a>
+              <span class="oem-eyebrow block text-[11px] font-bold uppercase tracking-[0.18em] text-silverMuted mb-2">GENUINE HONDA OEM</span>
+              <h3 class="text-2xl sm:text-3xl font-extrabold uppercase text-white tracking-tight group-hover:text-[#FF1F1F] transition-colors">IZFR6K11</h3>
             </div>
           </div>
         </div>
 
         <!-- Honda 2 -->
         <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="100" data-plug-id="honda-ilzkr7b11" data-primary-brand="Honda" data-brand="honda ngk" data-keywords="honda civic hr-v hrv pilot odyssey ridgeline accord v6 ilzkr7b11 12290-r1a-h01 r18a r18z j35 1.8l ngk japan">
-          <div role="button" tabindex="0" onclick="openPlugDetailModal('honda-ilzkr7b11')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('honda-ilzkr7b11');}" aria-label="View fitment and specs for Honda ILZKR7B11 NGK Spark Plug" class="porsche-card catalogue-card-interactive group rounded-2xl p-6 flex flex-col justify-between h-full">
-            <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
-                <div data-parallax="0.06" class="w-full h-full">
-                  <img src="https://iili.io/oddHUb9.webp" alt="NGK ILZKR7B11 Honda Civic Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
-                </div>
-              </div>
-              <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Honda OEM &bull; NGK Japan</span>
-                <span class="text-porscheRed font-bold text-[10px] uppercase">Part: ILZKR7B11</span>
-              </div>
-              <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Honda Civic &bull; HR-V &bull; Pilot 1.8L–3.5L</h3>
-              <p class="text-xs text-silverMuted leading-relaxed mb-4">
-                Calibrated for R18A/R18Z 1.8L and J35 V6 engines. Long-reach thread and high-density alumina ceramic insulator stop flashover in heavy city traffic.
-              </p>
-              <div class="border-t border-white/10 pt-3 mb-4">
-                <div class="spec-item"><span class="text-silverMuted">OEM Part Number:</span><span class="font-bold text-white">12290-R1A-H01 / ILZKR7B11</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Thread &bull; Reach:</span><span class="font-bold text-white">M12 x 1.25 &bull; 26.5mm</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Hex &bull; Heat Range:</span><span class="font-bold text-white">16mm Hex &bull; Heat 7</span></div>
+          <div role="button" tabindex="0" onclick="openPlugDetailModal('honda-ilzkr7b11')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('honda-ilzkr7b11');}" aria-label="Inspect GENUINE HONDA OEM ILZKR7B11 specifications" class="porsche-card catalogue-card-interactive group rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full">
+            <div class="aspect-[16/11] w-full bg-[#07070A] rounded-2xl mb-6 overflow-hidden relative">
+              <div data-parallax="0.06" class="w-full h-full">
+                <img src="https://iili.io/oddHUb9.webp" alt="NGK ILZKR7B11 Genuine Honda OEM Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
               </div>
             </div>
             <div>
-              <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-zinc-200 group-hover:text-[#FF1F1F] transition-colors pb-3 mb-3 border-b border-white/10">
-                <span>View Fitment &amp; Specs</span>
-                <span class="text-[#FF1F1F] inline-block transform group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
-              </div>
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Honda%20Civic%20ILZKR7B11%20(12290-R1A-H01).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
-                <span>Enquire on WhatsApp</span>
-                <i class="fab fa-whatsapp text-sm" aria-hidden="true"></i>
-              </a>
+              <span class="oem-eyebrow block text-[11px] font-bold uppercase tracking-[0.18em] text-silverMuted mb-2">GENUINE HONDA OEM</span>
+              <h3 class="text-2xl sm:text-3xl font-extrabold uppercase text-white tracking-tight group-hover:text-[#FF1F1F] transition-colors">ILZKR7B11</h3>
             </div>
           </div>
         </div>
 
         <!-- Honda 3 -->
         <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="200" data-plug-id="honda-dilzkr7b11gs" data-primary-brand="Honda" data-brand="honda ngk" data-keywords="honda civic cr-v crv accord dilzkr7b11gs 12290-59b-003 l15b7 1.5l turbo earth dreams ngk japan">
-          <div role="button" tabindex="0" onclick="openPlugDetailModal('honda-dilzkr7b11gs')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('honda-dilzkr7b11gs');}" aria-label="View fitment and specs for Honda DILZKR7B11GS NGK Spark Plug" class="porsche-card catalogue-card-interactive group rounded-2xl p-6 flex flex-col justify-between h-full">
-            <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
-                <div data-parallax="0.06" class="w-full h-full">
-                  <img src="https://iili.io/oddT9Lv.jpg" alt="NGK DILZKR7B11GS Honda 1.5L Turbo Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
-                </div>
-              </div>
-              <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Honda OEM &bull; NGK Japan</span>
-                <span class="text-porscheRed font-bold text-[10px] uppercase">Part: DILZKR7B11GS</span>
-              </div>
-              <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Honda 1.5L Turbo Earth Dreams</h3>
-              <p class="text-xs text-silverMuted leading-relaxed mb-4">
-                Factory spark plug for direct-injection turbocharged Civic, CR-V, and Accord (L15B7). Engineered to resist pre-ignition and high cylinder boost heat.
-              </p>
-              <div class="border-t border-white/10 pt-3 mb-4">
-                <div class="spec-item"><span class="text-silverMuted">OEM Part Number:</span><span class="font-bold text-white">12290-59B-003 / DILZKR7B11GS</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Thread &bull; Reach:</span><span class="font-bold text-white">M12 x 1.25 &bull; 26.5mm</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Hex &bull; Heat Range:</span><span class="font-bold text-white">14mm Thin-Wall &bull; Heat 7</span></div>
+          <div role="button" tabindex="0" onclick="openPlugDetailModal('honda-dilzkr7b11gs')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('honda-dilzkr7b11gs');}" aria-label="Inspect GENUINE HONDA OEM DILZKR7B11GS specifications" class="porsche-card catalogue-card-interactive group rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full">
+            <div class="aspect-[16/11] w-full bg-[#07070A] rounded-2xl mb-6 overflow-hidden relative">
+              <div data-parallax="0.06" class="w-full h-full">
+                <img src="https://iili.io/oddT9Lv.jpg" alt="NGK DILZKR7B11GS Genuine Honda OEM Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
               </div>
             </div>
             <div>
-              <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-zinc-200 group-hover:text-[#FF1F1F] transition-colors pb-3 mb-3 border-b border-white/10">
-                <span>View Fitment &amp; Specs</span>
-                <span class="text-[#FF1F1F] inline-block transform group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
-              </div>
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Honda%201.5L%20Turbo%20Spark%20Plug%20(12290-59B-003).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
-                <span>Enquire on WhatsApp</span>
-                <i class="fab fa-whatsapp text-sm" aria-hidden="true"></i>
-              </a>
+              <span class="oem-eyebrow block text-[11px] font-bold uppercase tracking-[0.18em] text-silverMuted mb-2">GENUINE HONDA OEM</span>
+              <h3 class="text-2xl sm:text-3xl font-extrabold uppercase text-white tracking-tight group-hover:text-[#FF1F1F] transition-colors">DILZKR7B11GS</h3>
             </div>
           </div>
         </div>
 
         <!-- Hyundai 1 -->
         <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="0" data-plug-id="hyundai-18846-10060" data-primary-brand="Hyundai" data-brand="hyundai mobis" data-keywords="hyundai elantra accent creta kona i30 silzkr6b10e 18846-10060 nu 1.8l gamma 1.6l mobis genuine korea">
-          <div role="button" tabindex="0" onclick="openPlugDetailModal('hyundai-18846-10060')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('hyundai-18846-10060');}" aria-label="View fitment and specs for Hyundai 18846-10060 Mobis Spark Plug" class="porsche-card catalogue-card-interactive group rounded-2xl p-6 flex flex-col justify-between h-full">
-            <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
-                <div data-parallax="0.06" class="w-full h-full">
-                  <img src="https://iili.io/oddjVWv.jpg" alt="Mobis 18846-10060 Hyundai Elantra Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
-                </div>
-              </div>
-              <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Hyundai OEM &bull; Mobis Korea</span>
-                <span class="text-porscheRed font-bold text-[10px] uppercase">Part: 18846-10060</span>
-              </div>
-              <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Hyundai Elantra &bull; Accent &bull; Kona 1.6–2.0L</h3>
-              <p class="text-xs text-silverMuted leading-relaxed mb-4">
-                Factory specification for Nu 1.8L/2.0L and Gamma 1.6L engines. Eliminates cold-morning hesitation, rough idle, and excess exhaust fuel smell.
-              </p>
-              <div class="border-t border-white/10 pt-3 mb-4">
-                <div class="spec-item"><span class="text-silverMuted">OEM Part Number:</span><span class="font-bold text-white">18846-10060 / SILZKR6B10E</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Thread &bull; Reach:</span><span class="font-bold text-white">M12 x 1.25 &bull; 26.5mm</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Hex &bull; Heat Range:</span><span class="font-bold text-white">16mm Hex &bull; Heat 6</span></div>
+          <div role="button" tabindex="0" onclick="openPlugDetailModal('hyundai-18846-10060')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('hyundai-18846-10060');}" aria-label="Inspect GENUINE HYUNDAI OEM 18846-10060 specifications" class="porsche-card catalogue-card-interactive group rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full">
+            <div class="aspect-[16/11] w-full bg-[#07070A] rounded-2xl mb-6 overflow-hidden relative">
+              <div data-parallax="0.06" class="w-full h-full">
+                <img src="https://iili.io/oddjVWv.jpg" alt="Mobis 18846-10060 Genuine Hyundai OEM Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
               </div>
             </div>
             <div>
-              <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-zinc-200 group-hover:text-[#FF1F1F] transition-colors pb-3 mb-3 border-b border-white/10">
-                <span>View Fitment &amp; Specs</span>
-                <span class="text-[#FF1F1F] inline-block transform group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
-              </div>
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Hyundai%20Elantra%20OEM%20Plugs%20(18846-10060).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
-                <span>Enquire on WhatsApp</span>
-                <i class="fab fa-whatsapp text-sm" aria-hidden="true"></i>
-              </a>
+              <span class="oem-eyebrow block text-[11px] font-bold uppercase tracking-[0.18em] text-silverMuted mb-2">GENUINE HYUNDAI OEM</span>
+              <h3 class="text-2xl sm:text-3xl font-extrabold uppercase text-white tracking-tight group-hover:text-[#FF1F1F] transition-colors">18846-10060</h3>
             </div>
           </div>
         </div>
 
         <!-- Hyundai 2 -->
         <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="100" data-plug-id="hyundai-18846-11070" data-primary-brand="Hyundai" data-brand="hyundai mobis" data-keywords="hyundai sonata tucson ix35 santa fe silzkr7b11 18846-11070 theta ii 2.4l 2.0l mobis genuine korea">
-          <div role="button" tabindex="0" onclick="openPlugDetailModal('hyundai-18846-11070')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('hyundai-18846-11070');}" aria-label="View fitment and specs for Hyundai 18846-11070 Mobis Spark Plug" class="porsche-card catalogue-card-interactive group rounded-2xl p-6 flex flex-col justify-between h-full">
-            <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
-                <div data-parallax="0.06" class="w-full h-full">
-                  <img src="https://iili.io/oddiY11.jpg" alt="Mobis 18846-11070 Hyundai Sonata Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
-                </div>
-              </div>
-              <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Hyundai OEM &bull; Mobis Korea</span>
-                <span class="text-porscheRed font-bold text-[10px] uppercase">Part: 18846-11070</span>
-              </div>
-              <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Hyundai Sonata &bull; Tucson &bull; Santa Fe 2.4L</h3>
-              <p class="text-xs text-silverMuted leading-relaxed mb-4">
-                Specified for Theta II 2.0L/2.4L GDI &amp; MPI engines. Resists carbon fouling in Accra gridlock traffic and shields ignition coil packs from voltage spikes.
-              </p>
-              <div class="border-t border-white/10 pt-3 mb-4">
-                <div class="spec-item"><span class="text-silverMuted">OEM Part Number:</span><span class="font-bold text-white">18846-11070 / SILZKR7B11</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Thread &bull; Reach:</span><span class="font-bold text-white">M12 x 1.25 &bull; 26.5mm</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Hex &bull; Heat Range:</span><span class="font-bold text-white">16mm Hex &bull; Heat 7</span></div>
+          <div role="button" tabindex="0" onclick="openPlugDetailModal('hyundai-18846-11070')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('hyundai-18846-11070');}" aria-label="Inspect GENUINE HYUNDAI OEM 18846-11070 specifications" class="porsche-card catalogue-card-interactive group rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full">
+            <div class="aspect-[16/11] w-full bg-[#07070A] rounded-2xl mb-6 overflow-hidden relative">
+              <div data-parallax="0.06" class="w-full h-full">
+                <img src="https://iili.io/oddiY11.jpg" alt="Mobis 18846-11070 Genuine Hyundai OEM Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
               </div>
             </div>
             <div>
-              <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-zinc-200 group-hover:text-[#FF1F1F] transition-colors pb-3 mb-3 border-b border-white/10">
-                <span>View Fitment &amp; Specs</span>
-                <span class="text-[#FF1F1F] inline-block transform group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
-              </div>
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Hyundai%20Sonata/Tucson%20OEM%20Plugs%20(18846-11070).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
-                <span>Enquire on WhatsApp</span>
-                <i class="fab fa-whatsapp text-sm" aria-hidden="true"></i>
-              </a>
+              <span class="oem-eyebrow block text-[11px] font-bold uppercase tracking-[0.18em] text-silverMuted mb-2">GENUINE HYUNDAI OEM</span>
+              <h3 class="text-2xl sm:text-3xl font-extrabold uppercase text-white tracking-tight group-hover:text-[#FF1F1F] transition-colors">18846-11070</h3>
             </div>
           </div>
         </div>
 
         <!-- Hyundai 3 -->
         <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="200" data-plug-id="hyundai-18849-09085" data-primary-brand="Hyundai" data-brand="hyundai mobis" data-keywords="hyundai santa fe palisade kona turbo sonata 2.0t 18849-09085 silzkr8e9g lambda v6 t-gdi mobis genuine korea">
-          <div role="button" tabindex="0" onclick="openPlugDetailModal('hyundai-18849-09085')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('hyundai-18849-09085');}" aria-label="View fitment and specs for Hyundai 18849-09085 Mobis Spark Plug" class="porsche-card catalogue-card-interactive group rounded-2xl p-6 flex flex-col justify-between h-full">
-            <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
-                <div data-parallax="0.06" class="w-full h-full">
-                  <img src="https://iili.io/oddiY11.jpg" alt="Mobis 18849-09085 Hyundai Santa Fe V6 &amp; Turbo Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
-                </div>
-              </div>
-              <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Hyundai OEM &bull; Mobis Korea</span>
-                <span class="text-porscheRed font-bold text-[10px] uppercase">Part: 18849-09085</span>
-              </div>
-              <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Hyundai Santa Fe V6 &bull; Palisade &bull; Turbo</h3>
-              <p class="text-xs text-silverMuted leading-relaxed mb-4">
-                Colder-range factory plug for Lambda II 3.3L/3.5L/3.8L V6 and 1.6T/2.0T T-GDI engines. Prevents knock and spark blowout under highway acceleration.
-              </p>
-              <div class="border-t border-white/10 pt-3 mb-4">
-                <div class="spec-item"><span class="text-silverMuted">OEM Part Number:</span><span class="font-bold text-white">18849-09085 / SILZKR8E9G</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Thread &bull; Reach:</span><span class="font-bold text-white">M12 x 1.25 &bull; 26.5mm</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Hex &bull; Heat Range:</span><span class="font-bold text-white">16mm Hex &bull; Heat 8 Cold</span></div>
+          <div role="button" tabindex="0" onclick="openPlugDetailModal('hyundai-18849-09085')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('hyundai-18849-09085');}" aria-label="Inspect GENUINE HYUNDAI OEM 18849-09085 specifications" class="porsche-card catalogue-card-interactive group rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full">
+            <div class="aspect-[16/11] w-full bg-[#07070A] rounded-2xl mb-6 overflow-hidden relative">
+              <div data-parallax="0.06" class="w-full h-full">
+                <img src="https://iili.io/oddiY11.jpg" alt="Mobis 18849-09085 Genuine Hyundai OEM Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
               </div>
             </div>
             <div>
-              <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-zinc-200 group-hover:text-[#FF1F1F] transition-colors pb-3 mb-3 border-b border-white/10">
-                <span>View Fitment &amp; Specs</span>
-                <span class="text-[#FF1F1F] inline-block transform group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
-              </div>
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Hyundai%20Santa%20Fe%20V6/Turbo%20OEM%20Plugs%20(18849-09085).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
-                <span>Enquire on WhatsApp</span>
-                <i class="fab fa-whatsapp text-sm" aria-hidden="true"></i>
-              </a>
+              <span class="oem-eyebrow block text-[11px] font-bold uppercase tracking-[0.18em] text-silverMuted mb-2">GENUINE HYUNDAI OEM</span>
+              <h3 class="text-2xl sm:text-3xl font-extrabold uppercase text-white tracking-tight group-hover:text-[#FF1F1F] transition-colors">18849-09085</h3>
             </div>
           </div>
         </div>
 
         <!-- Kia 1 -->
         <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="0" data-plug-id="kia-18846-10060" data-primary-brand="Kia" data-brand="kia mobis" data-keywords="kia forte cerato soul k3 rio 18846-10060 silzkr6b10e 1.6l 2.0l mobis genuine korea">
-          <div role="button" tabindex="0" onclick="openPlugDetailModal('kia-18846-10060')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('kia-18846-10060');}" aria-label="View fitment and specs for Kia 18846-10060 Mobis Spark Plug" class="porsche-card catalogue-card-interactive group rounded-2xl p-6 flex flex-col justify-between h-full">
-            <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
-                <div data-parallax="0.06" class="w-full h-full">
-                  <img src="https://iili.io/oddjVWv.jpg" alt="Mobis 18846-10060 Kia Forte Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
-                </div>
-              </div>
-              <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Kia OEM &bull; Mobis Korea</span>
-                <span class="text-porscheRed font-bold text-[10px] uppercase">Part: 18846-10060</span>
-              </div>
-              <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Kia Forte &bull; Cerato &bull; Soul 1.6L–2.0L</h3>
-              <p class="text-xs text-silverMuted leading-relaxed mb-4">
-                Factory spark plug for Nu MPI and Gamma engines. Trivalent nickel plating prevents thread galling and seizure inside aluminum cylinder heads.
-              </p>
-              <div class="border-t border-white/10 pt-3 mb-4">
-                <div class="spec-item"><span class="text-silverMuted">OEM Part Number:</span><span class="font-bold text-white">18846-10060 / SILZKR6B10E</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Thread &bull; Reach:</span><span class="font-bold text-white">M12 x 1.25 &bull; 26.5mm</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Hex &bull; Heat Range:</span><span class="font-bold text-white">16mm Hex &bull; Heat 6</span></div>
+          <div role="button" tabindex="0" onclick="openPlugDetailModal('kia-18846-10060')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('kia-18846-10060');}" aria-label="Inspect GENUINE KIA OEM 18846-10060 specifications" class="porsche-card catalogue-card-interactive group rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full">
+            <div class="aspect-[16/11] w-full bg-[#07070A] rounded-2xl mb-6 overflow-hidden relative">
+              <div data-parallax="0.06" class="w-full h-full">
+                <img src="https://iili.io/oddjVWv.jpg" alt="Mobis 18846-10060 Genuine Kia OEM Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
               </div>
             </div>
             <div>
-              <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-zinc-200 group-hover:text-[#FF1F1F] transition-colors pb-3 mb-3 border-b border-white/10">
-                <span>View Fitment &amp; Specs</span>
-                <span class="text-[#FF1F1F] inline-block transform group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
-              </div>
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Kia%20Forte/Cerato%20OEM%20Plugs%20(18846-10060).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
-                <span>Enquire on WhatsApp</span>
-                <i class="fab fa-whatsapp text-sm" aria-hidden="true"></i>
-              </a>
+              <span class="oem-eyebrow block text-[11px] font-bold uppercase tracking-[0.18em] text-silverMuted mb-2">GENUINE KIA OEM</span>
+              <h3 class="text-2xl sm:text-3xl font-extrabold uppercase text-white tracking-tight group-hover:text-[#FF1F1F] transition-colors">18846-10060</h3>
             </div>
           </div>
         </div>
 
         <!-- Kia 2 -->
         <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="100" data-plug-id="kia-18846-11070" data-primary-brand="Kia" data-brand="kia mobis" data-keywords="kia sportage optima k5 sorento cadenza carnival 18846-11070 18849-09085 silzkr7b11 2.4l v6 3.3l mobis genuine korea">
-          <div role="button" tabindex="0" onclick="openPlugDetailModal('kia-18846-11070')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('kia-18846-11070');}" aria-label="View fitment and specs for Kia 18846-11070 Mobis Spark Plug" class="porsche-card catalogue-card-interactive group rounded-2xl p-6 flex flex-col justify-between h-full">
-            <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
-                <div data-parallax="0.06" class="w-full h-full">
-                  <img src="https://iili.io/oddiY11.jpg" alt="Mobis 18846-11070 Kia Sportage Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
-                </div>
-              </div>
-              <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Kia OEM &bull; Mobis Korea</span>
-                <span class="text-porscheRed font-bold text-[10px] uppercase">Part: 18846-11070</span>
-              </div>
-              <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Kia Sportage &bull; Optima / K5 &bull; Sorento</h3>
-              <p class="text-xs text-silverMuted leading-relaxed mb-4">
-                Factory specification for Theta II 2.4L and Lambda II V6 engines. Delivers steady cylinder burn and protects coil packs against heat-induced failure.
-              </p>
-              <div class="border-t border-white/10 pt-3 mb-4">
-                <div class="spec-item"><span class="text-silverMuted">OEM Part Number:</span><span class="font-bold text-white">18846-11070 / 18849-09085</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Thread &bull; Reach:</span><span class="font-bold text-white">M12 x 1.25 &bull; 26.5mm</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Hex &bull; Heat Range:</span><span class="font-bold text-white">16mm Hex &bull; Heat 7</span></div>
+          <div role="button" tabindex="0" onclick="openPlugDetailModal('kia-18846-11070')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('kia-18846-11070');}" aria-label="Inspect GENUINE KIA OEM 18846-11070 specifications" class="porsche-card catalogue-card-interactive group rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full">
+            <div class="aspect-[16/11] w-full bg-[#07070A] rounded-2xl mb-6 overflow-hidden relative">
+              <div data-parallax="0.06" class="w-full h-full">
+                <img src="https://iili.io/oddiY11.jpg" alt="Mobis 18846-11070 Genuine Kia OEM Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
               </div>
             </div>
             <div>
-              <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-zinc-200 group-hover:text-[#FF1F1F] transition-colors pb-3 mb-3 border-b border-white/10">
-                <span>View Fitment &amp; Specs</span>
-                <span class="text-[#FF1F1F] inline-block transform group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
-              </div>
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Kia%20Sportage/Optima/Sorento%20OEM%20Plugs%20(18846-11070).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
-                <span>Enquire on WhatsApp</span>
-                <i class="fab fa-whatsapp text-sm" aria-hidden="true"></i>
-              </a>
+              <span class="oem-eyebrow block text-[11px] font-bold uppercase tracking-[0.18em] text-silverMuted mb-2">GENUINE KIA OEM</span>
+              <h3 class="text-2xl sm:text-3xl font-extrabold uppercase text-white tracking-tight group-hover:text-[#FF1F1F] transition-colors">18846-11070</h3>
             </div>
           </div>
         </div>
 
         <!-- Kia 3 -->
         <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="200" data-plug-id="kia-18855-10060" data-primary-brand="Kia" data-brand="kia mobis" data-keywords="kia picanto morning rio 18855-10060 lzkr6b-10e kappa 1.0l 1.2l 1.4l mobis genuine korea">
-          <div role="button" tabindex="0" onclick="openPlugDetailModal('kia-18855-10060')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('kia-18855-10060');}" aria-label="View fitment and specs for Kia 18855-10060 Mobis Spark Plug" class="porsche-card catalogue-card-interactive group rounded-2xl p-6 flex flex-col justify-between h-full">
-            <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
-                <div data-parallax="0.06" class="w-full h-full">
-                  <img src="https://iili.io/oddjVWv.jpg" alt="Mobis 18855-10060 Kia Picanto Morning Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
-                </div>
-              </div>
-              <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Kia OEM &bull; Mobis Korea</span>
-                <span class="text-porscheRed font-bold text-[10px] uppercase">Part: 18855-10060</span>
-              </div>
-              <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Kia Picanto &bull; Morning &bull; Rio 1.0L–1.4L</h3>
-              <p class="text-xs text-silverMuted leading-relaxed mb-4">
-                OEM spec for Kappa 1.0L/1.2L and compact Rio MPI engines. Prevents city-driving fuel waste, rough AC-on idling, and sudden A/C stallouts.
-              </p>
-              <div class="border-t border-white/10 pt-3 mb-4">
-                <div class="spec-item"><span class="text-silverMuted">OEM Part Number:</span><span class="font-bold text-white">18855-10060 / LZKR6B-10E</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Thread &bull; Reach:</span><span class="font-bold text-white">M12 x 1.25 &bull; 26.5mm</span></div>
-                <div class="spec-item"><span class="text-silverMuted">Hex &bull; Heat Range:</span><span class="font-bold text-white">16mm Hex &bull; Heat 6</span></div>
+          <div role="button" tabindex="0" onclick="openPlugDetailModal('kia-18855-10060')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('kia-18855-10060');}" aria-label="Inspect GENUINE KIA OEM 18855-10060 specifications" class="porsche-card catalogue-card-interactive group rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full">
+            <div class="aspect-[16/11] w-full bg-[#07070A] rounded-2xl mb-6 overflow-hidden relative">
+              <div data-parallax="0.06" class="w-full h-full">
+                <img src="https://iili.io/oddjVWv.jpg" alt="Mobis 18855-10060 Genuine Kia OEM Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
               </div>
             </div>
             <div>
-              <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-zinc-200 group-hover:text-[#FF1F1F] transition-colors pb-3 mb-3 border-b border-white/10">
-                <span>View Fitment &amp; Specs</span>
-                <span class="text-[#FF1F1F] inline-block transform group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
-              </div>
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Kia%20Picanto/Morning/Rio%20OEM%20Plugs%20(18855-10060).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
-                <span>Enquire on WhatsApp</span>
-                <i class="fab fa-whatsapp text-sm" aria-hidden="true"></i>
-              </a>
+              <span class="oem-eyebrow block text-[11px] font-bold uppercase tracking-[0.18em] text-silverMuted mb-2">GENUINE KIA OEM</span>
+              <h3 class="text-2xl sm:text-3xl font-extrabold uppercase text-white tracking-tight group-hover:text-[#FF1F1F] transition-colors">18855-10060</h3>
             </div>
           </div>
         </div>
@@ -1987,7 +1749,7 @@
     </section>
 
     <!-- ================= DISCRETE PAGE: CHASSIS FITMENT FINDER ================= -->
-    <section id="fitment-finder" data-page="fitment" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-[#050505] border-b border-white/10" hidden>
+    <section id="fitment-finder" data-page="fitment" class="page-view py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#050505]" hidden>
       <div class="max-w-7xl mx-auto">
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -2098,7 +1860,7 @@
     </section>
 
     <!-- ================= DISCRETE PAGE: WHOLESALE TRADE PORTAL ================= -->
-    <section id="wholesale" data-page="wholesale" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-[#050505] border-b border-white/10" hidden>
+    <section id="wholesale" data-page="wholesale" class="page-view py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#050505]" hidden>
       <div class="max-w-7xl mx-auto">
 
         <div class="max-w-3xl mb-12 scroll-reveal" data-reveal="headline">
@@ -2231,7 +1993,7 @@
     </section>
 
     <!-- ================= DISCRETE PAGE: TRUST & QUALITY ================= -->
-    <section id="trust" data-page="trust" class="page-view py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-white/10" hidden>
+    <section id="trust" data-page="trust" class="page-view py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" hidden>
       <div class="max-w-3xl mb-12 scroll-reveal" data-reveal="headline">
         <div class="flex items-center gap-2 mb-3">
           <span class="accent-indicator"></span>
@@ -2332,7 +2094,7 @@
     </section>
 
     <!-- ================= DISCRETE PAGE: HOW TO BUY ================= -->
-    <section id="how-to-order" data-page="how-to-order" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-[#050505] border-b border-white/10" hidden>
+    <section id="how-to-order" data-page="how-to-order" class="page-view py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#050505]" hidden>
       <div class="max-w-7xl mx-auto">
 
         <div class="max-w-2xl mb-12 scroll-reveal" data-reveal="headline">
@@ -2406,7 +2168,7 @@
     </section>
 
     <!-- ================= DISCRETE PAGE: KNOWLEDGE CENTRE ================= -->
-    <section id="knowledge" data-page="knowledge" class="page-view py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-white/10" hidden>
+    <section id="knowledge" data-page="knowledge" class="page-view py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" hidden>
 
       <div class="max-w-3xl mb-12 scroll-reveal" data-reveal="headline">
         <div class="flex items-center gap-2 mb-3">
@@ -2515,7 +2277,7 @@
     </section>
 
     <!-- ================= DISCRETE PAGE: FAQS ================= -->
-    <section id="faqs" data-page="faqs" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-[#050505] border-b border-white/10" hidden>
+    <section id="faqs" data-page="faqs" class="page-view py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#050505]" hidden>
       <div class="max-w-4xl mx-auto">
 
         <div class="mb-12 text-center sm:text-left scroll-reveal" data-reveal="headline">
@@ -2627,7 +2389,7 @@
     </section>
 
     <!-- ================= DISCRETE PAGE: CONTACT & CUSTOMER DESK ================= -->
-    <section id="contact-view" data-page="contact" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-[#050505] border-b border-white/10" hidden>
+    <section id="contact-view" data-page="contact" class="page-view py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#050505]" hidden>
       <div class="max-w-4xl mx-auto">
         <div class="mb-12 text-center sm:text-left scroll-reveal" data-reveal="headline">
           <div class="flex items-center justify-center sm:justify-start gap-2 mb-3">
@@ -3886,24 +3648,33 @@
     }
 
     function buildKashWebsiteKnowledgeIndex() {
+      const catalogById = typeof plugDetailCatalog !== 'undefined' && Array.isArray(plugDetailCatalog)
+        ? Object.fromEntries(plugDetailCatalog.map(item => [item.id, item]))
+        : {};
+
       const products = Array.from(document.querySelectorAll('#productGrid .product-item')).map(card => {
+        const plugId = normalizeDomText(card.getAttribute('data-plug-id'));
+        const detail = catalogById[plugId] || null;
         const brandAttr = normalizeDomText(card.getAttribute('data-brand')).toLowerCase();
         const keywords = normalizeDomText(card.getAttribute('data-keywords')).toLowerCase();
         const eyebrowEl = card.querySelector('.oem-eyebrow');
-        const partEl = card.querySelector('.text-porscheRed');
-        const titleEl = card.querySelector('h3');
-        const descEl = card.querySelector('p');
-        const specs = Array.from(card.querySelectorAll('.spec-item')).map(row => {
-          const spans = row.querySelectorAll('span');
-          const label = normalizeDomText(spans[0] ? spans[0].textContent : '');
-          const value = normalizeDomText(spans[1] ? spans[1].textContent : '');
-          return label && value ? `${label} ${value}` : normalizeDomText(row.textContent);
-        }).filter(Boolean);
+        const partHeadingEl = card.querySelector('h3');
 
-        const oemMaker = normalizeDomText(eyebrowEl ? eyebrowEl.textContent : '');
-        const partLabel = normalizeDomText(partEl ? partEl.textContent : '');
-        const title = normalizeDomText(titleEl ? titleEl.textContent : '');
-        const description = normalizeDomText(descEl ? descEl.textContent : '');
+        const oemMaker = detail ? detail.oemMaker : normalizeDomText(eyebrowEl ? eyebrowEl.textContent : '');
+        const partLabel = detail ? detail.oemNumber : normalizeDomText(partHeadingEl ? partHeadingEl.textContent : '');
+        const title = detail ? detail.title : normalizeDomText(partHeadingEl ? partHeadingEl.textContent : '');
+        const description = detail ? detail.summary : '';
+        const specs = detail ? [
+          `OEM Part Number: ${detail.oemNumber}`,
+          `Thread Size: ${detail.threadSize}`,
+          `Reach: ${detail.reach}`,
+          `Hex Size: ${detail.hexSize}`,
+          `Electrode Material: ${detail.electrodeMaterial}`,
+          `Heat Range: ${detail.heatRange}`,
+          `Compatible Vehicles: ${detail.models.join(', ')}`,
+          `Engines: ${detail.engineCodes}`
+        ] : [];
+
         const searchText = [brandAttr, keywords, oemMaker, partLabel, title, description, ...specs]
           .join(' ')
           .toLowerCase();
@@ -3980,7 +3751,7 @@
       });
 
       // Extract Home Authority Strip & Overview directly from DOM
-      document.querySelectorAll('#home .border-t.border-white\\/10 .scroll-reveal').forEach(item => {
+      document.querySelectorAll('#home .home-authority-strip .scroll-reveal').forEach(item => {
         const title = item.querySelector('span');
         const body = item.querySelector('p');
         if (title && body) {
@@ -5422,6 +5193,7 @@
       {
         id: 'toyota-sc20hr11',
         brand: 'Toyota',
+        authenticityLabel: 'GENUINE TOYOTA OEM',
         oemMaker: 'Denso Japan OEM',
         partCode: 'SC20HR11',
         oemNumber: '90919-01253 / SC20HR11',
@@ -5437,8 +5209,10 @@
           'Toyota C-HR 1.8L Hybrid (2017–2023)'
         ],
         engineCodes: '2ZR-FE (1.8L), 2ZR-FXE (1.8L Hybrid), 1NR-FE / 2NR-FE (1.3L–1.5L)',
+        threadSize: 'M12 x 1.25',
+        reach: '26.5mm Extended Reach',
+        hexSize: '14mm Bi-Hex',
         heatRange: '20 (Denso Balanced Urban & Highway Range)',
-        threadReachHex: 'M12 x 1.25 Thread • 26.5mm Extended Reach • 14mm Bi-Hex',
         electrodeMaterial: '0.7mm Laser-Welded Fine-Wire Iridium + Platinum Ground Disc',
         gapResistance: '1.1mm Pre-Gapped • 5.0 kΩ Monolithic Internal Resistor',
         serviceInterval: 'Up to 100,000 km Genuine Service Life',
@@ -5451,6 +5225,7 @@
       {
         id: 'toyota-sk20r11',
         brand: 'Toyota',
+        authenticityLabel: 'GENUINE TOYOTA OEM',
         oemMaker: 'Denso Japan OEM',
         partCode: 'SK20R11',
         oemNumber: '90919-01210 / SK20R11',
@@ -5466,8 +5241,10 @@
           'Toyota Hilux 2.7L Petrol (2005–2019)'
         ],
         engineCodes: '2AZ-FE (2.4L), 2TR-FE (2.7L), 1MZ-FE / 3MZ-FE (3.0L / 3.3L V6)',
+        threadSize: 'M14 x 1.25',
+        reach: '19mm Standard Reach',
+        hexSize: '16mm Hex',
         heatRange: '20 (Denso High-Durability Range)',
-        threadReachHex: 'M14 x 1.25 Thread • 19mm Standard Reach • 16mm Hex',
         electrodeMaterial: 'Patented Denso Iridium Center Tip + Platinum Ground Pad',
         gapResistance: '1.1mm Pre-Gapped • 5.0 kΩ Internal Noise Suppressor',
         serviceInterval: 'Up to 100,000 km Genuine Service Life',
@@ -5480,6 +5257,7 @@
       {
         id: 'toyota-fk20hr11',
         brand: 'Toyota',
+        authenticityLabel: 'GENUINE TOYOTA OEM',
         oemMaker: 'Denso Japan OEM',
         partCode: 'FK20HR11',
         oemNumber: '90919-01247 / FK20HR11',
@@ -5495,8 +5273,10 @@
           'Toyota Camry V6 & Avalon V6 (2007–2017)'
         ],
         engineCodes: '1GR-FE (4.0L V6 Dual VVT-i), 2GR-FE (3.5L V6), 1UR-FE / 3UR-FE (V8)',
+        threadSize: 'M14 x 1.25',
+        reach: '26.5mm Long Reach',
+        hexSize: '16mm Hex',
         heatRange: '20 (High-Load V6/V8 Thermal Rating)',
-        threadReachHex: 'M14 x 1.25 Thread • 26.5mm Long Reach • 16mm Hex',
         electrodeMaterial: 'Twin-Tip (TT) Laser Iridium Center + Needle-Tip Platinum Ground',
         gapResistance: '1.1mm Factory Gap • 5.0 kΩ Resistor Core',
         serviceInterval: 'Up to 100,000 km Heavy-Duty Life',
@@ -5509,6 +5289,7 @@
       {
         id: 'honda-izfr6k11',
         brand: 'Honda',
+        authenticityLabel: 'GENUINE HONDA OEM',
         oemMaker: 'NGK Japan OEM',
         partCode: 'IZFR6K11',
         oemNumber: '9807B-5617W / IZFR6K11',
@@ -5523,8 +5304,10 @@
           'Honda Element 2.4L (2003–2011)'
         ],
         engineCodes: 'K24A4, K24A8, K24Z1, K24Z2, K24Z3 (2.4L DOHC i-VTEC)',
+        threadSize: 'M14 x 1.25',
+        reach: '19mm Standard Reach',
+        hexSize: '16mm Hex',
         heatRange: '6 (NGK Factory Street & Highway Range)',
-        threadReachHex: 'M14 x 1.25 Thread • 19mm Reach • 16mm Hex',
         electrodeMaterial: 'Laser-Welded Iridium Center Tip + Platinum Chip Ground',
         gapResistance: '1.1mm Pre-Gapped • 5.0 kΩ Built-In Ceramic Resistor',
         serviceInterval: 'Up to 100,000 km OEM Life',
@@ -5537,6 +5320,7 @@
       {
         id: 'honda-ilzkr7b11',
         brand: 'Honda',
+        authenticityLabel: 'GENUINE HONDA OEM',
         oemMaker: 'NGK Japan OEM',
         partCode: 'ILZKR7B11',
         oemNumber: '12290-R1A-H01 / ILZKR7B11',
@@ -5552,9 +5336,11 @@
           'Honda Ridgeline 3.5L V6 (2009–2023)'
         ],
         engineCodes: 'R18A1, R18Z1 (1.8L), K20C2 (2.0L), J35Y / J35Z (3.5L V6)',
+        threadSize: 'M12 x 1.25',
+        reach: '26.5mm Extended Reach',
+        hexSize: '16mm Hex',
         heatRange: '7 (NGK Cold Flashover-Resistant Spec)',
-        threadReachHex: 'M12 x 1.25 Thread • 26.5mm Extended Reach • 16mm Hex',
-        electrodeMaterial: 'Fine-Wire Laser Iridium Center + Trivalent Corrosion-Proof Plating',
+        electrodeMaterial: 'Fine-Wire Laser Iridium Center + Platinum Ground Disc',
         gapResistance: '1.1mm Pre-Gapped • High-Density Alumina Insulator',
         serviceInterval: 'Up to 100,000 km OEM Life',
         antiCounterfeit: [
@@ -5566,6 +5352,7 @@
       {
         id: 'honda-dilzkr7b11gs',
         brand: 'Honda',
+        authenticityLabel: 'GENUINE HONDA OEM',
         oemMaker: 'NGK Japan OEM',
         partCode: 'DILZKR7B11GS',
         oemNumber: '12290-59B-003 / DILZKR7B11GS',
@@ -5580,8 +5367,10 @@
           'Honda Accord 2.0L Turbo (2018–2022)'
         ],
         engineCodes: 'L15B7, L15BE (1.5L Turbo GDI Earth Dreams), K20C4 (2.0T)',
+        threadSize: 'M12 x 1.25',
+        reach: '26.5mm Extended Reach',
+        hexSize: '14mm Thin-Wall Hex',
         heatRange: '7 (Turbocharged GDI Boost-Rated)',
-        threadReachHex: 'M12 x 1.25 Thread • 26.5mm Extended Reach • 14mm Thin-Wall Hex',
         electrodeMaterial: 'Dual Fine-Wire Iridium Center + Platinum Ground Electrode',
         gapResistance: '1.1mm Pre-Gapped • Anti-Fouling Thin Insulator Tip',
         serviceInterval: '80,000–100,000 km Under Turbo Boost',
@@ -5594,6 +5383,7 @@
       {
         id: 'hyundai-18846-10060',
         brand: 'Hyundai',
+        authenticityLabel: 'GENUINE HYUNDAI OEM',
         oemMaker: 'Mobis Korea OEM',
         partCode: '18846-10060',
         oemNumber: '18846-10060 / SILZKR6B10E',
@@ -5608,8 +5398,10 @@
           'Hyundai Creta (2015–2022) & i30 (2012–2019)'
         ],
         engineCodes: 'Gamma 1.6L MPI / GDI, Nu 1.8L / 2.0L MPI',
+        threadSize: 'M12 x 1.25',
+        reach: '26.5mm Extended Reach',
+        hexSize: '16mm Hex',
         heatRange: '6 (Mobis Balanced Urban Heat Range)',
-        threadReachHex: 'M12 x 1.25 Thread • 26.5mm Extended Reach • 16mm Hex',
         electrodeMaterial: 'Laser Iridium Center Pin + Platinum Ground Disc',
         gapResistance: '1.0mm Factory Gap • 5.0 kΩ Resistor Core',
         serviceInterval: 'Up to 90,000–100,000 km OEM Life',
@@ -5622,6 +5414,7 @@
       {
         id: 'hyundai-18846-11070',
         brand: 'Hyundai',
+        authenticityLabel: 'GENUINE HYUNDAI OEM',
         oemMaker: 'Mobis Korea OEM',
         partCode: '18846-11070',
         oemNumber: '18846-11070 / SILZKR7B11',
@@ -5636,8 +5429,10 @@
           'Hyundai ix35 (2010–2015)'
         ],
         engineCodes: 'Theta II 2.0L / 2.4L MPI & GDI, Smartstream 2.5L MPI',
+        threadSize: 'M12 x 1.25',
+        reach: '26.5mm Extended Reach',
+        hexSize: '16mm Hex',
         heatRange: '7 (Mobis High-Load Urban Heat Range)',
-        threadReachHex: 'M12 x 1.25 Thread • 26.5mm Extended Reach • 16mm Hex',
         electrodeMaterial: 'Long-Reach Laser Iridium + Platinum Tip',
         gapResistance: '1.1mm Pre-Gapped • 5.0 kΩ Coil-Safe Resistor',
         serviceInterval: 'Up to 90,000–100,000 km OEM Life',
@@ -5650,6 +5445,7 @@
       {
         id: 'hyundai-18849-09085',
         brand: 'Hyundai',
+        authenticityLabel: 'GENUINE HYUNDAI OEM',
         oemMaker: 'Mobis Korea OEM',
         partCode: '18849-09085',
         oemNumber: '18849-09085 / SILZKR8E9G',
@@ -5664,8 +5460,10 @@
           'Hyundai Sonata 1.6T / 2.0T Turbo (2015–2023)'
         ],
         engineCodes: 'Lambda II 3.3L / 3.5L / 3.8L V6, Gamma 1.6T & Theta 2.0T T-GDI',
+        threadSize: 'M12 x 1.25',
+        reach: '26.5mm Extended Reach',
+        hexSize: '16mm Hex',
         heatRange: '8 (Colder Boost / V6 GDI Rating)',
-        threadReachHex: 'M12 x 1.25 Thread • 26.5mm Extended Reach • 16mm Hex',
         electrodeMaterial: 'High-Thermal Laser Iridium + Platinum Ground Electrode',
         gapResistance: '0.9mm–1.0mm Tight Turbo Gap • 5.0 kΩ Resistor',
         serviceInterval: '75,000–90,000 km High-Output Service Life',
@@ -5678,6 +5476,7 @@
       {
         id: 'kia-18846-10060',
         brand: 'Kia',
+        authenticityLabel: 'GENUINE KIA OEM',
         oemMaker: 'Mobis Korea OEM',
         partCode: '18846-10060',
         oemNumber: '18846-10060 / SILZKR6B10E',
@@ -5692,8 +5491,10 @@
           'Kia Seltos 2.0L (2020–2024)'
         ],
         engineCodes: 'Gamma 1.6L MPI / GDI, Nu 1.8L / 2.0L MPI',
+        threadSize: 'M12 x 1.25',
+        reach: '26.5mm Extended Reach',
+        hexSize: '16mm Hex',
         heatRange: '6 (Mobis Balanced Everyday Range)',
-        threadReachHex: 'M12 x 1.25 Thread • 26.5mm Extended Reach • 16mm Hex',
         electrodeMaterial: 'Laser Iridium Center Electrode + Platinum Pad',
         gapResistance: '1.0mm Factory Pre-Gap • Trivalent Nickel Anti-Seize Threads',
         serviceInterval: 'Up to 90,000–100,000 km OEM Life',
@@ -5706,6 +5507,7 @@
       {
         id: 'kia-18846-11070',
         brand: 'Kia',
+        authenticityLabel: 'GENUINE KIA OEM',
         oemMaker: 'Mobis Korea OEM',
         partCode: '18846-11070',
         oemNumber: '18846-11070 / SILZKR7B11',
@@ -5720,8 +5522,10 @@
           'Kia Cadenza & Carnival / Sedona V6 (2014–2023)'
         ],
         engineCodes: 'Theta II 2.0L / 2.4L MPI & GDI, Lambda II 3.3L / 3.5L V6',
+        threadSize: 'M12 x 1.25',
+        reach: '26.5mm Long Reach',
+        hexSize: '16mm Hex',
         heatRange: '7 (Heavy SUV & Sedan Thermal Spec)',
-        threadReachHex: 'M12 x 1.25 Thread • 26.5mm Long Reach • 16mm Hex',
         electrodeMaterial: 'Long-Reach Laser Iridium + Platinum Ground Disc',
         gapResistance: '1.1mm Pre-Gapped • 5.0 kΩ Coil-Safe Resistor',
         serviceInterval: 'Up to 90,000–100,000 km OEM Life',
@@ -5734,6 +5538,7 @@
       {
         id: 'kia-18855-10060',
         brand: 'Kia',
+        authenticityLabel: 'GENUINE KIA OEM',
         oemMaker: 'Mobis Korea OEM',
         partCode: '18855-10060',
         oemNumber: '18855-10060 / LZKR6B-10E',
@@ -5748,8 +5553,10 @@
           'Hyundai i10 / i20 Kappa Cross-Fitment (2011–2021)'
         ],
         engineCodes: 'Kappa 1.0L 3-Cyl & 1.2L / 1.25L 4-Cyl MPI, 1.4L Gamma',
+        threadSize: 'M12 x 1.25',
+        reach: '26.5mm Extended Reach',
+        hexSize: '16mm Hex',
         heatRange: '6 (City Stop-Start Thermal Spec)',
-        threadReachHex: 'M12 x 1.25 Thread • 26.5mm Extended Reach • 16mm Hex',
         electrodeMaterial: 'Genuine Mobis Precision Alloy Center Electrode',
         gapResistance: '1.0mm Factory Gap • 5.0 kΩ RFI Resistor Shield',
         serviceInterval: '30,000–50,000 km Genuine Factory Interval',
@@ -5764,13 +5571,13 @@
     function buildPlugMoreCard(item) {
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'plug-more-card text-left rounded-2xl p-3.5 flex items-center gap-3.5 w-full group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF1F1F]';
+      btn.className = 'plug-more-card min-w-[235px] sm:flex-1 shrink-0 text-left rounded-2xl p-3.5 flex items-center gap-3.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF1F1F]';
       btn.addEventListener('click', () => {
         openPlugDetailModal(item.id, true);
       });
 
       const thumbWrap = document.createElement('div');
-      thumbWrap.className = 'w-16 h-16 sm:w-20 sm:h-16 rounded-xl bg-porscheBlack border border-white/10 overflow-hidden shrink-0';
+      thumbWrap.className = 'w-14 h-14 rounded-xl bg-porscheBlack border border-white/10 overflow-hidden shrink-0';
       const img = document.createElement('img');
       img.src = item.image;
       img.alt = `${item.brand} ${item.partCode}`;
@@ -5782,25 +5589,25 @@
 
       const codeRow = document.createElement('div');
       codeRow.className = 'flex items-center justify-between gap-2 mb-0.5';
-      const codeSpan = document.createElement('span');
-      codeSpan.className = 'text-[10px] font-extrabold uppercase tracking-wider text-[#FF1F1F] truncate';
-      codeSpan.textContent = `Part: ${item.partCode}`;
+      const authSpan = document.createElement('span');
+      authSpan.className = 'text-[9px] font-bold uppercase tracking-wider text-silverMuted truncate';
+      authSpan.textContent = item.authenticityLabel;
       const arrowSpan = document.createElement('span');
-      arrowSpan.className = 'text-xs font-bold text-silverMuted group-hover:text-white group-hover:translate-x-0.5 transition-all shrink-0';
+      arrowSpan.className = 'text-xs font-bold text-silverMuted group-hover:text-[#FF1F1F] group-hover:translate-x-0.5 transition-all shrink-0';
       arrowSpan.textContent = '\u2192';
-      codeRow.appendChild(codeSpan);
+      codeRow.appendChild(authSpan);
       codeRow.appendChild(arrowSpan);
 
-      const nameEl = document.createElement('div');
-      nameEl.className = 'text-xs sm:text-sm font-bold text-white truncate';
-      nameEl.textContent = item.shortTitle;
+      const partEl = document.createElement('div');
+      partEl.className = 'text-sm font-extrabold uppercase text-white truncate';
+      partEl.textContent = item.partCode;
 
       const metaEl = document.createElement('div');
       metaEl.className = 'text-[11px] text-silverMuted truncate mt-0.5';
-      metaEl.textContent = `${item.oemMaker} • ${item.heatRange.split('(')[0].trim()}`;
+      metaEl.textContent = item.shortTitle;
 
       infoWrap.appendChild(codeRow);
-      infoWrap.appendChild(nameEl);
+      infoWrap.appendChild(partEl);
       infoWrap.appendChild(metaEl);
 
       btn.appendChild(thumbWrap);
@@ -5815,10 +5622,10 @@
       if (!bodyEl || !plug) return;
 
       if (eyebrowEl) {
-        eyebrowEl.textContent = `${plug.brand.toUpperCase()} OEM FITMENT \u2022 ${plug.oemMaker.toUpperCase()}`;
+        eyebrowEl.textContent = `${plug.authenticityLabel} \u2022 ${plug.oemMaker.toUpperCase()}`;
       }
       if (titleEl) {
-        titleEl.textContent = `${plug.brand} ${plug.partCode} \u2014 ${plug.shortTitle}`;
+        titleEl.textContent = `${plug.partCode} \u2014 ${plug.shortTitle}`;
       }
 
       bodyEl.innerHTML = '';
@@ -5843,7 +5650,7 @@
 
       const stockTag = document.createElement('div');
       stockTag.className = 'mt-3 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-zinc-200';
-      stockTag.innerHTML = `<span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">OEM Ref: ${plug.oemNumber}</span><span class="px-2.5 py-1 rounded-md bg-[#FF1F1F]/15 border border-[#FF1F1F]/40 text-white">Genuine In Stock (GH)</span>`;
+      stockTag.innerHTML = `<span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">${plug.authenticityLabel}</span><span class="px-2.5 py-1 rounded-md bg-[#FF1F1F]/15 border border-[#FF1F1F]/40 text-white">Ref: ${plug.oemNumber}</span>`;
       mediaCol.appendChild(stockTag);
 
       const summaryCol = document.createElement('div');
@@ -5861,19 +5668,19 @@
       ctaRow.className = 'flex flex-wrap items-center gap-3 pt-1';
 
       const waHref = `https://wa.me/233240118846?text=${encodeURIComponent(
-        `Hello Kash Option, I want to order genuine ${plug.brand} OEM spark plugs: ${plug.partCode} (${plug.oemNumber}) for ${plug.shortTitle}. Please confirm live Ghana Cedi price and delivery.`
+        `Hello Kash Option, I want to enquire about ${plug.authenticityLabel} spark plugs: ${plug.partCode} (${plug.oemNumber}) for ${plug.shortTitle}. Please confirm live Ghana Cedi price and delivery.`
       )}`;
       const waLink = document.createElement('a');
       waLink.href = waHref;
       waLink.target = '_blank';
       waLink.rel = 'noopener noreferrer';
       waLink.className = 'bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white text-xs font-extrabold uppercase tracking-wider px-5 py-3 rounded-xl inline-flex items-center justify-center gap-2 flex-1 sm:flex-initial';
-      waLink.innerHTML = '<i class="fab fa-whatsapp text-sm" aria-hidden="true"></i><span>Enquire / Order on WhatsApp</span>';
+      waLink.innerHTML = '<i class="fab fa-whatsapp text-sm" aria-hidden="true"></i><span>Enquire on WhatsApp</span>';
 
       const botBtn = document.createElement('button');
       botBtn.type = 'button';
       botBtn.className = 'liquid-glass-btn text-white text-xs font-bold uppercase tracking-wider px-4 py-3 rounded-xl inline-flex items-center justify-center gap-2';
-      botBtn.textContent = 'Check My Car VIN';
+      botBtn.textContent = 'Verify My Chassis VIN';
       botBtn.addEventListener('click', () => {
         closePlugDetailModal();
         if (typeof openSalesChat === 'function') openSalesChat();
@@ -5890,11 +5697,11 @@
       heroGrid.appendChild(summaryCol);
       article.appendChild(heroGrid);
 
-      // Detailed Spec Grid + Compatible Ghana Vehicles Grid
+      // Detailed Spec Grid + Compatible Ghana Vehicles & Genuine OEM Verification Details
       const detailColumns = document.createElement('div');
       detailColumns.className = 'grid grid-cols-1 lg:grid-cols-2 gap-4';
 
-      // Specs Card
+      // Specs Card (Thread Size, Reach, Hex Size, Electrode Material explicitly broken out)
       const specCard = document.createElement('div');
       specCard.className = 'rounded-2xl bg-[#0D0D12] border border-white/10 p-4 sm:p-5 space-y-3';
       const specHeader = document.createElement('h4');
@@ -5906,10 +5713,11 @@
       specDl.className = 'divide-y divide-white/10 text-xs';
       [
         ['OEM Part Number', plug.oemNumber],
-        ['Manufacturer', plug.oemMaker],
+        ['Thread Size', plug.threadSize],
+        ['Reach', plug.reach],
+        ['Hex Size', plug.hexSize],
         ['Electrode Material', plug.electrodeMaterial],
         ['Heat Range', plug.heatRange],
-        ['Thread • Reach • Hex', plug.threadReachHex],
         ['Gap & Resistor', plug.gapResistance],
         ['Service Interval', plug.serviceInterval]
       ].forEach(([label, val]) => {
@@ -5927,13 +5735,13 @@
       });
       specCard.appendChild(specDl);
 
-      // Compatible Vehicles & Anti-Counterfeit Card
+      // Compatible Vehicles & Genuine OEM Verification Details Card
       const fitmentCard = document.createElement('div');
       fitmentCard.className = 'rounded-2xl bg-[#0D0D12] border border-white/10 p-4 sm:p-5 space-y-4';
 
       const fitHeader = document.createElement('h4');
       fitHeader.className = 'text-xs font-extrabold uppercase tracking-widest text-[#FF1F1F]';
-      fitHeader.textContent = 'Compatible Ghana Models & Engine Codes';
+      fitHeader.textContent = 'Compatible Vehicles & Engine Codes';
 
       const modelList = document.createElement('ul');
       modelList.className = 'space-y-1.5 text-xs text-zinc-200';
@@ -5950,7 +5758,7 @@
 
       const antiHeader = document.createElement('h4');
       antiHeader.className = 'text-xs font-extrabold uppercase tracking-widest text-white pt-1 border-t border-white/10';
-      antiHeader.textContent = 'Anti-Counterfeit Verification Tips';
+      antiHeader.textContent = 'Genuine OEM Verification Details';
 
       const antiList = document.createElement('ul');
       antiList.className = 'space-y-1.5 text-xs text-silverMuted';
@@ -5971,7 +5779,7 @@
       detailColumns.appendChild(fitmentCard);
       article.appendChild(detailColumns);
 
-      // Seamless "More OEM Options for [Brand]" Strip / Grid
+      // Clean Horizontal Row of "Other OEM Options"
       const otherPlugs = plugDetailCatalog.filter(p => p.brand === plug.brand && p.id !== plug.id);
       if (otherPlugs.length > 0) {
         const moreSection = document.createElement('section');
@@ -5982,21 +5790,21 @@
         moreHead.className = 'flex items-center justify-between gap-3';
         const moreTitle = document.createElement('h4');
         moreTitle.className = 'text-xs sm:text-sm font-extrabold uppercase tracking-wider text-white';
-        moreTitle.textContent = `More OEM Options for ${plug.brand}`;
+        moreTitle.textContent = `Other OEM Options (${plug.brand})`;
         const moreHint = document.createElement('span');
         moreHint.className = 'text-[11px] text-silverMuted';
-        moreHint.textContent = 'Tap to switch instantly';
+        moreHint.textContent = 'Tap to switch seamlessly';
         moreHead.appendChild(moreTitle);
         moreHead.appendChild(moreHint);
 
-        const moreGrid = document.createElement('div');
-        moreGrid.className = 'grid grid-cols-1 sm:grid-cols-2 gap-3';
+        const moreRow = document.createElement('div');
+        moreRow.className = 'plug-drawer-row flex flex-nowrap overflow-x-auto gap-3.5 pb-2';
         otherPlugs.forEach(other => {
-          moreGrid.appendChild(buildPlugMoreCard(other));
+          moreRow.appendChild(buildPlugMoreCard(other));
         });
 
         moreSection.appendChild(moreHead);
-        moreSection.appendChild(moreGrid);
+        moreSection.appendChild(moreRow);
         article.appendChild(moreSection);
       }
 
