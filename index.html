@@ -223,11 +223,13 @@
       transform: scale(0.985) translate3d(0, 0, 0);
     }
 
-    /* Subtle crimson-tinted thin hairline border & soft glow hover across non-landing pages */
+    /* Smoked glass rim lighting, ambient crimson glow & hairline border across non-landing sub-pages ONLY */
     .page-view:not(#home) .liquid-glass,
     .page-view:not(#home) .porsche-card {
+      background-color: rgba(16, 16, 20, 0.65);
+      background-image: radial-gradient(circle at top left, rgba(229, 9, 20, 0.07), transparent 60%);
       border-color: rgba(229, 9, 20, 0.28);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 18px rgba(229, 9, 20, 0.06);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 12px 32px rgba(0, 0, 0, 0.55), 0 0 18px rgba(229, 9, 20, 0.06);
       transition:
         transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
         border-color 350ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -238,6 +240,35 @@
     .page-view:not(#home) .porsche-card:hover {
       border-color: rgba(229, 9, 20, 0.42);
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 26px 60px rgba(0, 0, 0, 0.8), 0 0 28px rgba(229, 9, 20, 0.14);
+    }
+
+    /* Precision 5px glowing crimson eyebrow dot & architectural step watermarks (sub-pages only) */
+    .page-view:not(#home) .oem-eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 9999px;
+      background-color: #E50914;
+      box-shadow: 0 0 8px rgba(229, 9, 20, 0.6);
+      margin-right: 0.45rem;
+      vertical-align: middle;
+      transform: translateY(-0.5px);
+    }
+    .page-view:not(#home) .step-watermark {
+      position: absolute;
+      right: 0.85rem;
+      bottom: -0.65rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 5.5rem;
+      line-height: 0.85;
+      letter-spacing: -0.05em;
+      color: rgba(255, 255, 255, 0.03);
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-select: none;
+      z-index: 0;
     }
 
     /* Technical Specification Table Row */
@@ -963,7 +994,7 @@
                 </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="font-bold text-white uppercase tracking-wider">Toyota OEM &bull; Denso Japan</span>
+                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Toyota OEM &bull; Denso Japan</span>
                 <span class="text-porscheRed font-bold text-[10px] uppercase">Part: SC20HR11</span>
               </div>
               <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Toyota Corolla &bull; Auris &bull; Matrix 1.8L</h3>
@@ -993,7 +1024,7 @@
                 </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="font-bold text-white uppercase tracking-wider">Toyota OEM &bull; Denso Japan</span>
+                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Toyota OEM &bull; Denso Japan</span>
                 <span class="text-porscheRed font-bold text-[10px] uppercase">Part: SK20R11</span>
               </div>
               <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Toyota Camry &bull; RAV4 &bull; Highlander 2.4L</h3>
@@ -1023,7 +1054,7 @@
                 </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="font-bold text-white uppercase tracking-wider">Toyota OEM &bull; Denso Japan</span>
+                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Toyota OEM &bull; Denso Japan</span>
                 <span class="text-porscheRed font-bold text-[10px] uppercase">Part: FK20HR11</span>
               </div>
               <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Toyota Prado &bull; Land Cruiser &bull; V6 4.0L</h3>
@@ -1053,7 +1084,7 @@
                 </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="font-bold text-white uppercase tracking-wider">Honda OEM &bull; NGK Japan</span>
+                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Honda OEM &bull; NGK Japan</span>
                 <span class="text-porscheRed font-bold text-[10px] uppercase">Part: IZFR6K11</span>
               </div>
               <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Honda Accord &bull; CR-V 2.4L i-VTEC</h3>
@@ -1083,7 +1114,7 @@
                 </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="font-bold text-white uppercase tracking-wider">Honda OEM &bull; NGK Japan</span>
+                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Honda OEM &bull; NGK Japan</span>
                 <span class="text-porscheRed font-bold text-[10px] uppercase">Part: ILZKR7B11</span>
               </div>
               <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Honda Civic &bull; HR-V 1.8L i-VTEC</h3>
@@ -1113,7 +1144,7 @@
                 </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="font-bold text-white uppercase tracking-wider">Honda OEM &bull; NGK Japan</span>
+                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Honda OEM &bull; NGK Japan</span>
                 <span class="text-porscheRed font-bold text-[10px] uppercase">Part: DILZKR7B11GS</span>
               </div>
               <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Honda 1.5L Turbo Earth Dreams</h3>
@@ -1143,7 +1174,7 @@
                 </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="font-bold text-white uppercase tracking-wider">Hyundai OEM &bull; Mobis Korea</span>
+                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Hyundai OEM &bull; Mobis Korea</span>
                 <span class="text-porscheRed font-bold text-[10px] uppercase">Part: 18846-10060</span>
               </div>
               <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Hyundai Elantra &bull; Accent 1.6L - 1.8L</h3>
@@ -1173,7 +1204,7 @@
                 </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="font-bold text-white uppercase tracking-wider">Hyundai OEM &bull; Mobis Korea</span>
+                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Hyundai OEM &bull; Mobis Korea</span>
                 <span class="text-porscheRed font-bold text-[10px] uppercase">Part: 18846-11070</span>
               </div>
               <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Hyundai Sonata &bull; Tucson 2.0L - 2.4L</h3>
@@ -1203,7 +1234,7 @@
                 </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="font-bold text-white uppercase tracking-wider">Kia OEM &bull; Mobis Korea</span>
+                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Kia OEM &bull; Mobis Korea</span>
                 <span class="text-porscheRed font-bold text-[10px] uppercase">Part: 18846-10060</span>
               </div>
               <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Kia Forte &bull; Cerato &bull; Soul 1.6L - 2.0L</h3>
@@ -1233,7 +1264,7 @@
                 </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
-                <span class="font-bold text-white uppercase tracking-wider">Kia OEM &bull; Mobis Korea</span>
+                <span class="oem-eyebrow font-bold text-white uppercase tracking-wider">Kia OEM &bull; Mobis Korea</span>
                 <span class="text-porscheRed font-bold text-[10px] uppercase">Part: 18846-11070</span>
               </div>
               <h3 class="text-lg font-bold uppercase text-white mt-0.5 mb-2">Kia Sportage &bull; Optima / K5 &bull; Sorento</h3>
@@ -1354,7 +1385,7 @@
           <!-- Right: Authentic Studio Display featuring the hosted image -->
           <div class="lg:col-span-5 scroll-reveal" data-reveal="fade-up" data-reveal-delay="120">
             <div class="liquid-glass liquid-glass-interactive p-8 rounded-2xl relative overflow-hidden text-center">
-              <span class="text-[10px] font-extrabold uppercase tracking-widest text-porscheRed block mb-2">Direct Authorized Supply</span>
+              <span class="oem-eyebrow text-[10px] font-extrabold uppercase tracking-widest text-porscheRed block mb-2">Direct Authorized Supply</span>
               <h3 class="text-lg font-bold uppercase text-white mb-4">Precision OEM Spark Plugs</h3>
 
               <!-- Prominent Product Image Feature -->
@@ -1400,7 +1431,7 @@
           <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="0">
             <div class="liquid-glass liquid-glass-interactive p-6 rounded-2xl flex flex-col justify-between h-full">
               <div>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-silverMuted block mb-1">Tier 01 &bull; Retail Maintenance</span>
+                <span class="oem-eyebrow text-[10px] font-bold uppercase tracking-widest text-silverMuted block mb-1">Tier 01 &bull; Retail Maintenance</span>
                 <h3 class="text-xl font-bold uppercase text-white mb-2">Engine Pack (Set of 4 / 6)</h3>
                 <p class="text-xs text-silverMuted leading-relaxed mb-4">
                   Exact factory quantity for standard tune-ups. Pre-gapped to OEM specification for immediate installation.
@@ -1421,7 +1452,7 @@
             <div class="liquid-glass liquid-glass-interactive p-6 rounded-2xl border-porscheRed/40 relative flex flex-col justify-between shadow-[0_20px_50px_rgba(229,9,20,0.14)] h-full">
               <span class="absolute -top-2.5 right-6 bg-porscheRed text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md shadow-md">Most Popular with Garages</span>
               <div>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-1">Tier 02 &bull; Workshop Pack</span>
+                <span class="oem-eyebrow text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-1">Tier 02 &bull; Workshop Pack</span>
                 <h3 class="text-xl font-bold uppercase text-white mb-2">Carton of 40 Plugs</h3>
                 <p class="text-xs text-silverMuted leading-relaxed mb-4">
                   10 engine sets of fast-moving Toyota (SC20HR11/SK20R11), Honda (IZFR6K11), or Hyundai (SILZKR6B10E). Preferential trade pricing.
@@ -1441,7 +1472,7 @@
           <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="200">
             <div class="liquid-glass liquid-glass-interactive p-6 rounded-2xl flex flex-col justify-between h-full">
               <div>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-silverMuted block mb-1">Tier 03 &bull; Distributor Master Case</span>
+                <span class="oem-eyebrow text-[10px] font-bold uppercase tracking-widest text-silverMuted block mb-1">Tier 03 &bull; Distributor Master Case</span>
                 <h3 class="text-xl font-bold uppercase text-white mb-2">Master Case of 200 Plugs</h3>
                 <p class="text-xs text-silverMuted leading-relaxed mb-4">
                   Designed for retail auto-parts stores and commercial fleet maintenance depots. Maximum margin protection with guaranteed authenticity.
@@ -1463,7 +1494,7 @@
         <!-- Interactive Wholesale Quotation Form -->
         <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="100">
           <div class="liquid-glass p-6 sm:p-8 rounded-2xl">
-            <h3 class="text-lg font-bold uppercase text-white mb-1">Instant Trade Quotation Request</h3>
+            <h3 class="oem-eyebrow text-lg font-bold uppercase text-white mb-1">Instant Trade Quotation Request</h3>
             <p class="text-xs text-silverMuted mb-6">Select your required volume and brands. We provide instant trade availability and tiered pricing directly to your WhatsApp.</p>
 
             <form onsubmit="handleWholesaleRequest(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -1529,35 +1560,35 @@
       <div class="grid grid-cols-1 md:grid-cols-5 gap-6 mb-16">
 
         <div class="scroll-reveal liquid-glass liquid-glass-interactive p-5 rounded-xl" data-reveal="fade-up" data-reveal-delay="0">
-          <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1.5">Genuine OEM Products</span>
+          <span class="oem-eyebrow text-xs font-bold uppercase tracking-wider text-white block mb-1.5">Genuine OEM Products</span>
           <p class="text-xs text-silverMuted leading-relaxed">
             Zero re-boxed generic spark plugs. Factory-sealed manufacturer packaging from Denso, NGK, and Mobis.
           </p>
         </div>
 
         <div class="scroll-reveal liquid-glass liquid-glass-interactive p-5 rounded-xl" data-reveal="fade-up" data-reveal-delay="100">
-          <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1.5">Chassis Fitment</span>
+          <span class="oem-eyebrow text-xs font-bold uppercase tracking-wider text-white block mb-1.5">Chassis Fitment</span>
           <p class="text-xs text-silverMuted leading-relaxed">
             Chassis and VIN verification cross-referenced against factory repair manuals to eliminate guesswork.
           </p>
         </div>
 
         <div class="scroll-reveal liquid-glass liquid-glass-interactive p-5 rounded-xl" data-reveal="fade-up" data-reveal-delay="200">
-          <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1.5">Japan &amp; USA Sourcing</span>
+          <span class="oem-eyebrow text-xs font-bold uppercase tracking-wider text-white block mb-1.5">Japan &amp; USA Sourcing</span>
           <p class="text-xs text-silverMuted leading-relaxed">
             Imported directly through verified distribution pipelines, avoiding dubious intermediary stockists.
           </p>
         </div>
 
         <div class="scroll-reveal liquid-glass liquid-glass-interactive p-5 rounded-xl" data-reveal="fade-up" data-reveal-delay="300">
-          <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1.5">Competitive Pricing</span>
+          <span class="oem-eyebrow text-xs font-bold uppercase tracking-wider text-white block mb-1.5">Competitive Pricing</span>
           <p class="text-xs text-silverMuted leading-relaxed">
             Direct international freight allows us to offer honest pricing for both retail sets and trade cartons.
           </p>
         </div>
 
         <div class="scroll-reveal liquid-glass liquid-glass-interactive p-5 rounded-xl" data-reveal="fade-up" data-reveal-delay="0">
-          <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1.5">Nationwide Delivery</span>
+          <span class="oem-eyebrow text-xs font-bold uppercase tracking-wider text-white block mb-1.5">Nationwide Delivery</span>
           <p class="text-xs text-silverMuted leading-relaxed">
             Reliable, tracked delivery across Greater Accra, Kumasi, Takoradi, Tamale, and all 16 regions.
           </p>
@@ -1568,7 +1599,7 @@
       <!-- Comparison: Marketplace Listings vs Specialist Sourcing -->
       <div class="liquid-glass p-8 sm:p-10 rounded-2xl">
         <div class="max-w-2xl mb-8 scroll-reveal" data-reveal="headline">
-          <h3 class="text-xl font-bold uppercase text-white mb-2">Understanding Marketplace Listings vs Specialist Suppliers in Ghana</h3>
+          <h3 class="oem-eyebrow text-xl font-bold uppercase text-white mb-2">Understanding Marketplace Listings vs Specialist Suppliers in Ghana</h3>
           <p class="text-xs text-silverMuted leading-relaxed">
             Customers frequently compare online marketplace listings (such as Jiji or informal street stalls) with specialist suppliers. Counterfeiters use cheap, standard copper cores disguised with spray paint and stamped with Denso, NGK, or Mobis logos.
           </p>
@@ -1578,7 +1609,7 @@
 
           <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="0">
             <div class="liquid-glass liquid-glass-interactive p-6 rounded-xl space-y-3 h-full">
-              <h4 class="text-xs font-bold uppercase tracking-wider text-porscheRed">Marketplace Imitation Risks</h4>
+              <h4 class="oem-eyebrow text-xs font-bold uppercase tracking-wider text-porscheRed">Marketplace Imitation Risks</h4>
               <p class="text-silverMuted leading-relaxed">
                 Standard copper electrodes fail within 10,000 km, causing persistent misfires under heavy air-conditioning load.
               </p>
@@ -1593,7 +1624,7 @@
 
           <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="100">
             <div class="liquid-glass liquid-glass-interactive p-6 rounded-xl space-y-3 h-full">
-              <h4 class="text-xs font-bold uppercase tracking-wider text-white">KASH OPTION Specialist Guarantee</h4>
+              <h4 class="oem-eyebrow text-xs font-bold uppercase tracking-wider text-white">KASH OPTION Specialist Guarantee</h4>
               <p class="text-silverMuted leading-relaxed">
                 Genuine 0.7mm laser-welded fine-wire Iridium center tip with platinum ground disc rated for 100,000 km service intervals.
               </p>
@@ -1629,42 +1660,54 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
           <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="0">
-            <div class="p-6 rounded-2xl liquid-glass liquid-glass-interactive h-full">
-              <span class="text-porscheRed font-extrabold text-xs block mb-3 uppercase tracking-widest">Step 01</span>
-              <h3 class="text-sm font-bold uppercase text-white mb-2">Identify Your Vehicle</h3>
-              <p class="text-xs text-silverMuted leading-relaxed">
-                Choose your vehicle make, model, and year, or share your chassis number/VIN directly via WhatsApp.
-              </p>
+            <div class="p-6 rounded-2xl liquid-glass liquid-glass-interactive h-full relative overflow-hidden">
+              <span aria-hidden="true" class="step-watermark">01</span>
+              <div class="relative z-10">
+                <span class="oem-eyebrow text-porscheRed font-extrabold text-xs block mb-3 uppercase tracking-widest">Step 01</span>
+                <h3 class="text-sm font-bold uppercase text-white mb-2">Identify Your Vehicle</h3>
+                <p class="text-xs text-silverMuted leading-relaxed">
+                  Choose your vehicle make, model, and year, or share your chassis number/VIN directly via WhatsApp.
+                </p>
+              </div>
             </div>
           </div>
 
           <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="100">
-            <div class="p-6 rounded-2xl liquid-glass liquid-glass-interactive h-full">
-              <span class="text-porscheRed font-extrabold text-xs block mb-3 uppercase tracking-widest">Step 02</span>
-              <h3 class="text-sm font-bold uppercase text-white mb-2">Verify Your Part</h3>
-              <p class="text-xs text-silverMuted leading-relaxed">
-                Our technical desk cross-references factory manuals to confirm the exact OEM part number for your engine.
-              </p>
+            <div class="p-6 rounded-2xl liquid-glass liquid-glass-interactive h-full relative overflow-hidden">
+              <span aria-hidden="true" class="step-watermark">02</span>
+              <div class="relative z-10">
+                <span class="oem-eyebrow text-porscheRed font-extrabold text-xs block mb-3 uppercase tracking-widest">Step 02</span>
+                <h3 class="text-sm font-bold uppercase text-white mb-2">Verify Your Part</h3>
+                <p class="text-xs text-silverMuted leading-relaxed">
+                  Our technical desk cross-references factory manuals to confirm the exact OEM part number for your engine.
+                </p>
+              </div>
             </div>
           </div>
 
           <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="200">
-            <div class="p-6 rounded-2xl liquid-glass liquid-glass-interactive h-full">
-              <span class="text-porscheRed font-extrabold text-xs block mb-3 uppercase tracking-widest">Step 03</span>
-              <h3 class="text-sm font-bold uppercase text-white mb-2">Get Your Price</h3>
-              <p class="text-xs text-silverMuted leading-relaxed">
-                Receive live stock availability and confirmed wholesale or retail pricing on WhatsApp.
-              </p>
+            <div class="p-6 rounded-2xl liquid-glass liquid-glass-interactive h-full relative overflow-hidden">
+              <span aria-hidden="true" class="step-watermark">03</span>
+              <div class="relative z-10">
+                <span class="oem-eyebrow text-porscheRed font-extrabold text-xs block mb-3 uppercase tracking-widest">Step 03</span>
+                <h3 class="text-sm font-bold uppercase text-white mb-2">Get Your Price</h3>
+                <p class="text-xs text-silverMuted leading-relaxed">
+                  Receive live stock availability and confirmed wholesale or retail pricing on WhatsApp.
+                </p>
+              </div>
             </div>
           </div>
 
           <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="300">
-            <div class="p-6 rounded-2xl liquid-glass liquid-glass-interactive h-full">
-              <span class="text-porscheRed font-extrabold text-xs block mb-3 uppercase tracking-widest">Step 04</span>
-              <h3 class="text-sm font-bold uppercase text-white mb-2">Order and Receive</h3>
-              <p class="text-xs text-silverMuted leading-relaxed">
-                Confirm your order for same-day dispatch in Accra or fast, secured parcel transit across Ghana.
-              </p>
+            <div class="p-6 rounded-2xl liquid-glass liquid-glass-interactive h-full relative overflow-hidden">
+              <span aria-hidden="true" class="step-watermark">04</span>
+              <div class="relative z-10">
+                <span class="oem-eyebrow text-porscheRed font-extrabold text-xs block mb-3 uppercase tracking-widest">Step 04</span>
+                <h3 class="text-sm font-bold uppercase text-white mb-2">Order and Receive</h3>
+                <p class="text-xs text-silverMuted leading-relaxed">
+                  Confirm your order for same-day dispatch in Accra or fast, secured parcel transit across Ghana.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -1698,7 +1741,7 @@
               <div class="flex items-center gap-4 mb-4">
                 <img src="https://iili.io/oHVNlFS.png" alt="Spark Plug Authenticity Inspection" class="h-12 w-auto object-contain">
                 <div>
-                  <span class="text-[10px] font-bold uppercase tracking-wider text-porscheRed block">Guide 01 &bull; Anti-Counterfeit</span>
+                  <span class="oem-eyebrow text-[10px] font-bold uppercase tracking-wider text-porscheRed block">Guide 01 &bull; Anti-Counterfeit</span>
                   <h3 class="text-base font-bold uppercase text-white">How to Spot Counterfeit Spark Plugs in Ghana</h3>
                 </div>
               </div>
@@ -1720,7 +1763,7 @@
               <div class="flex items-center gap-4 mb-4">
                 <img src="https://iili.io/oHVNlFS.png" alt="Iridium vs Copper Plugs" class="h-12 w-auto object-contain">
                 <div>
-                  <span class="text-[10px] font-bold uppercase tracking-wider text-porscheRed block">Guide 02 &bull; Metallurgy &amp; Performance</span>
+                  <span class="oem-eyebrow text-[10px] font-bold uppercase tracking-wider text-porscheRed block">Guide 02 &bull; Metallurgy &amp; Performance</span>
                   <h3 class="text-base font-bold uppercase text-white">Iridium vs Standard Copper Spark Plugs</h3>
                 </div>
               </div>
@@ -1742,7 +1785,7 @@
               <div class="flex items-center gap-4 mb-4">
                 <img src="https://iili.io/oHVNlFS.png" alt="Spark Plug Heat Range Physics" class="h-12 w-auto object-contain">
                 <div>
-                  <span class="text-[10px] font-bold uppercase tracking-wider text-porscheRed block">Guide 03 &bull; Combustion Physics</span>
+                  <span class="oem-eyebrow text-[10px] font-bold uppercase tracking-wider text-porscheRed block">Guide 03 &bull; Combustion Physics</span>
                   <h3 class="text-base font-bold uppercase text-white">Why Incorrect Heat Ranges Destroy Coils</h3>
                 </div>
               </div>
@@ -1764,7 +1807,7 @@
               <div class="flex items-center gap-4 mb-4">
                 <img src="https://iili.io/oHVNlFS.png" alt="Chassis Number VIN Verification Protocol" class="h-12 w-auto object-contain">
                 <div>
-                  <span class="text-[10px] font-bold uppercase tracking-wider text-porscheRed block">Guide 04 &bull; Fitment Precision</span>
+                  <span class="oem-eyebrow text-[10px] font-bold uppercase tracking-wider text-porscheRed block">Guide 04 &bull; Fitment Precision</span>
                   <h3 class="text-base font-bold uppercase text-white">The Chassis Number (VIN) Matching Protocol</h3>
                 </div>
               </div>
@@ -1802,35 +1845,35 @@
         <div class="space-y-4 text-xs">
 
           <div class="scroll-reveal liquid-glass liquid-glass-interactive p-6 rounded-2xl" data-reveal="fade-up" data-reveal-delay="0">
-            <h3 class="font-bold uppercase text-white text-sm mb-2">How can I be 100% certain I am getting the right spark plug?</h3>
+            <h3 class="oem-eyebrow font-bold uppercase text-white text-sm mb-2">How can I be 100% certain I am getting the right spark plug?</h3>
             <p class="text-silverMuted leading-relaxed">
               Simply send your vehicle chassis number (VIN) or frame number via our fitment tool or WhatsApp. Our technicians verify the exact engine code and cross-reference factory parts catalogues before fulfilling your order.
             </p>
           </div>
 
           <div class="scroll-reveal liquid-glass liquid-glass-interactive p-6 rounded-2xl" data-reveal="fade-up" data-reveal-delay="100">
-            <h3 class="font-bold uppercase text-white text-sm mb-2">Why are prices not displayed publicly on the website?</h3>
+            <h3 class="oem-eyebrow font-bold uppercase text-white text-sm mb-2">Why are prices not displayed publicly on the website?</h3>
             <p class="text-silverMuted leading-relaxed">
               We serve both wholesale trade buyers (workshops, parts retailers) and retail car owners. Because trade discounts vary with volume and international exchange rates fluctuate, we quote current pricing directly via our active WhatsApp catalogue.
             </p>
           </div>
 
           <div class="scroll-reveal liquid-glass liquid-glass-interactive p-6 rounded-2xl" data-reveal="fade-up" data-reveal-delay="200">
-            <h3 class="font-bold uppercase text-white text-sm mb-2">How fast is delivery to locations outside Accra?</h3>
+            <h3 class="oem-eyebrow font-bold uppercase text-white text-sm mb-2">How fast is delivery to locations outside Accra?</h3>
             <p class="text-silverMuted leading-relaxed">
               Greater Accra deliveries arrive same-day. For regional orders to Kumasi, Takoradi, Sunyani, Tamale, and other regional hubs, parcels are dispatched same-day via secure transit services for next-morning pickup or doorstep drop-off.
             </p>
           </div>
 
           <div class="scroll-reveal liquid-glass liquid-glass-interactive p-6 rounded-2xl" data-reveal="fade-up" data-reveal-delay="300">
-            <h3 class="font-bold uppercase text-white text-sm mb-2">Do you sell genuine Denso, NGK, and Mobis plugs?</h3>
+            <h3 class="oem-eyebrow font-bold uppercase text-white text-sm mb-2">Do you sell genuine Denso, NGK, and Mobis plugs?</h3>
             <p class="text-silverMuted leading-relaxed">
               Yes. Every spark plug we distribute is sourced directly from authorized Tier-1 supply lines in Japan and the USA. We maintain a zero-tolerance policy for imitation parts.
             </p>
           </div>
 
           <div class="scroll-reveal liquid-glass liquid-glass-interactive p-6 rounded-2xl" data-reveal="fade-up" data-reveal-delay="0">
-            <h3 class="font-bold uppercase text-white text-sm mb-2">What is your policy if an item has a factory defect?</h3>
+            <h3 class="oem-eyebrow font-bold uppercase text-white text-sm mb-2">What is your policy if an item has a factory defect?</h3>
             <p class="text-silverMuted leading-relaxed">
               In the unlikely event of an authentic factory defect reported within 48 hours of receipt prior to installation damage, our technical desk will immediately review and facilitate an exchange or store credit.
             </p>
@@ -1861,7 +1904,7 @@
           <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="0">
             <div class="liquid-glass liquid-glass-interactive p-8 rounded-2xl flex flex-col justify-between h-full">
               <div>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-2">Direct Sales Desk</span>
+                <span class="oem-eyebrow text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-2">Direct Sales Desk</span>
                 <h3 class="text-lg font-bold uppercase text-white mb-3">Fast Customer Assistance</h3>
                 <p class="text-silverMuted leading-relaxed mb-6">Send your car model or chassis VIN directly to our active order desk. We provide instant availability, pricing quotes, and courier dispatch arrangements.</p>
               </div>
@@ -1874,7 +1917,7 @@
           <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="100">
             <div class="liquid-glass liquid-glass-interactive p-8 rounded-2xl flex flex-col justify-between h-full">
               <div>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-white block mb-2">Operational Details</span>
+                <span class="oem-eyebrow text-[10px] font-bold uppercase tracking-widest text-white block mb-2">Operational Details</span>
                 <h3 class="text-lg font-bold uppercase text-white mb-3">Operating Hours &amp; Channels</h3>
                 <ul class="text-silverMuted space-y-2 mb-6">
                   <li><strong class="text-white">Desk Hours:</strong> 7:00 AM &ndash; 5:00 PM, Monday&ndash;Saturday</li>
