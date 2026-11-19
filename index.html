@@ -377,11 +377,13 @@
       position: fixed;
       inset: 0;
       z-index: 39;
-      background: rgba(5, 5, 5, 0.35);
+      background: rgba(5, 5, 5, 0.45);
+      backdrop-filter: blur(12px) saturate(140%);
+      -webkit-backdrop-filter: blur(12px) saturate(140%);
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transition: opacity 240ms cubic-bezier(0.22, 1, 0.36, 1), visibility 240ms ease;
+      transition: opacity 220ms cubic-bezier(0.22, 1, 0.36, 1), visibility 220ms ease;
     }
     #menuBackdrop.is-open {
       opacity: 1;
