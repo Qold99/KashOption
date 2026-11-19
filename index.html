@@ -1687,21 +1687,18 @@
   </footer>
 
   <!-- ================= SCROLL-TRIGGERED FLOATING SALES REPRESENTATIVE ================= -->
-  <aside id="salesRepWidget" aria-label="Sales Representative Quick Fitment Assistant" class="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-30 max-w-[295px] sm:max-w-[330px]">
-    <button type="button" onclick="openSalesFitmentInquiry()" class="w-full text-left bg-[#121214]/95 hover:bg-[#18181C] backdrop-blur-xl border border-white/15 hover:border-porscheRed rounded-lg p-3 sm:p-3.5 shadow-[0_20px_45px_rgba(0,0,0,0.85)] flex items-center gap-3 group transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-porscheRed">
-      <div class="w-10 h-10 rounded-full bg-[#18181C] border border-porscheRed/60 flex items-center justify-center shrink-0 overflow-hidden p-1 group-hover:border-porscheRed transition-colors">
-        <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Sales Specialist" referrerpolicy="no-referrer" class="w-full h-full object-contain filter contrast-125 brightness-110">
+  <aside id="salesRepWidget" aria-label="Sales Representative Quick Fitment Assistant" class="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-30 max-w-[268px] sm:max-w-[292px]">
+    <button type="button" onclick="openSalesFitmentInquiry()" class="w-full text-left bg-[#101010]/95 hover:bg-[#161618] backdrop-blur-xl border border-white/12 hover:border-white/25 rounded-lg px-3.5 py-2.5 shadow-[0_18px_40px_rgba(0,0,0,0.85)] flex items-center gap-3 group transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-porscheRed">
+      <div class="w-10 h-10 rounded-full bg-[#18181C] border border-white/15 group-hover:border-porscheRed/70 flex items-center justify-center shrink-0 overflow-hidden transition-colors">
+        <img src="/src/assets/images/sales_rep_avatar_1795063385178.jpg" alt="KASH OPTION Sales Representative" referrerpolicy="no-referrer" class="w-full h-full object-cover object-center">
       </div>
       <div class="min-w-0 flex-1">
-        <span class="block text-[9.5px] font-bold uppercase tracking-widest text-porscheRed leading-none mb-1">
-          Sales Specialist &middot; KASH OPTION
+        <span class="block text-xs font-bold text-white leading-snug whitespace-nowrap">
+          Need plugs for your car?
         </span>
-        <span class="block text-xs font-extrabold text-white leading-snug">
-          What car do you need plugs for?
-        </span>
-        <span class="mt-0.5 flex items-center gap-1.5 text-[11px] font-semibold text-metallicSilver group-hover:text-white transition-colors">
-          <span>Tap to buy genuine plugs</span>
-          <i class="fas fa-arrow-right text-[9px] text-porscheRed transform group-hover:translate-x-1 transition-transform"></i>
+        <span class="mt-0.5 flex items-center gap-1 text-[11px] font-medium text-metallicSilver group-hover:text-white transition-colors whitespace-nowrap">
+          <span>Tap to check fitment</span>
+          <span aria-hidden="true" class="text-porscheRed inline-block transform group-hover:translate-x-0.5 transition-transform">&rarr;</span>
         </span>
       </div>
     </button>
@@ -1763,10 +1760,29 @@
     function updateSalesRepVisibility() {
       const widget = document.getElementById('salesRepWidget');
       if (!widget) return;
+
+      const vh = window.innerHeight || document.documentElement.clientHeight;
       const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
-      if (scrollY > 120) {
+      const docHeight = Math.max(
+        document.documentElement.scrollHeight,
+        document.body ? document.body.scrollHeight : 0
+      );
+      const maxScroll = docHeight - vh;
+
+      if (scrollY <= 40 || maxScroll <= 40) {
+        widget.classList.remove('is-visible');
+        return;
+      }
+
+      const progress = scrollY / maxScroll;
+      const footerEl = document.querySelector('footer');
+      const nearFooter = footerEl
+        ? footerEl.getBoundingClientRect().top <= vh + 120
+        : false;
+
+      if (progress >= 0.75 || nearFooter) {
         widget.classList.add('is-visible');
-      } else {
+      } else if (progress < 0.70 && !nearFooter) {
         widget.classList.remove('is-visible');
       }
     }
