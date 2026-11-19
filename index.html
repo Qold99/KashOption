@@ -107,7 +107,9 @@
     }
 
     /* GPU-locked fixed / sticky layer stability */
-    header.nav-glass,
+    header.dynamic-island-header,
+    .nav-glass,
+    #menuBackdrop,
     #menuOverlay,
     #salesRepWidget,
     #salesChatBackdrop,
@@ -115,7 +117,9 @@
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
     }
-    header.nav-glass {
+    header.dynamic-island-header,
+    .nav-glass,
+    #menuBackdrop {
       transform: translate3d(0, 0, 0);
     }
 
@@ -284,13 +288,13 @@
       border-bottom: none;
     }
 
-    /* Sticky Navigation Liquid Glass */
+    /* Dynamic Island Navigation Pill (Liquid Glass) */
     .nav-glass {
-      background: rgba(16, 16, 20, 0.65);
-      backdrop-filter: blur(24px) saturate(160%);
-      -webkit-backdrop-filter: blur(24px) saturate(160%);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.06), 0 16px 40px rgba(0, 0, 0, 0.6);
+      background: rgba(14, 14, 18, 0.78);
+      backdrop-filter: blur(26px) saturate(170%);
+      -webkit-backdrop-filter: blur(26px) saturate(170%);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 16px 40px rgba(0, 0, 0, 0.65);
     }
 
     /* Dark select options */
@@ -368,34 +372,95 @@
       }
     }
 
-    /* ================= MENU OPEN BLUR & HIDE EFFECT ================= */
-    body.menu-open main,
-    body.menu-open footer,
-    body.menu-open aside {
-      filter: blur(24px) brightness(0.12);
-      -webkit-filter: blur(24px) brightness(0.12);
+    /* ================= DYNAMIC ISLAND DROPDOWN CARD & DISMISS BACKDROP ================= */
+    #menuBackdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 39;
+      background: rgba(5, 5, 5, 0.35);
+      opacity: 0;
+      visibility: hidden;
       pointer-events: none;
-      user-select: none;
-      opacity: 0.12;
-      transition: filter 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+      transition: opacity 240ms cubic-bezier(0.22, 1, 0.36, 1), visibility 240ms ease;
     }
-    body.menu-open {
-      overflow: hidden;
+    #menuBackdrop.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
     }
 
-    /* Fullscreen Menu Overlay Transition */
     #menuOverlay {
-      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      margin-top: 8px;
+      width: 100%;
+      max-height: calc(100dvh - 96px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      overscroll-behavior: contain;
+      background: rgba(14, 14, 18, 0.86);
+      backdrop-filter: blur(26px) saturate(170%);
+      -webkit-backdrop-filter: blur(26px) saturate(170%);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 20px 45px rgba(0, 0, 0, 0.72);
+      border-radius: 24px;
+      transform-origin: top center;
+      transition:
+        opacity 240ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 240ms ease;
     }
     #menuOverlay.hidden-overlay {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
+      transform: translate3d(0, -10px, 0) scale(0.97);
     }
     #menuOverlay.active-overlay {
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    /* Menu Trigger Icon Morph */
+    #menuTriggerBtn .menu-icon-bars,
+    #menuTriggerBtn .menu-icon-close {
+      position: absolute;
+      transition:
+        opacity 220ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    #menuTriggerBtn .menu-icon-bars {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+    #menuTriggerBtn .menu-icon-close {
+      opacity: 0;
+      transform: rotate(-90deg) scale(0.75);
+    }
+    #menuTriggerBtn.is-open {
+      border-color: rgba(229, 9, 20, 0.48);
+      color: #FFFFFF;
+    }
+    #menuTriggerBtn.is-open .menu-icon-bars {
+      opacity: 0;
+      transform: rotate(90deg) scale(0.75);
+    }
+    #menuTriggerBtn.is-open .menu-icon-close {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #menuBackdrop,
+      #menuOverlay,
+      #menuTriggerBtn .menu-icon-bars,
+      #menuTriggerBtn .menu-icon-close {
+        transition: none !important;
+      }
     }
 
     /* ================= SCROLL-TRIGGERED FLOATING SALES REPRESENTATIVE ================= */
@@ -802,170 +867,151 @@
 
 <body class="selection:bg-porscheRed selection:text-white">
 
-  <!-- ================= STREAMLINED STICKY HEADER ================= -->
-  <header class="sticky top-0 z-40 nav-glass">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+  <!-- ================= CLICK-OUTSIDE DISMISS BACKDROP FOR DYNAMIC ISLAND DROPDOWN ================= -->
+  <div id="menuBackdrop" onclick="closeMenu()" aria-hidden="true"></div>
 
-      <!-- Brand Logo (Hero Spark Plugs Emblem + "KASH OPTION") -->
-      <a href="#home" class="flex items-center gap-3 group focus:outline-none" aria-label="KASH OPTION Home">
-        <div class="w-10 h-10 rounded-lg liquid-glass p-1 flex items-center justify-center overflow-hidden shrink-0 group-hover:border-[#E50914]/50 transition-colors">
-          <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine Spark Plugs" referrerpolicy="no-referrer" class="w-full h-full object-contain filter contrast-125 brightness-110 drop-shadow-[0_2px_6px_rgba(213,0,28,0.35)]">
-        </div>
-        <div class="flex flex-col">
-          <span class="text-sm font-extrabold tracking-tight text-white uppercase leading-none">
-            KASH <span class="text-porscheRed">OPTION</span>
-          </span>
-          <span class="text-[8.5px] font-semibold uppercase tracking-widest text-silverMuted mt-0.5">
-            Automotive Parts &bull; Ghana
-          </span>
-        </div>
-      </a>
+  <!-- ================= DYNAMIC ISLAND STICKY HEADER & ANCHORED LIQUID GLASS DROPDOWN ================= -->
+  <header class="sticky top-0 z-40 dynamic-island-header pt-3 px-3 sm:px-6 pointer-events-none">
+    <div class="max-w-5xl mx-auto w-full relative pointer-events-auto">
 
-      <!-- Primary Navigation: Two Core Action Pages -->
-      <nav class="hidden md:flex items-center gap-8 text-xs font-extrabold uppercase tracking-widest text-metallicSilver" aria-label="Primary Navigation">
-        <a href="#catalogue" class="hover:text-white transition-colors py-1 flex items-center gap-1.5 group">
-          <span>Shop Catalogue</span>
-          <span class="w-1 h-1 rounded-full bg-porscheRed opacity-0 group-hover:opacity-100 transition-opacity"></span>
+      <!-- Dynamic Island Pill Bar -->
+      <div class="nav-glass rounded-full h-14 sm:h-[60px] px-3 sm:px-5 flex items-center justify-between gap-3">
+
+        <!-- Brand Logo (Hero Spark Plugs Emblem + "KASH OPTION") -->
+        <a href="#home" onclick="closeMenu()" class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none min-w-0" aria-label="KASH OPTION Home">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full liquid-glass p-1 flex items-center justify-center overflow-hidden shrink-0 group-hover:border-[#E50914]/50 transition-colors">
+            <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine Spark Plugs" referrerpolicy="no-referrer" class="w-full h-full object-contain filter contrast-125 brightness-110 drop-shadow-[0_2px_6px_rgba(213,0,28,0.35)]">
+          </div>
+          <div class="flex flex-col min-w-0">
+            <span class="text-xs sm:text-sm font-extrabold tracking-tight text-white uppercase leading-none truncate">
+              KASH <span class="text-porscheRed">OPTION</span>
+            </span>
+            <span class="text-[8px] sm:text-[8.5px] font-semibold uppercase tracking-widest text-silverMuted mt-0.5 truncate">
+              Automotive Parts &bull; Ghana
+            </span>
+          </div>
         </a>
-        <a href="#fitment-finder" class="hover:text-white transition-colors py-1 flex items-center gap-1.5 group">
-          <span>Fitment Finder</span>
-          <span class="w-1 h-1 rounded-full bg-porscheRed opacity-0 group-hover:opacity-100 transition-opacity"></span>
-        </a>
-      </nav>
 
-      <!-- Right Action: Clean Menu Trigger -->
-      <div class="flex items-center gap-3">
-        <button id="menuTriggerBtn" onclick="openMenu()" type="button" class="w-10 h-10 rounded-lg liquid-glass-btn flex items-center justify-center text-silverMuted hover:text-white focus:outline-none" aria-label="Open Full Navigation Menu" aria-haspopup="dialog">
-          <i class="fas fa-bars text-sm"></i>
-        </button>
+        <!-- Primary Navigation: Two Core Action Pages -->
+        <nav class="hidden md:flex items-center gap-7 text-xs font-extrabold uppercase tracking-widest text-metallicSilver" aria-label="Primary Navigation">
+          <a href="#catalogue" onclick="closeMenu()" class="hover:text-white transition-colors py-1 flex items-center gap-1.5 group">
+            <span>Shop Catalogue</span>
+            <span class="w-1 h-1 rounded-full bg-porscheRed opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+          <a href="#fitment-finder" onclick="closeMenu()" class="hover:text-white transition-colors py-1 flex items-center gap-1.5 group">
+            <span>Fitment Finder</span>
+            <span class="w-1 h-1 rounded-full bg-porscheRed opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </nav>
+
+        <!-- Right Action: Clean Dynamic Island Menu Toggle -->
+        <div class="flex items-center gap-2 shrink-0">
+          <button id="menuTriggerBtn" onclick="toggleMenu()" type="button" class="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full liquid-glass-btn flex items-center justify-center text-silverMuted hover:text-white focus:outline-none" aria-label="Toggle Navigation Menu" aria-haspopup="dialog" aria-expanded="false" aria-controls="menuOverlay">
+            <i class="fas fa-bars text-sm menu-icon-bars" aria-hidden="true"></i>
+            <i class="fas fa-times text-sm menu-icon-close" aria-hidden="true"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Liquid Glass Dropdown Card Directly Beneath Dynamic Island -->
+      <div id="menuOverlay" class="hidden-overlay p-5 sm:p-7" role="dialog" aria-modal="false" aria-label="Navigation Menu">
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8">
+
+          <!-- Primary Two Pages & Manufacturer Lines -->
+          <div class="md:col-span-6 space-y-5">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-porscheRed block">Primary Destinations</span>
+            <div class="space-y-3.5">
+              <a href="#catalogue" onclick="closeMenu()" class="block group">
+                <span class="text-lg sm:text-2xl font-extrabold uppercase tracking-tight text-white group-hover:text-porscheRed transition-colors flex items-center justify-between gap-3">
+                  <span>Shop All Spark Plugs</span>
+                  <i class="fas fa-arrow-right text-sm text-silverMuted group-hover:text-porscheRed transform group-hover:translate-x-1.5 transition-all shrink-0"></i>
+                </span>
+                <span class="text-xs text-silverMuted font-normal mt-1 block">Browse verified OEM stock for Toyota, Honda, Hyundai, and Kia</span>
+              </a>
+
+              <a href="#fitment-finder" onclick="closeMenu()" class="block group pt-3.5 border-t border-white/10">
+                <span class="text-lg sm:text-2xl font-extrabold uppercase tracking-tight text-white group-hover:text-porscheRed transition-colors flex items-center justify-between gap-3">
+                  <span>Chassis Fitment Finder</span>
+                  <i class="fas fa-arrow-right text-sm text-silverMuted group-hover:text-porscheRed transform group-hover:translate-x-1.5 transition-all shrink-0"></i>
+                </span>
+                <span class="text-xs text-silverMuted font-normal mt-1 block">Instant vehicle and VIN verification with our technical desk</span>
+              </a>
+            </div>
+
+            <!-- Quick Manufacturer Lines -->
+            <div class="pt-4 border-t border-white/10">
+              <span class="text-[10px] font-bold uppercase tracking-widest text-silverMuted block mb-2.5">Direct Manufacturer Lines:</span>
+              <div class="grid grid-cols-2 gap-2 text-xs font-bold uppercase tracking-wider">
+                <a href="#toyota" data-brand-filter="toyota" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('toyota');" class="px-3 py-2.5 rounded-xl liquid-glass-btn hover:text-white text-silverMuted">Toyota (Denso)</a>
+                <a href="#honda" data-brand-filter="honda" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('honda');" class="px-3 py-2.5 rounded-xl liquid-glass-btn hover:text-white text-silverMuted">Honda (NGK)</a>
+                <a href="#hyundai" data-brand-filter="hyundai" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('hyundai');" class="px-3 py-2.5 rounded-xl liquid-glass-btn hover:text-white text-silverMuted">Hyundai (Mobis)</a>
+                <a href="#kia" data-brand-filter="kia" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('kia');" class="px-3 py-2.5 rounded-xl liquid-glass-btn hover:text-white text-silverMuted">Kia (Mobis)</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Complete Directory & Support Box -->
+          <div class="md:col-span-6 flex flex-col justify-between border-t md:border-t-0 md:border-l border-white/10 pt-5 md:pt-0 md:pl-7">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-3">Complete Directory</span>
+              <nav class="grid grid-cols-2 gap-x-4 gap-y-2 text-xs font-bold uppercase tracking-wider text-silverMuted" aria-label="Complete Directory">
+                <a href="#home" onclick="closeMenu()" class="py-1.5 hover:text-white transition-colors flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-white/20 shrink-0"></span>
+                  <span>Home Overview</span>
+                </a>
+                <a href="#wholesale" onclick="closeMenu()" class="py-1.5 hover:text-white transition-colors flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-white/20 shrink-0"></span>
+                  <span>Wholesale Trade</span>
+                </a>
+                <a href="#trust" onclick="closeMenu()" class="py-1.5 hover:text-white transition-colors flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-white/20 shrink-0"></span>
+                  <span>Why KASH OPTION</span>
+                </a>
+                <a href="#how-to-order" onclick="closeMenu()" class="py-1.5 hover:text-white transition-colors flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-white/20 shrink-0"></span>
+                  <span>How to Order</span>
+                </a>
+                <a href="#knowledge" onclick="closeMenu()" class="py-1.5 hover:text-white transition-colors flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-white/20 shrink-0"></span>
+                  <span>Knowledge Centre</span>
+                </a>
+                <a href="#faqs" onclick="closeMenu()" class="py-1.5 hover:text-white transition-colors flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-white/20 shrink-0"></span>
+                  <span>Support FAQs</span>
+                </a>
+                <a href="#contact-view" onclick="closeMenu()" class="py-1.5 hover:text-white transition-colors flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-white/20 shrink-0"></span>
+                  <span>Contact &amp; Orders</span>
+                </a>
+              </nav>
+            </div>
+
+            <!-- Contact Box in Dropdown -->
+            <div class="mt-6 pt-5 border-t border-white/10 text-xs text-silverMuted flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div class="space-y-1">
+                <span class="text-[10px] uppercase font-bold text-white block">Immediate Support Line &amp; Email:</span>
+                <div class="flex flex-wrap items-center gap-2.5">
+                  <a href="tel:0240118846" class="text-sm font-extrabold text-white hover:text-porscheRed transition-colors">024 011 8846</a>
+                  <span class="text-white/20">&bull;</span>
+                  <a href="mailto:info@mrkash.net" class="text-xs font-semibold text-silverMuted hover:text-white transition-colors">info@mrkash.net</a>
+                </div>
+                <span class="text-[10px] text-silverMuted/75 block">7:00 AM &ndash; 5:00 PM Mon&ndash;Sat</span>
+              </div>
+              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20chat%20with%20a%20sales%20expert%20about%20genuine%20spark%20plugs." onclick="event.preventDefault(); closeMenu(); openSalesChat();" aria-haspopup="dialog" aria-controls="salesRepChat" class="bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-xl flex items-center gap-2 whitespace-nowrap">
+                <span>Chat with Sales Experts</span>
+                <i class="fas fa-arrow-right text-[11px]"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
       </div>
 
     </div>
   </header>
-
-  <!-- ================= FULLSCREEN MENU OVERLAY (BLURS & HIDES UNDERLYING WEBSITE CONTENT) ================= -->
-  <div id="menuOverlay" class="hidden-overlay fixed inset-0 z-50 bg-[#050505]/90 backdrop-blur-2xl flex flex-col justify-between p-6 sm:p-10 overflow-y-auto" role="dialog" aria-modal="true" aria-label="Navigation Menu">
-
-    <!-- Menu Overlay Top Bar -->
-    <div class="max-w-7xl mx-auto w-full flex items-center justify-between pb-6 border-b border-white/10">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-lg liquid-glass p-1 flex items-center justify-center overflow-hidden shrink-0">
-          <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine Spark Plugs" referrerpolicy="no-referrer" class="w-full h-full object-contain filter contrast-125 brightness-110 drop-shadow-[0_2px_6px_rgba(213,0,28,0.35)]">
-        </div>
-        <div class="flex flex-col">
-          <span class="text-sm font-extrabold tracking-tight text-white uppercase leading-none">
-            KASH <span class="text-porscheRed">OPTION</span>
-          </span>
-          <span class="text-[8.5px] font-semibold uppercase tracking-widest text-silverMuted mt-0.5">
-            Automotive Parts &bull; Ghana
-          </span>
-        </div>
-      </div>
-
-      <!-- Close Button -->
-      <button onclick="closeMenu()" type="button" class="w-10 h-10 rounded-full liquid-glass-btn hover:bg-porscheRed flex items-center justify-center text-white focus:outline-none" aria-label="Close Navigation Menu">
-        <i class="fas fa-times text-base"></i>
-      </button>
-    </div>
-
-    <!-- Menu Overlay Body -->
-    <div class="max-w-7xl mx-auto w-full py-10 my-auto grid grid-cols-1 md:grid-cols-12 gap-10">
-
-      <!-- Primary Two Pages (Large Highlighted Display) -->
-      <div class="md:col-span-6 space-y-6">
-        <span class="text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-2">Primary Destinations</span>
-        <div class="space-y-4">
-          <a href="#catalogue" onclick="closeMenu()" class="block group">
-            <span class="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-white group-hover:text-porscheRed transition-colors flex items-center justify-between">
-              <span>Shop All Spark Plugs</span>
-              <i class="fas fa-arrow-right text-base text-silverMuted group-hover:text-porscheRed transform group-hover:translate-x-2 transition-all"></i>
-            </span>
-            <span class="text-xs text-silverMuted font-normal mt-1 block">Browse verified OEM stock for Toyota, Honda, Hyundai, and Kia</span>
-          </a>
-
-          <a href="#fitment-finder" onclick="closeMenu()" class="block group pt-4 border-t border-white/5">
-            <span class="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-white group-hover:text-porscheRed transition-colors flex items-center justify-between">
-              <span>Chassis Fitment Finder</span>
-              <i class="fas fa-arrow-right text-base text-silverMuted group-hover:text-porscheRed transform group-hover:translate-x-2 transition-all"></i>
-            </span>
-            <span class="text-xs text-silverMuted font-normal mt-1 block">Instant vehicle and VIN verification with our technical desk</span>
-          </a>
-        </div>
-
-        <!-- Quick Manufacturer Lines -->
-        <div class="pt-6 border-t border-white/10">
-          <span class="text-[10px] font-bold uppercase tracking-widest text-silverMuted block mb-3">Direct Manufacturer Lines:</span>
-          <div class="grid grid-cols-2 gap-2.5 text-xs font-bold uppercase tracking-wider">
-            <a href="#toyota" data-brand-filter="toyota" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('toyota');" class="p-3 rounded-lg liquid-glass-btn hover:text-white text-silverMuted">Toyota (Denso)</a>
-            <a href="#honda" data-brand-filter="honda" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('honda');" class="p-3 rounded-lg liquid-glass-btn hover:text-white text-silverMuted">Honda (NGK)</a>
-            <a href="#hyundai" data-brand-filter="hyundai" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('hyundai');" class="p-3 rounded-lg liquid-glass-btn hover:text-white text-silverMuted">Hyundai (Mobis)</a>
-            <a href="#kia" data-brand-filter="kia" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('kia');" class="p-3 rounded-lg liquid-glass-btn hover:text-white text-silverMuted">Kia (Mobis)</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Secondary Directory Inside Overlay -->
-      <div class="md:col-span-6 flex flex-col justify-between border-t md:border-t-0 md:border-l border-white/10 pt-8 md:pt-0 md:pl-10">
-        <div>
-          <span class="text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-4">Complete Directory</span>
-          <nav class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-bold uppercase tracking-wider text-silverMuted">
-            <a href="#home" onclick="closeMenu()" class="py-2 hover:text-white transition-colors flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
-              <span>Home Overview</span>
-            </a>
-            <a href="#wholesale" onclick="closeMenu()" class="py-2 hover:text-white transition-colors flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
-              <span>Wholesale Trade</span>
-            </a>
-            <a href="#trust" onclick="closeMenu()" class="py-2 hover:text-white transition-colors flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
-              <span>Why KASH OPTION</span>
-            </a>
-            <a href="#how-to-order" onclick="closeMenu()" class="py-2 hover:text-white transition-colors flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
-              <span>How to Order</span>
-            </a>
-            <a href="#knowledge" onclick="closeMenu()" class="py-2 hover:text-white transition-colors flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
-              <span>Knowledge Centre</span>
-            </a>
-            <a href="#faqs" onclick="closeMenu()" class="py-2 hover:text-white transition-colors flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
-              <span>Support FAQs</span>
-            </a>
-            <a href="#contact-view" onclick="closeMenu()" class="py-2 hover:text-white transition-colors flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
-              <span>Contact &amp; Orders</span>
-            </a>
-          </nav>
-        </div>
-
-        <!-- Contact Box in Overlay -->
-        <div class="mt-8 pt-6 border-t border-white/10 text-xs text-silverMuted flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div class="space-y-1">
-            <span class="text-[10px] uppercase font-bold text-white block">Immediate Support Line &amp; Email:</span>
-            <div class="flex flex-wrap items-center gap-3">
-              <a href="tel:0240118846" class="text-sm font-extrabold text-white hover:text-porscheRed transition-colors">024 011 8846</a>
-              <span class="text-white/20">&bull;</span>
-              <a href="mailto:info@mrkash.net" class="text-xs font-semibold text-silverMuted hover:text-white transition-colors">info@mrkash.net</a>
-            </div>
-          </div>
-          <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20chat%20with%20a%20sales%20expert%20about%20genuine%20spark%20plugs." onclick="event.preventDefault(); openSalesChat();" aria-haspopup="dialog" aria-controls="salesRepChat" class="bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-lg flex items-center gap-2 whitespace-nowrap">
-            <span>Chat with Sales Experts</span>
-            <i class="fas fa-arrow-right text-[11px]"></i>
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Menu Overlay Footer -->
-    <div class="max-w-7xl mx-auto w-full pt-6 border-t border-white/10 text-center text-xs text-silverMuted/60 flex flex-col sm:flex-row justify-between items-center gap-2">
-      <p>&copy; 2026 KASH OPTION AUTOMOTIVE PARTS &bull; GHANA.</p>
-      <p class="text-[10px] uppercase tracking-widest text-silverMuted/40">Press ESC or click close to exit</p>
-    </div>
-
-  </div>
 
   <main>
     <!-- ================= ISOLATED LANDING PAGE ================= -->
@@ -3271,23 +3317,48 @@
       showPage('catalogue', brand, true);
     }
 
-    /* ================= MENU OVERLAY BLUR & HIDE CONTROLLERS ================= */
+    /* ================= DYNAMIC ISLAND DROPDOWN CONTROLLERS ================= */
     function openMenu() {
       closeSalesChat();
       const overlay = document.getElementById('menuOverlay');
+      const backdrop = document.getElementById('menuBackdrop');
+      const triggerBtn = document.getElementById('menuTriggerBtn');
       if (overlay) {
         overlay.classList.remove('hidden-overlay');
         overlay.classList.add('active-overlay');
-        document.body.classList.add('menu-open');
+      }
+      if (backdrop) {
+        backdrop.classList.add('is-open');
+      }
+      if (triggerBtn) {
+        triggerBtn.classList.add('is-open');
+        triggerBtn.setAttribute('aria-expanded', 'true');
       }
     }
 
     function closeMenu() {
       const overlay = document.getElementById('menuOverlay');
+      const backdrop = document.getElementById('menuBackdrop');
+      const triggerBtn = document.getElementById('menuTriggerBtn');
       if (overlay) {
         overlay.classList.remove('active-overlay');
         overlay.classList.add('hidden-overlay');
-        document.body.classList.remove('menu-open');
+      }
+      if (backdrop) {
+        backdrop.classList.remove('is-open');
+      }
+      if (triggerBtn) {
+        triggerBtn.classList.remove('is-open');
+        triggerBtn.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    function toggleMenu() {
+      const overlay = document.getElementById('menuOverlay');
+      if (overlay && overlay.classList.contains('active-overlay')) {
+        closeMenu();
+      } else {
+        openMenu();
       }
     }
 
