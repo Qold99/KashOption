@@ -2061,6 +2061,191 @@
       });
     }
 
+    /* ================= LUXURY SOFT GLASS WEB AUDIO ENGINE ================= */
+    let luxuryAudioCtx = null;
+    let luxuryAudioUnlocked = false;
+    let salesRevealChimePlayed = false;
+
+    try {
+      salesRevealChimePlayed = window.sessionStorage.getItem('kash_sales_chime_played') === '1';
+    } catch (e) {
+      salesRevealChimePlayed = false;
+    }
+
+    function getLuxuryAudioContext() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return null;
+        if (!luxuryAudioCtx) {
+          luxuryAudioCtx = new AudioCtx();
+        }
+        return luxuryAudioCtx;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function unlockLuxuryAudio() {
+      if (luxuryAudioUnlocked) return;
+      try {
+        const ctx = getLuxuryAudioContext();
+        if (!ctx) return;
+        if (ctx.state === 'suspended' && typeof ctx.resume === 'function') {
+          const p = ctx.resume();
+          if (p && typeof p.catch === 'function') p.catch(() => {});
+        }
+        if (ctx.state === 'running') {
+          luxuryAudioUnlocked = true;
+        }
+      } catch (e) {}
+    }
+
+    ['pointerdown', 'keydown'].forEach(evtName => {
+      try {
+        window.addEventListener(evtName, unlockLuxuryAudio, { passive: true, capture: true });
+      } catch (e) {}
+    });
+
+    function renderSoftGlassChime(ctx) {
+      try {
+        if (!ctx || ctx.state !== 'running') return false;
+        const now = ctx.currentTime;
+
+        const master = ctx.createGain();
+        master.gain.setValueAtTime(0.0001, now);
+        master.gain.linearRampToValueAtTime(1.0, now + 0.01);
+        master.connect(ctx.destination);
+
+        // Gentle two-note soft glass chime (~350ms total)
+        const notes = [
+          { freq: 587.33, start: 0.0, duration: 0.21, sinePeak: 0.042, triPeak: 0.01 },
+          { freq: 880.0, start: 0.115, duration: 0.235, sinePeak: 0.036, triPeak: 0.008 }
+        ];
+
+        notes.forEach(note => {
+          const tStart = now + note.start;
+          const tEnd = tStart + note.duration;
+
+          const sineOsc = ctx.createOscillator();
+          const sineGain = ctx.createGain();
+          sineOsc.type = 'sine';
+          sineOsc.frequency.setValueAtTime(note.freq, tStart);
+          sineGain.gain.setValueAtTime(0.0001, tStart);
+          sineGain.gain.linearRampToValueAtTime(note.sinePeak, tStart + 0.014);
+          sineGain.gain.exponentialRampToValueAtTime(0.0001, tEnd);
+          sineOsc.connect(sineGain);
+          sineGain.connect(master);
+          sineOsc.start(tStart);
+          sineOsc.stop(tEnd + 0.01);
+
+          const triOsc = ctx.createOscillator();
+          const triGain = ctx.createGain();
+          triOsc.type = 'triangle';
+          triOsc.frequency.setValueAtTime(note.freq, tStart);
+          triGain.gain.setValueAtTime(0.0001, tStart);
+          triGain.gain.linearRampToValueAtTime(note.triPeak, tStart + 0.012);
+          triGain.gain.exponentialRampToValueAtTime(0.0001, tStart + note.duration * 0.72);
+          triOsc.connect(triGain);
+          triGain.connect(master);
+          triOsc.start(tStart);
+          triOsc.stop(tEnd + 0.01);
+        });
+
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    function markSalesChimePlayed() {
+      salesRevealChimePlayed = true;
+      try {
+        window.sessionStorage.setItem('kash_sales_chime_played', '1');
+      } catch (e) {}
+    }
+
+    function playSalesRevealChimeOnce() {
+      if (salesRevealChimePlayed) return;
+      markSalesChimePlayed();
+      try {
+        const hasActivation =
+          !window.navigator.userActivation ||
+          window.navigator.userActivation.hasBeenActive ||
+          (luxuryAudioCtx && luxuryAudioCtx.state === 'running');
+        if (!hasActivation) return;
+
+        const ctx = getLuxuryAudioContext();
+        if (!ctx) return;
+
+        if (ctx.state === 'running') {
+          luxuryAudioUnlocked = true;
+          renderSoftGlassChime(ctx);
+        } else if (ctx.state === 'suspended' && typeof ctx.resume === 'function') {
+          const resumedAt = Date.now();
+          ctx.resume().then(() => {
+            if (Date.now() - resumedAt <= 150 && ctx.state === 'running') {
+              luxuryAudioUnlocked = true;
+              renderSoftGlassChime(ctx);
+            }
+          }).catch(() => {});
+        }
+      } catch (e) {}
+    }
+
+    function renderMicroTap(ctx) {
+      try {
+        if (!ctx || ctx.state !== 'running') return;
+        const now = ctx.currentTime;
+
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(460, now);
+        osc.frequency.exponentialRampToValueAtTime(220, now + 0.045);
+
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.linearRampToValueAtTime(0.032, now + 0.004);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.055);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.06);
+
+        const bodyOsc = ctx.createOscillator();
+        const bodyGain = ctx.createGain();
+        bodyOsc.type = 'triangle';
+        bodyOsc.frequency.setValueAtTime(920, now);
+        bodyGain.gain.setValueAtTime(0.0001, now);
+        bodyGain.gain.linearRampToValueAtTime(0.007, now + 0.003);
+        bodyGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.028);
+
+        bodyOsc.connect(bodyGain);
+        bodyGain.connect(ctx.destination);
+        bodyOsc.start(now);
+        bodyOsc.stop(now + 0.035);
+      } catch (e) {}
+    }
+
+    function playLuxuryMicroTap() {
+      try {
+        const ctx = getLuxuryAudioContext();
+        if (!ctx) return;
+
+        if (ctx.state === 'running') {
+          luxuryAudioUnlocked = true;
+          renderMicroTap(ctx);
+        } else if (ctx.state === 'suspended' && typeof ctx.resume === 'function') {
+          ctx.resume().then(() => {
+            if (ctx.state === 'running') {
+              luxuryAudioUnlocked = true;
+              renderMicroTap(ctx);
+            }
+          }).catch(() => {});
+        }
+      } catch (e) {}
+    }
+
     function updateSalesRepVisibility() {
       const widget = document.getElementById('salesRepWidget');
       if (!widget) return;
@@ -2085,7 +2270,11 @@
         : false;
 
       if (progress >= 0.75 || nearFooter) {
+        const wasVisible = widget.classList.contains('is-visible');
         widget.classList.add('is-visible');
+        if (!wasVisible) {
+          playSalesRevealChimeOnce();
+        }
       } else if (progress < 0.70 && !nearFooter) {
         widget.classList.remove('is-visible');
       }
@@ -2109,6 +2298,7 @@
       if (!chatEl) return;
 
       salesChatState.isOpen = true;
+      playLuxuryMicroTap();
       if (messagesEl && messagesEl.children.length === 0) {
         resetSalesChat();
       }
@@ -2307,6 +2497,7 @@
     };
 
     function handleSalesBrandSelect(brand) {
+      playLuxuryMicroTap();
       salesChatState.brand = brand;
       salesChatState.step = 'model';
       const examples = salesBrandModelExamples[brand] || 'Corolla, Civic, Elantra, Sportage';
@@ -2319,6 +2510,7 @@
     }
 
     function handleSalesSwitchToChassis() {
+      playLuxuryMicroTap();
       salesChatState.step = 'chassis';
       appendSalesChatMessage('user', 'Enter Chassis Number Instead');
       appendSalesChatMessage(
@@ -2345,6 +2537,7 @@
     }
 
     function handleSalesTextSubmit(value) {
+      playLuxuryMicroTap();
       if (salesChatState.step === 'model') {
         salesChatState.model = value;
         salesChatState.step = 'engineYear';
@@ -2367,6 +2560,7 @@
     }
 
     function sendSalesChatOrderToWhatsApp() {
+      playLuxuryMicroTap();
       const lines = ['*KASH OPTION OEM SPARK PLUG ORDER*'];
       if (salesChatState.brand) lines.push(`*Brand:* ${salesChatState.brand}`);
       if (salesChatState.model) lines.push(`*Model:* ${salesChatState.model}`);
