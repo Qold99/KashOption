@@ -74,16 +74,22 @@
       box-sizing: border-box;
     }
 
-    html,
-    body {
+    html {
       max-width: 100%;
       overflow-x: clip;
       overscroll-behavior-x: none;
       scroll-behavior: smooth;
+      scroll-padding-top: 84px;
       background-color: #050505;
     }
 
     body {
+      max-width: 100%;
+      overflow-x: clip;
+      overscroll-behavior-x: none;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
+      background-color: #050505;
       color: #FFFFFF;
       font-family: 'Plus Jakarta Sans', sans-serif;
       -webkit-font-smoothing: antialiased;
@@ -119,7 +125,8 @@
     }
     header.dynamic-island-header,
     .nav-glass,
-    #menuBackdrop {
+    #menuBackdrop,
+    #salesChatBackdrop {
       transform: translate3d(0, 0, 0);
     }
 
@@ -374,10 +381,18 @@
       transition-delay: var(--reveal-delay, 0ms);
     }
     @media (max-width: 767px), (hover: none) and (pointer: coarse) {
+      .scroll-reveal,
+      .scroll-reveal[data-reveal="fade-up"],
+      .scroll-reveal[data-reveal="hero"],
+      .scroll-reveal[data-reveal="headline"],
       .scroll-reveal.is-revealed {
+        opacity: 1 !important;
+        transform: translate3d(0, 0, 0) !important;
+        transition: none !important;
         transition-delay: 0ms !important;
       }
       [data-parallax] {
+        transform: translate3d(0, 0, 0);
         transition: none !important;
         will-change: auto;
       }
@@ -386,9 +401,11 @@
       transform: translate3d(0, 0, 0);
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
-      transition: transform 140ms cubic-bezier(0.16, 1, 0.3, 1);
     }
     @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
       .scroll-reveal,
       [data-parallax] {
         opacity: 1 !important;
@@ -497,26 +514,67 @@
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transform: translate3d(0, 20px, 0) scale(0.96);
+      transform: translate3d(0, 0, 0);
       transition:
-        opacity 480ms cubic-bezier(0.16, 1, 0.3, 1),
-        transform 480ms cubic-bezier(0.16, 1, 0.3, 1),
-        visibility 480ms ease;
+        opacity 320ms cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 320ms ease;
     }
     #salesRepWidget.is-visible {
       opacity: 1;
       visibility: visible;
+    }
+    #salesRepWidget.is-chat-open {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .sales-avatar-launcher {
+      position: relative;
+      width: 58px;
+      height: 58px;
+      min-width: 58px;
+      min-height: 58px;
+      border-radius: 50%;
+      padding: 2px;
+      background: linear-gradient(145deg, rgba(255, 31, 31, 0.85), rgba(227, 24, 24, 0.45) 58%, rgba(255, 255, 255, 0.24));
+      box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.65),
+        0 0 18px rgba(255, 31, 31, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.24);
+      pointer-events: none;
+      opacity: 0;
+      transform: translate3d(0, 14px, 0) scale(0.76);
+      transition:
+        opacity 380ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 440ms cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 260ms ease;
+      will-change: transform, opacity;
+      flex-shrink: 0;
+    }
+    #salesRepWidget.is-visible:not(.is-chat-open) .sales-avatar-launcher {
+      opacity: 1;
       pointer-events: auto;
       transform: translate3d(0, 0, 0) scale(1);
     }
+    #salesRepWidget.is-visible:not(.is-chat-open) .sales-avatar-launcher:hover {
+      transform: translate3d(0, -2px, 0) scale(1.04);
+      box-shadow:
+        0 14px 32px rgba(0, 0, 0, 0.72),
+        0 0 24px rgba(255, 31, 31, 0.44),
+        inset 0 1px 0 rgba(255, 255, 255, 0.32);
+    }
+    #salesRepWidget.is-visible:not(.is-chat-open) .sales-avatar-launcher:active {
+      transform: translate3d(0, 0, 0) scale(0.95);
+    }
     .sales-rep-avatar-box {
-      width: 40px;
-      height: 40px;
-      min-width: 40px;
-      min-height: 40px;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
       overflow: hidden;
-      flex-shrink: 0;
+      background: #141418;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .sales-rep-avatar-img {
       width: 100%;
@@ -526,24 +584,115 @@
       object-position: center 20%;
       display: block;
     }
-    #salesRepWidget.is-chat-open {
+    .sales-avatar-online-dot {
+      position: absolute;
+      bottom: 1px;
+      right: 1px;
+      width: 13px;
+      height: 13px;
+      border-radius: 9999px;
+      background-color: #22C55E;
+      border: 2.5px solid #050505;
+      box-shadow: 0 0 8px rgba(34, 197, 94, 0.75);
+      pointer-events: none;
+    }
+    .sales-avatar-online-dot::after {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      border-radius: 9999px;
+      border: 1.5px solid rgba(34, 197, 94, 0.65);
+      animation: salesStatusPulse 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+      pointer-events: none;
+    }
+    .sales-speech-bubble {
+      position: relative;
+      max-width: min(238px, calc(100vw - 104px));
+      border-radius: 16px;
+      background: rgba(16, 16, 20, 0.88);
+      backdrop-filter: blur(22px) saturate(165%);
+      -webkit-backdrop-filter: blur(22px) saturate(165%);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow:
+        0 14px 34px rgba(0, 0, 0, 0.62),
+        0 0 18px rgba(255, 31, 31, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+      pointer-events: none;
       opacity: 0;
       visibility: hidden;
+      transform-origin: right center;
+      transform: translate3d(16px, 2px, 0) scale(0.86);
+      transition:
+        opacity 340ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 380ms cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 340ms ease,
+        border-color 220ms ease;
+      will-change: transform, opacity;
+    }
+    #salesRepWidget.is-visible:not(.is-chat-open) .sales-speech-bubble.is-bubble-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    .sales-speech-bubble:hover {
+      border-color: rgba(255, 31, 31, 0.48);
+    }
+    .sales-speech-bubble-btn {
+      display: block;
+      width: 100%;
+      padding: 9px 26px 9px 13px;
+      border-radius: 16px;
+      cursor: pointer;
+    }
+    .sales-bubble-dismiss-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 18px;
+      height: 18px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      line-height: 1;
+      color: rgba(212, 212, 216, 0.72);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+      cursor: pointer;
+      z-index: 2;
+    }
+    .sales-bubble-dismiss-btn:hover {
+      background: rgba(255, 31, 31, 0.22);
+      border-color: rgba(255, 31, 31, 0.48);
+      color: #FFFFFF;
+    }
+    .sales-speech-tail {
+      position: absolute;
+      top: 50%;
+      right: -5px;
+      width: 10px;
+      height: 10px;
+      background: rgba(16, 16, 20, 0.88);
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      border-right: 1px solid rgba(255, 255, 255, 0.16);
+      border-top-right-radius: 2px;
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+      transform: translate3d(0, -50%, 0) rotate(45deg);
       pointer-events: none;
-      transform: translate3d(0, 16px, 0) scale(0.96);
+      transition: border-color 220ms ease;
+    }
+    .sales-speech-bubble:hover .sales-speech-tail {
+      border-top-color: rgba(255, 31, 31, 0.48);
+      border-right-color: rgba(255, 31, 31, 0.48);
     }
 
     /* ================= INTERACTIVE SALES FITMENT CHAT POPUP ================= */
-    header,
-    main,
-    footer {
-      transition: filter 320ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
     body.sales-chat-open header,
     body.sales-chat-open main,
     body.sales-chat-open footer {
-      filter: blur(10px) brightness(0.45);
-      -webkit-filter: blur(10px) brightness(0.45);
       pointer-events: none;
       user-select: none;
     }
@@ -794,15 +943,25 @@
     .sales-whatsapp-subtle-btn:active {
       transform: scale(0.98);
     }
-    #salesChatMessages::-webkit-scrollbar {
+    #salesChatMessages::-webkit-scrollbar,
+    .sales-year-scroller::-webkit-scrollbar {
       width: 5px;
     }
-    #salesChatMessages::-webkit-scrollbar-track {
+    #salesChatMessages::-webkit-scrollbar-track,
+    .sales-year-scroller::-webkit-scrollbar-track {
       background: #121212;
     }
-    #salesChatMessages::-webkit-scrollbar-thumb {
+    #salesChatMessages::-webkit-scrollbar-thumb,
+    .sales-year-scroller::-webkit-scrollbar-thumb {
       background: #2A2A2E;
       border-radius: 9999px;
+    }
+    .sales-year-scroller {
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: #2A2A2E #121212;
     }
     @media (prefers-reduced-motion: reduce) {
       header,
@@ -811,17 +970,21 @@
         transition: none;
       }
       #salesRepWidget,
+      .sales-avatar-launcher,
+      .sales-speech-bubble,
       #salesChatBackdrop,
       #salesRepChat {
         transition: opacity 150ms ease, visibility 150ms ease;
         transform: none;
       }
-      #salesRepWidget.is-visible,
+      #salesRepWidget.is-visible:not(.is-chat-open) .sales-avatar-launcher,
+      #salesRepWidget.is-visible:not(.is-chat-open) .sales-speech-bubble.is-bubble-open,
       #salesRepChat.is-open {
         transform: none;
       }
       .sales-msg-enter,
       .sales-status-dot::after,
+      .sales-avatar-online-dot::after,
       .sales-typing-dots span {
         animation: none;
       }
@@ -2360,21 +2523,29 @@
   </footer>
 
   <!-- ================= SCROLL-TRIGGERED FLOATING SALES REPRESENTATIVE ================= -->
-  <aside id="salesRepWidget" aria-label="Sales Representative Quick Fitment Assistant" class="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-30 max-w-[268px] sm:max-w-[292px]">
-    <button type="button" onclick="openSalesChat()" aria-haspopup="dialog" aria-controls="salesRepChat" aria-expanded="false" id="salesRepTriggerBtn" class="w-full text-left liquid-glass liquid-glass-interactive rounded-xl px-3.5 py-2.5 flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-porscheRed">
-      <div class="sales-rep-avatar-box bg-[#18181C] border border-white/15 group-hover:border-porscheRed/70 flex items-center justify-center transition-colors">
-        <img src="./salesrep.png" alt="KASH OPTION Sales Representative" width="40" height="40" class="sales-rep-avatar-img" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';">
-        <span class="sales-ko-fallback" aria-hidden="true">K<span class="text-[#FF1F1F]">O</span></span>
-      </div>
-      <div class="min-w-0 flex-1">
-        <span class="block text-xs font-bold text-white leading-snug whitespace-nowrap">
+  <aside id="salesRepWidget" aria-label="Sales Representative Quick Fitment Assistant" class="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-30 flex items-center justify-end gap-3 pointer-events-none">
+    <div id="salesSpeechBubble" class="sales-speech-bubble group">
+      <button type="button" onclick="openSalesChat()" aria-haspopup="dialog" aria-controls="salesRepChat" class="sales-speech-bubble-btn text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF1F1F]">
+        <span class="block text-xs font-bold text-white leading-snug">
           Need plugs for your car?
         </span>
-        <span class="mt-0.5 flex items-center gap-1 text-[11px] font-medium text-metallicSilver group-hover:text-white transition-colors whitespace-nowrap">
+        <span class="mt-0.5 inline-flex items-center gap-1 text-[11px] font-medium text-metallicSilver group-hover:text-white transition-colors">
           <span>Tap to check fitment</span>
           <span aria-hidden="true" class="text-porscheRed inline-block transform group-hover:translate-x-0.5 transition-transform">&rarr;</span>
         </span>
-      </div>
+      </button>
+      <button type="button" id="salesBubbleDismissBtn" onclick="dismissSalesSpeechBubble(event)" aria-label="Dismiss fitment prompt" class="sales-bubble-dismiss-btn focus:outline-none focus-visible:ring-1 focus-visible:ring-white">
+        &times;
+      </button>
+      <span class="sales-speech-tail" aria-hidden="true"></span>
+    </div>
+
+    <button type="button" onclick="openSalesChat()" aria-haspopup="dialog" aria-controls="salesRepChat" aria-expanded="false" aria-label="Open Kash Auto Bot fitment chat" id="salesRepTriggerBtn" class="sales-avatar-launcher group focus:outline-none focus-visible:ring-2 focus-visible:ring-porscheRed">
+      <span class="sales-rep-avatar-box">
+        <img src="./salesrep.png" alt="KASH OPTION Sales Representative" width="58" height="58" class="sales-rep-avatar-img" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';">
+        <span class="sales-ko-fallback" aria-hidden="true">K<span class="text-[#FF1F1F]">O</span></span>
+      </span>
+      <span class="sales-avatar-online-dot" aria-hidden="true"></span>
     </button>
   </aside>
 
@@ -2418,32 +2589,53 @@
 
   <!-- ================= JAVASCRIPT: ROUTING, LIVE SEARCH, FITMENT, OVERLAY & SCROLL REVEAL ================= -->
   <script>
-    /* ================= GLOBAL FAST-SCROLL REVEAL CONTROLLER ================= */
+    /* ================= GLOBAL FAST-SCROLL REVEAL & COMPOSITOR ENGINE ================= */
     const revealConfig = {
       once: true,
       duration: 340,
       offset: 14,
-      triggerMargin: 260,
+      triggerMargin: 420,
     };
 
     let activeRevealObserver = null;
     let activeRevealTargets = [];
+    let unrevealedCount = 0;
+    let cachedActiveViewEl = null;
+    let cachedParallaxEls = [];
+    let cachedFooterEl = null;
+    let cachedSalesWidgetEl = null;
     let revealListenersBound = false;
     let scrollEvalRaf = 0;
     let revealRaf1 = 0;
-    let revealRaf2 = 0;
+
+    function isMobileTouchViewport() {
+      return (
+        window.innerWidth < 768 ||
+        (window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches)
+      );
+    }
+
+    function refreshScrollDomCache() {
+      cachedActiveViewEl = document.querySelector('.page-view:not([hidden])');
+      cachedParallaxEls = cachedActiveViewEl
+        ? Array.from(cachedActiveViewEl.querySelectorAll('[data-parallax]'))
+        : [];
+      if (!cachedFooterEl) cachedFooterEl = document.querySelector('footer');
+      if (!cachedSalesWidgetEl) cachedSalesWidgetEl = document.getElementById('salesRepWidget');
+    }
 
     function evaluateScrollReveals() {
+      if (unrevealedCount <= 0) return;
       const vh = window.innerHeight || document.documentElement.clientHeight;
       const cutoff = vh + revealConfig.triggerMargin;
       const toReveal = [];
 
-      // Batch all layout reads before DOM writes to prevent mobile layout thrashing
+      // Batch all layout reads before DOM writes to avoid layout thrashing
       for (let i = 0; i < activeRevealTargets.length; i++) {
         const el = activeRevealTargets[i];
         if (el.classList.contains('is-revealed')) continue;
-        if (el.offsetParent === null) continue;
         const rect = el.getBoundingClientRect();
+        if (rect.width === 0 && rect.height === 0) continue;
         if (rect.top <= cutoff) {
           toReveal.push(el);
         }
@@ -2455,6 +2647,10 @@
         if (activeRevealObserver) {
           activeRevealObserver.unobserve(el);
         }
+      }
+
+      if (toReveal.length > 0) {
+        unrevealedCount = Math.max(0, unrevealedCount - toReveal.length);
       }
     }
 
@@ -2687,6 +2883,66 @@
       } catch (e) {}
     }
 
+    let salesBubbleDelayTimer = null;
+    let salesBubbleDismissed = false;
+
+    function scheduleSalesBubbleReveal() {
+      if (salesBubbleDismissed) return;
+      const bubbleEl = document.getElementById('salesSpeechBubble');
+      if (!bubbleEl) return;
+      if (salesBubbleDelayTimer) {
+        window.clearTimeout(salesBubbleDelayTimer);
+      }
+      salesBubbleDelayTimer = window.setTimeout(() => {
+        salesBubbleDelayTimer = null;
+        const widgetEl = document.getElementById('salesRepWidget');
+        if (
+          !salesBubbleDismissed &&
+          widgetEl &&
+          widgetEl.classList.contains('is-visible') &&
+          !widgetEl.classList.contains('is-chat-open')
+        ) {
+          bubbleEl.classList.add('is-bubble-open');
+        }
+      }, 600);
+    }
+
+    function hideSalesBubbleImmediate() {
+      if (salesBubbleDelayTimer) {
+        window.clearTimeout(salesBubbleDelayTimer);
+        salesBubbleDelayTimer = null;
+      }
+      const bubbleEl = document.getElementById('salesSpeechBubble');
+      if (bubbleEl) {
+        bubbleEl.classList.remove('is-bubble-open');
+      }
+    }
+
+    function dismissSalesSpeechBubble(event) {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      playLuxuryMicroTap();
+      salesBubbleDismissed = true;
+      hideSalesBubbleImmediate();
+    }
+
+    function setSalesWidgetVisible(widgetEl, visible) {
+      if (!widgetEl) return;
+      if (visible) {
+        const wasVisible = widgetEl.classList.contains('is-visible');
+        widgetEl.classList.add('is-visible');
+        if (!wasVisible) {
+          playSalesRevealChimeOnce();
+          scheduleSalesBubbleReveal();
+        }
+      } else {
+        widgetEl.classList.remove('is-visible');
+        hideSalesBubbleImmediate();
+      }
+    }
+
     function updateSalesRepVisibility() {
       const widget = document.getElementById('salesRepWidget');
       if (!widget) return;
@@ -2700,7 +2956,7 @@
       const maxScroll = docHeight - vh;
 
       if (scrollY <= 40 || maxScroll <= 40) {
-        widget.classList.remove('is-visible');
+        setSalesWidgetVisible(widget, false);
         return;
       }
 
@@ -2711,13 +2967,9 @@
         : false;
 
       if (progress >= 0.75 || nearFooter) {
-        const wasVisible = widget.classList.contains('is-visible');
-        widget.classList.add('is-visible');
-        if (!wasVisible) {
-          playSalesRevealChimeOnce();
-        }
+        setSalesWidgetVisible(widget, true);
       } else if (progress < 0.70 && !nearFooter) {
-        widget.classList.remove('is-visible');
+        setSalesWidgetVisible(widget, false);
       }
     }
 
@@ -2726,6 +2978,7 @@
       step: 'greeting',
       brand: '',
       model: '',
+      year: '',
       engineYear: '',
       chassis: '',
       qaHistory: []
@@ -2748,6 +3001,7 @@
 
       salesChatState.isOpen = true;
       playLuxuryMicroTap();
+      hideSalesBubbleImmediate();
       if (messagesEl && messagesEl.children.length === 0) {
         resetSalesChat();
       }
@@ -2780,7 +3034,12 @@
       chatEl.classList.remove('is-open');
       if (backdropEl) backdropEl.classList.remove('is-open');
       document.body.classList.remove('sales-chat-open');
-      if (widgetEl) widgetEl.classList.remove('is-chat-open');
+      if (widgetEl) {
+        widgetEl.classList.remove('is-chat-open');
+        if (widgetEl.classList.contains('is-visible') && !salesBubbleDismissed) {
+          scheduleSalesBubbleReveal();
+        }
+      }
       if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'false');
     }
 
@@ -2951,7 +3210,7 @@
           input.focus();
           return;
         }
-        if (['model', 'engineYear', 'chassis'].includes(salesChatState.step)) {
+        if (['model', 'year', 'engineYear', 'chassis'].includes(salesChatState.step)) {
           handleSalesTextSubmit(val);
         } else {
           handleSalesQuestionSubmit(val);
@@ -2991,8 +3250,21 @@
         return;
       }
       salesChatState.model = '';
+      salesChatState.year = '';
       salesChatState.engineYear = '';
       salesChatState.step = 'model';
+      renderSalesChatControls();
+    }
+
+    function handleSalesBackToYears() {
+      playLuxuryMicroTap();
+      if (!salesChatState.brand || !salesChatState.model) {
+        handleSalesBackToModels();
+        return;
+      }
+      salesChatState.year = '';
+      salesChatState.engineYear = '';
+      salesChatState.step = 'year';
       renderSalesChatControls();
     }
 
@@ -3085,13 +3357,13 @@
         return;
       }
 
-      if (salesChatState.step === 'engineYear') {
+      if (salesChatState.step === 'year') {
         const headerRow = document.createElement('div');
         headerRow.className = 'flex items-center justify-between gap-2 mb-2';
 
         const label = document.createElement('span');
         label.className = 'text-[10px] font-bold uppercase tracking-wider text-silverMuted truncate';
-        label.textContent = `${salesChatState.brand} ${salesChatState.model} Engine`;
+        label.textContent = `Select ${salesChatState.brand} ${salesChatState.model} Year`;
 
         const actionGroup = document.createElement('div');
         actionGroup.className = 'flex items-center gap-2 shrink-0';
@@ -3101,6 +3373,57 @@
         backBtn.className = 'text-[11px] font-semibold text-zinc-300 hover:text-white px-2 py-0.5 rounded transition-colors';
         backBtn.textContent = '\u2190 Models';
         backBtn.addEventListener('click', handleSalesBackToModels);
+
+        const vinBtn = document.createElement('button');
+        vinBtn.type = 'button';
+        vinBtn.className = 'text-[11px] font-semibold text-zinc-300 hover:text-white px-2 py-0.5 rounded transition-colors';
+        vinBtn.textContent = 'Use VIN';
+        vinBtn.addEventListener('click', handleSalesSwitchToChassis);
+
+        actionGroup.appendChild(backBtn);
+        actionGroup.appendChild(vinBtn);
+        headerRow.appendChild(label);
+        headerRow.appendChild(actionGroup);
+
+        const yearScroller = document.createElement('div');
+        yearScroller.className = 'sales-year-scroller grid grid-cols-4 sm:grid-cols-6 gap-1.5 max-h-40 overflow-y-auto pr-1 pb-1 mb-2.5';
+        yearScroller.setAttribute('role', 'listbox');
+        yearScroller.setAttribute('aria-label', `${salesChatState.brand} ${salesChatState.model} model year`);
+
+        salesAvailableYears.forEach(yr => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'sales-chip-btn text-xs font-semibold py-2 px-2 rounded-lg text-center tabular-nums focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF1F1F]';
+          btn.textContent = yr;
+          btn.setAttribute('aria-label', `Select year ${yr}`);
+          btn.addEventListener('click', () => handleSalesYearSelect(yr));
+          yearScroller.appendChild(btn);
+        });
+
+        const { form } = buildQuestionForm('Or type production year (1990–2026)...', 'Next', false);
+        controlsEl.appendChild(headerRow);
+        controlsEl.appendChild(yearScroller);
+        controlsEl.appendChild(form);
+        return;
+      }
+
+      if (salesChatState.step === 'engineYear') {
+        const headerRow = document.createElement('div');
+        headerRow.className = 'flex items-center justify-between gap-2 mb-2';
+
+        const vehicleTag = [salesChatState.brand, salesChatState.year, salesChatState.model].filter(Boolean).join(' ');
+        const label = document.createElement('span');
+        label.className = 'text-[10px] font-bold uppercase tracking-wider text-silverMuted truncate';
+        label.textContent = `${vehicleTag} Engine`;
+
+        const actionGroup = document.createElement('div');
+        actionGroup.className = 'flex items-center gap-2 shrink-0';
+
+        const backBtn = document.createElement('button');
+        backBtn.type = 'button';
+        backBtn.className = 'text-[11px] font-semibold text-zinc-300 hover:text-white px-2 py-0.5 rounded transition-colors';
+        backBtn.textContent = '\u2190 Years';
+        backBtn.addEventListener('click', handleSalesBackToYears);
 
         const vinBtn = document.createElement('button');
         vinBtn.type = 'button';
@@ -3130,7 +3453,7 @@
           controlsEl.appendChild(engineWrap);
         }
 
-        const { form } = buildQuestionForm('Or enter engine & year (e.g., 1.8L 2016)...', 'Send', false);
+        const { form } = buildQuestionForm('Or enter engine size (e.g., 1.8L, 2.4L)...', 'Send', false);
         controlsEl.appendChild(form);
         return;
       }
@@ -3193,6 +3516,7 @@
       salesChatState.step = 'greeting';
       salesChatState.brand = '';
       salesChatState.model = '';
+      salesChatState.year = '';
       salesChatState.engineYear = '';
       salesChatState.chassis = '';
       salesChatState.qaHistory = [];
@@ -3800,10 +4124,13 @@
       return '';
     }
 
+    const salesAvailableYears = Array.from({ length: 2026 - 1990 + 1 }, (_, idx) => String(2026 - idx));
+
     function handleSalesBrandSelect(brand) {
       playLuxuryMicroTap();
       salesChatState.brand = brand;
       salesChatState.model = '';
+      salesChatState.year = '';
       salesChatState.engineYear = '';
       salesChatState.chassis = '';
       salesChatState.step = 'model';
@@ -3817,21 +4144,48 @@
       });
     }
 
+    function advanceSalesModelStep(rawModel) {
+      const canonical = resolveCanonicalModelName(salesChatState.brand, rawModel);
+      salesChatState.model = canonical;
+      salesChatState.year = '';
+      salesChatState.engineYear = '';
+      salesChatState.step = 'year';
+      appendSalesChatMessage('user', canonical);
+      scheduleAssistantReply(() => {
+        appendSalesChatMessage(
+          'assistant',
+          `Got it—${salesChatState.brand} ${canonical}. Scroll and pick your model year (1990–2026) below.`
+        );
+        renderSalesChatControls();
+      });
+    }
+
     function handleSalesModelSelect(modelName) {
       playLuxuryMicroTap();
-      const canonical = resolveCanonicalModelName(salesChatState.brand, modelName);
-      salesChatState.model = canonical;
+      advanceSalesModelStep(modelName);
+    }
+
+    function advanceSalesYearStep(yearValue) {
+      const cleanYear = normalizeDomText(yearValue);
+      if (!cleanYear) return;
+      salesChatState.year = cleanYear;
       salesChatState.engineYear = '';
       salesChatState.step = 'engineYear';
-      appendSalesChatMessage('user', canonical);
-      const engines = getAccurateEnginesForModel(salesChatState.brand, canonical);
+      appendSalesChatMessage('user', cleanYear);
+      const engines = getAccurateEnginesForModel(salesChatState.brand, salesChatState.model);
       scheduleAssistantReply(() => {
+        const vehicleLabel = `${cleanYear} ${salesChatState.brand} ${salesChatState.model}`;
         const msg = engines.length > 0
-          ? `Select your ${salesChatState.brand} ${canonical} engine size below, or enter engine & year.`
-          : `Enter your ${salesChatState.brand} ${canonical} engine capacity & year (e.g., 1.8L 2016), or tap Enter VIN.`;
+          ? `Nice, a ${vehicleLabel}—exact engine size determines thread reach and heat range. Tap your engine capacity below.`
+          : `Got your ${vehicleLabel}. Enter your engine capacity (e.g., 1.8L or 2.5L) below, or tap Enter VIN.`;
         appendSalesChatMessage('assistant', msg);
         renderSalesChatControls();
       });
+    }
+
+    function handleSalesYearSelect(yearValue) {
+      playLuxuryMicroTap();
+      advanceSalesYearStep(yearValue);
     }
 
     function handleSalesEngineSelect(engineLabel) {
@@ -3861,7 +4215,8 @@
       const summaryLines = [];
       if (salesChatState.brand) summaryLines.push({ label: 'Brand', value: salesChatState.brand });
       if (salesChatState.model) summaryLines.push({ label: 'Model', value: salesChatState.model });
-      if (salesChatState.engineYear) summaryLines.push({ label: 'Engine / Year', value: salesChatState.engineYear });
+      if (salesChatState.year) summaryLines.push({ label: 'Year', value: salesChatState.year });
+      if (salesChatState.engineYear) summaryLines.push({ label: 'Engine', value: salesChatState.engineYear });
       if (salesChatState.chassis) summaryLines.push({ label: 'Chassis / VIN', value: salesChatState.chassis });
       const matchedPlug = getVerifiedPlugMatch(salesChatState.brand, salesChatState.model, salesChatState.engineYear);
       if (matchedPlug) summaryLines.push({ label: 'OEM Match', value: matchedPlug });
@@ -3877,18 +4232,10 @@
     function handleSalesTextSubmit(value) {
       playLuxuryMicroTap();
       if (salesChatState.step === 'model') {
-        const canonical = resolveCanonicalModelName(salesChatState.brand, value);
-        salesChatState.model = canonical;
-        salesChatState.step = 'engineYear';
-        appendSalesChatMessage('user', canonical);
-        const engines = getAccurateEnginesForModel(salesChatState.brand, canonical);
-        scheduleAssistantReply(() => {
-          const msg = engines.length > 0
-            ? `Select your ${salesChatState.brand} ${canonical} engine size below, or enter engine & year.`
-            : `Enter your ${salesChatState.brand} ${canonical} engine capacity & year (e.g., 1.8L 2016), or tap Enter VIN.`;
-          appendSalesChatMessage('assistant', msg);
-          renderSalesChatControls();
-        });
+        advanceSalesModelStep(value);
+      } else if (salesChatState.step === 'year') {
+        const yearMatch = value.match(/\b(19\d{2}|20\d{2})\b/);
+        advanceSalesYearStep(yearMatch ? yearMatch[1] : value);
       } else if (salesChatState.step === 'engineYear') {
         salesChatState.engineYear = value;
         appendSalesChatMessage('user', value);
@@ -3910,7 +4257,8 @@
       const lines = ['*KASH OPTION OEM SPARK PLUG ORDER*'];
       if (salesChatState.brand) lines.push(`*Brand:* ${salesChatState.brand}`);
       if (salesChatState.model) lines.push(`*Model:* ${salesChatState.model}`);
-      if (salesChatState.engineYear) lines.push(`*Engine & Year:* ${salesChatState.engineYear}`);
+      if (salesChatState.year) lines.push(`*Year:* ${salesChatState.year}`);
+      if (salesChatState.engineYear) lines.push(`*Engine:* ${salesChatState.engineYear}`);
       if (salesChatState.chassis) lines.push(`*Chassis / VIN:* ${salesChatState.chassis}`);
       const matchedPlug = getVerifiedPlugMatch(salesChatState.brand, salesChatState.model, salesChatState.engineYear);
       if (matchedPlug) lines.push(`*OEM Match:* ${matchedPlug}`);
@@ -3922,41 +4270,134 @@
     function updateScrollParallax() {
       const prefersReducedMotion =
         window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const isMobileOrTouch =
-        window.innerWidth < 768 ||
-        (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
-      const activeView = document.querySelector('.page-view:not([hidden])');
-      if (!activeView) return;
+      const mobileOrTouch = isMobileTouchViewport();
+      if (!cachedParallaxEls.length && cachedActiveViewEl === null) {
+        refreshScrollDomCache();
+      }
+      if (!cachedParallaxEls.length) return;
 
-      const parallaxEls = activeView.querySelectorAll('[data-parallax]');
-      if (prefersReducedMotion || isMobileOrTouch) {
-        parallaxEls.forEach(el => {
-          if (el.style.transform) el.style.transform = '';
-        });
+      if (prefersReducedMotion || mobileOrTouch) {
+        for (let i = 0; i < cachedParallaxEls.length; i++) {
+          if (cachedParallaxEls[i].style.transform) {
+            cachedParallaxEls[i].style.transform = '';
+          }
+        }
         return;
       }
 
       const vh = window.innerHeight || document.documentElement.clientHeight;
-      parallaxEls.forEach(el => {
-        if (el.offsetParent === null) return;
-        const speed = parseFloat(el.getAttribute('data-parallax')) || 0.08;
-        const rect = el.getBoundingClientRect();
-        if (rect.bottom < -120 || rect.top > vh + 120) return;
+      const updates = [];
 
+      // Pure read pass first
+      for (let i = 0; i < cachedParallaxEls.length; i++) {
+        const el = cachedParallaxEls[i];
+        const rect = el.getBoundingClientRect();
+        if (rect.width === 0 && rect.height === 0) continue;
+        if (rect.bottom < -120 || rect.top > vh + 120) continue;
+        const speed = parseFloat(el.getAttribute('data-parallax')) || 0.08;
         const centerOffset = (rect.top + rect.height * 0.5) - vh * 0.5;
-        const rawY = -centerOffset * speed;
-        const clampedY = Math.max(-26, Math.min(26, rawY));
-        el.style.transform = `translate3d(0, ${clampedY.toFixed(1)}px, 0)`;
-      });
+        const clampedY = Math.max(-26, Math.min(26, -centerOffset * speed));
+        updates.push({ el, y: clampedY.toFixed(1) });
+      }
+
+      // Pure write pass
+      for (let i = 0; i < updates.length; i++) {
+        updates[i].el.style.transform = `translate3d(0, ${updates[i].y}px, 0)`;
+      }
+    }
+
+    function runBatchedScrollFrame() {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+      const mobileOrTouch = isMobileTouchViewport();
+      const prefersReducedMotion =
+        window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!cachedActiveViewEl && !cachedFooterEl && !cachedSalesWidgetEl) {
+        refreshScrollDomCache();
+      }
+
+      // ===== PHASE 1: ALL GEOMETRY / LAYOUT READS =====
+      const toReveal = [];
+      if (unrevealedCount > 0 && !mobileOrTouch && !prefersReducedMotion) {
+        const cutoff = vh + revealConfig.triggerMargin;
+        for (let i = 0; i < activeRevealTargets.length; i++) {
+          const el = activeRevealTargets[i];
+          if (el.classList.contains('is-revealed')) continue;
+          const rect = el.getBoundingClientRect();
+          if (rect.width === 0 && rect.height === 0) continue;
+          if (rect.top <= cutoff) {
+            toReveal.push(el);
+          }
+        }
+      }
+
+      const parallaxUpdates = [];
+      if (!mobileOrTouch && !prefersReducedMotion && cachedParallaxEls.length) {
+        for (let i = 0; i < cachedParallaxEls.length; i++) {
+          const el = cachedParallaxEls[i];
+          const rect = el.getBoundingClientRect();
+          if (rect.width === 0 && rect.height === 0) continue;
+          if (rect.bottom < -120 || rect.top > vh + 120) continue;
+          const speed = parseFloat(el.getAttribute('data-parallax')) || 0.08;
+          const centerOffset = (rect.top + rect.height * 0.5) - vh * 0.5;
+          const clampedY = Math.max(-26, Math.min(26, -centerOffset * speed));
+          parallaxUpdates.push({ el, y: clampedY.toFixed(1) });
+        }
+      }
+
+      let widgetAction = 0; // 0 = no change, 1 = show, -1 = hide
+      if (cachedSalesWidgetEl) {
+        const docHeight = Math.max(
+          document.documentElement.scrollHeight,
+          document.body ? document.body.scrollHeight : 0
+        );
+        const maxScroll = docHeight - vh;
+        if (scrollY <= 40 || maxScroll <= 40) {
+          widgetAction = -1;
+        } else {
+          const progress = scrollY / maxScroll;
+          const nearFooter = cachedFooterEl
+            ? cachedFooterEl.getBoundingClientRect().top <= vh + 120
+            : false;
+          if (progress >= 0.75 || nearFooter) {
+            widgetAction = 1;
+          } else if (progress < 0.70 && !nearFooter) {
+            widgetAction = -1;
+          }
+        }
+      }
+
+      // ===== PHASE 2: ALL DOM WRITES =====
+      if (toReveal.length > 0) {
+        for (let i = 0; i < toReveal.length; i++) {
+          const el = toReveal[i];
+          el.classList.add('is-revealed');
+          if (activeRevealObserver) {
+            activeRevealObserver.unobserve(el);
+          }
+        }
+        unrevealedCount = Math.max(0, unrevealedCount - toReveal.length);
+      }
+
+      for (let i = 0; i < parallaxUpdates.length; i++) {
+        parallaxUpdates[i].el.style.transform = `translate3d(0, ${parallaxUpdates[i].y}px, 0)`;
+      }
+
+      if (cachedSalesWidgetEl) {
+        if (widgetAction === 1) {
+          setSalesWidgetVisible(cachedSalesWidgetEl, true);
+        } else if (widgetAction === -1) {
+          setSalesWidgetVisible(cachedSalesWidgetEl, false);
+        }
+      }
     }
 
     function scheduleScrollRevealEval() {
       if (scrollEvalRaf) return;
       scrollEvalRaf = window.requestAnimationFrame(() => {
         scrollEvalRaf = 0;
-        evaluateScrollReveals();
-        updateScrollParallax();
-        updateSalesRepVisibility();
+        runBatchedScrollFrame();
       });
     }
 
@@ -3974,19 +4415,32 @@
 
       const prefersReducedMotion =
         window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const mobileOrTouch = isMobileTouchViewport();
 
-      const activeView = document.querySelector('.page-view:not([hidden])');
-      const footerEl = document.querySelector('footer');
+      refreshScrollDomCache();
 
       const targets = [];
-      if (activeView) {
-        targets.push(...activeView.querySelectorAll('.scroll-reveal'));
+      if (cachedActiveViewEl) {
+        targets.push(...cachedActiveViewEl.querySelectorAll('.scroll-reveal'));
       }
-      if (footerEl) {
-        targets.push(...footerEl.querySelectorAll('.scroll-reveal'));
+      if (cachedFooterEl) {
+        targets.push(...cachedFooterEl.querySelectorAll('.scroll-reveal'));
       }
 
       activeRevealTargets = targets;
+
+      if (activeRevealObserver) {
+        activeRevealObserver.disconnect();
+      }
+      window.cancelAnimationFrame(revealRaf1);
+
+      if (prefersReducedMotion || mobileOrTouch || typeof IntersectionObserver === 'undefined') {
+        targets.forEach(el => el.classList.add('is-revealed'));
+        unrevealedCount = 0;
+        ensureScrollRevealListeners();
+        updateScrollParallax();
+        return;
+      }
 
       // Apply optional per-element stagger delay (capped for instant visibility)
       targets.forEach(el => {
@@ -3997,12 +4451,6 @@
         }
       });
 
-      if (prefersReducedMotion || typeof IntersectionObserver === 'undefined') {
-        targets.forEach(el => el.classList.add('is-revealed'));
-        updateScrollParallax();
-        return;
-      }
-
       if (resetPage) {
         targets.forEach(el => el.classList.remove('is-revealed'));
       } else if (resetProducts) {
@@ -4011,47 +4459,47 @@
           .forEach(el => el.classList.remove('is-revealed'));
       }
 
+      unrevealedCount = targets.reduce((acc, el) => acc + (el.classList.contains('is-revealed') ? 0 : 1), 0);
       ensureScrollRevealListeners();
 
-      if (activeRevealObserver) {
-        activeRevealObserver.disconnect();
-      }
-      window.cancelAnimationFrame(revealRaf1);
-      window.cancelAnimationFrame(revealRaf2);
-
-      // Reveal above-the-fold and preload-zone elements immediately so nothing flashes blank
+      // Reveal above-the-fold and preload-zone elements immediately
       evaluateScrollReveals();
       updateScrollParallax();
 
-      revealRaf1 = window.requestAnimationFrame(() => {
-        activeRevealObserver = new IntersectionObserver(
-          entries => {
-            let needsBatchEval = false;
-            entries.forEach(entry => {
-              if (entry.isIntersecting || entry.boundingClientRect.top <= (window.innerHeight || document.documentElement.clientHeight) + revealConfig.triggerMargin) {
-                entry.target.classList.add('is-revealed');
-                if (activeRevealObserver) {
-                  activeRevealObserver.unobserve(entry.target);
+      if (unrevealedCount > 0) {
+        revealRaf1 = window.requestAnimationFrame(() => {
+          activeRevealObserver = new IntersectionObserver(
+            entries => {
+              let newlyRevealed = 0;
+              entries.forEach(entry => {
+                if (entry.isIntersecting || entry.boundingClientRect.top <= (window.innerHeight || document.documentElement.clientHeight) + revealConfig.triggerMargin) {
+                  if (!entry.target.classList.contains('is-revealed')) {
+                    entry.target.classList.add('is-revealed');
+                    newlyRevealed++;
+                  }
+                  if (activeRevealObserver) {
+                    activeRevealObserver.unobserve(entry.target);
+                  }
                 }
-                needsBatchEval = true;
+              });
+              if (newlyRevealed > 0) {
+                unrevealedCount = Math.max(0, unrevealedCount - newlyRevealed);
+                evaluateScrollReveals();
               }
-            });
-            if (needsBatchEval) {
-              evaluateScrollReveals();
+            },
+            {
+              threshold: 0,
+              rootMargin: '420px 0px 420px 0px',
             }
-          },
-          {
-            threshold: 0,
-            rootMargin: '260px 0px 260px 0px',
-          }
-        );
+          );
 
-        targets.forEach(el => {
-          if (!el.classList.contains('is-revealed') && el.offsetParent !== null) {
-            activeRevealObserver.observe(el);
-          }
+          targets.forEach(el => {
+            if (!el.classList.contains('is-revealed') && el.offsetParent !== null) {
+              activeRevealObserver.observe(el);
+            }
+          });
         });
-      });
+      }
     }
 
     function openWhatsAppUrl(url) {
@@ -4103,8 +4551,12 @@
       contact: "Contact & Customer Desk | KASH OPTION Ghana"
     };
 
+    let currentActivePage = null;
+
     function showPage(pageKey, brandFilter, updateHistory) {
       const validPage = routeMap[pageKey] || 'home';
+      const isSamePage = currentActivePage === validPage;
+      currentActivePage = validPage;
 
       // Isolate display: hide all page views except target
       document.querySelectorAll('.page-view').forEach(view => {
@@ -4137,8 +4589,11 @@
       // Update document title
       document.title = pageTitles[validPage] || pageTitles.home;
 
-      // Scroll to top of clean page
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      // Smoothly glide to top on same-page anchor taps; reset cleanly to top on route swaps
+      window.scrollTo({
+        top: 0,
+        behavior: isSamePage && !brandFilter ? 'smooth' : 'instant'
+      });
       updateSalesRepVisibility();
 
       // Update browser history
@@ -4147,14 +4602,14 @@
         history.pushState({ page: validPage, brand: brandFilter || null }, '', hash);
       }
 
-      // Ensure menu overlay is closed and background blur removed
+      // Ensure menu overlay is closed cleanly
       closeMenu();
 
-      // Trigger scroll reveal animations for newly active page & footer
-      initScrollReveals({ resetPage: true });
+      // Refresh cached parallax/reveal nodes without stalling active view
+      initScrollReveals({ resetPage: !isSamePage });
     }
 
-    // Intercept internal anchor clicks for clean page transitions
+    // Intercept internal anchor clicks for clean page transitions & smooth in-page jumps
     document.addEventListener('click', function(e) {
       const link = e.target.closest('a[href^="#"]');
       if (!link) return;
@@ -4166,6 +4621,13 @@
         e.preventDefault();
         const brand = ['toyota', 'honda', 'hyundai', 'kia', 'denso', 'ngk', 'mobis'].includes(hashKey) ? hashKey : null;
         showPage(routeMap[hashKey] === 'catalogue' ? 'catalogue' : hashKey, brand, true);
+        return;
+      }
+      const targetEl = document.getElementById(href.slice(1));
+      if (targetEl) {
+        e.preventDefault();
+        closeMenu();
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
 
