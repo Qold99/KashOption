@@ -46,8 +46,8 @@
             porscheBlack: '#050505',
             porscheDark: '#121214',
             porscheSurface: '#18181C',
-            porscheRed: '#E50914',
-            porscheRedHover: '#B30017',
+            porscheRed: '#E31818',
+            porscheRedHover: '#D91414',
             metallicSilver: '#BFC3C7',
             silverMuted: '#A1A1AA',
             charcoalBorder: '#242428',
@@ -63,7 +63,7 @@
   <style>
     :root {
       --bg-black: #050505;
-      --porsche-red: #E50914;
+      --porsche-red: #FF1F1F;
       --metallic-silver: #BFC3C7;
       --charcoal-border: rgba(255, 255, 255, 0.12);
     }
@@ -157,9 +157,9 @@
       -webkit-backface-visibility: hidden;
     }
     .liquid-glass-interactive:hover {
-      border-color: rgba(229, 9, 20, 0.35);
+      border-color: rgba(255, 31, 31, 0.42);
       transform: translate3d(0, -3px, 0);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 24px 56px rgba(0, 0, 0, 0.78), 0 0 28px rgba(229, 9, 20, 0.12);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 24px 56px rgba(0, 0, 0, 0.78), 0 0 26px rgba(255, 31, 31, 0.14);
     }
     .liquid-glass-interactive:active {
       transform: scale(0.98) translate3d(0, 0, 0);
@@ -180,15 +180,15 @@
       transform: translate3d(0, 0, 0);
     }
     .liquid-glass-btn:hover {
-      border-color: rgba(229, 9, 20, 0.45);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(229, 9, 20, 0.18);
+      border-color: rgba(255, 31, 31, 0.52);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 31, 31, 0.18);
     }
     .liquid-glass-btn:active {
       transform: scale(0.98) translate3d(0, 0, 0);
     }
 
     .liquid-cta-primary {
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 16px 38px rgba(229, 9, 20, 0.3);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 16px 34px rgba(255, 31, 31, 0.28);
       transition:
         transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
         background-color 260ms ease,
@@ -197,7 +197,7 @@
     }
     .liquid-cta-primary:hover {
       transform: translate3d(0, -2px, 0);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 22px 46px rgba(229, 9, 20, 0.44);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 20px 42px rgba(255, 31, 31, 0.4);
     }
     .liquid-cta-primary:active {
       transform: scale(0.98) translate3d(0, 0, 0);
@@ -219,21 +219,48 @@
         box-shadow 420ms cubic-bezier(0.16, 1, 0.3, 1);
     }
     .porsche-card:hover {
-      border-color: rgba(229, 9, 20, 0.38);
+      border-color: rgba(255, 31, 31, 0.45);
       transform: translate3d(0, -4px, 0);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 26px 60px rgba(0, 0, 0, 0.8), 0 0 28px rgba(229, 9, 20, 0.12);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 26px 60px rgba(0, 0, 0, 0.8), 0 0 26px rgba(255, 31, 31, 0.14);
     }
     .porsche-card:active {
       transform: scale(0.985) translate3d(0, 0, 0);
+    }
+
+    /* Avoid nested backdrop-filter recalculations on buttons inside cards */
+    .liquid-glass .liquid-glass-btn,
+    .porsche-card .liquid-glass-btn {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background: rgba(22, 22, 28, 0.88);
+    }
+
+    /* Mobile / iOS Safari 60fps scroll paint optimization: avoid stacked backdrop-filter over large scrolling containers */
+    @media (max-width: 1023px), (hover: none) and (pointer: coarse) {
+      main .liquid-glass,
+      main .porsche-card,
+      footer .liquid-glass,
+      .page-view:not(#home) .liquid-glass,
+      .page-view:not(#home) .porsche-card {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background-color: rgba(16, 16, 20, 0.92);
+      }
+      main .liquid-glass-btn,
+      footer .liquid-glass-btn {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background-color: rgba(22, 22, 28, 0.92);
+      }
     }
 
     /* Smoked glass rim lighting, ambient crimson glow & hairline border across non-landing sub-pages ONLY */
     .page-view:not(#home) .liquid-glass,
     .page-view:not(#home) .porsche-card {
       background-color: rgba(16, 16, 20, 0.65);
-      background-image: radial-gradient(circle at top left, rgba(229, 9, 20, 0.07), transparent 60%);
-      border-color: rgba(229, 9, 20, 0.28);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 12px 32px rgba(0, 0, 0, 0.55), 0 0 18px rgba(229, 9, 20, 0.06);
+      background-image: radial-gradient(circle at top left, rgba(255, 31, 31, 0.08), transparent 60%);
+      border-color: rgba(255, 31, 31, 0.34);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 12px 32px rgba(0, 0, 0, 0.55), 0 0 18px rgba(255, 31, 31, 0.08);
       transition:
         transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
         border-color 350ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -242,8 +269,8 @@
     }
     .page-view:not(#home) .liquid-glass:hover,
     .page-view:not(#home) .porsche-card:hover {
-      border-color: rgba(229, 9, 20, 0.42);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 26px 60px rgba(0, 0, 0, 0.8), 0 0 28px rgba(229, 9, 20, 0.14);
+      border-color: rgba(255, 31, 31, 0.5);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 26px 60px rgba(0, 0, 0, 0.8), 0 0 26px rgba(255, 31, 31, 0.16);
     }
 
     /* Precision 5px glowing crimson eyebrow dot & architectural step watermarks (sub-pages only) */
@@ -253,8 +280,8 @@
       width: 5px;
       height: 5px;
       border-radius: 9999px;
-      background-color: #E50914;
-      box-shadow: 0 0 8px rgba(229, 9, 20, 0.6);
+      background-color: #FF1F1F;
+      box-shadow: 0 0 8px rgba(255, 31, 31, 0.65);
       margin-right: 0.45rem;
       vertical-align: middle;
       transform: translateY(-0.5px);
@@ -313,7 +340,7 @@
 
     /* Studio Hero Glow and Gradient Lighting */
     .hero-studio-glow {
-      background: radial-gradient(circle at 50% 18%, rgba(229, 9, 20, 0.15) 0%, rgba(229, 9, 20, 0.03) 50%, transparent 75%),
+      background: radial-gradient(circle at 50% 18%, rgba(255, 31, 31, 0.14) 0%, rgba(255, 31, 31, 0.03) 50%, transparent 75%),
                   radial-gradient(circle at 30% 10%, rgba(255, 255, 255, 0.05) 0%, transparent 42%);
     }
 
@@ -325,40 +352,40 @@
       overflow-x: clip;
     }
 
-    /* ================= GLOBAL CHOREOGRAPHED SCROLL-TRIGGERED REVEAL ANIMATIONS ================= */
+    /* ================= GLOBAL FAST-SCROLL GPU REVEAL ANIMATIONS ================= */
     .scroll-reveal {
       opacity: 0;
-      transform: translate3d(0, 42px, 0) scale(0.985);
-      will-change: transform, opacity;
+      transform: translate3d(0, 14px, 0);
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
       transition:
-        opacity 1200ms cubic-bezier(0.16, 1, 0.3, 1),
-        transform 1200ms cubic-bezier(0.16, 1, 0.3, 1),
-        filter 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+        opacity 340ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 340ms cubic-bezier(0.22, 1, 0.36, 1);
       transition-delay: 0ms;
     }
-    .scroll-reveal[data-reveal="fade-up"] {
-      transform: translate3d(0, 42px, 0) scale(0.985);
-    }
+    .scroll-reveal[data-reveal="fade-up"],
     .scroll-reveal[data-reveal="hero"],
     .scroll-reveal[data-reveal="headline"] {
-      transform: translate3d(0, 32px, 0) scale(0.97);
-      filter: blur(6px);
-      will-change: transform, opacity, filter;
+      transform: translate3d(0, 14px, 0);
     }
     .scroll-reveal.is-revealed {
       opacity: 1;
-      transform: translate3d(0, 0, 0) scale(1);
-      filter: blur(0);
+      transform: translate3d(0, 0, 0);
       transition-delay: var(--reveal-delay, 0ms);
-      will-change: auto;
+    }
+    @media (max-width: 767px), (hover: none) and (pointer: coarse) {
+      .scroll-reveal.is-revealed {
+        transition-delay: 0ms !important;
+      }
+      [data-parallax] {
+        transition: none !important;
+        will-change: auto;
+      }
     }
     [data-parallax] {
       transform: translate3d(0, 0, 0);
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
-      will-change: transform;
       transition: transform 140ms cubic-bezier(0.16, 1, 0.3, 1);
     }
     @media (prefers-reduced-motion: reduce) {
@@ -444,7 +471,7 @@
       transform: rotate(-90deg) scale(0.75);
     }
     #menuTriggerBtn.is-open {
-      border-color: rgba(229, 9, 20, 0.48);
+      border-color: rgba(255, 31, 31, 0.55);
       color: #FFFFFF;
     }
     #menuTriggerBtn.is-open .menu-icon-bars {
@@ -567,8 +594,8 @@
       border-radius: 50%;
       overflow: hidden;
       flex-shrink: 0;
-      border: 1.5px solid rgba(229, 9, 20, 0.55);
-      box-shadow: 0 0 12px rgba(229, 9, 20, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      border: 1.5px solid rgba(255, 31, 31, 0.62);
+      box-shadow: 0 0 12px rgba(255, 31, 31, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.14);
     }
     .sales-chat-avatar-img {
       width: 100%;
@@ -585,7 +612,7 @@
       border-radius: 50%;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at top left, rgba(229, 9, 20, 0.22), transparent 65%), linear-gradient(145deg, #1A1A20, #0A0A0D);
+      background: radial-gradient(circle at top left, rgba(255, 31, 31, 0.22), transparent 65%), linear-gradient(145deg, #1A1A20, #0A0A0D);
       color: #FFFFFF;
       font-size: 11px;
       font-weight: 800;
@@ -599,8 +626,8 @@
       width: 7px;
       height: 7px;
       border-radius: 9999px;
-      background-color: #E50914;
-      box-shadow: 0 0 8px rgba(229, 9, 20, 0.9);
+      background-color: #FF1F1F;
+      box-shadow: 0 0 8px rgba(255, 31, 31, 0.85);
       flex-shrink: 0;
     }
     .sales-status-dot::after {
@@ -608,7 +635,7 @@
       position: absolute;
       inset: -3px;
       border-radius: 9999px;
-      border: 1.5px solid rgba(229, 9, 20, 0.7);
+      border: 1.5px solid rgba(255, 31, 31, 0.72);
       animation: salesStatusPulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
       pointer-events: none;
     }
@@ -662,13 +689,13 @@
       top: 0;
       bottom: 0;
       width: 2.5px;
-      background: #E50914;
-      box-shadow: 0 0 10px rgba(229, 9, 20, 0.45);
+      background: #FF1F1F;
+      box-shadow: 0 0 10px rgba(255, 31, 31, 0.5);
     }
     .sales-bubble-user {
       border-radius: 18px 18px 4px 18px;
-      background: linear-gradient(135deg, #E50914 0%, #A8050D 100%);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 6px 20px rgba(229, 9, 20, 0.28);
+      background: linear-gradient(135deg, #FF2424 0%, #D91414 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 6px 20px rgba(255, 36, 36, 0.28);
       padding: 10px 14px;
     }
     .sales-typing-dots {
@@ -689,7 +716,7 @@
     }
     .sales-typing-dots span:nth-child(3) {
       animation-delay: 280ms;
-      background-color: #E50914;
+      background-color: #FF1F1F;
     }
     @keyframes conciergeDotPulse {
       0%, 80%, 100% {
@@ -709,17 +736,17 @@
     }
     .sales-chat-input:focus {
       outline: none;
-      border-color: rgba(229, 9, 20, 0.7);
-      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.55), 0 0 0 3px rgba(229, 9, 20, 0.18);
+      border-color: rgba(255, 31, 31, 0.78);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.55), 0 0 0 3px rgba(255, 31, 31, 0.18);
     }
     .sales-chat-send-btn {
-      background: linear-gradient(135deg, #E50914 0%, #A8050D 100%);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 6px 20px rgba(229, 9, 20, 0.28);
+      background: linear-gradient(135deg, #FF2424 0%, #D91414 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 6px 20px rgba(255, 36, 36, 0.28);
       transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), filter 200ms ease, box-shadow 200ms ease;
     }
     .sales-chat-send-btn:hover {
       filter: brightness(1.08);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32), 0 8px 24px rgba(229, 9, 20, 0.42);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32), 0 8px 24px rgba(255, 36, 36, 0.38);
     }
     .sales-chat-send-btn:active {
       transform: scale(0.97);
@@ -758,7 +785,7 @@
     }
   </style>
 
-  <!-- Technical JSON-LD Structured Data: AutoPartsStore, Organization, FAQPage -->
+  <!-- Technical JSON-LD Structured Data: AutoPartsStore, Organization -->
   <script type="application/ld+json">
   [
     {
@@ -824,42 +851,57 @@
         "areaServed": "GH",
         "availableLanguage": ["English"]
       }
+    }
+  ]
+  </script>
+
+  <!-- Technical JSON-LD Structured Data: WebSite & SiteNavigationElement -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://mrkash.net/#website",
+      "url": "https://mrkash.net",
+      "name": "Kash Option",
+      "alternateName": "MrKash"
     },
     {
       "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
+      "@type": "SiteNavigationElement",
+      "@id": "https://mrkash.net/#navigation",
+      "name": "Main Navigation",
+      "url": "https://mrkash.net",
+      "hasPart": [
         {
-          "@type": "Question",
-          "name": "How do I ensure I receive the exact OEM spark plug for my vehicle?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Provide your vehicle chassis number (VIN) or make, model, year, and engine code via our fitment tool or WhatsApp at 024 011 8846. Our technical specialists cross-reference official manufacturer repair manuals to guarantee 100% correct fitment."
-          }
+          "@type": "SiteNavigationElement",
+          "name": "Toyota OEM Spark Plugs",
+          "url": "https://mrkash.net/#toyota"
         },
         {
-          "@type": "Question",
-          "name": "Where does KASH OPTION source spark plugs from?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Every spark plug is imported directly through authorized Tier-1 international distributor supply lines in Japan and North America, eliminating the counterfeit risks prevalent in unverified local markets."
-          }
+          "@type": "SiteNavigationElement",
+          "name": "Honda OEM Spark Plugs",
+          "url": "https://mrkash.net/#honda"
         },
         {
-          "@type": "Question",
-          "name": "Do you offer wholesale pricing for garages and auto parts dealers in Ghana?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. We supply automotive repair workshops, technicians, dealerships, and retailers in Abossey Okai, Kumasi Magazine, and nationwide with volume tiered trade pricing in cartons of 40 and master cases of 200."
-          }
+          "@type": "SiteNavigationElement",
+          "name": "Hyundai OEM Spark Plugs",
+          "url": "https://mrkash.net/#hyundai"
         },
         {
-          "@type": "Question",
-          "name": "What are your delivery schedules across Ghana?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Same-day express dispatch is available throughout Greater Accra and Tema. For regional locations including Kumasi, Takoradi, Sunyani, Tamale, and Ho, orders are dispatched via trusted courier transit for next-morning delivery."
-          }
+          "@type": "SiteNavigationElement",
+          "name": "Kia OEM Spark Plugs",
+          "url": "https://mrkash.net/#kia"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Chassis Verification Tool",
+          "url": "https://mrkash.net/#fitment-finder"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Trade & Wholesale Supply",
+          "url": "https://mrkash.net/#wholesale"
         }
       ]
     }
@@ -881,8 +923,8 @@
 
         <!-- Brand Logo (Hero Spark Plugs Emblem + "KASH OPTION") -->
         <a href="#home" onclick="closeMenu()" class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none min-w-0" aria-label="KASH OPTION Home">
-          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full liquid-glass p-1 flex items-center justify-center overflow-hidden shrink-0 group-hover:border-[#E50914]/50 transition-colors">
-            <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine Spark Plugs" referrerpolicy="no-referrer" class="w-full h-full object-contain filter contrast-125 brightness-110 drop-shadow-[0_2px_6px_rgba(213,0,28,0.35)]">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full liquid-glass p-1 flex items-center justify-center overflow-hidden shrink-0 group-hover:border-[#FF1F1F]/55 transition-colors">
+            <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine Spark Plugs" referrerpolicy="no-referrer" class="w-full h-full object-contain filter contrast-125 brightness-110 drop-shadow-[0_2px_6px_rgba(255,31,31,0.35)]">
           </div>
           <div class="flex flex-col min-w-0">
             <span class="text-xs sm:text-sm font-extrabold tracking-tight text-white uppercase leading-none truncate">
@@ -1027,12 +1069,12 @@
           <!-- Spark Plugs Top Spread Layer -->
           <div class="absolute -top-6 sm:-top-10 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[70%] sm:h-[82%] flex items-start justify-center opacity-35 sm:opacity-45">
             <div data-parallax="0.14" class="w-full h-full flex items-start justify-center">
-              <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine OEM Automotive Spark Plugs" class="w-full h-full object-contain object-top filter drop-shadow-[0_20px_55px_rgba(229,9,20,0.35)] scale-105 sm:scale-100">
+              <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine OEM Automotive Spark Plugs" class="w-full h-full object-contain object-top filter drop-shadow-[0_20px_55px_rgba(255,31,31,0.32)] scale-105 sm:scale-100">
             </div>
           </div>
           <!-- Luxury Studio Lighting Overlay Calibrated for Absolute Text Contrast -->
           <div class="absolute inset-0 bg-gradient-to-b from-[#050505]/35 via-[#050505]/80 to-[#050505]"></div>
-          <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_15%,rgba(229,9,20,0.14),transparent_70%)]"></div>
+          <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_15%,rgba(255,31,31,0.13),transparent_70%)]"></div>
         </div>
 
         <!-- Hero Main Content (Foreground with Crisp Legibility) -->
@@ -1117,7 +1159,7 @@
       <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="liquid-glass liquid-glass-interactive p-8 sm:p-12 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
           <div class="scroll-reveal flex items-center gap-6 z-10 max-w-2xl" data-reveal="fade-up">
-            <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Spark Plugs Dealer" class="h-20 w-auto object-contain hidden sm:block filter drop-shadow-[0_10px_20px_rgba(229,9,20,0.28)]">
+            <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Spark Plugs Dealer" class="h-20 w-auto object-contain hidden sm:block filter drop-shadow-[0_10px_20px_rgba(255,31,31,0.28)]">
             <div>
               <span class="text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-1">Commercial Reliability</span>
               <h2 class="text-xl sm:text-2xl font-extrabold uppercase text-white mb-2">
@@ -1596,7 +1638,7 @@
               <!-- Prominent Product Image Feature -->
               <div class="py-6 flex justify-center items-center overflow-hidden">
                 <div data-parallax="0.1" class="flex justify-center items-center">
-                  <img src="https://iili.io/oHVNlFS.png" alt="OEM Spark Plug Inspection KASH OPTION" class="h-60 w-auto object-contain filter drop-shadow-[0_15px_30px_rgba(229,9,20,0.3)]">
+                  <img src="https://iili.io/oHVNlFS.png" alt="OEM Spark Plug Inspection KASH OPTION" class="h-60 w-auto object-contain filter drop-shadow-[0_15px_30px_rgba(255,31,31,0.28)]">
                 </div>
               </div>
 
@@ -1654,7 +1696,7 @@
           </div>
 
           <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="100">
-            <div class="liquid-glass liquid-glass-interactive p-6 rounded-2xl border-porscheRed/40 relative flex flex-col justify-between shadow-[0_20px_50px_rgba(229,9,20,0.14)] h-full">
+            <div class="liquid-glass liquid-glass-interactive p-6 rounded-2xl border-porscheRed/40 relative flex flex-col justify-between shadow-[0_20px_50px_rgba(255,31,31,0.14)] h-full">
               <span class="absolute -top-2.5 right-6 bg-porscheRed text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md shadow-md">Most Popular with Garages</span>
               <div>
                 <span class="oem-eyebrow text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-1">Tier 02 &bull; Workshop Pack</span>
@@ -2087,6 +2129,59 @@
         </div>
 
       </div>
+
+      <!-- Structured Data: Support FAQPage JSON-LD for Google Rich Snippets -->
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": "https://mrkash.net/#faqs",
+        "url": "https://mrkash.net/#faqs",
+        "name": "KASH OPTION Frequently Asked Questions",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How can I be 100% certain I am getting the right spark plug?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Simply send your vehicle chassis number (VIN) or frame number via our fitment tool or WhatsApp. Our technicians verify the exact engine code and cross-reference factory parts catalogues before fulfilling your order."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why are prices not displayed publicly on the website?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We serve both wholesale trade buyers (workshops, parts retailers) and retail car owners. Because trade discounts vary with volume and international exchange rates fluctuate, we quote current pricing directly via our active WhatsApp catalogue."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How fast is delivery to locations outside Accra?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Greater Accra deliveries arrive same-day. For regional orders to Kumasi, Takoradi, Sunyani, Tamale, and other regional hubs, parcels are dispatched same-day via secure transit services for next-morning pickup or doorstep drop-off."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you sell genuine Denso, NGK, and Mobis plugs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Every spark plug we distribute is sourced directly from authorized Tier-1 supply lines in Japan and the USA. We maintain a zero-tolerance policy for imitation parts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is your policy if an item has a factory defect?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In the unlikely event of an authentic factory defect reported within 48 hours of receipt prior to installation damage, our technical desk will immediately review and facilitate an exchange or store credit."
+            }
+          }
+        ]
+      }
+      </script>
     </section>
 
     <!-- ================= DISCRETE PAGE: CONTACT & CUSTOMER DESK ================= -->
@@ -2153,7 +2248,7 @@
         <div class="md:col-span-2 scroll-reveal" data-reveal="fade-up" data-reveal-delay="0">
           <div class="flex items-center gap-3 mb-4">
             <div class="w-10 h-10 rounded-lg liquid-glass p-1 flex items-center justify-center overflow-hidden shrink-0">
-              <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine Spark Plugs" referrerpolicy="no-referrer" class="w-full h-full object-contain filter contrast-125 brightness-110 drop-shadow-[0_2px_6px_rgba(213,0,28,0.35)]">
+              <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine Spark Plugs" referrerpolicy="no-referrer" class="w-full h-full object-contain filter contrast-125 brightness-110 drop-shadow-[0_2px_6px_rgba(255,31,31,0.35)]">
             </div>
             <span class="text-lg font-extrabold tracking-tight text-white uppercase">
               KASH <span class="text-porscheRed">OPTION</span>
@@ -2226,7 +2321,7 @@
     <button type="button" onclick="openSalesChat()" aria-haspopup="dialog" aria-controls="salesRepChat" aria-expanded="false" id="salesRepTriggerBtn" class="w-full text-left liquid-glass liquid-glass-interactive rounded-xl px-3.5 py-2.5 flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-porscheRed">
       <div class="sales-rep-avatar-box bg-[#18181C] border border-white/15 group-hover:border-porscheRed/70 flex items-center justify-center transition-colors">
         <img src="./salesrep.png" alt="KASH OPTION Sales Representative" width="40" height="40" class="sales-rep-avatar-img" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';">
-        <span class="sales-ko-fallback" aria-hidden="true">K<span class="text-[#E50914]">O</span></span>
+        <span class="sales-ko-fallback" aria-hidden="true">K<span class="text-[#FF1F1F]">O</span></span>
       </div>
       <div class="min-w-0 flex-1">
         <span class="block text-xs font-bold text-white leading-snug whitespace-nowrap">
@@ -2244,13 +2339,13 @@
   <div id="salesChatBackdrop" onclick="closeSalesChat()" aria-hidden="true" class="fixed inset-0 z-[44]"></div>
 
   <aside id="salesRepChat" role="dialog" aria-modal="true" aria-labelledby="salesChatTitle" class="fixed bottom-4 right-4 left-4 sm:left-auto sm:bottom-5 sm:right-5 sm:w-[384px] z-[45]">
-    <div class="liquid-glass rounded-2xl overflow-hidden flex flex-col max-h-[min(550px,calc(100vh-2rem))]">
+    <div class="liquid-glass rounded-2xl overflow-hidden flex flex-col max-h-[min(600px,calc(100dvh-2rem))]">
       <!-- Chat Header -->
       <div class="px-4 py-3.5 bg-[#121216]/85 border-b border-white/10 flex items-center justify-between gap-3">
         <div class="flex items-center gap-2.5 min-w-0">
           <div class="sales-chat-avatar-box bg-[#18181C]">
             <img src="./salesrep.png" alt="KASH OPTION Sales Representative" width="38" height="38" class="sales-chat-avatar-img" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';">
-            <span class="sales-ko-fallback" aria-hidden="true">K<span class="text-[#E50914]">O</span></span>
+            <span class="sales-ko-fallback" aria-hidden="true">K<span class="text-[#FF1F1F]">O</span></span>
           </div>
           <div class="min-w-0">
             <h2 id="salesChatTitle" class="text-xs font-extrabold text-white tracking-tight truncate">KASH OPTION Fitment Desk</h2>
@@ -2261,17 +2356,17 @@
           </div>
         </div>
         <div class="flex items-center gap-2 shrink-0">
-          <button type="button" onclick="resetSalesChat()" title="Start Over" aria-label="Start Over" class="text-[10px] font-bold uppercase tracking-wider text-zinc-200 hover:text-white liquid-glass-btn rounded-md px-2.5 py-1.5 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]">
+          <button type="button" onclick="resetSalesChat()" title="Start Over" aria-label="Start Over" class="text-[10px] font-bold uppercase tracking-wider text-zinc-200 hover:text-white liquid-glass-btn rounded-md px-2.5 py-1.5 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF1F1F]">
             RESET
           </button>
-          <button type="button" onclick="closeSalesChat()" aria-label="Close chat" class="w-7 h-7 flex items-center justify-center rounded-md bg-[#E50914]/15 hover:bg-[#E50914] text-[#FF6B73] hover:text-white border border-[#E50914]/35 hover:border-[#E50914] transition-all active:scale-95 text-base leading-none focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]">
+          <button type="button" onclick="closeSalesChat()" aria-label="Close chat" class="w-7 h-7 flex items-center justify-center rounded-md bg-[#FF1F1F]/15 hover:bg-[#E31818] text-[#FF7070] hover:text-white border border-[#FF1F1F]/40 hover:border-[#FF1F1F] transition-all active:scale-95 text-base leading-none focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF1F1F]">
             &times;
           </button>
         </div>
       </div>
 
       <!-- Chat Message Stream -->
-      <div id="salesChatMessages" class="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-[#0E0E12]/75 min-h-[220px]" aria-live="polite"></div>
+      <div id="salesChatMessages" class="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-[#0E0E12]/75 min-h-[160px]" aria-live="polite"></div>
 
       <!-- Dynamic Interactive Controls -->
       <div id="salesChatControls" class="px-4 py-3.5 bg-[#121216]/85 border-t border-white/10"></div>
@@ -2280,12 +2375,12 @@
 
   <!-- ================= JAVASCRIPT: ROUTING, LIVE SEARCH, FITMENT, OVERLAY & SCROLL REVEAL ================= -->
   <script>
-    /* ================= GLOBAL SCROLL-TRIGGERED REVEAL CONTROLLER ================= */
+    /* ================= GLOBAL FAST-SCROLL REVEAL CONTROLLER ================= */
     const revealConfig = {
-      once: false,
-      duration: 1200,
-      offset: 42,
-      triggerMargin: 16,
+      once: true,
+      duration: 340,
+      offset: 14,
+      triggerMargin: 260,
     };
 
     let activeRevealObserver = null;
@@ -2295,40 +2390,29 @@
     let revealRaf1 = 0;
     let revealRaf2 = 0;
 
-    function getCurrentTranslateY(el) {
-      const transform = window.getComputedStyle(el).transform;
-      if (!transform || transform === 'none') return 0;
-      if (transform.startsWith('matrix3d(')) {
-        const parts = transform.slice(9, -1).split(',');
-        return parseFloat(parts[13]) || 0;
-      }
-      if (transform.startsWith('matrix(')) {
-        const parts = transform.slice(7, -1).split(',');
-        return parseFloat(parts[5]) || 0;
-      }
-      return 0;
-    }
-
     function evaluateScrollReveals() {
       const vh = window.innerHeight || document.documentElement.clientHeight;
-      const margin = revealConfig.triggerMargin;
+      const cutoff = vh + revealConfig.triggerMargin;
+      const toReveal = [];
 
-      activeRevealTargets.forEach(el => {
-        if (el.offsetParent === null) return;
+      // Batch all layout reads before DOM writes to prevent mobile layout thrashing
+      for (let i = 0; i < activeRevealTargets.length; i++) {
+        const el = activeRevealTargets[i];
+        if (el.classList.contains('is-revealed')) continue;
+        if (el.offsetParent === null) continue;
         const rect = el.getBoundingClientRect();
-        const ty = getCurrentTranslateY(el);
-        const naturalTop = rect.top - ty;
-        const naturalBottom = rect.bottom - ty;
-
-        const isVisible = naturalTop < vh - margin && naturalBottom > margin;
-        const isOutOfViewport = naturalBottom <= 0 || naturalTop >= vh;
-
-        if (isVisible) {
-          el.classList.add('is-revealed');
-        } else if (!revealConfig.once && isOutOfViewport) {
-          el.classList.remove('is-revealed');
+        if (rect.top <= cutoff) {
+          toReveal.push(el);
         }
-      });
+      }
+
+      for (let i = 0; i < toReveal.length; i++) {
+        const el = toReveal[i];
+        el.classList.add('is-revealed');
+        if (activeRevealObserver) {
+          activeRevealObserver.unobserve(el);
+        }
+      }
     }
 
     /* ================= LUXURY SOFT GLASS WEB AUDIO ENGINE ================= */
@@ -2600,8 +2684,15 @@
       brand: '',
       model: '',
       engineYear: '',
-      chassis: ''
+      chassis: '',
+      qaHistory: []
     };
+
+    function openDirectWhatsAppOrder(prefillText) {
+      playLuxuryMicroTap();
+      const text = prefillText || 'Hello Kash Option, I am ready to order genuine OEM spark plugs and check live pricing for my vehicle.';
+      openWhatsAppUrl(`https://wa.me/233240118846?text=${encodeURIComponent(text)}`);
+    }
 
     function openSalesChat() {
       if (typeof closeMenu === 'function') closeMenu();
@@ -2624,10 +2715,15 @@
       if (widgetEl) widgetEl.classList.add('is-chat-open');
       if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'true');
 
-      window.setTimeout(() => {
-        const inputEl = document.getElementById('salesChatInput');
-        if (inputEl) inputEl.focus({ preventScroll: true });
-      }, 220);
+      const isDesktopNonTouch =
+        window.innerWidth >= 768 &&
+        !(window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+      if (isDesktopNonTouch || ['model', 'engineYear', 'chassis'].includes(salesChatState.step)) {
+        window.setTimeout(() => {
+          const inputEl = document.getElementById('salesChatInput');
+          if (inputEl) inputEl.focus({ preventScroll: true });
+        }, 220);
+      }
     }
 
     function closeSalesChat() {
@@ -2728,7 +2824,7 @@
           card.className = 'mb-2 pb-2 border-b border-white/15 space-y-1';
 
           const heading = document.createElement('div');
-          heading.className = 'text-[10px] font-bold uppercase tracking-wider text-[#E50914]';
+          heading.className = 'text-[10px] font-bold uppercase tracking-wider text-[#FF1F1F]';
           heading.textContent = 'Vehicle Fitment Summary';
           card.appendChild(heading);
 
@@ -2753,13 +2849,74 @@
         }
 
         const msgPara = document.createElement('p');
+        msgPara.className = 'whitespace-pre-line';
         msgPara.textContent = text;
         bubble.appendChild(msgPara);
+
+        if (detailsObj && detailsObj.showWhatsAppCta) {
+          const ctaWrap = document.createElement('div');
+          ctaWrap.className = 'mt-2.5 pt-2 border-t border-white/10';
+
+          const waInlineBtn = document.createElement('button');
+          waInlineBtn.type = 'button';
+          waInlineBtn.className = 'w-full sales-chat-send-btn text-white text-[11px] font-bold tracking-wide py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white';
+          const waIcon = document.createElement('i');
+          waIcon.className = 'fab fa-whatsapp text-xs';
+          waIcon.setAttribute('aria-hidden', 'true');
+          const waLabel = document.createElement('span');
+          waLabel.textContent = detailsObj.whatsappLabel || 'Order / Speak with Sales on WhatsApp \u00BB';
+          waInlineBtn.appendChild(waIcon);
+          waInlineBtn.appendChild(waLabel);
+          waInlineBtn.addEventListener('click', () => {
+            openDirectWhatsAppOrder(detailsObj.whatsappPrefill);
+          });
+
+          ctaWrap.appendChild(waInlineBtn);
+          bubble.appendChild(ctaWrap);
+        }
       }
 
       row.appendChild(bubble);
       messagesEl.appendChild(row);
       messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function buildQuestionForm(placeholderText) {
+      const form = document.createElement('form');
+      form.className = 'flex items-center gap-2';
+
+      const input = document.createElement('input');
+      input.id = 'salesChatInput';
+      input.type = 'text';
+      input.required = true;
+      input.autocomplete = 'off';
+      input.placeholder = placeholderText;
+      input.className = 'sales-chat-input flex-1 min-w-0 rounded-lg px-3.5 py-2 text-base text-white placeholder-zinc-400 placeholder:text-xs';
+
+      const sendBtn = document.createElement('button');
+      sendBtn.type = 'submit';
+      sendBtn.className = 'sales-chat-send-btn shrink-0 text-white text-xs font-bold px-4 py-2 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white';
+      sendBtn.textContent = 'Ask';
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const val = input.value.trim();
+        if (!val) {
+          input.focus();
+          return;
+        }
+        handleSalesQuestionSubmit(val);
+      });
+
+      form.appendChild(input);
+      form.appendChild(sendBtn);
+      return { form, input };
+    }
+
+    function handleSalesShowCarPicker() {
+      playLuxuryMicroTap();
+      salesChatState.step = 'greeting';
+      renderSalesChatControls();
     }
 
     function renderSalesChatControls() {
@@ -2774,7 +2931,7 @@
         ['Toyota', 'Honda', 'Hyundai', 'Kia'].forEach(brand => {
           const btn = document.createElement('button');
           btn.type = 'button';
-          btn.className = 'liquid-glass-btn text-zinc-100 hover:text-white text-xs font-semibold py-2.5 px-3 rounded-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]';
+          btn.className = 'liquid-glass-btn text-zinc-100 hover:text-white text-xs font-semibold py-2 px-3 rounded-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF1F1F]';
           btn.textContent = brand;
           btn.addEventListener('click', () => handleSalesBrandSelect(brand));
           brandGrid.appendChild(btn);
@@ -2782,12 +2939,89 @@
 
         const chassisBtn = document.createElement('button');
         chassisBtn.type = 'button';
-        chassisBtn.className = 'mt-2 w-full liquid-glass-btn text-zinc-100 hover:text-white text-xs font-semibold py-2.5 px-3 rounded-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]';
+        chassisBtn.className = 'mt-2 w-full liquid-glass-btn text-zinc-100 hover:text-white text-xs font-semibold py-2 px-3 rounded-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF1F1F]';
         chassisBtn.textContent = 'Enter Chassis Number Instead';
         chassisBtn.addEventListener('click', () => handleSalesSwitchToChassis());
 
+        const waDirectBtn = document.createElement('button');
+        waDirectBtn.type = 'button';
+        waDirectBtn.className = 'mt-2 w-full sales-chat-send-btn text-white text-xs font-bold tracking-wide py-2.5 px-3 rounded-lg flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white';
+        waDirectBtn.innerHTML = '<i class="fab fa-whatsapp text-sm" aria-hidden="true"></i><span>Order on WhatsApp &raquo;</span>';
+        waDirectBtn.addEventListener('click', () => openDirectWhatsAppOrder());
+
+        const qaWrap = document.createElement('div');
+        qaWrap.className = 'mt-2.5 pt-2.5 border-t border-white/10';
+        const { form } = buildQuestionForm('Ask about OEM plugs, delivery, VIN, wholesale...');
+        qaWrap.appendChild(form);
+
         controlsEl.appendChild(brandGrid);
         controlsEl.appendChild(chassisBtn);
+        controlsEl.appendChild(waDirectBtn);
+        controlsEl.appendChild(qaWrap);
+        return;
+      }
+
+      if (salesChatState.step === 'pricing') {
+        const brandGrid = document.createElement('div');
+        brandGrid.className = 'grid grid-cols-2 gap-2';
+
+        ['Toyota', 'Honda', 'Hyundai', 'Kia'].forEach(brand => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'liquid-glass-btn text-zinc-100 hover:text-white text-xs font-semibold py-2 px-3 rounded-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF1F1F]';
+          btn.textContent = brand;
+          btn.addEventListener('click', () => handleSalesBrandSelect(brand));
+          brandGrid.appendChild(btn);
+        });
+
+        const chassisBtn = document.createElement('button');
+        chassisBtn.type = 'button';
+        chassisBtn.className = 'mt-2 w-full liquid-glass-btn text-zinc-100 hover:text-white text-xs font-semibold py-2 px-3 rounded-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF1F1F]';
+        chassisBtn.textContent = 'Enter Chassis Number Instead';
+        chassisBtn.addEventListener('click', () => handleSalesSwitchToChassis());
+
+        const waPriceBtn = document.createElement('button');
+        waPriceBtn.type = 'button';
+        waPriceBtn.className = 'mt-2 w-full sales-chat-send-btn text-white text-xs font-bold tracking-wide py-2.5 px-3 rounded-lg flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white';
+        waPriceBtn.innerHTML = '<i class="fab fa-whatsapp text-sm" aria-hidden="true"></i><span>Order / Get Exact Price on WhatsApp &raquo;</span>';
+        waPriceBtn.addEventListener('click', () =>
+          openDirectWhatsAppOrder('Hello Kash Option, please confirm live Ghana Cedi pricing and availability for my vehicle spark plugs.')
+        );
+
+        const qaWrap = document.createElement('div');
+        qaWrap.className = 'mt-2.5 pt-2.5 border-t border-white/10';
+        const { form } = buildQuestionForm('Ask another question...');
+        qaWrap.appendChild(form);
+
+        controlsEl.appendChild(brandGrid);
+        controlsEl.appendChild(chassisBtn);
+        controlsEl.appendChild(waPriceBtn);
+        controlsEl.appendChild(qaWrap);
+        return;
+      }
+
+      if (salesChatState.step === 'qa') {
+        const { form } = buildQuestionForm('Ask another question...');
+        controlsEl.appendChild(form);
+
+        const quickRow = document.createElement('div');
+        quickRow.className = 'grid grid-cols-2 gap-2 mt-2';
+
+        const pickerBtn = document.createElement('button');
+        pickerBtn.type = 'button';
+        pickerBtn.className = 'liquid-glass-btn text-zinc-100 hover:text-white text-[11px] font-semibold py-2 px-2.5 rounded-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF1F1F]';
+        pickerBtn.textContent = 'Car Models / VIN';
+        pickerBtn.addEventListener('click', handleSalesShowCarPicker);
+
+        const waDirectBtn = document.createElement('button');
+        waDirectBtn.type = 'button';
+        waDirectBtn.className = 'sales-chat-send-btn text-white text-[11px] font-bold py-2 px-2.5 rounded-lg flex items-center justify-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white';
+        waDirectBtn.innerHTML = '<i class="fab fa-whatsapp text-xs" aria-hidden="true"></i><span>Order on WhatsApp</span>';
+        waDirectBtn.addEventListener('click', () => openDirectWhatsAppOrder());
+
+        quickRow.appendChild(pickerBtn);
+        quickRow.appendChild(waDirectBtn);
+        controlsEl.appendChild(quickRow);
         return;
       }
 
@@ -2834,7 +3068,7 @@
         if (salesChatState.step === 'engineYear') {
           const altBtn = document.createElement('button');
           altBtn.type = 'button';
-          altBtn.className = 'mt-2 w-full liquid-glass-btn text-zinc-100 hover:text-white text-xs font-semibold py-2 px-3 rounded-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]';
+          altBtn.className = 'mt-2 w-full liquid-glass-btn text-zinc-100 hover:text-white text-xs font-semibold py-2 px-3 rounded-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF1F1F]';
           altBtn.textContent = 'Enter Chassis Number Instead';
           altBtn.addEventListener('click', () => handleSalesSwitchToChassis());
           controlsEl.appendChild(altBtn);
@@ -2865,9 +3099,522 @@
       salesChatState.model = '';
       salesChatState.engineYear = '';
       salesChatState.chassis = '';
+      salesChatState.qaHistory = [];
 
-      appendSalesChatMessage('assistant', 'What car do you need genuine OEM plugs for?');
+      appendSalesChatMessage(
+        'assistant',
+        'Select your car brand for instant OEM ordering, order directly on WhatsApp, or ask any question below.'
+      );
       renderSalesChatControls();
+    }
+
+    let cachedKashKnowledgeIndex = null;
+
+    function normalizeDomText(str) {
+      return String(str || '').replace(/\s+/g, ' ').trim();
+    }
+
+    function tokenizeKnowledgeQuery(str) {
+      const stopWords = new Set([
+        'a', 'an', 'the', 'is', 'are', 'was', 'were', 'be', 'been', 'am', 'do', 'does', 'did',
+        'i', 'you', 'we', 'they', 'it', 'my', 'your', 'our', 'me', 'us', 'for', 'to', 'of', 'in',
+        'on', 'at', 'by', 'with', 'from', 'about', 'can', 'could', 'would', 'should', 'will',
+        'what', 'which', 'where', 'when', 'why', 'how', 'tell', 'give', 'get', 'got', 'have',
+        'has', 'had', 'there', 'this', 'that', 'these', 'those', 'and', 'or', 'if', 'please',
+        'pls', 'any', 'all', 'some', 'want', 'need', 'looking', 'buy', 'sell', 'plug', 'plugs',
+        'spark', 'car', 'cars', 'vehicle', 'vehicles'
+      ]);
+      return normalizeDomText(str)
+        .toLowerCase()
+        .replace(/[^a-z0-9.\-\s]/g, ' ')
+        .split(/\s+/)
+        .filter(tok => tok.length >= 2 && !stopWords.has(tok));
+    }
+
+    function buildKashWebsiteKnowledgeIndex() {
+      const products = Array.from(document.querySelectorAll('#productGrid .product-item')).map(card => {
+        const brandAttr = normalizeDomText(card.getAttribute('data-brand')).toLowerCase();
+        const keywords = normalizeDomText(card.getAttribute('data-keywords')).toLowerCase();
+        const eyebrowEl = card.querySelector('.oem-eyebrow');
+        const partEl = card.querySelector('.text-porscheRed');
+        const titleEl = card.querySelector('h3');
+        const descEl = card.querySelector('p');
+        const specs = Array.from(card.querySelectorAll('.spec-item')).map(row => {
+          const spans = row.querySelectorAll('span');
+          const label = normalizeDomText(spans[0] ? spans[0].textContent : '');
+          const value = normalizeDomText(spans[1] ? spans[1].textContent : '');
+          return label && value ? `${label} ${value}` : normalizeDomText(row.textContent);
+        }).filter(Boolean);
+
+        const oemMaker = normalizeDomText(eyebrowEl ? eyebrowEl.textContent : '');
+        const partLabel = normalizeDomText(partEl ? partEl.textContent : '');
+        const title = normalizeDomText(titleEl ? titleEl.textContent : '');
+        const description = normalizeDomText(descEl ? descEl.textContent : '');
+        const searchText = [brandAttr, keywords, oemMaker, partLabel, title, description, ...specs]
+          .join(' ')
+          .toLowerCase();
+
+        return {
+          brandAttr,
+          keywords,
+          oemMaker,
+          partLabel,
+          title,
+          description,
+          specs,
+          searchText
+        };
+      });
+
+      const entries = [];
+      const pushEntry = (category, title, body, extraTags) => {
+        const cleanTitle = normalizeDomText(title);
+        const cleanBody = normalizeDomText(body);
+        if (!cleanTitle && !cleanBody) return;
+        entries.push({
+          category,
+          title: cleanTitle,
+          body: cleanBody,
+          searchText: [category, cleanTitle, cleanBody, extraTags || ''].join(' ').toLowerCase()
+        });
+      };
+
+      // Extract FAQs directly from DOM
+      document.querySelectorAll('#faqs .liquid-glass').forEach(card => {
+        const q = card.querySelector('h3');
+        const a = card.querySelector('p');
+        if (q && a) {
+          pushEntry('faq', q.textContent, a.textContent, 'faq policy support');
+        }
+      });
+
+      // Extract Knowledge Centre guides directly from DOM
+      document.querySelectorAll('#knowledge article').forEach(article => {
+        const title = article.querySelector('h3');
+        const body = article.querySelector('p');
+        if (title && body) {
+          pushEntry('guide', title.textContent, body.textContent, 'technical guide knowledge');
+        }
+      });
+
+      // Extract Trust & Authenticity cards + Marketplace comparison from DOM
+      document.querySelectorAll('#trust .liquid-glass-interactive').forEach(card => {
+        const title = card.querySelector('.oem-eyebrow, h3, h4');
+        const paragraphs = Array.from(card.querySelectorAll('p')).map(p => normalizeDomText(p.textContent));
+        if (title && paragraphs.length) {
+          pushEntry('trust', title.textContent, paragraphs.join(' '), 'genuine authenticity counterfeit');
+        }
+      });
+
+      // Extract Wholesale Tiers directly from DOM
+      document.querySelectorAll('#wholesale .liquid-glass-interactive').forEach(card => {
+        const title = card.querySelector('h3');
+        const body = card.querySelector('p');
+        const meta = Array.from(card.querySelectorAll('.border-t > div')).map(r => normalizeDomText(r.textContent)).join(' | ');
+        if (title && body) {
+          pushEntry('wholesale', title.textContent, `${normalizeDomText(body.textContent)} (${meta})`, 'wholesale carton workshop mechanic trade');
+        }
+      });
+
+      // Extract How-to-Order Steps directly from DOM
+      document.querySelectorAll('#how-to-order .liquid-glass-interactive').forEach(card => {
+        const title = card.querySelector('h3');
+        const body = card.querySelector('p');
+        if (title && body) {
+          pushEntry('order-step', title.textContent, body.textContent, 'how to order buy steps');
+        }
+      });
+
+      // Extract Home Authority Strip & Overview directly from DOM
+      document.querySelectorAll('#home .border-t.border-white\\/10 .scroll-reveal').forEach(item => {
+        const title = item.querySelector('span');
+        const body = item.querySelector('p');
+        if (title && body) {
+          pushEntry('home', title.textContent, body.textContent, 'delivery misfire stock fuel');
+        }
+      });
+
+      // Extract Fitment Finder spec card & summary directly from DOM
+      const fitmentSummary = document.querySelector('#fitment-finder p');
+      if (fitmentSummary) {
+        pushEntry('fitment', 'Chassis & VIN Fitment Verification', fitmentSummary.textContent, 'vin chassis frame fitment verify');
+      }
+
+      // Extract Operational & Contact details directly from DOM
+      const contactItems = Array.from(document.querySelectorAll('#contact-view li')).map(li => normalizeDomText(li.textContent));
+      const footerLines = Array.from(document.querySelectorAll('footer .space-y-2 p')).map(p => normalizeDomText(p.textContent));
+      const rawContactText = [...contactItems, ...footerLines].join(' ');
+      const phoneMatch = rawContactText.match(/024\s*011\s*8846/);
+      const emailMatch = rawContactText.match(/[a-z0-9._%+-]+@mrkash\.net/i);
+      const hoursMatch = rawContactText.match(/7:00\s*AM\s*[–-]\s*5:00\s*PM[^.]*(?:Mon[–-]Sat|Monday[–-]Saturday)/i);
+
+      return {
+        products,
+        entries,
+        contact: {
+          phone: phoneMatch ? normalizeDomText(phoneMatch[0]) : '024 011 8846',
+          email: emailMatch ? emailMatch[0] : 'info@mrkash.net',
+          hours: hoursMatch ? normalizeDomText(hoursMatch[0]) : '7:00 AM - 5:00 PM Mon-Sat',
+          channelsText: contactItems.join(' \n')
+        }
+      };
+    }
+
+    function getKashKnowledgeIndex() {
+      if (!cachedKashKnowledgeIndex) {
+        cachedKashKnowledgeIndex = buildKashWebsiteKnowledgeIndex();
+      }
+      return cachedKashKnowledgeIndex;
+    }
+
+    function matchCatalogueProducts(ql, index) {
+      const partMatches = [];
+      const modelMatches = [];
+      const compactQ = ql.replace(/[^a-z0-9]/g, '');
+
+      index.products.forEach(prod => {
+        let score = 0;
+        const codeTokens = prod.searchText.match(/\b(?:sc20hr11|sk20r11|fk20hr11|izfr6k11|ilzkr7b11|dilzkr7b11gs|silzkr6b10e|silzkr7b11|90919-01253|90919-01210|90919-01247|9807b-5617w|12290-r1a-h01|12290-59b-003|18846-10060|18846-11070|18849-09085)\b/g) || [];
+
+        codeTokens.forEach(code => {
+          const compactCode = code.replace(/[^a-z0-9]/g, '');
+          if (ql.includes(code) || (compactCode.length >= 6 && compactQ.includes(compactCode))) {
+            score += 20;
+          }
+        });
+
+        const modelTerms = [
+          'corolla', 'auris', 'matrix', 'prius', 'camry', 'rav4', 'highlander', 'prado',
+          'land cruiser', 'fortuner', '4runner', 'avalon', 'accord', 'cr-v', 'crv', 'civic',
+          'hr-v', 'hrv', 'earth dreams', '1.5l turbo', '1.5t', 'elantra', 'accent', 'sonata',
+          'tucson', 'forte', 'cerato', 'soul', 'k3', 'sportage', 'optima', 'k5', 'sorento', 'cadenza'
+        ];
+        modelTerms.forEach(term => {
+          const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          if (new RegExp(`\\b${escaped}\\b`, 'i').test(ql) && prod.searchText.includes(term)) {
+            score += 10;
+          }
+        });
+
+        const engineTerms = ['2zr', '2az', '1mz', '3mz', '1gr', '2gr', 'k24', 'r18', 'l15b7', 'theta', 'gamma', 'nu'];
+        engineTerms.forEach(eng => {
+          const engRe = new RegExp(`\\b${eng}\\b`, 'i');
+          if (engRe.test(ql) && engRe.test(prod.searchText)) {
+            score += 8;
+          }
+        });
+
+        if (score >= 20) {
+          partMatches.push({ prod, score });
+        } else if (score >= 8) {
+          modelMatches.push({ prod, score });
+        }
+      });
+
+      const combined = [...partMatches, ...modelMatches].sort((a, b) => b.score - a.score);
+      return combined.map(item => item.prod);
+    }
+
+    function matchVehicleRegistryModel(ql) {
+      if (typeof vehicleRegistry !== 'object' || !vehicleRegistry) return null;
+      for (const brand of Object.keys(vehicleRegistry)) {
+        const models = vehicleRegistry[brand] || [];
+        for (const modelName of models) {
+          const parts = modelName.toLowerCase().split('/').map(s => s.trim()).filter(Boolean);
+          for (const p of parts) {
+            const escaped = p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            if (new RegExp(`\\b${escaped}\\b`, 'i').test(ql)) {
+              return { brand, model: modelName };
+            }
+          }
+        }
+      }
+      return null;
+    }
+
+    function scoreDomEntries(rawQuery, index) {
+      const tokens = tokenizeKnowledgeQuery(rawQuery);
+      if (tokens.length === 0) return [];
+      return index.entries
+        .map(entry => {
+          let score = 0;
+          tokens.forEach(tok => {
+            if (entry.title.toLowerCase().includes(tok)) score += 4;
+            if (entry.body.toLowerCase().includes(tok)) score += 2;
+            if (entry.searchText.includes(tok)) score += 1;
+          });
+          return { entry, score };
+        })
+        .filter(item => item.score >= 3)
+        .sort((a, b) => b.score - a.score);
+    }
+
+    function formatCatalogueProductReply(matches, rawQuery) {
+      const top = matches.slice(0, 2);
+      const lines = top.map(p => {
+        const primarySpec = p.specs.slice(0, 2).join(' | ');
+        return `• ${p.title} — ${p.oemMaker} (${p.partLabel})${primarySpec ? `\n  ${primarySpec}` : ''}`;
+      });
+      const firstTitle = top[0].title;
+      return {
+        text: `Here is the matching OEM reference from our catalogue:\n\n${lines.join('\n\n')}\n\nTo confirm 100% engine fitment and live stock before dispatch, share your chassis number/VIN or tap below to order on WhatsApp.`,
+        nextStep: 'qa',
+        showWhatsAppCta: true,
+        whatsappPrefill: `Hello Kash Option, I want to check availability and order ${firstTitle} (${top[0].partLabel}) — question: "${rawQuery}".`
+      };
+    }
+
+    function generateKashAutoBotReply(rawQuery) {
+      const q = normalizeDomText(rawQuery);
+      const ql = q.toLowerCase();
+      const index = getKashKnowledgeIndex();
+      const contact = index.contact;
+
+      // 1. Identity Questions
+      const isIdentityQuery =
+        /\b(who are you|who're you|what are you|what is your name|what's your name|your name|tell me your name|who made you|who created you|who built you|who developed you|who programmed you|are you ai|are you an ai|are you a bot|are you a robot|are you human|are you real|introduce yourself)\b/i.test(ql) ||
+        ql === 'kash auto bot' ||
+        ql === 'bot';
+      if (isIdentityQuery) {
+        return {
+          text: 'My name is Kash Auto Bot, created in 2026 specifically for the Kash Option OEM Catalog Directory.\n\nI can help you verify genuine Toyota, Honda, Hyundai, and Kia spark plug fitment, delivery across Ghana, wholesale cartons, or contact details. What car model or spark plug question can I help you with?',
+          nextStep: 'qa',
+          showWhatsAppCta: false
+        };
+      }
+
+      const matchedProducts = matchCatalogueProducts(ql, index);
+      const matchedModel = matchVehicleRegistryModel(ql);
+
+      // 2. Pricing Questions
+      const isPricingQuery =
+        /\b(how much|price|prices|pricing|cost|costs|quote|quotes|quotation|cedi|cedis|ghs|ghana cedi|rate|rates|discount|discounts|cheap|cheaper|expensive|affordable|fee|why are prices not displayed)\b/i.test(ql);
+      if (isPricingQuery) {
+        const partHint = matchedProducts.length > 0
+          ? `For ${matchedProducts[0].title}, our OEM match is ${matchedProducts[0].partLabel} (${matchedProducts[0].oemMaker}). `
+          : matchedModel
+            ? `For your ${matchedModel.brand} ${matchedModel.model}, `
+            : '';
+        return {
+          text: `${partHint}Genuine OEM spark plug prices vary by exact car model, engine capacity, and chassis number (as well as retail engine sets vs. wholesale trade cartons and exchange rate updates).\n\nSelect your car brand or enter your chassis number below for quick fitment, or tap Order / Get Exact Price on WhatsApp for live Ghana Cedi pricing.`,
+          nextStep: 'pricing',
+          showWhatsAppCta: true,
+          whatsappLabel: 'Order / Get Exact Price on WhatsApp \u00BB',
+          whatsappPrefill: `Hello Kash Option, please confirm exact Ghana Cedi pricing for my vehicle (${q}).`
+        };
+      }
+
+      // 3. Direct Catalogue Part / Vehicle Match (when not specifically asking about another policy like delivery/defect)
+      const isDeliveryQuery = /\b(deliver|delivery|shipping|ship|dispatch|courier|rider|kumasi|takoradi|tamale|sunyani|tema|accra|region|regions|outside accra|waybill|stc|vip|how fast|long does delivery)\b/i.test(ql);
+      const isDefectReturnQuery = /\b(defect|defective|faulty|return|returns|refund|exchange|warranty|store credit|broken|damaged)\b/i.test(ql);
+      const isWholesaleQuery = /\b(wholesale|carton|cartons|40 plugs|200 plugs|master case|bulk|trade|workshop|workshops|garage|garages|mechanic|mechanics|dealer|dealers|abossey okai|magazine|vat|stockist)\b/i.test(ql);
+      const isHoursContactQuery = /\b(hour|hours|open|opening|close|closing|working hours|time|when are you open|phone|call|number|email|mail|contact|instagram|tiktok|social|address|where are you|location)\b/i.test(ql);
+      const isPaymentQuery = /\b(payment|pay|momo|mobile money|mtn|telecel|vodafone|bank|wire|transfer|cash|cod)\b/i.test(ql);
+      const isAuthFakeQuery = /\b(genuine|original|authentic|authenticity|fake|fakes|counterfeit|imitation|jiji|spot counterfeit|real|denso|ngk|mobis|japan|usa|korea)\b/i.test(ql);
+      const isSymptomTechQuery = /\b(misfire|misfires|fuel|economy|consumption|hesitation|idle|coil|coils|iridium|platinum|copper|heat range|resistor|5\.0|ohmmeter|thread reach|19mm|26\.5mm|gap|pre-ignition|carbon fouling|detonation|service interval|100,000|km)\b/i.test(ql);
+      const isVinQuery = /\b(vin|chassis|frame number|how to verify|check fitment|fitment tool|right spark plug|right plug|certain)\b/i.test(ql);
+
+      // Pure brand/model/part query
+      if (matchedProducts.length > 0 && !isDeliveryQuery && !isDefectReturnQuery && !isWholesaleQuery && !isHoursContactQuery && !isPaymentQuery && !isSymptomTechQuery && !isAuthFakeQuery && !isVinQuery) {
+        return formatCatalogueProductReply(matchedProducts, q);
+      }
+
+      // 4. Support Hours & Contact Info
+      if (isHoursContactQuery) {
+        return {
+          text: `Kash Option Customer Orders & Technical Desk:\n• Support Hours: ${contact.hours} (after-hours delivery available subject to confirmation)\n• Phone / WhatsApp: ${contact.phone}\n• Email: ${contact.email}\n• Instagram & TikTok: Kashoption_ / @kashoption_\n• Payment Options: Mobile Money (MTN, Telecel), Bank Wire, COD\n\nSend your car model or VIN here or tap below to order on WhatsApp.`,
+          nextStep: 'qa',
+          showWhatsAppCta: true,
+          whatsappPrefill: `Hello Kash Option, I would like to speak with the orders desk (${q}).`
+        };
+      }
+
+      // 5. Delivery & Nationwide Fulfillment
+      if (isDeliveryQuery) {
+        const deliveryFaq = index.entries.find(e => e.category === 'faq' && e.title.toLowerCase().includes('outside accra'));
+        const homeDelivery = index.entries.find(e => e.category === 'home' && e.title.toLowerCase().includes('delivery'));
+        const snippet = [
+          homeDelivery ? homeDelivery.body : '30-45 minutes rider dispatch across Accra and Tema. Same-day VIP/STC parcel waybill to Kumasi, Takoradi, Tamale, and nationwide.',
+          deliveryFaq ? deliveryFaq.body : 'Greater Accra deliveries arrive same-day, and regional hubs receive same-day dispatch via secure transit for next-morning pickup or doorstep drop-off.'
+        ].join(' ');
+        return {
+          text: `Nationwide Delivery Across Ghana:\n${snippet}\n\nShare your car model or chassis number to check fitment, or tap below to arrange fast dispatch on WhatsApp.`,
+          nextStep: 'qa',
+          showWhatsAppCta: true,
+          whatsappPrefill: `Hello Kash Option, I want to arrange delivery for genuine OEM spark plugs (${q}).`
+        };
+      }
+
+      // 6. Payment Options
+      if (isPaymentQuery) {
+        return {
+          text: 'Accepted Payment Options at Kash Option:\nWe accept Mobile Money (MTN, Telecel), Bank Wire, and Cash on Delivery (COD).\n\nShare your car model or chassis number below to verify your OEM spark plugs, or tap to order directly on WhatsApp.',
+          nextStep: 'qa',
+          showWhatsAppCta: true,
+          whatsappPrefill: `Hello Kash Option, I would like to place an order and confirm payment (${q}).`
+        };
+      }
+
+      // 7. Wholesale & Trade Supply
+      if (isWholesaleQuery) {
+        return {
+          text: 'Wholesale & Trade Supply (Abossey Okai, Kumasi Magazine & Nationwide):\n• Tier 1 — Engine Pack: 1 Engine Set (4 / 6 plugs) for retail tune-ups.\n• Tier 2 — Workshop Carton: 40 plugs (10 sets) with preferential trade pricing and VAT invoices issued.\n• Tier 3 — Distributor Master Case: 200 plugs (50 sets) for dealers and fleet depots.\n\nTap below to request a live wholesale quote on WhatsApp, or tell us which brand/models you stock.',
+          nextStep: 'qa',
+          showWhatsAppCta: true,
+          whatsappPrefill: `Hello Kash Option, I would like wholesale trade pricing (${q}).`
+        };
+      }
+
+      // 8. Factory Defect & Returns Policy
+      if (isDefectReturnQuery) {
+        const defectFaq = index.entries.find(e => e.category === 'faq' && e.title.toLowerCase().includes('factory defect'));
+        const policyText = defectFaq
+          ? defectFaq.body
+          : 'In the unlikely event of an authentic factory defect reported within 48 hours of receipt prior to installation damage, our technical desk will immediately review and facilitate an exchange or store credit.';
+        return {
+          text: `Ordering & Factory Defect Policy:\n${policyText}\n\nYou can also contact our technical desk at ${contact.phone} or on WhatsApp for immediate support.`,
+          nextStep: 'qa',
+          showWhatsAppCta: true,
+          whatsappPrefill: `Hello Kash Option, I have an inquiry regarding your ordering/defect policy (${q}).`
+        };
+      }
+
+      // 9. Symptoms, Misfires, Fuel Economy, Iridium vs Copper & Heat Range
+      if (isSymptomTechQuery && !/\b(fake|fakes|counterfeit|imitation)\b/i.test(ql)) {
+        const iridiumGuide = index.entries.find(e => e.category === 'guide' && e.title.toLowerCase().includes('iridium'));
+        const heatGuide = index.entries.find(e => e.category === 'guide' && e.title.toLowerCase().includes('heat range'));
+        const details = [];
+        if (/misfire|fuel|coil|copper|iridium|hesitation|idle|burn/i.test(ql) && iridiumGuide) {
+          details.push(iridiumGuide.body);
+        }
+        if (/heat|resistor|detonation|fouling|cold|hot/i.test(ql) && heatGuide) {
+          details.push(heatGuide.body);
+        }
+        if (details.length === 0) {
+          details.push('Weak, copper, or counterfeit plugs fail quickly, overload ignition coils, and increase fuel consumption. Factory-spec laser-welded Iridium and Platinum plugs with a calibrated 5.0 kΩ resistor restore clean combustion and last up to 100,000 km.');
+        }
+        return {
+          text: `${details.join('\n\n')}\n\nShare your car model and year (or chassis/VIN) to match the exact OEM heat range and thread reach, or tap below to order on WhatsApp.`,
+          nextStep: 'qa',
+          showWhatsAppCta: true,
+          whatsappPrefill: `Hello Kash Option, I need genuine OEM spark plugs to solve ignition/fuel issues (${q}).`
+        };
+      }
+
+      // 10. Authenticity, Counterfeit & Brand Lines
+      if (isAuthFakeQuery) {
+        const fakeGuide = index.entries.find(e => e.category === 'guide' && e.title.toLowerCase().includes('counterfeit'));
+        const faqBrand = index.entries.find(e => e.category === 'faq' && e.title.toLowerCase().includes('denso'));
+        return {
+          text: `100% Genuine OEM Guarantee (Zero Fakes):\n${faqBrand ? faqBrand.body : 'Every Denso, NGK, and Hyundai/Kia Mobis plug is sourced directly from authorized Tier-1 supply lines in Japan and the USA with zero imitation parts.'}\n\nSpecs & Inspection: Fine-wire 0.7mm laser-welded Iridium center tips rated up to 100,000 km, calibrated 5.0 kΩ monolithic internal resistors, and crisp ceramic printing. ${fakeGuide ? fakeGuide.body : ''}\n\nReady to verify fitment for your vehicle? Share your car model or tap below to order on WhatsApp.`,
+          nextStep: 'qa',
+          showWhatsAppCta: true,
+          whatsappPrefill: `Hello Kash Option, I want to verify and order 100% genuine OEM spark plugs (${q}).`
+        };
+      }
+
+      // 11. Chassis / VIN Verification Protocol
+      if (isVinQuery) {
+        const vinFaq = index.entries.find(e => e.category === 'faq' && e.title.toLowerCase().includes('right spark plug'));
+        const vinGuide = index.entries.find(e => e.category === 'guide' && e.title.toLowerCase().includes('chassis'));
+        return {
+          text: `Chassis / VIN Fitment Protocol:\n${vinFaq ? vinFaq.body : 'Send your 17-character chassis/VIN or frame number so our technicians can verify your exact engine code before dispatch.'} ${vinGuide ? vinGuide.body : ''}\n\nTap Car Models / VIN below to enter your chassis number now, or send it directly on WhatsApp.`,
+          nextStep: 'qa',
+          showWhatsAppCta: true,
+          whatsappPrefill: `Hello Kash Option, I want to verify fitment with my chassis/VIN number (${q}).`
+        };
+      }
+
+      // 12. Registry Model Match (e.g., Hilux, Pilot, Santa Fe, Rio)
+      if (matchedModel) {
+        return {
+          text: `Yes — we support ${matchedModel.brand} ${matchedModel.model} genuine OEM spark plug fitment.\n\nBecause exact OEM part numbers depend on engine capacity, model year, and assembly market, tap "Car Models / VIN" below or share your engine/year (or 17-character VIN) so we can match it cleanly, or order directly on WhatsApp.`,
+          nextStep: 'qa',
+          showWhatsAppCta: true,
+          whatsappPrefill: `Hello Kash Option, I need genuine OEM spark plugs for my ${matchedModel.brand} ${matchedModel.model} (${q}).`
+        };
+      }
+
+      // 13. Catalogue Part Match (secondary fallback if paired with a minor keyword)
+      if (matchedProducts.length > 0) {
+        return formatCatalogueProductReply(matchedProducts, q);
+      }
+
+      // 14. Supported Brands vs Other Automotive Makes (still on-topic!)
+      if (/\b(toyota|honda|hyundai|kia)\b/i.test(ql)) {
+        return {
+          text: 'Kash Option specializes in 100% genuine OEM spark plugs for Toyota (Denso Japan), Honda (NGK Japan), Hyundai (Mobis Korea), and Kia (Mobis Korea), delivered across Accra and all 16 regions of Ghana.\n\nTap "Car Models / VIN" below to select your brand & model, or order directly on WhatsApp.',
+          nextStep: 'qa',
+          showWhatsAppCta: true,
+          whatsappPrefill: `Hello Kash Option, I am inquiring about genuine OEM spark plugs (${q}).`
+        };
+      }
+
+      if (/\b(nissan|ford|mercedes|benz|bmw|audi|volkswagen|vw|mazda|subaru|mitsubishi|suzuki|lexus|infiniti|acura|peugeot|renault|chevrolet|gmc|dodge|jeep|land rover|range rover|engine|ignition|spark plug|sparkplug|plugs|automobile|automotive|auto parts|mechanic|tune-up|tuneup)\b/i.test(ql)) {
+        return {
+          text: 'Kash Option specializes in 100% genuine OEM spark plugs sourced directly from Japan and the USA, primarily stocked for Toyota (Denso), Honda (NGK), Hyundai (Mobis), and Kia (Mobis).\n\nIf you share your chassis number/VIN or engine code on WhatsApp (024 011 8846), our technical desk can verify exact fitment or check stock for your vehicle.',
+          nextStep: 'qa',
+          showWhatsAppCta: true,
+          whatsappPrefill: `Hello Kash Option, can you check genuine OEM spark plug availability for my vehicle (${q})?`
+        };
+      }
+
+      // 15. General Dynamic DOM Search across all website sections
+      const domMatches = scoreDomEntries(q, index);
+      if (domMatches.length > 0 && domMatches[0].score >= 5) {
+        const best = domMatches[0].entry;
+        return {
+          text: `${best.title}:\n${best.body}\n\nLet us know your car model or VIN to check exact OEM spark plug fitment, or tap below to order on WhatsApp.`,
+          nextStep: 'qa',
+          showWhatsAppCta: true,
+          whatsappPrefill: `Hello Kash Option, I have a question from your website (${q}).`
+        };
+      }
+
+      // 16. Polite Greetings / Thanks
+      if (/^(hi|hello|hey|good morning|good afternoon|good evening|greetings|yo|sup|thanks|thank you|ok|okay|help|menu)\b/i.test(ql)) {
+        return {
+          text: 'Hello! I am Kash Auto Bot at the Kash Option OEM Fitment Desk. Ask me about Toyota, Honda, Hyundai, or Kia spark plugs, nationwide delivery in Ghana, wholesale cartons, or tap "Car Models / VIN" below to verify fitment for your car.',
+          nextStep: 'qa',
+          showWhatsAppCta: true,
+          whatsappPrefill: 'Hello Kash Option, I would like help checking genuine OEM spark plug fitment for my vehicle.'
+        };
+      }
+
+      // 17. Strict Off-Topic Redirect (Spark Plug Specialist Focus)
+      return {
+        text: 'I am Kash Auto Bot, a dedicated specialist for Kash Option genuine OEM spark plugs, ignition fitment, and orders on mrkash.net — so I cannot help with unrelated topics.\n\nLet us get back to your vehicle: what car brand and model (Toyota, Honda, Hyundai, or Kia) or 17-character chassis/VIN number would you like me to check spark plug fitment for?',
+        nextStep: 'qa',
+        showWhatsAppCta: true,
+        whatsappPrefill: 'Hello Kash Option, I would like to check genuine OEM spark plug fitment for my car.'
+      };
+    }
+
+    function handleSalesQuestionSubmit(questionText) {
+      playLuxuryMicroTap();
+      const cleanQuestion = normalizeDomText(questionText);
+      if (!cleanQuestion) return;
+
+      appendSalesChatMessage('user', cleanQuestion);
+
+      scheduleAssistantReply(() => {
+        const result = generateKashAutoBotReply(cleanQuestion);
+        salesChatState.step = result.nextStep || 'qa';
+        salesChatState.qaHistory.push(
+          { role: 'user', text: cleanQuestion },
+          { role: 'model', text: result.text }
+        );
+        if (salesChatState.qaHistory.length > 12) {
+          salesChatState.qaHistory = salesChatState.qaHistory.slice(-12);
+        }
+
+        appendSalesChatMessage('assistant', result.text, {
+          showWhatsAppCta: Boolean(result.showWhatsAppCta),
+          whatsappLabel: result.whatsappLabel,
+          whatsappPrefill: result.whatsappPrefill
+        });
+        renderSalesChatControls();
+      });
     }
 
     const salesBrandModelExamples = {
@@ -2965,13 +3712,16 @@
     function updateScrollParallax() {
       const prefersReducedMotion =
         window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isMobileOrTouch =
+        window.innerWidth < 768 ||
+        (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
       const activeView = document.querySelector('.page-view:not([hidden])');
       if (!activeView) return;
 
       const parallaxEls = activeView.querySelectorAll('[data-parallax]');
-      if (prefersReducedMotion) {
+      if (prefersReducedMotion || isMobileOrTouch) {
         parallaxEls.forEach(el => {
-          el.style.transform = '';
+          if (el.style.transform) el.style.transform = '';
         });
         return;
       }
@@ -3028,11 +3778,12 @@
 
       activeRevealTargets = targets;
 
-      // Apply optional per-element stagger delay
+      // Apply optional per-element stagger delay (capped for instant visibility)
       targets.forEach(el => {
         const delayAttr = el.getAttribute('data-reveal-delay');
         if (delayAttr) {
-          el.style.setProperty('--reveal-delay', `${delayAttr}ms`);
+          const cappedDelay = Math.min(120, Math.max(0, parseInt(delayAttr, 10) || 0));
+          el.style.setProperty('--reveal-delay', `${cappedDelay}ms`);
         }
       });
 
@@ -3058,34 +3809,37 @@
       window.cancelAnimationFrame(revealRaf1);
       window.cancelAnimationFrame(revealRaf2);
 
+      // Reveal above-the-fold and preload-zone elements immediately so nothing flashes blank
+      evaluateScrollReveals();
+      updateScrollParallax();
+
       revealRaf1 = window.requestAnimationFrame(() => {
-        revealRaf2 = window.requestAnimationFrame(() => {
-          activeRevealObserver = new IntersectionObserver(
-            entries => {
-              evaluateScrollReveals();
-              updateScrollParallax();
-              if (revealConfig.once && activeRevealObserver) {
-                entries.forEach(entry => {
-                  if (entry.isIntersecting) {
-                    activeRevealObserver.unobserve(entry.target);
-                  }
-                });
+        activeRevealObserver = new IntersectionObserver(
+          entries => {
+            let needsBatchEval = false;
+            entries.forEach(entry => {
+              if (entry.isIntersecting || entry.boundingClientRect.top <= (window.innerHeight || document.documentElement.clientHeight) + revealConfig.triggerMargin) {
+                entry.target.classList.add('is-revealed');
+                if (activeRevealObserver) {
+                  activeRevealObserver.unobserve(entry.target);
+                }
+                needsBatchEval = true;
               }
-            },
-            {
-              threshold: [0, 0.04],
-              rootMargin: '0px 0px 0px 0px',
+            });
+            if (needsBatchEval) {
+              evaluateScrollReveals();
             }
-          );
+          },
+          {
+            threshold: 0,
+            rootMargin: '260px 0px 260px 0px',
+          }
+        );
 
-          targets.forEach(el => {
-            if (el.offsetParent !== null) {
-              activeRevealObserver.observe(el);
-            }
-          });
-
-          evaluateScrollReveals();
-          updateScrollParallax();
+        targets.forEach(el => {
+          if (!el.classList.contains('is-revealed') && el.offsetParent !== null) {
+            activeRevealObserver.observe(el);
+          }
         });
       });
     }
