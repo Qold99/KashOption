@@ -2234,7 +2234,8 @@
         input.className = 'flex-1 min-w-0 bg-[#1A1A1E] border border-white/20 focus:border-[#E50914] rounded-lg px-3 py-2.5 text-base text-white placeholder-zinc-400 placeholder:text-xs focus:outline-none transition-colors';
 
         if (salesChatState.step === 'model') {
-          input.placeholder = 'e.g. Corolla, Civic, Elantra, Sportage';
+          const examples = salesBrandModelExamples[salesChatState.brand] || 'Corolla, Civic, Elantra, Sportage';
+          input.placeholder = `e.g., ${examples}`;
         } else if (salesChatState.step === 'engineYear') {
           input.placeholder = 'e.g. 1.8L 2016';
         } else {
@@ -2298,13 +2299,21 @@
       renderSalesChatControls();
     }
 
+    const salesBrandModelExamples = {
+      Toyota: 'Corolla, Camry, RAV4, Hilux',
+      Honda: 'Civic, Accord, CR-V, Fit',
+      Hyundai: 'Elantra, Sonata, Tucson, Santa Fe',
+      Kia: 'Sportage, Cerato, Rio, Sorento',
+    };
+
     function handleSalesBrandSelect(brand) {
       salesChatState.brand = brand;
       salesChatState.step = 'model';
+      const examples = salesBrandModelExamples[brand] || 'Corolla, Civic, Elantra, Sportage';
       appendSalesChatMessage('user', brand);
       appendSalesChatMessage(
         'assistant',
-        `Got it. What is your ${brand} model? (e.g., Corolla, Civic, Elantra, Sportage)`
+        `Got it. What is your ${brand} model? (e.g., ${examples})`
       );
       renderSalesChatControls();
     }
