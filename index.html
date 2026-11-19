@@ -254,11 +254,40 @@
     }
 
     /* ================= INTERACTIVE SALES FITMENT CHAT POPUP ================= */
+    header,
+    main,
+    footer {
+      transition: filter 320ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    body.sales-chat-open header,
+    body.sales-chat-open main,
+    body.sales-chat-open footer {
+      filter: blur(10px) brightness(0.45);
+      -webkit-filter: blur(10px) brightness(0.45);
+      pointer-events: none;
+      user-select: none;
+    }
+    #salesChatBackdrop {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition:
+        opacity 320ms cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 320ms ease;
+    }
+    #salesChatBackdrop.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
     #salesRepChat {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transform: translate3d(0, 20px, 0) scale(0.97);
+      transform: translate3d(0, 24px, 0) scale(0.97);
       transition:
         opacity 320ms cubic-bezier(0.16, 1, 0.3, 1),
         transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -271,10 +300,10 @@
       transform: translate3d(0, 0, 0) scale(1);
     }
     .sales-chat-avatar-box {
-      width: 36px;
-      height: 36px;
-      min-width: 36px;
-      min-height: 36px;
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      min-height: 38px;
       border-radius: 50%;
       overflow: hidden;
       flex-shrink: 0;
@@ -291,14 +320,20 @@
       width: 5px;
     }
     #salesChatMessages::-webkit-scrollbar-track {
-      background: #0A0A0A;
+      background: #121212;
     }
     #salesChatMessages::-webkit-scrollbar-thumb {
-      background: #242428;
+      background: #2A2A2E;
       border-radius: 9999px;
     }
     @media (prefers-reduced-motion: reduce) {
+      header,
+      main,
+      footer {
+        transition: none;
+      }
       #salesRepWidget,
+      #salesChatBackdrop,
       #salesRepChat {
         transition: opacity 150ms ease, visibility 150ms ease;
         transform: none;
@@ -1774,38 +1809,40 @@
     </button>
   </aside>
 
-  <!-- ================= INTERACTIVE SALES FITMENT CHAT POPUP ================= -->
-  <aside id="salesRepChat" role="dialog" aria-modal="false" aria-labelledby="salesChatTitle" class="fixed bottom-4 right-4 left-4 sm:left-auto sm:bottom-5 sm:right-5 sm:w-[376px] z-40">
-    <div class="bg-[#0A0A0A] border border-white/15 rounded-xl shadow-[0_24px_64px_rgba(0,0,0,0.94)] overflow-hidden flex flex-col max-h-[min(540px,calc(100vh-2rem))]">
+  <!-- ================= INTERACTIVE SALES FITMENT CHAT BACKDROP & POPUP ================= -->
+  <div id="salesChatBackdrop" onclick="closeSalesChat()" aria-hidden="true" class="fixed inset-0 z-[44]"></div>
+
+  <aside id="salesRepChat" role="dialog" aria-modal="true" aria-labelledby="salesChatTitle" class="fixed bottom-4 right-4 left-4 sm:left-auto sm:bottom-5 sm:right-5 sm:w-[384px] z-[45]">
+    <div class="bg-[#121212] border border-[#222222] rounded-xl shadow-[0_28px_72px_rgba(0,0,0,0.95)] overflow-hidden flex flex-col max-h-[min(550px,calc(100vh-2rem))]">
       <!-- Chat Header -->
-      <div class="px-4 py-3 bg-[#101012] border-b border-white/10 flex items-center justify-between gap-3">
+      <div class="px-4 py-3.5 bg-[#161618] border-b border-[#222222] flex items-center justify-between gap-3">
         <div class="flex items-center gap-2.5 min-w-0">
-          <div class="sales-chat-avatar-box bg-[#141414] border border-white/15">
-            <img src="./salesrep.png" alt="KASH OPTION Sales Representative" width="36" height="36" class="sales-chat-avatar-img">
+          <div class="sales-chat-avatar-box bg-[#18181C] border border-white/25 ring-1 ring-[#E50914]/35">
+            <img src="./salesrep.png" alt="KASH OPTION Sales Representative" width="38" height="38" class="sales-chat-avatar-img">
           </div>
           <div class="min-w-0">
-            <h2 id="salesChatTitle" class="text-xs font-bold text-white tracking-tight truncate">KASH OPTION Fitment Desk</h2>
-            <p class="text-[11px] text-metallicSilver flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#E50914] inline-block" aria-hidden="true"></span>
-              <span>OEM Spark Plug Specialist</span>
+            <h2 id="salesChatTitle" class="text-xs font-extrabold text-white tracking-tight truncate">KASH OPTION Fitment Desk</h2>
+            <p class="text-[11px] text-zinc-300 flex items-center gap-1.5 mt-0.5">
+              <span class="w-2 h-2 rounded-full bg-[#E50914] shadow-[0_0_8px_rgba(229,9,20,0.85)] inline-block shrink-0" aria-hidden="true"></span>
+              <span class="truncate">OEM Spark Plug Specialist</span>
             </p>
           </div>
         </div>
-        <div class="flex items-center gap-1.5 shrink-0">
-          <button type="button" onclick="resetSalesChat()" title="Start Over" aria-label="Start Over" class="text-[10px] font-semibold uppercase tracking-wider text-metallicSilver hover:text-white bg-[#141414] hover:bg-white/10 border border-white/10 rounded px-2 py-1 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]">
-            Reset
+        <div class="flex items-center gap-2 shrink-0">
+          <button type="button" onclick="resetSalesChat()" title="Start Over" aria-label="Start Over" class="text-[10px] font-bold uppercase tracking-wider text-zinc-200 hover:text-white bg-[#202024] hover:bg-[#E50914]/20 border border-white/15 hover:border-[#E50914]/50 rounded-md px-2.5 py-1.5 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]">
+            RESET
           </button>
-          <button type="button" onclick="closeSalesChat()" aria-label="Close chat" class="w-7 h-7 flex items-center justify-center rounded text-metallicSilver hover:text-white hover:bg-white/10 transition-colors text-base leading-none focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]">
+          <button type="button" onclick="closeSalesChat()" aria-label="Close chat" class="w-7 h-7 flex items-center justify-center rounded-md bg-[#E50914]/15 hover:bg-[#E50914] text-[#FF6B73] hover:text-white border border-[#E50914]/35 hover:border-[#E50914] transition-colors text-base leading-none focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]">
             &times;
           </button>
         </div>
       </div>
 
       <!-- Chat Message Stream -->
-      <div id="salesChatMessages" class="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-[#0A0A0A] min-h-[220px]" aria-live="polite"></div>
+      <div id="salesChatMessages" class="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-[#121212] min-h-[220px]" aria-live="polite"></div>
 
       <!-- Dynamic Interactive Controls -->
-      <div id="salesChatControls" class="px-4 py-3 bg-[#0A0A0A] border-t border-white/10"></div>
+      <div id="salesChatControls" class="px-4 py-3.5 bg-[#121212] border-t border-[#222222]"></div>
     </div>
   </aside>
 
@@ -1903,6 +1940,7 @@
 
     function openSalesChat() {
       const chatEl = document.getElementById('salesRepChat');
+      const backdropEl = document.getElementById('salesChatBackdrop');
       const widgetEl = document.getElementById('salesRepWidget');
       const triggerBtn = document.getElementById('salesRepTriggerBtn');
       const messagesEl = document.getElementById('salesChatMessages');
@@ -1913,7 +1951,9 @@
         resetSalesChat();
       }
 
+      if (backdropEl) backdropEl.classList.add('is-open');
       chatEl.classList.add('is-open');
+      document.body.classList.add('sales-chat-open');
       if (widgetEl) widgetEl.classList.add('is-chat-open');
       if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'true');
 
@@ -1925,12 +1965,15 @@
 
     function closeSalesChat() {
       const chatEl = document.getElementById('salesRepChat');
+      const backdropEl = document.getElementById('salesChatBackdrop');
       const widgetEl = document.getElementById('salesRepWidget');
       const triggerBtn = document.getElementById('salesRepTriggerBtn');
       if (!chatEl) return;
 
       salesChatState.isOpen = false;
       chatEl.classList.remove('is-open');
+      if (backdropEl) backdropEl.classList.remove('is-open');
+      document.body.classList.remove('sales-chat-open');
       if (widgetEl) widgetEl.classList.remove('is-chat-open');
       if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'false');
     }
@@ -1947,11 +1990,11 @@
         bubble.className = 'max-w-[85%] bg-[#E50914] text-white text-xs leading-relaxed px-3.5 py-2.5 rounded-xl rounded-br-sm font-medium shadow-sm';
         bubble.textContent = text;
       } else {
-        bubble.className = 'max-w-[88%] bg-[#141414] border border-white/10 text-gray-100 text-xs leading-relaxed px-3.5 py-2.5 rounded-xl rounded-bl-sm';
+        bubble.className = 'max-w-[88%] bg-[#1A1A1E] border border-[#E50914]/35 shadow-[0_6px_20px_rgba(229,9,20,0.08)] text-zinc-100 text-xs leading-relaxed px-3.5 py-2.5 rounded-xl rounded-bl-sm';
 
         if (detailsObj && detailsObj.summaryLines && detailsObj.summaryLines.length > 0) {
           const card = document.createElement('div');
-          card.className = 'mb-2 pb-2 border-b border-white/10 space-y-1';
+          card.className = 'mb-2 pb-2 border-b border-white/15 space-y-1';
 
           const heading = document.createElement('div');
           heading.className = 'text-[10px] font-bold uppercase tracking-wider text-[#E50914]';
@@ -1963,7 +2006,7 @@
             line.className = 'flex items-center justify-between gap-3 text-[11px]';
 
             const labelSpan = document.createElement('span');
-            labelSpan.className = 'text-metallicSilver';
+            labelSpan.className = 'text-zinc-300';
             labelSpan.textContent = item.label + ':';
 
             const valSpan = document.createElement('span');
@@ -2000,7 +2043,7 @@
         ['Toyota', 'Honda', 'Hyundai', 'Kia'].forEach(brand => {
           const btn = document.createElement('button');
           btn.type = 'button';
-          btn.className = 'bg-[#141414] hover:bg-[#1E1E22] border border-white/15 hover:border-[#E50914] text-white text-xs font-semibold py-2 px-3 rounded-lg transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]';
+          btn.className = 'bg-[#1A1A1E] hover:bg-[#242429] border border-white/20 hover:border-[#E50914]/80 text-zinc-100 hover:text-white text-xs font-semibold py-2.5 px-3 rounded-lg transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]';
           btn.textContent = brand;
           btn.addEventListener('click', () => handleSalesBrandSelect(brand));
           brandGrid.appendChild(btn);
@@ -2008,7 +2051,7 @@
 
         const chassisBtn = document.createElement('button');
         chassisBtn.type = 'button';
-        chassisBtn.className = 'mt-2 w-full bg-[#141414] hover:bg-[#1E1E22] border border-white/15 hover:border-[#E50914] text-metallicSilver hover:text-white text-xs font-semibold py-2 px-3 rounded-lg transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]';
+        chassisBtn.className = 'mt-2 w-full bg-[#1A1A1E] hover:bg-[#242429] border border-white/20 hover:border-[#E50914]/80 text-zinc-100 hover:text-white text-xs font-semibold py-2.5 px-3 rounded-lg transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]';
         chassisBtn.textContent = 'Enter Chassis Number Instead';
         chassisBtn.addEventListener('click', () => handleSalesSwitchToChassis());
 
@@ -2026,7 +2069,7 @@
         input.type = 'text';
         input.required = true;
         input.autocomplete = 'off';
-        input.className = 'flex-1 min-w-0 bg-[#141414] border border-white/15 focus:border-[#E50914] rounded-lg px-3 py-2 text-xs text-white placeholder-zinc-500 focus:outline-none';
+        input.className = 'flex-1 min-w-0 bg-[#1A1A1E] border border-white/20 focus:border-[#E50914] rounded-lg px-3 py-2.5 text-xs text-white placeholder-zinc-400 focus:outline-none transition-colors';
 
         if (salesChatState.step === 'model') {
           input.placeholder = 'e.g. Corolla, Civic, Elantra, Sportage';
@@ -2039,7 +2082,7 @@
 
         const sendBtn = document.createElement('button');
         sendBtn.type = 'submit';
-        sendBtn.className = 'shrink-0 bg-[#E50914] hover:bg-[#B30017] text-white text-xs font-bold px-3.5 py-2 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white';
+        sendBtn.className = 'shrink-0 bg-[#E50914] hover:bg-[#B30017] text-white text-xs font-bold px-3.5 py-2.5 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white';
         sendBtn.textContent = 'Send';
 
         form.addEventListener('submit', e => {
@@ -2059,7 +2102,7 @@
         if (salesChatState.step === 'engineYear') {
           const altBtn = document.createElement('button');
           altBtn.type = 'button';
-          altBtn.className = 'mt-2 w-full bg-[#141414] hover:bg-[#1E1E22] border border-white/15 hover:border-[#E50914] text-metallicSilver hover:text-white text-[11px] font-semibold py-1.5 px-3 rounded-lg transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]';
+          altBtn.className = 'mt-2 w-full bg-[#1A1A1E] hover:bg-[#242429] border border-white/20 hover:border-[#E50914]/80 text-zinc-100 hover:text-white text-xs font-semibold py-2 px-3 rounded-lg transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]';
           altBtn.textContent = 'Enter Chassis Number Instead';
           altBtn.addEventListener('click', () => handleSalesSwitchToChassis());
           controlsEl.appendChild(altBtn);
