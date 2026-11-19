@@ -489,6 +489,10 @@
       transform: translate3d(0, 0, 0) scale(1);
     }
     .sales-chat-avatar-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 38px;
       height: 38px;
       min-width: 38px;
@@ -496,6 +500,8 @@
       border-radius: 50%;
       overflow: hidden;
       flex-shrink: 0;
+      border: 1.5px solid rgba(229, 9, 20, 0.55);
+      box-shadow: 0 0 12px rgba(229, 9, 20, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.14);
     }
     .sales-chat-avatar-img {
       width: 100%;
@@ -504,6 +510,152 @@
       object-fit: cover;
       object-position: center 20%;
       display: block;
+    }
+    .sales-ko-fallback {
+      display: none;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top left, rgba(229, 9, 20, 0.22), transparent 65%), linear-gradient(145deg, #1A1A20, #0A0A0D);
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .sales-status-dot {
+      position: relative;
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 9999px;
+      background-color: #E50914;
+      box-shadow: 0 0 8px rgba(229, 9, 20, 0.9);
+      flex-shrink: 0;
+    }
+    .sales-status-dot::after {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      border-radius: 9999px;
+      border: 1.5px solid rgba(229, 9, 20, 0.7);
+      animation: salesStatusPulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+      pointer-events: none;
+    }
+    @keyframes salesStatusPulse {
+      0% {
+        transform: scale(0.85);
+        opacity: 0.85;
+      }
+      70%,
+      100% {
+        transform: scale(1.75);
+        opacity: 0;
+      }
+    }
+    @keyframes salesMsgEnter {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 8px, 0);
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    .sales-msg-enter {
+      animation: salesMsgEnter 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .sales-bubble-meta {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #A1A1AA;
+      padding-left: 2px;
+      margin-bottom: 4px;
+      line-height: 1;
+    }
+    .sales-bubble-assistant {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px 18px 18px 4px;
+      background: linear-gradient(145deg, rgba(28, 28, 34, 0.85), rgba(16, 16, 20, 0.92));
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 8px 24px rgba(0, 0, 0, 0.45);
+      padding: 11px 14px 11px 16px;
+    }
+    .sales-bubble-assistant::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2.5px;
+      background: #E50914;
+      box-shadow: 0 0 10px rgba(229, 9, 20, 0.45);
+    }
+    .sales-bubble-user {
+      border-radius: 18px 18px 4px 18px;
+      background: linear-gradient(135deg, #E50914 0%, #A8050D 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 6px 20px rgba(229, 9, 20, 0.28);
+      padding: 10px 14px;
+    }
+    .sales-typing-dots {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      height: 16px;
+    }
+    .sales-typing-dots span {
+      width: 5px;
+      height: 5px;
+      border-radius: 9999px;
+      background-color: #D4D4D8;
+      animation: conciergeDotPulse 900ms ease-in-out infinite;
+    }
+    .sales-typing-dots span:nth-child(2) {
+      animation-delay: 140ms;
+    }
+    .sales-typing-dots span:nth-child(3) {
+      animation-delay: 280ms;
+      background-color: #E50914;
+    }
+    @keyframes conciergeDotPulse {
+      0%, 80%, 100% {
+        opacity: 0.35;
+        transform: translate3d(0, 0, 0) scale(0.85);
+      }
+      40% {
+        opacity: 1;
+        transform: translate3d(0, -2px, 0) scale(1);
+      }
+    }
+    .sales-chat-input {
+      background: rgba(10, 10, 12, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      transition: border-color 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+    }
+    .sales-chat-input:focus {
+      outline: none;
+      border-color: rgba(229, 9, 20, 0.7);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.55), 0 0 0 3px rgba(229, 9, 20, 0.18);
+    }
+    .sales-chat-send-btn {
+      background: linear-gradient(135deg, #E50914 0%, #A8050D 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 6px 20px rgba(229, 9, 20, 0.28);
+      transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), filter 200ms ease, box-shadow 200ms ease;
+    }
+    .sales-chat-send-btn:hover {
+      filter: brightness(1.08);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32), 0 8px 24px rgba(229, 9, 20, 0.42);
+    }
+    .sales-chat-send-btn:active {
+      transform: scale(0.97);
     }
     #salesChatMessages::-webkit-scrollbar {
       width: 5px;
@@ -530,6 +682,11 @@
       #salesRepWidget.is-visible,
       #salesRepChat.is-open {
         transform: none;
+      }
+      .sales-msg-enter,
+      .sales-status-dot::after,
+      .sales-typing-dots span {
+        animation: none;
       }
     }
   </style>
@@ -2020,7 +2177,8 @@
   <aside id="salesRepWidget" aria-label="Sales Representative Quick Fitment Assistant" class="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-30 max-w-[268px] sm:max-w-[292px]">
     <button type="button" onclick="openSalesChat()" aria-haspopup="dialog" aria-controls="salesRepChat" aria-expanded="false" id="salesRepTriggerBtn" class="w-full text-left liquid-glass liquid-glass-interactive rounded-xl px-3.5 py-2.5 flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-porscheRed">
       <div class="sales-rep-avatar-box bg-[#18181C] border border-white/15 group-hover:border-porscheRed/70 flex items-center justify-center transition-colors">
-        <img src="./salesrep.png" alt="KASH OPTION Sales Representative" width="40" height="40" class="sales-rep-avatar-img">
+        <img src="./salesrep.png" alt="KASH OPTION Sales Representative" width="40" height="40" class="sales-rep-avatar-img" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';">
+        <span class="sales-ko-fallback" aria-hidden="true">K<span class="text-[#E50914]">O</span></span>
       </div>
       <div class="min-w-0 flex-1">
         <span class="block text-xs font-bold text-white leading-snug whitespace-nowrap">
@@ -2042,13 +2200,14 @@
       <!-- Chat Header -->
       <div class="px-4 py-3.5 bg-[#121216]/85 border-b border-white/10 flex items-center justify-between gap-3">
         <div class="flex items-center gap-2.5 min-w-0">
-          <div class="sales-chat-avatar-box bg-[#18181C] border border-white/25 ring-1 ring-[#E50914]/35">
-            <img src="./salesrep.png" alt="KASH OPTION Sales Representative" width="38" height="38" class="sales-chat-avatar-img">
+          <div class="sales-chat-avatar-box bg-[#18181C]">
+            <img src="./salesrep.png" alt="KASH OPTION Sales Representative" width="38" height="38" class="sales-chat-avatar-img" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';">
+            <span class="sales-ko-fallback" aria-hidden="true">K<span class="text-[#E50914]">O</span></span>
           </div>
           <div class="min-w-0">
             <h2 id="salesChatTitle" class="text-xs font-extrabold text-white tracking-tight truncate">KASH OPTION Fitment Desk</h2>
-            <p class="text-[11px] text-zinc-300 flex items-center gap-1.5 mt-0.5">
-              <span class="w-2 h-2 rounded-full bg-[#E50914] shadow-[0_0_8px_rgba(229,9,20,0.85)] inline-block shrink-0" aria-hidden="true"></span>
+            <p class="text-[11px] text-zinc-300 flex items-center gap-2 mt-0.5">
+              <span class="sales-status-dot" aria-hidden="true"></span>
               <span class="truncate">OEM Spark Plug Specialist</span>
             </p>
           </div>
@@ -2438,19 +2597,83 @@
       if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'false');
     }
 
+    let salesTypingTimer = null;
+    let salesChatTurnToken = 0;
+
+    function clearSalesTypingIndicator() {
+      if (salesTypingTimer) {
+        window.clearTimeout(salesTypingTimer);
+        salesTypingTimer = null;
+      }
+      const existingTyping = document.getElementById('salesTypingRow');
+      if (existingTyping) existingTyping.remove();
+    }
+
+    function showSalesTypingIndicator() {
+      const messagesEl = document.getElementById('salesChatMessages');
+      if (!messagesEl) return;
+      clearSalesTypingIndicator();
+
+      const row = document.createElement('div');
+      row.id = 'salesTypingRow';
+      row.className = 'flex flex-col items-start sales-msg-enter';
+
+      const meta = document.createElement('div');
+      meta.className = 'sales-bubble-meta';
+      meta.textContent = 'KASH OPTION DESK';
+
+      const bubble = document.createElement('div');
+      bubble.className = 'sales-bubble-assistant text-zinc-100';
+      bubble.setAttribute('aria-label', 'KASH OPTION Fitment Desk is typing');
+
+      const dots = document.createElement('div');
+      dots.className = 'sales-typing-dots';
+      dots.innerHTML = '<span></span><span></span><span></span>';
+
+      bubble.appendChild(dots);
+      row.appendChild(meta);
+      row.appendChild(bubble);
+      messagesEl.appendChild(row);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function scheduleAssistantReply(onReady) {
+      const token = ++salesChatTurnToken;
+      const controlsEl = document.getElementById('salesChatControls');
+      if (controlsEl) {
+        controlsEl.querySelectorAll('button, input').forEach(el => {
+          el.disabled = true;
+        });
+      }
+      showSalesTypingIndicator();
+      salesTypingTimer = window.setTimeout(() => {
+        salesTypingTimer = null;
+        if (token !== salesChatTurnToken) return;
+        clearSalesTypingIndicator();
+        onReady();
+      }, 280);
+    }
+
     function appendSalesChatMessage(sender, text, detailsObj) {
       const messagesEl = document.getElementById('salesChatMessages');
       if (!messagesEl) return;
 
       const row = document.createElement('div');
-      row.className = sender === 'user' ? 'flex justify-end' : 'flex justify-start';
+      row.className = sender === 'user'
+        ? 'flex justify-end sales-msg-enter'
+        : 'flex flex-col items-start sales-msg-enter';
 
       const bubble = document.createElement('div');
       if (sender === 'user') {
-        bubble.className = 'max-w-[85%] bg-[#E50914] text-white text-xs leading-relaxed px-3.5 py-2.5 rounded-xl rounded-br-sm font-medium shadow-sm';
+        bubble.className = 'max-w-[85%] sales-bubble-user text-white text-xs leading-relaxed font-medium';
         bubble.textContent = text;
       } else {
-        bubble.className = 'max-w-[88%] bg-[#1A1A1E] border border-[#E50914]/35 shadow-[0_6px_20px_rgba(229,9,20,0.08)] text-zinc-100 text-xs leading-relaxed px-3.5 py-2.5 rounded-xl rounded-bl-sm';
+        const meta = document.createElement('div');
+        meta.className = 'sales-bubble-meta';
+        meta.textContent = 'KASH OPTION DESK';
+        row.appendChild(meta);
+
+        bubble.className = 'max-w-[88%] sales-bubble-assistant text-zinc-100 text-xs leading-relaxed';
 
         if (detailsObj && detailsObj.summaryLines && detailsObj.summaryLines.length > 0) {
           const card = document.createElement('div');
@@ -2529,7 +2752,7 @@
         input.type = 'text';
         input.required = true;
         input.autocomplete = 'off';
-        input.className = 'flex-1 min-w-0 bg-[#1A1A1E] border border-white/20 focus:border-[#E50914] rounded-lg px-3 py-2.5 text-base text-white placeholder-zinc-400 placeholder:text-xs focus:outline-none transition-colors';
+        input.className = 'sales-chat-input flex-1 min-w-0 rounded-lg px-3.5 py-2.5 text-base text-white placeholder-zinc-400 placeholder:text-xs';
 
         if (salesChatState.step === 'model') {
           const examples = salesBrandModelExamples[salesChatState.brand] || 'Corolla, Civic, Elantra, Sportage';
@@ -2543,7 +2766,7 @@
 
         const sendBtn = document.createElement('button');
         sendBtn.type = 'submit';
-        sendBtn.className = 'shrink-0 bg-[#E50914] hover:bg-[#B30017] liquid-cta-primary text-white text-xs font-bold px-4 py-2.5 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white';
+        sendBtn.className = 'sales-chat-send-btn shrink-0 text-white text-xs font-bold px-4 py-2.5 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white';
         sendBtn.textContent = 'Send';
 
         form.addEventListener('submit', e => {
@@ -2576,7 +2799,7 @@
       if (salesChatState.step === 'confirm') {
         const waBtn = document.createElement('button');
         waBtn.type = 'button';
-        waBtn.className = 'w-full bg-[#E50914] hover:bg-[#B30017] liquid-cta-primary text-white text-xs font-bold tracking-wide py-2.5 px-4 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white';
+        waBtn.className = 'sales-chat-send-btn w-full text-white text-xs font-bold tracking-wide py-2.5 px-4 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white';
         waBtn.textContent = 'Send Order to WhatsApp »';
         waBtn.addEventListener('click', sendSalesChatOrderToWhatsApp);
         controlsEl.appendChild(waBtn);
@@ -2584,6 +2807,8 @@
     }
 
     function resetSalesChat() {
+      salesChatTurnToken++;
+      clearSalesTypingIndicator();
       const messagesEl = document.getElementById('salesChatMessages');
       if (messagesEl) messagesEl.innerHTML = '';
 
@@ -2610,22 +2835,26 @@
       salesChatState.step = 'model';
       const examples = salesBrandModelExamples[brand] || 'Corolla, Civic, Elantra, Sportage';
       appendSalesChatMessage('user', brand);
-      appendSalesChatMessage(
-        'assistant',
-        `Got it. What is your ${brand} model? (e.g., ${examples})`
-      );
-      renderSalesChatControls();
+      scheduleAssistantReply(() => {
+        appendSalesChatMessage(
+          'assistant',
+          `Got it. What is your ${brand} model? (e.g., ${examples})`
+        );
+        renderSalesChatControls();
+      });
     }
 
     function handleSalesSwitchToChassis() {
       playLuxuryMicroTap();
       salesChatState.step = 'chassis';
       appendSalesChatMessage('user', 'Enter Chassis Number Instead');
-      appendSalesChatMessage(
-        'assistant',
-        'Please enter your 17-character Chassis / VIN number for 100% fitment verification:'
-      );
-      renderSalesChatControls();
+      scheduleAssistantReply(() => {
+        appendSalesChatMessage(
+          'assistant',
+          'Please enter your 17-character Chassis / VIN number for 100% fitment verification:'
+        );
+        renderSalesChatControls();
+      });
     }
 
     function showSalesChatConfirmation() {
@@ -2650,20 +2879,26 @@
         salesChatState.model = value;
         salesChatState.step = 'engineYear';
         appendSalesChatMessage('user', value);
-        appendSalesChatMessage(
-          'assistant',
-          'What is the engine capacity and year? (e.g., 1.8L 2016) - or tap below to enter your chassis number instead.'
-        );
-        renderSalesChatControls();
+        scheduleAssistantReply(() => {
+          appendSalesChatMessage(
+            'assistant',
+            'What is the engine capacity and year? (e.g., 1.8L 2016) - or tap below to enter your chassis number instead.'
+          );
+          renderSalesChatControls();
+        });
       } else if (salesChatState.step === 'engineYear') {
         salesChatState.engineYear = value;
         appendSalesChatMessage('user', value);
-        showSalesChatConfirmation();
+        scheduleAssistantReply(() => {
+          showSalesChatConfirmation();
+        });
       } else if (salesChatState.step === 'chassis') {
         const formattedChassis = value.toUpperCase();
         salesChatState.chassis = formattedChassis;
         appendSalesChatMessage('user', formattedChassis);
-        showSalesChatConfirmation();
+        scheduleAssistantReply(() => {
+          showSalesChatConfirmation();
+        });
       }
     }
 
