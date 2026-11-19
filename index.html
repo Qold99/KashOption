@@ -211,6 +211,33 @@
       visibility: visible;
       pointer-events: auto;
     }
+
+    /* ================= SCROLL-TRIGGERED FLOATING SALES REPRESENTATIVE ================= */
+    #salesRepWidget {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translate3d(0, 20px, 0) scale(0.96);
+      transition:
+        opacity 480ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 480ms cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 480ms ease;
+    }
+    #salesRepWidget.is-visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #salesRepWidget {
+        transition: opacity 150ms ease, visibility 150ms ease;
+        transform: none;
+      }
+      #salesRepWidget.is-visible {
+        transform: none;
+      }
+    }
   </style>
 
   <!-- Technical JSON-LD Structured Data: AutoPartsStore, Organization, FAQPage -->
@@ -225,6 +252,7 @@
       "image": "https://iili.io/oHVNlFS.png",
       "logo": "https://mrkash.net/logo.png",
       "telephone": "+233240118846",
+      "email": "info@mrkash.net",
       "priceRange": "$$",
       "paymentAccepted": "Mobile Money, Bank Transfer, Cash on Delivery",
       "currenciesAccepted": "GHS, USD",
@@ -244,9 +272,13 @@
         {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          "opens": "09:00",
-          "closes": "22:00"
+          "opens": "07:00",
+          "closes": "17:00"
         }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/Kashoption_",
+        "https://www.tiktok.com/@kashoption_"
       ],
       "areaServed": {
         "@type": "Country",
@@ -260,10 +292,16 @@
       "@id": "https://mrkash.net/#organization",
       "name": "KASH OPTION",
       "url": "https://mrkash.net/",
-      "logo": "https://mrkash.net/logo.png",
+      "logo": "https://iili.io/oHVNlFS.png",
+      "email": "info@mrkash.net",
+      "sameAs": [
+        "https://www.instagram.com/Kashoption_",
+        "https://www.tiktok.com/@kashoption_"
+      ],
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+233240118846",
+        "email": "info@mrkash.net",
         "contactType": "sales",
         "areaServed": "GH",
         "availableLanguage": ["English"]
@@ -317,10 +355,10 @@
   <header class="sticky top-0 z-40 nav-glass">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 
-      <!-- Brand Logo ("KO KASH OPTION") -->
+      <!-- Brand Logo (Hero Spark Plugs Emblem + "KASH OPTION") -->
       <a href="#home" class="flex items-center gap-3 group focus:outline-none" aria-label="KASH OPTION Home">
-        <div class="w-9 h-9 rounded bg-[#16161A] border border-white/10 flex items-center justify-center font-black text-xs tracking-tighter text-white group-hover:border-porscheRed transition-colors">
-          <span class="text-white">K</span><span class="text-porscheRed">O</span>
+        <div class="w-10 h-10 rounded bg-[#16161A] border border-white/15 p-1 flex items-center justify-center overflow-hidden shrink-0 group-hover:border-porscheRed transition-colors">
+          <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine Spark Plugs" referrerpolicy="no-referrer" class="w-full h-full object-contain filter contrast-125 brightness-110 drop-shadow-[0_2px_6px_rgba(213,0,28,0.35)]">
         </div>
         <div class="flex flex-col">
           <span class="text-sm font-extrabold tracking-tight text-white uppercase leading-none">
@@ -360,8 +398,8 @@
     <!-- Menu Overlay Top Bar -->
     <div class="max-w-7xl mx-auto w-full flex items-center justify-between pb-6 border-b border-white/10">
       <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded bg-[#16161A] border border-white/10 flex items-center justify-center font-black text-xs text-white">
-          <span class="text-white">K</span><span class="text-porscheRed">O</span>
+        <div class="w-10 h-10 rounded bg-[#16161A] border border-white/15 p-1 flex items-center justify-center overflow-hidden shrink-0">
+          <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine Spark Plugs" referrerpolicy="no-referrer" class="w-full h-full object-contain filter contrast-125 brightness-110 drop-shadow-[0_2px_6px_rgba(213,0,28,0.35)]">
         </div>
         <div class="flex flex-col">
           <span class="text-sm font-extrabold tracking-tight text-white uppercase leading-none">
@@ -407,10 +445,10 @@
         <div class="pt-6 border-t border-white/10">
           <span class="text-[10px] font-bold uppercase tracking-widest text-silverMuted block mb-3">Direct Manufacturer Lines:</span>
           <div class="grid grid-cols-2 gap-2 text-xs font-bold uppercase tracking-wider">
-            <a href="#catalogue" onclick="triggerBrandFilter('toyota')" class="p-2.5 rounded bg-[#16161A] border border-white/5 hover:border-porscheRed hover:text-white transition-colors text-silverMuted">Toyota (Denso)</a>
-            <a href="#catalogue" onclick="triggerBrandFilter('honda')" class="p-2.5 rounded bg-[#16161A] border border-white/5 hover:border-porscheRed hover:text-white transition-colors text-silverMuted">Honda (NGK)</a>
-            <a href="#catalogue" onclick="triggerBrandFilter('hyundai')" class="p-2.5 rounded bg-[#16161A] border border-white/5 hover:border-porscheRed hover:text-white transition-colors text-silverMuted">Hyundai (Mobis)</a>
-            <a href="#catalogue" onclick="triggerBrandFilter('kia')" class="p-2.5 rounded bg-[#16161A] border border-white/5 hover:border-porscheRed hover:text-white transition-colors text-silverMuted">Kia (Mobis)</a>
+            <a href="#toyota" data-brand-filter="toyota" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('toyota');" class="p-2.5 rounded bg-[#16161A] border border-white/5 hover:border-porscheRed hover:text-white transition-colors text-silverMuted">Toyota (Denso)</a>
+            <a href="#honda" data-brand-filter="honda" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('honda');" class="p-2.5 rounded bg-[#16161A] border border-white/5 hover:border-porscheRed hover:text-white transition-colors text-silverMuted">Honda (NGK)</a>
+            <a href="#hyundai" data-brand-filter="hyundai" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('hyundai');" class="p-2.5 rounded bg-[#16161A] border border-white/5 hover:border-porscheRed hover:text-white transition-colors text-silverMuted">Hyundai (Mobis)</a>
+            <a href="#kia" data-brand-filter="kia" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('kia');" class="p-2.5 rounded bg-[#16161A] border border-white/5 hover:border-porscheRed hover:text-white transition-colors text-silverMuted">Kia (Mobis)</a>
           </div>
         </div>
       </div>
@@ -453,13 +491,17 @@
 
         <!-- Contact Box in Overlay -->
         <div class="mt-8 pt-6 border-t border-white/10 text-xs text-silverMuted flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div>
-            <span class="text-[10px] uppercase font-bold text-white block">Immediate Support Line:</span>
-            <a href="tel:0240118846" class="text-sm font-extrabold text-white hover:text-porscheRed transition-colors">024 011 8846</a>
+          <div class="space-y-1">
+            <span class="text-[10px] uppercase font-bold text-white block">Immediate Support Line &amp; Email:</span>
+            <div class="flex flex-wrap items-center gap-3">
+              <a href="tel:0240118846" class="text-sm font-extrabold text-white hover:text-porscheRed transition-colors">024 011 8846</a>
+              <span class="text-white/20">&bull;</span>
+              <a href="mailto:info@mrkash.net" class="text-xs font-semibold text-silverMuted hover:text-white transition-colors">info@mrkash.net</a>
+            </div>
           </div>
-          <a href="https://wa.me/c/233240118846" target="_blank" rel="noopener noreferrer" class="bg-porscheRed hover:bg-porscheRedHover text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded transition-all flex items-center gap-2">
-            <span>Browse WhatsApp Catalogue</span>
-            <i class="fab fa-whatsapp"></i>
+          <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20chat%20with%20a%20sales%20expert%20about%20genuine%20spark%20plugs." target="_blank" rel="noopener noreferrer" class="bg-porscheRed hover:bg-porscheRedHover text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded transition-all flex items-center gap-2 whitespace-nowrap">
+            <span>Chat with Sales Experts</span>
+            <i class="fas fa-arrow-right text-[11px]"></i>
           </a>
         </div>
       </div>
@@ -531,10 +573,10 @@
             <!-- Direct Brand Shortcuts -->
             <div class="mt-12 flex flex-wrap items-center gap-3 text-xs text-silverMuted">
               <span class="font-bold uppercase tracking-wider text-[11px] text-white mr-1">Direct Brand Stock:</span>
-              <a href="#toyota" onclick="triggerBrandFilter('toyota')" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Toyota (Denso)</a>
-              <a href="#honda" onclick="triggerBrandFilter('honda')" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Honda (NGK)</a>
-              <a href="#hyundai" onclick="triggerBrandFilter('hyundai')" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Hyundai (Mobis)</a>
-              <a href="#kia" onclick="triggerBrandFilter('kia')" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Kia (Mobis)</a>
+              <a href="#toyota" data-brand-filter="toyota" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('toyota');" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Toyota (Denso)</a>
+              <a href="#honda" data-brand-filter="honda" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('honda');" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Honda (NGK)</a>
+              <a href="#hyundai" data-brand-filter="hyundai" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('hyundai');" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Hyundai (Mobis)</a>
+              <a href="#kia" data-brand-filter="kia" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('kia');" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Kia (Mobis)</a>
             </div>
 
           </div>
@@ -1006,7 +1048,7 @@
               </div>
 
               <div>
-                <label for="fitEngine" class="block text-[11px] font-bold uppercase tracking-wider text-silverMuted mb-2">4. Engine Code / Size (Optional)</label>
+                <label for="fitEngine" class="block text-[11px] font-bold uppercase tracking-wider text-silverMuted mb-2">4. Engine Capacity / Code (Optional)</label>
                 <input type="text" id="fitEngine" placeholder="e.g. 1.8L 2ZR-FE, 2.4L K24, V6" class="w-full bg-[#16161A] border border-charcoalBorder focus:border-porscheRed text-white rounded px-3.5 py-3 text-xs outline-none placeholder:text-silverMuted/40">
               </div>
 
@@ -1532,12 +1574,12 @@
           <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="80">
             <div class="bg-porscheBlack p-8 rounded border border-charcoalBorder flex flex-col justify-between h-full">
               <div>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-2">WhatsApp Direct</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-2">Direct Sales Desk</span>
                 <h3 class="text-lg font-bold uppercase text-white mb-3">Fast Customer Assistance</h3>
-                <p class="text-silverMuted leading-relaxed mb-6">Send your car model or chassis VIN directly to our active order line. We provide instant availability, pricing quotes, and courier dispatch arrangements.</p>
+                <p class="text-silverMuted leading-relaxed mb-6">Send your car model or chassis VIN directly to our active order desk. We provide instant availability, pricing quotes, and courier dispatch arrangements.</p>
               </div>
               <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20inquire%20about%20spark%20plugs." target="_blank" rel="noopener noreferrer" class="bg-porscheRed hover:bg-porscheRedHover text-white py-3 px-6 rounded text-center font-bold uppercase tracking-wider block transition-colors">
-                Chat on WhatsApp: 024 011 8846
+                Chat with Sales Experts: 024 011 8846
               </a>
             </div>
           </div>
@@ -1546,9 +1588,11 @@
             <div class="bg-porscheBlack p-8 rounded border border-charcoalBorder flex flex-col justify-between h-full">
               <div>
                 <span class="text-[10px] font-bold uppercase tracking-widest text-white block mb-2">Operational Details</span>
-                <h3 class="text-lg font-bold uppercase text-white mb-3">Operating Hours &amp; Locations</h3>
+                <h3 class="text-lg font-bold uppercase text-white mb-3">Operating Hours &amp; Channels</h3>
                 <ul class="text-silverMuted space-y-2 mb-6">
-                  <li><strong class="text-white">Desk Hours:</strong> 9:00 AM – 10:00 PM, Monday–Saturday</li>
+                  <li><strong class="text-white">Desk Hours:</strong> 7:00 AM &ndash; 5:00 PM, Monday&ndash;Saturday</li>
+                  <li><strong class="text-white">Email:</strong> <a href="mailto:info@mrkash.net" class="hover:text-white transition-colors">info@mrkash.net</a></li>
+                  <li><strong class="text-white">Instagram / TikTok:</strong> <a href="https://www.instagram.com/Kashoption_" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Kashoption_</a> &middot; <a href="https://www.tiktok.com/@kashoption_" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">@kashoption_</a></li>
                   <li><strong class="text-white">Delivery Scope:</strong> Greater Accra, Tema &amp; All 16 Regions of Ghana</li>
                   <li><strong class="text-white">Payment Options:</strong> Mobile Money (MTN, Telecel), Bank Wire, COD</li>
                 </ul>
@@ -1573,21 +1617,30 @@
         <!-- Brand Summary -->
         <div class="md:col-span-2 scroll-reveal" data-reveal="fade-up">
           <div class="flex items-center gap-3 mb-4">
-            <div class="w-8 h-8 rounded bg-[#16161A] border border-white/10 flex items-center justify-center font-black text-xs text-white">
-              <span>K</span><span class="text-porscheRed">O</span>
+            <div class="w-10 h-10 rounded bg-[#16161A] border border-white/15 p-1 flex items-center justify-center overflow-hidden shrink-0">
+              <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine Spark Plugs" referrerpolicy="no-referrer" class="w-full h-full object-contain filter contrast-125 brightness-110 drop-shadow-[0_2px_6px_rgba(213,0,28,0.35)]">
             </div>
             <span class="text-lg font-extrabold tracking-tight text-white uppercase">
               KASH <span class="text-porscheRed">OPTION</span>
             </span>
           </div>
-          <p class="text-xs font-bold uppercase tracking-wider text-white mb-1">ACCRA’S PREMIER OEM IGNITION HUB</p>
+          <p class="text-xs font-bold uppercase tracking-wider text-white mb-1">ACCRA&rsquo;S PREMIER OEM IGNITION HUB</p>
           <p class="text-xs text-silverMuted max-w-sm leading-relaxed mb-6 font-normal">
             Ghana's trusted destination for genuine OEM spark plugs and automotive parts. Primary focus on Toyota, Honda, Hyundai, and Kia with direct sourcing from Japan and the USA.
           </p>
-          <div class="flex items-center gap-4 text-sm text-silverMuted">
-            <a href="https://www.instagram.com/kashoption1" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/share/1CrwnBxS8W/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://wa.me/233240118846" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <div class="flex flex-wrap items-center gap-x-5 gap-y-2.5 text-xs text-silverMuted">
+            <a href="https://www.instagram.com/Kashoption_" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-2" aria-label="Instagram Kashoption_">
+              <i class="fab fa-instagram text-sm text-white/80"></i>
+              <span>Kashoption_</span>
+            </a>
+            <a href="https://www.tiktok.com/@kashoption_" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-2" aria-label="TikTok @kashoption_">
+              <i class="fab fa-tiktok text-sm text-white/80"></i>
+              <span>@kashoption_</span>
+            </a>
+            <a href="mailto:info@mrkash.net" class="hover:text-white transition-colors flex items-center gap-2" aria-label="Email info@mrkash.net">
+              <i class="fas fa-envelope text-sm text-white/80"></i>
+              <span>info@mrkash.net</span>
+            </a>
           </div>
         </div>
 
@@ -1595,10 +1648,10 @@
         <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="90">
           <h4 class="text-xs font-bold uppercase tracking-widest text-white mb-4">Manufacturer Catalogues</h4>
           <ul class="space-y-2 text-xs text-silverMuted">
-            <li><a href="#toyota" onclick="triggerBrandFilter('toyota')" class="hover:text-white transition-colors">Toyota OEM Spark Plugs</a></li>
-            <li><a href="#honda" onclick="triggerBrandFilter('honda')" class="hover:text-white transition-colors">Honda OEM Spark Plugs</a></li>
-            <li><a href="#hyundai" onclick="triggerBrandFilter('hyundai')" class="hover:text-white transition-colors">Hyundai OEM Spark Plugs</a></li>
-            <li><a href="#kia" onclick="triggerBrandFilter('kia')" class="hover:text-white transition-colors">Kia OEM Spark Plugs</a></li>
+            <li><a href="#toyota" data-brand-filter="toyota" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('toyota');" class="hover:text-white transition-colors">Toyota OEM Spark Plugs</a></li>
+            <li><a href="#honda" data-brand-filter="honda" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('honda');" class="hover:text-white transition-colors">Honda OEM Spark Plugs</a></li>
+            <li><a href="#hyundai" data-brand-filter="hyundai" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('hyundai');" class="hover:text-white transition-colors">Hyundai OEM Spark Plugs</a></li>
+            <li><a href="#kia" data-brand-filter="kia" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('kia');" class="hover:text-white transition-colors">Kia OEM Spark Plugs</a></li>
             <li><a href="#fitment-finder" class="hover:text-white transition-colors">Chassis Verification Tool</a></li>
             <li><a href="#wholesale" class="hover:text-white transition-colors">Trade &amp; Wholesale Supply</a></li>
           </ul>
@@ -1608,13 +1661,14 @@
         <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="160">
           <h4 class="text-xs font-bold uppercase tracking-widest text-white mb-4">Customer Support</h4>
           <div class="text-xs text-silverMuted space-y-2 mb-4 leading-relaxed">
-            <p>WhatsApp Orders: <a href="https://wa.me/233240118846" class="text-white font-bold hover:underline">024 011 8846</a></p>
-            <p>Support Hours: <strong class="text-white">9:00 AM – 10:00 PM Mon–Sat</strong></p>
+            <p>Orders Line: <a href="tel:0240118846" class="text-white font-bold hover:underline">024 011 8846</a></p>
+            <p>Email: <a href="mailto:info@mrkash.net" class="text-white font-bold hover:underline">info@mrkash.net</a></p>
+            <p>Support Hours: <strong class="text-white">7:00 AM &ndash; 5:00 PM Mon&ndash;Sat</strong></p>
             <p>Fulfillment: Nationwide Delivery Across Ghana</p>
             <p class="text-[11px] text-silverMuted/70">Delivery arrangements available outside normal hours subject to confirmation.</p>
           </div>
-          <a href="https://wa.me/c/233240118846" target="_blank" rel="noopener noreferrer" class="inline-block bg-white/10 hover:bg-porscheRed hover:text-white text-white border border-white/10 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded transition-colors">
-            Open WhatsApp Catalogue
+          <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20chat%20with%20a%20sales%20expert%20about%20genuine%20spark%20plugs." target="_blank" rel="noopener noreferrer" class="inline-block bg-white/10 hover:bg-porscheRed hover:text-white text-white border border-white/10 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded transition-colors">
+            Chat with Sales Experts
           </a>
         </div>
 
@@ -1632,11 +1686,25 @@
     </div>
   </footer>
 
-  <!-- ================= DISCREET FLOATING WHATSAPP CTA ================= -->
-  <aside aria-label="WhatsApp quick chat" class="fixed bottom-5 right-5 z-30">
-    <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20verify%20spark%20plug%20fitment%20for%20my%20vehicle." target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white flex items-center justify-center shadow-2xl transition-transform duration-200 hover:scale-105 focus:outline-none border-2 border-white/10" aria-label="Chat on WhatsApp">
-      <i class="fab fa-whatsapp text-2xl"></i>
-    </a>
+  <!-- ================= SCROLL-TRIGGERED FLOATING SALES REPRESENTATIVE ================= -->
+  <aside id="salesRepWidget" aria-label="Sales Representative Quick Fitment Assistant" class="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-30 max-w-[295px] sm:max-w-[330px]">
+    <button type="button" onclick="openSalesFitmentInquiry()" class="w-full text-left bg-[#121214]/95 hover:bg-[#18181C] backdrop-blur-xl border border-white/15 hover:border-porscheRed rounded-lg p-3 sm:p-3.5 shadow-[0_20px_45px_rgba(0,0,0,0.85)] flex items-center gap-3 group transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-porscheRed">
+      <div class="w-10 h-10 rounded-full bg-[#18181C] border border-porscheRed/60 flex items-center justify-center shrink-0 overflow-hidden p-1 group-hover:border-porscheRed transition-colors">
+        <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Sales Specialist" referrerpolicy="no-referrer" class="w-full h-full object-contain filter contrast-125 brightness-110">
+      </div>
+      <div class="min-w-0 flex-1">
+        <span class="block text-[9.5px] font-bold uppercase tracking-widest text-porscheRed leading-none mb-1">
+          Sales Specialist &middot; KASH OPTION
+        </span>
+        <span class="block text-xs font-extrabold text-white leading-snug">
+          What car do you need plugs for?
+        </span>
+        <span class="mt-0.5 flex items-center gap-1.5 text-[11px] font-semibold text-metallicSilver group-hover:text-white transition-colors">
+          <span>Tap to buy genuine plugs</span>
+          <i class="fas fa-arrow-right text-[9px] text-porscheRed transform group-hover:translate-x-1 transition-transform"></i>
+        </span>
+      </div>
+    </button>
   </aside>
 
   <!-- ================= JAVASCRIPT: ROUTING, LIVE SEARCH, FITMENT, OVERLAY & SCROLL REVEAL ================= -->
@@ -1692,11 +1760,41 @@
       });
     }
 
+    function updateSalesRepVisibility() {
+      const widget = document.getElementById('salesRepWidget');
+      if (!widget) return;
+      const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+      if (scrollY > 120) {
+        widget.classList.add('is-visible');
+      } else {
+        widget.classList.remove('is-visible');
+      }
+    }
+
+    function openSalesFitmentInquiry() {
+      const fitmentSection = document.getElementById('fitment-finder');
+      const isAlreadyFitment = fitmentSection && !fitmentSection.hidden;
+      if (!isAlreadyFitment) {
+        showPage('fitment-finder', null, true);
+      }
+      window.requestAnimationFrame(() => {
+        const form = document.getElementById('fitmentSearchForm');
+        if (form) {
+          form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        const makeInput = document.getElementById('fitMake');
+        if (makeInput) {
+          setTimeout(() => makeInput.focus({ preventScroll: true }), 350);
+        }
+      });
+    }
+
     function scheduleScrollRevealEval() {
       if (scrollEvalRaf) return;
       scrollEvalRaf = window.requestAnimationFrame(() => {
         scrollEvalRaf = 0;
         evaluateScrollReveals();
+        updateSalesRepVisibility();
       });
     }
 
@@ -1853,7 +1951,8 @@
 
       // Handle brand filters in catalogue
       if (validPage === 'catalogue') {
-        const brandToApply = (brandFilter || (['toyota', 'honda', 'hyundai', 'kia', 'denso', 'ngk', 'mobis'].includes(pageKey) ? pageKey : 'all')).toLowerCase();
+        const rawBrand = brandFilter || (['toyota', 'honda', 'hyundai', 'kia', 'denso', 'ngk', 'mobis'].includes(pageKey) ? pageKey : 'all');
+        const brandToApply = ['catalogue', 'shop', ''].includes(String(rawBrand).toLowerCase()) ? 'all' : String(rawBrand).toLowerCase();
         const targetBtn = Array.from(document.querySelectorAll('#filterTabs button')).find(
           btn => {
             const btnText = btn.textContent.trim().toLowerCase();
@@ -1871,6 +1970,7 @@
 
       // Scroll to top of clean page
       window.scrollTo({ top: 0, behavior: 'instant' });
+      updateSalesRepVisibility();
 
       // Update browser history
       if (updateHistory) {
@@ -1889,13 +1989,14 @@
     document.addEventListener('click', function(e) {
       const link = e.target.closest('a[href^="#"]');
       if (!link) return;
+      if (link.hasAttribute('data-brand-filter')) return;
       const href = link.getAttribute('href');
       if (!href || href === '#') return;
       const hashKey = href.slice(1).toLowerCase();
       if (routeMap[hashKey] !== undefined) {
         e.preventDefault();
         const brand = ['toyota', 'honda', 'hyundai', 'kia', 'denso', 'ngk', 'mobis'].includes(hashKey) ? hashKey : null;
-        showPage(routeMap[hashKey] === 'catalogue' ? 'catalogue' : hashKey, brand || (routeMap[hashKey] === 'catalogue' ? hashKey : null), true);
+        showPage(routeMap[hashKey] === 'catalogue' ? 'catalogue' : hashKey, brand, true);
       }
     });
 
