@@ -43,7 +43,7 @@
       theme: {
         extend: {
           colors: {
-            porscheBlack: '#0A0A0A',
+            porscheBlack: '#050505',
             porscheDark: '#121214',
             porscheSurface: '#18181C',
             porscheRed: '#E50914',
@@ -62,23 +62,61 @@
 
   <style>
     :root {
-      --bg-black: #0A0A0A;
-      --porsche-red: #D5001C;
+      --bg-black: #050505;
+      --porsche-red: #E50914;
       --metallic-silver: #BFC3C7;
-      --charcoal-border: rgba(255, 255, 255, 0.08);
+      --charcoal-border: rgba(255, 255, 255, 0.12);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: clip;
+      overscroll-behavior-x: none;
+      scroll-behavior: smooth;
+      background-color: #050505;
     }
 
     body {
-      background-color: var(--bg-black);
       color: #FFFFFF;
       font-family: 'Plus Jakarta Sans', sans-serif;
       -webkit-font-smoothing: antialiased;
-      overflow-x: clip;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     main,
-    footer {
+    footer,
+    section,
+    .page-view {
+      max-width: 100%;
       overflow-x: clip;
+    }
+
+    /* Prevent mobile auto-zoom & layout shift on all form inputs */
+    input,
+    select,
+    textarea {
+      font-size: 16px !important;
+      line-height: 1.4;
+    }
+
+    /* GPU-locked fixed / sticky layer stability */
+    header.nav-glass,
+    #menuOverlay,
+    #salesRepWidget,
+    #salesChatBackdrop,
+    #salesRepChat {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    header.nav-glass {
+      transform: translate3d(0, 0, 0);
     }
 
     /* Porsche-inspired typographic tension */
@@ -95,15 +133,94 @@
       display: inline-block;
     }
 
-    /* Porsche Minimalist Luxury Cards */
+    /* ================= LIQUID GLASS SYSTEM ================= */
+    .liquid-glass {
+      background: rgba(16, 16, 20, 0.65);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 20px 50px rgba(0, 0, 0, 0.65);
+    }
+
+    .liquid-glass-interactive {
+      transition:
+        transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 350ms cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 420ms cubic-bezier(0.16, 1, 0.3, 1),
+        background-color 350ms ease;
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .liquid-glass-interactive:hover {
+      border-color: rgba(229, 9, 20, 0.35);
+      transform: translate3d(0, -3px, 0);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 24px 56px rgba(0, 0, 0, 0.78), 0 0 28px rgba(229, 9, 20, 0.12);
+    }
+    .liquid-glass-interactive:active {
+      transform: scale(0.98) translate3d(0, 0, 0);
+    }
+
+    .liquid-glass-btn {
+      background: rgba(16, 16, 20, 0.65);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 12px 30px rgba(0, 0, 0, 0.45);
+      transition:
+        transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 280ms ease,
+        background-color 280ms ease,
+        color 280ms ease,
+        box-shadow 280ms ease;
+      transform: translate3d(0, 0, 0);
+    }
+    .liquid-glass-btn:hover {
+      border-color: rgba(229, 9, 20, 0.45);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(229, 9, 20, 0.18);
+    }
+    .liquid-glass-btn:active {
+      transform: scale(0.98) translate3d(0, 0, 0);
+    }
+
+    .liquid-cta-primary {
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 16px 38px rgba(229, 9, 20, 0.3);
+      transition:
+        transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
+        background-color 260ms ease,
+        box-shadow 280ms ease;
+      transform: translate3d(0, 0, 0);
+    }
+    .liquid-cta-primary:hover {
+      transform: translate3d(0, -2px, 0);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 22px 46px rgba(229, 9, 20, 0.44);
+    }
+    .liquid-cta-primary:active {
+      transform: scale(0.98) translate3d(0, 0, 0);
+    }
+
+    /* Porsche Minimalist Liquid Glass Cards */
     .porsche-card {
-      background-color: #121214;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      background: rgba(16, 16, 20, 0.65);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 20px 50px rgba(0, 0, 0, 0.65);
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transition:
+        transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 350ms cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 420ms cubic-bezier(0.16, 1, 0.3, 1);
     }
     .porsche-card:hover {
-      border-color: rgba(255, 255, 255, 0.22);
-      transform: translateY(-3px);
+      border-color: rgba(229, 9, 20, 0.38);
+      transform: translate3d(0, -4px, 0);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 26px 60px rgba(0, 0, 0, 0.8), 0 0 28px rgba(229, 9, 20, 0.12);
+    }
+    .porsche-card:active {
+      transform: scale(0.985) translate3d(0, 0, 0);
     }
 
     /* Technical Specification Table Row */
@@ -112,38 +229,40 @@
       justify-content: space-between;
       align-items: center;
       padding: 7px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       font-size: 0.75rem;
     }
     .spec-item:last-child {
       border-bottom: none;
     }
 
-    /* Sticky Navigation Glass */
+    /* Sticky Navigation Liquid Glass */
     .nav-glass {
-      background: rgba(10, 10, 10, 0.94);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(16, 16, 20, 0.65);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.06), 0 16px 40px rgba(0, 0, 0, 0.6);
     }
 
     /* Dark select options */
     select option {
-      background: #121214;
+      background: #101014;
       color: #FFFFFF;
     }
 
     /* Active filter tab */
     .filter-btn.active {
       background-color: #FFFFFF;
-      color: #0A0A0A;
+      color: #050505;
       border-color: #FFFFFF;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 8px 24px rgba(255, 255, 255, 0.14);
     }
 
     /* Studio Hero Glow and Gradient Lighting */
     .hero-studio-glow {
-      background: radial-gradient(circle at 50% 18%, rgba(213, 0, 28, 0.14) 0%, rgba(213, 0, 28, 0.02) 50%, transparent 75%),
-                  radial-gradient(circle at 30% 10%, rgba(255, 255, 255, 0.04) 0%, transparent 40%);
+      background: radial-gradient(circle at 50% 18%, rgba(229, 9, 20, 0.15) 0%, rgba(229, 9, 20, 0.03) 50%, transparent 75%),
+                  radial-gradient(circle at 30% 10%, rgba(255, 255, 255, 0.05) 0%, transparent 42%);
     }
 
     /* ================= ISOLATED PAGE VIEWS ================= */
@@ -154,29 +273,48 @@
       overflow-x: clip;
     }
 
-    /* ================= GLOBAL SCROLL-TRIGGERED REVEAL ANIMATIONS ================= */
+    /* ================= GLOBAL CHOREOGRAPHED SCROLL-TRIGGERED REVEAL ANIMATIONS ================= */
     .scroll-reveal {
       opacity: 0;
-      transform: translate3d(0, 42px, 0);
+      transform: translate3d(0, 42px, 0) scale(0.985);
       will-change: transform, opacity;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
       transition:
         opacity 1200ms cubic-bezier(0.16, 1, 0.3, 1),
-        transform 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+        transform 1200ms cubic-bezier(0.16, 1, 0.3, 1),
+        filter 1200ms cubic-bezier(0.16, 1, 0.3, 1);
       transition-delay: 0ms;
     }
     .scroll-reveal[data-reveal="fade-up"] {
-      transform: translate3d(0, 42px, 0);
+      transform: translate3d(0, 42px, 0) scale(0.985);
+    }
+    .scroll-reveal[data-reveal="hero"],
+    .scroll-reveal[data-reveal="headline"] {
+      transform: translate3d(0, 32px, 0) scale(0.97);
+      filter: blur(6px);
+      will-change: transform, opacity, filter;
     }
     .scroll-reveal.is-revealed {
       opacity: 1;
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0) scale(1);
+      filter: blur(0);
       transition-delay: var(--reveal-delay, 0ms);
       will-change: auto;
     }
+    [data-parallax] {
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      will-change: transform;
+      transition: transform 140ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
     @media (prefers-reduced-motion: reduce) {
-      .scroll-reveal {
+      .scroll-reveal,
+      [data-parallax] {
         opacity: 1 !important;
         transform: none !important;
+        filter: none !important;
         transition: none !important;
         will-change: auto;
       }
@@ -462,7 +600,7 @@
 
       <!-- Brand Logo (Hero Spark Plugs Emblem + "KASH OPTION") -->
       <a href="#home" class="flex items-center gap-3 group focus:outline-none" aria-label="KASH OPTION Home">
-        <div class="w-10 h-10 rounded bg-[#16161A] border border-white/15 p-1 flex items-center justify-center overflow-hidden shrink-0 group-hover:border-porscheRed transition-colors">
+        <div class="w-10 h-10 rounded-lg liquid-glass p-1 flex items-center justify-center overflow-hidden shrink-0 group-hover:border-[#E50914]/50 transition-colors">
           <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine Spark Plugs" referrerpolicy="no-referrer" class="w-full h-full object-contain filter contrast-125 brightness-110 drop-shadow-[0_2px_6px_rgba(213,0,28,0.35)]">
         </div>
         <div class="flex flex-col">
@@ -489,7 +627,7 @@
 
       <!-- Right Action: Clean Menu Trigger -->
       <div class="flex items-center gap-3">
-        <button id="menuTriggerBtn" onclick="openMenu()" type="button" class="w-10 h-10 rounded bg-[#16161A] border border-white/10 flex items-center justify-center text-silverMuted hover:text-white hover:border-porscheRed transition-colors focus:outline-none" aria-label="Open Full Navigation Menu" aria-haspopup="dialog">
+        <button id="menuTriggerBtn" onclick="openMenu()" type="button" class="w-10 h-10 rounded-lg liquid-glass-btn flex items-center justify-center text-silverMuted hover:text-white focus:outline-none" aria-label="Open Full Navigation Menu" aria-haspopup="dialog">
           <i class="fas fa-bars text-sm"></i>
         </button>
       </div>
@@ -498,12 +636,12 @@
   </header>
 
   <!-- ================= FULLSCREEN MENU OVERLAY (BLURS & HIDES UNDERLYING WEBSITE CONTENT) ================= -->
-  <div id="menuOverlay" class="hidden-overlay fixed inset-0 z-50 bg-[#0A0A0A]/95 backdrop-blur-2xl flex flex-col justify-between p-6 sm:p-10 overflow-y-auto" role="dialog" aria-modal="true" aria-label="Navigation Menu">
+  <div id="menuOverlay" class="hidden-overlay fixed inset-0 z-50 bg-[#050505]/90 backdrop-blur-2xl flex flex-col justify-between p-6 sm:p-10 overflow-y-auto" role="dialog" aria-modal="true" aria-label="Navigation Menu">
 
     <!-- Menu Overlay Top Bar -->
     <div class="max-w-7xl mx-auto w-full flex items-center justify-between pb-6 border-b border-white/10">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded bg-[#16161A] border border-white/15 p-1 flex items-center justify-center overflow-hidden shrink-0">
+        <div class="w-10 h-10 rounded-lg liquid-glass p-1 flex items-center justify-center overflow-hidden shrink-0">
           <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine Spark Plugs" referrerpolicy="no-referrer" class="w-full h-full object-contain filter contrast-125 brightness-110 drop-shadow-[0_2px_6px_rgba(213,0,28,0.35)]">
         </div>
         <div class="flex flex-col">
@@ -517,7 +655,7 @@
       </div>
 
       <!-- Close Button -->
-      <button onclick="closeMenu()" type="button" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:border-porscheRed hover:bg-porscheRed flex items-center justify-center text-white transition-all focus:outline-none" aria-label="Close Navigation Menu">
+      <button onclick="closeMenu()" type="button" class="w-10 h-10 rounded-full liquid-glass-btn hover:bg-porscheRed flex items-center justify-center text-white focus:outline-none" aria-label="Close Navigation Menu">
         <i class="fas fa-times text-base"></i>
       </button>
     </div>
@@ -549,11 +687,11 @@
         <!-- Quick Manufacturer Lines -->
         <div class="pt-6 border-t border-white/10">
           <span class="text-[10px] font-bold uppercase tracking-widest text-silverMuted block mb-3">Direct Manufacturer Lines:</span>
-          <div class="grid grid-cols-2 gap-2 text-xs font-bold uppercase tracking-wider">
-            <a href="#toyota" data-brand-filter="toyota" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('toyota');" class="p-2.5 rounded bg-[#16161A] border border-white/5 hover:border-porscheRed hover:text-white transition-colors text-silverMuted">Toyota (Denso)</a>
-            <a href="#honda" data-brand-filter="honda" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('honda');" class="p-2.5 rounded bg-[#16161A] border border-white/5 hover:border-porscheRed hover:text-white transition-colors text-silverMuted">Honda (NGK)</a>
-            <a href="#hyundai" data-brand-filter="hyundai" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('hyundai');" class="p-2.5 rounded bg-[#16161A] border border-white/5 hover:border-porscheRed hover:text-white transition-colors text-silverMuted">Hyundai (Mobis)</a>
-            <a href="#kia" data-brand-filter="kia" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('kia');" class="p-2.5 rounded bg-[#16161A] border border-white/5 hover:border-porscheRed hover:text-white transition-colors text-silverMuted">Kia (Mobis)</a>
+          <div class="grid grid-cols-2 gap-2.5 text-xs font-bold uppercase tracking-wider">
+            <a href="#toyota" data-brand-filter="toyota" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('toyota');" class="p-3 rounded-lg liquid-glass-btn hover:text-white text-silverMuted">Toyota (Denso)</a>
+            <a href="#honda" data-brand-filter="honda" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('honda');" class="p-3 rounded-lg liquid-glass-btn hover:text-white text-silverMuted">Honda (NGK)</a>
+            <a href="#hyundai" data-brand-filter="hyundai" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('hyundai');" class="p-3 rounded-lg liquid-glass-btn hover:text-white text-silverMuted">Hyundai (Mobis)</a>
+            <a href="#kia" data-brand-filter="kia" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('kia');" class="p-3 rounded-lg liquid-glass-btn hover:text-white text-silverMuted">Kia (Mobis)</a>
           </div>
         </div>
       </div>
@@ -604,7 +742,7 @@
               <a href="mailto:info@mrkash.net" class="text-xs font-semibold text-silverMuted hover:text-white transition-colors">info@mrkash.net</a>
             </div>
           </div>
-          <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20chat%20with%20a%20sales%20expert%20about%20genuine%20spark%20plugs." target="_blank" rel="noopener noreferrer" class="bg-porscheRed hover:bg-porscheRedHover text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded transition-all flex items-center gap-2 whitespace-nowrap">
+          <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20chat%20with%20a%20sales%20expert%20about%20genuine%20spark%20plugs." target="_blank" rel="noopener noreferrer" class="bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-lg flex items-center gap-2 whitespace-nowrap">
             <span>Chat with Sales Experts</span>
             <i class="fas fa-arrow-right text-[11px]"></i>
           </a>
@@ -631,17 +769,19 @@
         <!-- Hosted Spark Plugs Image Spreading Across Top Behind Headline -->
         <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <!-- Spark Plugs Top Spread Layer -->
-          <div class="absolute -top-6 sm:-top-10 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[70%] sm:h-[82%] flex items-start justify-center opacity-35 sm:opacity-45 transition-all duration-700">
-            <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine OEM Automotive Spark Plugs" class="w-full h-full object-contain object-top filter drop-shadow-[0_20px_55px_rgba(213,0,28,0.35)] scale-105 sm:scale-100">
+          <div class="absolute -top-6 sm:-top-10 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[70%] sm:h-[82%] flex items-start justify-center opacity-35 sm:opacity-45">
+            <div data-parallax="0.14" class="w-full h-full flex items-start justify-center">
+              <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine OEM Automotive Spark Plugs" class="w-full h-full object-contain object-top filter drop-shadow-[0_20px_55px_rgba(229,9,20,0.35)] scale-105 sm:scale-100">
+            </div>
           </div>
           <!-- Luxury Studio Lighting Overlay Calibrated for Absolute Text Contrast -->
-          <div class="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/35 via-[#0A0A0A]/80 to-[#0A0A0A]"></div>
-          <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_15%,rgba(213,0,28,0.14),transparent_70%)]"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-[#050505]/35 via-[#050505]/80 to-[#050505]"></div>
+          <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_15%,rgba(229,9,20,0.14),transparent_70%)]"></div>
         </div>
 
         <!-- Hero Main Content (Foreground with Crisp Legibility) -->
         <div class="max-w-7xl mx-auto w-full relative z-10 my-auto py-8">
-          <div class="max-w-3xl scroll-reveal" data-reveal="fade-up">
+          <div class="max-w-3xl scroll-reveal" data-reveal="hero">
 
             <!-- Eyebrow text -->
             <div class="flex items-center gap-3 mb-6">
@@ -665,12 +805,12 @@
             <!-- Action Buttons -->
             <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 max-w-md">
               <!-- Primary CTA Button: ORDER ON WHATSAPP -->
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20ready%20to%20order%20genuine%20OEM%20spark%20plugs%20for%20my%20vehicle." target="_blank" rel="noopener noreferrer" class="bg-porscheRed hover:bg-porscheRedHover text-white text-xs font-extrabold uppercase tracking-widest px-8 py-4 rounded text-center transition-all duration-200 flex items-center justify-center gap-2.5 shadow-lg shadow-porscheRed/20 hover:scale-[1.02]">
+              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20ready%20to%20order%20genuine%20OEM%20spark%20plugs%20for%20my%20vehicle." target="_blank" rel="noopener noreferrer" class="bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white text-xs font-extrabold uppercase tracking-widest px-8 py-4 rounded-lg text-center flex items-center justify-center gap-2.5">
                 <span>GET PRICE ON WHATSAPP</span>
               </a>
 
               <!-- Secondary CTA Button: EXPLORE WHOLESALE -->
-              <a href="#wholesale" class="bg-porscheDark hover:bg-[#1C1C20] text-white border border-white/20 hover:border-white/40 text-xs font-bold uppercase tracking-widest px-8 py-4 rounded text-center transition-all duration-200 flex items-center justify-center gap-2">
+              <a href="#wholesale" class="liquid-glass-btn text-white text-xs font-bold uppercase tracking-widest px-8 py-4 rounded-lg text-center flex items-center justify-center gap-2">
                 <span>EXPLORE WHOLESALE</span>
               </a>
             </div>
@@ -678,34 +818,34 @@
             <!-- Direct Brand Shortcuts -->
             <div class="mt-12 flex flex-wrap items-center gap-3 text-xs text-silverMuted">
               <span class="font-bold uppercase tracking-wider text-[11px] text-white mr-1">Direct Brand Stock:</span>
-              <a href="#toyota" data-brand-filter="toyota" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('toyota');" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Toyota (Denso)</a>
-              <a href="#honda" data-brand-filter="honda" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('honda');" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Honda (NGK)</a>
-              <a href="#hyundai" data-brand-filter="hyundai" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('hyundai');" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Hyundai (Mobis)</a>
-              <a href="#kia" data-brand-filter="kia" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('kia');" class="px-3 py-1.5 rounded bg-porscheDark border border-white/10 hover:border-porscheRed text-white text-[11px] font-semibold transition-colors">Kia (Mobis)</a>
+              <a href="#toyota" data-brand-filter="toyota" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('toyota');" class="px-3.5 py-1.5 rounded-lg liquid-glass-btn text-white text-[11px] font-semibold">Toyota (Denso)</a>
+              <a href="#honda" data-brand-filter="honda" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('honda');" class="px-3.5 py-1.5 rounded-lg liquid-glass-btn text-white text-[11px] font-semibold">Honda (NGK)</a>
+              <a href="#hyundai" data-brand-filter="hyundai" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('hyundai');" class="px-3.5 py-1.5 rounded-lg liquid-glass-btn text-white text-[11px] font-semibold">Hyundai (Mobis)</a>
+              <a href="#kia" data-brand-filter="kia" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('kia');" class="px-3.5 py-1.5 rounded-lg liquid-glass-btn text-white text-[11px] font-semibold">Kia (Mobis)</a>
             </div>
 
           </div>
         </div>
 
         <!-- Authority Strip (3-Column Minimalist Bar) -->
-        <div class="max-w-7xl mx-auto w-full relative z-10 pt-8 border-t border-charcoalBorder">
+        <div class="max-w-7xl mx-auto w-full relative z-10 pt-8 border-t border-white/10">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
 
-            <div class="scroll-reveal border-l-0 sm:border-l border-white/15 pl-0 sm:pl-5 py-1" data-reveal="fade-up" data-reveal-delay="60">
+            <div class="scroll-reveal border-l-0 sm:border-l border-white/15 pl-0 sm:pl-5 py-1" data-reveal="fade-up" data-reveal-delay="0">
               <span class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-white block">
                 STOP ENGINE MISFIRES &amp; HIGH FUEL BURN
               </span>
               <p class="text-[11px] text-silverMuted mt-1">Weak or fake plugs ruin your fuel economy and coils. Get factory-spec Iridium and Platinum plugs that last up to 100,000 km.</p>
             </div>
 
-            <div class="scroll-reveal border-l-0 sm:border-l border-white/15 pl-0 sm:pl-5 py-1" data-reveal="fade-up" data-reveal-delay="140">
+            <div class="scroll-reveal border-l-0 sm:border-l border-white/15 pl-0 sm:pl-5 py-1" data-reveal="fade-up" data-reveal-delay="100">
               <span class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-white block">
                 1 SET OR 100 CARTONS IN STOCK
               </span>
               <p class="text-[11px] text-silverMuted mt-1">Whether you are servicing one personal car or stocking an entire shop, we have ready stock at fair Cedi prices.</p>
             </div>
 
-            <div class="scroll-reveal border-l-0 sm:border-l border-white/15 pl-0 sm:pl-5 py-1" data-reveal="fade-up" data-reveal-delay="220">
+            <div class="scroll-reveal border-l-0 sm:border-l border-white/15 pl-0 sm:pl-5 py-1" data-reveal="fade-up" data-reveal-delay="200">
               <span class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-white block">
                 FAST DELIVERY TO YOUR MECHANIC OR DOOR
               </span>
@@ -719,9 +859,9 @@
 
       <!-- Concise Commercial Overview & Direct Entry (Landing Page Ending) -->
       <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="bg-porscheDark p-8 sm:p-12 rounded border border-charcoalBorder flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+        <div class="liquid-glass liquid-glass-interactive p-8 sm:p-12 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
           <div class="scroll-reveal flex items-center gap-6 z-10 max-w-2xl" data-reveal="fade-up">
-            <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Spark Plugs Dealer" class="h-20 w-auto object-contain hidden sm:block filter drop-shadow-[0_10px_20px_rgba(213,0,28,0.25)]">
+            <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Spark Plugs Dealer" class="h-20 w-auto object-contain hidden sm:block filter drop-shadow-[0_10px_20px_rgba(229,9,20,0.28)]">
             <div>
               <span class="text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-1">Commercial Reliability</span>
               <h2 class="text-xl sm:text-2xl font-extrabold uppercase text-white mb-2">
@@ -733,10 +873,10 @@
             </div>
           </div>
           <div class="scroll-reveal flex items-center gap-3 z-10" data-reveal="fade-up" data-reveal-delay="100">
-            <a href="#catalogue" class="bg-white hover:bg-metallicSilver text-porscheBlack text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded transition-colors whitespace-nowrap">
+            <a href="#catalogue" class="bg-white hover:bg-metallicSilver text-porscheBlack text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-lg transition-all active:scale-[0.98] whitespace-nowrap shadow-[0_10px_25px_rgba(255,255,255,0.12)]">
               Open Catalogue
             </a>
-            <a href="#fitment-finder" class="bg-porscheRed hover:bg-porscheRedHover text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded transition-colors whitespace-nowrap">
+            <a href="#fitment-finder" class="bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-lg whitespace-nowrap">
               Verify Fitment
             </a>
           </div>
@@ -746,10 +886,10 @@
     </div>
 
     <!-- ================= DISCRETE PAGE: PRODUCT CATALOGUE & REAL-TIME SEARCH ================= -->
-    <section id="catalogue" data-page="catalogue" class="page-view py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-charcoalBorder" hidden>
+    <section id="catalogue" data-page="catalogue" class="page-view py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-white/10" hidden>
 
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-white/5 gap-4">
-        <div class="scroll-reveal" data-reveal="fade-up">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-white/10 gap-4">
+        <div class="scroll-reveal" data-reveal="headline">
           <div class="flex items-center gap-2 mb-2">
             <span class="accent-indicator"></span>
             <span class="text-[11px] font-bold uppercase tracking-widest text-porscheRed">Verified Stock Reference</span>
@@ -758,7 +898,7 @@
             OEM Spark Plug Catalogue
           </h2>
         </div>
-        <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="80">
+        <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="100">
           <p class="text-xs sm:text-sm text-silverMuted max-w-md font-normal leading-relaxed">
             Fast-moving OEM references for Toyota, Honda, Hyundai, and Kia. Every spark plug features genuine laser-welded tips and calibrated internal resistance.
           </p>
@@ -767,24 +907,24 @@
 
       <!-- Real-Time Filter & Search Toolbar -->
       <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="100">
-        <div class="bg-porscheDark p-4 sm:p-5 rounded border border-charcoalBorder mb-10 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+        <div class="liquid-glass p-4 sm:p-5 rounded-xl mb-10 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
 
           <!-- Live Search Input -->
           <div class="relative flex-1">
             <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-silverMuted/60 text-xs"></i>
-            <input type="search" id="catalogueSearch" oninput="filterCatalogueCards()" placeholder="Search by model, OEM part number (e.g. SC20HR11, SK20R11, IZFR6K11, 18846-10060)..." class="w-full bg-porscheBlack border border-charcoalBorder focus:border-porscheRed text-white rounded pl-9 pr-4 py-2.5 text-xs outline-none transition-colors placeholder:text-silverMuted/50">
+            <input type="search" id="catalogueSearch" oninput="filterCatalogueCards()" placeholder="Search by model, OEM part number (e.g. SC20HR11, SK20R11, IZFR6K11, 18846-10060)..." class="w-full bg-porscheBlack/90 border border-white/15 focus:border-porscheRed text-white rounded-lg pl-9 pr-4 py-2.5 text-base outline-none transition-colors placeholder:text-silverMuted/50 placeholder:text-xs">
           </div>
 
           <!-- Filter Pill Tabs -->
           <div class="flex flex-wrap items-center gap-2" id="filterTabs">
-            <button onclick="setBrandFilter('all', this)" class="filter-btn active text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded border border-charcoalBorder text-silverMuted hover:text-white transition-colors">All</button>
-            <button onclick="setBrandFilter('toyota', this)" class="filter-btn text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded border border-charcoalBorder text-silverMuted hover:text-white transition-colors">Toyota</button>
-            <button onclick="setBrandFilter('honda', this)" class="filter-btn text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded border border-charcoalBorder text-silverMuted hover:text-white transition-colors">Honda</button>
-            <button onclick="setBrandFilter('hyundai', this)" class="filter-btn text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded border border-charcoalBorder text-silverMuted hover:text-white transition-colors">Hyundai</button>
-            <button onclick="setBrandFilter('kia', this)" class="filter-btn text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded border border-charcoalBorder text-silverMuted hover:text-white transition-colors">Kia</button>
-            <button onclick="setBrandFilter('denso', this)" class="filter-btn text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded border border-charcoalBorder text-silverMuted hover:text-white transition-colors">Denso</button>
-            <button onclick="setBrandFilter('ngk', this)" class="filter-btn text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded border border-charcoalBorder text-silverMuted hover:text-white transition-colors">NGK</button>
-            <button onclick="setBrandFilter('mobis', this)" class="filter-btn text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded border border-charcoalBorder text-silverMuted hover:text-white transition-colors">Mobis</button>
+            <button onclick="setBrandFilter('all', this)" class="filter-btn active liquid-glass-btn text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-lg text-silverMuted hover:text-white">All</button>
+            <button onclick="setBrandFilter('toyota', this)" class="filter-btn liquid-glass-btn text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-lg text-silverMuted hover:text-white">Toyota</button>
+            <button onclick="setBrandFilter('honda', this)" class="filter-btn liquid-glass-btn text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-lg text-silverMuted hover:text-white">Honda</button>
+            <button onclick="setBrandFilter('hyundai', this)" class="filter-btn liquid-glass-btn text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-lg text-silverMuted hover:text-white">Hyundai</button>
+            <button onclick="setBrandFilter('kia', this)" class="filter-btn liquid-glass-btn text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-lg text-silverMuted hover:text-white">Kia</button>
+            <button onclick="setBrandFilter('denso', this)" class="filter-btn liquid-glass-btn text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-lg text-silverMuted hover:text-white">Denso</button>
+            <button onclick="setBrandFilter('ngk', this)" class="filter-btn liquid-glass-btn text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-lg text-silverMuted hover:text-white">NGK</button>
+            <button onclick="setBrandFilter('mobis', this)" class="filter-btn liquid-glass-btn text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-lg text-silverMuted hover:text-white">Mobis</button>
           </div>
 
         </div>
@@ -795,10 +935,12 @@
 
         <!-- Toyota 1 -->
         <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="0" data-brand="toyota denso" data-keywords="toyota corolla auris matrix prius sc20hr11 90919-01253 2zr-fe 1.8l denso japan">
-          <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
+          <div class="porsche-card rounded-2xl p-6 flex flex-col justify-between h-full">
             <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
-                <img src="https://iili.io/oJbQRvp.webp" alt="Denso SC20HR11 Toyota Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
+                <div data-parallax="0.06" class="w-full h-full">
+                  <img src="https://iili.io/oJbQRvp.webp" alt="Denso SC20HR11 Toyota Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
                 <span class="font-bold text-white uppercase tracking-wider">Toyota OEM &bull; Denso Japan</span>
@@ -808,13 +950,13 @@
               <p class="text-xs text-silverMuted leading-relaxed mb-4">
                 Factory standard for 2ZR-FE and 2ZR-FXE engines. 0.7mm high-grade fine-wire Iridium center pin with platinum ground disc for maximum fuel economy.
               </p>
-              <div class="border-t border-white/5 pt-3 mb-6">
+              <div class="border-t border-white/10 pt-3 mb-6">
                 <div class="spec-item"><span class="text-silverMuted">OEM Part Number:</span><span class="font-bold text-white">90919-01253 / SC20HR11</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Thread &bull; Reach:</span><span class="font-bold text-white">M12 x 1.25 &bull; 26.5mm</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Hex Size:</span><span class="font-bold text-white">14mm Bi-Hex</span></div>
               </div>
             </div>
-            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Toyota%20Corolla%20Denso%20SC20HR11%20(90919-01253).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full bg-white/5 hover:bg-porscheRed hover:text-white text-white border border-white/10 hover:border-porscheRed text-xs font-bold uppercase tracking-wider py-3 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Toyota%20Corolla%20Denso%20SC20HR11%20(90919-01253).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
               <span>Enquire on WhatsApp</span>
               <i class="fab fa-whatsapp text-sm"></i>
             </a>
@@ -822,11 +964,13 @@
         </div>
 
         <!-- Toyota 2 -->
-        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="80" data-brand="toyota denso" data-keywords="toyota camry rav4 highlander sk20r11 90919-01210 2az-fe 1mz-fe 3mz-fe 2.4l 3.0l denso japan">
-          <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
+        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="100" data-brand="toyota denso" data-keywords="toyota camry rav4 highlander sk20r11 90919-01210 2az-fe 1mz-fe 3mz-fe 2.4l 3.0l denso japan">
+          <div class="porsche-card rounded-2xl p-6 flex flex-col justify-between h-full">
             <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
-                <img src="https://iili.io/oJbyTxV.jpg" alt="Denso SK20R11 Toyota Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
+                <div data-parallax="0.06" class="w-full h-full">
+                  <img src="https://iili.io/oJbyTxV.jpg" alt="Denso SK20R11 Toyota Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
                 <span class="font-bold text-white uppercase tracking-wider">Toyota OEM &bull; Denso Japan</span>
@@ -836,13 +980,13 @@
               <p class="text-xs text-silverMuted leading-relaxed mb-4">
                 Factory specification for 2AZ-FE 2.4L and 1MZ-FE / 3MZ-FE V6 engines. Patented Iridium alloy engineered for durability under high operating temperatures.
               </p>
-              <div class="border-t border-white/5 pt-3 mb-6">
+              <div class="border-t border-white/10 pt-3 mb-6">
                 <div class="spec-item"><span class="text-silverMuted">OEM Part Number:</span><span class="font-bold text-white">90919-01210 / SK20R11</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Thread &bull; Reach:</span><span class="font-bold text-white">M14 x 1.25 &bull; 19mm</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Hex Size:</span><span class="font-bold text-white">16mm Standard Hex</span></div>
               </div>
             </div>
-            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Toyota%20Camry/RAV4%20Denso%20SK20R11%20(90919-01210).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full bg-white/5 hover:bg-porscheRed hover:text-white text-white border border-white/10 hover:border-porscheRed text-xs font-bold uppercase tracking-wider py-3 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Toyota%20Camry/RAV4%20Denso%20SK20R11%20(90919-01210).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
               <span>Enquire on WhatsApp</span>
               <i class="fab fa-whatsapp text-sm"></i>
             </a>
@@ -850,11 +994,13 @@
         </div>
 
         <!-- Toyota 3 -->
-        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="160" data-brand="toyota denso" data-keywords="toyota land cruiser prado fortuner 4runner fk20hr11 90919-01247 1gr-fe 2gr-fe 4.0l v6 3.5l denso japan">
-          <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
+        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="200" data-brand="toyota denso" data-keywords="toyota land cruiser prado fortuner 4runner fk20hr11 90919-01247 1gr-fe 2gr-fe 4.0l v6 3.5l denso japan">
+          <div class="porsche-card rounded-2xl p-6 flex flex-col justify-between h-full">
             <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
-                <img src="https://iili.io/oJmqKTF.png" alt="Denso FK20HR11 Toyota Prado V6 Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
+                <div data-parallax="0.06" class="w-full h-full">
+                  <img src="https://iili.io/oJmqKTF.png" alt="Denso FK20HR11 Toyota Prado V6 Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
                 <span class="font-bold text-white uppercase tracking-wider">Toyota OEM &bull; Denso Japan</span>
@@ -864,13 +1010,13 @@
               <p class="text-xs text-silverMuted leading-relaxed mb-4">
                 Super Ignition Twin-Tip technology for 1GR-FE and 2GR-FE V6 engines. Provides instant throttle response and smooth torque under heavy towing and terrain load.
               </p>
-              <div class="border-t border-white/5 pt-3 mb-6">
+              <div class="border-t border-white/10 pt-3 mb-6">
                 <div class="spec-item"><span class="text-silverMuted">OEM Part Number:</span><span class="font-bold text-white">90919-01247 / FK20HR11</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Technology:</span><span class="font-bold text-white">Twin-Tip (TT) Iridium/Platinum</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Application:</span><span class="font-bold text-white">Prado, Fortuner, 4Runner, Avalon</span></div>
               </div>
             </div>
-            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Toyota%20Prado/Land%20Cruiser%20FK20HR11%20(90919-01247).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full bg-white/5 hover:bg-porscheRed hover:text-white text-white border border-white/10 hover:border-porscheRed text-xs font-bold uppercase tracking-wider py-3 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Toyota%20Prado/Land%20Cruiser%20FK20HR11%20(90919-01247).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
               <span>Enquire on WhatsApp</span>
               <i class="fab fa-whatsapp text-sm"></i>
             </a>
@@ -879,10 +1025,12 @@
 
         <!-- Honda 1 -->
         <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="0" data-brand="honda ngk" data-keywords="honda accord cr-v crv izfr6k11 9807b-5617w k24a k24z 2.4l ngk japan">
-          <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
+          <div class="porsche-card rounded-2xl p-6 flex flex-col justify-between h-full">
             <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
-                <img src="https://iili.io/odJ6qDN.webp" alt="NGK IZFR6K11 Honda Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
+                <div data-parallax="0.06" class="w-full h-full">
+                  <img src="https://iili.io/odJ6qDN.webp" alt="NGK IZFR6K11 Honda Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
                 <span class="font-bold text-white uppercase tracking-wider">Honda OEM &bull; NGK Japan</span>
@@ -892,13 +1040,13 @@
               <p class="text-xs text-silverMuted leading-relaxed mb-4">
                 Factory specification for K24A and K24Z engines. Laser-welded Iridium center tip with platinum ground disc ensures stable idle and zero misfires.
               </p>
-              <div class="border-t border-white/5 pt-3 mb-6">
+              <div class="border-t border-white/10 pt-3 mb-6">
                 <div class="spec-item"><span class="text-silverMuted">Honda Part Number:</span><span class="font-bold text-white">9807B-5617W / IZFR6K11</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Thread &bull; Reach:</span><span class="font-bold text-white">M14 x 1.25 &bull; 19mm</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Hex Size:</span><span class="font-bold text-white">16mm</span></div>
               </div>
             </div>
-            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Honda%20Accord/CR-V%20NGK%20IZFR6K11%20(9807B-5617W).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full bg-white/5 hover:bg-porscheRed hover:text-white text-white border border-white/10 hover:border-porscheRed text-xs font-bold uppercase tracking-wider py-3 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Honda%20Accord/CR-V%20NGK%20IZFR6K11%20(9807B-5617W).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
               <span>Enquire on WhatsApp</span>
               <i class="fab fa-whatsapp text-sm"></i>
             </a>
@@ -906,11 +1054,13 @@
         </div>
 
         <!-- Honda 2 -->
-        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="80" data-brand="honda ngk" data-keywords="honda civic hr-v hrv ilzkr7b11 12290-r1a-h01 r18a r18z 1.8l ngk japan">
-          <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
+        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="100" data-brand="honda ngk" data-keywords="honda civic hr-v hrv ilzkr7b11 12290-r1a-h01 r18a r18z 1.8l ngk japan">
+          <div class="porsche-card rounded-2xl p-6 flex flex-col justify-between h-full">
             <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
-                <img src="https://iili.io/oddHUb9.webp" alt="NGK ILZKR7B11 Honda Civic Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
+                <div data-parallax="0.06" class="w-full h-full">
+                  <img src="https://iili.io/oddHUb9.webp" alt="NGK ILZKR7B11 Honda Civic Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
                 <span class="font-bold text-white uppercase tracking-wider">Honda OEM &bull; NGK Japan</span>
@@ -920,13 +1070,13 @@
               <p class="text-xs text-silverMuted leading-relaxed mb-4">
                 Calibrated for R18A and R18Z engines. Long-reach thread design and high-density alumina ceramic insulator prevent flashover during heavy city traffic.
               </p>
-              <div class="border-t border-white/5 pt-3 mb-6">
+              <div class="border-t border-white/10 pt-3 mb-6">
                 <div class="spec-item"><span class="text-silverMuted">Honda Part Number:</span><span class="font-bold text-white">12290-R1A-H01 / ILZKR7B11</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Thread &bull; Reach:</span><span class="font-bold text-white">M12 x 1.25 &bull; 26.5mm Extended</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Heat Range &bull; Gap:</span><span class="font-bold text-white">7 &bull; 1.1mm</span></div>
               </div>
             </div>
-            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Honda%20Civic%20ILZKR7B11%20(12290-R1A-H01).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full bg-white/5 hover:bg-porscheRed hover:text-white text-white border border-white/10 hover:border-porscheRed text-xs font-bold uppercase tracking-wider py-3 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Honda%20Civic%20ILZKR7B11%20(12290-R1A-H01).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
               <span>Enquire on WhatsApp</span>
               <i class="fab fa-whatsapp text-sm"></i>
             </a>
@@ -934,11 +1084,13 @@
         </div>
 
         <!-- Honda 3 -->
-        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="160" data-brand="honda ngk" data-keywords="honda civic cr-v crv accord dilzkr7b11gs 12290-59b-003 l15b7 1.5l turbo earth dreams ngk japan">
-          <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
+        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="200" data-brand="honda ngk" data-keywords="honda civic cr-v crv accord dilzkr7b11gs 12290-59b-003 l15b7 1.5l turbo earth dreams ngk japan">
+          <div class="porsche-card rounded-2xl p-6 flex flex-col justify-between h-full">
             <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
-                <img src="https://iili.io/oddT9Lv.jpg" alt="NGK DILZKR7B11GS Honda 1.5L Turbo Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
+                <div data-parallax="0.06" class="w-full h-full">
+                  <img src="https://iili.io/oddT9Lv.jpg" alt="NGK DILZKR7B11GS Honda 1.5L Turbo Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
                 <span class="font-bold text-white uppercase tracking-wider">Honda OEM &bull; NGK Japan</span>
@@ -948,13 +1100,13 @@
               <p class="text-xs text-silverMuted leading-relaxed mb-4">
                 Factory spark plug for direct-injection turbocharged Civic and CR-V (L15B7). Engineered to resist high thermal loads and premature detonation under boost.
               </p>
-              <div class="border-t border-white/5 pt-3 mb-6">
+              <div class="border-t border-white/10 pt-3 mb-6">
                 <div class="spec-item"><span class="text-silverMuted">Honda Part Number:</span><span class="font-bold text-white">12290-59B-003</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Configuration:</span><span class="font-bold text-white">Dual Fine-Wire Iridium/Platinum</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Application:</span><span class="font-bold text-white">Civic Turbo, CR-V Turbo, Accord 1.5T</span></div>
               </div>
             </div>
-            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Honda%201.5L%20Turbo%20Spark%20Plug%20(12290-59B-003).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full bg-white/5 hover:bg-porscheRed hover:text-white text-white border border-white/10 hover:border-porscheRed text-xs font-bold uppercase tracking-wider py-3 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Honda%201.5L%20Turbo%20Spark%20Plug%20(12290-59B-003).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
               <span>Enquire on WhatsApp</span>
               <i class="fab fa-whatsapp text-sm"></i>
             </a>
@@ -963,10 +1115,12 @@
 
         <!-- Hyundai 1 -->
         <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="0" data-brand="hyundai mobis" data-keywords="hyundai elantra accent silzkr6b10e 18846-10060 nu 1.8l gamma 1.6l mobis genuine korea">
-          <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
+          <div class="porsche-card rounded-2xl p-6 flex flex-col justify-between h-full">
             <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
-                <img src="https://iili.io/oddjVWv.jpg" alt="Mobis 18846-10060 Hyundai Elantra Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
+                <div data-parallax="0.06" class="w-full h-full">
+                  <img src="https://iili.io/oddjVWv.jpg" alt="Mobis 18846-10060 Hyundai Elantra Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
                 <span class="font-bold text-white uppercase tracking-wider">Hyundai OEM &bull; Mobis Korea</span>
@@ -976,13 +1130,13 @@
               <p class="text-xs text-silverMuted leading-relaxed mb-4">
                 Factory specification for Nu 1.8L and Gamma 1.6L MPI engines. Resolves cold morning hesitation, uneven idling, and unburned fuel odor.
               </p>
-              <div class="border-t border-white/5 pt-3 mb-6">
+              <div class="border-t border-white/10 pt-3 mb-6">
                 <div class="spec-item"><span class="text-silverMuted">Mobis Part Number:</span><span class="font-bold text-white">18846-10060 / SILZKR6B10E</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Thread &bull; Reach:</span><span class="font-bold text-white">M12 x 1.25 &bull; 26.5mm</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Application:</span><span class="font-bold text-white">Elantra (MD / AD / CN7), Accent</span></div>
               </div>
             </div>
-            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Hyundai%20Elantra%20OEM%20Plugs%20(18846-10060).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full bg-white/5 hover:bg-porscheRed hover:text-white text-white border border-white/10 hover:border-porscheRed text-xs font-bold uppercase tracking-wider py-3 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Hyundai%20Elantra%20OEM%20Plugs%20(18846-10060).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
               <span>Enquire on WhatsApp</span>
               <i class="fab fa-whatsapp text-sm"></i>
             </a>
@@ -990,11 +1144,13 @@
         </div>
 
         <!-- Hyundai 2 -->
-        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="80" data-brand="hyundai mobis" data-keywords="hyundai sonata tucson silzkr7b11 18846-11070 theta ii 2.4l 2.0l mobis genuine korea">
-          <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
+        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="100" data-brand="hyundai mobis" data-keywords="hyundai sonata tucson silzkr7b11 18846-11070 theta ii 2.4l 2.0l mobis genuine korea">
+          <div class="porsche-card rounded-2xl p-6 flex flex-col justify-between h-full">
             <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
-                <img src="https://iili.io/oddiY11.jpg" alt="Mobis 18846-11070 Hyundai Sonata Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
+                <div data-parallax="0.06" class="w-full h-full">
+                  <img src="https://iili.io/oddiY11.jpg" alt="Mobis 18846-11070 Hyundai Sonata Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
                 <span class="font-bold text-white uppercase tracking-wider">Hyundai OEM &bull; Mobis Korea</span>
@@ -1004,13 +1160,13 @@
               <p class="text-xs text-silverMuted leading-relaxed mb-4">
                 Specified for Theta II 2.4L GDI / MPI engines. Resists carbon accumulation during low-speed urban traffic and prevents voltage spikes to ignition coils.
               </p>
-              <div class="border-t border-white/5 pt-3 mb-6">
+              <div class="border-t border-white/10 pt-3 mb-6">
                 <div class="spec-item"><span class="text-silverMuted">Mobis Part Number:</span><span class="font-bold text-white">18846-11070 / SILZKR7B11</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Reach &bull; Gap:</span><span class="font-bold text-white">26.5mm &bull; 1.1mm</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Application:</span><span class="font-bold text-white">Sonata (YF / LF), Tucson (LM / TL)</span></div>
               </div>
             </div>
-            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Hyundai%20Sonata/Tucson%20OEM%20Plugs%20(18846-11070).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full bg-white/5 hover:bg-porscheRed hover:text-white text-white border border-white/10 hover:border-porscheRed text-xs font-bold uppercase tracking-wider py-3 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Hyundai%20Sonata/Tucson%20OEM%20Plugs%20(18846-11070).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
               <span>Enquire on WhatsApp</span>
               <i class="fab fa-whatsapp text-sm"></i>
             </a>
@@ -1018,11 +1174,13 @@
         </div>
 
         <!-- Kia 1 -->
-        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="160" data-brand="kia mobis" data-keywords="kia forte cerato soul 18846-10060 silzkr6b10e 1.6l 2.0l mobis genuine korea">
-          <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
+        <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="200" data-brand="kia mobis" data-keywords="kia forte cerato soul 18846-10060 silzkr6b10e 1.6l 2.0l mobis genuine korea">
+          <div class="porsche-card rounded-2xl p-6 flex flex-col justify-between h-full">
             <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
-                <img src="https://iili.io/oddjVWv.jpg" alt="Mobis 18846-10060 Kia Forte Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
+                <div data-parallax="0.06" class="w-full h-full">
+                  <img src="https://iili.io/oddjVWv.jpg" alt="Mobis 18846-10060 Kia Forte Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
                 <span class="font-bold text-white uppercase tracking-wider">Kia OEM &bull; Mobis Korea</span>
@@ -1032,13 +1190,13 @@
               <p class="text-xs text-silverMuted leading-relaxed mb-4">
                 Factory spark plug for Nu MPi and Gamma engines. Trivalent nickel plating prevents thread galling and seizure in aluminum cylinder heads.
               </p>
-              <div class="border-t border-white/5 pt-3 mb-6">
+              <div class="border-t border-white/10 pt-3 mb-6">
                 <div class="spec-item"><span class="text-silverMuted">OEM Part Number:</span><span class="font-bold text-white">18846-10060</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Thread Reach:</span><span class="font-bold text-white">26.5mm</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Application:</span><span class="font-bold text-white">Forte, Cerato, Soul, K3</span></div>
               </div>
             </div>
-            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Kia%20Forte/Cerato%20OEM%20Plugs%20(18846-10060).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full bg-white/5 hover:bg-porscheRed hover:text-white text-white border border-white/10 hover:border-porscheRed text-xs font-bold uppercase tracking-wider py-3 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Kia%20Forte/Cerato%20OEM%20Plugs%20(18846-10060).%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
               <span>Enquire on WhatsApp</span>
               <i class="fab fa-whatsapp text-sm"></i>
             </a>
@@ -1047,10 +1205,12 @@
 
         <!-- Kia 2 -->
         <div class="scroll-reveal h-full product-item" data-reveal="fade-up" data-reveal-delay="0" data-brand="kia mobis" data-keywords="kia sportage optima k5 sorento 18846-11070 18849-09085 2.4l v6 3.3l mobis genuine korea">
-          <div class="porsche-card rounded p-6 flex flex-col justify-between h-full">
+          <div class="porsche-card rounded-2xl p-6 flex flex-col justify-between h-full">
             <div>
-              <div class="aspect-[16/10] w-full bg-porscheBlack rounded border border-white/5 mb-5 overflow-hidden relative">
-                <img src="https://iili.io/oddiY11.jpg" alt="Mobis 18846-11070 Kia Sportage Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+              <div class="aspect-[16/10] w-full bg-porscheBlack rounded-xl border border-white/10 mb-5 overflow-hidden relative">
+                <div data-parallax="0.06" class="w-full h-full">
+                  <img src="https://iili.io/oddiY11.jpg" alt="Mobis 18846-11070 Kia Sportage Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                </div>
               </div>
               <div class="flex justify-between items-center text-xs text-silverMuted mb-2">
                 <span class="font-bold text-white uppercase tracking-wider">Kia OEM &bull; Mobis Korea</span>
@@ -1060,13 +1220,13 @@
               <p class="text-xs text-silverMuted leading-relaxed mb-4">
                 Factory specification for Theta II 2.4L and Lambda II V6 engines. Delivers uniform cylinder burn rate and protects coil packs from heat-induced resistance drift.
               </p>
-              <div class="border-t border-white/5 pt-3 mb-6">
+              <div class="border-t border-white/10 pt-3 mb-6">
                 <div class="spec-item"><span class="text-silverMuted">OEM Reference:</span><span class="font-bold text-white">18846-11070 / 18849-09085</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Type:</span><span class="font-bold text-white">Laser Iridium Long Reach</span></div>
                 <div class="spec-item"><span class="text-silverMuted">Application:</span><span class="font-bold text-white">Sportage, Optima, Sorento V6, Cadenza</span></div>
               </div>
             </div>
-            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Kia%20Sportage/Optima/Sorento%20OEM%20Plugs.%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full bg-white/5 hover:bg-porscheRed hover:text-white text-white border border-white/10 hover:border-porscheRed text-xs font-bold uppercase tracking-wider py-3 rounded text-center transition-colors flex items-center justify-center gap-2">
+            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Kia%20Sportage/Optima/Sorento%20OEM%20Plugs.%20Please%20confirm%20availability%20and%20price." target="_blank" rel="noopener noreferrer" class="w-full liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2">
               <span>Enquire on WhatsApp</span>
               <i class="fab fa-whatsapp text-sm"></i>
             </a>
@@ -1076,10 +1236,10 @@
       </div>
 
       <!-- No Results Message -->
-      <div id="noResultsMsg" class="hidden p-8 text-center bg-porscheDark border border-charcoalBorder rounded mt-6">
+      <div id="noResultsMsg" class="hidden p-8 text-center liquid-glass rounded-2xl mt-6">
         <p class="text-white font-bold text-sm mb-2">No Matching Product Found</p>
         <p class="text-silverMuted text-xs mb-4">If you cannot find your vehicle or part number, send us the chassis details and our team will confirm stock.</p>
-        <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20looking%20for%20a%20specific%20spark%20plug%20not%20listed%20on%20your%20quick%20catalogue." target="_blank" rel="noopener noreferrer" class="inline-block bg-porscheRed hover:bg-porscheRedHover text-white text-xs font-bold uppercase tracking-wider px-6 py-2.5 rounded transition-colors">
+        <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20looking%20for%20a%20specific%20spark%20plug%20not%20listed%20on%20your%20quick%20catalogue." target="_blank" rel="noopener noreferrer" class="inline-block bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white text-xs font-bold uppercase tracking-wider px-6 py-2.5 rounded-lg">
           Inquire Directly on WhatsApp
         </a>
       </div>
@@ -1087,13 +1247,13 @@
     </section>
 
     <!-- ================= DISCRETE PAGE: CHASSIS FITMENT FINDER ================= -->
-    <section id="fitment-finder" data-page="fitment" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-porscheDark border-b border-charcoalBorder" hidden>
+    <section id="fitment-finder" data-page="fitment" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-[#050505] border-b border-white/10" hidden>
       <div class="max-w-7xl mx-auto">
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
           <!-- Left: Verification Form -->
-          <div class="lg:col-span-7 scroll-reveal" data-reveal="fade-up">
+          <div class="lg:col-span-7 scroll-reveal" data-reveal="headline">
             <div class="flex items-center gap-2 mb-3">
               <span class="accent-indicator"></span>
               <span class="text-[11px] font-bold uppercase tracking-widest text-porscheRed">Precision Engineering Protocol</span>
@@ -1101,17 +1261,17 @@
             <h2 class="text-3xl sm:text-4xl font-extrabold uppercase text-white tracking-tight mb-3">
               Request Exact Fitment Verification
             </h2>
-            <div class="inline-block bg-[#16161C] border border-white/10 px-3.5 py-1.5 rounded text-xs font-bold uppercase tracking-wider text-white mb-4">
+            <div class="inline-block liquid-glass px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white mb-4">
               Don't Guess Your Spark Plug. Verify Before You Buy.
             </div>
             <p class="text-xs sm:text-sm text-silverMuted leading-relaxed mb-8">
               Vehicles sharing identical model names often require distinct spark plug reach, heat range, or gap settings depending on the assembly market. Enter your chassis details below; our engineering desk verifies the exact OEM part number before dispatch.
             </p>
 
-            <form id="fitmentSearchForm" onsubmit="handleFitmentVerification(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-porscheBlack p-6 sm:p-8 rounded border border-charcoalBorder">
+            <form id="fitmentSearchForm" onsubmit="handleFitmentVerification(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-4 liquid-glass p-6 sm:p-8 rounded-2xl">
               <div>
                 <label for="fitMake" class="block text-[11px] font-bold uppercase tracking-wider text-silverMuted mb-2">1. Vehicle Manufacturer</label>
-                <select id="fitMake" required onchange="syncModelOptions()" class="w-full bg-[#16161A] border border-charcoalBorder focus:border-porscheRed text-white rounded px-3.5 py-3 text-xs outline-none transition-colors">
+                <select id="fitMake" required onchange="syncModelOptions()" class="w-full bg-[#101014]/90 border border-white/15 focus:border-porscheRed text-white rounded-lg px-3.5 py-3 text-base outline-none transition-colors">
                   <option value="">Select Manufacturer</option>
                   <option value="Toyota">Toyota</option>
                   <option value="Honda">Honda</option>
@@ -1122,14 +1282,14 @@
 
               <div>
                 <label for="fitModel" class="block text-[11px] font-bold uppercase tracking-wider text-silverMuted mb-2">2. Vehicle Model</label>
-                <select id="fitModel" required class="w-full bg-[#16161A] border border-charcoalBorder focus:border-porscheRed text-white rounded px-3.5 py-3 text-xs outline-none transition-colors">
+                <select id="fitModel" required class="w-full bg-[#101014]/90 border border-white/15 focus:border-porscheRed text-white rounded-lg px-3.5 py-3 text-base outline-none transition-colors">
                   <option value="">Select Manufacturer First</option>
                 </select>
               </div>
 
               <div>
                 <label for="fitYear" class="block text-[11px] font-bold uppercase tracking-wider text-silverMuted mb-2">3. Production Year</label>
-                <select id="fitYear" required class="w-full bg-[#16161A] border border-charcoalBorder focus:border-porscheRed text-white rounded px-3.5 py-3 text-xs outline-none transition-colors">
+                <select id="fitYear" required class="w-full bg-[#101014]/90 border border-white/15 focus:border-porscheRed text-white rounded-lg px-3.5 py-3 text-base outline-none transition-colors">
                   <option value="">Select Year</option>
                   <option value="2026">2026</option>
                   <option value="2025">2025</option>
@@ -1154,16 +1314,16 @@
 
               <div>
                 <label for="fitEngine" class="block text-[11px] font-bold uppercase tracking-wider text-silverMuted mb-2">4. Engine Capacity / Code (Optional)</label>
-                <input type="text" id="fitEngine" placeholder="e.g. 1.8L 2ZR-FE, 2.4L K24, V6" class="w-full bg-[#16161A] border border-charcoalBorder focus:border-porscheRed text-white rounded px-3.5 py-3 text-xs outline-none placeholder:text-silverMuted/40">
+                <input type="text" id="fitEngine" placeholder="e.g. 1.8L 2ZR-FE, 2.4L K24, V6" class="w-full bg-[#101014]/90 border border-white/15 focus:border-porscheRed text-white rounded-lg px-3.5 py-3 text-base outline-none placeholder:text-silverMuted/40 placeholder:text-xs">
               </div>
 
               <div class="sm:col-span-2">
                 <label for="fitChassis" class="block text-[11px] font-bold uppercase tracking-wider text-silverMuted mb-2">5. Chassis Number or VIN (Guarantees 100% Fitment)</label>
-                <input type="text" id="fitChassis" placeholder="e.g. JTDZR42E60J... or frame code ZRE142-XXXXXX" class="w-full bg-[#16161A] border border-charcoalBorder focus:border-porscheRed text-white rounded px-3.5 py-3 text-xs outline-none placeholder:text-silverMuted/40">
+                <input type="text" id="fitChassis" placeholder="e.g. JTDZR42E60J... or frame code ZRE142-XXXXXX" class="w-full bg-[#101014]/90 border border-white/15 focus:border-porscheRed text-white rounded-lg px-3.5 py-3 text-base outline-none placeholder:text-silverMuted/40 placeholder:text-xs">
               </div>
 
               <div class="sm:col-span-2 pt-2">
-                <button type="submit" class="w-full bg-porscheRed hover:bg-porscheRedHover text-white py-4 rounded text-xs font-extrabold uppercase tracking-widest flex items-center justify-center gap-3 transition-colors duration-200 shadow-md">
+                <button type="submit" class="w-full bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white py-4 rounded-lg text-xs font-extrabold uppercase tracking-widest flex items-center justify-center gap-3">
                   <span>Verify Fitment on WhatsApp</span>
                   <i class="fab fa-whatsapp text-base"></i>
                 </button>
@@ -1173,16 +1333,18 @@
 
           <!-- Right: Authentic Studio Display featuring the hosted image -->
           <div class="lg:col-span-5 scroll-reveal" data-reveal="fade-up" data-reveal-delay="120">
-            <div class="bg-porscheBlack p-8 rounded border border-charcoalBorder relative overflow-hidden text-center">
+            <div class="liquid-glass liquid-glass-interactive p-8 rounded-2xl relative overflow-hidden text-center">
               <span class="text-[10px] font-extrabold uppercase tracking-widest text-porscheRed block mb-2">Direct Authorized Supply</span>
               <h3 class="text-lg font-bold uppercase text-white mb-4">Precision OEM Spark Plugs</h3>
 
               <!-- Prominent Product Image Feature -->
-              <div class="py-6 flex justify-center items-center">
-                <img src="https://iili.io/oHVNlFS.png" alt="OEM Spark Plug Inspection KASH OPTION" class="h-60 w-auto object-contain filter drop-shadow-[0_15px_30px_rgba(213,0,28,0.3)]">
+              <div class="py-6 flex justify-center items-center overflow-hidden">
+                <div data-parallax="0.1" class="flex justify-center items-center">
+                  <img src="https://iili.io/oHVNlFS.png" alt="OEM Spark Plug Inspection KASH OPTION" class="h-60 w-auto object-contain filter drop-shadow-[0_15px_30px_rgba(229,9,20,0.3)]">
+                </div>
               </div>
 
-              <div class="mt-4 pt-4 border-t border-white/5 space-y-1.5 text-xs text-left">
+              <div class="mt-4 pt-4 border-t border-white/10 space-y-1.5 text-xs text-left">
                 <div class="flex justify-between text-silverMuted"><span>Electrode Technology:</span><strong class="text-white">Fine-Wire Laser Iridium</strong></div>
                 <div class="flex justify-between text-silverMuted"><span>Internal Resistor:</span><strong class="text-white">Calibrated 5.0 k&Omega; Monolithic</strong></div>
                 <div class="flex justify-between text-silverMuted"><span>Technical Verification:</span><strong class="text-white">Free via 024 011 8846</strong></div>
@@ -1196,10 +1358,10 @@
     </section>
 
     <!-- ================= DISCRETE PAGE: WHOLESALE TRADE PORTAL ================= -->
-    <section id="wholesale" data-page="wholesale" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-porscheDark border-b border-charcoalBorder" hidden>
+    <section id="wholesale" data-page="wholesale" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-[#050505] border-b border-white/10" hidden>
       <div class="max-w-7xl mx-auto">
 
-        <div class="max-w-3xl mb-12 scroll-reveal" data-reveal="fade-up">
+        <div class="max-w-3xl mb-12 scroll-reveal" data-reveal="headline">
           <div class="flex items-center gap-2 mb-3">
             <span class="accent-indicator"></span>
             <span class="text-[11px] font-bold uppercase tracking-widest text-porscheRed">Commercial Fleet &amp; Workshop Supply</span>
@@ -1215,62 +1377,62 @@
         <!-- 3 Tier Volume Cards -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
 
-          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="40">
-            <div class="bg-porscheBlack p-6 rounded border border-charcoalBorder flex flex-col justify-between h-full">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="0">
+            <div class="liquid-glass liquid-glass-interactive p-6 rounded-2xl flex flex-col justify-between h-full">
               <div>
                 <span class="text-[10px] font-bold uppercase tracking-widest text-silverMuted block mb-1">Tier 01 &bull; Retail Maintenance</span>
                 <h3 class="text-xl font-bold uppercase text-white mb-2">Engine Pack (Set of 4 / 6)</h3>
                 <p class="text-xs text-silverMuted leading-relaxed mb-4">
                   Exact factory quantity for standard tune-ups. Pre-gapped to OEM specification for immediate installation.
                 </p>
-                <div class="border-t border-white/5 pt-3 mb-6 space-y-1 text-xs text-silverMuted">
+                <div class="border-t border-white/10 pt-3 mb-6 space-y-1 text-xs text-silverMuted">
                   <div class="flex justify-between"><span>Minimum Order:</span><strong class="text-white">1 Engine Set</strong></div>
                   <div class="flex justify-between"><span>Target:</span><strong class="text-white">Vehicle Owners &bull; DIY</strong></div>
                   <div class="flex justify-between"><span>Dispatch:</span><strong class="text-white">Same-Day Courier</strong></div>
                 </div>
               </div>
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20requesting%20a%20retail%20quote%20for%201%20engine%20set%20of%20spark%20plugs." target="_blank" rel="noopener noreferrer" class="w-full bg-white/5 hover:bg-white hover:text-black text-white border border-white/10 text-xs font-bold uppercase tracking-wider py-3 rounded text-center transition-colors">
+              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20requesting%20a%20retail%20quote%20for%201%20engine%20set%20of%20spark%20plugs." target="_blank" rel="noopener noreferrer" class="w-full liquid-glass-btn hover:bg-white hover:text-black text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg text-center">
                 Request Set Pricing
               </a>
             </div>
           </div>
 
-          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="120">
-            <div class="bg-porscheBlack p-6 rounded border border-porscheRed/40 relative flex flex-col justify-between shadow-lg shadow-porscheRed/10 h-full">
-              <span class="absolute -top-2.5 right-6 bg-porscheRed text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">Most Popular with Garages</span>
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="100">
+            <div class="liquid-glass liquid-glass-interactive p-6 rounded-2xl border-porscheRed/40 relative flex flex-col justify-between shadow-[0_20px_50px_rgba(229,9,20,0.14)] h-full">
+              <span class="absolute -top-2.5 right-6 bg-porscheRed text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md shadow-md">Most Popular with Garages</span>
               <div>
                 <span class="text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-1">Tier 02 &bull; Workshop Pack</span>
                 <h3 class="text-xl font-bold uppercase text-white mb-2">Carton of 40 Plugs</h3>
                 <p class="text-xs text-silverMuted leading-relaxed mb-4">
                   10 engine sets of fast-moving Toyota (SC20HR11/SK20R11), Honda (IZFR6K11), or Hyundai (SILZKR6B10E). Preferential trade pricing.
                 </p>
-                <div class="border-t border-white/5 pt-3 mb-6 space-y-1 text-xs text-silverMuted">
+                <div class="border-t border-white/10 pt-3 mb-6 space-y-1 text-xs text-silverMuted">
                   <div class="flex justify-between"><span>Minimum Order:</span><strong class="text-white">10 Sets (40 Plugs)</strong></div>
                   <div class="flex justify-between"><span>Target:</span><strong class="text-white">Workshops &bull; Garages</strong></div>
                   <div class="flex justify-between"><span>Invoicing:</span><strong class="text-white">VAT Invoices Issued</strong></div>
                 </div>
               </div>
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20requesting%20wholesale%20pricing%20for%20a%20Workshop%20Carton%20(40%20plugs)." target="_blank" rel="noopener noreferrer" class="w-full bg-porscheRed hover:bg-porscheRedHover text-white text-xs font-bold uppercase tracking-wider py-3 rounded text-center transition-colors shadow-md">
+              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20requesting%20wholesale%20pricing%20for%20a%20Workshop%20Carton%20(40%20plugs)." target="_blank" rel="noopener noreferrer" class="w-full bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg text-center">
                 Request Workshop Rate
               </a>
             </div>
           </div>
 
           <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="200">
-            <div class="bg-porscheBlack p-6 rounded border border-charcoalBorder flex flex-col justify-between h-full">
+            <div class="liquid-glass liquid-glass-interactive p-6 rounded-2xl flex flex-col justify-between h-full">
               <div>
                 <span class="text-[10px] font-bold uppercase tracking-widest text-silverMuted block mb-1">Tier 03 &bull; Distributor Master Case</span>
                 <h3 class="text-xl font-bold uppercase text-white mb-2">Master Case of 200 Plugs</h3>
                 <p class="text-xs text-silverMuted leading-relaxed mb-4">
                   Designed for retail auto-parts stores and commercial fleet maintenance depots. Maximum margin protection with guaranteed authenticity.
                 </p>
-                <div class="border-t border-white/5 pt-3 mb-6 space-y-1 text-xs text-silverMuted">
+                <div class="border-t border-white/10 pt-3 mb-6 space-y-1 text-xs text-silverMuted">
                   <div class="flex justify-between"><span>Minimum Order:</span><strong class="text-white">50 Sets (200 Plugs)</strong></div>
                   <div class="flex justify-between"><span>Target:</span><strong class="text-white">Dealers &bull; Stockists</strong></div>
                   <div class="flex justify-between"><span>Logistics:</span><strong class="text-white">Priority Dispatch</strong></div>
                 </div>
               </div>
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Distributor%20Master%20Case%20pricing%20(200%20plugs)." target="_blank" rel="noopener noreferrer" class="w-full bg-white/5 hover:bg-white hover:text-black text-white border border-white/10 text-xs font-bold uppercase tracking-wider py-3 rounded text-center transition-colors">
+              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20inquiring%20about%20Distributor%20Master%20Case%20pricing%20(200%20plugs)." target="_blank" rel="noopener noreferrer" class="w-full liquid-glass-btn hover:bg-white hover:text-black text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg text-center">
                 Request Master Case Quote
               </a>
             </div>
@@ -1279,15 +1441,15 @@
         </div>
 
         <!-- Interactive Wholesale Quotation Form -->
-        <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="80">
-          <div class="bg-porscheBlack p-6 sm:p-8 rounded border border-charcoalBorder">
+        <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="100">
+          <div class="liquid-glass p-6 sm:p-8 rounded-2xl">
             <h3 class="text-lg font-bold uppercase text-white mb-1">Instant Trade Quotation Request</h3>
             <p class="text-xs text-silverMuted mb-6">Select your required volume and brands. We provide instant trade availability and tiered pricing directly to your WhatsApp.</p>
 
             <form onsubmit="handleWholesaleRequest(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div>
                 <label for="wsBrand" class="block text-[11px] font-bold uppercase tracking-wider text-silverMuted mb-2">Primary Manufacturer</label>
-                <select id="wsBrand" required class="w-full bg-[#16161A] border border-charcoalBorder focus:border-porscheRed text-white rounded px-3 py-2.5 text-xs outline-none">
+                <select id="wsBrand" required class="w-full bg-[#101014]/90 border border-white/15 focus:border-porscheRed text-white rounded-lg px-3 py-2.5 text-base outline-none transition-colors">
                   <option value="Mixed Volume">Mixed Volume (Toyota / Honda / Hyundai / Kia)</option>
                   <option value="Toyota Denso Specialist">Toyota (Denso Iridium)</option>
                   <option value="Honda NGK Specialist">Honda (NGK Laser Iridium)</option>
@@ -1297,7 +1459,7 @@
 
               <div>
                 <label for="wsVolume" class="block text-[11px] font-bold uppercase tracking-wider text-silverMuted mb-2">Requested Volume</label>
-                <select id="wsVolume" required class="w-full bg-[#16161A] border border-charcoalBorder focus:border-porscheRed text-white rounded px-3 py-2.5 text-xs outline-none">
+                <select id="wsVolume" required class="w-full bg-[#101014]/90 border border-white/15 focus:border-porscheRed text-white rounded-lg px-3 py-2.5 text-base outline-none transition-colors">
                   <option value="Workshop Carton (40 Plugs / 10 Sets)">Workshop Carton (40 Plugs / 10 Sets)</option>
                   <option value="Multi-Carton (80 - 120 Plugs)">Multi-Carton (80 - 120 Plugs)</option>
                   <option value="Distributor Master Case (200 Plugs)">Distributor Master Case (200 Plugs)</option>
@@ -1307,16 +1469,16 @@
 
               <div>
                 <label for="wsBusiness" class="block text-[11px] font-bold uppercase tracking-wider text-silverMuted mb-2">Workshop / Business Name</label>
-                <input type="text" id="wsBusiness" placeholder="e.g. Precision Motors Accra" required class="w-full bg-[#16161A] border border-charcoalBorder focus:border-porscheRed text-white rounded px-3 py-2 text-xs outline-none placeholder:text-silverMuted/40">
+                <input type="text" id="wsBusiness" placeholder="e.g. Precision Motors Accra" required class="w-full bg-[#101014]/90 border border-white/15 focus:border-porscheRed text-white rounded-lg px-3 py-2 text-base outline-none placeholder:text-silverMuted/40 placeholder:text-xs transition-colors">
               </div>
 
               <div>
                 <label for="wsLocation" class="block text-[11px] font-bold uppercase tracking-wider text-silverMuted mb-2">Location in Ghana</label>
-                <input type="text" id="wsLocation" placeholder="e.g. Kokomlemle, Accra / Kumasi" required class="w-full bg-[#16161A] border border-charcoalBorder focus:border-porscheRed text-white rounded px-3 py-2 text-xs outline-none placeholder:text-silverMuted/40">
+                <input type="text" id="wsLocation" placeholder="e.g. Kokomlemle, Accra / Kumasi" required class="w-full bg-[#101014]/90 border border-white/15 focus:border-porscheRed text-white rounded-lg px-3 py-2 text-base outline-none placeholder:text-silverMuted/40 placeholder:text-xs transition-colors">
               </div>
 
               <div class="sm:col-span-2 lg:col-span-4 pt-2">
-                <button type="submit" class="w-full bg-porscheRed hover:bg-porscheRedHover text-white py-3.5 rounded text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-colors">
+                <button type="submit" class="w-full bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white py-3.5 rounded-lg text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2">
                   <span>Generate Wholesale Quote via WhatsApp</span>
                   <i class="fab fa-whatsapp"></i>
                 </button>
@@ -1329,8 +1491,8 @@
     </section>
 
     <!-- ================= DISCRETE PAGE: TRUST & QUALITY ================= -->
-    <section id="trust" data-page="trust" class="page-view py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-charcoalBorder" hidden>
-      <div class="max-w-3xl mb-12 scroll-reveal" data-reveal="fade-up">
+    <section id="trust" data-page="trust" class="page-view py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-white/10" hidden>
+      <div class="max-w-3xl mb-12 scroll-reveal" data-reveal="headline">
         <div class="flex items-center gap-2 mb-3">
           <span class="accent-indicator"></span>
           <span class="text-[11px] font-bold uppercase tracking-widest text-porscheRed">Authenticity &amp; Integrity</span>
@@ -1346,36 +1508,36 @@
       <!-- 5 Core Pillars -->
       <div class="grid grid-cols-1 md:grid-cols-5 gap-6 mb-16">
 
-        <div class="scroll-reveal border-l border-white/10 pl-4 py-1" data-reveal="fade-up" data-reveal-delay="0">
-          <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1">Genuine OEM Products</span>
+        <div class="scroll-reveal liquid-glass liquid-glass-interactive p-5 rounded-xl" data-reveal="fade-up" data-reveal-delay="0">
+          <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1.5">Genuine OEM Products</span>
           <p class="text-xs text-silverMuted leading-relaxed">
             Zero re-boxed generic spark plugs. Factory-sealed manufacturer packaging from Denso, NGK, and Mobis.
           </p>
         </div>
 
-        <div class="scroll-reveal border-l border-white/10 pl-4 py-1" data-reveal="fade-up" data-reveal-delay="70">
-          <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1">Chassis Fitment</span>
+        <div class="scroll-reveal liquid-glass liquid-glass-interactive p-5 rounded-xl" data-reveal="fade-up" data-reveal-delay="100">
+          <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1.5">Chassis Fitment</span>
           <p class="text-xs text-silverMuted leading-relaxed">
             Chassis and VIN verification cross-referenced against factory repair manuals to eliminate guesswork.
           </p>
         </div>
 
-        <div class="scroll-reveal border-l border-white/10 pl-4 py-1" data-reveal="fade-up" data-reveal-delay="140">
-          <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1">Japan &amp; USA Sourcing</span>
+        <div class="scroll-reveal liquid-glass liquid-glass-interactive p-5 rounded-xl" data-reveal="fade-up" data-reveal-delay="200">
+          <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1.5">Japan &amp; USA Sourcing</span>
           <p class="text-xs text-silverMuted leading-relaxed">
             Imported directly through verified distribution pipelines, avoiding dubious intermediary stockists.
           </p>
         </div>
 
-        <div class="scroll-reveal border-l border-white/10 pl-4 py-1" data-reveal="fade-up" data-reveal-delay="210">
-          <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1">Competitive Pricing</span>
+        <div class="scroll-reveal liquid-glass liquid-glass-interactive p-5 rounded-xl" data-reveal="fade-up" data-reveal-delay="300">
+          <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1.5">Competitive Pricing</span>
           <p class="text-xs text-silverMuted leading-relaxed">
             Direct international freight allows us to offer honest pricing for both retail sets and trade cartons.
           </p>
         </div>
 
-        <div class="scroll-reveal border-l border-white/10 pl-4 py-1" data-reveal="fade-up" data-reveal-delay="280">
-          <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1">Nationwide Delivery</span>
+        <div class="scroll-reveal liquid-glass liquid-glass-interactive p-5 rounded-xl" data-reveal="fade-up" data-reveal-delay="0">
+          <span class="text-xs font-bold uppercase tracking-wider text-white block mb-1.5">Nationwide Delivery</span>
           <p class="text-xs text-silverMuted leading-relaxed">
             Reliable, tracked delivery across Greater Accra, Kumasi, Takoradi, Tamale, and all 16 regions.
           </p>
@@ -1384,8 +1546,8 @@
       </div>
 
       <!-- Comparison: Marketplace Listings vs Specialist Sourcing -->
-      <div class="bg-porscheDark p-8 sm:p-10 rounded border border-charcoalBorder">
-        <div class="max-w-2xl mb-8 scroll-reveal" data-reveal="fade-up">
+      <div class="liquid-glass p-8 sm:p-10 rounded-2xl">
+        <div class="max-w-2xl mb-8 scroll-reveal" data-reveal="headline">
           <h3 class="text-xl font-bold uppercase text-white mb-2">Understanding Marketplace Listings vs Specialist Suppliers in Ghana</h3>
           <p class="text-xs text-silverMuted leading-relaxed">
             Customers frequently compare online marketplace listings (such as Jiji or informal street stalls) with specialist suppliers. Counterfeiters use cheap, standard copper cores disguised with spray paint and stamped with Denso, NGK, or Mobis logos.
@@ -1394,8 +1556,8 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs">
 
-          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="80">
-            <div class="bg-porscheBlack p-6 rounded border border-white/5 space-y-3 h-full">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="0">
+            <div class="liquid-glass liquid-glass-interactive p-6 rounded-xl space-y-3 h-full">
               <h4 class="text-xs font-bold uppercase tracking-wider text-porscheRed">Marketplace Imitation Risks</h4>
               <p class="text-silverMuted leading-relaxed">
                 Standard copper electrodes fail within 10,000 km, causing persistent misfires under heavy air-conditioning load.
@@ -1409,8 +1571,8 @@
             </div>
           </div>
 
-          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="140">
-            <div class="bg-porscheBlack p-6 rounded border border-white/10 space-y-3 h-full">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="100">
+            <div class="liquid-glass liquid-glass-interactive p-6 rounded-xl border-white/20 space-y-3 h-full">
               <h4 class="text-xs font-bold uppercase tracking-wider text-white">KASH OPTION Specialist Guarantee</h4>
               <p class="text-silverMuted leading-relaxed">
                 Genuine 0.7mm laser-welded fine-wire Iridium center tip with platinum ground disc rated for 100,000 km service intervals.
@@ -1430,10 +1592,10 @@
     </section>
 
     <!-- ================= DISCRETE PAGE: HOW TO BUY ================= -->
-    <section id="how-to-order" data-page="how-to-order" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-porscheDark border-b border-charcoalBorder" hidden>
+    <section id="how-to-order" data-page="how-to-order" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-[#050505] border-b border-white/10" hidden>
       <div class="max-w-7xl mx-auto">
 
-        <div class="max-w-2xl mb-12 scroll-reveal" data-reveal="fade-up">
+        <div class="max-w-2xl mb-12 scroll-reveal" data-reveal="headline">
           <div class="flex items-center gap-2 mb-3">
             <span class="accent-indicator"></span>
             <span class="text-[11px] font-bold uppercase tracking-widest text-porscheRed">Frictionless Flow</span>
@@ -1447,7 +1609,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
           <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="0">
-            <div class="p-6 rounded bg-porscheBlack border border-charcoalBorder h-full">
+            <div class="p-6 rounded-2xl liquid-glass liquid-glass-interactive h-full">
               <span class="text-porscheRed font-extrabold text-xs block mb-3 uppercase tracking-widest">Step 01</span>
               <h3 class="text-sm font-bold uppercase text-white mb-2">Identify Your Vehicle</h3>
               <p class="text-xs text-silverMuted leading-relaxed">
@@ -1456,8 +1618,8 @@
             </div>
           </div>
 
-          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="80">
-            <div class="p-6 rounded bg-porscheBlack border border-charcoalBorder h-full">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="100">
+            <div class="p-6 rounded-2xl liquid-glass liquid-glass-interactive h-full">
               <span class="text-porscheRed font-extrabold text-xs block mb-3 uppercase tracking-widest">Step 02</span>
               <h3 class="text-sm font-bold uppercase text-white mb-2">Verify Your Part</h3>
               <p class="text-xs text-silverMuted leading-relaxed">
@@ -1466,8 +1628,8 @@
             </div>
           </div>
 
-          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="160">
-            <div class="p-6 rounded bg-porscheBlack border border-charcoalBorder h-full">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="200">
+            <div class="p-6 rounded-2xl liquid-glass liquid-glass-interactive h-full">
               <span class="text-porscheRed font-extrabold text-xs block mb-3 uppercase tracking-widest">Step 03</span>
               <h3 class="text-sm font-bold uppercase text-white mb-2">Get Your Price</h3>
               <p class="text-xs text-silverMuted leading-relaxed">
@@ -1476,8 +1638,8 @@
             </div>
           </div>
 
-          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="240">
-            <div class="p-6 rounded bg-porscheBlack border border-charcoalBorder h-full">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="300">
+            <div class="p-6 rounded-2xl liquid-glass liquid-glass-interactive h-full">
               <span class="text-porscheRed font-extrabold text-xs block mb-3 uppercase tracking-widest">Step 04</span>
               <h3 class="text-sm font-bold uppercase text-white mb-2">Order and Receive</h3>
               <p class="text-xs text-silverMuted leading-relaxed">
@@ -1492,9 +1654,9 @@
     </section>
 
     <!-- ================= DISCRETE PAGE: KNOWLEDGE CENTRE ================= -->
-    <section id="knowledge" data-page="knowledge" class="page-view py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-charcoalBorder" hidden>
+    <section id="knowledge" data-page="knowledge" class="page-view py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-white/10" hidden>
 
-      <div class="max-w-3xl mb-12 scroll-reveal" data-reveal="fade-up">
+      <div class="max-w-3xl mb-12 scroll-reveal" data-reveal="headline">
         <div class="flex items-center gap-2 mb-3">
           <span class="accent-indicator"></span>
           <span class="text-[11px] font-bold uppercase tracking-widest text-porscheRed">Automotive Engineering</span>
@@ -1511,7 +1673,7 @@
 
         <!-- Article 1 -->
         <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="0">
-          <article class="bg-porscheDark p-8 rounded border border-charcoalBorder flex flex-col justify-between h-full">
+          <article class="liquid-glass liquid-glass-interactive p-8 rounded-2xl flex flex-col justify-between h-full">
             <div>
               <div class="flex items-center gap-4 mb-4">
                 <img src="https://iili.io/oHVNlFS.png" alt="Spark Plug Authenticity Inspection" class="h-12 w-auto object-contain">
@@ -1524,7 +1686,7 @@
                 Counterfeit spark plugs are one of the leading causes of ignition coil failure in Ghana. Learn how to verify authentic laser-welded tips, inspect printed ceramic lettering, and test internal resistor values with an ohmmeter before installing spark plugs into your engine.
               </p>
             </div>
-            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20learn%20more%20about%20verifying%20authentic%20spark%20plugs." target="_blank" rel="noopener noreferrer" class="text-xs font-bold uppercase tracking-wider text-white hover:text-porscheRed transition-colors flex items-center gap-1.5 pt-2 border-t border-white/5">
+            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20learn%20more%20about%20verifying%20authentic%20spark%20plugs." target="_blank" rel="noopener noreferrer" class="text-xs font-bold uppercase tracking-wider text-white hover:text-porscheRed transition-colors flex items-center gap-1.5 pt-2 border-t border-white/10">
               <span>Ask Our Technical Desk</span>
               <i class="fas fa-arrow-right text-[10px]"></i>
             </a>
@@ -1532,8 +1694,8 @@
         </div>
 
         <!-- Article 2 -->
-        <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="90">
-          <article class="bg-porscheDark p-8 rounded border border-charcoalBorder flex flex-col justify-between h-full">
+        <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="100">
+          <article class="liquid-glass liquid-glass-interactive p-8 rounded-2xl flex flex-col justify-between h-full">
             <div>
               <div class="flex items-center gap-4 mb-4">
                 <img src="https://iili.io/oHVNlFS.png" alt="Iridium vs Copper Plugs" class="h-12 w-auto object-contain">
@@ -1546,7 +1708,7 @@
                 While copper plugs have a melting point of 1,085&deg;C, Iridium withstands up to 2,466&deg;C. In modern high-compression Toyota and Honda engines, installing standard copper plugs increases the electrical burden on your ignition coils, leading to premature coil blowout and higher fuel consumption.
               </p>
             </div>
-            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20have%20questions%20regarding%20Iridium%20vs%20Copper%20plugs%20for%20my%20vehicle." target="_blank" rel="noopener noreferrer" class="text-xs font-bold uppercase tracking-wider text-white hover:text-porscheRed transition-colors flex items-center gap-1.5 pt-2 border-t border-white/5">
+            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20have%20questions%20regarding%20Iridium%20vs%20Copper%20plugs%20for%20my%20vehicle." target="_blank" rel="noopener noreferrer" class="text-xs font-bold uppercase tracking-wider text-white hover:text-porscheRed transition-colors flex items-center gap-1.5 pt-2 border-t border-white/10">
               <span>Ask Our Technical Desk</span>
               <i class="fas fa-arrow-right text-[10px]"></i>
             </a>
@@ -1554,8 +1716,8 @@
         </div>
 
         <!-- Article 3 -->
-        <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="0">
-          <article class="bg-porscheDark p-8 rounded border border-charcoalBorder flex flex-col justify-between h-full">
+        <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="200">
+          <article class="liquid-glass liquid-glass-interactive p-8 rounded-2xl flex flex-col justify-between h-full">
             <div>
               <div class="flex items-center gap-4 mb-4">
                 <img src="https://iili.io/oHVNlFS.png" alt="Spark Plug Heat Range Physics" class="h-12 w-auto object-contain">
@@ -1568,7 +1730,7 @@
                 A spark plug must maintain a self-cleaning tip temperature between 450&deg;C and 870&deg;C. Installing a plug that is too hot causes pre-ignition detonation (engine pinging), while a plug that is too cold causes carbon fouling, cylinder misfires, and catalytic converter clogging.
               </p>
             </div>
-            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20want%20to%20verify%20the%20correct%20heat%20range%20for%20my%20engine." target="_blank" rel="noopener noreferrer" class="text-xs font-bold uppercase tracking-wider text-white hover:text-porscheRed transition-colors flex items-center gap-1.5 pt-2 border-t border-white/5">
+            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20want%20to%20verify%20the%20correct%20heat%20range%20for%20my%20engine." target="_blank" rel="noopener noreferrer" class="text-xs font-bold uppercase tracking-wider text-white hover:text-porscheRed transition-colors flex items-center gap-1.5 pt-2 border-t border-white/10">
               <span>Ask Our Technical Desk</span>
               <i class="fas fa-arrow-right text-[10px]"></i>
             </a>
@@ -1576,8 +1738,8 @@
         </div>
 
         <!-- Article 4 -->
-        <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="90">
-          <article class="bg-porscheDark p-8 rounded border border-charcoalBorder flex flex-col justify-between h-full">
+        <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="300">
+          <article class="liquid-glass liquid-glass-interactive p-8 rounded-2xl flex flex-col justify-between h-full">
             <div>
               <div class="flex items-center gap-4 mb-4">
                 <img src="https://iili.io/oHVNlFS.png" alt="Chassis Number VIN Verification Protocol" class="h-12 w-auto object-contain">
@@ -1590,7 +1752,7 @@
                 Two identical-looking Toyota Corollas or Honda Civics can require completely different spark plug thread reaches (19mm vs 26.5mm) depending on whether they were assembled for the North American, European, or Japanese domestic market. Chassis VIN matching eliminates this hazard completely.
               </p>
             </div>
-            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20want%20to%20verify%20my%20chassis%20VIN%20number%20for%20fitment." target="_blank" rel="noopener noreferrer" class="text-xs font-bold uppercase tracking-wider text-white hover:text-porscheRed transition-colors flex items-center gap-1.5 pt-2 border-t border-white/5">
+            <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20want%20to%20verify%20my%20chassis%20VIN%20number%20for%20fitment." target="_blank" rel="noopener noreferrer" class="text-xs font-bold uppercase tracking-wider text-white hover:text-porscheRed transition-colors flex items-center gap-1.5 pt-2 border-t border-white/10">
               <span>Ask Our Technical Desk</span>
               <i class="fas fa-arrow-right text-[10px]"></i>
             </a>
@@ -1601,10 +1763,10 @@
     </section>
 
     <!-- ================= DISCRETE PAGE: FAQS ================= -->
-    <section id="faqs" data-page="faqs" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-porscheDark border-b border-charcoalBorder" hidden>
+    <section id="faqs" data-page="faqs" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-[#050505] border-b border-white/10" hidden>
       <div class="max-w-4xl mx-auto">
 
-        <div class="mb-12 text-center sm:text-left scroll-reveal" data-reveal="fade-up">
+        <div class="mb-12 text-center sm:text-left scroll-reveal" data-reveal="headline">
           <div class="flex items-center justify-center sm:justify-start gap-2 mb-3">
             <span class="accent-indicator"></span>
             <span class="text-[11px] font-bold uppercase tracking-widest text-porscheRed">Help &amp; Clarity</span>
@@ -1619,35 +1781,35 @@
 
         <div class="space-y-4 text-xs">
 
-          <div class="scroll-reveal bg-porscheBlack p-6 rounded border border-charcoalBorder" data-reveal="fade-up" data-reveal-delay="0">
+          <div class="scroll-reveal liquid-glass liquid-glass-interactive p-6 rounded-2xl" data-reveal="fade-up" data-reveal-delay="0">
             <h3 class="font-bold uppercase text-white text-sm mb-2">How can I be 100% certain I am getting the right spark plug?</h3>
             <p class="text-silverMuted leading-relaxed">
               Simply send your vehicle chassis number (VIN) or frame number via our fitment tool or WhatsApp. Our technicians verify the exact engine code and cross-reference factory parts catalogues before fulfilling your order.
             </p>
           </div>
 
-          <div class="scroll-reveal bg-porscheBlack p-6 rounded border border-charcoalBorder" data-reveal="fade-up" data-reveal-delay="60">
+          <div class="scroll-reveal liquid-glass liquid-glass-interactive p-6 rounded-2xl" data-reveal="fade-up" data-reveal-delay="100">
             <h3 class="font-bold uppercase text-white text-sm mb-2">Why are prices not displayed publicly on the website?</h3>
             <p class="text-silverMuted leading-relaxed">
               We serve both wholesale trade buyers (workshops, parts retailers) and retail car owners. Because trade discounts vary with volume and international exchange rates fluctuate, we quote current pricing directly via our active WhatsApp catalogue.
             </p>
           </div>
 
-          <div class="scroll-reveal bg-porscheBlack p-6 rounded border border-charcoalBorder" data-reveal="fade-up" data-reveal-delay="120">
+          <div class="scroll-reveal liquid-glass liquid-glass-interactive p-6 rounded-2xl" data-reveal="fade-up" data-reveal-delay="200">
             <h3 class="font-bold uppercase text-white text-sm mb-2">How fast is delivery to locations outside Accra?</h3>
             <p class="text-silverMuted leading-relaxed">
               Greater Accra deliveries arrive same-day. For regional orders to Kumasi, Takoradi, Sunyani, Tamale, and other regional hubs, parcels are dispatched same-day via secure transit services for next-morning pickup or doorstep drop-off.
             </p>
           </div>
 
-          <div class="scroll-reveal bg-porscheBlack p-6 rounded border border-charcoalBorder" data-reveal="fade-up" data-reveal-delay="180">
+          <div class="scroll-reveal liquid-glass liquid-glass-interactive p-6 rounded-2xl" data-reveal="fade-up" data-reveal-delay="300">
             <h3 class="font-bold uppercase text-white text-sm mb-2">Do you sell genuine Denso, NGK, and Mobis plugs?</h3>
             <p class="text-silverMuted leading-relaxed">
               Yes. Every spark plug we distribute is sourced directly from authorized Tier-1 supply lines in Japan and the USA. We maintain a zero-tolerance policy for imitation parts.
             </p>
           </div>
 
-          <div class="scroll-reveal bg-porscheBlack p-6 rounded border border-charcoalBorder" data-reveal="fade-up" data-reveal-delay="240">
+          <div class="scroll-reveal liquid-glass liquid-glass-interactive p-6 rounded-2xl" data-reveal="fade-up" data-reveal-delay="0">
             <h3 class="font-bold uppercase text-white text-sm mb-2">What is your policy if an item has a factory defect?</h3>
             <p class="text-silverMuted leading-relaxed">
               In the unlikely event of an authentic factory defect reported within 48 hours of receipt prior to installation damage, our technical desk will immediately review and facilitate an exchange or store credit.
@@ -1660,9 +1822,9 @@
     </section>
 
     <!-- ================= DISCRETE PAGE: CONTACT & CUSTOMER DESK ================= -->
-    <section id="contact-view" data-page="contact" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-porscheDark border-b border-charcoalBorder" hidden>
+    <section id="contact-view" data-page="contact" class="page-view py-20 px-4 sm:px-6 lg:px-8 bg-[#050505] border-b border-white/10" hidden>
       <div class="max-w-4xl mx-auto">
-        <div class="mb-12 text-center sm:text-left scroll-reveal" data-reveal="fade-up">
+        <div class="mb-12 text-center sm:text-left scroll-reveal" data-reveal="headline">
           <div class="flex items-center justify-center sm:justify-start gap-2 mb-3">
             <span class="accent-indicator"></span>
             <span class="text-[11px] font-bold uppercase tracking-widest text-porscheRed">Direct Communication</span>
@@ -1676,21 +1838,21 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
-          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="80">
-            <div class="bg-porscheBlack p-8 rounded border border-charcoalBorder flex flex-col justify-between h-full">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="0">
+            <div class="liquid-glass liquid-glass-interactive p-8 rounded-2xl flex flex-col justify-between h-full">
               <div>
                 <span class="text-[10px] font-bold uppercase tracking-widest text-porscheRed block mb-2">Direct Sales Desk</span>
                 <h3 class="text-lg font-bold uppercase text-white mb-3">Fast Customer Assistance</h3>
                 <p class="text-silverMuted leading-relaxed mb-6">Send your car model or chassis VIN directly to our active order desk. We provide instant availability, pricing quotes, and courier dispatch arrangements.</p>
               </div>
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20inquire%20about%20spark%20plugs." target="_blank" rel="noopener noreferrer" class="bg-porscheRed hover:bg-porscheRedHover text-white py-3 px-6 rounded text-center font-bold uppercase tracking-wider block transition-colors">
+              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20inquire%20about%20spark%20plugs." target="_blank" rel="noopener noreferrer" class="bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white py-3 px-6 rounded-lg text-center font-bold uppercase tracking-wider block">
                 Chat with Sales Experts: 024 011 8846
               </a>
             </div>
           </div>
 
-          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="140">
-            <div class="bg-porscheBlack p-8 rounded border border-charcoalBorder flex flex-col justify-between h-full">
+          <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="100">
+            <div class="liquid-glass liquid-glass-interactive p-8 rounded-2xl flex flex-col justify-between h-full">
               <div>
                 <span class="text-[10px] font-bold uppercase tracking-widest text-white block mb-2">Operational Details</span>
                 <h3 class="text-lg font-bold uppercase text-white mb-3">Operating Hours &amp; Channels</h3>
@@ -1702,7 +1864,7 @@
                   <li><strong class="text-white">Payment Options:</strong> Mobile Money (MTN, Telecel), Bank Wire, COD</li>
                 </ul>
               </div>
-              <a href="tel:0240118846" class="bg-white/5 hover:bg-white hover:text-black text-white border border-white/10 py-3 px-6 rounded text-center font-bold uppercase tracking-wider block transition-colors">
+              <a href="tel:0240118846" class="liquid-glass-btn hover:bg-white hover:text-black text-white py-3 px-6 rounded-lg text-center font-bold uppercase tracking-wider block">
                 Call Direct: 024 011 8846
               </a>
             </div>
@@ -1714,15 +1876,15 @@
   </main>
 
   <!-- ================= COMPREHENSIVE LUXURY FOOTER (GLOBAL ACROSS ALL ACTIVE PAGES) ================= -->
-  <footer id="contact" class="bg-[#060608] pt-16 pb-12 px-4 sm:px-6 lg:px-8 border-t border-charcoalBorder">
+  <footer id="contact" class="bg-[#050505] pt-16 pb-12 px-4 sm:px-6 lg:px-8 border-t border-white/10">
     <div class="max-w-7xl mx-auto">
 
       <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-14">
 
         <!-- Brand Summary -->
-        <div class="md:col-span-2 scroll-reveal" data-reveal="fade-up">
+        <div class="md:col-span-2 scroll-reveal" data-reveal="fade-up" data-reveal-delay="0">
           <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded bg-[#16161A] border border-white/15 p-1 flex items-center justify-center overflow-hidden shrink-0">
+            <div class="w-10 h-10 rounded-lg liquid-glass p-1 flex items-center justify-center overflow-hidden shrink-0">
               <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine Spark Plugs" referrerpolicy="no-referrer" class="w-full h-full object-contain filter contrast-125 brightness-110 drop-shadow-[0_2px_6px_rgba(213,0,28,0.35)]">
             </div>
             <span class="text-lg font-extrabold tracking-tight text-white uppercase">
@@ -1750,7 +1912,7 @@
         </div>
 
         <!-- Quick Links -->
-        <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="90">
+        <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="100">
           <h4 class="text-xs font-bold uppercase tracking-widest text-white mb-4">Manufacturer Catalogues</h4>
           <ul class="space-y-2 text-xs text-silverMuted">
             <li><a href="#toyota" data-brand-filter="toyota" onclick="event.preventDefault(); event.stopPropagation(); triggerBrandFilter('toyota');" class="hover:text-white transition-colors">Toyota OEM Spark Plugs</a></li>
@@ -1763,7 +1925,7 @@
         </div>
 
         <!-- Support & Logistics Desk -->
-        <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="160">
+        <div class="scroll-reveal" data-reveal="fade-up" data-reveal-delay="200">
           <h4 class="text-xs font-bold uppercase tracking-widest text-white mb-4">Customer Support</h4>
           <div class="text-xs text-silverMuted space-y-2 mb-4 leading-relaxed">
             <p>Orders Line: <a href="tel:0240118846" class="text-white font-bold hover:underline">024 011 8846</a></p>
@@ -1772,7 +1934,7 @@
             <p>Fulfillment: Nationwide Delivery Across Ghana</p>
             <p class="text-[11px] text-silverMuted/70">Delivery arrangements available outside normal hours subject to confirmation.</p>
           </div>
-          <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20chat%20with%20a%20sales%20expert%20about%20genuine%20spark%20plugs." target="_blank" rel="noopener noreferrer" class="inline-block bg-white/10 hover:bg-porscheRed hover:text-white text-white border border-white/10 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded transition-colors">
+          <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20chat%20with%20a%20sales%20expert%20about%20genuine%20spark%20plugs." target="_blank" rel="noopener noreferrer" class="inline-block liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-lg">
             Chat with Sales Experts
           </a>
         </div>
@@ -1780,7 +1942,7 @@
       </div>
 
       <!-- Legal & Copyright -->
-      <div class="scroll-reveal pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-silverMuted/60" data-reveal="fade-up" data-reveal-delay="100">
+      <div class="scroll-reveal pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-silverMuted/60" data-reveal="fade-up" data-reveal-delay="100">
         <p>&copy; 2026 KASH OPTION AUTOMOTIVE PARTS &bull; GHANA. All rights reserved. The Right Spark Plug. The Right Fit. Zero Guesswork.</p>
         <div class="flex gap-6">
           <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20please%20share%20your%20ordering%20and%20returns%20terms." target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Ordering &amp; Returns Policy</a>
@@ -1793,7 +1955,7 @@
 
   <!-- ================= SCROLL-TRIGGERED FLOATING SALES REPRESENTATIVE ================= -->
   <aside id="salesRepWidget" aria-label="Sales Representative Quick Fitment Assistant" class="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-30 max-w-[268px] sm:max-w-[292px]">
-    <button type="button" onclick="openSalesChat()" aria-haspopup="dialog" aria-controls="salesRepChat" aria-expanded="false" id="salesRepTriggerBtn" class="w-full text-left bg-[#101010]/95 hover:bg-[#161618] backdrop-blur-xl border border-white/15 hover:border-white/25 rounded-lg px-3.5 py-2.5 shadow-[0_18px_40px_rgba(0,0,0,0.85)] flex items-center gap-3 group transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-porscheRed">
+    <button type="button" onclick="openSalesChat()" aria-haspopup="dialog" aria-controls="salesRepChat" aria-expanded="false" id="salesRepTriggerBtn" class="w-full text-left liquid-glass liquid-glass-interactive rounded-xl px-3.5 py-2.5 flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-porscheRed">
       <div class="sales-rep-avatar-box bg-[#18181C] border border-white/15 group-hover:border-porscheRed/70 flex items-center justify-center transition-colors">
         <img src="./salesrep.png" alt="KASH OPTION Sales Representative" width="40" height="40" class="sales-rep-avatar-img">
       </div>
@@ -1813,9 +1975,9 @@
   <div id="salesChatBackdrop" onclick="closeSalesChat()" aria-hidden="true" class="fixed inset-0 z-[44]"></div>
 
   <aside id="salesRepChat" role="dialog" aria-modal="true" aria-labelledby="salesChatTitle" class="fixed bottom-4 right-4 left-4 sm:left-auto sm:bottom-5 sm:right-5 sm:w-[384px] z-[45]">
-    <div class="bg-[#121212] border border-[#222222] rounded-xl shadow-[0_28px_72px_rgba(0,0,0,0.95)] overflow-hidden flex flex-col max-h-[min(550px,calc(100vh-2rem))]">
+    <div class="liquid-glass rounded-2xl overflow-hidden flex flex-col max-h-[min(550px,calc(100vh-2rem))]">
       <!-- Chat Header -->
-      <div class="px-4 py-3.5 bg-[#161618] border-b border-[#222222] flex items-center justify-between gap-3">
+      <div class="px-4 py-3.5 bg-[#121216]/85 border-b border-white/10 flex items-center justify-between gap-3">
         <div class="flex items-center gap-2.5 min-w-0">
           <div class="sales-chat-avatar-box bg-[#18181C] border border-white/25 ring-1 ring-[#E50914]/35">
             <img src="./salesrep.png" alt="KASH OPTION Sales Representative" width="38" height="38" class="sales-chat-avatar-img">
@@ -1829,20 +1991,20 @@
           </div>
         </div>
         <div class="flex items-center gap-2 shrink-0">
-          <button type="button" onclick="resetSalesChat()" title="Start Over" aria-label="Start Over" class="text-[10px] font-bold uppercase tracking-wider text-zinc-200 hover:text-white bg-[#202024] hover:bg-[#E50914]/20 border border-white/15 hover:border-[#E50914]/50 rounded-md px-2.5 py-1.5 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]">
+          <button type="button" onclick="resetSalesChat()" title="Start Over" aria-label="Start Over" class="text-[10px] font-bold uppercase tracking-wider text-zinc-200 hover:text-white liquid-glass-btn rounded-md px-2.5 py-1.5 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]">
             RESET
           </button>
-          <button type="button" onclick="closeSalesChat()" aria-label="Close chat" class="w-7 h-7 flex items-center justify-center rounded-md bg-[#E50914]/15 hover:bg-[#E50914] text-[#FF6B73] hover:text-white border border-[#E50914]/35 hover:border-[#E50914] transition-colors text-base leading-none focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]">
+          <button type="button" onclick="closeSalesChat()" aria-label="Close chat" class="w-7 h-7 flex items-center justify-center rounded-md bg-[#E50914]/15 hover:bg-[#E50914] text-[#FF6B73] hover:text-white border border-[#E50914]/35 hover:border-[#E50914] transition-all active:scale-95 text-base leading-none focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]">
             &times;
           </button>
         </div>
       </div>
 
       <!-- Chat Message Stream -->
-      <div id="salesChatMessages" class="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-[#121212] min-h-[220px]" aria-live="polite"></div>
+      <div id="salesChatMessages" class="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-[#0E0E12]/75 min-h-[220px]" aria-live="polite"></div>
 
       <!-- Dynamic Interactive Controls -->
-      <div id="salesChatControls" class="px-4 py-3.5 bg-[#121212] border-t border-[#222222]"></div>
+      <div id="salesChatControls" class="px-4 py-3.5 bg-[#121216]/85 border-t border-white/10"></div>
     </div>
   </aside>
 
@@ -2043,7 +2205,7 @@
         ['Toyota', 'Honda', 'Hyundai', 'Kia'].forEach(brand => {
           const btn = document.createElement('button');
           btn.type = 'button';
-          btn.className = 'bg-[#1A1A1E] hover:bg-[#242429] border border-white/20 hover:border-[#E50914]/80 text-zinc-100 hover:text-white text-xs font-semibold py-2.5 px-3 rounded-lg transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]';
+          btn.className = 'liquid-glass-btn text-zinc-100 hover:text-white text-xs font-semibold py-2.5 px-3 rounded-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]';
           btn.textContent = brand;
           btn.addEventListener('click', () => handleSalesBrandSelect(brand));
           brandGrid.appendChild(btn);
@@ -2051,7 +2213,7 @@
 
         const chassisBtn = document.createElement('button');
         chassisBtn.type = 'button';
-        chassisBtn.className = 'mt-2 w-full bg-[#1A1A1E] hover:bg-[#242429] border border-white/20 hover:border-[#E50914]/80 text-zinc-100 hover:text-white text-xs font-semibold py-2.5 px-3 rounded-lg transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]';
+        chassisBtn.className = 'mt-2 w-full liquid-glass-btn text-zinc-100 hover:text-white text-xs font-semibold py-2.5 px-3 rounded-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]';
         chassisBtn.textContent = 'Enter Chassis Number Instead';
         chassisBtn.addEventListener('click', () => handleSalesSwitchToChassis());
 
@@ -2069,7 +2231,7 @@
         input.type = 'text';
         input.required = true;
         input.autocomplete = 'off';
-        input.className = 'flex-1 min-w-0 bg-[#1A1A1E] border border-white/20 focus:border-[#E50914] rounded-lg px-3 py-2.5 text-xs text-white placeholder-zinc-400 focus:outline-none transition-colors';
+        input.className = 'flex-1 min-w-0 bg-[#1A1A1E] border border-white/20 focus:border-[#E50914] rounded-lg px-3 py-2.5 text-base text-white placeholder-zinc-400 placeholder:text-xs focus:outline-none transition-colors';
 
         if (salesChatState.step === 'model') {
           input.placeholder = 'e.g. Corolla, Civic, Elantra, Sportage';
@@ -2082,7 +2244,7 @@
 
         const sendBtn = document.createElement('button');
         sendBtn.type = 'submit';
-        sendBtn.className = 'shrink-0 bg-[#E50914] hover:bg-[#B30017] text-white text-xs font-bold px-3.5 py-2.5 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white';
+        sendBtn.className = 'shrink-0 bg-[#E50914] hover:bg-[#B30017] liquid-cta-primary text-white text-xs font-bold px-4 py-2.5 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white';
         sendBtn.textContent = 'Send';
 
         form.addEventListener('submit', e => {
@@ -2102,7 +2264,7 @@
         if (salesChatState.step === 'engineYear') {
           const altBtn = document.createElement('button');
           altBtn.type = 'button';
-          altBtn.className = 'mt-2 w-full bg-[#1A1A1E] hover:bg-[#242429] border border-white/20 hover:border-[#E50914]/80 text-zinc-100 hover:text-white text-xs font-semibold py-2 px-3 rounded-lg transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]';
+          altBtn.className = 'mt-2 w-full liquid-glass-btn text-zinc-100 hover:text-white text-xs font-semibold py-2 px-3 rounded-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]';
           altBtn.textContent = 'Enter Chassis Number Instead';
           altBtn.addEventListener('click', () => handleSalesSwitchToChassis());
           controlsEl.appendChild(altBtn);
@@ -2115,7 +2277,7 @@
       if (salesChatState.step === 'confirm') {
         const waBtn = document.createElement('button');
         waBtn.type = 'button';
-        waBtn.className = 'w-full bg-[#E50914] hover:bg-[#B30017] text-white text-xs font-bold tracking-wide py-2.5 px-4 rounded-lg transition-colors shadow-[0_8px_24px_rgba(229,9,20,0.35)] focus:outline-none focus-visible:ring-2 focus-visible:ring-white';
+        waBtn.className = 'w-full bg-[#E50914] hover:bg-[#B30017] liquid-cta-primary text-white text-xs font-bold tracking-wide py-2.5 px-4 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white';
         waBtn.textContent = 'Send Order to WhatsApp »';
         waBtn.addEventListener('click', sendSalesChatOrderToWhatsApp);
         controlsEl.appendChild(waBtn);
@@ -2206,11 +2368,40 @@
       openWhatsAppUrl(`https://wa.me/233240118846?text=${encodeURIComponent(lines.join('\n'))}`);
     }
 
+    function updateScrollParallax() {
+      const prefersReducedMotion =
+        window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const activeView = document.querySelector('.page-view:not([hidden])');
+      if (!activeView) return;
+
+      const parallaxEls = activeView.querySelectorAll('[data-parallax]');
+      if (prefersReducedMotion) {
+        parallaxEls.forEach(el => {
+          el.style.transform = '';
+        });
+        return;
+      }
+
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      parallaxEls.forEach(el => {
+        if (el.offsetParent === null) return;
+        const speed = parseFloat(el.getAttribute('data-parallax')) || 0.08;
+        const rect = el.getBoundingClientRect();
+        if (rect.bottom < -120 || rect.top > vh + 120) return;
+
+        const centerOffset = (rect.top + rect.height * 0.5) - vh * 0.5;
+        const rawY = -centerOffset * speed;
+        const clampedY = Math.max(-26, Math.min(26, rawY));
+        el.style.transform = `translate3d(0, ${clampedY.toFixed(1)}px, 0)`;
+      });
+    }
+
     function scheduleScrollRevealEval() {
       if (scrollEvalRaf) return;
       scrollEvalRaf = window.requestAnimationFrame(() => {
         scrollEvalRaf = 0;
         evaluateScrollReveals();
+        updateScrollParallax();
         updateSalesRepVisibility();
       });
     }
@@ -2253,6 +2444,7 @@
 
       if (prefersReducedMotion || typeof IntersectionObserver === 'undefined') {
         targets.forEach(el => el.classList.add('is-revealed'));
+        updateScrollParallax();
         return;
       }
 
@@ -2277,6 +2469,7 @@
           activeRevealObserver = new IntersectionObserver(
             entries => {
               evaluateScrollReveals();
+              updateScrollParallax();
               if (revealConfig.once && activeRevealObserver) {
                 entries.forEach(entry => {
                   if (entry.isIntersecting) {
@@ -2298,6 +2491,7 @@
           });
 
           evaluateScrollReveals();
+          updateScrollParallax();
         });
       });
     }
