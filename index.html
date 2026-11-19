@@ -2085,22 +2085,58 @@
       }
     }
 
-    function unlockLuxuryAudio() {
-      if (luxuryAudioUnlocked) return;
+    const unlockEventNames = ['touchstart', 'pointerdown', 'click'];
+
+    function removeAudioUnlockListeners() {
       try {
-        const ctx = getLuxuryAudioContext();
-        if (!ctx) return;
-        if (ctx.state === 'suspended' && typeof ctx.resume === 'function') {
-          const p = ctx.resume();
-          if (p && typeof p.catch === 'function') p.catch(() => {});
-        }
-        if (ctx.state === 'running') {
-          luxuryAudioUnlocked = true;
+        unlockEventNames.forEach(evtName => {
+          window.removeEventListener(evtName, unlockLuxuryAudio, { passive: true, capture: true });
+        });
+      } catch (e) {}
+    }
+
+    function playSilentUnlockBuffer(ctx) {
+      try {
+        if (!ctx || typeof ctx.createBuffer !== 'function') return;
+        const buffer = ctx.createBuffer(1, 1, 22050);
+        const source = ctx.createBufferSource();
+        source.buffer = buffer;
+        source.connect(ctx.destination);
+        if (typeof source.start === 'function') {
+          source.start(0);
         }
       } catch (e) {}
     }
 
-    ['pointerdown', 'keydown'].forEach(evtName => {
+    function unlockLuxuryAudio() {
+      if (luxuryAudioUnlocked) {
+        removeAudioUnlockListeners();
+        return;
+      }
+      try {
+        const ctx = getLuxuryAudioContext();
+        if (!ctx) return;
+
+        playSilentUnlockBuffer(ctx);
+
+        if (ctx.state === 'running') {
+          luxuryAudioUnlocked = true;
+          removeAudioUnlockListeners();
+        } else if (ctx.state === 'suspended' && typeof ctx.resume === 'function') {
+          const p = ctx.resume();
+          if (p && typeof p.then === 'function') {
+            p.then(() => {
+              if (ctx.state === 'running') {
+                luxuryAudioUnlocked = true;
+                removeAudioUnlockListeners();
+              }
+            }).catch(() => {});
+          }
+        }
+      } catch (e) {}
+    }
+
+    unlockEventNames.forEach(evtName => {
       try {
         window.addEventListener(evtName, unlockLuxuryAudio, { passive: true, capture: true });
       } catch (e) {}
@@ -2112,43 +2148,42 @@
         const now = ctx.currentTime;
 
         const master = ctx.createGain();
-        master.gain.setValueAtTime(0.0001, now);
-        master.gain.linearRampToValueAtTime(1.0, now + 0.01);
+        master.gain.setValueAtTime(1.0, now);
         master.connect(ctx.destination);
 
-        // Gentle two-note soft glass chime (~350ms total)
+        // Crisp two-note luxury arrival chime: C6 (1046.5 Hz) -> E6 (1318.5 Hz) 110ms later, ~0.35 gain, 400ms decay
         const notes = [
-          { freq: 587.33, start: 0.0, duration: 0.21, sinePeak: 0.042, triPeak: 0.01 },
-          { freq: 880.0, start: 0.115, duration: 0.235, sinePeak: 0.036, triPeak: 0.008 }
+          { freq: 1046.5, start: 0.005, decay: 0.4, sinePeak: 0.28, triPeak: 0.07 },
+          { freq: 1318.5, start: 0.115, decay: 0.4, sinePeak: 0.28, triPeak: 0.07 }
         ];
 
         notes.forEach(note => {
           const tStart = now + note.start;
-          const tEnd = tStart + note.duration;
+          const tEnd = tStart + note.decay;
 
           const sineOsc = ctx.createOscillator();
           const sineGain = ctx.createGain();
           sineOsc.type = 'sine';
           sineOsc.frequency.setValueAtTime(note.freq, tStart);
           sineGain.gain.setValueAtTime(0.0001, tStart);
-          sineGain.gain.linearRampToValueAtTime(note.sinePeak, tStart + 0.014);
+          sineGain.gain.linearRampToValueAtTime(note.sinePeak, tStart + 0.01);
           sineGain.gain.exponentialRampToValueAtTime(0.0001, tEnd);
           sineOsc.connect(sineGain);
           sineGain.connect(master);
           sineOsc.start(tStart);
-          sineOsc.stop(tEnd + 0.01);
+          sineOsc.stop(tEnd + 0.015);
 
           const triOsc = ctx.createOscillator();
           const triGain = ctx.createGain();
           triOsc.type = 'triangle';
           triOsc.frequency.setValueAtTime(note.freq, tStart);
           triGain.gain.setValueAtTime(0.0001, tStart);
-          triGain.gain.linearRampToValueAtTime(note.triPeak, tStart + 0.012);
-          triGain.gain.exponentialRampToValueAtTime(0.0001, tStart + note.duration * 0.72);
+          triGain.gain.linearRampToValueAtTime(note.triPeak, tStart + 0.008);
+          triGain.gain.exponentialRampToValueAtTime(0.0001, tStart + note.decay * 0.78);
           triOsc.connect(triGain);
           triGain.connect(master);
           triOsc.start(tStart);
-          triOsc.stop(tEnd + 0.01);
+          triOsc.stop(tEnd + 0.015);
         });
 
         return true;
@@ -2166,11 +2201,10 @@
 
     function playSalesRevealChimeOnce() {
       if (salesRevealChimePlayed) return;
-      markSalesChimePlayed();
       try {
         const hasActivation =
-          !window.navigator.userActivation ||
-          window.navigator.userActivation.hasBeenActive ||
+          luxuryAudioUnlocked ||
+          (window.navigator.userActivation && window.navigator.userActivation.hasBeenActive) ||
           (luxuryAudioCtx && luxuryAudioCtx.state === 'running');
         if (!hasActivation) return;
 
@@ -2179,13 +2213,19 @@
 
         if (ctx.state === 'running') {
           luxuryAudioUnlocked = true;
-          renderSoftGlassChime(ctx);
+          removeAudioUnlockListeners();
+          if (renderSoftGlassChime(ctx)) {
+            markSalesChimePlayed();
+          }
         } else if (ctx.state === 'suspended' && typeof ctx.resume === 'function') {
           const resumedAt = Date.now();
           ctx.resume().then(() => {
-            if (Date.now() - resumedAt <= 150 && ctx.state === 'running') {
+            if (Date.now() - resumedAt <= 180 && ctx.state === 'running' && !salesRevealChimePlayed) {
               luxuryAudioUnlocked = true;
-              renderSoftGlassChime(ctx);
+              removeAudioUnlockListeners();
+              if (renderSoftGlassChime(ctx)) {
+                markSalesChimePlayed();
+              }
             }
           }).catch(() => {});
         }
@@ -2196,34 +2236,36 @@
       try {
         if (!ctx || ctx.state !== 'running') return;
         const now = ctx.currentTime;
+        const tEnd = now + 0.095;
 
+        // Crisp, audible 880 Hz short sine/triangle pop (~0.25 combined gain, 90ms decay)
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(460, now);
-        osc.frequency.exponentialRampToValueAtTime(220, now + 0.045);
+        osc.frequency.setValueAtTime(880, now);
+        osc.frequency.exponentialRampToValueAtTime(660, now + 0.075);
 
         gain.gain.setValueAtTime(0.0001, now);
-        gain.gain.linearRampToValueAtTime(0.032, now + 0.004);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.055);
+        gain.gain.linearRampToValueAtTime(0.19, now + 0.004);
+        gain.gain.exponentialRampToValueAtTime(0.0001, tEnd);
 
         osc.connect(gain);
         gain.connect(ctx.destination);
         osc.start(now);
-        osc.stop(now + 0.06);
+        osc.stop(tEnd + 0.01);
 
         const bodyOsc = ctx.createOscillator();
         const bodyGain = ctx.createGain();
         bodyOsc.type = 'triangle';
-        bodyOsc.frequency.setValueAtTime(920, now);
+        bodyOsc.frequency.setValueAtTime(880, now);
         bodyGain.gain.setValueAtTime(0.0001, now);
-        bodyGain.gain.linearRampToValueAtTime(0.007, now + 0.003);
-        bodyGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.028);
+        bodyGain.gain.linearRampToValueAtTime(0.06, now + 0.004);
+        bodyGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.07);
 
         bodyOsc.connect(bodyGain);
         bodyGain.connect(ctx.destination);
         bodyOsc.start(now);
-        bodyOsc.stop(now + 0.035);
+        bodyOsc.stop(tEnd + 0.01);
       } catch (e) {}
     }
 
@@ -2234,11 +2276,13 @@
 
         if (ctx.state === 'running') {
           luxuryAudioUnlocked = true;
+          removeAudioUnlockListeners();
           renderMicroTap(ctx);
         } else if (ctx.state === 'suspended' && typeof ctx.resume === 'function') {
           ctx.resume().then(() => {
             if (ctx.state === 'running') {
               luxuryAudioUnlocked = true;
+              removeAudioUnlockListeners();
               renderMicroTap(ctx);
             }
           }).catch(() => {});
