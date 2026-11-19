@@ -223,6 +223,23 @@
       transform: scale(0.985) translate3d(0, 0, 0);
     }
 
+    /* Subtle crimson-tinted thin hairline border & soft glow hover across non-landing pages */
+    .page-view:not(#home) .liquid-glass,
+    .page-view:not(#home) .porsche-card {
+      border-color: rgba(229, 9, 20, 0.28);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 18px rgba(229, 9, 20, 0.06);
+      transition:
+        transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 350ms cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 420ms cubic-bezier(0.16, 1, 0.3, 1),
+        background-color 350ms ease;
+    }
+    .page-view:not(#home) .liquid-glass:hover,
+    .page-view:not(#home) .porsche-card:hover {
+      border-color: rgba(229, 9, 20, 0.42);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 26px 60px rgba(0, 0, 0, 0.8), 0 0 28px rgba(229, 9, 20, 0.14);
+    }
+
     /* Technical Specification Table Row */
     .spec-item {
       display: flex;
@@ -404,6 +421,9 @@
       -webkit-filter: blur(10px) brightness(0.45);
       pointer-events: none;
       user-select: none;
+    }
+    body.sales-chat-open {
+      overflow: hidden;
     }
     #salesChatBackdrop {
       opacity: 0;
@@ -742,7 +762,7 @@
               <a href="mailto:info@mrkash.net" class="text-xs font-semibold text-silverMuted hover:text-white transition-colors">info@mrkash.net</a>
             </div>
           </div>
-          <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20chat%20with%20a%20sales%20expert%20about%20genuine%20spark%20plugs." target="_blank" rel="noopener noreferrer" class="bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-lg flex items-center gap-2 whitespace-nowrap">
+          <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20chat%20with%20a%20sales%20expert%20about%20genuine%20spark%20plugs." onclick="event.preventDefault(); openSalesChat();" aria-haspopup="dialog" aria-controls="salesRepChat" class="bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-lg flex items-center gap-2 whitespace-nowrap">
             <span>Chat with Sales Experts</span>
             <i class="fas fa-arrow-right text-[11px]"></i>
           </a>
@@ -805,7 +825,7 @@
             <!-- Action Buttons -->
             <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 max-w-md">
               <!-- Primary CTA Button: ORDER ON WHATSAPP -->
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20ready%20to%20order%20genuine%20OEM%20spark%20plugs%20for%20my%20vehicle." target="_blank" rel="noopener noreferrer" class="bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white text-xs font-extrabold uppercase tracking-widest px-8 py-4 rounded-lg text-center flex items-center justify-center gap-2.5">
+              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20am%20ready%20to%20order%20genuine%20OEM%20spark%20plugs%20for%20my%20vehicle." onclick="event.preventDefault(); openSalesChat();" aria-haspopup="dialog" aria-controls="salesRepChat" class="bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white text-xs font-extrabold uppercase tracking-widest px-8 py-4 rounded-lg text-center flex items-center justify-center gap-2.5">
                 <span>GET PRICE ON WHATSAPP</span>
               </a>
 
@@ -1572,7 +1592,7 @@
           </div>
 
           <div class="scroll-reveal h-full" data-reveal="fade-up" data-reveal-delay="100">
-            <div class="liquid-glass liquid-glass-interactive p-6 rounded-xl border-white/20 space-y-3 h-full">
+            <div class="liquid-glass liquid-glass-interactive p-6 rounded-xl space-y-3 h-full">
               <h4 class="text-xs font-bold uppercase tracking-wider text-white">KASH OPTION Specialist Guarantee</h4>
               <p class="text-silverMuted leading-relaxed">
                 Genuine 0.7mm laser-welded fine-wire Iridium center tip with platinum ground disc rated for 100,000 km service intervals.
@@ -1845,7 +1865,7 @@
                 <h3 class="text-lg font-bold uppercase text-white mb-3">Fast Customer Assistance</h3>
                 <p class="text-silverMuted leading-relaxed mb-6">Send your car model or chassis VIN directly to our active order desk. We provide instant availability, pricing quotes, and courier dispatch arrangements.</p>
               </div>
-              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20inquire%20about%20spark%20plugs." target="_blank" rel="noopener noreferrer" class="bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white py-3 px-6 rounded-lg text-center font-bold uppercase tracking-wider block">
+              <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20inquire%20about%20spark%20plugs." onclick="event.preventDefault(); openSalesChat();" aria-haspopup="dialog" aria-controls="salesRepChat" class="bg-porscheRed hover:bg-porscheRedHover liquid-cta-primary text-white py-3 px-6 rounded-lg text-center font-bold uppercase tracking-wider block">
                 Chat with Sales Experts: 024 011 8846
               </a>
             </div>
@@ -1895,18 +1915,18 @@
           <p class="text-xs text-silverMuted max-w-sm leading-relaxed mb-6 font-normal">
             Ghana's trusted destination for genuine OEM spark plugs and automotive parts. Primary focus on Toyota, Honda, Hyundai, and Kia with direct sourcing from Japan and the USA.
           </p>
-          <div class="flex flex-wrap items-center gap-x-5 gap-y-2.5 text-xs text-silverMuted">
-            <a href="https://www.instagram.com/Kashoption_" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-2" aria-label="Instagram Kashoption_">
-              <i class="fab fa-instagram text-sm text-white/80"></i>
-              <span>Kashoption_</span>
+          <div class="flex flex-wrap items-center gap-x-5 gap-y-3 text-xs text-silverMuted">
+            <a href="https://www.instagram.com/KashOption_/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors inline-flex items-center gap-2 whitespace-nowrap shrink-0" aria-label="Follow us on Instagram">
+              <i class="fab fa-instagram text-sm text-white/80 shrink-0"></i>
+              <span>Follow us on Instagram</span>
             </a>
-            <a href="https://www.tiktok.com/@kashoption_" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-2" aria-label="TikTok @kashoption_">
-              <i class="fab fa-tiktok text-sm text-white/80"></i>
-              <span>@kashoption_</span>
+            <a href="https://www.tiktok.com/@kashoption_" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors inline-flex items-center gap-2 whitespace-nowrap shrink-0" aria-label="Follow us on TikTok">
+              <i class="fab fa-tiktok text-sm text-white/80 shrink-0"></i>
+              <span>Follow us on TikTok</span>
             </a>
-            <a href="mailto:info@mrkash.net" class="hover:text-white transition-colors flex items-center gap-2" aria-label="Email info@mrkash.net">
-              <i class="fas fa-envelope text-sm text-white/80"></i>
-              <span>info@mrkash.net</span>
+            <a href="mailto:info@mrkash.net" class="hover:text-white transition-colors inline-flex items-center gap-2 whitespace-nowrap shrink-0" aria-label="Email Support">
+              <i class="fas fa-envelope text-sm text-white/80 shrink-0"></i>
+              <span>Email Support</span>
             </a>
           </div>
         </div>
@@ -1934,7 +1954,7 @@
             <p>Fulfillment: Nationwide Delivery Across Ghana</p>
             <p class="text-[11px] text-silverMuted/70">Delivery arrangements available outside normal hours subject to confirmation.</p>
           </div>
-          <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20chat%20with%20a%20sales%20expert%20about%20genuine%20spark%20plugs." target="_blank" rel="noopener noreferrer" class="inline-block liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-lg">
+          <a href="https://wa.me/233240118846?text=Hello%20Kash%20Option%2C%20I%20would%20like%20to%20chat%20with%20a%20sales%20expert%20about%20genuine%20spark%20plugs." onclick="event.preventDefault(); openSalesChat();" aria-haspopup="dialog" aria-controls="salesRepChat" class="inline-block liquid-glass-btn hover:bg-porscheRed hover:text-white text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-lg">
             Chat with Sales Experts
           </a>
         </div>
@@ -2334,6 +2354,7 @@
     };
 
     function openSalesChat() {
+      if (typeof closeMenu === 'function') closeMenu();
       const chatEl = document.getElementById('salesRepChat');
       const backdropEl = document.getElementById('salesChatBackdrop');
       const widgetEl = document.getElementById('salesRepWidget');
