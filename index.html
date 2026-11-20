@@ -331,6 +331,45 @@
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 16px 40px rgba(0, 0, 0, 0.65);
     }
 
+    /* Persistent Crimson Circular Icon Ring for Dynamic Island Ends */
+    .island-icon-badge {
+      background: radial-gradient(circle at 30% 25%, rgba(255, 31, 31, 0.24), rgba(14, 14, 18, 0.94) 72%);
+      border: 1.5px solid #E31818;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.16),
+        0 0 0 1px rgba(255, 31, 31, 0.26),
+        0 0 14px rgba(227, 24, 24, 0.34);
+      transition:
+        border-color 220ms ease,
+        box-shadow 220ms ease,
+        transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .island-icon-badge:hover,
+    .island-icon-badge.is-open {
+      border-color: #FF1F1F;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        0 0 0 1px rgba(255, 31, 31, 0.45),
+        0 0 18px rgba(255, 31, 31, 0.5);
+    }
+    .island-icon-badge:active {
+      transform: scale(0.95);
+    }
+
+    /* Middle Value-Proposition Autoshop Showcase Polish */
+    .autoshop-showcase-frame {
+      position: relative;
+      border: 1px solid rgba(255, 31, 31, 0.34);
+      background: radial-gradient(circle at 35% 25%, rgba(255, 31, 31, 0.14), rgba(10, 10, 14, 0.96) 72%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.16),
+        0 18px 44px rgba(0, 0, 0, 0.85),
+        0 0 28px rgba(227, 24, 24, 0.22);
+    }
+    .autoshop-showcase-img {
+      filter: contrast(1.12) brightness(1.06) saturate(1.06);
+    }
+
     /* Dark select options */
     select option {
       background: #101014;
@@ -1245,38 +1284,26 @@
     <div class="max-w-5xl mx-auto w-full relative pointer-events-auto">
 
       <!-- Dynamic Island Pill Bar -->
-      <div class="nav-glass rounded-full h-14 sm:h-[60px] px-3 sm:px-5 flex items-center justify-between gap-3">
+      <div class="nav-glass rounded-full h-14 sm:h-[60px] px-2.5 sm:px-4 grid grid-cols-[auto_1fr_auto] items-center gap-2 sm:gap-4">
 
-        <!-- Brand Logo (Hero Spark Plugs Emblem + "KASH OPTION") -->
-        <a href="#home" onclick="closeMenu()" class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none min-w-0" aria-label="KASH OPTION Home">
-          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full liquid-glass p-1 flex items-center justify-center overflow-hidden shrink-0 group-hover:border-[#FF1F1F]/55 transition-colors">
-            <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine Spark Plugs" referrerpolicy="no-referrer" class="w-full h-full object-contain filter contrast-125 brightness-110 drop-shadow-[0_2px_6px_rgba(255,31,31,0.35)]">
-          </div>
-          <div class="flex flex-col min-w-0">
-            <span class="text-xs sm:text-sm font-extrabold tracking-tight text-white uppercase leading-none truncate">
-              KASH <span class="text-porscheRed">OPTION</span>
-            </span>
-            <span class="text-[8px] sm:text-[8.5px] font-semibold uppercase tracking-widest text-silverMuted mt-0.5 truncate">
-              Automotive Parts &bull; Ghana
-            </span>
-          </div>
+        <!-- Left Icon: Hero Spark Plug Emblem Framed by Persistent Crimson Ring -->
+        <a href="#home" onclick="closeMenu()" class="island-icon-badge w-9 h-9 sm:w-10 sm:h-10 rounded-full p-1 flex items-center justify-center overflow-hidden shrink-0 focus:outline-none" aria-label="KASH OPTION Home">
+          <img src="https://iili.io/oHVNlFS.png" alt="KASH OPTION Genuine Spark Plugs" referrerpolicy="no-referrer" class="w-full h-full object-contain filter contrast-125 brightness-110 drop-shadow-[0_2px_6px_rgba(255,31,31,0.4)]">
         </a>
 
-        <!-- Primary Navigation: Two Core Action Pages -->
-        <nav class="hidden md:flex items-center gap-7 text-xs font-extrabold uppercase tracking-widest text-metallicSilver" aria-label="Primary Navigation">
-          <a href="#catalogue" onclick="closeMenu()" class="hover:text-white transition-colors py-1 flex items-center gap-1.5 group">
-            <span>Shop Catalogue</span>
-            <span class="w-1 h-1 rounded-full bg-porscheRed opacity-0 group-hover:opacity-100 transition-opacity"></span>
-          </a>
-          <a href="#fitment-finder" onclick="closeMenu()" class="hover:text-white transition-colors py-1 flex items-center gap-1.5 group">
-            <span>Fitment Finder</span>
-            <span class="w-1 h-1 rounded-full bg-porscheRed opacity-0 group-hover:opacity-100 transition-opacity"></span>
-          </a>
-        </nav>
+        <!-- Center Brand Title & Tagline (Balanced Across All Screen Sizes) -->
+        <a href="#home" onclick="closeMenu()" class="flex flex-col items-center justify-center text-center min-w-0 px-1 group focus:outline-none" aria-label="KASH OPTION Automotive Parts Ghana">
+          <span class="text-xs sm:text-sm font-extrabold tracking-tight text-white uppercase leading-none truncate max-w-full">
+            KASH <span class="text-porscheRed">OPTION</span>
+          </span>
+          <span class="text-[8px] sm:text-[9px] font-semibold uppercase tracking-[0.16em] sm:tracking-[0.2em] text-silverMuted mt-0.5 truncate max-w-full">
+            AUTOMOTIVE PARTS &bull; GHANA
+          </span>
+        </a>
 
-        <!-- Right Action: Clean Dynamic Island Menu Toggle -->
-        <div class="flex items-center gap-2 shrink-0">
-          <button id="menuTriggerBtn" onclick="toggleMenu()" type="button" class="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full liquid-glass-btn flex items-center justify-center text-silverMuted hover:text-white focus:outline-none" aria-label="Toggle Navigation Menu" aria-haspopup="dialog" aria-expanded="false" aria-controls="menuOverlay">
+        <!-- Right Action: Dynamic Island Menu Toggle Framed by Persistent Crimson Ring -->
+        <div class="flex items-center justify-end shrink-0">
+          <button id="menuTriggerBtn" onclick="toggleMenu()" type="button" class="island-icon-badge relative w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-white hover:text-white focus:outline-none" aria-label="Toggle Navigation Menu" aria-haspopup="dialog" aria-expanded="false" aria-controls="menuOverlay">
             <i class="fas fa-bars text-sm menu-icon-bars" aria-hidden="true"></i>
             <i class="fas fa-times text-sm menu-icon-close" aria-hidden="true"></i>
           </button>
@@ -1449,29 +1476,40 @@
           </div>
         </div>
 
-        <!-- Authority Strip (Borderless Open Layout) -->
-        <div class="home-authority-strip max-w-7xl mx-auto w-full relative z-10 pt-16 sm:pt-24">
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 lg:gap-14 text-center sm:text-left">
+        <!-- Value-Proposition Showcase (autoshop.png Left + Clean Right-Aligned Headlines) -->
+        <div class="home-authority-strip max-w-7xl mx-auto w-full relative z-10 pt-14 sm:pt-20">
+          <div class="grid grid-cols-[minmax(122px,40%)_1fr] sm:grid-cols-12 items-center gap-4 sm:gap-8 lg:gap-12">
 
-            <div class="scroll-reveal py-1" data-reveal="fade-up" data-reveal-delay="0">
-              <span class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-white block">
-                STOP ENGINE MISFIRES &amp; HIGH FUEL BURN
-              </span>
-              <p class="text-xs text-silverMuted mt-2 leading-relaxed">Weak or fake plugs ruin your fuel economy and coils. Get factory-spec Iridium and Platinum plugs that last up to 100,000 km.</p>
+            <!-- Left Column: Crisp autoshop.png Showcase with Subtle Crimson Rim Glow -->
+            <div class="sm:col-span-5 relative scroll-reveal" data-reveal="fade-up" data-reveal-delay="0">
+              <div class="absolute -inset-3 rounded-3xl bg-[radial-gradient(circle_at_50%_50%,rgba(255,31,31,0.22),transparent_70%)] pointer-events-none" aria-hidden="true"></div>
+              <div class="autoshop-showcase-frame relative rounded-2xl sm:rounded-3xl overflow-hidden aspect-[4/3]">
+                <img id="homeAutoshopImg" src="autoshop.png" alt="KASH OPTION Accra Auto Shop — Genuine OEM Spark Plug Stock" class="autoshop-showcase-img w-full h-full object-cover object-center block">
+                <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[#050505]/35 via-transparent to-[#FF1F1F]/10" aria-hidden="true"></div>
+              </div>
             </div>
 
-            <div class="scroll-reveal py-1" data-reveal="fade-up" data-reveal-delay="100">
-              <span class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-white block">
-                1 SET OR 100 CARTONS IN STOCK
-              </span>
-              <p class="text-xs text-silverMuted mt-2 leading-relaxed">Whether you are servicing one personal car or stocking an entire shop, we have ready stock at fair Cedi prices.</p>
-            </div>
+            <!-- Right Column: Stacked High-Impact Headlines (Zero Clutter) -->
+            <div class="sm:col-span-7 flex flex-col justify-center gap-3.5 sm:gap-6 lg:gap-7 text-right">
 
-            <div class="scroll-reveal py-1" data-reveal="fade-up" data-reveal-delay="200">
-              <span class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-white block">
-                FAST DELIVERY TO YOUR MECHANIC OR DOOR
-              </span>
-              <p class="text-xs text-silverMuted mt-2 leading-relaxed">30-45 minutes rider dispatch across Accra and Tema. Same-day VIP/STC parcel waybill to Kumasi, Takoradi, Tamale, and nationwide.</p>
+              <div class="scroll-reveal border-r-2 border-[#FF1F1F] pr-3 sm:pr-5 py-0.5" data-reveal="fade-up" data-reveal-delay="0">
+                <span class="text-[11px] leading-snug sm:text-xl md:text-2xl lg:text-[26px] font-extrabold uppercase tracking-wider text-white block">
+                  STOP ENGINE MISFIRES &amp; HIGH FUEL BURN
+                </span>
+              </div>
+
+              <div class="scroll-reveal border-r-2 border-[#E31818] pr-3 sm:pr-5 py-0.5" data-reveal="fade-up" data-reveal-delay="90">
+                <span class="text-[11px] leading-snug sm:text-xl md:text-2xl lg:text-[26px] font-extrabold uppercase tracking-wider text-white block">
+                  1 SET OR 100 CARTONS IN STOCK
+                </span>
+              </div>
+
+              <div class="scroll-reveal border-r-2 border-[#FF1F1F] pr-3 sm:pr-5 py-0.5" data-reveal="fade-up" data-reveal-delay="180">
+                <span class="text-[11px] leading-snug sm:text-xl md:text-2xl lg:text-[26px] font-extrabold uppercase tracking-wider text-white block">
+                  FAST DELIVERY TO YOUR MECHANIC OR DOOR
+                </span>
+              </div>
+
             </div>
 
           </div>
@@ -1680,7 +1718,7 @@
           <div role="button" tabindex="0" onclick="openPlugDetailModal('hyundai-18849-09085')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlugDetailModal('hyundai-18849-09085');}" aria-label="Inspect GENUINE HYUNDAI OEM 18849-09085 specifications" class="porsche-card catalogue-card-interactive group rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full">
             <div class="aspect-[16/11] w-full bg-[#07070A] rounded-2xl mb-6 overflow-hidden relative">
               <div data-parallax="0.06" class="w-full h-full">
-                <img src="https://iili.io/oddiY11.jpg" alt="Mobis 18849-09085 Genuine Hyundai OEM Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
+                <img src="1884909085.png" alt="Mobis 18849-09085 Genuine Hyundai OEM Spark Plug" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
               </div>
             </div>
             <div>
@@ -3750,12 +3788,20 @@
         }
       });
 
-      // Extract Home Authority Strip & Overview directly from DOM
+      // Extract Home Authority Strip & Overview directly from DOM (with clean fallback summaries when minimalist headline-only mode is active)
+      const homeHeadlineFacts = {
+        'STOP ENGINE MISFIRES': 'Factory-spec Denso, NGK, and Mobis Iridium/Platinum spark plugs protect ignition coils and fuel economy up to 100,000 km.',
+        '1 SET OR 100 CARTONS': 'Ready Accra warehouse stock for single-vehicle owners and wholesale auto parts shops at competitive Ghana Cedi pricing.',
+        'FAST DELIVERY': '30-45 minute rider dispatch across Accra and Tema, plus same-day VIP/STC parcel waybill nationwide across Ghana.'
+      };
       document.querySelectorAll('#home .home-authority-strip .scroll-reveal').forEach(item => {
         const title = item.querySelector('span');
         const body = item.querySelector('p');
-        if (title && body) {
-          pushEntry('home', title.textContent, body.textContent, 'delivery misfire stock fuel');
+        if (title) {
+          const titleUpper = title.textContent.toUpperCase();
+          const matchedFact = Object.keys(homeHeadlineFacts).find(k => titleUpper.includes(k));
+          const detailText = body ? body.textContent : (matchedFact ? homeHeadlineFacts[matchedFact] : title.textContent);
+          pushEntry('home', title.textContent, detailText, 'delivery misfire stock fuel');
         }
       });
 
@@ -5451,7 +5497,7 @@
         oemNumber: '18849-09085 / SILZKR8E9G',
         title: 'Hyundai Santa Fe V6, Palisade & Kona Turbo Genuine Mobis Spark Plug',
         shortTitle: 'Santa Fe V6 • Palisade • Turbo',
-        image: 'https://iili.io/oddiY11.jpg',
+        image: '1884909085.png',
         summary: 'Factory colder-range Mobis Iridium plug engineered for Hyundai T-GDI turbochargers and Lambda II V6 SUVs. Eliminates high-boost knocking and full-throttle misfires under load.',
         models: [
           'Hyundai Santa Fe V6 & 2.0T (2014–2023)',
@@ -5897,6 +5943,15 @@
         closeSalesChat();
       }
     });
+
+    // Configurable Autoshop Showcase Image URL (defaults to repo-root autoshop.png)
+    const KASH_AUTOSHOP_IMAGE_URL = window.KASH_AUTOSHOP_IMAGE_URL || 'autoshop.png';
+    (function syncAutoshopImage() {
+      const autoshopEl = document.getElementById('homeAutoshopImg');
+      if (autoshopEl && KASH_AUTOSHOP_IMAGE_URL) {
+        autoshopEl.setAttribute('src', KASH_AUTOSHOP_IMAGE_URL);
+      }
+    })();
 
     // Initial page load
     (function initRouter() {
